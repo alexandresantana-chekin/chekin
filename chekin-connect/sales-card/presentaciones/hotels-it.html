@@ -1,0 +1,788 @@
+<!doctype html><html lang="it"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>[hidden]{display:none!important}.topline{gap:8px}@media(max-width:420px){.topline{gap:6px}.topline .pill{padding:0 10px;font-size:12.5px;height:34px}}@media(max-width:340px){.topline .pill.solid{display:none}}.topline .logo{flex:0 0 auto}.topline .pill{flex:0 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis}:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Presentazione di Chekin per gli hotel</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+/* Layout: 9-slide story deck, each slide its own colour world (white, navy, lilac, Chekin blue, mint); text + live product mock */
+:root{
+  --navy:#161643; --blue:#385BF8; --blue-2:#2A4AE8; --lilac:#EEF1FF; --mint:#E4F7EE; --sun:#FFD84D;
+  --paper:#FFFFFF; --paper-2:#F3F5FF; --paper-ink:#161643; --paper-mute:#6B6F98; --paper-line:#E6E9F5;
+  --ok:#17B26A; --ok-soft:#E3F8EE; --warn:#FFC23D;
+  --f-head:"Poppins",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --f-body:"Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  /* live theme (set per slide) */
+  --bg:#fff; --fg:var(--navy); --mute:#5E6390; --line:rgba(22,22,67,.12); --soft:var(--lilac); --accent:var(--blue); --logo-w:var(--navy); --logo-c:var(--blue);
+  --btn-bg:var(--blue); --btn-fg:#fff;
+  color-scheme:light;
+}
+.t-white{--bg:#FFFFFF;--fg:var(--navy);--mute:#5E6390;--line:rgba(22,22,67,.12);--soft:var(--lilac);--accent:var(--blue);--logo-w:var(--navy);--logo-c:var(--blue);--btn-bg:var(--blue);--btn-fg:#fff}
+.t-lilac{--bg:var(--lilac);--fg:var(--navy);--mute:#5E6390;--line:rgba(22,22,67,.12);--soft:#FFFFFF;--accent:var(--blue);--logo-w:var(--navy);--logo-c:var(--blue);--btn-bg:var(--blue);--btn-fg:#fff}
+.t-mint{--bg:var(--mint);--fg:var(--navy);--mute:#4E6475;--line:rgba(22,22,67,.12);--soft:#FFFFFF;--accent:#0E8F57;--logo-w:var(--navy);--logo-c:var(--blue);--btn-bg:var(--navy);--btn-fg:#fff}
+.t-navy{--bg:var(--navy);--fg:#FFFFFF;--mute:#B7BBE6;--line:rgba(255,255,255,.16);--soft:rgba(255,255,255,.07);--accent:#8FA3FF;--logo-w:#fff;--logo-c:#8FA3FF;--btn-bg:#fff;--btn-fg:var(--navy)}
+.t-blue{--bg:var(--blue);--fg:#FFFFFF;--mute:rgba(255,255,255,.85);--line:rgba(255,255,255,.3);--soft:rgba(255,255,255,.13);--accent:var(--sun);--logo-w:#fff;--logo-c:#fff;--btn-bg:#fff;--btn-fg:var(--navy)}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow:hidden;transition:background-color .45s}
+*{box-sizing:border-box}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:8px}
+.logo{display:block;height:28px;width:auto}
+.logo .lw{fill:var(--logo-w)} .logo .lc{fill:var(--logo-c)}
+.logo.big{height:52px}
+.logo.paper .lw{fill:var(--navy)} .logo.paper .lc{fill:var(--blue)}
+
+/* top bar */
+.top{position:fixed;left:0;right:0;top:0;z-index:20;padding-top:calc(env(safe-area-inset-top,0px) + 12px);padding-bottom:12px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:12px;background:var(--bg);transition:background-color .45s}
+.bars{display:flex;gap:4px}
+.bars button{flex:1;height:4px;border-radius:4px;background:var(--line);padding:0;position:relative;overflow:hidden}
+.bars button::after{content:"";position:absolute;inset:0;background:var(--fg);transform:scaleX(0);transform-origin:left;transition:transform .35s}
+.bars button.done::after,.bars button.cur::after{transform:scaleX(1)}
+.topline{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.tools{display:flex;gap:8px;align-items:center}
+.pill{display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 14px;border-radius:999px;background:var(--soft);border:1px solid var(--line);font-weight:600;font-size:14px;text-decoration:none;white-space:nowrap;color:var(--fg)}
+.pill.solid{background:var(--btn-bg);color:var(--btn-fg);border-color:transparent}
+.icon-btn{width:38px;padding:0;justify-content:center}
+
+/* deck */
+.deck{position:fixed;inset:0}
+.slide{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;background:var(--bg);color:var(--fg);opacity:0;visibility:hidden;transform:translateX(40px);transition:opacity .45s ease,transform .45s ease,visibility 0s .45s;overscroll-behavior:contain}
+.slide.prev{transform:translateX(-40px)}
+.slide.on{opacity:1;visibility:visible;transform:none;transition:opacity .45s ease,transform .45s ease,visibility 0s}
+.wrap{min-height:100%;max-width:1160px;margin:0 auto;padding-top:calc(env(safe-area-inset-top,0px) + 100px);padding-bottom:calc(env(safe-area-inset-bottom,0px) + 104px);padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px));display:grid;grid-template-columns:1fr;gap:32px;align-content:center}
+@media (min-width:900px){.wrap.split{grid-template-columns:1.05fr .95fr;align-items:center;gap:56px}}
+@media (min-width:900px) and (max-height:860px){.wrap{padding-top:92px;padding-bottom:92px}.phone{width:228px}}
+.copy{display:flex;flex-direction:column;gap:16px;min-width:0}
+.eyebrow{font-family:var(--f-head);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+h1,h2{margin:0;font-family:var(--f-head);font-weight:600;letter-spacing:-.025em;line-height:1.1;text-wrap:balance}
+h1{font-size:clamp(32px,6.6vw,52px)}
+h2{font-size:clamp(27px,5vw,42px)}
+h1 b,h2 b{font-weight:800}
+.hl{color:var(--accent);font-weight:800}
+.lead{margin:0;color:var(--mute);font-size:clamp(15.5px,2vw,18px);max-width:56ch}
+.ticks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.ticks li{display:grid;grid-template-columns:22px 1fr;gap:12px;color:var(--mute);font-size:15.5px}
+.ticks li b{color:var(--fg);font-weight:700}
+.ticks li::before{content:"✓";width:22px;height:22px;border-radius:50%;margin-top:1px;display:grid;place-items:center;font-size:12px;font-weight:800;background:var(--soft);color:var(--accent);border:1px solid var(--line)}
+.stats{display:flex;flex-wrap:wrap;gap:14px 30px}
+.stat .n{font-family:var(--f-head);font-size:clamp(26px,4vw,36px);font-weight:700;letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+.stat .n em{font-style:normal;color:var(--accent)}
+.stat .l{font-size:13px;color:var(--mute);margin-top:6px}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:52px;padding:0 22px;border-radius:14px;font-family:var(--f-head);font-weight:600;font-size:15.5px;text-decoration:none;transition:transform .15s,filter .2s}
+.btn:active{transform:scale(.97)}
+.btn:hover{filter:brightness(1.07)}
+.btn.primary{background:var(--btn-bg);color:var(--btn-fg);box-shadow:0 12px 28px -14px rgba(22,22,67,.6)}
+.btn.ghost{background:var(--soft);border:1px solid var(--line);color:var(--fg)}
+.btn svg{width:18px;height:18px}
+.chip{display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:999px;border:1px solid var(--line);background:var(--soft);font-size:13px;font-weight:600;color:var(--fg)}
+.chip .dot{width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.chip .dot.g{background:#A7AACB}
+.note{font-size:13px;color:var(--mute);margin:0}
+
+/* bottom nav */
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:20;padding-bottom:calc(env(safe-area-inset-bottom,0px) + 14px);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-top:12px;display:flex;align-items:center;justify-content:center;gap:10px;background:var(--bg);border-top:1px solid var(--line);transition:background-color .45s}
+.nav .round{width:50px;height:50px;border-radius:50%;background:var(--soft);border:1px solid var(--line);display:grid;place-items:center;color:var(--fg)}
+.nav .round[disabled]{opacity:.3;cursor:default}
+.nav .next{height:50px;padding:0 26px;border-radius:999px;background:var(--btn-bg);color:var(--btn-fg);font-family:var(--f-head);font-weight:600;display:inline-flex;align-items:center;gap:10px;min-width:150px;justify-content:center}
+.nav .count{position:absolute;right:max(18px,env(safe-area-inset-right,0px));bottom:calc(env(safe-area-inset-bottom,0px) + 29px);font-size:12px;color:var(--mute);font-variant-numeric:tabular-nums}
+.swipe-hint{position:absolute;left:max(18px,env(safe-area-inset-left,0px));bottom:calc(env(safe-area-inset-bottom,0px) + 29px);font-size:12px;color:var(--mute)}
+@media (max-width:520px){.nav .count,.swipe-hint{display:none}}
+
+/* product mocks: always "paper" */
+.stage{position:relative;border-radius:28px;background:var(--soft);border:1px solid var(--line);padding:22px;min-width:0}
+.card{background:var(--paper);color:var(--paper-ink);border-radius:18px;border:1px solid var(--paper-line);box-shadow:0 30px 60px -34px rgba(22,22,67,.45)}
+.badge{display:inline-flex;align-items:center;height:22px;padding:0 9px;border-radius:999px;font-size:10.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap;font-family:var(--f-body)}
+.b-ok{background:var(--ok-soft);color:#0E8F57}
+.b-blue{background:#E8ECFF;color:var(--blue)}
+.b-warn{background:var(--warn);color:#3B2A00}
+.b-wait{background:#EEF0F7;color:#8A8EB0}
+.pop{opacity:0;transform:scale(.6)}
+.on .pop{animation:pop .4s cubic-bezier(.3,1.6,.5,1) forwards;animation-delay:var(--d,0s)}
+@keyframes pop{to{opacity:1;transform:none}}
+.on .rise{animation:rise .6s ease both;animation-delay:var(--d,0s)}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}}
+
+/* 1 hero dashboard */
+.dash{padding:18px}
+.dash .hd{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.dash .hd b{font-family:var(--f-head);font-size:16px}
+.dash .hd span{font-size:12px;color:var(--paper-mute)}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px}
+.kpi{background:var(--paper-2);border-radius:12px;padding:10px}
+.kpi b{display:block;font-family:var(--f-head);font-size:19px;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.kpi > span{font-size:9.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--paper-mute)}
+.kpi.money b{color:var(--blue)}
+.row{display:grid;grid-template-columns:40px 1fr;gap:4px 10px;align-items:center;padding:10px 0;border-top:1px solid var(--paper-line)}
+.row .room{font-weight:800;color:var(--blue);font-variant-numeric:tabular-nums}
+.row .who b{display:block;font-size:14px}
+.row .who small{color:var(--paper-mute);font-size:11.5px}
+.row .tags{grid-column:2;display:flex;flex-wrap:wrap;gap:5px}
+@media (min-width:600px){.row{grid-template-columns:44px 1fr auto}.row .tags{grid-column:auto;justify-content:flex-end}}
+
+/* 2 before/after */
+.toggle{display:inline-flex;padding:4px;border-radius:999px;background:var(--soft);border:1px solid var(--line);align-self:flex-start}
+.toggle button{height:44px;padding:0 18px;border-radius:999px;font-family:var(--f-head);font-weight:600;font-size:14px;color:var(--mute);transition:background .25s,color .25s}
+.toggle button[aria-pressed="true"]{background:#fff;color:var(--navy)}
+.ba{display:grid;gap:12px}
+@media (min-width:700px){.ba{grid-template-columns:repeat(3,1fr)}}
+.ba .c{border-radius:20px;padding:20px;border:1px solid var(--line);background:var(--soft);display:flex;flex-direction:column;gap:8px;transition:background .35s,border-color .35s,color .35s}
+.ba .c h3{margin:0;font-family:var(--f-head);font-size:16px;font-weight:600}
+.ba .c p{margin:0;color:var(--mute);font-size:14.5px}
+.ba .c .big{font-family:var(--f-head);font-size:38px;font-weight:800;letter-spacing:-.03em;line-height:1.05;color:#FF8A7A}
+.ba .after{display:none}
+.ba.with .before{display:none}
+.ba.with .after{display:block}
+.ba.with .c{background:#fff;color:var(--navy);border-color:#fff}
+.ba.with .c p{color:var(--paper-mute)}
+.ba.with .c .big{color:var(--blue)}
+.ba .ic{font-size:13px;font-weight:700;color:var(--mute)}
+.ba.with .ic{color:var(--paper-mute)}
+
+/* phone */
+.phone{width:min(255px,74vw);margin:0 auto;aspect-ratio:9/17.6;border-radius:40px;background:var(--paper);border:9px solid var(--navy);box-shadow:0 40px 80px -36px rgba(22,22,67,.6);overflow:hidden;position:relative;display:flex;flex-direction:column;color:var(--paper-ink);max-width:100%;flex:none}
+.phone::before{content:"";position:absolute;top:8px;left:50%;transform:translateX(-50%);width:80px;height:20px;border-radius:20px;background:var(--navy);z-index:2}
+.ph-head{background:var(--navy);color:#fff;padding:36px 16px 14px}
+.ph-head small{font-size:9.5px;letter-spacing:.14em;opacity:.65;text-transform:uppercase}
+.ph-head b{display:block;font-family:var(--f-head);font-size:17px;margin-top:3px}
+.ph-head span{font-size:11px;opacity:.7}
+.ph-body{padding:10px;display:flex;flex-direction:column;gap:7px;flex:1;background:var(--paper)}
+.li{display:grid;grid-template-columns:28px 1fr auto;gap:9px;align-items:center;padding:9px;border-radius:12px;background:var(--paper-2)}
+.li .ico{width:28px;height:28px;border-radius:8px;background:#fff;display:grid;place-items:center;color:var(--blue)}
+.li b{display:block;font-size:12.5px}
+.li small{font-size:10.5px;color:var(--paper-mute)}
+.ph-cta{margin:auto 10px 12px;height:42px;border-radius:12px;background:var(--blue);color:#fff;font-weight:700;font-size:13.5px;transition:background .3s}
+.ph-cta.done{background:var(--ok)}
+.segs{display:flex;gap:4px;margin-top:10px}
+.segs i{flex:1;height:3px;border-radius:3px;background:rgba(255,255,255,.25);transition:background .3s}
+.segs i.f{background:#fff}
+.duo{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:center}
+@media (min-width:900px){.duo{flex-wrap:nowrap;gap:14px}}
+.recv{padding:16px;width:min(250px,100%);flex:none}
+.recv .t{font-size:10.5px;font-weight:800;letter-spacing:.12em;color:var(--paper-mute)}
+.recv .p{display:flex;gap:10px;align-items:center;margin:10px 0}
+.av{width:34px;height:34px;border-radius:50%;background:#E8ECFF;color:var(--blue);font-weight:800;font-size:12px;display:grid;place-items:center;flex:none}
+.recv .kv{display:flex;justify-content:space-between;gap:8px;font-size:12.5px;padding:8px 0;border-top:1px solid var(--paper-line)}
+.recv .kv span{color:var(--paper-mute)}
+.scanbar{position:relative;overflow:hidden}
+.scanbar::after{content:"";position:absolute;top:0;bottom:0;left:-40%;width:40%;background:linear-gradient(90deg,transparent,rgba(56,91,248,.28),transparent)}
+.scanbar.scan::after{animation:scan 1s ease-in-out}
+@keyframes scan{to{left:110%}}
+
+/* 4 keys */
+.unlock{height:58px;border-radius:14px;background:var(--blue);color:#fff;font-weight:800;font-size:14.5px;display:flex;align-items:center;justify-content:center;gap:10px;position:relative;transition:background .3s}
+.unlock .pulse{position:absolute;inset:0;border-radius:14px;animation:pulse 1.8s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(56,91,248,.55)}70%,100%{box-shadow:0 0 0 14px rgba(56,91,248,0)}}
+.unlock.open{background:var(--ok)}
+.unlock.open .pulse{display:none}
+.unlock svg .shackle{transition:transform .35s}
+.unlock.open svg .shackle{transform:translate(5px,-3px) rotate(18deg)}
+.door{font-family:var(--f-head);font-size:44px;font-weight:800;letter-spacing:-.03em;display:flex;align-items:baseline;gap:8px;margin-top:8px}
+.door small{font-size:11px;font-weight:500;opacity:.7;font-family:var(--f-body)}
+.lists{display:grid;gap:12px}
+@media (min-width:560px){.lists{grid-template-columns:1fr 1fr}}
+.lists .c{border-radius:18px;border:1px solid var(--line);padding:16px 18px;background:var(--soft)}
+.lists h3{margin:0 0 10px;font-family:var(--f-head);font-size:15.5px;font-weight:600}
+.lists .ticks li{font-size:14.5px;color:var(--fg)}
+
+/* 5 compliance */
+.countries{display:flex;flex-wrap:wrap;gap:7px}
+.countries button{transition:all .2s}
+.countries button[aria-pressed="true"]{background:var(--navy);color:#fff;border-color:var(--navy)}
+.countries button[aria-pressed="true"] .dot{background:#8FA3FF}
+.subm{padding:16px}
+.subm .hd{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:12px}
+.subm .hd span:first-child{font-size:10.5px;font-weight:800;letter-spacing:.1em;color:var(--paper-mute);text-transform:uppercase}
+.srow{display:grid;grid-template-columns:28px 1fr auto;gap:12px;align-items:center;padding:11px 12px;border-radius:12px;background:var(--paper-2);margin-bottom:6px;transition:opacity .3s,box-shadow .3s}
+.srow.dimmed{opacity:.35}
+.srow.hit{box-shadow:0 0 0 2px var(--blue);background:#fff}
+.flag{width:26px;height:18px;border-radius:4px;overflow:hidden;display:flex;box-shadow:0 0 0 1px rgba(0,0,0,.06)}
+.flag i{flex:1}
+.flag.h{flex-direction:column}
+.srow b{display:block;font-size:13.5px}
+.srow small{font-size:11.5px;color:var(--paper-mute)}
+.subm .ft{display:flex;justify-content:space-between;font-size:12.5px;color:var(--paper-mute);padding-top:10px;margin-top:6px;border-top:1px solid var(--paper-line)}
+.subm .ft b{color:var(--paper-ink);font-size:15px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12.5px;color:var(--mute)}
+.legend span{display:inline-flex;gap:7px;align-items:center}
+.legend i{width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.legend i.g{background:#A7AACB}
+
+/* 6 calculator */
+.calc{padding:22px;display:flex;flex-direction:column;gap:16px}
+.calc .ttl{font-family:var(--f-head);font-weight:700;font-size:17px}
+.calc .out{border-radius:16px;background:var(--navy);color:#fff;padding:18px}
+.calc .out small{font-size:11px;font-weight:800;letter-spacing:.12em;opacity:.7;text-transform:uppercase}
+.calc .out .v{font-family:var(--f-head);font-size:clamp(38px,8vw,52px);font-weight:800;letter-spacing:-.03em;line-height:1.1;font-variant-numeric:tabular-nums}
+.calc .out .v em{font-style:normal;color:#5FE3A6}
+.calc .out .y{font-size:13.5px;opacity:.85}
+.field label{display:flex;justify-content:space-between;font-size:13.5px;font-weight:700;margin-bottom:8px}
+.field label output{color:var(--blue);font-variant-numeric:tabular-nums}
+input[type=range]{width:100%;-webkit-appearance:none;appearance:none;height:6px;border-radius:6px;background:linear-gradient(90deg,var(--blue) var(--p,50%),#E2E6F7 var(--p,50%));outline:none;margin:6px 0}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:#fff;border:3px solid var(--blue);box-shadow:0 4px 10px rgba(22,22,67,.25);cursor:grab}
+input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:#fff;border:3px solid var(--blue);cursor:grab}
+.calc .fine{font-size:11.5px;color:var(--paper-mute);margin:0}
+.preset{display:flex;flex-wrap:wrap;gap:6px}
+.preset button{height:34px;padding:0 12px;border-radius:999px;background:var(--paper-2);border:1px solid var(--paper-line);font-size:12.5px;font-weight:700;color:var(--paper-ink)}
+.preset button[aria-pressed="true"]{background:var(--navy);color:#fff;border-color:var(--navy)}
+.extras{display:flex;flex-wrap:wrap;gap:7px}
+.extras .chip b{color:var(--accent)}
+.casebox{border-radius:18px;padding:16px 18px;background:#fff;border:1px solid var(--line);display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.casebox .v{font-family:var(--f-head);font-size:30px;font-weight:800;color:#0E8F57;letter-spacing:-.03em;line-height:1}
+.casebox p{margin:0;font-size:13.5px;color:var(--mute);flex:1;min-width:180px}
+
+/* 7 inbox */
+.chat{padding:0;overflow:hidden;display:flex;flex-direction:column;height:430px;max-height:60vh;min-height:360px}
+.chat .hd{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--paper-line)}
+.chat .hd b{display:block;font-size:14px}
+.chat .hd small{font-size:11.5px;color:var(--paper-mute)}
+.chat .hd .lang{margin-left:auto}
+.msgs{flex:1;padding:14px;display:flex;flex-direction:column;gap:8px;overflow:hidden;justify-content:flex-end;background:#FAFBFF}
+.bub{max-width:82%;padding:10px 13px;border-radius:16px;font-size:13.5px;line-height:1.4;animation:rise .35s ease both}
+.bub.g{background:#fff;border:1px solid var(--paper-line);align-self:flex-start;border-bottom-left-radius:5px}
+.bub.a{background:var(--blue);color:#fff;align-self:flex-end;border-bottom-right-radius:5px}
+.meta{align-self:flex-end;display:flex;gap:6px;align-items:center;font-size:10.5px;color:var(--paper-mute);animation:rise .35s ease both}
+.addon{align-self:flex-end;display:flex;gap:10px;align-items:center;background:#fff;border:1px solid var(--paper-line);border-radius:14px;padding:10px 12px;animation:rise .35s ease both;font-size:12.5px}
+.addon b{display:block}
+.typing{align-self:flex-end;display:flex;gap:4px;padding:12px 14px;border-radius:16px;background:#E8ECFF}
+.typing i{width:6px;height:6px;border-radius:50%;background:var(--blue);animation:blink 1s infinite}
+.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes blink{50%{opacity:.25}}
+.chat .in{margin:10px;height:42px;border-radius:12px;background:var(--paper-2);display:flex;align-items:center;padding:0 14px;font-size:12.5px;color:var(--paper-mute)}
+.replay{justify-self:start}
+
+/* 8 results */
+.grid6{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media (min-width:800px){.grid6{grid-template-columns:repeat(3,1fr);gap:12px}}
+.o{border-radius:20px;padding:16px 18px;border:1px solid var(--line);background:var(--soft);min-width:0}
+.o .n{font-family:var(--f-head);font-size:clamp(28px,4.6vw,40px);font-weight:800;letter-spacing:-.03em;line-height:1;color:var(--accent);font-variant-numeric:tabular-nums}
+.o b{display:block;margin-top:8px;font-size:14.5px}
+.o > span{font-size:12.5px;color:var(--mute)}
+.quote{display:flex;gap:14px;align-items:center;flex-wrap:wrap;border-radius:20px;padding:16px 20px;background:#fff;color:var(--navy)}
+.quote q{font-family:var(--f-head);font-size:17px;font-weight:600;quotes:"\201C" "\201D"}
+.quote small{display:block;color:var(--paper-mute);font-size:12.5px;margin-top:2px}
+.stars{color:var(--warn);letter-spacing:2px;font-size:17px}
+.introw{display:flex;flex-wrap:wrap;gap:7px;align-items:center}
+.introw .lbl{font-size:12.5px;color:var(--mute);margin-right:4px}
+
+/* 9 final */
+.final .wrap{text-align:center;justify-items:center;gap:22px}
+.final .lead{margin:0 auto}
+.final h2{font-size:clamp(30px,5.8vw,52px);font-weight:700;max-width:18ch}
+.final .btns{justify-content:center}
+.cta-grid{display:grid;gap:10px;width:min(560px,100%)}
+@media (min-width:560px){.cta-grid{grid-template-columns:1fr 1fr}.cta-grid .btn:first-child{grid-column:1/-1}}
+.trust{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.trust span{padding:6px 12px;border-radius:999px;border:1px solid var(--line);font-size:12px;font-weight:800;letter-spacing:.08em}
+.toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 92px);transform:translate(-50%,20px);background:var(--navy);color:#fff;padding:10px 16px;border-radius:12px;font-weight:700;font-size:14px;opacity:0;pointer-events:none;transition:all .3s;z-index:40;max-width:90vw;overflow-wrap:anywhere}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+</style>
+
+<header class="top">
+  <div class="bars" id="bars" role="tablist" aria-label="Diapositive"></div>
+  <div class="topline">
+    <svg class="logo " viewBox="422.76 86.71 112.40 34.56" role="img" aria-label="Chekin"><path class="lw" d="M 423.757812 107.164062 C 423.757812 114.5625 428.824219 120.261719 436.671875 120.261719 C 438.277344 120.265625 439.839844 120.003906 441.355469 119.46875 C 442.871094 118.933594 444.253906 118.160156 445.503906 117.148438 C 446.207031 116.542969 446.246094 115.800781 445.714844 115.09375 L 445.011719 114.136719 C 444.449219 113.324219 443.746094 113.324219 442.972656 113.890625 C 441.808594 114.738281 439.664062 116.085938 436.847656 116.085938 C 431.464844 116.085938 428.4375 111.800781 428.4375 107.09375 C 428.4375 102.457031 431.359375 98.457031 436.8125 98.457031 C 439.382812 98.457031 441.351562 99.519531 442.445312 100.226562 C 443.289062 100.757812 443.957031 100.6875 444.449219 99.875 L 445.085938 98.847656 C 445.578125 98.070312 445.542969 97.363281 444.804688 96.796875 C 443.464844 95.839844 440.71875 94.28125 436.636719 94.28125 C 429.070312 94.28125 423.757812 99.875 423.757812 107.164062 Z M 449.34375 118.351562 C 449.34375 119.339844 449.871094 119.835938 450.820312 119.835938 L 452.332031 119.835938 C 453.320312 119.835938 453.8125 119.339844 453.8125 118.351562 L 453.8125 111.449219 C 453.8125 108.015625 455.855469 105.46875 458.984375 105.46875 C 461.238281 105.46875 461.800781 106.953125 461.800781 109.148438 L 461.800781 118.351562 C 461.800781 119.339844 462.292969 119.835938 463.28125 119.835938 L 464.792969 119.835938 C 465.742188 119.835938 466.269531 119.339844 466.269531 118.351562 L 466.269531 108.226562 C 466.269531 103.449219 463.984375 101.363281 460.007812 101.363281 C 456.910156 101.363281 454.65625 103.273438 453.777344 105.007812 L 453.707031 105.007812 C 453.78125 104.503906 453.816406 103.996094 453.8125 103.484375 L 453.8125 96.195312 C 453.8125 95.238281 453.320312 94.707031 452.335938 94.707031 L 450.820312 94.707031 C 449.871094 94.707031 449.34375 95.238281 449.34375 96.195312 Z M 469.332031 110.8125 C 469.332031 115.945312 473.027344 120.261719 478.976562 120.261719 C 481.179688 120.253906 483.207031 119.652344 485.0625 118.457031 C 485.839844 117.996094 485.980469 117.289062 485.554688 116.476562 L 485.132812 115.765625 C 484.675781 114.953125 484.042969 114.847656 483.164062 115.273438 C 482.320312 115.800781 480.945312 116.441406 479.292969 116.441406 C 476.582031 116.441406 474.1875 114.742188 473.90625 111.484375 L 484.851562 111.484375 C 485.054688 111.484375 485.25 111.445312 485.4375 111.367188 C 485.625 111.289062 485.789062 111.179688 485.933594 111.039062 C 486.078125 110.898438 486.191406 110.734375 486.273438 110.546875 C 486.351562 110.359375 486.394531 110.164062 486.402344 109.960938 C 486.402344 105.007812 483.550781 101.363281 478.445312 101.363281 C 473.0625 101.359375 469.332031 105.253906 469.332031 110.8125 Z M 474.011719 108.757812 C 474.4375 106.351562 476.054688 104.757812 478.339844 104.757812 C 480.382812 104.757812 481.894531 106.246094 481.964844 108.757812 Z M 489.640625 118.351562 C 489.640625 119.339844 490.167969 119.835938 491.117188 119.835938 L 492.628906 119.835938 C 493.617188 119.835938 494.109375 119.339844 494.109375 118.351562 L 494.109375 111.945312 L 496.429688 111.945312 L 500.621094 118.808594 C 501.007812 119.519531 501.535156 119.835938 502.34375 119.835938 L 504.246094 119.835938 C 505.441406 119.835938 505.828125 119.09375 505.230469 118.066406 L 499.949219 109.925781 L 499.949219 109.855469 L 504.421875 103.554688 C 505.089844 102.601562 504.703125 101.785156 503.503906 101.785156 L 501.816406 101.785156 C 501.007812 101.785156 500.480469 102.070312 500.054688 102.777344 L 496.324219 108.15625 L 494.109375 108.15625 L 494.109375 96.195312 C 494.109375 95.238281 493.617188 94.707031 492.628906 94.707031 L 491.117188 94.707031 C 490.167969 94.707031 489.640625 95.238281 489.640625 96.195312 Z M 508.398438 118.351562 C 508.398438 119.339844 508.890625 119.835938 509.839844 119.835938 L 511.386719 119.835938 C 512.339844 119.835938 512.832031 119.339844 512.832031 118.351562 L 512.832031 103.273438 C 512.832031 102.316406 512.339844 101.785156 511.386719 101.785156 L 509.839844 101.785156 C 508.890625 101.785156 508.398438 102.316406 508.398438 103.273438 Z M 517.265625 118.351562 C 517.265625 119.339844 517.757812 119.835938 518.707031 119.835938 L 520.257812 119.835938 C 521.207031 119.835938 521.699219 119.339844 521.699219 118.351562 L 521.699219 111.378906 C 521.699219 108.121094 523.707031 105.46875 526.875 105.46875 C 529.125 105.46875 529.6875 106.953125 529.6875 109.148438 L 529.6875 118.351562 C 529.6875 119.339844 530.21875 119.835938 531.167969 119.835938 L 532.679688 119.835938 C 533.667969 119.835938 534.160156 119.339844 534.160156 118.351562 L 534.160156 108.226562 C 534.160156 103.449219 531.871094 101.363281 527.894531 101.363281 C 524.269531 101.363281 522.296875 103.660156 521.523438 105.183594 L 521.453125 105.183594 C 521.496094 104.914062 521.519531 104.644531 521.523438 104.371094 L 521.523438 103.273438 C 521.523438 102.316406 521.03125 101.785156 520.082031 101.785156 L 518.707031 101.785156 C 517.757812 101.785156 517.265625 102.316406 517.265625 103.273438 Z M 517.265625 118.351562 "/><path class="lc" d="M 512.378906 95.992188 C 512.5 96.117188 512.589844 96.261719 512.65625 96.421875 C 512.722656 96.582031 512.753906 96.75 512.753906 96.925781 C 512.753906 97.097656 512.722656 97.265625 512.65625 97.425781 C 512.589844 97.585938 512.5 97.730469 512.378906 97.855469 L 511.347656 98.894531 C 511.222656 99.015625 511.082031 99.105469 510.921875 99.171875 C 510.761719 99.238281 510.59375 99.269531 510.421875 99.269531 C 510.25 99.269531 510.082031 99.238281 509.921875 99.171875 C 509.761719 99.105469 509.621094 99.015625 509.496094 98.894531 L 504.972656 94.3125 C 504.851562 94.1875 504.761719 94.042969 504.695312 93.882812 C 504.628906 93.722656 504.597656 93.554688 504.597656 93.382812 C 504.597656 93.207031 504.628906 93.039062 504.695312 92.878906 C 504.761719 92.71875 504.851562 92.574219 504.972656 92.449219 L 506.003906 91.414062 C 506.128906 91.292969 506.273438 91.199219 506.433594 91.132812 C 506.59375 91.070312 506.757812 91.035156 506.929688 91.035156 C 507.105469 91.035156 507.269531 91.070312 507.429688 91.132812 C 507.589844 91.199219 507.734375 91.292969 507.855469 91.414062 Z M 512.378906 95.992188 "/><path class="lc" d="M 516.332031 88.085938 C 516.457031 87.964844 516.597656 87.871094 516.757812 87.804688 C 516.917969 87.742188 517.085938 87.707031 517.257812 87.707031 C 517.429688 87.707031 517.597656 87.742188 517.757812 87.804688 C 517.917969 87.871094 518.058594 87.964844 518.183594 88.085938 L 519.214844 89.121094 C 519.335938 89.246094 519.429688 89.390625 519.492188 89.550781 C 519.558594 89.710938 519.589844 89.878906 519.589844 90.054688 C 519.589844 90.226562 519.558594 90.394531 519.492188 90.554688 C 519.429688 90.714844 519.335938 90.859375 519.214844 90.984375 L 511.382812 98.820312 C 511.257812 98.941406 511.117188 99.035156 510.957031 99.097656 C 510.796875 99.164062 510.628906 99.195312 510.457031 99.195312 C 510.285156 99.195312 510.117188 99.164062 509.957031 99.097656 C 509.796875 99.035156 509.65625 98.941406 509.53125 98.820312 L 508.496094 97.785156 C 508.378906 97.660156 508.285156 97.515625 508.222656 97.355469 C 508.15625 97.195312 508.125 97.027344 508.125 96.851562 C 508.125 96.679688 508.15625 96.511719 508.222656 96.351562 C 508.285156 96.191406 508.378906 96.046875 508.496094 95.921875 Z M 516.332031 88.085938 "/></svg>
+    <div class="tools">
+      <a class="pill" id="backCard" href="#" hidden>← Biglietto</a><a class="pill solid" data-cta="contact-sales" href="#" target="_blank" rel="noopener">Prenota demo</a>
+      <button class="pill icon-btn" id="share" aria-label="Copia il link da condividere"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main class="deck" id="deck">
+
+<!-- 1 HERO · white -->
+<section class="slide t-white" data-k="hero" aria-label="Chekin per gli hotel">
+  <div class="wrap split">
+    <div class="copy">
+      <span class="chip rise" style="align-self:flex-start"><span class="dot"></span>Scelta da oltre 10.000 hotel in tutto il mondo</span>
+      <h1 class="rise" style="--d:.1s">La piattaforma all-in-one per l'esperienza degli ospiti negli <span class="hl">hotel moderni</span></h1>
+      <p class="lead rise" style="--d:.2s">Dal check-in online al check-out: verifica dell'identità, chiavi digitali, conformità legale, upselling e messaggistica con gli ospiti, tutto da un unico pannello.</p>
+      <div class="stats rise" style="--d:.3s">
+        <div class="stat"><div class="n"><span data-count="10000">0</span><em>+</em></div><div class="l">hotel nel mondo</div></div>
+        <div class="stat"><div class="n"><span data-count="25">0</span><em>M+</em></div><div class="l">check-in di ospiti</div></div>
+        <div class="stat"><div class="n"><span data-count="15">0</span><em>+</em></div><div class="l">paesi coperti</div></div>
+        <div class="stat"><div class="n"><span data-count="200">0</span><em>+</em></div><div class="l">integrazioni</div></div>
+      </div>
+      <div class="btns rise" style="--d:.4s">
+        <button class="btn primary" data-go="1">Fai il tour di 2 min <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <a class="btn ghost" data-cta="contact-sales" href="#" target="_blank" rel="noopener">Prenota una demo</a>
+      </div>
+    </div>
+    <div class="stage rise" style="--d:.25s">
+      <div class="card dash">
+        <div class="hd"><b>Arrivi di oggi</b><span>Hotel Marbella · ven 14 nov</span></div>
+        <div class="kpis">
+          <div class="kpi"><b data-count="42">0</b><span>Arrivi</span></div>
+          <div class="kpi"><b data-count="36">0</b><span>Online</span></div>
+          <div class="kpi"><b data-count="34">0</b><span>ID verificati</span></div>
+          <div class="kpi money"><b><i style="font-style:normal" data-count="1240">0</i> €</b><span>Upsell</span></div>
+        </div>
+        <div class="row"><span class="room">214</span><span class="who"><b>Sophie Martin</b><small>2 ospiti · 2 notti</small></span><span class="tags"><span class="badge b-ok pop" style="--d:.6s">Verificato</span><span class="badge b-ok pop" style="--d:.75s">Pagato</span><span class="badge b-blue pop" style="--d:.9s">Chiave inviata</span></span></div>
+        <div class="row"><span class="room">305</span><span class="who"><b>Luca Bianchi</b><small>1 ospite · 3 notti</small></span><span class="tags"><span class="badge b-ok pop" style="--d:1s">Verificato</span><span class="badge b-blue pop" style="--d:1.15s">Upgrade +35 €</span></span></div>
+        <div class="row"><span class="room">118</span><span class="who"><b>James Carter</b><small>3 ospiti · 4 notti</small></span><span class="tags"><span class="badge b-ok pop" style="--d:1.25s">Comunicazione inviata</span><span class="badge b-warn pop" style="--d:1.4s">Arriva alle 23:40</span></span></div>
+        <div class="row"><span class="room">402</span><span class="who"><b>Anna Keller</b><small>2 ospiti · 1 notte</small></span><span class="tags"><span class="badge b-ok pop" style="--d:1.5s">Tassa di soggiorno pagata</span><span class="badge b-blue pop" style="--d:1.65s">Late check-out</span></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 WHAT CHANGED · navy -->
+<section class="slide t-navy" data-k="change" aria-label="Cosa è cambiato">
+  <div class="wrap">
+    <div class="copy">
+      <span class="eyebrow">Cosa è cambiato</span>
+      <h2>Il soggiorno non inizia più <b>alla reception</b></h2>
+      <p class="lead">Gli ospiti arrivano con aspettative da app, mentre gli hotel lavorano con margini più stretti e più normative ogni anno.</p>
+      <div class="toggle" role="group" aria-label="Confronta">
+        <button aria-pressed="true" data-ba="before">Senza Chekin</button>
+        <button aria-pressed="false" data-ba="with">Con Chekin</button>
+      </div>
+    </div>
+    <div class="ba" id="ba">
+      <div class="c rise" style="--d:.05s"><span class="ic">Gli ospiti si aspettano la rapidità di un'app</span>
+        <div class="before"><div class="big">10 min</div><p>per un check-in tradizionale alla reception, spesso con la coda.</p></div>
+        <div class="after"><div class="big">1 min</div><p>Check-in senza carta dal cellulare, a qualsiasi ora e nella propria lingua.</p></div></div>
+      <div class="c rise" style="--d:.15s"><span class="ic">I team sono al limite</span>
+        <div class="before"><div class="big">30+ h</div><p>al mese che molti team alberghieri dedicano alla burocrazia.</p></div>
+        <div class="after"><div class="big">−80%</div><p>di tempo alla reception, così il personale si concentra sull’accoglienza.</p></div></div>
+      <div class="c rise" style="--d:.25s"><span class="ic">Le normative continuano a crescere</span>
+        <div class="before"><div class="big">15+</div><p>paesi con regole proprie su comunicazione degli ospiti, tassa di soggiorno e fatturazione elettronica.</p></div>
+        <div class="after"><div class="big">24 h</div><p>Comunicazioni degli ospiti inviate automaticamente alle autorità dopo il check-in.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 CHECK-IN + ID · lilac -->
+<section class="slide t-lilac" data-k="checkin" aria-label="Check-in online e verifica dell'identità">
+  <div class="wrap split">
+    <div class="copy">
+      <span class="eyebrow">Check-in online · Verifica dell'identità</span>
+      <h2>Gli ospiti arrivano <b>registrati, verificati e già pagati</b></h2>
+      <ul class="ticks">
+        <li><span><b>Registrazione prima dell'arrivo</b> da qualsiasi cellulare, con il logo e i colori del tuo hotel.</span></li>
+        <li><span><b>Scansione di passaporto o carta d’identità:</b> l’OCR compila il modulo e viene confrontato con la MRZ.</span></li>
+        <li><span><b>Selfie biometrico e prova di vita</b> confermano che l’ospite è il titolare del documento.</span></li>
+        <li><span><b>Tassa di soggiorno e saldo</b> regolati prima che l’ospite arrivi alla reception.</span></li>
+      </ul>
+      <div class="stats">
+        <div class="stat"><div class="n">10 <em>→</em> 1 min</div><div class="l">check-in alla reception</div></div>
+        <div class="stat"><div class="n"><span data-count="150">0</span><em>+</em></div><div class="l">documenti di paesi</div></div>
+        <div class="stat"><div class="n"><span data-count="2500">0</span><em>+</em></div><div class="l">modelli di documento</div></div>
+      </div>
+      <p class="note">Tocca <b>Termina il check-in</b> sul cellulare.</p>
+    </div>
+    <div class="stage">
+      <div class="duo">
+        <div class="phone">
+          <div class="ph-head"><small>Hotel Marbella</small><b>Benvenuta, Marta</b><span>ven 14 – dom 16 nov · Doppia deluxe</span><div class="segs" id="segs"><i></i><i></i><i></i><i></i><i></i></div></div>
+          <div class="ph-body" id="ciList">
+            <div class="li"><span class="ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg></span><span><b>Dati degli ospiti</b><small>2 ospiti su 2</small></span><span class="badge b-wait" data-s="Fatto">…</span></div>
+            <div class="li scanbar"><span class="ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="12" r="2.5"/><path d="M14 10h4M14 14h3"/></svg></span><span><b>Passaporto · MRZ</b><small>Letto con OCR, MRZ corrispondente</small></span><span class="badge b-wait" data-s="Corrisponde">…</span></div>
+            <div class="li scanbar"><span class="ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 8V5a1 1 0 011-1h3M16 4h3a1 1 0 011 1v3M20 16v3a1 1 0 01-1 1h-3M8 20H5a1 1 0 01-1-1v-3"/><circle cx="12" cy="11" r="3"/><path d="M8 17c1-2 2.4-3 4-3s3 1 4 3"/></svg></span><span><b>Selfie · prova di vita</b><small>Corrispondenza del volto 99,4 %</small></span><span class="badge b-wait" data-s="Verificato">…</span></div>
+            <div class="li"><span class="ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span><span><b>Saldo + tassa di soggiorno</b><small>342,00 € + 8,00 €</small></span><span class="badge b-wait" data-s="Pagato">…</span></div>
+            <div class="li"><span class="ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span><b>Ora di arrivo</b><small>Verso le 23:40</small></span><span class="badge b-wait" data-s="Condiviso">…</span></div>
+          </div>
+          <button class="ph-cta" id="ciBtn">Termina il check-in</button>
+        </div>
+        <div class="card recv">
+          <div class="t">VISTA RECEPTION</div>
+          <div class="p"><span class="av">MR</span><span><b style="font-size:14px">Marta Ruiz</b><br><small style="color:var(--paper-mute);font-size:11.5px">Camera 214 · arriva alle 23:40</small></span></div>
+          <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:6px" id="recvTags"><span class="badge b-wait">In sospeso</span></div>
+          <div class="kv"><span>Registrazione</span><b id="rv1">0/2 ospiti</b></div>
+          <div class="kv"><span>Identità</span><b id="rv0">—</b></div>
+          <div class="kv"><span>Saldo</span><b id="rv2">350,00 € da pagare</b></div>
+          <div class="kv"><span>Comunicazione ospiti</span><b id="rv3">—</b></div>
+          <div class="kv"><span>Chiave digitale</span><b id="rv4">—</b></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 KEYS · blue -->
+<section class="slide t-blue" data-k="keys" aria-label="Check-in in hotel e chiavi digitali">
+  <div class="wrap split">
+    <div class="copy">
+      <span class="eyebrow">Check-in in hotel · Totem · Chiavi digitali</span>
+      <h2>Clienti senza prenotazione in meno di un minuto. <b>Arrivi notturni senza reception.</b></h2>
+      <div class="lists">
+        <div class="c"><h3>In hotel e totem</h3><ul class="ticks"><li><span>Modalità tablet e totem</span></li><li><span>L’OCR legge il documento in pochi secondi</span></li><li><span>Passaggio al personale quando serve</span></li></ul></div>
+        <div class="c"><h3>Self check-in e chiavi</h3><ul class="ticks"><li><span>Chiavi sul cellulare, oltre 20 marche di serrature</span></li><li><span>Accesso valido solo per il soggiorno</span></li><li><span>Revoca una chiave con un clic</span></li></ul></div>
+      </div>
+      <p class="note">Arriva alle 23:40? L'ospite fa il check-in online, riceve la chiave sul cellulare e va direttamente in camera. Provalo sul telefono.</p>
+    </div>
+    <div class="phone">
+      <div class="ph-head" style="padding-bottom:18px"><small>Hotel Marbella</small><b>Benvenuto, James</b><span>ven 15:00 – dom 11:00</span><div class="door">118 <small>Camera · 1º piano</small></div></div>
+      <div class="ph-body">
+        <button class="unlock" id="unlock"><span class="pulse"></span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path class="shackle" d="M8 11V7a4 4 0 018 0v4"/></svg>
+          <span id="unlockTxt">Tocca per aprire la camera 118</span></button>
+        <div class="li"><span class="ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 21V9l9-6 9 6v12"/><path d="M9 21v-6h6v6"/></svg></span><span><b>Ingresso principale</b><small>24 ore su 24 durante il soggiorno</small></span><span></span></div>
+        <div class="li"><span class="ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 17V7h4a3 3 0 010 6H9"/></svg></span><span><b>Garage</b><small>Livello −1</small></span><span></span></div>
+        <div class="li"><span class="ico"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span><b>Valida fino a dom 11:00</b><small>Revocata al check-out</small></span><span></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 COMPLIANCE · white -->
+<section class="slide t-white" data-k="legal" aria-label="Conformità legale">
+  <div class="wrap split">
+    <div class="copy">
+      <span class="eyebrow">Conformità legale</span>
+      <h2>Il tuo team non aprirà più <b>un portale della pubblica amministrazione</b></h2>
+      <p class="lead">Le comunicazioni degli ospiti arrivano alle autorità automaticamente entro 24 ore dal check-in. La tassa di soggiorno è calcolata per te e la fatturazione elettronica è integrata.</p>
+      <div class="stats">
+        <div class="stat"><div class="n"><span data-count="15">0</span><em>+</em></div><div class="l">paesi coperti</div></div>
+        <div class="stat"><div class="n"><span data-count="45">0</span><em>+</em></div><div class="l">giurisdizioni con tassa di soggiorno</div></div>
+        <div class="stat"><div class="n">24<em> h</em></div><div class="l">invio automatico</div></div>
+      </div>
+      <p class="note"><b>Tocca il tuo paese:</b></p>
+      <div class="countries" id="countries"></div>
+      <div class="legend"><span><i></i>Invio automatico alle autorità</span><span><i class="g"></i>Registro digitale degli ospiti, archiviato per te</span></div>
+    </div>
+    <div class="card subm">
+      <div class="hd"><span>Invii alle autorità · Oggi</span><span class="badge b-ok" id="allSent">Tutto inviato</span></div>
+      <div id="srows"></div>
+      <div class="ft"><span>Portali aperti dal tuo team</span><b>0</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 UPSELL · mint -->
+<section class="slide t-mint" data-k="upsell" aria-label="Upselling">
+  <div class="wrap split">
+    <div class="copy">
+      <span class="eyebrow">Upselling</span>
+      <h2>Guadagna di più <b>senza vendere una camera in più</b></h2>
+      <p class="lead"><b style="color:var(--fg)">Upgrade di camera</b> a partire dalle tipologie di camera del tuo PMS, più early check-in, colazione, parcheggio e spa: proposti durante il check-in online, abbinati a ogni ospite dall’IA e pagati nello stesso flusso.</p>
+      <div class="extras"><span class="chip">Camera vista mare <b>+35 €</b></span><span class="chip">Early check-in <b>+18 €</b></span><span class="chip">Colazione <b>+16 €</b></span><span class="chip">Parcheggio <b>+20 €</b></span><span class="chip">Percorso spa <b>+45 €</b></span></div>
+      <div class="stats">
+        <div class="stat"><div class="n">9–14<em>%</em></div><div class="l">di adesione al check-in</div></div>
+        <div class="stat"><div class="n"><em>+</em>55 €</div><div class="l">di upsell medio per prenotazione</div></div>
+      </div>
+    </div>
+    <div class="card calc">
+      <div class="ttl">Quanto potrebbe aggiungere il tuo hotel?</div>
+      <div class="preset" role="group" aria-label="Esempi">
+        <button aria-pressed="true" data-pre="100">Hotel da 100 camere</button>
+        <button aria-pressed="false" data-pre="240">Catena boutique di 5 hotel · 240 camere</button>
+      </div>
+      <div class="out"><small>Incremento mensile stimato</small><div class="v"><em>+</em><span id="cMonth">5198</span> €</div><div class="y">≈ <span id="cYear">62.370</span> € all’anno · <span id="cBook">1050</span> prenotazioni al mese</div></div>
+      <div class="field"><label for="rRooms">Camere <output id="oRooms">100</output></label><input type="range" id="rRooms" min="10" max="500" step="5" value="100"></div>
+      <div class="field"><label for="rOcc">Occupazione <output id="oOcc">70%</output></label><input type="range" id="rOcc" min="30" max="100" step="1" value="70"></div>
+      <div class="field"><label for="rStay">Soggiorno medio <output id="oStay">2 notti</output></label><input type="range" id="rStay" min="1" max="7" step="0.5" value="2"></div>
+      <div class="field"><label for="rAttach">Ospiti che aggiungono un extra <output id="oAttach">9%</output></label><input type="range" id="rAttach" min="5" max="14" step="1" value="9"></div>
+      <p class="fine">Prenotazioni al mese = camere × 30 × occupazione ÷ soggiorno medio, × adesione × 55 € di upsell medio. È una stima, non una garanzia.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 7 INBOX · lilac -->
+<section class="slide t-lilac" data-k="inbox" aria-label="Inbox unificata e check-out">
+  <div class="wrap split">
+    <div class="copy">
+      <span class="eyebrow">Inbox unificata · Check-out</span>
+      <h2>Meno chiamate alla reception. <b>Un check-out fluido come l’accoglienza.</b></h2>
+      <ul class="ticks">
+        <li><span><b>L’IA risponde 24 ore su 24</b> su WhatsApp, SMS, email e OTA, con le informazioni della tua struttura.</span></li>
+        <li><span><b>Guida digitale</b> tradotta automaticamente nella lingua dell’ospite.</span></li>
+        <li><span><b>Check-out da cellulare</b> con revisione del conto ed extra come late check-out o transfer.</span></li>
+        <li><span><b>Fattura elettronica e richiesta di recensione</b> inviate al momento giusto.</span></li>
+      </ul>
+      <div class="stats"><div class="stat"><div class="n"><em>+</em><span data-count="47">0</span>%</div><div class="l">recensioni 5★ in più</div></div></div>
+    </div>
+    <div style="display:grid;gap:10px;min-width:0">
+      <div class="card chat">
+        <div class="hd"><span class="av">SM</span><span><b>Sophie Martin</b><small>Camera 214 · WhatsApp</small></span><span class="badge b-blue lang">IT</span></div>
+        <div class="msgs" id="msgs"></div>
+        <div class="in">Rispondi o lascia fare all’IA…</div>
+      </div>
+      <button class="pill replay" id="chatReplay">↻ Rivedi la conversazione</button>
+    </div>
+  </div>
+</section>
+
+<!-- 8 RESULTS · navy -->
+<section class="slide t-navy" data-k="results" aria-label="Risultati dimostrati">
+  <div class="wrap">
+    <div class="copy">
+      <span class="eyebrow">Risultati dimostrati</span>
+      <h2>Perché gli hotel <b>passano a Chekin</b></h2>
+    </div>
+    <div class="grid6">
+      <div class="o rise"><div class="n">−<span data-count="80">0</span>%</div><b>di tempo alla reception</b><span>Check-in da 10 minuti a meno di uno</span></div>
+      <div class="o rise" style="--d:.08s"><div class="n">+<span data-count="55">0</span> €</div><b>di upsell medio per prenotazione</b><span>Il 9–14 % degli ospiti aggiunge un extra</span></div>
+      <div class="o rise" style="--d:.16s"><div class="n">+<span data-count="47">0</span>%</div><b>recensioni 5★ in più</b><span>Meno attrito, valutazioni migliori</span></div>
+      <div class="o rise" style="--d:.24s"><div class="n"><span data-count="10000">0</span>+</div><b>hotel nel mondo</b><span>Oltre 25 M di check-in</span></div>
+      <div class="o rise" style="--d:.32s"><div class="n"><span data-count="15">0</span>+</div><b>paesi coperti</b><span>Comunicazioni ospiti, tassa di soggiorno, fatturazione elettronica</span></div>
+      <div class="o rise" style="--d:.4s"><div class="n"><span data-count="200">0</span>+</div><b>integrazioni</b><span>PMS, channel manager, serrature</span></div>
+    </div>
+    <div class="introw rise" style="--d:.45s"><span class="lbl">Funziona con il tuo PMS:</span><span class="chip">OPERA Cloud</span><span class="chip">Mews</span><span class="chip">Cloudbeds</span><span class="chip">Little Hotelier</span><span class="chip">Amenitiz</span><span class="chip">eviivo</span><span class="chip">Apaleo</span><a class="chip" data-cta="integrations" href="#" target="_blank" rel="noopener" style="text-decoration:none">+200 altri →</a></div>
+    <div class="quote rise" style="--d:.5s"><span class="stars" aria-label="5 stelle">★★★★★</span><div><q>Abbiamo sostituito quattro fornitori diversi con Chekin.</q><small>Direttore operativo, catena alberghiera europea</small></div></div>
+  </div>
+</section>
+
+<!-- 9 FINAL · blue -->
+<section class="slide t-blue final" data-k="final" aria-label="Prenota una demo">
+  <div class="wrap">
+    <svg class="logo big" viewBox="422.76 86.71 112.40 34.56" role="img" aria-label="Chekin"><path class="lw" d="M 423.757812 107.164062 C 423.757812 114.5625 428.824219 120.261719 436.671875 120.261719 C 438.277344 120.265625 439.839844 120.003906 441.355469 119.46875 C 442.871094 118.933594 444.253906 118.160156 445.503906 117.148438 C 446.207031 116.542969 446.246094 115.800781 445.714844 115.09375 L 445.011719 114.136719 C 444.449219 113.324219 443.746094 113.324219 442.972656 113.890625 C 441.808594 114.738281 439.664062 116.085938 436.847656 116.085938 C 431.464844 116.085938 428.4375 111.800781 428.4375 107.09375 C 428.4375 102.457031 431.359375 98.457031 436.8125 98.457031 C 439.382812 98.457031 441.351562 99.519531 442.445312 100.226562 C 443.289062 100.757812 443.957031 100.6875 444.449219 99.875 L 445.085938 98.847656 C 445.578125 98.070312 445.542969 97.363281 444.804688 96.796875 C 443.464844 95.839844 440.71875 94.28125 436.636719 94.28125 C 429.070312 94.28125 423.757812 99.875 423.757812 107.164062 Z M 449.34375 118.351562 C 449.34375 119.339844 449.871094 119.835938 450.820312 119.835938 L 452.332031 119.835938 C 453.320312 119.835938 453.8125 119.339844 453.8125 118.351562 L 453.8125 111.449219 C 453.8125 108.015625 455.855469 105.46875 458.984375 105.46875 C 461.238281 105.46875 461.800781 106.953125 461.800781 109.148438 L 461.800781 118.351562 C 461.800781 119.339844 462.292969 119.835938 463.28125 119.835938 L 464.792969 119.835938 C 465.742188 119.835938 466.269531 119.339844 466.269531 118.351562 L 466.269531 108.226562 C 466.269531 103.449219 463.984375 101.363281 460.007812 101.363281 C 456.910156 101.363281 454.65625 103.273438 453.777344 105.007812 L 453.707031 105.007812 C 453.78125 104.503906 453.816406 103.996094 453.8125 103.484375 L 453.8125 96.195312 C 453.8125 95.238281 453.320312 94.707031 452.335938 94.707031 L 450.820312 94.707031 C 449.871094 94.707031 449.34375 95.238281 449.34375 96.195312 Z M 469.332031 110.8125 C 469.332031 115.945312 473.027344 120.261719 478.976562 120.261719 C 481.179688 120.253906 483.207031 119.652344 485.0625 118.457031 C 485.839844 117.996094 485.980469 117.289062 485.554688 116.476562 L 485.132812 115.765625 C 484.675781 114.953125 484.042969 114.847656 483.164062 115.273438 C 482.320312 115.800781 480.945312 116.441406 479.292969 116.441406 C 476.582031 116.441406 474.1875 114.742188 473.90625 111.484375 L 484.851562 111.484375 C 485.054688 111.484375 485.25 111.445312 485.4375 111.367188 C 485.625 111.289062 485.789062 111.179688 485.933594 111.039062 C 486.078125 110.898438 486.191406 110.734375 486.273438 110.546875 C 486.351562 110.359375 486.394531 110.164062 486.402344 109.960938 C 486.402344 105.007812 483.550781 101.363281 478.445312 101.363281 C 473.0625 101.359375 469.332031 105.253906 469.332031 110.8125 Z M 474.011719 108.757812 C 474.4375 106.351562 476.054688 104.757812 478.339844 104.757812 C 480.382812 104.757812 481.894531 106.246094 481.964844 108.757812 Z M 489.640625 118.351562 C 489.640625 119.339844 490.167969 119.835938 491.117188 119.835938 L 492.628906 119.835938 C 493.617188 119.835938 494.109375 119.339844 494.109375 118.351562 L 494.109375 111.945312 L 496.429688 111.945312 L 500.621094 118.808594 C 501.007812 119.519531 501.535156 119.835938 502.34375 119.835938 L 504.246094 119.835938 C 505.441406 119.835938 505.828125 119.09375 505.230469 118.066406 L 499.949219 109.925781 L 499.949219 109.855469 L 504.421875 103.554688 C 505.089844 102.601562 504.703125 101.785156 503.503906 101.785156 L 501.816406 101.785156 C 501.007812 101.785156 500.480469 102.070312 500.054688 102.777344 L 496.324219 108.15625 L 494.109375 108.15625 L 494.109375 96.195312 C 494.109375 95.238281 493.617188 94.707031 492.628906 94.707031 L 491.117188 94.707031 C 490.167969 94.707031 489.640625 95.238281 489.640625 96.195312 Z M 508.398438 118.351562 C 508.398438 119.339844 508.890625 119.835938 509.839844 119.835938 L 511.386719 119.835938 C 512.339844 119.835938 512.832031 119.339844 512.832031 118.351562 L 512.832031 103.273438 C 512.832031 102.316406 512.339844 101.785156 511.386719 101.785156 L 509.839844 101.785156 C 508.890625 101.785156 508.398438 102.316406 508.398438 103.273438 Z M 517.265625 118.351562 C 517.265625 119.339844 517.757812 119.835938 518.707031 119.835938 L 520.257812 119.835938 C 521.207031 119.835938 521.699219 119.339844 521.699219 118.351562 L 521.699219 111.378906 C 521.699219 108.121094 523.707031 105.46875 526.875 105.46875 C 529.125 105.46875 529.6875 106.953125 529.6875 109.148438 L 529.6875 118.351562 C 529.6875 119.339844 530.21875 119.835938 531.167969 119.835938 L 532.679688 119.835938 C 533.667969 119.835938 534.160156 119.339844 534.160156 118.351562 L 534.160156 108.226562 C 534.160156 103.449219 531.871094 101.363281 527.894531 101.363281 C 524.269531 101.363281 522.296875 103.660156 521.523438 105.183594 L 521.453125 105.183594 C 521.496094 104.914062 521.519531 104.644531 521.523438 104.371094 L 521.523438 103.273438 C 521.523438 102.316406 521.03125 101.785156 520.082031 101.785156 L 518.707031 101.785156 C 517.757812 101.785156 517.265625 102.316406 517.265625 103.273438 Z M 517.265625 118.351562 "/><path class="lc" d="M 512.378906 95.992188 C 512.5 96.117188 512.589844 96.261719 512.65625 96.421875 C 512.722656 96.582031 512.753906 96.75 512.753906 96.925781 C 512.753906 97.097656 512.722656 97.265625 512.65625 97.425781 C 512.589844 97.585938 512.5 97.730469 512.378906 97.855469 L 511.347656 98.894531 C 511.222656 99.015625 511.082031 99.105469 510.921875 99.171875 C 510.761719 99.238281 510.59375 99.269531 510.421875 99.269531 C 510.25 99.269531 510.082031 99.238281 509.921875 99.171875 C 509.761719 99.105469 509.621094 99.015625 509.496094 98.894531 L 504.972656 94.3125 C 504.851562 94.1875 504.761719 94.042969 504.695312 93.882812 C 504.628906 93.722656 504.597656 93.554688 504.597656 93.382812 C 504.597656 93.207031 504.628906 93.039062 504.695312 92.878906 C 504.761719 92.71875 504.851562 92.574219 504.972656 92.449219 L 506.003906 91.414062 C 506.128906 91.292969 506.273438 91.199219 506.433594 91.132812 C 506.59375 91.070312 506.757812 91.035156 506.929688 91.035156 C 507.105469 91.035156 507.269531 91.070312 507.429688 91.132812 C 507.589844 91.199219 507.734375 91.292969 507.855469 91.414062 Z M 512.378906 95.992188 "/><path class="lc" d="M 516.332031 88.085938 C 516.457031 87.964844 516.597656 87.871094 516.757812 87.804688 C 516.917969 87.742188 517.085938 87.707031 517.257812 87.707031 C 517.429688 87.707031 517.597656 87.742188 517.757812 87.804688 C 517.917969 87.871094 518.058594 87.964844 518.183594 88.085938 L 519.214844 89.121094 C 519.335938 89.246094 519.429688 89.390625 519.492188 89.550781 C 519.558594 89.710938 519.589844 89.878906 519.589844 90.054688 C 519.589844 90.226562 519.558594 90.394531 519.492188 90.554688 C 519.429688 90.714844 519.335938 90.859375 519.214844 90.984375 L 511.382812 98.820312 C 511.257812 98.941406 511.117188 99.035156 510.957031 99.097656 C 510.796875 99.164062 510.628906 99.195312 510.457031 99.195312 C 510.285156 99.195312 510.117188 99.164062 509.957031 99.097656 C 509.796875 99.035156 509.65625 98.941406 509.53125 98.820312 L 508.496094 97.785156 C 508.378906 97.660156 508.285156 97.515625 508.222656 97.355469 C 508.15625 97.195312 508.125 97.027344 508.125 96.851562 C 508.125 96.679688 508.15625 96.511719 508.222656 96.351562 C 508.285156 96.191406 508.378906 96.046875 508.496094 95.921875 Z M 516.332031 88.085938 "/></svg>
+    <span class="eyebrow">L’hotel del futuro funziona con Chekin</span>
+    <h2>Bastano 15 minuti per vedere cosa può diventare la tua reception</h2>
+    <p class="lead">Ti mostriamo check-in, conformità e upselling pensando al tuo PMS e al tuo paese.</p>
+    <div class="cta-grid">
+      <a class="btn primary" data-cta="contact-sales" href="#" target="_blank" rel="noopener" style="height:58px;font-size:17px">Prenota la mia demo di 15 min</a>
+      <a class="btn ghost" data-cta="onboarding" href="#" target="_blank" rel="noopener">Prova Chekin gratis</a>
+      <a class="btn ghost" id="backCard2" href="#" hidden>Torna al biglietto</a>
+      <a class="btn ghost" data-cta="revenue-calculator" href="#" target="_blank" rel="noopener">Calcola il mio incremento</a>
+    </div>
+    <button class="pill" id="share2">Copia il link da condividere con il tuo team</button>
+    <div class="trust"><span>GDPR</span><span>ISO</span><span>ENISA</span></div>
+  </div>
+</section>
+
+</main>
+
+<nav class="nav" aria-label="Navigazione tra le diapositive">
+  <span class="swipe-hint">Scorri o usa ← →</span>
+  <button class="round" id="prev" aria-label="Diapositiva precedente"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+  <button class="next" id="next"><span id="nextTxt">Avanti</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></button>
+  <span class="count" id="count">1/9</span>
+</nav>
+<div class="toast" id="toast">Link copiato</div>
+
+<script>
+(function(){
+  /* CTA links: change LANG / UTM per version or event */
+  var LANG='it', UTM='utm_source=qr&utm_medium=event&utm_campaign=hotels-event-deck';
+  document.querySelectorAll('[data-cta]').forEach(function(a){
+    var p=a.getAttribute('data-cta');
+    a.href='https://chekin.com/'+LANG+'/'+(p?p+'/':'')+'?'+UTM;
+  });
+  /* Si la presentación se abre desde una tarjeta (?card=...), «Reservar demo» y «Volver» regresan a esa tarjeta */
+  var CARD=(function(){try{var c=new URLSearchParams(location.search).get('card');if(!c)return null;var u=new URL(c,location.href);return u.origin===location.origin?u:null}catch(e){return null}})();
+  function cardUrl(go){var u=new URL(CARD.href);u.searchParams.set('from','deck');if(go)u.searchParams.set('go',go);return u.toString()}
+  if(CARD){
+    document.querySelectorAll('[data-cta="contact-sales"]').forEach(function(a){a.href=cardUrl('demo');a.removeAttribute('target');a.removeAttribute('rel')});
+    var sh=document.getElementById('share');if(sh)sh.hidden=true;
+    ['backCard','backCard2'].forEach(function(id){var a=document.getElementById(id);if(a){a.href=cardUrl('');a.hidden=false}});
+  }
+
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var N=slides.length, cur=-1, THEMES=['t-white','t-lilac','t-mint','t-navy','t-blue'];
+  var bars=document.getElementById('bars');
+  slides.forEach(function(s,i){
+    var b=document.createElement('button');b.setAttribute('role','tab');
+    b.setAttribute('aria-label','Diapositiva '+(i+1)+': '+s.getAttribute('aria-label'));
+    b.onclick=function(){go(i)};bars.appendChild(b);
+  });
+  var barEls=[].slice.call(bars.children);
+  var prevB=document.getElementById('prev'), nextB=document.getElementById('next');
+
+  function go(i){
+    if(i<0||i>=N||i===cur) return;
+    cur=i;
+    slides.forEach(function(s,k){
+      s.classList.remove('on','prev');
+      if(k<i) s.classList.add('prev');
+      s.setAttribute('aria-hidden',k===i?'false':'true');
+      if('inert' in s) s.inert=(k!==i);
+    });
+    var s=slides[i]; void s.offsetWidth; s.classList.add('on'); s.scrollTop=0;
+    THEMES.forEach(function(t){document.body.classList.toggle(t,s.classList.contains(t))});
+    barEls.forEach(function(b,k){b.classList.toggle('done',k<i);b.classList.toggle('cur',k===i)});
+    prevB.disabled=(i===0);
+    document.getElementById('nextTxt').textContent = i===N-1 ? 'Ricomincia' : 'Avanti';
+    document.getElementById('count').textContent=(i+1)+'/'+N;
+    try{history.replaceState(null,'','#s'+i)}catch(e){}
+    enter(s);
+  }
+  prevB.onclick=function(){go(cur-1)};
+  nextB.onclick=function(){cur===N-1?go(0):go(cur+1)};
+  document.querySelectorAll('[data-go]').forEach(function(b){b.onclick=function(){go(+b.getAttribute('data-go'))}});
+  document.addEventListener('keydown',function(e){
+    if(e.target.tagName==='INPUT') return;
+    if(e.key==='ArrowRight'||e.key==='PageDown'){e.preventDefault();cur<N-1&&go(cur+1)}
+    if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(cur-1)}
+  });
+  var sx=0,sy=0,st=0,tracking=false,deck=document.getElementById('deck');
+  deck.addEventListener('touchstart',function(e){
+    if(e.target.closest('input,.countries,.toggle,.preset')){tracking=false;return}
+    tracking=true;sx=e.touches[0].clientX;sy=e.touches[0].clientY;st=Date.now();
+  },{passive:true});
+  deck.addEventListener('touchend',function(e){
+    if(!tracking) return; tracking=false;
+    var dx=e.changedTouches[0].clientX-sx, dy=e.changedTouches[0].clientY-sy;
+    if(Math.abs(dx)>60 && Math.abs(dx)>Math.abs(dy)*1.4 && Date.now()-st<700){ dx<0?(cur<N-1&&go(cur+1)):go(cur-1) }
+  },{passive:true});
+
+  var toast=document.getElementById('toast');
+  function showToast(t,ms){toast.textContent=t;toast.classList.add('show');setTimeout(function(){toast.classList.remove('show')},ms||1800)}
+  function share(){
+    var url=location.href.split('#')[0];
+    try{navigator.clipboard.writeText(url).then(function(){showToast('Link copiato')},function(){showToast(url,3500)})}catch(e){showToast(url,3500)}
+  }
+  document.getElementById('share').onclick=share;
+  document.getElementById('share2').onclick=share;
+
+  var fmt=function(v){return Math.round(v).toLocaleString('it-IT')};
+  function countUp(el){
+    var t=+el.getAttribute('data-count');
+    if(matchMedia('(prefers-reduced-motion: reduce)').matches){el.textContent=fmt(t);return}
+    var t0=performance.now(),d=1100;
+    (function f(now){var p=Math.min(1,(now-t0)/d);p=1-Math.pow(1-p,3);el.textContent=fmt(t*p);if(p<1)requestAnimationFrame(f)})(t0);
+  }
+  var timers=[];
+  function later(fn,ms){timers.push(setTimeout(fn,ms))}
+  function clearTimers(){timers.forEach(clearTimeout);timers=[]}
+  function enter(s){
+    clearTimers();
+    s.querySelectorAll('[data-count]').forEach(countUp);
+    var k=s.getAttribute('data-k');
+    if(k==='checkin') runCheckin();
+    if(k==='keys') resetKey();
+    if(k==='legal') runLegal();
+    if(k==='inbox') runChat();
+  }
+
+  /* before/after */
+  var ba=document.getElementById('ba');
+  document.querySelectorAll('[data-ba]').forEach(function(b){
+    b.onclick=function(){
+      document.querySelectorAll('[data-ba]').forEach(function(x){x.setAttribute('aria-pressed',x===b)});
+      ba.classList.toggle('with',b.getAttribute('data-ba')==='with');
+    };
+  });
+
+  /* check-in */
+  var ciBadges=[].slice.call(document.querySelectorAll('#ciList .badge')), ciRows=[].slice.call(document.querySelectorAll('#ciList .li')), segs=[].slice.call(document.querySelectorAll('#segs i')), ciBtn=document.getElementById('ciBtn');
+  function mark(i){var b=ciBadges[i],s=b.getAttribute('data-s');b.textContent=s;b.className='badge '+(s==='Condiviso'?'b-blue':'b-ok');segs[i].classList.add('f');if(ciRows[i].classList.contains('scanbar')){ciRows[i].classList.remove('scan');void ciRows[i].offsetWidth;ciRows[i].classList.add('scan')}}
+  function setRecv(done){
+    document.getElementById('recvTags').innerHTML = done ? '<span class="badge b-ok">Check-in fatto</span><span class="badge b-ok">Pagato</span><span class="badge b-warn">Arrivo notturno</span>' : '<span class="badge b-wait">In sospeso</span>';
+    document.getElementById('rv1').textContent = done?'2/2 ospiti':'0/2 ospiti';
+    document.getElementById('rv0').textContent = done?'Verificato':'—';
+    document.getElementById('rv2').textContent = done?'0,00 € da pagare':'350,00 € da pagare';
+    document.getElementById('rv3').textContent = done?'Inviata':'—';
+    document.getElementById('rv4').textContent = done?'Pronta':'—';
+  }
+  function runCheckin(){
+    ciBadges.forEach(function(b){b.className='badge b-wait';b.textContent='…'});
+    segs.forEach(function(x){x.classList.remove('f')});
+    ciBtn.classList.remove('done');ciBtn.textContent='Termina il check-in';setRecv(false);
+    ciBadges.forEach(function(b,i){later(function(){mark(i)},500+i*650)});
+  }
+  ciBtn.onclick=function(){
+    if(ciBtn.classList.contains('done')){runCheckin();return}
+    clearTimers(); ciBadges.forEach(function(b,i){mark(i)});
+    ciBtn.classList.add('done');ciBtn.textContent='✓ Check-in fatto · ti aspettiamo alle 23:40';setRecv(true);
+  };
+
+  /* key */
+  var un=document.getElementById('unlock'), unT=document.getElementById('unlockTxt');
+  function resetKey(){un.classList.remove('open');unT.textContent='Tocca per aprire la camera 118'}
+  un.onclick=function(){
+    if(un.classList.contains('open')){resetKey();return}
+    un.classList.add('open');unT.textContent='Camera 118 aperta · benvenuto!';
+    try{navigator.vibrate&&navigator.vibrate(40)}catch(e){}
+  };
+
+  /* compliance */
+  var C=[
+    ['Spagna','a',['#C60B1E','#FFC400','#C60B1E'],1],['Italia','a',['#009246','#fff','#CE2B37']],['Portugal','a',['#006600','#FF0000','#FF0000']],
+    ['Germania','a',['#000','#DD0000','#FFCE00'],1],['Austria','a',['#ED2939','#fff','#ED2939'],1],['Cechia','a'],['Croazia','a',['#FF0000','#fff','#171796'],1],
+    ['Bulgaria','a'],['Svizzera','a'],['EAU (Dubai)','a'],['Brasile','a'],['Colombia','a'],['Grecia','a'],
+    ['Francia','g'],['Regno Unito','g'],['Paesi Bassi','g'],['Belgio','g'],['Romania','g']
+  ];
+  var LBL={Sent:'Inviato',Stored:'Archiviato',Automatic:'Automatico'};
+  var R=[
+    ['Spagna','Spagna · SES.Hospedajes','14 comunicazioni ospiti','Sent'],
+    ['Italia','Italia · Alloggiati Web','9 comunicazioni ospiti','Sent'],
+    ['Italia','Italia · ISTAT','Statistiche sulle presenze','Sent'],
+    ['Portugal','Portogallo · SIBA','6 comunicazioni ospiti','Sent'],
+    ['Spagna','Tassa di soggiorno · Catalogna','72,00 € incassati al check-in','Automatic'],
+    ['Croazia','Croazia · eVisitor','4 comunicazioni ospiti','Sent']
+  ];
+  function flagOf(name){var c=C.filter(function(x){return x[0]===name})[0];if(!c||!c[2])return '<span class="flag" style="background:#E3E6F5"></span>';return '<span class="flag'+(c[3]?' h':'')+'">'+c[2].map(function(col){return '<i style="background:'+col+'"></i>'}).join('')+'</span>'}
+  var cWrap=document.getElementById('countries'), sWrap=document.getElementById('srows'), sel=null;
+  C.forEach(function(c){
+    var b=document.createElement('button');b.className='chip';b.setAttribute('aria-pressed','false');
+    b.innerHTML='<span class="dot'+(c[1]==='g'?' g':'')+'"></span>'+c[0];
+    b.onclick=function(){sel=(sel===c[0])?null:c[0];[].forEach.call(cWrap.children,function(x){x.setAttribute('aria-pressed',String(x===b&&sel!==null))});renderRows(false)};
+    cWrap.appendChild(b);
+  });
+  function renderRows(animate){
+    var rows=R.slice();
+    if(sel && !rows.some(function(r){return r[0]===sel})){
+      var c=C.filter(function(x){return x[0]===sel})[0], g=c[1]==='g';
+      rows.unshift([sel, sel+' · '+(g?'Registro digitale degli ospiti':'Comunicazioni ospiti'), g?'Archiviato per te, pronto per i controlli':'Inviato automaticamente entro 24 h', g?'Stored':'Sent']);
+      rows=rows.slice(0,6);
+    }
+    sWrap.innerHTML=rows.map(function(r){
+      var hit=sel&&r[0]===sel, dim=sel&&!hit;
+      var st=animate?'<span class="badge b-wait">Invio…</span>':(r[3]==='Automatic'?'<span class="badge b-warn">Automatico</span>':'<span class="badge b-ok">'+LBL[r[3]]+'</span>');
+      return '<div class="srow'+(hit?' hit':'')+(dim?' dimmed':'')+'">'+flagOf(r[0])+'<span><b>'+r[1]+'</b><small>'+r[2]+'</small></span><span class="st" data-v="'+r[3]+'">'+st+'</span></div>';
+    }).join('');
+    document.getElementById('allSent').style.visibility=animate?'hidden':'visible';
+  }
+  function runLegal(){
+    renderRows(true);
+    var sts=sWrap.querySelectorAll('.st');
+    [].forEach.call(sts,function(el,i){later(function(){
+      var v=el.getAttribute('data-v');el.innerHTML=v==='Automatic'?'<span class="badge b-warn">Automatico</span>':'<span class="badge b-ok">'+LBL[v]+'</span>';
+      if(i===sts.length-1) document.getElementById('allSent').style.visibility='visible';
+    },400+i*350)});
+  }
+  renderRows(false);
+
+  /* calculator */
+  var ids=['rRooms','rOcc','rStay','rAttach'], inp={};
+  ids.forEach(function(id){inp[id]=document.getElementById(id);inp[id].addEventListener('input',function(){setPre(null);calc()})});
+  function paint(el){el.style.setProperty('--p',((el.value-el.min)/(el.max-el.min)*100)+'%')}
+  function calc(){
+    var rooms=+inp.rRooms.value, occ=+inp.rOcc.value/100, stay=+inp.rStay.value, att=+inp.rAttach.value/100;
+    var bookings=rooms*30*occ/stay, month=bookings*att*55;
+    document.getElementById('oRooms').textContent=rooms;
+    document.getElementById('oOcc').textContent=Math.round(occ*100)+'%';
+    document.getElementById('oStay').textContent=stay+(stay===1?' notte':' notti');
+    document.getElementById('oAttach').textContent=Math.round(att*100)+'%';
+    document.getElementById('cMonth').textContent=fmt(month);
+    document.getElementById('cYear').textContent=fmt(Math.round(month*12/10)*10);
+    document.getElementById('cBook').textContent=fmt(bookings);
+    ids.forEach(function(id){paint(inp[id])});
+  }
+  var preBtns=[].slice.call(document.querySelectorAll('[data-pre]'));
+  function setPre(v){preBtns.forEach(function(b){b.setAttribute('aria-pressed',String(b.getAttribute('data-pre')===v))})}
+  preBtns.forEach(function(b){b.onclick=function(){var v=b.getAttribute('data-pre');inp.rRooms.value=v;inp.rOcc.value=70;inp.rStay.value=2;inp.rAttach.value=9;calc();setPre(v)}});
+  calc();
+
+  /* chat */
+  var msgs=document.getElementById('msgs');
+  var script=[['g',"Salve! Qual è la password del Wi-Fi?"],['t'],['a','Ciao Sophie! La rete è "Marbella_Guest" e la password è "seaview214". La trovi anche nella tua guida digitale.'],['m','23:52'],
+    ['g','Possiamo fare il check-out un po\' più tardi domenica?'],['t'],['a',"Certo! Il late check-out fino alle 13:00 costa 25 €. L'ho aggiunto al tuo soggiorno."],['x'],['m','23:53']];
+  var clock='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>';
+  function runChat(){
+    clearTimers(); msgs.innerHTML=''; var t=300;
+    script.forEach(function(m){
+      later(function(){
+        var ty=msgs.querySelector('.typing'); if(ty) ty.remove();
+        var el=document.createElement('div');
+        if(m[0]==='t'){el.className='typing';el.innerHTML='<i></i><i></i><i></i>'}
+        else if(m[0]==='m'){el.className='meta';el.innerHTML='<span class="badge b-ok">Risposta dell’IA</span>'+m[1]}
+        else if(m[0]==='x'){el.className='addon';el.innerHTML='<span class="av" style="width:28px;height:28px">'+clock+'</span><span><b>Late check-out · 13:00</b><small style="color:var(--paper-mute)">Aggiunto al conto</small></span><span class="badge b-ok">+25 €</span>'}
+        else {el.className='bub '+m[0];el.textContent=m[1]}
+        msgs.appendChild(el);
+      },t);
+      t+= m[0]==='t'?1000 : m[0]==='g'?700 : m[0]==='a'?650 : 300;
+    });
+  }
+  document.getElementById('chatReplay').onclick=runChat;
+
+  var m=(location.hash||'').match(/^#s(\d+)$/);
+  go(m?Math.min(N-1,+m[1]):0);
+})();
+</script>
+
+</body></html>

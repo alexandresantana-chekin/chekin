@@ -24,6 +24,7 @@ Tono: directo y breve, en español. Claude propone y Alex decide.
 | Web | WordPress |
 | Funnel del onboarding | [POR COMPROBAR: se sabrá en la meet con Daniel] |
 | Horas dedicadas | `1-proyectos/growth-chekin/horas.md` |
+| Código de la app QR (Chekin Connect) | `chekin-connect/` (tiene su propio `CLAUDE.md`; leerlo antes de tocar código) |
 
 ## Personas
 - Carlos Cedrés: responsable de Alex en todos los proyectos.

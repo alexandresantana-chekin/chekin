@@ -1,0 +1,1641 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#385BF8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Mi QR Chekin">
+<link rel="apple-touch-icon" href="__ICON__">
+<title>Chekin Connect</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#385BF8;--navy:#19194B;--ink:#161643;--muted:#6B6B95;--soft:#EFEFFF;--line:#DEDEEB;--f:"Montserrat",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+*{box-sizing:border-box;margin:0}
+html{background:#19194B}
+body{font-family:var(--f);font-weight:400;color:var(--ink);min-height:100dvh;text-align:center;background:#F4F6F9}
+body.mode-qr{background:#F4F6F9;color:var(--ink)}
+#app{min-height:100dvh;display:flex;flex-direction:column}
+.col{position:relative;max-width:400px;margin:0 auto;padding:0 22px 14px;width:100%}
+.col.wide{max-width:760px}
+.hide{display:none!important}
+button,input,select{font-family:var(--f)}
+
+.logo{display:block;margin:0 auto;height:28px;width:auto;position:relative;top:14px}
+.logo.white{filter:brightness(0) invert(1)}
+.langBtn{border:1px solid var(--blue);background:transparent;color:var(--blue);border-radius:999px;padding:6px 12px;font:600 12px var(--f);cursor:pointer}
+.cl-lang{position:absolute;top:14px;right:22px}
+.langSel{position:relative;display:inline-block}
+.langSel.cl-lang{position:absolute;top:14px;right:22px}.langSel .ls-cur{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--blue);background:#fff;color:var(--blue);border-radius:999px;padding:6px 10px;font:700 11px var(--f);letter-spacing:.05em;cursor:pointer}
+.ls-menu{position:absolute;right:0;top:calc(100% + 6px);background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 12px 32px rgba(15,20,80,.2);padding:4px;min-width:150px;z-index:50}.ls-menu[hidden]{display:none}
+.ls-menu button{display:flex;justify-content:space-between;align-items:center;gap:14px;width:100%;border:0;background:transparent;padding:9px 12px;border-radius:10px;font:600 13px var(--f);color:var(--ink);text-align:left;cursor:pointer}.ls-menu button small{font:700 10px var(--f);color:var(--muted);letter-spacing:.06em}.ls-menu button.on{background:var(--soft);color:var(--blue)}
+
+/* ---------- ADMIN ---------- */
+.ahead{padding:6px 0 4px;position:relative}
+.ahead h1{font:800 24px var(--f);letter-spacing:-.6px;margin-top:18px}
+.ahead p{font:400 13px var(--f);color:var(--muted);margin-top:2px}
+.atools{display:flex;align-items:center;justify-content:flex-end;gap:6px;margin:0 0 14px}
+.who{font:500 12px var(--f);color:var(--muted);margin-top:6px}.who b{color:var(--ink,#161643);font-weight:700}
+.atools .langBtn{position:static}
+.langBtn.exit{text-decoration:none;border-color:#C9D2F3;color:#5B6190;font-size:11px;padding:6px 10px}
+.langBtn.exit:hover{color:#385BF8;border-color:#385BF8}
+.tabs{display:flex;gap:2px;margin:18px 0 14px;overflow-x:auto;scrollbar-width:none;background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px}
+.tabs button{flex:1 0 auto;border:0;background:transparent;border-radius:999px;padding:10px 11px;font:600 12px var(--f);color:var(--blue);cursor:pointer;white-space:nowrap}
+.tabs::-webkit-scrollbar{display:none}
+@media(max-width:560px){.tabs{display:grid;grid-template-columns:repeat(6,1fr);border-radius:22px;overflow:visible;gap:2px}.tabs button{grid-column:span 2;padding:10px 4px;white-space:normal;line-height:1.15}.tabs button:nth-child(n+4){grid-column:span 3}}
+.tabs button.on{background:var(--blue);color:#fff}
+.prow{display:flex;flex-direction:column;gap:8px;padding:12px 0;border-top:1px solid var(--line)}.ptype{font:700 15px var(--f)}.ptype small{display:block;font:500 11px var(--f);color:var(--muted);margin-top:2px}.pcells{display:flex;flex-wrap:wrap;gap:8px 14px}.pcell{display:flex;align-items:center;gap:6px;font:500 12px var(--f)}.pcell>b{font:700 11px var(--f);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);min-width:56px}.pcell .chip{margin-top:0}
+.panel{background:#fff;border:1px solid var(--line);border-radius:20px;padding:16px;text-align:left;margin-bottom:14px;box-shadow:0 6px 18px rgba(56,91,248,.07)}
+.panel h2{font:700 17px var(--f);letter-spacing:-.3px;margin-bottom:10px}
+.panel.blue{background:linear-gradient(180deg,#002CFA 0%,#274BF0 100%);border:0;color:#fff;box-shadow:0 14px 30px rgba(56,91,248,.3)}
+.panel.blue label{color:#E8EEFF}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+label{display:block;font:600 11px var(--f);color:var(--muted);margin:12px 0 5px}
+.grid2 label,.panel h2+label{margin-top:0}
+input[type=text],input[type=tel],input[type=email],input[type=date],input[type=url],input[type=number],select{width:100%;border:1px solid var(--line);border-radius:14px;padding:11px 13px;font:500 14px var(--f);background:#fff;color:var(--ink);appearance:none;-webkit-appearance:none}
+.panel.blue input{border-color:#fff}
+select{background-image:linear-gradient(45deg,transparent 50%,#385BF8 50%),linear-gradient(135deg,#385BF8 50%,transparent 50%);background-position:calc(100% - 20px) 52%,calc(100% - 15px) 52%;background-size:5px 5px;background-repeat:no-repeat;padding-right:34px}
+input:focus,select:focus{outline:0;box-shadow:0 0 0 3px rgba(56,91,248,.2)}
+.hint{font:400 11px var(--f);color:var(--muted);margin-top:5px;line-height:1.5}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:1px solid var(--blue);background:#fff;color:var(--blue);border-radius:12px;padding:10px 14px;font:600 13px var(--f);cursor:pointer;text-decoration:none}
+.btn.primary{background:var(--blue);color:#fff}
+.btn.danger{border-color:#FF2467;color:#FF2467}
+.btn.sm{padding:8px 11px;font-size:12px;border-radius:10px}
+.btn.full{width:100%;padding:13px;font-size:14px}
+.rgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.rcard{background:#fff;border:1px solid var(--line);border-radius:20px;padding:14px;text-align:left;box-shadow:0 6px 18px rgba(56,91,248,.07)}
+.rcard.inactive{opacity:.6}
+.rtop{display:flex;gap:12px;align-items:center}
+.ravatar{width:54px;height:54px;border-radius:50%;background:var(--soft);color:var(--blue);font:700 20px var(--f);display:grid;place-items:center;overflow:hidden;flex:none;border:1px solid var(--line)}
+.ravatar img{width:100%;height:100%;object-fit:cover}
+.rinfo{flex:1;min-width:0}.rinfo b{display:block;font:700 15px var(--f)}.rinfo span{display:block;font:400 12px var(--f);color:var(--muted)}
+.rinfo code{display:block;font:500 11px ui-monospace,monospace;color:var(--blue);margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rqr{width:64px;height:64px;flex:none;border:1px solid var(--line);border-radius:10px;padding:4px;background:#fff}.rqr svg{width:100%;height:100%;display:block}
+.chip{display:inline-block;font:600 10px var(--f);padding:3px 9px;border-radius:99px;background:#E7F8EE;color:#0F8A47;margin-top:4px}
+.rinfo .chip{display:inline-block}
+.chip.off{background:#F1F2F7;color:#6B7280}
+.ract{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;align-items:flex-start}
+.more{flex:0 0 auto}
+.more[open]{flex:1 1 100%}
+.more summary{list-style:none;cursor:pointer;display:inline-flex;width:auto}
+.more summary::-webkit-details-marker{display:none}
+.more[open] summary{background:var(--soft)}
+.morebox{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:18px;padding:12px;text-align:center}.kpi b{display:block;font:800 24px var(--f);color:var(--blue)}.kpi span{font:500 11px var(--f);color:var(--muted)}
+table{width:100%;border-collapse:collapse;font:400 12px var(--f)}
+th{text-align:left;color:var(--muted);font-weight:600;padding:7px 5px;border-bottom:1px solid var(--blue);white-space:nowrap}
+td{padding:9px 5px;border-bottom:1px solid #E6EBFF;vertical-align:top}
+.scroll{overflow-x:auto}
+.empty{font:400 13px var(--f);color:var(--muted);padding:18px;text-align:center}
+.tchips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.tchip{display:inline-flex;align-items:center;gap:6px;background:var(--soft);color:var(--ink);border-radius:99px;padding:3px 10px 3px 4px;font:500 12px var(--f)}
+.tchip i{width:22px;height:22px;border-radius:50%;background:#fff;display:grid;place-items:center;font-style:normal;font-size:11px;font-weight:700;color:var(--blue);overflow:hidden;flex:none}
+.tchip b{font-weight:600}.tchip button{border:0;background:none;color:var(--muted);cursor:pointer;font-size:15px;line-height:1;padding:0 0 0 2px}
+.pool{display:flex;flex-wrap:wrap;gap:8px}.drag{cursor:grab;padding-right:12px;border:1px solid var(--line);background:#fff}
+.rcard.over{outline:2px dashed var(--blue);background:#F2F5FF}
+.warn{background:#FFF6E5;border:1px solid #FFD58A;color:#8A5A00;border-radius:14px;padding:10px 14px;font:500 12px var(--f);margin-bottom:12px;text-align:left}
+.rinfo .chip:not(.off):not(.evc){color:#0F8A47}
+.chip.pend{background:#FFF1D6;color:#9A6200}
+.me-q .panel{margin-bottom:10px}
+.fills{display:flex;flex-wrap:wrap;gap:4px;margin-top:2px}.chip.fill{background:#12A150;color:#fff}.chip.miss{background:#fff;color:#B45309;border:1.5px dashed #F2A33A;padding:1.5px 8px}
+.chip.evc{background:#E8EDFF;color:var(--blue)}
+.demo{font:400 11px var(--f);color:var(--muted);margin:6px 0 24px;line-height:1.5}
+
+/* modal */
+.modal.center{align-items:center;padding:16px}.modal.center .sheet{border-radius:24px;max-width:420px;padding-top:22px}.modal.center .grab{display:none}
+body:has(.modal) .backfab{display:none}
+.solcard.off{opacity:.55;cursor:default}.solcard .soon{font:700 10.5px var(--f);letter-spacing:.04em;text-transform:uppercase;color:var(--muted);background:var(--soft);padding:4px 9px;border-radius:99px}
+.modal{position:fixed;inset:0;background:rgba(15,20,80,.55);display:flex;align-items:flex-end;justify-content:center;z-index:20;padding:0}
+.sheet{background:#fff;width:100%;max-width:520px;max-height:92dvh;overflow:auto;border-radius:24px 24px 0 0;padding:18px 18px 22px;text-align:left}
+@media(min-width:640px){.modal{align-items:center}.sheet{border-radius:24px}}
+.sheet h2{font:700 19px var(--f);margin-bottom:6px}
+.photoRow{display:flex;gap:12px;align-items:center;margin-top:4px}
+.photoRow .ravatar{width:64px;height:64px}
+.checkRow{display:flex;gap:10px;align-items:center;margin-top:14px;font:500 13px var(--f);color:var(--ink)}
+.checkRow input{width:18px;height:18px;accent-color:#385BF8}
+.err{color:#FF2467;font:500 12px var(--f);margin:8px 0;min-height:14px}
+.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 16px;border-radius:12px;font:600 12px var(--f);z-index:30}
+
+/* ---------- PANTALLA QR (comercial) ---------- */
+.arcbox{position:relative;width:100%;height:84px;margin:34px auto 0}
+.arc{position:absolute;left:0;top:0;width:100%;height:auto;overflow:visible}
+.qrcard{position:relative;margin:8px auto 14px;width:min(86vw,380px,50dvh);aspect-ratio:1;background:#fff;border-radius:26px;padding:12px;box-shadow:0 0 0 6px rgba(255,255,255,.18),0 18px 40px rgba(10,14,80,.35)}
+.qrcard svg.qr{width:100%;height:100%;display:block}
+.qrlogo{position:absolute;left:50%;top:50%;width:16%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:20%;border:4px solid #fff;background:#fff}
+.scan{font:700 19px var(--f);color:#fff;margin-top:6px;letter-spacing:-.2px}
+.evline{font:400 13px var(--f);color:#DCE5FF;margin-top:4px;line-height:1.6}
+
+/* ---------- TARJETA CLIENTE ---------- */
+.avatar{width:clamp(64px,9.5dvh,82px);height:clamp(64px,9.5dvh,82px);border-radius:50%;margin:26px auto 6px;padding:4px;border:1.5px solid var(--blue);background:#fff;box-shadow:0 8px 22px rgba(56,91,248,.2)}
+.avatar>*{width:100%;height:100%;border-radius:50%;display:block;object-fit:cover}
+.name{font:700 22px var(--f);letter-spacing:-.4px}
+.role{font:400 13px var(--f);color:var(--muted);margin-top:2px}
+.hero{position:relative;height:88px;margin:14px auto 12px;width:100%}
+.tag1{position:absolute;left:0;right:0;top:32px;font:700 25px var(--f);letter-spacing:-.8px;line-height:1.14}
+.line1{display:block;min-height:1.14em;color:var(--ink)}
+.verb{color:var(--blue)}
+.caret{display:inline-block;width:2px;height:.82em;background:var(--blue);margin-left:2px;vertical-align:-.06em;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.tail{display:block}
+.list{display:grid;gap:9px;margin-top:2px;text-align:left}
+.item{width:min(100%,276px);margin:0 auto;transition:width .3s ease;border-radius:18px;background:rgba(255,255,255,.82);border:1px solid rgba(56,91,248,.22);overflow:hidden;box-shadow:0 6px 18px rgba(56,91,248,.08)}
+.item.open{width:100%}
+.item .head{display:flex;align-items:center;gap:12px;width:100%;padding:7px 14px 7px 8px;background:none;border:0;text-align:left;font:600 14.5px var(--f);color:var(--ink);cursor:pointer;text-decoration:none;position:relative}
+.item .head:not(:has(.chev))::after{content:"";width:36px;flex:none}
+.head .lb{flex:1;text-align:center}
+.head .ic{width:36px;height:36px;border-radius:50%;background:var(--soft);display:grid;place-items:center;flex:none;box-shadow:inset 0 0 0 1px rgba(56,91,248,.12)}
+svg.i2{width:20px;height:20px;fill:none;stroke:var(--blue);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.chev{width:36px;height:15px;fill:none;stroke:var(--blue);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:transform .25s;flex:none}
+.item.open .chev{transform:rotate(90deg)}
+.item.primary{background:linear-gradient(180deg,#002CFA 0%,#274BF0 100%);border-color:transparent;box-shadow:0 14px 30px rgba(56,91,248,.35)}
+.item.primary .head{color:#fff}
+.item.primary .ic{background:rgba(255,255,255,.2);box-shadow:none}
+.item.primary svg.i2,.item.primary .chev{stroke:#fff}
+.pan{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s ease}
+.item.open .pan{grid-template-rows:1fr}
+.pan>div{overflow:hidden}
+.pan .in{padding:2px 18px 18px;color:var(--ink)}
+.item.primary .pan .in{color:#fff}
+.in .sub{font:400 12px var(--f);color:#DCE5FF;margin:0 0 4px}
+.in.info{font:500 13px var(--f);line-height:1.8;text-align:center}.in.info b{font:700 15px var(--f)}
+.item.primary label{color:#E8EEFF;margin:12px 0 5px}
+.item.primary input,.item.primary select{border-color:#fff}
+.item.primary input:focus,.item.primary select:focus{box-shadow:0 0 0 3px rgba(255,255,255,.35)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.row2 label{margin-top:0}
+.phone{display:grid;grid-template-columns:112px 1fr;gap:8px}
+.prog{display:flex;align-items:center;gap:10px;margin:16px 0 2px;font:500 11px var(--f);color:#DCE5FF}
+.bar{flex:1;height:3px;background:rgba(255,255,255,.28);border-radius:99px;overflow:hidden}.bar i{display:block;height:100%;width:0;background:#fff;transition:.25s}
+.item.primary .err{color:#FFD4D0}
+.go{display:block;width:100%;border:0;border-radius:14px;padding:14px;background:#fff;color:var(--blue);font:700 15px var(--f);cursor:pointer;box-shadow:0 0 0 4px rgba(255,255,255,.22);text-decoration:none;text-align:center}
+.ok{text-align:center;padding:8px 0 2px}.ok .big{font-size:32px}.ok b{font:700 19px var(--f);display:block;margin:4px 0}
+.ok .sub{display:block;margin:2px 0 6px}
+.tag{display:inline-block;border:1px solid #fff;color:#fff;font:600 11px var(--f);padding:3px 12px;border-radius:99px;margin:4px 0 6px}
+.cta{margin-top:12px}
+.lnk{display:block;margin-top:12px;font:500 13px var(--f);color:#fff;text-decoration:underline;text-align:center}
+.foot{margin-top:8px;font:500 12px var(--f);color:var(--muted)}
+.foot a{color:var(--blue);text-decoration:none;font-weight:600}
+.item{transition:box-shadow .25s}
+.item.done{background:linear-gradient(180deg,#002CFA 0%,#274BF0 100%);border-color:transparent;box-shadow:0 10px 24px rgba(56,91,248,.3)}
+.item.done .head{color:#fff}
+.item.done .ic{background:rgba(255,255,255,.2);box-shadow:none}
+.item.done svg.i2,.item.done .chev{stroke:#fff}
+.backfab{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:40;background:#161643;color:#fff;border:0;border-radius:999px;padding:11px 20px;font:600 13px var(--f);box-shadow:0 8px 24px rgba(10,14,80,.35);cursor:pointer}
+.qrbtns{flex-wrap:wrap}
+.wbtn{padding:8px 13px;font-size:12px}
+.wbtn.sm{padding:7px 14px;font-size:12px;flex:none}
+.seelink{display:block;margin-top:12px;color:#DCE5FF;font:500 12px var(--f);text-decoration:underline}
+.ihint{display:flex;align-items:center;gap:10px;margin:16px auto 0;max-width:340px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.4);border-radius:18px;padding:10px 8px 10px 14px;text-align:left;color:#fff}
+.ihint div{flex:1}.ihint b{display:block;font:700 13px var(--f)}.ihint span{display:block;font:400 11.5px var(--f);color:#DCE5FF;margin-top:1px}
+.ix{border:0;background:none;color:#fff;font-size:22px;line-height:1;cursor:pointer;padding:0 6px}
+.steps{margin:6px 0 0 18px;padding:0;font:500 14px var(--f);line-height:1.7;color:var(--ink)}
+.kpis.kp6{grid-template-columns:repeat(3,1fr)}
+.list.big{gap:12px}
+.list.big .item{width:min(100%,300px)}
+.list.big .item.open{width:100%}
+.list.big .item .head{padding:10px 14px 10px 10px;font-size:15.5px}
+.list.big .head .ic{width:40px;height:40px}
+button.solcard{width:100%;text-align:left;cursor:pointer;font-family:var(--f)}
+.solcard.static{cursor:default}
+.lnk2{display:block;margin:14px auto 0;background:none;border:0;color:var(--blue);font:600 13px var(--f);cursor:pointer;text-decoration:underline}
+.rbtn{width:36px;height:36px;border-radius:50%;border:1px solid var(--blue);background:#fff;display:grid;place-items:center;cursor:pointer;padding:0}
+.rbtn svg.i2{width:18px;height:18px}
+.cl-share{position:absolute;top:11px;left:22px}
+.qrbtns{display:flex;gap:8px;justify-content:center;margin-top:14px}
+.wbtn{border:1px solid rgba(255,255,255,.75);background:rgba(255,255,255,.12);color:#fff;border-radius:999px;padding:10px 20px;font:600 13px var(--f);cursor:pointer}
+.foot2{margin-top:14px;font:500 12px var(--f);color:#C9D3FF}
+/* ---------- formulario de contacto en la tarjeta ---------- */
+.lf{display:grid;gap:8px;text-align:left;margin-top:6px}
+.lf label{display:block;font:600 11px var(--f);color:#E8EEFF;margin:0}
+.lf input[type=text],.lf input[type=tel],.lf input[type=email],.lf input[type=number]{width:100%;margin-top:4px;border:1.5px solid rgba(255,255,255,.9);background:#fff;color:var(--ink);border-radius:12px;padding:10px 12px;font:500 16px var(--f)}
+.lf input:focus{outline:0;box-shadow:0 0 0 3px rgba(255,255,255,.4)}
+.lf-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.lf-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.lf .lf-consent{display:grid;grid-template-columns:20px 1fr;gap:10px;align-items:start;margin-top:4px;font:400 11.5px/1.45 var(--f);color:#E8EEFF}
+.lf .lf-consent input{width:18px;height:18px;margin:1px 0 0;accent-color:#fff}
+.lf .lf-consent a{color:#fff;font-weight:700}
+.lf .lf-err{color:#FFD4D0;min-height:0;margin:2px 0}
+.lf-title{font:700 14px var(--f);margin:2px 0 4px;color:#fff}
+.lf.light label{color:var(--muted)}
+.lf.light input[type=text],.lf.light input[type=tel],.lf.light input[type=email],.lf.light input[type=number]{border-color:var(--line);background:#F6F8FF}
+.lf.light input:focus{box-shadow:0 0 0 3px rgba(56,91,248,.2);border-color:var(--blue)}
+.lf.light .lf-consent{color:var(--muted)}
+.lf.light .lf-consent input{accent-color:var(--blue)}
+.lf.light .lf-consent a{color:var(--blue)}
+.lf.light .lf-err{color:#FF2467}
+button.wb{cursor:pointer;font-family:var(--f)}
+.wbtns.one{grid-template-columns:1fr}
+.lf-who a{color:#fff;font-weight:700}
+.wbtns{margin-top:10px}
+
+/* ---------- página de cada persona (?me=1 · /mi-perfil) ---------- */
+body.mode-login{background:linear-gradient(180deg,#002CFA 0%,#274BF0 100%) fixed}
+.me-login{min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 16px}
+.me-login .logo{position:static;height:30px;margin:0 auto 24px}
+.me-login .logo.white{filter:brightness(0) invert(1)}
+.me-card{width:100%;max-width:400px;background:#fff;border-radius:26px;padding:28px 22px 24px;box-shadow:0 0 0 6px rgba(255,255,255,.18),0 22px 50px rgba(10,14,80,.4);text-align:left}
+.me-ic{width:52px;height:52px;border-radius:16px;background:var(--soft);display:flex;align-items:center;justify-content:center;margin:0 auto 12px}
+.me-ic img{width:30px;height:30px;border-radius:7px}
+.me-card h1{font:800 22px var(--f);text-align:center;letter-spacing:-.01em}
+.me-card .sub{margin:4px 0 14px;text-align:center;font:400 13.5px/1.5 var(--f);color:var(--muted)}
+.me-field{margin-top:14px}
+.me-field label{display:block;font:700 12px var(--f);color:var(--ink);margin:0 0 6px}
+.me-field input,.me-bar select{width:100%;font:500 16px var(--f);color:var(--ink);padding:13px 14px;border:1.5px solid var(--line);border-radius:14px;background:#F6F8FF}
+.me-field input:focus,.me-bar select:focus{outline:0;border-color:var(--blue);background:#fff;box-shadow:0 0 0 4px rgba(56,91,248,.15)}
+.me-pw{position:relative}.me-pw input{padding-right:72px}
+.me-pw button{position:absolute;right:6px;top:50%;transform:translateY(-50%);border:0;background:none;color:var(--blue);font:700 12px var(--f);padding:10px;cursor:pointer}
+.me-hint{font:400 12px/1.5 var(--f);color:var(--muted);margin-top:5px}
+.me-ev{font:500 13px/1.4 var(--f);color:var(--muted);margin:10px 2px 0}.me-ev b{color:var(--ink,#161643)}
+.me-err{color:#FF2467;font:600 13px/1.4 var(--f);margin-top:10px;min-height:0}
+.me-btn{width:100%;margin-top:16px;border:0;border-radius:999px;padding:14px 18px;font:700 15px var(--f);color:#fff;background:linear-gradient(180deg,#002CFA 0%,#274BF0 100%);box-shadow:0 10px 24px rgba(56,91,248,.3);cursor:pointer}
+.me-btn[disabled]{opacity:.6;cursor:progress}
+.me-help{margin-top:14px;font:400 12px/1.5 var(--f);color:var(--muted);text-align:center}
+.me-link{border:0;background:none;color:var(--blue);font:700 13px var(--f);cursor:pointer;padding:6px 0;text-decoration:underline}
+.me-wrap{width:100%;max-width:560px;margin:0 auto;padding:0 18px 48px;text-align:left}
+.me-wrap.wide{max-width:900px}
+.me-top{display:flex;align-items:center;justify-content:space-between;padding:16px 0 10px}
+.me-top .logo{position:static;height:26px;margin:0}
+.me-tools{display:flex;gap:6px;align-items:center}
+.me-h1{font:800 24px var(--f);letter-spacing:-.4px;margin:6px 0 2px}
+.me-h{font:700 17px var(--f);letter-spacing:-.3px;margin:24px 0 10px}
+.me-h span{color:var(--muted);font-weight:600}
+.me-prof{background:#fff;border:1px solid var(--line);border-radius:22px;padding:20px;box-shadow:0 6px 18px rgba(56,91,248,.07)}
+.me-ph{display:flex;gap:16px;align-items:center;margin-bottom:6px}
+.me-av{position:relative;width:92px;height:92px;border-radius:50%;padding:3px;border:1.5px solid var(--blue);background:#fff;cursor:pointer;flex:none}
+.me-av img,.me-av>svg{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block}
+.me-av .cam{position:absolute;right:-2px;bottom:-2px;width:30px;height:30px;border-radius:50%;background:var(--blue);display:grid;place-items:center;border:2px solid #fff}
+.me-name{font:800 20px var(--f);letter-spacing:-.3px}
+.me-role{font:400 13px var(--f);color:var(--muted);margin:2px 0 4px}
+.me-links{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.me-lead{background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 14px;margin-bottom:10px}
+.me-lead-h{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.me-lead-h b{font:700 15px var(--f)}.me-lead-h span{font:500 11.5px var(--f);color:var(--muted);white-space:nowrap}
+.me-lead-m{font:400 13px/1.5 var(--f);color:var(--muted);margin-top:2px;word-break:break-word}
+.me-lead-a{display:flex;gap:8px;margin-top:10px}
+.me-pwbox{margin-top:22px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:4px 16px 16px}
+.me-pwbox summary{cursor:pointer;font:700 14px var(--f);padding:12px 0;list-style:none}
+.me-pwbox summary::-webkit-details-marker{display:none}
+.me-pwbox[open] summary{border-bottom:1px solid var(--line);margin-bottom:4px}
+.me-bar{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+.me-bar select{width:auto;flex:1 1 220px;padding:10px 12px}
+.me-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px}
+.me-list .me-lead{margin:0}
+.me-team{display:grid;gap:8px}
+.me-tm{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px 14px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.me-tm b{flex:1 1 140px;font:700 14px var(--f)}
+
+/* pantalla de QR: logo, frase animada y QR repartidos por toda la altura (QR en la parte baja) */
+.col.qr{display:flex;flex-direction:column;min-height:100dvh;padding-bottom:max(22px,env(safe-area-inset-bottom))}
+.col.qr .logo{top:0;margin-top:clamp(20px,4.2dvh,48px)}
+.col.qr .sp{display:block;flex:1 1 0;min-height:14px}
+.col.qr .sp.s1{flex-grow:1}.col.qr .sp.s2{flex-grow:1}.col.qr .sp.s3{flex-grow:.8}
+.col.qr{max-width:460px;padding-left:18px;padding-right:18px}
+.col.qr .qrcard{margin:0 auto;width:min(100%,400px,50dvh)}
+.qhead{font:700 clamp(26px,3.6dvh,33px) var(--f);letter-spacing:-.8px;line-height:1.14;color:var(--ink)}
+.qhead .line1{display:block;min-height:1.14em;color:var(--ink)}
+.qhead .verb{color:var(--blue)}
+.qhead .caret{background:var(--blue)}
+.col.qr .qrcard{box-shadow:0 0 0 1px rgba(56,91,248,.18),0 16px 38px rgba(56,91,248,.2)}
+/* tarjeta del cliente: en móviles bajos queda compacta; en los largos el espacio sobrante se reparte por igual entre bloques (nada pegado, sin hueco al final) */
+.col.cl{display:flex;flex-direction:column;min-height:100dvh;padding-bottom:max(14px,env(safe-area-inset-bottom))}
+.col.cl .sp{display:block;flex:0 0 0}
+@media(min-height:600px){
+.col.cl .sp{flex:1 1 0;min-height:0}
+.col.cl .sp.s1{flex-grow:1.1}
+.col.cl .sp.s4{flex-grow:.7}
+.col.cl .foot{margin-top:0}
+}
+.col.cl .foot{margin-top:8px;padding-top:0}
+@media(min-height:700px){
+.col.cl .sp{min-height:10px}
+.col.cl .sp.s1{min-height:16px}
+.col.cl .sp.s4{min-height:12px}
+.col.cl .logo{top:0;margin-top:clamp(22px,4.2dvh,52px)}
+.col.cl .avatar{width:clamp(76px,12.5dvh,128px);height:clamp(76px,12.5dvh,128px);margin:0 auto clamp(8px,1.6dvh,18px)}
+.col.cl .name{font-size:clamp(23px,3.2dvh,29px)}
+.col.cl .role{margin-top:clamp(3px,.7dvh,8px);font-size:clamp(13px,1.7dvh,15px)}
+.col.cl .hero{height:clamp(96px,14dvh,140px);margin:0 auto}
+.col.cl .tag1{top:clamp(34px,5.4dvh,56px);font-size:clamp(25px,3.3dvh,30px)}
+.col.cl .list.big{gap:clamp(10px,1.9dvh,20px)}
+.col.cl .list.big .item{width:min(100%,clamp(300px,82vw,340px))}
+.col.cl .list.big .item .head{padding-top:clamp(10px,1.9dvh,19px);padding-bottom:clamp(10px,1.9dvh,19px);font-size:clamp(15.5px,2dvh,17px)}
+.col.cl .foot{margin-top:0}
+}
+/* anillos que laten alrededor de la foto */
+.avatar{position:relative}
+.avatar::before,.avatar::after{content:"";position:absolute;inset:-2px;border-radius:50%;border:1.5px solid rgba(56,91,248,.5);animation:ring 2.6s ease-out infinite;pointer-events:none}
+.avatar::after{animation-delay:1.3s}
+@keyframes ring{0%{transform:scale(1);opacity:.75}100%{transform:scale(1.55);opacity:0}}
+@media(prefers-reduced-motion:reduce){.avatar::before,.avatar::after{animation:none;opacity:0}}
+/* Escríbeme */
+.wbtns{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding-top:4px}
+.wb{display:flex;align-items:center;justify-content:center;gap:8px;border:1px solid #fff;border-radius:14px;padding:12px 8px;background:#fff;color:var(--blue);font:700 14px var(--f);text-decoration:none}
+.wb.off{opacity:.45;border-style:dashed;background:rgba(255,255,255,.15);color:#fff}
+.item.primary .wb svg.i2{stroke:var(--blue)}
+.item.primary .wb.off svg.i2{stroke:#fff}
+.msgprev{margin-top:12px;padding:10px 12px;border-radius:14px;background:rgba(255,255,255,.14);text-align:left}
+.msgprev b{display:block;font:700 11px var(--f);color:#DCE5FF;margin-bottom:4px}
+.msgprev span{font:400 12.5px var(--f);line-height:1.5;color:#fff}
+.hint2{font:400 11px var(--f);color:#DCE5FF;margin-top:10px;line-height:1.5}
+/* fila doble Web | LinkedIn */
+.item.pair{display:grid;grid-template-columns:1fr 1fr}
+.item.pair .head{justify-content:center;gap:8px;padding:6px 8px}
+.item.pair .head::after{display:none!important}
+.item.pair .head+.head{border-left:1px solid rgba(56,91,248,.22)}
+.item.pair .head .lb{flex:0 1 auto}
+/* panel de soluciones */
+.sheet{position:relative}
+.sheet .grab{width:42px;height:4px;border-radius:99px;background:#DEDEEB;margin:0 auto 14px}
+.sheet .x{position:absolute;top:12px;right:14px;width:32px;height:32px;border-radius:50%;border:0;background:var(--soft);color:var(--blue);font-size:20px;line-height:1;cursor:pointer}
+.solcard{display:flex;align-items:center;gap:12px;padding:10px 12px;margin-top:10px;border:1px solid rgba(56,91,248,.22);border-radius:18px;background:#fff;text-decoration:none;color:var(--ink);font:600 14.5px var(--f)}
+.solcard .ic{width:40px;height:40px;border-radius:50%;background:var(--soft);display:grid;place-items:center;flex:none}
+.solcard .lb2{flex:1}
+.solcard small{display:block;font:400 11.5px var(--f);color:var(--muted);margin-top:2px;line-height:1.35}
+.solcard .chev{width:15px;height:15px;stroke:var(--blue)}
+.go.blue{background:var(--blue);color:#fff;box-shadow:0 0 0 4px rgba(56,91,248,.18);margin-top:16px}
+/* página del equipo */
+.fchips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:16px 0 4px}
+.fchips button{border:1px solid var(--blue);background:#fff;color:var(--blue);border-radius:999px;padding:8px 16px;font:600 12.5px var(--f);cursor:pointer}
+.fchips button.on{background:var(--blue);color:#fff}
+.tgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,190px));justify-content:center;gap:12px;margin-top:18px}
+.tcard{background:#fff;border:1px solid var(--line);border-radius:22px;padding:18px 10px 16px;text-decoration:none;color:var(--ink);box-shadow:0 6px 18px rgba(56,91,248,.07);transition:transform .15s,box-shadow .15s}
+.tcard:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(56,91,248,.16)}
+.tcard .tav{width:78px;height:78px;border-radius:50%;margin:0 auto 10px;padding:3px;border:1.5px solid var(--blue);background:#fff;overflow:hidden}
+.tcard .tav>*{width:100%;height:100%;border-radius:50%;display:block;object-fit:cover}
+.tcard b{display:block;font:700 14.5px var(--f);letter-spacing:-.2px}
+.tcard span{display:block;font:400 12px var(--f);color:var(--muted);margin-top:3px;line-height:1.35}
+.nf{padding:80px 22px;font:500 15px var(--f)}
+
+/* =================== Sistema de diseño Chekin =================== */
+.mi{width:12px;height:12px;vertical-align:-2px;margin-right:4px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.logo{filter:none}
+/* pantallas de producto (panel y perfil): fondo casi blanco, sombras azuladas, esquinas de 8–14 px */
+body:has(.me-wrap),body:has(.col.wide){background:#FDFDFF}
+body.mode-login{background:linear-gradient(180deg,#002CFA 0%,#274BF0 100%) fixed}
+.panel,.rcard,.me-prof,.me-lead,.me-pwbox,.me-tm,.kpi,.tcard{border-radius:14px;box-shadow:0 0 5px rgba(26,148,255,.173)}
+.panel.blue{box-shadow:0 0 5px rgba(26,148,255,.173)}
+.sheet{border-radius:16px 16px 0 0}.modal.center .sheet{border-radius:16px}
+@media(min-width:640px){.sheet{border-radius:16px}}
+.btn,.go,.wb{border-radius:12px}.btn.sm{border-radius:8px}
+.me-btn{border-radius:12px;background:#385BF8;box-shadow:none}
+.chip{border-radius:8px}.tchip{border-radius:10px}.solcard .soon{border-radius:6px}
+.tabs{border-radius:12px;padding:4px}.tabs button{border-radius:8px}
+@media(max-width:560px){.tabs{border-radius:12px}}
+.langSel .ls-cur{border-radius:12px}.langBtn{border-radius:12px}
+.me-av .cam{border-color:#fff}
+/* campos */
+input[type=text],input[type=tel],input[type=email],input[type=date],input[type=url],input[type=number],input[type=password],select,.me-field input,.me-bar select{border-radius:8px;border:1px solid rgba(22,22,67,.2);background-color:#F4F6F8;color:#161643}
+input.filled,select.filled,.me-field input.filled{background-color:#fff;border-color:#161643}
+.lf.light input[type=text],.lf.light input[type=tel],.lf.light input[type=email],.lf.light input[type=number]{border-radius:8px;border:1px solid rgba(22,22,67,.2);background:#F4F6F8}
+.lf.light input.filled{background:#fff;border-color:#161643}
+.lf input[type=text],.lf input[type=tel],.lf input[type=email],.lf input[type=number]{border-radius:8px}
+.err,.me-err{color:#FF2467}
+/* aro de enfoque en todo lo interactivo */
+button:focus-visible,a:focus-visible,summary:focus-visible,select:focus-visible,.item .head:focus-visible{outline:0;box-shadow:0 0 0 3px rgba(56,91,248,.2)}
+input:focus,select:focus,.me-field input:focus,.me-bar select:focus{outline:0;border-color:#161643;box-shadow:0 0 0 3px rgba(56,91,248,.2)}
+.item.primary input:focus,.item.primary select:focus,.lf input:focus{box-shadow:0 0 0 3px rgba(255,255,255,.35)}
+.lf.light input:focus{border-color:#161643;box-shadow:0 0 0 3px rgba(56,91,248,.2)}
+/* desactivado = opacidad 0.3; hover/pulsado = capa, sin sombra ni movimiento */
+button:disabled,.btn[disabled],.me-btn[disabled],.wb.off{opacity:.3;cursor:not-allowed}
+.btn.primary:hover,.me-btn:hover,.go.blue:hover{background-image:linear-gradient(rgba(255,255,255,.1),rgba(255,255,255,.1))}
+.btn.primary:active,.me-btn:active,.go.blue:active{background-image:linear-gradient(rgba(0,0,0,.1),rgba(0,0,0,.1))}
+.btn:not(.primary):hover,.langSel .ls-cur:hover,.langBtn:hover,.tabs button:not(.on):hover,.solcard:hover{background-image:linear-gradient(rgba(56,91,248,.06),rgba(56,91,248,.06))}
+.item.primary:hover{background-image:linear-gradient(rgba(255,255,255,.1),rgba(255,255,255,.1)),linear-gradient(180deg,#002CFA 0%,#274BF0 100%)}
+.item:not(.primary):hover{background-image:linear-gradient(rgba(56,91,248,.05),rgba(56,91,248,.05))}
+.tcard:hover{transform:none;box-shadow:0 0 5px rgba(26,148,255,.173)}
+/* tarjeta y QR del cliente: banda superior con el degradado azul de marca, resto plano */
+.cband{margin:0 calc(50% - 50vw);background:linear-gradient(180deg,#002CFA 0%,#274BF0 100%);position:relative;display:flex;flex-direction:column;align-items:center;padding-top:clamp(18px,3.4dvh,40px)}
+.cband .logo,.col.cl .cband .logo,.col.qr .cband .logo{position:static;top:0;margin:0 auto;height:26px;width:auto}
+.col.cl{--av:clamp(64px,9.5dvh,82px)}
+@media(min-height:700px){.col.cl{--av:clamp(76px,12.5dvh,128px)}}
+.col.cl .cband .avatar,.cband .avatar{width:var(--av);height:var(--av);margin:clamp(14px,2.6dvh,30px) auto calc(var(--av) / -2);padding:0;border:4px solid #fff;background:#fff;box-shadow:0 0 5px rgba(26,148,255,.173);z-index:2}
+.cband .avatar::before,.cband .avatar::after{inset:-4px;border:1.5px solid rgba(255,255,255,.7)}
+.col.cl .name{margin-top:calc(var(--av) / 2 + clamp(8px,1.4dvh,16px))}
+.cband.slim{padding:clamp(20px,4dvh,44px) 0}
+.langSel.cl-lang{z-index:5}
+.cl-lang .ls-cur{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.55);color:#fff}
+.cl-lang .ls-cur:hover{background-image:linear-gradient(rgba(255,255,255,.1),rgba(255,255,255,.1))}
+.item{background:#fff;border:1px solid #DEDEEB;box-shadow:0 0 5px rgba(26,148,255,.173)}
+.item.primary{box-shadow:0 0 5px rgba(26,148,255,.173)}
+.head .ic{box-shadow:none}
+.qrcard,.col.qr .qrcard{box-shadow:0 0 5px rgba(26,148,255,.173),0 0 0 1px #DEDEEB}
+.tag1{letter-spacing:-.4px}.qhead{letter-spacing:-.4px}
+.ahead h1,.me-h1{letter-spacing:-.3px}
+.pcells{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px 8px}.pcell,.pcell.has{display:flex;flex-direction:row;flex-wrap:wrap;align-items:center;gap:6px}.pcell>b{flex:0 0 100%;min-width:0;margin:0}.pcell .btn.sm{flex:0 0 auto;padding:6px 10px}.btn.ico{padding:6px 8px!important}
+.me-q .panel>h2{display:none}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs>
+  <symbol id="chev" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+  <symbol id="i-apartment" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h2M14 8h2M8 12h2M14 12h2M10 21v-4h4v4"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M4 11 12 4l8 7v9H4z"/><path d="M10 20v-6h4v6"/></symbol>
+  <symbol id="i-building" viewBox="0 0 24 24"><path d="M4 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16"/><path d="M16 9h2a2 2 0 0 1 2 2v10"/><path d="M2 21h20M8 7h4M8 11h4M8 15h4"/></symbol>
+  <symbol id="i-tent" viewBox="0 0 24 24"><path d="M2 20h20"/><path d="M12 4 4 20M12 4l8 16"/><path d="M12 20l-3-6M12 20l3-6"/></symbol>
+  <symbol id="i-dots" viewBox="0 0 24 24"><circle cx="6" cy="12" r="1.3"/><circle cx="12" cy="12" r="1.3"/><circle cx="18" cy="12" r="1.3"/></symbol>
+  <symbol id="i-share" viewBox="0 0 24 24"><path d="M12 3v12M8 7l4-4 4 4"/><path d="M5 12v6a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3v-6"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3.5"/><path d="m4 8 8 6 8-6"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.6A8 8 0 1 1 21 12z"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.5 3 8 7 10 4-2 7-5.5 7-10V6z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 3 3 5-6"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="m11 12 8-8M16 7l3 3M14 9l2 2"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></symbol>
+  <symbol id="i-pen" viewBox="0 0 24 24"><path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16z"/><path d="m14 6 4 4"/></symbol>
+  <symbol id="i-card" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3.5"/><circle cx="9" cy="11" r="2"/><path d="M6 16c.6-1.6 1.8-2.2 3-2.2s2.4.6 3 2.2M14.5 10h4M14.5 13.5h3"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3.5"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></symbol>
+  <symbol id="i-in" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 11v6M8 7.6v.1M12 17v-6m0 3c0-2 1.2-3 2.8-3s2.2 1 2.2 3v3"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.4"/></symbol>
+</defs></svg>
+<div id="app"></div>
+
+<script>
+/* QR Code Generator for JavaScript · Copyright (c) 2009 Kazuhiko Arase · MIT license */
+__QRLIB__
+</script>
+<script>
+(function(){
+"use strict";
+const IC_PIN='<svg class="mi" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 1 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>',IC_CLOCK='<svg class="mi" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',IC_WARN='<svg class="mi" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2.5 20h19L12 3z"/><path d="M12 10v4M12 17.2v.1"/></svg>';
+const ICON="__ICON__",LOGO="__LOGO__",LOGOW="__LOGOW__";
+
+/* ================================================================
+   DATOS
+   Hoy: se guardan en este navegador (localStorage) para la demo.
+   En producción, load()/persist() se sustituyen por llamadas a la API
+   que lee y escribe en Notion (comerciales, evento activo y leads).
+   ================================================================ */
+const KEY="chekin-cards-v1";
+const OLD_DECKS=["https://chekin.com/apartamentos/","https://chekin.com/villas/","https://chekin.com/hoteles/","https://chekin.com/campings/"];
+/* Equipo de Account Executives (los 4 que van a eventos). Alex y los perfiles en blanco eran de prueba. */
+const AE=(slug,name,email,phone)=>({slug,name,roleEs:"Account Executive",roleEn:"Account Executive",phone:phone||"",email,linkedin:"",cal:"",photo:"",active:true});
+const TEAM=()=>[AE("marta","Marta Cunha","marta.cunha@chekin.com",""),AE("giulia","Giulia","giulia@chekin.com","+34 603188291"),AE("pablo","Pablo Rodríguez","pablo.rodriguez@chekin.com","+34 611 470 900"),AE("manuel","Manuel Sánchez","manuel.sanchez@chekin.com",""),AE("joan","Joan Herrera","joan.herrera@chekin.com","")];
+const DEFAULTS=()=>({
+  settings:{baseUrl:"",trial:"https://chekin.com/",web:"https://chekin.com/",linkedin:"https://www.linkedin.com/company/chekin",cal:"",deck:"",decks:{vacation:"",villa:"",hotel:"",camping:"",other:""}},
+  events:[{id:"scale-fest",name:"Scale Fest",from:"2026-10-24",to:"2026-10-25",loc:"World Trade Center, Barcelona",city:"Barcelona",archived:false,active:true,reps:[]}],
+  reps:TEAM(),
+  seeded:true,v:3,
+  activity:[],
+  leads:[]
+});
+const deriveCity=l=>{const p=String(l||"").split(",").map(s=>s.trim()).filter(Boolean);return p.length?p[p.length-1]:""};
+const uid=()=>"e"+Date.now().toString(36)+Math.random().toString(36).slice(2,5);
+function load(){
+  const b=DEFAULTS();
+  try{const d=JSON.parse(localStorage.getItem(KEY)||"null");if(d){
+    let events=d.events;const reps=d.reps||b.reps;
+    if(!events){const o=d.event||b.events[0];events=[{id:"evento-1",name:o.name||"",from:o.from||"",to:o.to||"",loc:o.loc||"",archived:false}];d.activeId="evento-1"}
+    /* migración: un único evento activo (activeId) -> varios con "active" y equipo "reps" */
+    events=events.map(e=>({archived:false,...e,auto:e.auto!==undefined?e.auto:false,time:e.time||"",city:e.city!==undefined?e.city:deriveCity(e.loc),active:e.active!==undefined?e.active:(!e.archived&&e.id===d.activeId),reps:e.reps||((e.id===d.activeId)?reps.map(r=>r.slug):[])}));
+    /* una única vez: añade los 6 comerciales en blanco que falten (si luego se borran, no vuelven) */
+    reps.forEach(r=>{if(r.roleEs==="Ejecutivo de Ventas")r.roleEs="Account Executive";if(r.roleEn==="Sales Executive")r.roleEn="Account Executive";if(/^Comercial \d$/.test(r.name))r.name=r.name.replace("Comercial","Account Executive")});
+    /* una única vez: fuera Alex y los perfiles en blanco (eran de prueba) y entran los 4 Account Executives */
+    let all=reps;
+    if(!d.v||d.v<2){
+      const gone=r=>r.slug==="alex"||(/^comercial-\d$/.test(r.slug)&&r.pending);
+      const goneSlugs=reps.filter(gone).map(r=>r.slug);
+      all=reps.filter(r=>!gone(r));
+      TEAM().forEach(t=>{if(!all.some(r=>r.slug===t.slug))all.push(t)});
+      events=events.map(e=>({...e,reps:(e.reps||[]).filter(s=>!goneSlugs.includes(s))}));
+    }
+    /* v3: entra Joan Herrera (si falta alguno del equipo, se añade sin tocar al resto) */
+    if(!d.v||d.v<3){all=[...all];TEAM().forEach(t=>{if(!all.some(r=>r.slug===t.slug))all.push(t)})}
+    return{settings:{...b.settings,...d.settings,decks:{...b.settings.decks,...Object.fromEntries(Object.entries((d.settings&&d.settings.decks)||{}).filter(([k,v])=>v&&!OLD_DECKS.includes(v)))}},events,reps:all,seeded:true,v:3,activity:d.activity||[],leads:d.leads||[]}}}catch(e){}
+  return b;
+}
+let DB=load();
+/* el evento de un comercial = el primer evento ACTIVO al que está asignado (o ninguno) */
+/* un evento está activo si lo está a mano, o —si es automático— si hoy cae dentro de sus fechas */
+const todayStr=()=>{const d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")};
+const addDays=(d,n)=>{const x=new Date(d+"T12:00");x.setDate(x.getDate()+n);return x.getFullYear()+"-"+String(x.getMonth()+1).padStart(2,"0")+"-"+String(x.getDate()).padStart(2,"0")};
+/* un evento automático se activa a las 00:00 de «días antes» (por defecto 1) y se apaga al pasar su último día */
+function evPhase(e){if(!e||!e.from)return"none";const t0=todayStr(),to=e.to||e.from,st=addDays(e.from,-(e.before??1));return t0<st?"soon":t0>to?"past":"now"}
+const evActive=e=>!!e&&!e.archived&&(e.auto?evPhase(e)==="now":!!e.active);
+const eventFor=rep=>DB.events.find(e=>evActive(e)&&(e.reps||[]).includes(rep.slug))||null;
+const leadNoEv=l=>!l.eventoId&&!l.evento;
+const leadInEv=(l,e)=>l.eventoId?l.eventoId===e.id:l.evento===e.name;
+/* Los leads solo los añaden las tarjetas de cliente; el panel nunca los pisa (salvo "Restablecer"). */
+function persist(opts={}){
+  try{if(!opts.leads){const s=JSON.parse(localStorage.getItem(KEY)||"null");if(s){if(s.leads)DB.leads=s.leads;if(s.activity)DB.activity=s.activity}}}catch(e){}
+  try{localStorage.setItem(KEY,JSON.stringify(DB))}catch(e){toast(t("storeFull"))}
+}
+
+/* ================================================================ i18n */
+const DICT={
+es:{
+ scan:"Escanéame",myData:"Tus datos",formSub:"Te preparo una demo a tu medida.",save:"Guardar contacto",book:"Agendar demo",web:"Web",event:"Evento",
+ fName:"Nombre",lName:"Apellido",email:"Email",phone:"Teléfono",pType:"Tipo de alojamiento",pPlace:"Selecciona",nProps:"Nº de propiedades o habitaciones",
+ typeLabels:["Apartamentos","Villas","Hoteles","Campings","Otro"],fields:"{n}/6 datos",ready:"6/6 · listo",send:"Enviar",err:"Faltan datos: necesitamos todos los campos (teléfono y email válidos).",
+ thanks:"Gracias, {n}",seg1:"Micro (1-2)",seg2:"Medio (3-10)",seg3:"Grande (+10)",
+ m1:"Mientras {r} te contacta, pruébalo tú mismo.",m2:"{r} te contactará muy pronto.",m2c:"Elige el momento que mejor te venga.",m3:"{r} te llamará para preparar una demo a medida.",
+ trial:"Empezar prueba gratis",site:"Ver la web de Chekin",bookDemo:"Agendar demo",trialShort:"Prueba gratis",trialMeanwhile:"Prueba gratis mientras tanto",met:"Conocido en ",
+ verbs:["Potencia","Monetiza","Automatiza"],tailA:"el check-in",tailB:"de tus huéspedes",notFound:"No encontramos esta tarjeta.",
+ adminTitle:"Chekin Connect",adminSub:"Sales Team · Cards, Events & Leads",tabTeam:"Account Executives",tabLeads:"Leads",presTitle:"Presentaciones por tipo de propiedad e idioma",presHint:"Aquí aparecen las presentaciones HTML que vamos subiendo. «Por completar» = aún no hay presentación; ese tipo solo se muestra al cliente cuando tiene alguna.",presView:"Ver",presSame:"Usa la misma que Apartamentos",presLang_es:"Español",presLang_en:"Inglés",presLang_it:"Italiano",presLang_pt:"Portugués",presLang_fr:"Francés",presLang_de:"Alemán",tabSet:"Presentaciones",
+ evTitle:"Evento activo",evName:"Nombre del evento",evFrom:"Desde",evTo:"Hasta",evLoc:"Lugar",evHint:"Sale en todas las tarjetas y QR del equipo.",
+ teamAddNote:"Las altas y bajas de Account Executives se hacen creando su cuenta con su email: avísanos y se hace.",fSlugFixed:"El enlace no se puede cambiar: es el que llevan los QR.",fRole:"Cargo",repsTitle:"Equipo de ventas",add:"+ Añadir Account Executive",openQR:"Su QR",openCard:"Tarjeta cliente",copyLink:"Copiar enlace",copied:"Enlace copiado",dlQR:"Descargar QR",edit:"Editar",
+ active:"Activo",inactive:"Inactivo",noReps:"Aún no hay Account Executives. Añade el primero.",
+ edNew:"Nuevo Account Executive",edEdit:"Editar Account Executive",fSlug:"Enlace (slug)",fSlugHint:"Su enlace será …?r=<slug>. Solo minúsculas, números y guiones.",fRoleEs:"Cargo (ES)",fRoleEn:"Cargo (EN)",fPhone:"Teléfono",fMail:"Email",fLinkedin:"LinkedIn personal",fCal:"Enlace de su calendario",fPhoto:"Foto de perfil",rmPhoto:"Quitar foto",
+ fActive:"Activo (su tarjeta y QR funcionan)",saveBtn:"Guardar",cancel:"Cancelar",del:"Eliminar",delConfirm:"¿Eliminar a {n}? Sus leads se conservan.",errName:"Pon un nombre.",errSlug:"El enlace solo admite minúsculas, números y guiones, y no puede repetirse.",
+ kLeads:"Leads",kQL:"SQL",kClicks:"Clics prueba",byRep:"Por Account Executive",rep:"Account Executive",exportCsv:"Exportar CSV",noLeads:"Aún no hay leads.",thLead:"Lead",thType:"Tipo · Nº",thEv:"Evento · Account Executive",thClick:"Clic",
+ setTitle:"Ajustes",sBase:"Dirección pública de la web",sBaseHint:"Ej. https://tarjeta.chekin.com. Los QR y enlaces apuntarán aquí. Vacío = la dirección actual.",
+ sTrial:"Enlace de prueba gratuita",sWeb:"Enlace de la web",sLinkedin:"LinkedIn de la empresa (por defecto)",sCal:"Calendario por defecto",
+ reset:"Restablecer datos de demo",resetConfirm:"Se borrarán Account Executives, evento y leads de esta demo. ¿Seguro?",
+ demoNote:"Eventos y equipo compartidos · base de datos Chekin Connect",storeFull:"No hay espacio: usa una foto más pequeña.",
+ saved:"Guardado",
+ tabWebinars:"Webinars",evAddW:"+ Añadir webinar",evNoActiveW:"Ningún webinar activo.",edNewWeb:"Nuevo webinar",edEditWeb:"Editar webinar",evLocW:"Plataforma o enlace (opcional)",allKindEvents:"Todos los eventos (presenciales)",allKindWebinars:"Todos los webinars",qTitle:"Leads",qLeads:"Leads",qDemos:"Demos",qProps:"Props. (media)",qFlag:"⚠ Revisar",qFew:"Pocos datos",qNone:"Aún no hay leads.",qTotal:"Total",qNote:"«Revisar» = por debajo del 70 % de la media del grupo en demos pedidas o en propiedades. Hace falta un mínimo de 5 leads.",tabEvents:"Eventos",meEvNow:"Evento actual: {n}",meEvNone:"Ahora mismo no tienes ningún evento asignado.",evSaveErr:"No se pudo guardar el evento. Revisa la conexión.",evLoadErr:"No se pudieron cargar los eventos.",evActiveLbl:"Evento activo",evActiveNote:"Es el que ven ahora todas las tarjetas y QR del equipo.",evAvail:"Disponibles",evArch:"Archivados",evAdd:"+ Añadir evento",evActivate:"Activar",evArchive:"Archivar",evRestore:"Restaurar",
+ edNewEv:"Nuevo evento",edEditEv:"Editar evento",evDelConfirm:"¿Eliminar el evento {n}? Sus leads se conservan.",evNeedName:"Pon un nombre al evento.",evActivated:"Evento activado: {n}",evNone:"No hay eventos disponibles.",
+ change:"Cambiar",leadTitle:"Déjame tus datos y te escribo",lfFirst:"Nombre",lfLast:"Apellido",lfPhone:"Teléfono",lfMail:"Email",lfProps:"Nº de propiedades",lfConsent:"Acepto que Chekin trate mis datos para contactarme sobre sus servicios, según su {p}.",lfPrivacy:"Política de Privacidad",lfErrName:"Escribe tu nombre y apellido.",lfErrPhone:"Escribe un teléfono válido.",lfErrMail:"Escribe un email válido.",lfErrProps:"Indica cuántas propiedades tienes (un número).",lfErrConsent:"Necesitamos tu consentimiento para continuar.",lfThanks:"Gracias, {n}",lfNoWA:"{r} aún no ha añadido su WhatsApp. Puedes escribirle por email.",lfYou:"Tus datos: {n}",lfSend:"Enviar mis datos",lfCal:"Ver calendario",whoAdmin:"Administrador · {e}",deckLeadTitle:"¿Quieres que te escriba?",deckLeadSub:"Déjame tus datos y {r} te cuenta cómo aplicarlo a tu negocio.",deckLeadBtn:"Enviar mis datos",deckLeadNo:"Ahora no",calSheetTitle:"Antes de elegir fecha",calSheetSub:"Déjame tus datos y {r} te espera en la demo. Solo una vez.",propOne:"1 propiedad",propMany:"{n} propiedades",msgWAL:"Hola {r}, soy {n}. Nos conocimos en el evento {w}. Tengo {p} y me gustaría hablar sobre Chekin. ¡Un saludo!",msgMailL:"Hola {r}, soy {n}. Nos conocimos en el evento {w}. Tengo {p} y me gustaría hablar sobre Chekin. Te escribo por email para que podamos estar en contacto. ¡Un saludo!",msgWALn:"Hola {r}, soy {n}. Vi tu tarjeta de Chekin. Tengo {p} y me gustaría hablar sobre Chekin. ¡Un saludo!",msgMailLn:"Hola {r}, soy {n}. Vi tu tarjeta de Chekin. Tengo {p} y me gustaría hablar sobre Chekin. Te escribo por email para que podamos estar en contacto. ¡Un saludo!",meTitle:"Mi perfil",meLoginSub:"Entra con tu email de Chekin",meEmail:"Email",mePass:"Contraseña",meSee:"Ver",meHide:"Ocultar",meEnter:"Entrar",meErrLogin:"Email o contraseña incorrectos.",meErrNet:"No hemos podido conectar. Revisa tu conexión e inténtalo de nuevo.",meErrServer:"Algo ha fallado. Inténtalo de nuevo en un momento.",meErrNoProfile:"Tu usuario no tiene perfil. Avisa a tu responsable de Growth.",meRetry:"Reintentar",meForgot:"¿Has olvidado tu contraseña? Pídele a tu responsable de Growth que la restablezca.",meNewTitle:"Elige tu contraseña",meNewSub:"Hola {n}, es tu primer acceso. Crea una contraseña solo tuya (mínimo 10 caracteres).",meNew:"Nueva contraseña",meNew2:"Repite la contraseña",meSavePw:"Guardar contraseña",meErrShort:"Usa al menos 10 caracteres.",meErrMatch:"Las contraseñas no coinciden.",meErrSame:"Elige una contraseña distinta de la actual.",meErrWeak:"Esa contraseña no es válida. Prueba con otra más larga.",mePwOk:"Contraseña actualizada.",mePhone:"Teléfono (con prefijo)",mePhoneHint:"Así te llegan los WhatsApp de los clientes. Ejemplo: +34 600 000 000.",meMail:"Email de contacto",meMailHint:"Es el que verán los clientes.",meCal:"Enlace de tu Calendly",meCalHint:"Pega tu enlace, por ejemplo https://calendly.com/tu-nombre. El botón «Agendar demo» de tu tarjeta abrirá tu calendario.",mePhoto:"Cambiar foto",mePhotoUp:"Subiendo foto…",mePhotoOk:"Foto actualizada.",mePhotoErr:"No se pudo subir la foto. Prueba con otra imagen.",meSaveProfile:"Guardar cambios",meSaved:"Guardado.",meErrPhone:"Escribe un teléfono válido con prefijo (por ejemplo +34 600 000 000).",meErrMail:"Escribe un email válido.",meErrCal:"Pega un enlace que empiece por https://",meCard:"Ver mi tarjeta",meQR:"Mi QR",meLeads:"Mis contactos",meNoLeads:"Todavía no tienes contactos. Cuando un cliente deje sus datos en tu tarjeta, aparecerán aquí.",mePwTitle:"Cambiar contraseña",meLogout:"Salir",meProps:"{n} propiedades",meAdminTitle:"Contactos del equipo",meCount:"{n} contactos",meAll:"Todos",meExport:"Descargar CSV",mePanel:"Abrir el panel",meTeam:"Perfiles del equipo",mePhoneS:"Teléfono",mePhotoS:"Foto",mePwPending:"Clave sin cambiar",meNoLeadsAdmin:"Todavía no hay contactos.",evTime:"Horario (opcional)",evTimeHint:"Para eventos de un día, por ejemplo 18:00–21:00. En ferias de varios días, déjalo vacío.",evMode:"Activación",evModeAuto:"Automática: se activa sola y se apaga al terminar",evBefore:"Activar antes",evBefore0:"El mismo día, a las 00:00",evBeforeN:"{n} {d} antes, a las 00:00",evDay:"día",evDays:"días",evBeforeHint:"Desde esa hora los QR de los AEs asignados ya muestran este evento. Se apaga solo al pasar su último día.",evModeOn:"Siempre activo",evModeOff:"Pausado",evAuto:"Automático",evStarts:"Empieza el {d}",evEnded:"Terminado",viewQR:"Ver QR",viewCard:"Ver tarjeta",more:"Más",inCity:" en {c}",evCity:"Ciudad",evCityHint:"Sale en el mensaje que se envía al Account Executive: «nos conocimos en el evento X en Barcelona».",msgWA:"Hola {r}, nos conocimos en el evento {w}. Te escribo por WhatsApp para que podamos estar en contacto. ¡Un saludo!",msgMail:"Hola {r}, nos conocimos en el evento {w}. Te escribo por email para que podamos estar en contacto. ¡Un saludo!",msgWAn:"Hola {r}, vi tu tarjeta de Chekin. Te escribo por WhatsApp para que podamos estar en contacto. ¡Un saludo!",msgMailn:"Hola {r}, vi tu tarjeta de Chekin. Te escribo por email para que podamos estar en contacto. ¡Un saludo!",subjEv:"Nos conocimos en {e}",subjN:"Encantado de conocerte",msgReady:"Ya va escrito, solo tienes que enviarlo:",backPanel:"Volver al panel",previewTitle:"Mira lo que ve cada uno",previewHint:"Elige un Account Executive y mira su pantalla de QR y la tarjeta que ve el cliente al escanearlo.",pvQR:"Pantalla de QR del Account Executive",pvCard:"Lo que ve el cliente",installTitle:"Ten tu QR a un toque",installSub:"Añádelo a la pantalla de inicio de tu móvil.",installHow:"Cómo",installAlt:"También puedes descargar el QR como imagen y guardarla en favoritos de tu galería: funciona sin cobertura.",
+ stepsIos:["Pulsa el botón Compartir (el cuadrado con una flecha).","Elige «Añadir a pantalla de inicio».","Pulsa «Añadir». Ya tienes el icono en tu móvil."],stepsAnd:["Pulsa el menú ⋮ del navegador.","Elige «Añadir a pantalla de inicio» o «Instalar app».","Confirma. Ya tienes el icono en tu móvil."],
+ dlQRBtn:"Descargar QR",seeCard:"Ver cómo lo ve el cliente",sendAccess:"Enviar acceso",accessSubj:"Tu QR de Chekin Connect",accessCopied:"Mensaje copiado: pégalo donde quieras",
+ accessMsg:"¡Hola {n}! Este es tu QR de Chekin Connect: {l}\n\nÁbrelo en tu móvil y añádelo a la pantalla de inicio (Compartir → Añadir a pantalla de inicio) para tenerlo siempre a un toque. Tus clientes podrán guardar tu contacto, escribirte por WhatsApp o email, ver la presentación y agendar una demo.",tabActivity:"Actividad",kOpens:"Aperturas",kSaves:"Guardados",kMsgs:"Mensajes",kDecks:"Presentaciones",kDemos:"Demos",kShares:"Compartidos",noActivity:"Aún no hay actividad.",byType:"Presentaciones por tipo de negocio",
+ oldLeads:"Leads antiguos del formulario",oldLeadsHint:"De versiones anteriores. La tarjeta ya no pide datos al cliente.",actNote:"Actividad anónima de las tarjetas, común a todo el equipo. No cuenta lo que hacéis vosotros con la sesión abierta.",
+ deckPick:"¿Qué tipo de alojamiento gestionas?",deckPickSub:"Te enseñamos lo que más te interesa.",deckSoon:"Próximamente",deckFor:"Chekin para {t}",deckBack:"Cambiar tipo",deckGo:"Ver presentación",
+ sDeckType:"Presentación · {t}",sDeckTypes:"Enlaces de presentación",sDeckTypesHint:"Opcional. Si lo dejas vacío, «Ver presentación» abre la presentación de Chekin de ese tipo, en el idioma de la tarjeta (o en inglés, o su página web si aún no existe).",copyLinkBtn:"Copiar enlace",shareBtn:"Compartir",shareText:"Tarjeta de {n} · Chekin Connect",deck:"Ver presentación",deckTitle:"Nuestras soluciones",deckSub:"Check-in rápido, legal y sin complicaciones para tu alojamiento.",
+ sol:["Envío a la policía","Check-in online","Acceso remoto con cerraduras inteligentes","Comunicación con tus huéspedes","Contratos personalizados"],deckOpen:"Abrir presentación (PDF)",
+ writeMe:"Escríbeme",noChannel:"Aún no hay teléfono ni email configurados para este Account Executive.",waMsg:"Hola {r}, vi tu tarjeta de Chekin y me gustaría saber más.",waMsgEv:"Hola {r}, te conocí en {e} y me gustaría saber más sobre Chekin.",mailSubj:"Quiero saber más sobre Chekin",
+ calSoon:"El calendario estará disponible muy pronto.",vcSaved:"Contacto listo para guardar",teamTitle:"Nuestro equipo de ventas",teamSub:"Conoce a las personas detrás de Chekin.",allTeam:"Todos",teamEmpty:"Aún no hay Account Executives publicados.",meetTeam:"Conoce al equipo",
+ teamPage:"Página pública del equipo",teamPageHint:"Cuadrícula con foto, nombre y cargo. Cada tarjeta lleva a su Account Executive. Los «por completar» no aparecen.",openTeam:"Ver página",sDeck:"Enlace de la presentación (PDF, opcional)",pending:"Por completar",noEvent:"Sin evento",evActives:"Activos",evInactive:"Inactivos",evTeam:"Equipo",evNoTeam:"Sin Account Executives asignados",evAssign:"Asignar",evDeactivate:"Desactivar",evPool:"Account Executives",evPoolHint:"Arrastra un Account Executive sobre un evento para asignarlo (o usa «Asignar»). Quita con la ×.",evAssignTitle:"Account Executives de {n}",evAlsoIn:"también en {n}",evNoActive:"Ningún evento activo.",conflict:"{n} está en {k} eventos activos ({list}). Se usa {first}.",evOf:"Evento",filterEv:"Evento",allEvents:"Todos los eventos",byEvent:"Por evento",thEvent:"Evento",evLeadsN:"{n} leads",activeNow:"Activo ahora"},
+en:{
+ scan:"Scan me",myData:"Your details",formSub:"I'll prepare a demo tailored to you.",save:"Save contact",book:"Book a demo",web:"Website",event:"Event",
+ fName:"First name",lName:"Last name",email:"Email",phone:"Phone",pType:"Property type",pPlace:"Please select",nProps:"Number of properties or rooms",
+ typeLabels:["Apartments","Villas","Hotels","Campsites","Other"],fields:"{n}/6 fields",ready:"6/6 · ready",send:"Send",err:"Missing info: we need every field (valid phone and email).",
+ thanks:"Thank you, {n}",seg1:"Micro (1-2)",seg2:"Mid (3-10)",seg3:"Large (+10)",
+ m1:"While {r} gets in touch, try it yourself.",m2:"{r} will contact you very soon.",m2c:"Pick the time that suits you best.",m3:"{r} will call you to prepare a tailored demo.",
+ trial:"Start free trial",site:"Visit Chekin's website",bookDemo:"Book a demo",trialShort:"Free trial",trialMeanwhile:"Free trial in the meantime",met:"Met at ",
+ verbs:["Boost","Monetize","Automate"],tailA:"your",tailB:"guests' check-in",notFound:"We couldn't find this card.",
+ adminTitle:"Chekin Connect",adminSub:"Sales Team · Cards, Events & Leads",tabTeam:"Account Executives",tabLeads:"Leads",presTitle:"Presentations by property type and language",presHint:"The HTML presentations we upload appear here. “To complete” = no presentation yet; a type is only shown to clients once it has one.",presView:"View",presSame:"Uses the same as Apartments",presLang_es:"Spanish",presLang_en:"English",presLang_it:"Italian",presLang_pt:"Portuguese",presLang_fr:"French",presLang_de:"German",tabSet:"Presentations",
+ evTitle:"Active event",evName:"Event name",evFrom:"From",evTo:"To",evLoc:"Venue",evHint:"Shown on every Account Executive's card and QR.",
+ teamAddNote:"New Account Executives are added by creating their account with their email: let us know and it gets done.",fSlugFixed:"The link cannot be changed: it is the one printed in the QR codes.",fRole:"Role",repsTitle:"Sales team",add:"+ Add Account Executive",openQR:"Their QR",openCard:"Client card",copyLink:"Copy link",copied:"Link copied",dlQR:"Download QR",edit:"Edit",
+ active:"Active",inactive:"Inactive",noReps:"No Account Executives yet. Add the first one.",
+ edNew:"New Account Executive",edEdit:"Edit Account Executive",fSlug:"Link (slug)",fSlugHint:"Their link will be …?r=<slug>. Lowercase, numbers and dashes only.",fRoleEs:"Role (ES)",fRoleEn:"Role (EN)",fPhone:"Phone",fMail:"Email",fLinkedin:"Personal LinkedIn",fCal:"Their calendar link",fPhoto:"Profile photo",rmPhoto:"Remove photo",
+ fActive:"Active (their card and QR work)",saveBtn:"Save",cancel:"Cancel",del:"Delete",delConfirm:"Delete {n}? Their leads are kept.",errName:"Enter a name.",errSlug:"The link only allows lowercase letters, numbers and dashes, and must be unique.",
+ kLeads:"Leads",kQL:"SQL",kClicks:"Trial clicks",byRep:"By Account Executive",rep:"Account Executive",exportCsv:"Export CSV",noLeads:"No leads yet.",thLead:"Lead",thType:"Type · No.",thEv:"Event · Account Executive",thClick:"Click",
+ setTitle:"Settings",sBase:"Public web address",sBaseHint:"E.g. https://card.chekin.com. QR codes and links will point here. Empty = current address.",
+ sTrial:"Free trial link",sWeb:"Website link",sLinkedin:"Company LinkedIn (default)",sCal:"Default calendar",
+ reset:"Reset demo data",resetConfirm:"This deletes the Account Executives, event and leads of this demo. Sure?",
+ demoNote:"Shared events and team · Chekin Connect database",storeFull:"Out of space: use a smaller photo.",
+ saved:"Saved",
+ tabWebinars:"Webinars",evAddW:"+ Add webinar",evNoActiveW:"No active webinars.",edNewWeb:"New webinar",edEditWeb:"Edit webinar",evLocW:"Platform or link (optional)",allKindEvents:"All events (in person)",allKindWebinars:"All webinars",qTitle:"Leads",qLeads:"Leads",qDemos:"Demos",qProps:"Props. (avg)",qFlag:"⚠ Review",qFew:"Little data",qNone:"No leads yet.",qTotal:"Total",qNote:"“Review” = below 70% of the group average for demo requests or properties. At least 5 leads are needed.",tabEvents:"Events",meEvNow:"Current event: {n}",meEvNone:"You have no event assigned right now.",evSaveErr:"The event could not be saved. Check your connection.",evLoadErr:"Events could not be loaded.",evActiveLbl:"Active event",evActiveNote:"This is the one every Account Executive's card and QR show right now.",evAvail:"Available",evArch:"Archived",evAdd:"+ Add event",evActivate:"Activate",evArchive:"Archive",evRestore:"Restore",
+ edNewEv:"New event",edEditEv:"Edit event",evDelConfirm:"Delete the event {n}? Its leads are kept.",evNeedName:"Enter an event name.",evActivated:"Event activated: {n}",evNone:"No events available.",
+ change:"Change",leadTitle:"Leave your details and I'll write to you",lfFirst:"First name",lfLast:"Last name",lfPhone:"Phone",lfMail:"Email",lfProps:"Number of properties",lfConsent:"I agree that Chekin processes my data to contact me about its services, as described in its {p}.",lfPrivacy:"Privacy Policy",lfErrName:"Enter your first and last name.",lfErrPhone:"Enter a valid phone number.",lfErrMail:"Enter a valid email.",lfErrProps:"Enter how many properties you have (a number).",lfErrConsent:"We need your consent to continue.",lfThanks:"Thank you, {n}",lfNoWA:"{r} hasn't added a WhatsApp number yet. You can write by email.",lfYou:"Your details: {n}",lfSend:"Send my details",lfCal:"See calendar",whoAdmin:"Admin · {e}",deckLeadTitle:"Want me to get in touch?",deckLeadSub:"Leave your details and {r} will explain how to apply it to your business.",deckLeadBtn:"Send my details",deckLeadNo:"Not now",calSheetTitle:"Before you pick a date",calSheetSub:"Leave your details and {r} will be ready for the demo. Just once.",propOne:"1 property",propMany:"{n} properties",msgWAL:"Hi {r}, I'm {n}. We met at {w}. I have {p} and I'd like to talk about Chekin. Best regards!",msgMailL:"Hi {r}, I'm {n}. We met at {w}. I have {p} and I'd like to talk about Chekin. I'm writing by email so we can stay in touch. Best regards!",msgWALn:"Hi {r}, I'm {n}. I saw your Chekin card. I have {p} and I'd like to talk about Chekin. Best regards!",msgMailLn:"Hi {r}, I'm {n}. I saw your Chekin card. I have {p} and I'd like to talk about Chekin. I'm writing by email so we can stay in touch. Best regards!",meTitle:"My profile",meLoginSub:"Sign in with your Chekin email",meEmail:"Email",mePass:"Password",meSee:"Show",meHide:"Hide",meEnter:"Sign in",meErrLogin:"Wrong email or password.",meErrNet:"We couldn't connect. Check your connection and try again.",meErrServer:"Something went wrong. Try again in a moment.",meErrNoProfile:"Your user has no profile. Tell your Growth lead.",meRetry:"Retry",meForgot:"Forgot your password? Ask your Growth lead to reset it.",meNewTitle:"Choose your password",meNewSub:"Hi {n}, this is your first sign-in. Create a password of your own (at least 10 characters).",meNew:"New password",meNew2:"Repeat the password",meSavePw:"Save password",meErrShort:"Use at least 10 characters.",meErrMatch:"The passwords don't match.",meErrSame:"Choose a password different from the current one.",meErrWeak:"That password isn't valid. Try a longer one.",mePwOk:"Password updated.",mePhone:"Phone (with country code)",mePhoneHint:"This is where clients' WhatsApp messages arrive. Example: +34 600 000 000.",meMail:"Contact email",meMailHint:"This is the one clients will see.",meCal:"Your Calendly link",meCalHint:"Paste your link, e.g. https://calendly.com/your-name. The “Book a demo” button on your card will open your calendar.",mePhoto:"Change photo",mePhotoUp:"Uploading photo…",mePhotoOk:"Photo updated.",mePhotoErr:"The photo couldn't be uploaded. Try another image.",meSaveProfile:"Save changes",meSaved:"Saved.",meErrPhone:"Enter a valid phone with country code (e.g. +34 600 000 000).",meErrMail:"Enter a valid email.",meErrCal:"Paste a link that starts with https://",meCard:"View my card",meQR:"My QR",meLeads:"My contacts",meNoLeads:"You have no contacts yet. When a client leaves their details on your card, they'll show up here.",mePwTitle:"Change password",meLogout:"Sign out",meProps:"{n} properties",meAdminTitle:"Team contacts",meCount:"{n} contacts",meAll:"All",meExport:"Download CSV",mePanel:"Open the panel",meTeam:"Team profiles",mePhoneS:"Phone",mePhotoS:"Photo",mePwPending:"Password not changed",meNoLeadsAdmin:"No contacts yet.",evTime:"Hours (optional)",evTimeHint:"For one-day events, e.g. 18:00–21:00. For multi-day fairs, leave it empty.",evMode:"Activation",evModeAuto:"Automatic: turns on by itself and off when it ends",evBefore:"Turn on",evBefore0:"The same day, at 00:00",evBeforeN:"{n} {d} before, at 00:00",evDay:"day",evDays:"days",evBeforeHint:"From that time the assigned AEs' QR codes already show this event. It turns off by itself after its last day.",evModeOn:"Always on",evModeOff:"Paused",evAuto:"Automatic",evStarts:"Starts {d}",evEnded:"Ended",viewQR:"View QR",viewCard:"View card",more:"More",inCity:" in {c}",evCity:"City",evCityHint:"Used in the message sent to the Account Executive: “we met at event X in Barcelona”.",msgWA:"Hi {r}, we met at {w}. I'm writing to you on WhatsApp so we can stay in touch. Best regards!",msgMail:"Hi {r}, we met at {w}. I'm writing to you by email so we can stay in touch. Best regards!",msgWAn:"Hi {r}, I saw your Chekin card. I'm writing to you on WhatsApp so we can stay in touch. Best regards!",msgMailn:"Hi {r}, I saw your Chekin card. I'm writing to you by email so we can stay in touch. Best regards!",subjEv:"We met at {e}",subjN:"Nice to meet you",msgReady:"It's already written, just send it:",backPanel:"Back to panel",previewTitle:"See what each person sees",previewHint:"Pick an Account Executive and see their QR screen and the card the client sees after scanning.",pvQR:"Account Executive's QR screen",pvCard:"What the client sees",installTitle:"Keep your QR one tap away",installSub:"Add it to your phone's home screen.",installHow:"How",installAlt:"You can also download the QR as an image and keep it in your gallery favourites: it works without signal.",
+ stepsIos:["Tap the Share button (the square with an arrow).","Choose “Add to Home Screen”.","Tap “Add”. The icon is now on your phone."],stepsAnd:["Tap the browser's ⋮ menu.","Choose “Add to Home screen” or “Install app”.","Confirm. The icon is now on your phone."],
+ dlQRBtn:"Download QR",seeCard:"See what the client sees",sendAccess:"Send access",accessSubj:"Your Chekin Connect QR",accessCopied:"Message copied: paste it anywhere",
+ accessMsg:"Hi {n}! This is your Chekin Connect QR: {l}\n\nOpen it on your phone and add it to your home screen (Share → Add to Home Screen) to keep it one tap away. Your clients can save your contact, message you on WhatsApp or email, view the presentation and book a demo.",tabActivity:"Activity",kOpens:"Opens",kSaves:"Saved",kMsgs:"Messages",kDecks:"Presentations",kDemos:"Demos",kShares:"Shares",noActivity:"No activity yet.",byType:"Presentations by business type",
+ oldLeads:"Old form leads",oldLeadsHint:"From earlier versions. The card no longer asks the client for data.",actNote:"Anonymous card activity, shared by the whole team. It does not count what you do while signed in.",
+ deckPick:"What type of property do you manage?",deckPickSub:"We'll show you what matters most to you.",deckSoon:"Coming soon",deckFor:"Chekin for {t}",deckBack:"Change type",deckGo:"View presentation",
+ sDeckType:"Presentation · {t}",sDeckTypes:"Presentation links",sDeckTypesHint:"Optional. If left empty, “View presentation” opens Chekin's presentation for that type, in the card's language (or English, or its web page if none exists yet).",copyLinkBtn:"Copy link",shareBtn:"Share",shareText:"{n}'s card · Chekin Connect",deck:"View presentation",deckTitle:"Our solutions",deckSub:"Fast, legal, hassle-free check-in for your property.",
+ sol:["Police reporting","Online check-in","Remote access with smart locks","Guest communication","Custom contracts"],deckOpen:"Open presentation (PDF)",
+ writeMe:"Message me",noChannel:"No phone or email has been set up for this Account Executive yet.",waMsg:"Hi {r}, I saw your Chekin card and I'd like to know more.",waMsgEv:"Hi {r}, we met at {e} and I'd like to know more about Chekin.",mailSubj:"I'd like to know more about Chekin",
+ calSoon:"The calendar will be available very soon.",vcSaved:"Contact ready to save",teamTitle:"Our sales team",teamSub:"Meet the people behind Chekin.",allTeam:"All",teamEmpty:"No Account Executives published yet.",meetTeam:"Meet the team",
+ teamPage:"Public team page",teamPageHint:"Grid with photo, name and role. Each card leads to that Account Executive. Account Executives marked “to complete” are hidden.",openTeam:"View page",sDeck:"Presentation link (PDF, optional)",pending:"To complete",noEvent:"No event",evActives:"Active",evInactive:"Inactive",evTeam:"Team",evNoTeam:"No Account Executives assigned",evAssign:"Assign",evDeactivate:"Deactivate",evPool:"Account Executives",evPoolHint:"Drag an Account Executive onto an event to assign them (or use “Assign”). Remove with the ×.",evAssignTitle:"Account Executives for {n}",evAlsoIn:"also in {n}",evNoActive:"No active events.",conflict:"{n} is in {k} active events ({list}). {first} is used.",evOf:"Event",filterEv:"Event",allEvents:"All events",byEvent:"By event",thEvent:"Event",evLeadsN:"{n} leads",activeNow:"Active now"},
+it:{book:"Prenota una demo",calSheetSub:"Lasciami i tuoi dati e {r} ti aspetta alla demo. Solo una volta.",calSheetTitle:"Prima di scegliere la data",calSoon:"Il calendario sarà disponibile a breve.",change:"Cambia",deck:"Vedi la presentazione",deckLeadBtn:"Invia i miei dati",deckLeadNo:"Non ora",deckLeadSub:"Lasciami i tuoi dati e {r} ti spiegherà come applicarlo alla tua attività.",deckLeadTitle:"Vuoi che ti scriva?",deckPick:"Che tipo di struttura gestisci?",deckPickSub:"Ti mostriamo ciò che ti interessa di più.",deckSoon:"In arrivo",inCity:" a {c}",leadTitle:"Lasciami i tuoi dati e ti scrivo",lfCal:"Vedi il calendario",lfConsent:"Accetto che Chekin tratti i miei dati per contattarmi sui suoi servizi, secondo la {p}.",lfFirst:"Nome",lfLast:"Cognome",lfMail:"Email",lfNoWA:"{r} non ha ancora aggiunto un numero WhatsApp. Puoi scrivere via email.",lfPhone:"Telefono",lfPrivacy:"Informativa sulla privacy",lfProps:"N. di strutture o camere",lfSend:"Invia i miei dati",lfThanks:"Grazie, {n}",lfYou:"I tuoi dati: {n}",met:"Conosciuti a ",msgMail:"Ciao {r}, ci siamo conosciuti all'evento {w}. Ti scrivo via email per restare in contatto. A presto!",msgMailL:"Ciao {r}, sono {n}. Ci siamo conosciuti all'evento {w}. Ho {p} e vorrei parlare di Chekin. Ti scrivo via email per restare in contatto. A presto!",msgMailLn:"Ciao {r}, sono {n}. Ho visto il tuo biglietto da visita Chekin. Ho {p} e vorrei parlare di Chekin. Ti scrivo via email per restare in contatto. A presto!",msgMailn:"Ciao {r}, ho visto il tuo biglietto da visita Chekin. Ti scrivo via email per restare in contatto. A presto!",msgReady:"È già scritto, devi solo inviarlo:",msgWA:"Ciao {r}, ci siamo conosciuti all'evento {w}. Ti scrivo su WhatsApp per restare in contatto. A presto!",msgWAL:"Ciao {r}, sono {n}. Ci siamo conosciuti all'evento {w}. Ho {p} e vorrei parlare di Chekin. A presto!",msgWALn:"Ciao {r}, sono {n}. Ho visto il tuo biglietto da visita Chekin. Ho {p} e vorrei parlare di Chekin. A presto!",msgWAn:"Ciao {r}, ho visto il tuo biglietto da visita Chekin. Ti scrivo su WhatsApp per restare in contatto. A presto!",noChannel:"Per questo Account Executive non sono ancora stati configurati telefono o email.",notFound:"Non abbiamo trovato questo biglietto.",propMany:"{n} strutture",propOne:"1 struttura",save:"Salva il contatto",subjEv:"Ci siamo conosciuti a {e}",subjN:"Piacere di conoscerti",tailA:"il check-in",tailB:"dei tuoi ospiti",vcSaved:"Contatto pronto da salvare",writeMe:"Scrivimi",lfErrName:"Scrivi il tuo nome e cognome.",lfErrPhone:"Scrivi un numero di telefono valido.",lfErrMail:"Scrivi un'email valida.",lfErrProps:"Indica quante strutture hai (un numero).",lfErrConsent:"Abbiamo bisogno del tuo consenso per continuare.",typeLabels:["Appartamenti", "Ville", "Hotel", "Campeggi", "Altro"],verbs:["Potenzia", "Monetizza", "Automatizza"]},
+pt:{book:"Marcar uma demo",calSheetSub:"Deixe-me os seus dados e {r} espera por si na demo. Só uma vez.",calSheetTitle:"Antes de escolher a data",calSoon:"O calendário estará disponível muito em breve.",change:"Alterar",deck:"Ver apresentação",deckLeadBtn:"Enviar os meus dados",deckLeadNo:"Agora não",deckLeadSub:"Deixe-me os seus dados e {r} explica-lhe como aplicar isto ao seu negócio.",deckLeadTitle:"Quer que lhe escreva?",deckPick:"Que tipo de alojamento gere?",deckPickSub:"Mostramos-lhe o que mais lhe interessa.",deckSoon:"Em breve",inCity:" em {c}",leadTitle:"Deixe-me os seus dados e escrevo-lhe",lfCal:"Ver calendário",lfConsent:"Aceito que a Chekin trate os meus dados para me contactar sobre os seus serviços, de acordo com a sua {p}.",lfFirst:"Nome",lfLast:"Apelido",lfMail:"Email",lfNoWA:"{r} ainda não adicionou o WhatsApp. Pode escrever por email.",lfPhone:"Telefone",lfPrivacy:"Política de Privacidade",lfProps:"N.º de alojamentos ou quartos",lfSend:"Enviar os meus dados",lfThanks:"Obrigado, {n}",lfYou:"Os seus dados: {n}",met:"Conhecido em ",msgMail:"Olá {r}, conhecemo-nos no evento {w}. Escrevo-lhe por email para mantermos o contacto. Cumprimentos!",msgMailL:"Olá {r}, sou {n}. Conhecemo-nos no evento {w}. Tenho {p} e gostava de falar sobre a Chekin. Escrevo-lhe por email para mantermos o contacto. Cumprimentos!",msgMailLn:"Olá {r}, sou {n}. Vi o seu cartão da Chekin. Tenho {p} e gostava de falar sobre a Chekin. Escrevo-lhe por email para mantermos o contacto. Cumprimentos!",msgMailn:"Olá {r}, vi o seu cartão da Chekin. Escrevo-lhe por email para mantermos o contacto. Cumprimentos!",msgReady:"Já está escrito, só tem de o enviar:",msgWA:"Olá {r}, conhecemo-nos no evento {w}. Escrevo-lhe por WhatsApp para mantermos o contacto. Cumprimentos!",msgWAL:"Olá {r}, sou {n}. Conhecemo-nos no evento {w}. Tenho {p} e gostava de falar sobre a Chekin. Cumprimentos!",msgWALn:"Olá {r}, sou {n}. Vi o seu cartão da Chekin. Tenho {p} e gostava de falar sobre a Chekin. Cumprimentos!",msgWAn:"Olá {r}, vi o seu cartão da Chekin. Escrevo-lhe por WhatsApp para mantermos o contacto. Cumprimentos!",noChannel:"Ainda não há telefone nem email configurados para este Account Executive.",notFound:"Não encontrámos este cartão.",propMany:"{n} alojamentos",propOne:"1 alojamento",save:"Guardar contacto",subjEv:"Conhecemo-nos em {e}",subjN:"Prazer em conhecê-lo",tailA:"o check-in",tailB:"dos seus hóspedes",vcSaved:"Contacto pronto a guardar",writeMe:"Escreva-me",lfErrName:"Escreva o seu nome e apelido.",lfErrPhone:"Escreva um telefone válido.",lfErrMail:"Escreva um email válido.",lfErrProps:"Indique quantos alojamentos tem (um número).",lfErrConsent:"Precisamos do seu consentimento para continuar.",typeLabels:["Apartamentos", "Moradias", "Hotéis", "Campings", "Outro"],verbs:["Potencie", "Monetize", "Automatize"]},
+fr:{book:"Réserver une démo",calSheetSub:"Laissez-moi vos coordonnées et {r} vous attend pour la démo. Une seule fois.",calSheetTitle:"Avant de choisir une date",calSoon:"Le calendrier sera bientôt disponible.",change:"Modifier",deck:"Voir la présentation",deckLeadBtn:"Envoyer mes coordonnées",deckLeadNo:"Pas maintenant",deckLeadSub:"Laissez-moi vos coordonnées et {r} vous expliquera comment l'appliquer à votre activité.",deckLeadTitle:"Souhaitez-vous que je vous écrive ?",deckPick:"Quel type d'hébergement gérez-vous ?",deckPickSub:"Nous vous montrons ce qui vous intéresse le plus.",deckSoon:"Bientôt",inCity:" à {c}",leadTitle:"Laissez-moi vos coordonnées et je vous écris",lfCal:"Voir le calendrier",lfConsent:"J'accepte que Chekin traite mes données pour me contacter au sujet de ses services, conformément à sa {p}.",lfFirst:"Prénom",lfLast:"Nom",lfMail:"Email",lfNoWA:"{r} n'a pas encore ajouté son WhatsApp. Vous pouvez écrire par email.",lfPhone:"Téléphone",lfPrivacy:"Politique de confidentialité",lfProps:"Nb d'hébergements ou de chambres",lfSend:"Envoyer mes coordonnées",lfThanks:"Merci, {n}",lfYou:"Vos coordonnées : {n}",met:"Rencontré à ",msgMail:"Bonjour {r}, nous nous sommes rencontrés lors de l'événement {w}. Je vous écris par email pour que nous restions en contact. Cordialement !",msgMailL:"Bonjour {r}, je suis {n}. Nous nous sommes rencontrés lors de l'événement {w}. J'ai {p} et j'aimerais parler de Chekin. Je vous écris par email pour que nous restions en contact. Cordialement !",msgMailLn:"Bonjour {r}, je suis {n}. J'ai vu votre carte Chekin. J'ai {p} et j'aimerais parler de Chekin. Je vous écris par email pour que nous restions en contact. Cordialement !",msgMailn:"Bonjour {r}, j'ai vu votre carte Chekin. Je vous écris par email pour que nous restions en contact. Cordialement !",msgReady:"C'est déjà écrit, il ne reste qu'à l'envoyer :",msgWA:"Bonjour {r}, nous nous sommes rencontrés lors de l'événement {w}. Je vous écris par WhatsApp pour que nous restions en contact. Cordialement !",msgWAL:"Bonjour {r}, je suis {n}. Nous nous sommes rencontrés lors de l'événement {w}. J'ai {p} et j'aimerais parler de Chekin. Cordialement !",msgWALn:"Bonjour {r}, je suis {n}. J'ai vu votre carte Chekin. J'ai {p} et j'aimerais parler de Chekin. Cordialement !",msgWAn:"Bonjour {r}, j'ai vu votre carte Chekin. Je vous écris par WhatsApp pour que nous restions en contact. Cordialement !",noChannel:"Aucun téléphone ni email n'est encore configuré pour cet Account Executive.",notFound:"Nous n'avons pas trouvé cette carte.",propMany:"{n} hébergements",propOne:"1 hébergement",save:"Enregistrer le contact",subjEv:"Nous nous sommes rencontrés à {e}",subjN:"Ravi de vous avoir rencontré",tailA:"le check-in",tailB:"de vos clients",vcSaved:"Contact prêt à enregistrer",writeMe:"Écrivez-moi",lfErrName:"Saisissez votre prénom et votre nom.",lfErrPhone:"Saisissez un numéro de téléphone valide.",lfErrMail:"Saisissez un email valide.",lfErrProps:"Indiquez combien d'hébergements vous avez (un nombre).",lfErrConsent:"Nous avons besoin de votre consentement pour continuer.",typeLabels:["Appartements", "Villas", "Hôtels", "Campings", "Autre"],verbs:["Boostez", "Monétisez", "Automatisez"]},
+de:{book:"Demo buchen",calSheetSub:"Hinterlassen Sie Ihre Daten, dann erwartet {r} Sie bei der Demo. Nur einmal.",calSheetTitle:"Bevor Sie einen Termin wählen",calSoon:"Der Kalender ist in Kürze verfügbar.",change:"Ändern",deck:"Präsentation ansehen",deckLeadBtn:"Meine Daten senden",deckLeadNo:"Jetzt nicht",deckLeadSub:"Hinterlassen Sie Ihre Daten, dann erklärt Ihnen {r}, wie Sie das in Ihrem Betrieb nutzen können.",deckLeadTitle:"Soll ich mich bei Ihnen melden?",deckPick:"Welche Art von Unterkunft betreiben Sie?",deckPickSub:"Wir zeigen Ihnen, was Sie am meisten interessiert.",deckSoon:"Demnächst",inCity:" in {c}",leadTitle:"Hinterlassen Sie Ihre Daten, dann schreibe ich Ihnen",lfCal:"Kalender ansehen",lfConsent:"Ich bin damit einverstanden, dass Chekin meine Daten verarbeitet, um mich zu seinen Diensten zu kontaktieren, gemäß der {p}.",lfFirst:"Vorname",lfLast:"Nachname",lfMail:"E-Mail",lfNoWA:"{r} hat noch keine WhatsApp-Nummer hinterlegt. Sie können per E-Mail schreiben.",lfPhone:"Telefon",lfPrivacy:"Datenschutzerklärung",lfProps:"Anzahl Unterkünfte oder Zimmer",lfSend:"Meine Daten senden",lfThanks:"Danke, {n}",lfYou:"Ihre Daten: {n}",met:"Kennengelernt bei ",msgMail:"Hallo {r}, wir haben uns bei der Veranstaltung {w} kennengelernt. Ich schreibe Ihnen per E-Mail, damit wir in Kontakt bleiben. Viele Grüße!",msgMailL:"Hallo {r}, ich bin {n}. Wir haben uns bei der Veranstaltung {w} kennengelernt. Ich habe {p} und würde gern über Chekin sprechen. Ich schreibe Ihnen per E-Mail, damit wir in Kontakt bleiben. Viele Grüße!",msgMailLn:"Hallo {r}, ich bin {n}. Ich habe Ihre Chekin-Karte gesehen. Ich habe {p} und würde gern über Chekin sprechen. Ich schreibe Ihnen per E-Mail, damit wir in Kontakt bleiben. Viele Grüße!",msgMailn:"Hallo {r}, ich habe Ihre Chekin-Karte gesehen. Ich schreibe Ihnen per E-Mail, damit wir in Kontakt bleiben. Viele Grüße!",msgReady:"Es ist schon geschrieben, Sie müssen es nur noch senden:",msgWA:"Hallo {r}, wir haben uns bei der Veranstaltung {w} kennengelernt. Ich schreibe Ihnen per WhatsApp, damit wir in Kontakt bleiben. Viele Grüße!",msgWAL:"Hallo {r}, ich bin {n}. Wir haben uns bei der Veranstaltung {w} kennengelernt. Ich habe {p} und würde gern über Chekin sprechen. Viele Grüße!",msgWALn:"Hallo {r}, ich bin {n}. Ich habe Ihre Chekin-Karte gesehen. Ich habe {p} und würde gern über Chekin sprechen. Viele Grüße!",msgWAn:"Hallo {r}, ich habe Ihre Chekin-Karte gesehen. Ich schreibe Ihnen per WhatsApp, damit wir in Kontakt bleiben. Viele Grüße!",noChannel:"Für diesen Account Executive sind noch kein Telefon und keine E-Mail hinterlegt.",notFound:"Wir haben diese Karte nicht gefunden.",propMany:"{n} Unterkünfte",propOne:"1 Unterkunft",save:"Kontakt speichern",subjEv:"Wir haben uns bei {e} kennengelernt",subjN:"Schön, Sie kennengelernt zu haben",tailA:"den Check-in",tailB:"Ihrer Gäste",vcSaved:"Kontakt bereit zum Speichern",writeMe:"Schreiben Sie mir",lfErrName:"Geben Sie Ihren Vor- und Nachnamen ein.",lfErrPhone:"Geben Sie eine gültige Telefonnummer ein.",lfErrMail:"Geben Sie eine gültige E-Mail-Adresse ein.",lfErrProps:"Geben Sie an, wie viele Unterkünfte Sie haben (eine Zahl).",lfErrConsent:"Wir benötigen Ihre Einwilligung, um fortzufahren.",typeLabels:["Apartments", "Villen", "Hotels", "Campingplätze", "Andere"],verbs:["Steigern", "Monetarisieren", "Automatisieren"]}
+};
+const TYPES=["vacation","villa","hotel","camping","other"];   /* = apartamentos, villas, hoteles, campings, otro (las secciones de chekin.com) */
+const PREFIXES=[["ES","+34"],["PT","+351"],["FR","+33"],["IT","+39"],["DE","+49"],["UK","+44"],["US","+1"],["MX","+52"],["AR","+54"],["CO","+57"],["CL","+56"]];
+
+/* ================================================================ utilidades */
+const $=(s,r=document)=>r.querySelector(s);
+const $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+let params=new URLSearchParams(location.search);
+if(/\/mi-perfil\/?$/.test(location.pathname))params.set("me","1");
+const LANGS=["es","en","it","pt","fr","de"],LANG_NAMES={es:"Español",en:"English",it:"Italiano",pt:"Português",fr:"Français",de:"Deutsch"};
+/* idioma: el elegido a mano > el del móvil (es / it / en) > inglés. Nadie tiene que elegirlo si su móvil ya está en uno de ellos. */
+let LANG=(()=>{
+  const ok=l=>LANGS.includes(l)?l:null;
+  let l=ok(params.get("lang"));if(l)return l;
+  try{l=ok(localStorage.getItem("chekin-cards-lang"));if(l)return l}catch(e){}
+  for(const x of (navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||"es"])){const c=String(x).toLowerCase().slice(0,2);if(ok(c))return c}
+  return "en";
+})();
+if(!DICT[LANG])LANG="es";
+const t=(k,v={})=>String((DICT[LANG][k]??DICT.en[k]??k)).replace(/\{(\w+)\}/g,(_,x)=>v[x]??"");
+const langSel=(cls="")=>`<div class="langSel ${cls}"><button type="button" class="ls-cur" aria-haspopup="true" aria-expanded="false" aria-label="Language">${LANG.toUpperCase()}<svg width="9" height="9" viewBox="0 0 10 10" aria-hidden="true"><path d="M1.5 3.5 5 7l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="ls-menu" hidden>${LANGS.map(l=>`<button type="button" data-lang="${l}" class="${l===LANG?"on":""}"><span>${LANG_NAMES[l]}</span><small>${l.toUpperCase()}</small></button>`).join("")}</div></div>`;
+const closeLangMenus=()=>$$(".ls-menu").forEach(m=>{m.hidden=true;const c=m.previousElementSibling;if(c)c.setAttribute("aria-expanded","false")});
+const bindLang=()=>$$(".langSel").forEach(w=>{
+  const cur=$(".ls-cur",w),menu=$(".ls-menu",w);
+  cur.onclick=e=>{e.stopPropagation();const open=menu.hidden;closeLangMenus();menu.hidden=!open;cur.setAttribute("aria-expanded",String(open))};
+  $$("[data-lang]",w).forEach(b=>b.onclick=()=>setLang(b.dataset.lang));
+});
+document.addEventListener("click",closeLangMenus);
+function setLang(l){LANG=l;try{localStorage.setItem("chekin-cards-lang",l)}catch(e){}route()}
+const isMail=v=>/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v||"");
+const slugify=s=>String(s).normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"");
+const roleOf=r=>(LANG==="es"?(r.roleEs||r.roleEn):(r.roleEn||r.roleEs))||"";
+const initial=r=>(r.name||"?").trim().charAt(0).toUpperCase();
+const AVATAR=`<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#DCE5FF"/><stop offset="1" stop-color="#B7C7FF"/></linearGradient></defs><rect width="120" height="120" fill="url(#g)"/><path d="M14 120c2-26 20-38 46-38s44 12 46 38z" fill="#19194B"/><path d="M48 82l12 14 12-14z" fill="#fff"/><rect x="52" y="66" width="16" height="18" rx="6" fill="#E9B896"/><ellipse cx="60" cy="50" rx="19" ry="22" fill="#F2C7A5"/><path d="M40 47c-2-17 9-26 21-26 13 0 22 9 19 26-3-7-7-11-12-12-7 4-19 4-28 12z" fill="#2B2230"/></svg>`;
+function fmtDates(ev){
+  if(!ev||!ev.from)return"";
+  const loc={es:"es-ES",it:"it-IT",pt:"pt-PT",fr:"fr-FR",de:"de-DE"}[LANG]||"en-GB",o={day:"numeric",month:"short",year:"numeric"},d1=new Date(ev.from+"T12:00"),d2=ev.to?new Date(ev.to+"T12:00"):null;
+  if(!d2||ev.to===ev.from)return d1.toLocaleDateString(loc,o);
+  const same=d1.getMonth()===d2.getMonth()&&d1.getFullYear()===d2.getFullYear();
+  return same?`${d1.getDate()}-${d2.toLocaleDateString(loc,o)}`:`${d1.toLocaleDateString(loc,o)} – ${d2.toLocaleDateString(loc,o)}`;
+}
+const teamLink=()=>baseUrl()+"?team=1";
+/* Actividad anónima: una línea por acción (abrir, guardar, WhatsApp, email, presentación, demo, compartir) */
+const ACT_Q="chekin-act-queue";
+let _fa=false;
+async function flushAct(){
+  if(_fa)return;_fa=true;
+  try{
+    let q=[];try{q=JSON.parse(localStorage.getItem(ACT_Q)||"[]")}catch(e){}
+    const rest=[];
+    for(const p of q){try{await sb.req("/rest/v1/rpc/track_activity",{method:"POST",body:p,keepalive:true})}catch(e){if(!(e.status>=400&&e.status<500&&e.status!==429))rest.push(p)}}
+    try{localStorage.setItem(ACT_Q,JSON.stringify(rest))}catch(e){}
+  }finally{_fa=false}
+}
+/* actividad anónima de las tarjetas, guardada en la base común. No cuenta lo que hace el equipo con su sesión abierta (pruebas, vista previa). */
+function track(action,rep,ev,extra){
+  try{
+    if(sb.session()||(typeof fromAdmin!=="undefined"&&fromAdmin))return;
+    let q=[];try{q=JSON.parse(localStorage.getItem(ACT_Q)||"[]")}catch(e){}
+    q.push({p_slug:rep.slug,p_action:action,p_event_id:ev?ev.id:"",p_extra:extra||""});
+    try{localStorage.setItem(ACT_Q,JSON.stringify(q.slice(-50)))}catch(e){}
+    flushAct();
+  }catch(e){}
+}
+/* Acceso fácil del comercial: su QR a un toque desde la pantalla de inicio del móvil */
+function installHint(rep){
+  const meta=document.querySelector('meta[name="apple-mobile-web-app-title"]');if(meta)meta.content="QR "+rep.name.split(" ")[0];
+  const standalone=matchMedia("(display-mode: standalone)").matches||navigator.standalone;
+  let dismissed=false;try{dismissed=localStorage.getItem("chekin-install-hint")==="1"}catch(e){}
+  const el=$("#hint");if(!el||standalone||dismissed)return;
+  el.innerHTML=`<div class="ihint"><div><b>${t("installTitle")}</b><span>${t("installSub")}</span></div><button class="wbtn sm" id="ihow">${t("installHow")}</button><button class="ix" id="iclose" aria-label="close">×</button></div>`;
+  $("#iclose").onclick=()=>{try{localStorage.setItem("chekin-install-hint","1")}catch(e){}el.innerHTML=""};
+  $("#ihow").onclick=()=>{
+    const ios=/iPhone|iPad|iPod/i.test(navigator.userAgent),steps=DICT[LANG][ios?"stepsIos":"stepsAnd"];
+    const m=document.createElement("div");m.className="modal";
+    m.innerHTML=`<div class="sheet"><div class="grab"></div><button class="x" id="sx" aria-label="close">×</button><h2>${t("installTitle")}</h2>
+      <p class="hint" style="margin:0 0 8px">${ios?"iPhone · Safari":"Android · Chrome"}</p>
+      <ol class="steps">${steps.map(s=>`<li>${esc(s)}</li>`).join("")}</ol>
+      <p class="hint" style="margin-top:12px">${t("installAlt")}</p></div>`;
+    document.body.appendChild(m);const close=()=>m.remove();
+    m.addEventListener("click",e=>{if(e.target===m)close()});$("#sx",m).onclick=close;
+  };
+}
+/* mensaje listo para enviar a cada comercial con su acceso */
+function sendAccess(rep){
+  const msg=t("accessMsg",{n:rep.name.split(" ")[0],l:repLink(rep.slug)});
+  const d=(rep.phone||"").replace(/\D/g,"").replace(/^00/,"");
+  if(d.length>=8)window.open("https://wa.me/"+d+"?text="+encodeURIComponent(msg),"_blank");
+  else if(isMail(rep.email))window.open("mailto:"+rep.email+"?subject="+encodeURIComponent(t("accessSubj"))+"&body="+encodeURIComponent(msg),"_blank");
+  else copyText(msg,t("accessCopied"))
+}
+function copyText(v,msg){(navigator.clipboard?navigator.clipboard.writeText(v):Promise.reject()).then(()=>toast(msg||t("copied")),()=>{prompt("",v)})}
+function shareCard(rep){
+  const url=cliLink(rep.slug),data={title:"Chekin Connect · "+rep.name,text:t("shareText",{n:rep.name}),url};
+  if(navigator.share)navigator.share(data).catch(()=>{});else copyText(url);
+}
+/* mensaje ya escrito para el cliente: incluye comercial, evento y lugar, y cambia según el canal */
+function outMsg(rep,ev,kind,lead){
+  const r=rep.name.split(" ")[0],w=ev?ev.name+(ev.city?t("inCity",{c:ev.city}):""):"";
+  if(lead){const n=Number(lead.props),pp=n===1?t("propOne"):t("propMany",{n});return ev?t(kind==="wa"?"msgWAL":"msgMailL",{r,n:lead.first,w,p:pp}):t(kind==="wa"?"msgWALn":"msgMailLn",{r,n:lead.first,p:pp})}
+  return ev?t(kind==="wa"?"msgWA":"msgMail",{r,w}):t(kind==="wa"?"msgWAn":"msgMailn",{r});
+}
+function waLink(rep,ev,lead){
+  const d=(rep.phone||"").replace(/\D/g,"").replace(/^00/,"");if(d.length<8)return"";
+  return "https://wa.me/"+d+"?text="+encodeURIComponent(outMsg(rep,ev,"wa",lead));
+}
+function mailLink(rep,ev,lead){
+  if(!isMail(rep.email))return"";
+  return "mailto:"+rep.email+"?subject="+encodeURIComponent(ev?t("subjEv",{e:ev.name}):t("subjN"))+"&body="+encodeURIComponent(outMsg(rep,ev,"mail",lead));
+}
+/* vCard 3.0 completa: nombre, empresa, cargo, teléfono, email, web, LinkedIn, FOTO y nota del evento */
+function makeVcf(rep,ev,S){
+  const li=rep.linkedin||S.linkedin;
+  const e=v=>String(v).replace(/\\/g,"\\\\").replace(/\n/g,"\\n").replace(/;/g,"\\;").replace(/,/g,"\\,");
+  const fold=l=>{let o="";while(l.length>74){o+=l.slice(0,74)+"\r\n ";l=l.slice(74)}return o+l};
+  const [fn,...ln]=rep.name.split(" "),ph=(rep.photo||"").match(/^data:image\/jpeg;base64,(.+)$/);
+  const L=["BEGIN:VCARD","VERSION:3.0",`N:${e(ln.join(" "))};${e(fn)};;;`,`FN:${e(rep.name)}`,"ORG:Chekin",
+    roleOf(rep)&&`TITLE:${e(roleOf(rep))}`,rep.phone&&`TEL;TYPE=CELL,VOICE:${rep.phone}`,isMail(rep.email)&&`EMAIL;TYPE=INTERNET,WORK:${rep.email}`,
+    `URL:${S.web}`,li&&"item1.URL:"+li,li&&"item1.X-ABLabel:LinkedIn",ph&&`PHOTO;ENCODING=b;TYPE=JPEG:${ph[1]}`,
+    "NOTE:"+e([ev&&t("met")+ev.name,"Chekin Connect"].filter(Boolean).join(" · ")),"REV:"+new Date().toISOString().replace(/[-:]|\.\d+/g,""),"END:VCARD"].filter(Boolean);
+  return L.map(fold).join("\r\n")+"\r\n";
+}
+function toast(msg){$$(".toast").forEach(x=>x.remove());const e=document.createElement("div");e.className="toast";e.textContent=msg;document.body.appendChild(e);setTimeout(()=>e.remove(),1800)}
+
+/* enlaces: ?r=slug → pantalla QR del comercial · ?c=slug → tarjeta que ve el cliente */
+const baseUrl=()=>{const b=(DB.settings.baseUrl||"").trim();return b?b.replace(/[?#].*$/,""):location.href.split(/[?#]/)[0]};
+/* el enlace del QR lleva los datos de contacto del comercial, para que funcione en cualquier móvil (sin foto) */
+const b64u=s=>btoa(unescape(encodeURIComponent(s))).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"");
+const unb64u=s=>decodeURIComponent(escape(atob(s.replace(/-/g,"+").replace(/_/g,"/"))));
+/* datos del comercial dentro del enlace: así la pantalla de QR y la tarjeta funcionan en cualquier móvil */
+function dataParam(r){
+  const d={n:r.name,re:r.roleEs,ro:r.roleEn,p:r.phone,m:r.email,l:r.linkedin,c:r.cal};
+  Object.keys(d).forEach(k=>{if(!d[k])delete d[k]});
+  return b64u(JSON.stringify(d));
+}
+function readData(slug){
+  try{const dd=params.get("d");if(!dd)return null;const d=JSON.parse(unb64u(dd));
+    return{rep:{slug,name:d.n||"",roleEs:d.re||"",roleEn:d.ro||"",phone:d.p||"",email:d.m||"",linkedin:d.l||"",cal:d.c||"",photo:"",active:true}}}catch(e){return null}
+}
+const cliLinkFor=r=>baseUrl()+"?c="+encodeURIComponent(r.slug)+"&d="+dataParam(r);
+function cliLink(s){
+  const r=DB.reps.find(x=>x.slug===s);
+  return r?cliLinkFor(r):baseUrl()+"?c="+encodeURIComponent(s);
+}
+function repLink(s){
+  const r=DB.reps.find(x=>x.slug===s),u=baseUrl()+"?r="+encodeURIComponent(s);
+  return r?u+"&d="+dataParam(r):u;
+}
+
+/* QR real (corrección de errores alta, para poder poner el logo en el centro) */
+function makeQR(text){const q=qrcode(0,"H");q.addData(text);q.make();return q}
+function qrSvg(text,cls){
+  const q=makeQR(text),n=q.getModuleCount();let d="";
+  for(let r=0;r<n;r++)for(let c=0;c<n;c++)if(q.isDark(r,c))d+=`M${c} ${r}h1v1h-1z`;
+  return `<svg class="${cls}" viewBox="-2 -2 ${n+4} ${n+4}" shape-rendering="crispEdges"><path d="${d}" fill="#19194B"/></svg>`;
+}
+function downloadQR(slug){
+  const q=makeQR(cliLink(slug)),n=q.getModuleCount(),m=3,px=1200,cell=px/(n+2*m);
+  const c=document.createElement("canvas");c.width=c.height=px;const g=c.getContext("2d");
+  g.fillStyle="#fff";g.fillRect(0,0,px,px);g.fillStyle="#19194B";
+  for(let r=0;r<n;r++)for(let k=0;k<n;k++)if(q.isDark(r,k))g.fillRect(Math.floor((k+m)*cell),Math.floor((r+m)*cell),Math.ceil(cell),Math.ceil(cell));
+  const s=px*.2,x=(px-s)/2,rad=s*.22;
+  g.fillStyle="#fff";g.beginPath();g.roundRect(x-12,x-12,s+24,s+24,rad+8);g.fill();
+  const img=new Image();img.onload=()=>{
+    g.save();g.beginPath();g.roundRect(x,x,s,s,rad);g.clip();g.drawImage(img,x,x,s,s);g.restore();
+    c.toBlob(b=>{const a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="qr-"+slug+".png";document.body.appendChild(a);a.click();a.remove()},"image/png");
+  };img.src=ICON;
+}
+const arcSvg=(id,light)=>`<svg class="arc" viewBox="0 0 360 96" aria-hidden="true">
+  <path id="${id}" d="${light?"M6 54 Q 150 -34 354 10":"M6 82 Q 180 -34 354 46"}" fill="none" stroke="${light?"#385BF8":"#fff"}" stroke-opacity="${light?".5":".6"}" stroke-width="1" stroke-dasharray="4 5"/>
+  <g><g transform="scale(1.15)">
+    <path d="M-11 0 L-19 -3.5 L-15 0 L-19 3.5Z" fill="#FFB020"/>
+    <path d="M-6 -4 L-11 -9 L-1 -4.5Z M-6 4 L-11 9 L-1 4.5Z" fill="${light?"#19194B":"#DCE5FF"}"/>
+    <path d="M-11 0 C-7 -6.5 3 -6.5 12 0 C3 6.5 -7 6.5 -11 0Z" fill="${light?"#385BF8":"#fff"}"/>
+    <circle cx="2" cy="0" r="2" fill="${light?"#fff":"#385BF8"}"/></g>
+    <animateMotion dur="4.6s" repeatCount="indefinite" rotate="auto"><mpath href="#${id}"/></animateMotion>
+    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.88;1" dur="4.6s" repeatCount="indefinite"/></g></svg>`;
+
+/* ================================================================ ENRUTADO */
+const app=$("#app");
+function route(){
+  clearTimeout(window._typeTimer);
+  $$(".modal,.backfab").forEach(m=>m.remove());
+  const c=params.get("c"),r=params.get("r");
+  if(c)viewClient(c);else if(r)viewRep(r);else if(params.has("me"))viewMe();else if(params.has("team")){document.body.className="";app.innerHTML=`<div class="nf">${t("notFound")}</div>`}else adminBoot();
+  if(fromAdmin&&inView()){const f=document.createElement("button");f.className="backfab";f.id="backAdmin";f.textContent="← "+t("backPanel");f.onclick=()=>nav("");document.body.appendChild(f)}
+}
+
+/* ================================================================ PANTALLA QR DEL COMERCIAL (?r=slug) */
+/* ================================================================ SUPABASE (base de datos común) ================================================================
+   La clave "anon" es pública por diseño: lo que protege los datos son las reglas de la base (RLS), no esta clave. */
+const SB_URL="https://lxjefebmndcbnoxlyykw.supabase.co";
+const SB_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx4amVmZWJtbmRjYm5veGx5eWt3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI0MDAxNjMsImV4cCI6MjEwNzk3NjE2M30._JqwqsNkJj2UXiWxslWNbVK4Ru6gGHj-kqJvaSx1Nho";
+const PRIVACY_URL="https://chekin.com/privacidad/";   /* política de privacidad de Chekin */
+const SB_SESSION="chekin-sb-session",LEAD_KEY="chekin-lead",LEAD_Q="chekin-lead-queue";
+const sb={
+  session(){try{return JSON.parse(localStorage.getItem(SB_SESSION)||"null")}catch(e){return null}},
+  save(s){try{s?localStorage.setItem(SB_SESSION,JSON.stringify(s)):localStorage.removeItem(SB_SESSION)}catch(e){}},
+  async req(path,o={}){
+    const h={apikey:SB_KEY,Authorization:"Bearer "+(o.token||SB_KEY),...(o.headers||{})};
+    if(o.body!==undefined&&!o.raw&&!h["Content-Type"])h["Content-Type"]="application/json";
+    const r=await fetch(SB_URL+path,{method:o.method||"GET",headers:h,body:o.body===undefined?undefined:(o.raw?o.body:JSON.stringify(o.body)),keepalive:!!o.keepalive});
+    const txt=await r.text();let data=null;try{data=txt?JSON.parse(txt):null}catch(e){data=txt}
+    if(!r.ok){const e=new Error((data&&(data.msg||data.message||data.error_description||data.error))||String(r.status));e.status=r.status;e.data=data;throw e}
+    return data;
+  },
+  fromAuth(d){return{access_token:d.access_token,refresh_token:d.refresh_token,expires_at:Math.floor(Date.now()/1000)+(d.expires_in||3600),user:{id:d.user.id,email:d.user.email}}},
+  async login(email,password){const d=await this.req("/auth/v1/token?grant_type=password",{method:"POST",body:{email,password}});this.save(this.fromAuth(d));return d},
+  async token(){
+    let s=this.session();if(!s)return null;
+    if(s.expires_at-60>Date.now()/1000)return s.access_token;
+    try{const d=await this.req("/auth/v1/token?grant_type=refresh_token",{method:"POST",body:{refresh_token:s.refresh_token}});s=this.fromAuth(d);this.save(s);return s.access_token}
+    catch(e){if(e.status&&e.status<500)this.save(null);return null}
+  },
+  async authed(path,o={}){const tk=await this.token();if(!tk){const e=new Error("no_session");e.status=401;throw e}return this.req(path,{...o,token:tk})},
+  logout(){const s=this.session();this.save(null);if(s)this.req("/auth/v1/logout",{method:"POST",token:s.access_token}).catch(()=>{})}
+};
+const photoUrl=p=>p&&p.photo_path?SB_URL+"/storage/v1/object/public/avatars/"+p.photo_path+(p.updated_at?"?v="+encodeURIComponent(p.updated_at):""):"";
+
+/* perfil público de cada Account Executive (lo que ve el cliente en la tarjeta): nombre, teléfono, email, Calendly y foto */
+const PROFILES={};
+async function loadProfile(slug){
+  if(slug in PROFILES)return PROFILES[slug];
+  try{const r=await sb.req("/rest/v1/profiles?slug=eq."+encodeURIComponent(slug)+"&select=slug,name,title,phone,contact_email,calendly_url,photo_path,updated_at");PROFILES[slug]=(r&&r[0])||null}
+  catch(e){PROFILES[slug]=null}
+  return PROFILES[slug];
+}
+function applyProfile(rep,p){
+  if(!p)return rep;
+  return{...rep,name:p.name||rep.name,roleEs:p.title||rep.roleEs,roleEn:p.title||rep.roleEn,phone:p.phone||rep.phone,email:p.contact_email||rep.email,cal:p.calendly_url||rep.cal,photo:p.photo_path?photoUrl(p):rep.photo};
+}
+/* el evento actual de cada Account Executive viene de la base de datos (ya no viaja en el QR); se recuerda por si el móvil no tiene datos */
+const rememberEvent=(slug,ev)=>{try{if(ev&&ev.name)localStorage.setItem("chekin-ev-"+slug,JSON.stringify({name:ev.name,city:ev.city||"",loc:ev.loc||""}));else localStorage.removeItem("chekin-ev-"+slug)}catch(e){}};
+const CUR={};
+async function loadCurrentEvent(slug){
+  if(slug in CUR)return CUR[slug];
+  try{
+    const r=await sb.req("/rest/v1/rpc/current_event",{method:"POST",body:{p_slug:slug}}),e=r&&r[0];
+    CUR[slug]=e?{id:e.id,name:e.name,city:e.city||"",loc:e.loc||"",active:true,archived:false,reps:[slug]}:null;
+    rememberEvent(slug,CUR[slug]);
+  }catch(e){return undefined}   /* sin conexión: no se guarda el fallo */
+  return CUR[slug];
+}
+const evNow=slug=>slug in CUR?CUR[slug]:recalledEvent(slug);
+const recalledEvent=slug=>{try{const e=JSON.parse(localStorage.getItem("chekin-ev-"+slug)||"null");return e&&e.name?{id:"x",name:e.name,city:e.city||"",loc:e.loc||"",active:true,archived:false,reps:[slug]}:null}catch(e){return null}};
+
+/* ================================================================ CONTACTOS (LEADS) ================================================================ */
+function leadQueue(){try{return JSON.parse(localStorage.getItem(LEAD_Q)||"[]")}catch(e){return[]}}
+function setLeadQueue(q){try{localStorage.setItem(LEAD_Q,JSON.stringify(q.slice(-20)))}catch(e){}}
+let _flushing=false;
+async function flushLeads(){
+  if(_flushing)return;_flushing=true;
+  try{
+    const q=leadQueue();if(!q.length)return;const rest=[];
+    for(const it of q){
+      try{await sb.req("/rest/v1/rpc/submit_lead",{method:"POST",body:it.p,keepalive:true})}
+      catch(e){if(!(e.status>=400&&e.status<500&&e.status!==429))rest.push(it)}   /* error de red o del servidor: se reintenta; dato inválido: se descarta */
+    }
+    setLeadQueue(rest);
+  }finally{_flushing=false}
+}
+function leadStore(){try{return JSON.parse(localStorage.getItem(LEAD_KEY)||"null")}catch(e){return null}}
+const lastLead=()=>{const s=leadStore();return s?{first:s.first,last:s.last,phone:s.phone,email:s.email,props:s.props}:null};
+const getLead=slug=>{const s=leadStore();return s&&s.consent&&s.consent[slug]?{first:s.first,last:s.last,phone:s.phone,email:s.email,props:s.props}:null};
+function sendLead(rep,ev,data,channel){
+  try{const cur=leadStore()||{};localStorage.setItem(LEAD_KEY,JSON.stringify({...data,consent:{...(cur.consent||{}),[rep.slug]:Date.now()}}))}catch(e){}
+  const p={p_slug:rep.slug,p_first:data.first,p_last:data.last,p_phone:data.phone,p_email:data.email,p_properties:data.props,p_consent:true,p_channel:channel,p_event_name:ev?(ev.name||""):"",p_event_city:ev?(ev.city||""):"",p_lang:LANG,p_hp:""};
+  const q=leadQueue();q.push({p,t:Date.now()});setLeadQueue(q);flushLeads();
+}
+function leadFormHTML(o){
+  const s=o.saved||{};
+  return `<form class="lf ${o.light?"light":""}" id="${o.id}" novalidate autocomplete="on" onsubmit="return false">
+    <div class="lf-row"><label>${t("lfFirst")}<input name="first" type="text" autocomplete="given-name" value="${esc(s.first||"")}"></label>
+    <label>${t("lfLast")}<input name="last" type="text" autocomplete="family-name" value="${esc(s.last||"")}"></label></div>
+    <label>${t("lfPhone")}<input name="phone" type="tel" autocomplete="tel" inputmode="tel" value="${esc(s.phone||"")}"></label>
+    <label>${t("lfMail")}<input name="email" type="email" autocomplete="email" inputmode="email" value="${esc(s.email||"")}"></label>
+    <label>${t("lfProps")}<input name="props" type="number" inputmode="numeric" min="0" max="100000" value="${esc(s.props??"")}"></label>
+    <div class="lf-hp" aria-hidden="true"><input name="web" tabindex="-1" autocomplete="off"></div>
+    <label class="lf-consent"><input name="consent" type="checkbox"><span>${t("lfConsent",{p:`<a href="${esc(PRIVACY_URL)}" target="_blank" rel="noopener">${t("lfPrivacy")}</a>`})}</span></label>
+    <p class="err lf-err" role="alert"></p>
+  </form>`;
+}
+function readLead(f){
+  const v=n=>(f.elements[n].value||"").trim();
+  if(f.elements.web&&f.elements.web.value)return{ok:false,err:"lfErrName"};
+  const first=v("first"),last=v("last"),phone=v("phone"),email=v("email"),pr=v("props");
+  if(first.length<2||last.length<2)return{ok:false,err:"lfErrName"};
+  if(phone.replace(/\D/g,"").length<7)return{ok:false,err:"lfErrPhone"};
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email))return{ok:false,err:"lfErrMail"};
+  const props=Number(pr);if(pr===""||!Number.isInteger(props)||props<0||props>100000)return{ok:false,err:"lfErrProps"};
+  if(!f.elements.consent.checked)return{ok:false,err:"lfErrConsent"};
+  return{ok:true,data:{first,last,phone,email,props}};
+}
+function calUrl(cal,L){try{const u=new URL(cal);if(L){u.searchParams.set("name",(L.first+" "+L.last).trim());u.searchParams.set("email",L.email)}return u.toString()}catch(e){return cal}}
+
+/* titular tipo web: escribe letra por letra Potencia / Monetiza / Automatiza */
+function typeVerb(){const L=DICT[LANG].verbs,v=$("#verb");
+  if(!v)return;
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches){v.textContent=L[0];return}
+  let i=0,n=0,del=false;
+  const step=()=>{const w=L[i];
+    if(!del){n++;v.textContent=w.slice(0,n);if(n===w.length){del=true;window._typeTimer=setTimeout(step,1900);return}window._typeTimer=setTimeout(step,95)}
+    else{n--;v.textContent=w.slice(0,n);if(n===0){del=false;i=(i+1)%L.length;window._typeTimer=setTimeout(step,350);return}window._typeTimer=setTimeout(step,45)}};step();
+}
+
+function viewRep(slug){
+  const X=readData(slug),rep=X?X.rep:DB.reps.find(x=>x.slug===slug&&x.active);
+  document.body.className="mode-qr";
+  if(!rep){app.innerHTML=`<div class="nf">${t("notFound")}</div>`;return}
+  document.title="Chekin Connect · QR";
+  app.innerHTML=`<div class="col qr">
+    <div class="cband slim"><img class="logo" src="${LOGOW}" alt="Chekin"></div><i class="sp s1"></i>
+    <div class="qhead"><span class="line1"><span class="verb" id="verb"></span><span class="caret"></span> <span>${t("tailA")}</span></span><span class="tail">${t("tailB")}</span></div><i class="sp s2"></i>
+    <div class="qrcard">${qrSvg(cliLinkFor(rep),"qr")}<img class="qrlogo" src="${ICON}" alt=""></div><i class="sp s3"></i>
+  </div>`;
+  typeVerb();
+}
+
+let teamFilter="all";
+function viewTeam(){
+  document.body.className="";document.title="Chekin Connect · "+t("teamTitle");
+  const q=params.get("team");if(q&&q!=="1"&&DB.events.some(e=>e.id===q))teamFilter=q;
+  const reps=DB.reps.filter(r=>r.active&&!r.pending);
+  const evs=DB.events.filter(e=>evActive(e)&&(e.reps||[]).some(s=>reps.some(r=>r.slug===s)));
+  if(teamFilter!=="all"&&!evs.some(e=>e.id===teamFilter))teamFilter="all";
+  const sel=DB.events.find(e=>e.id===teamFilter),list=sel?reps.filter(r=>(sel.reps||[]).includes(r.slug)):reps;
+  app.innerHTML=`<div class="col wide">
+    ${langSel("cl-lang")}
+    <img class="logo" src="${LOGO}" alt="Chekin">
+    <div class="ahead" style="padding-top:0"><h1>${t("teamTitle")}</h1><p>${t("teamSub")}</p></div>
+    ${evs.length?`<div class="fchips"><button data-f="all" class="${teamFilter==="all"?"on":""}">${t("allTeam")}</button>${evs.map(e=>`<button data-f="${esc(e.id)}" class="${teamFilter===e.id?"on":""}">${esc(e.name)}</button>`).join("")}</div>`:""}
+    <div class="tgrid">${list.length?list.map(r=>`<a class="tcard" href="${esc(cliLink(r.slug))}"><div class="tav">${r.photo?`<img src="${esc(r.photo)}" alt="">`:AVATAR}</div><b>${esc(r.name)}</b><span>${esc(roleOf(r))}</span></a>`).join(""):`<div class="empty" style="grid-column:1/-1">${t("teamEmpty")}</div>`}</div>
+    <p class="foot" style="margin:26px 0 8px">Chekin Connect</p></div>`;
+  bindLang();
+  $$("[data-f]").forEach(b=>b.onclick=()=>{teamFilter=b.dataset.f;viewTeam()});
+}
+
+/* ================================================================ ADMIN (página principal) */
+let tab="team",leadFilter="all";
+let ADMIN_LIVE=null;
+const fillChip=(ok,l)=>`<span class="chip ${ok?"fill":"miss"}" title="${ok?"":"Falta"}">${ok?"✓":"✕"} ${esc(l)}</span>`;
+const repFromProfile=p=>({id:p.id,slug:p.slug,name:p.name||"",roleEs:p.title||"",roleEn:p.title||"",phone:p.phone||"",email:p.contact_email||p.email||"",loginEmail:p.email||"",linkedin:"",cal:p.calendly_url||"",photoPath:p.photo_path||"",photo:p.photo_path?photoUrl(p):"",active:!!p.active,pending:!!p.must_change_password});
+const evFromRow=r=>({id:r.id,name:r.name,from:r.date_from||"",to:r.date_to||"",time:r.time_txt||"",loc:r.loc||"",city:r.city||"",kind:r.kind||"event",auto:!!r.auto,before:r.days_before??1,active:!!r.active,archived:!!r.archived,reps:r.reps||[]});
+const evToRow=e=>({id:e.id,name:e.name,date_from:e.from||null,date_to:e.to||null,time_txt:e.time||"",loc:e.loc||"",city:e.city||"",kind:e.kind||"event",auto:!!e.auto,days_before:e.before??1,active:!!e.active,archived:!!e.archived,reps:e.reps||[]});
+async function evPull(){const rows=await sb.authed("/rest/v1/events?select=*&order=date_from.asc.nullslast,created_at.asc");return rows.map(evFromRow)}
+async function evPushMany(list){await sb.authed("/rest/v1/events?on_conflict=id",{method:"POST",body:list.map(evToRow),headers:{Prefer:"resolution=merge-duplicates,return=minimal"}})}
+async function evPush(e){
+  try{await evPushMany([e])}
+  catch(x){toast(t("evSaveErr"));try{ADMIN_LIVE.events.splice(0,ADMIN_LIVE.events.length,...await evPull());viewAdmin()}catch(y){}}
+}
+async function evRemove(id){
+  try{await sb.authed("/rest/v1/events?id=eq."+encodeURIComponent(id),{method:"DELETE"})}
+  catch(x){toast(t("evSaveErr"));try{ADMIN_LIVE.events.splice(0,ADMIN_LIVE.events.length,...await evPull());viewAdmin()}catch(y){}}
+}
+/* una sola vez por navegador: sube a la base común los eventos que se crearon antes en este navegador */
+async function evImport(events){
+  try{if(localStorage.getItem("chekin-ev-imported"))return}catch(e){return}
+  let local=[];try{if(localStorage.getItem(KEY))local=load().events}catch(e){}
+  const miss=local.filter(e=>e&&e.id&&e.name&&!events.some(x=>x.id===e.id));
+  if(miss.length){await evPushMany(miss);events.push(...miss)}
+  try{localStorage.setItem("chekin-ev-imported","1")}catch(e){}
+}
+async function adminBoot(){
+  document.body.className="";document.title="Chekin Connect · Admin";
+  const s=sb.session();
+  if(!s){ADMIN_LIVE=null;meLogin("",adminBoot);return}
+  if(ADMIN_LIVE){viewAdmin();return}
+  app.innerHTML=`<div class="me-wrap"><p class="me-hint" style="padding:60px 0;text-align:center">…</p></div>`;
+  try{
+    const rows=await sb.authed("/rest/v1/profiles?id=eq."+encodeURIComponent(s.user.id)+"&select=*"),p=rows&&rows[0];
+    if(!p){sb.logout();meLogin(t("meErrNoProfile"),adminBoot);return}
+    ME=p;
+    if(p.must_change_password){mePasswordFirst();return}
+    if(p.role!=="admin"){params=new URLSearchParams("me=1");try{history.replaceState({},"","?me=1")}catch(e){}viewMe();return}
+    const events=await evPull();await evImport(events);
+    const profs=await sb.authed("/rest/v1/profiles?role=eq.ae&select=*&order=name.asc");
+    profs.forEach(q=>{PROFILES[q.slug]=q});
+    ADMIN_LIVE={events,reps:profs.map(repFromProfile),activity:null,actAt:0};
+    viewAdmin();
+  }catch(e){
+    if(e.status===401||e.message==="no_session"||e.status===403){sb.save(null);ADMIN_LIVE=null;meLogin("",adminBoot);return}
+    app.innerHTML=`<div class="me-wrap">${meTop()}<p class="me-err" style="padding:30px 0">${meErrText(e)}</p><button class="me-btn" id="meRetry" type="button">${t("meRetry")}</button></div>`;
+    meBindTop();$("#meRetry").onclick=adminBoot;
+  }
+}
+function viewAdmin(){
+  DB=load();if(ADMIN_LIVE){DB.events=ADMIN_LIVE.events;DB.reps=ADMIN_LIVE.reps;if(ADMIN_LIVE.activity)DB.activity=ADMIN_LIVE.activity}
+  document.body.className="";document.title="Chekin Connect · Admin";
+  app.innerHTML=`<div class="col wide">
+    <div class="ahead"><div class="atools">${langSel()}${location.protocol.startsWith("http")?`<a class="langBtn exit" href="?me=1" title="Contactos">Contactos</a>`:""}<button class="langBtn exit" id="adminOut" type="button" title="Cerrar sesión">Salir</button></div>
+      <img class="logo" src="${LOGO}" alt="Chekin"><h1>${t("adminTitle")}</h1><p>${t("adminSub")}</p>${ME&&ME.email?`<p class="who">${t("whoAdmin",{e:"<b>"+esc(ME.email)+"</b>"})}</p>`:""}</div>
+    <nav class="tabs">${[["team","tabTeam"],["events","tabEvents"],["webinars","tabWebinars"],["act","tabActivity"],["set","tabSet"]].map(([k,l])=>`<button data-tab="${k}" class="${tab===k?"on":""}">${t(l)}</button>`).join("")}</nav>
+    <div id="tabBody"></div>
+    <p class="demo">${t("demoNote")}</p></div>`;
+  bindLang();
+  {const on=$(".tabs .on");if(on&&on.scrollIntoView)on.scrollIntoView({inline:"center",block:"nearest"})}
+  $("#adminOut").onclick=()=>{sb.logout();ADMIN_LIVE=null;ME=null;adminBoot()};
+  $$("[data-tab]").forEach(b=>b.onclick=()=>{tab=b.dataset.tab;viewAdmin()});
+  ({team:tabTeam,events:()=>tabEvents("event"),webinars:()=>tabEvents("webinar"),act:tabActivityLoad,set:tabSettings})[tab]();
+}
+
+function tabTeam(){
+  $("#tabBody").innerHTML=`
+  <div style="display:flex;justify-content:space-between;align-items:center;margin:4px 2px 10px"><h2 style="font:700 17px var(--f)">${t("repsTitle")} <span style="color:var(--muted)">(${DB.reps.length})</span></h2></div>
+  <div class="rgrid">${DB.reps.length?DB.reps.map(repCard).join(""):`<div class="panel empty" style="grid-column:1/-1">${t("noReps")}</div>`}</div>
+  <p class="hint" style="margin:6px 4px 14px">${t("teamAddNote")}</p>`;
+  $$("[data-nav]").forEach(b=>b.onclick=()=>nav(b.dataset.nav));
+  $$("[data-edit]").forEach(b=>b.onclick=()=>openEditor(b.dataset.edit));
+  $$("[data-copy]").forEach(b=>b.onclick=()=>{const v=b.dataset.copy;(navigator.clipboard?navigator.clipboard.writeText(v):Promise.reject()).then(()=>toast(t("copied")),()=>{prompt("",v)})});
+  $$("[data-dl]").forEach(b=>b.onclick=()=>downloadQR(b.dataset.dl));
+  $$("[data-send]").forEach(b=>b.onclick=()=>sendAccess(DB.reps.find(r=>r.slug===b.dataset.send)));
+}
+function repCard(r){
+  return `<div class="rcard ${r.active?"":"inactive"}">
+    <div class="rtop"><div class="ravatar">${r.photo?`<img src="${esc(r.photo)}" alt="">`:esc(initial(r))}</div>
+      <div class="rinfo"><b>${esc(r.name)}</b><span>${esc(roleOf(r))}</span>${r.active?"":`<span class="chip off">${t("inactive")}</span> `}${r.pending?`<span class="chip pend">${t("mePwPending")}</span> `:""}<span class="chip ${eventFor(r)?"evc":"off"}">${IC_PIN}${eventFor(r)?esc(eventFor(r).name):t("noEvent")}</span><div class="fills">${fillChip(r.phone,t("mePhoneS"))}${fillChip(r.cal,"Calendly")}${fillChip(r.photo,t("mePhotoS"))}</div></div>
+      <div class="rqr">${qrSvg(cliLink(r.slug),"q")}</div></div>
+    <div class="ract">
+      <button class="btn primary sm" data-nav="r=${esc(r.slug)}">${t("viewQR")}</button>
+      <button class="btn sm" data-nav="c=${esc(r.slug)}">${t("viewCard")}</button>
+      <button class="btn sm" data-edit="${esc(r.slug)}">${t("edit")}</button>
+      <details class="more"><summary class="btn sm">${t("more")}</summary><div class="morebox">
+        <button class="btn sm" data-send="${esc(r.slug)}">${t("sendAccess")}</button>
+        <button class="btn sm" data-copy="${esc(repLink(r.slug))}">${t("copyLink")}</button>
+        <button class="btn sm" data-dl="${esc(r.slug)}">${t("dlQR")}</button></div></details>
+    </div></div>`;
+}
+
+function openEditor(slug){
+  const orig=DB.reps.find(r=>r.slug===slug);if(!orig)return;
+  const m=document.createElement("div");m.className="modal";
+  let file=null,rmPhoto=false,shown=orig.photo;
+  m.innerHTML=`<div class="sheet"><h2>${t("edEdit")}</h2>
+    <label>${t("fName")} *</label><input type="text" id="fNameR" value="${esc(orig.name)}" autocomplete="off">
+    <label>${t("fSlug")}</label><input type="text" value="${esc(orig.slug)}" disabled><p class="hint">${t("fSlugFixed")}</p>
+    <label>${t("fRole")}</label><input type="text" id="fRoleR" value="${esc(orig.roleEs)}">
+    <div class="grid2"><div><label>${t("fPhone")}</label><input type="tel" id="fPhoneR" value="${esc(orig.phone)}"></div><div><label>${t("fMail")}</label><input type="email" id="fMailR" value="${esc(orig.email)}"></div></div>
+    <label>${t("fCal")}</label><input type="url" id="fCalR" value="${esc(orig.cal)}" placeholder="https://calendly.com/…">
+    <label>${t("fPhoto")}</label><div class="photoRow"><div class="ravatar" id="pv"></div><div><input type="file" id="fPhotoR" accept="image/*" style="font-size:12px"><br><button class="btn sm" id="rmP" type="button" style="margin-top:6px">${t("rmPhoto")}</button></div></div>
+    <label class="checkRow"><input type="checkbox" id="fActR" ${orig.active?"checked":""}>${t("fActive")}</label>
+    <div class="err" id="edErr"></div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn primary" id="saveR" style="flex:1">${t("saveBtn")}</button><button class="btn" id="cancelR">${t("cancel")}</button></div></div>`;
+  document.body.appendChild(m);
+  const pv=()=>{$("#pv",m).innerHTML=shown?`<img src="${esc(shown)}" alt="">`:esc((($("#fNameR",m).value||"?").trim().charAt(0)||"?").toUpperCase())};pv();
+  $("#fNameR",m).addEventListener("input",pv);
+  $("#fPhotoR",m).onchange=e=>{const f=e.target.files[0];if(!f)return;file=f;rmPhoto=false;shown=URL.createObjectURL(f);pv()};
+  $("#rmP",m).onclick=()=>{file=null;rmPhoto=true;shown="";pv()};
+  const close=()=>m.remove();
+  m.addEventListener("click",e=>{if(e.target===m)close()});$("#cancelR",m).onclick=close;
+  $("#saveR",m).onclick=async()=>{
+    const err=$("#edErr",m),name=$("#fNameR",m).value.trim(),title=$("#fRoleR",m).value.trim(),phone=normPhone($("#fPhoneR",m).value),mail=$("#fMailR",m).value.trim(),cal=$("#fCalR",m).value.trim();
+    err.textContent="";
+    if(!name){err.textContent=t("errName");return}
+    if(phone&&phone.replace(/\D/g,"").length<9){err.textContent=t("meErrPhone");return}
+    if(mail&&!mailOK(mail)){err.textContent=t("meErrMail");return}
+    if(cal&&!/^https:\/\/[^\s/]+\.[^\s]+$/i.test(cal)){err.textContent=t("meErrCal");return}
+    const btn=$("#saveR",m);btn.disabled=true;
+    try{
+      const body={name,title,phone,contact_email:mail,calendly_url:cal,active:$("#fActR",m).checked};
+      let old="";
+      if(file){
+        const im=await loadImage(file),k=Math.min(im.width,im.height),c=document.createElement("canvas");c.width=c.height=400;
+        c.getContext("2d").drawImage(im,(im.width-k)/2,(im.height-k)/2,k,k,0,0,400,400);
+        const blob=await new Promise((res,rej)=>c.toBlob(b=>b?res(b):rej(new Error("blob")),"image/jpeg",.85));
+        const path=orig.id+"/"+Date.now()+".jpg";
+        await sb.authed("/storage/v1/object/avatars/"+path,{method:"POST",raw:true,body:blob,headers:{"Content-Type":"image/jpeg"}});
+        old=orig.photoPath;body.photo_path=path;
+      }else if(rmPhoto&&orig.photoPath){old=orig.photoPath;body.photo_path=""}
+      const rows=await sb.authed("/rest/v1/profiles?id=eq."+encodeURIComponent(orig.id),{method:"PATCH",body,headers:{Prefer:"return=representation"}});
+      if(!rows||!rows[0])throw new Error("sin permiso");
+      if(old)sb.authed("/storage/v1/object/avatars/"+old,{method:"DELETE"}).catch(()=>{});
+      PROFILES[orig.slug]=rows[0];Object.assign(orig,repFromProfile(rows[0]));
+      close();viewAdmin();toast(t("saved"));
+    }catch(x){btn.disabled=false;err.textContent=meErrText(x)}
+  };
+}
+
+const leadsTxt=n=>n===1?"1 lead":t("evLeadsN",{n});
+function conflicts(){const out=[];DB.reps.forEach(r=>{const es=DB.events.filter(e=>evActive(e)&&(e.reps||[]).includes(r.slug));if(es.length>1)out.push({r,es})});return out}
+const kindOf=e=>(e&&e.kind)||"event";
+async function leadsPull(){
+  const out=[];
+  for(let off=0;off<20000;off+=1000){
+    const rows=await sb.authed("/rest/v1/leads?select=event_name,channel,properties&order=created_at.asc&limit=1000&offset="+off);
+    out.push(...rows);if(rows.length<1000)break;
+  }
+  return out;
+}
+/* calidad del lead por evento o webinar: leads, demos pedidas y nº medio de propiedades */
+function qualityRows(leads,events){
+  const kb={};events.forEach(e=>kb[e.name]=kindOf(e));
+  const by={};
+  leads.forEach(l=>{const n=l.event_name||"";if(!n)return;const r=by[n]||(by[n]={n,k:kb[n]||"event",c:0,d:0,p:0,pn:0});r.c++;if(l.channel==="demo")r.d++;const p=Number(l.properties);if(Number.isFinite(p)){r.p+=p;r.pn++}});
+  return Object.values(by);
+}
+function qualityHTML(rows,kind){
+  const R=rows.filter(r=>r.k===kind).sort((a,b)=>b.c-a.c);
+  if(!R.length)return `<div class="panel"><h2>${t("qTitle")}</h2><div class="empty">${t("qNone")}</div></div>`;
+  const tc=R.reduce((a,r)=>a+r.c,0),td=R.reduce((a,r)=>a+r.d,0),tp=R.reduce((a,r)=>a+r.p,0),tn=R.reduce((a,r)=>a+r.pn,0);
+  const pct=(d,c)=>c?Math.round(d/c*100)+"%":"–",avg=(p,n)=>n?Math.round(p/n):"–";
+    return `<div class="panel"><h2>${t("qTitle")}</h2><div class="scroll"><table><tr><th></th><th>${t("qLeads")}</th><th>${t("qDemos")}</th><th>${t("qProps")}</th></tr>
+    ${R.map(r=>`<tr><td><b style="font-weight:600">${esc(r.n)}</b></td><td>${r.c}</td><td>${r.d} · ${pct(r.d,r.c)}</td><td>${avg(r.p,r.pn)}</td></tr>`).join("")}
+    <tr><td><b>${t("qTotal")}</b></td><td><b>${tc}</b></td><td><b>${td} · ${pct(td,tc)}</b></td><td><b>${avg(tp,tn)}</b></td></tr></table></div></div>`;
+}
+function tabEvents(kind="event"){
+  const KE=DB.events.filter(e=>kindOf(e)===kind),W=kind==="webinar";
+  const act=KE.filter(evActive),ina=KE.filter(e=>!evActive(e)&&!e.archived),arch=KE.filter(e=>e.archived);
+  const L0=ADMIN_LIVE&&ADMIN_LIVE.leadsAll,ecount=e=>L0?L0.filter(l=>l.event_name===e.name).length:0,repBy=s=>DB.reps.find(r=>r.slug===s);
+  const av=r=>r.photo?`<img src="${esc(r.photo)}" alt="" style="width:100%;height:100%;object-fit:cover">`:esc(initial(r));
+  const chip=(e,s)=>{const r=repBy(s);return r?`<span class="tchip"><i>${av(r)}</i><b>${esc(r.name.split(" ")[0])}</b><button data-unas="${esc(e.id)}|${esc(s)}" aria-label="remove">×</button></span>`:""};
+  const card=e=>{const team=(e.reps||[]).filter(repBy);const live=evActive(e);
+    return `<div class="rcard ${e.archived?"inactive":""}" data-drop="${esc(e.id)}" ${live?'style="border-color:var(--blue)"':""}>
+    <div class="rinfo"><b>${esc(e.name)}</b><span>${esc([[fmtDates(e),e.time].filter(Boolean).join(" · "),e.loc].filter(Boolean).join(" · "))}</span>${live?`<span class="chip">● ${t("activeNow")}</span> `:""}${e.auto?`<span class="chip evc">${IC_CLOCK}${evPhase(e)==="soon"?t("evStarts",{d:fmtDates(e)}):evPhase(e)==="past"?t("evEnded"):t("evAuto")}</span> `:""}<span class="chip off">${leadsTxt(ecount(e))}</span></div>
+    <div class="tchips">${team.length?team.map(s=>chip(e,s)).join(""):`<span class="hint" style="margin:0">${t("evNoTeam")}</span>`}</div>
+    <div class="ract">${e.archived?`<button class="btn sm" data-eedit="${esc(e.id)}">${t("edit")}</button><button class="btn sm" data-earch="${esc(e.id)}">${t("evRestore")}</button>`
+      :`<button class="btn primary sm" data-eas="${esc(e.id)}">${t("evAssign")}</button>${e.auto?"":`<button class="btn sm" data-etog="${esc(e.id)}">${e.active?t("evDeactivate"):t("evActivate")}</button>`}<button class="btn sm" data-eedit="${esc(e.id)}">${t("edit")}</button><button class="btn sm" data-earch="${esc(e.id)}">${t("evArchive")}</button>`}</div></div>`};
+  const sec=(title,list,empty)=>`<h2 style="font:700 17px var(--f);margin:20px 2px 10px;text-align:left">${title} <span style="color:var(--muted)">(${list.length})</span></h2><div class="rgrid">${list.length?list.map(card).join(""):`<div class="panel empty" style="grid-column:1/-1">${empty}</div>`}</div>`;
+  const cf=conflicts();
+  $("#tabBody").innerHTML=`
+  ${cf.map(c=>`<div class="warn">${IC_WARN} ${esc(t("conflict",{n:c.r.name,k:c.es.length,list:c.es.map(e=>e.name).join(", "),first:c.es[0].name}))}</div>`).join("")}
+  <div class="panel"><h2>${t("evPool")}</h2><div class="pool">${DB.reps.filter(r=>r.active).map(r=>`<span class="tchip drag" draggable="true" data-slug="${esc(r.slug)}"><i>${av(r)}</i><b>${esc(r.name)}</b></span>`).join("")||`<span class="hint">${t("noReps")}</span>`}</div><p class="hint">${t("evPoolHint")}</p></div>
+  <div id="qual"></div>
+  <div style="display:flex;justify-content:flex-end;margin:6px 2px 0"><button class="btn primary sm" id="addEv">${W?t("evAddW"):t("evAdd")}</button></div>
+  ${sec(t("evActives"),act,W?t("evNoActiveW"):t("evNoActive"))}${ina.length?sec(t("evInactive"),ina,""):""}${arch.length?sec(t("evArch"),arch,""):""}`;
+  const assign=(e,slug)=>{if(!e||e.archived||!repBy(slug))return;e.reps=e.reps||[];if(!e.reps.includes(slug))e.reps.push(slug);persist();evPush(e);viewAdmin()};
+  $("#addEv").onclick=()=>openEventEditor(null,kind);
+  const fillQ=()=>{const q=$("#qual");if(q&&ADMIN_LIVE&&ADMIN_LIVE.leadsAll)q.innerHTML=qualityHTML(qualityRows(ADMIN_LIVE.leadsAll,DB.events),kind)};
+  if(ADMIN_LIVE&&ADMIN_LIVE.leadsAll)fillQ();
+  else if(ADMIN_LIVE){const LL=ADMIN_LIVE;leadsPull().then(a=>{LL.leadsAll=a;if(LL===ADMIN_LIVE&&(tab==="events"||tab==="webinars")&&!$(".modal"))viewAdmin()}).catch(()=>{})}
+  $$("[data-eedit]").forEach(b=>b.onclick=()=>openEventEditor(b.dataset.eedit));
+  $$("[data-eas]").forEach(b=>b.onclick=()=>openAssign(b.dataset.eas));
+  $$("[data-etog]").forEach(b=>b.onclick=()=>{const e=DB.events.find(x=>x.id===b.dataset.etog);e.active=!e.active;persist();evPush(e);viewAdmin();if(e.active)toast(t("evActivated",{n:e.name}))});
+  $$("[data-earch]").forEach(b=>b.onclick=()=>{const e=DB.events.find(x=>x.id===b.dataset.earch);e.archived=!e.archived;if(e.archived)e.active=false;persist();evPush(e);viewAdmin()});
+  $$("[data-unas]").forEach(b=>b.onclick=()=>{const [id,s]=b.dataset.unas.split("|"),e=DB.events.find(x=>x.id===id);e.reps=(e.reps||[]).filter(x=>x!==s);persist();evPush(e);viewAdmin()});
+  $$(".drag").forEach(el=>el.addEventListener("dragstart",e=>{e.dataTransfer.setData("text/plain",el.dataset.slug);e.dataTransfer.effectAllowed="copy"}));
+  $$("[data-drop]").forEach(c=>{
+    c.addEventListener("dragover",e=>{e.preventDefault();c.classList.add("over")});
+    c.addEventListener("dragleave",()=>c.classList.remove("over"));
+    c.addEventListener("drop",e=>{e.preventDefault();c.classList.remove("over");assign(DB.events.find(x=>x.id===c.dataset.drop),e.dataTransfer.getData("text/plain"))});
+  });
+}
+function openAssign(id){
+  const e=DB.events.find(x=>x.id===id),m=document.createElement("div");m.className="modal";
+  const other=r=>DB.events.filter(x=>x!==e&&evActive(x)&&(x.reps||[]).includes(r.slug)).map(x=>x.name);
+  m.innerHTML=`<div class="sheet"><h2>${esc(t("evAssignTitle",{n:e.name}))}</h2>
+    ${DB.reps.map(r=>`<label class="checkRow" style="margin-top:12px;color:var(--ink)"><input type="checkbox" value="${esc(r.slug)}" ${(e.reps||[]).includes(r.slug)?"checked":""}><span><b style="font-weight:600">${esc(r.name)}</b>${r.active?"":` <span class="hint">(${t("inactive")})</span>`}${other(r).length?`<br><span class="hint" style="margin:0">${esc(t("evAlsoIn",{n:other(r).join(", ")}))}</span>`:""}</span></label>`).join("")||`<div class="empty">${t("noReps")}</div>`}
+    <div style="display:flex;gap:8px;margin-top:18px"><button class="btn primary" id="aSave" style="flex:1">${t("saveBtn")}</button><button class="btn" id="aCancel">${t("cancel")}</button></div></div>`;
+  document.body.appendChild(m);const close=()=>m.remove();
+  m.addEventListener("click",ev=>{if(ev.target===m)close()});$("#aCancel",m).onclick=close;
+  $("#aSave",m).onclick=()=>{e.reps=$$("input:checked",m).map(i=>i.value);persist();evPush(e);close();viewAdmin();toast(t("saved"))};
+}
+function openEventEditor(id,kind0){
+  const isNew=id===null,orig=isNew?null:DB.events.find(e=>e.id===id);
+  const e0=isNew?{id:uid(),kind:kind0||"event",name:"",from:"",to:"",loc:"",city:"",archived:false,active:false,auto:true,before:kind0==="webinar"?0:1,time:"",reps:[]}:{...orig},W=kindOf(e0)==="webinar";
+  const m=document.createElement("div");m.className="modal";
+  m.innerHTML=`<div class="sheet"><h2>${isNew?(W?t("edNewWeb"):t("edNewEv")):(W?t("edEditWeb"):t("edEditEv"))}</h2>
+    <label>${t("evName")} *</label><input type="text" id="vName" value="${esc(e0.name)}" autocomplete="off">
+    <div class="grid2" style="margin-top:12px"><div><label>${t("evFrom")}</label><input type="date" id="vFrom" value="${esc(e0.from)}"></div><div><label>${t("evTo")}</label><input type="date" id="vTo" value="${esc(e0.to)}"></div></div>
+    <label>${t("evTime")}</label><input type="text" id="vTime" value="${esc(e0.time||"")}" placeholder="18:00–21:00" autocomplete="off"><p class="hint">${t("evTimeHint")}</p>
+    <label>${W?t("evLocW"):t("evLoc")}</label><input type="text" id="vLoc" value="${esc(e0.loc)}">
+    ${W?`<input type="hidden" id="vCity" value="">`:`<label>${t("evCity")}</label><input type="text" id="vCity" value="${esc(e0.city||"")}"><p class="hint">${t("evCityHint")}</p>`}
+    <label>${t("evMode")}</label><select id="vMode"><option value="auto" ${e0.auto?"selected":""}>${t("evModeAuto")}</option><option value="on" ${!e0.auto&&e0.active?"selected":""}>${t("evModeOn")}</option><option value="off" ${!e0.auto&&!e0.active?"selected":""}>${t("evModeOff")}</option></select>
+    <div id="vBeforeBox"><label>${t("evBefore")}</label><select id="vBefore">${[0,1,2,3].map(n=>`<option value="${n}" ${(e0.before??1)===n?"selected":""}>${n===0?t("evBefore0"):t("evBeforeN",{n,d:n===1?t("evDay"):t("evDays")})}</option>`).join("")}</select><p class="hint">${t("evBeforeHint")}</p></div>
+    <div class="err" id="vErr"></div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn primary" id="vSave" style="flex:1">${t("saveBtn")}</button><button class="btn" id="vCancel">${t("cancel")}</button>${isNew||evActive(orig)?"":`<button class="btn danger" id="vDel">${t("del")}</button>`}</div></div>`;
+  document.body.appendChild(m);const close=()=>m.remove();
+  m.addEventListener("click",e=>{if(e.target===m)close()});$("#vCancel",m).onclick=close;
+  const tgl=()=>{$("#vBeforeBox",m).style.display=$("#vMode",m).value==="auto"?"":"none"};$("#vMode",m).onchange=tgl;tgl();
+  $("#vSave",m).onclick=()=>{
+    const name=$("#vName",m).value.trim();if(!name){$("#vErr",m).textContent=t("evNeedName");return}
+    const ne={...e0,name,from:$("#vFrom",m).value,to:$("#vTo",m).value,loc:$("#vLoc",m).value.trim(),city:$("#vCity",m).value.trim(),time:$("#vTime",m).value.trim()};
+    const md=$("#vMode",m).value;ne.auto=md==="auto";ne.before=+$("#vBefore",m).value;if(md!=="auto")ne.active=md==="on";
+    if(isNew)DB.events.push(ne);else DB.events[DB.events.indexOf(orig)]=ne;
+    persist();evPush(ne);close();viewAdmin();toast(t("saved"));
+  };
+  if($("#vDel",m))$("#vDel",m).onclick=()=>{if(confirm(t("evDelConfirm",{n:orig.name}))){DB.events.splice(DB.events.indexOf(orig),1);persist();evRemove(orig.id);close();viewAdmin()}};
+}
+
+/* ACTIVIDAD anónima de las tarjetas (no se piden datos al cliente) */
+async function actPull(){
+  const out=[];
+  for(let off=0;off<10000;off+=1000){
+    const rows=await sb.authed("/rest/v1/activity?select=created_at,action,ae_slug,event_id,extra&order=created_at.desc&limit=1000&offset="+off);
+    out.push(...rows);if(rows.length<1000)break;
+  }
+  return out.map(r=>({t:Date.parse(r.created_at),a:r.action,r:r.ae_slug,e:r.event_id||"",x:r.extra||""}));
+}
+function tabActivityLoad(){
+  const L=ADMIN_LIVE;
+  if(L&&L.activity&&Date.now()-L.actAt<30000){DB.activity=L.activity;tabActivity();return}
+  $("#tabBody").innerHTML=`<p class="hint" style="padding:30px;text-align:center">…</p>`;
+  actPull().then(a=>{if(!L||L!==ADMIN_LIVE||tab!=="act"||!$("#tabBody"))return;L.activity=a;L.actAt=Date.now();DB.activity=a;tabActivity()})
+    .catch(x=>{if($("#tabBody"))$("#tabBody").innerHTML=`<p class="me-err" style="padding:20px">${meErrText(x)}</p>`});
+}
+function tabActivity(){
+  const fe=DB.events.find(e=>e.id===leadFilter);if(!fe&&leadFilter!=="none"&&!/^kind:/.test(leadFilter))leadFilter="all";
+  const kidx=id=>{const e=DB.events.find(x=>x.id===id);return e?kindOf(e):""};
+  const A=DB.activity.filter(a=>leadFilter==="all"||(leadFilter==="none"?!a.e:/^kind:/.test(leadFilter)?kidx(a.e)===leadFilter.slice(5):a.e===leadFilter));
+  const cnt=(arr,k)=>arr.filter(a=>a.a===k).length,tl=v=>DICT[LANG].typeLabels[TYPES.indexOf(v)]||v||"";
+  const repRows=DB.reps.map(r=>{const x=A.filter(a=>a.r===r.slug);return{n:r.name,o:cnt(x,"open"),s:cnt(x,"save"),w:cnt(x,"wa"),m:cnt(x,"mail"),d:cnt(x,"deck"),g:cnt(x,"demo")}}).filter(x=>x.o+x.s+x.w+x.m+x.d+x.g>0);
+  const typeRows=TYPES.map(v=>({n:tl(v),c:A.filter(a=>a.a==="deck"&&a.x===v).length})).filter(x=>x.c);
+  const evRows=DB.events.map(e=>{const x=DB.activity.filter(a=>a.e===e.id);return{n:e.name,o:cnt(x,"open"),m:cnt(x,"wa")+cnt(x,"mail"),g:cnt(x,"demo")}}).filter(r=>r.o+r.m+r.g>0);
+  const k=(v,l)=>`<div class="kpi"><b>${v}</b><span>${t(l)}</span></div>`;
+  const tbl=(head,rows)=>`<div class="scroll"><table><tr>${head.map(h=>`<th>${h}</th>`).join("")}</tr>${rows.map(r=>`<tr>${r.map((c,i)=>`<td>${i===0?`<b style="font-weight:600">${esc(c)}</b>`:esc(c)}</td>`).join("")}</tr>`).join("")}</table></div>`;
+  const oldL=DB.leads;
+  $("#tabBody").innerHTML=`
+  <div class="panel" style="padding:12px 16px"><label style="margin-top:0">${t("filterEv")}</label><select id="lf"><option value="all">${t("allEvents")}</option><option value="kind:event" ${leadFilter==="kind:event"?"selected":""}>${t("allKindEvents")}</option><option value="kind:webinar" ${leadFilter==="kind:webinar"?"selected":""}>${t("allKindWebinars")}</option><option value="none" ${leadFilter==="none"?"selected":""}>${t("noEvent")}</option>${["event","webinar"].map(k=>`<optgroup label="${k==="event"?t("tabEvents"):t("tabWebinars")}">${DB.events.filter(e=>kindOf(e)===k).map(e=>`<option value="${esc(e.id)}" ${e.id===leadFilter?"selected":""}>${esc(e.name)}${evActive(e)?" ●":""}</option>`).join("")}</optgroup>`).join("")}</select></div>
+  <div class="kpis kp6">${k(cnt(A,"open"),"kOpens")}${k(cnt(A,"save"),"kSaves")}${k(cnt(A,"wa")+cnt(A,"mail"),"kMsgs")}${k(cnt(A,"deck"),"kDecks")}${k(cnt(A,"demo"),"kDemos")}${k(cnt(A,"share"),"kShares")}</div>
+  ${leadFilter==="all"&&evRows.length>1?`<div class="panel"><h2>${t("byEvent")}</h2>${tbl([t("thEvent"),t("kOpens"),t("kMsgs"),t("kDemos")],evRows.map(x=>[x.n,x.o,x.m,x.g]))}</div>`:""}
+  <div class="panel"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><h2 style="margin:0">${t("byRep")}</h2>${repRows.length?`<button class="btn sm" id="csv">${t("exportCsv")}</button>`:""}</div>
+    ${repRows.length?tbl([t("rep"),t("kOpens"),t("kSaves"),"WhatsApp","Email",t("kDecks"),t("kDemos")],repRows.map(x=>[x.n,x.o,x.s,x.w,x.m,x.d,x.g])):`<div class="empty">${t("noActivity")}</div>`}</div>
+  ${typeRows.length?`<div class="panel"><h2>${t("byType")}</h2>${tbl([t("pType"),t("kDecks")],typeRows.map(x=>[x.n,x.c]))}</div>`:""}
+  ${oldL.length?`<div class="panel"><h2>${t("oldLeads")} (${oldL.length})</h2><p class="psub">${t("oldLeadsHint")}</p><div class="scroll"><table><tr><th>${t("thLead")}</th><th>${t("thType")}</th><th>${t("thEv")}</th></tr>${oldL.map(l=>`<tr><td><b style="font-weight:600">${esc(l.nombre)} ${esc(l.apellido)}</b><br>${esc(l.tel)}<br>${esc(l.email)}</td><td>${esc(tl(l.tipo))}<br>${esc(l.num)}</td><td>${esc(l.evento||t("noEvent"))}<br>${esc(l.comercial)}</td></tr>`).join("")}</table></div></div>`:""}
+  <p class="hint" style="margin:4px 4px 10px">${t("actNote")}</p>`;
+  $("#lf").onchange=e=>{leadFilter=e.target.value;viewAdmin()};
+  const b=$("#csv");if(b)b.onclick=()=>{
+    const q=v=>'"'+String(v??"").replace(/"/g,'""')+'"';
+    const rows=[["Comercial","Aperturas","Guardados","WhatsApp","Email","Presentaciones","Demos"],...repRows.map(x=>[x.n,x.o,x.s,x.w,x.m,x.d,x.g])];
+    const a=document.createElement("a");a.href=URL.createObjectURL(new Blob(["﻿"+rows.map(r=>r.map(q).join(",")).join("\n")],{type:"text/csv"}));a.download="actividad.csv";document.body.appendChild(a);a.click();a.remove();
+  };
+}
+
+function tabSettings(){
+  const base=baseUrl().replace(/[^\/]*$/,"")+PRES_DIR,name=l=>t("presLang_"+l);
+  const cell=(ty,l)=>{const f=presFor(ty,l);
+    return f?`<span class="pcell has"><b>${esc(name(l))}</b><a class="btn sm" href="${esc(base+f)}" target="_blank" rel="noopener">${t("presView")}</a><button class="btn sm ico" type="button" data-pcopy="${esc(base+f)}" title="${t("copyLinkBtn")}" aria-label="${t("copyLinkBtn")}"><svg class="mi" style="margin:0;width:14px;height:14px" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg></button></span>`
+      :`<span class="pcell"><b>${esc(name(l))}</b><span class="chip off">${t("pending")}</span></span>`};
+  $("#tabBody").innerHTML=`<div class="panel"><h2>${t("presTitle")}</h2><p class="hint" style="margin-top:0">${t("presHint")}</p>
+    ${TYPES.map((v,i)=>`<div class="prow"><div class="ptype">${esc(DICT[LANG].typeLabels[i])}${v==="villa"?`<small>${t("presSame")}</small>`:""}</div><div class="pcells">${PRES_LANGS.map(l=>cell(v,l)).join("")}</div></div>`).join("")}</div>`;
+  $$("[data-pcopy]").forEach(b=>b.onclick=()=>{const u=b.dataset.pcopy;try{navigator.clipboard.writeText(u).then(()=>toast(t("copied")),()=>toast(u))}catch(e){toast(u)}});
+}
+
+/* ================================================================ TARJETA DEL CLIENTE (?c=slug) */
+/* "Ver presentación": el cliente elige su tipo de negocio y se abre directamente su página de chekin.com */
+/* Presentaciones de Chekin (HTML) por tipo de negocio e idioma, guardadas en /presentaciones/.
+   Orden: enlace que se ponga a mano en el panel > presentación en el idioma de la tarjeta > en inglés > página web.
+   Pendiente de recibir: apartamentos/villas (vacation rental) e italiano. */
+const PRES_DIR="presentaciones/";
+/* cada presentación es un único archivo con todos los idiomas dentro (se elige con #es, #en…); el italiano de Hoteles es un archivo aparte */
+const PRES={hotel:{file:"hotels.html",langs:["es","en","pt","fr","de"],extra:{it:"hotels-it.html"}},vacation:{file:"vacation-rental.html",langs:["es","en","pt","fr","de"],extra:{}}};
+const PRES_LANGS=["es","en","it","pt","fr","de"];
+const presFor=(ty,l)=>{const d=PRES[PRES_OF[ty]];if(!d)return null;return d.langs.includes(l)?d.file+"#"+l:(d.extra[l]||null)};
+const PRES_OF={vacation:"vacation",villa:"vacation",hotel:"hotel"};
+const WEB_FALLBACK={vacation:"https://chekin.com/apartamentos/",villa:"https://chekin.com/villas/",hotel:"https://chekin.com/hoteles/",camping:"https://chekin.com/campings/",other:""};
+function deckUrl(ty,S){
+  const custom=S.decks&&S.decks[ty];if(custom)return custom;
+  const d=PRES[PRES_OF[ty]];
+  if(d)return baseUrl().replace(/[^\/]*$/,"")+PRES_DIR+(presFor(ty,LANG)||d.file+"#en");   /* sin su idioma: en inglés */
+  return WEB_FALLBACK[ty]||S.deck||S.web;
+}
+/* de momento solo se muestran los tipos que ya tienen presentación (hoy: Hoteles); el resto se añade cuando lleguen */
+const hasDeck=(ty,S)=>!!((S.decks&&S.decks[ty])||(PRES_OF[ty]&&PRES[PRES_OF[ty]]));
+/* "Ver presentación": el cliente elige su tipo de negocio y se abre su presentación */
+function openDeck(rep,ev){
+  const S=DB.settings,m=document.createElement("div");m.className="modal center";
+  const tIcons={vacation:"i-apartment",villa:"i-home",hotel:"i-building",camping:"i-tent",other:"i-dots"};
+  const withCard=(u,c)=>{const i=u.indexOf("#");return i<0?u+"?card="+encodeURIComponent(c):u.slice(0,i)+"?card="+encodeURIComponent(c)+u.slice(i)};
+  const mine=ty=>!(S.decks&&S.decks[ty]);   /* presentación HTML propia (sí vuelve a la tarjeta) o enlace externo puesto a mano */
+  const cardNow=location.href.split("#")[0];
+  const link=ty=>mine(ty)&&PRES_OF[ty]&&PRES[PRES_OF[ty]]?withCard(deckUrl(ty,S),cardNow):deckUrl(ty,S);
+  /* titulares literales de cada página de chekin.com (solo en español) */
+  const heads={vacation:"El check-in de tus apartamentos en automático",villa:"El check-in de tus villas, intuitivo y cómodo",hotel:"Toda la experiencia del huésped, en una sola plataforma",camping:"Impulsa tu check-in. Impulsa tu camping."};
+  m.innerHTML=`<div class="sheet"><div class="grab"></div><button class="x" id="dx" aria-label="close">×</button>
+    <h2>${t("deckPick")}</h2><p class="hint" style="margin:0 0 6px">${t("deckPickSub")}</p>
+    ${TYPES.map((v,i)=>{
+      const has=hasDeck(v,S),inner=`<span class="ic"><svg class="i2"><use href="#${tIcons[v]}"/></svg></span><span class="lb2">${esc(DICT[LANG].typeLabels[i])}${LANG==="es"&&heads[v]&&has?`<small>${esc(heads[v])}</small>`:""}</span>`;
+      return has?`<a class="solcard" data-ty="${v}" href="${esc(link(v))}"${mine(v)&&PRES_OF[v]&&PRES[PRES_OF[v]]?"":' target="_blank" rel="noopener"'}>${inner}<svg class="chev"><use href="#chev"/></svg></a>`
+        :`<div class="solcard off" aria-disabled="true">${inner}<span class="soon">${t("deckSoon")}</span></div>`}).join("")}</div>`;
+  document.body.appendChild(m);const close=()=>m.remove();
+  m.addEventListener("click",e=>{if(e.target===m)close()});$("#dx",m).onclick=close;
+  $$("[data-ty]",m).forEach(a=>a.addEventListener("click",()=>{track("deck",rep,ev,a.dataset.ty);if(!getLead(rep.slug)){window._deckPending={rep,ev};try{sessionStorage.setItem("chekin-deck-"+rep.slug,"1")}catch(e){}}}));
+}
+/* al volver de la presentación (se abre en otra pestaña), si todavía no hemos captado sus datos, se los pedimos */
+function openDeckLead(rep,ev){
+  if($(".modal")||getLead(rep.slug))return;
+  const first=(rep.name||"").split(" ")[0],m=document.createElement("div");m.className="modal";
+  m.innerHTML=`<div class="sheet"><div class="grab"></div><button class="x" id="lx" aria-label="close">×</button>
+    <h2>${t("deckLeadTitle")}</h2><p class="hint" style="margin:0 0 8px">${t("deckLeadSub",{r:esc(first)})}</p>
+    ${leadFormHTML({id:"lfK",light:true,saved:lastLead()})}
+    <button class="btn primary full" id="lfSend" type="button" style="margin-top:12px">${t("deckLeadBtn")}</button>
+    <button class="btn full" id="lfNo" type="button" style="margin-top:8px">${t("deckLeadNo")}</button></div>`;
+  document.body.appendChild(m);const close=()=>m.remove();
+  m.addEventListener("click",e=>{if(e.target===m)close()});$("#lx",m).onclick=$("#lfNo",m).onclick=close;
+  $("#lfSend",m).onclick=()=>{
+    const f=$("#lfK",m),r=readLead(f);if(!r.ok){f.querySelector(".lf-err").textContent=t(r.err);return}
+    sendLead(rep,ev,r.data,"card");close();toast(t("lfThanks",{n:r.data.first}));
+    if(window._renderWrite&&params.get("c")===rep.slug)window._renderWrite();
+  };
+}
+document.addEventListener("visibilitychange",()=>{
+  const d=window._deckPending;if(!d||document.visibilityState!=="visible"||params.get("c")!==d.rep.slug)return;
+  window._deckPending=null;setTimeout(()=>openDeckLead(d.rep,d.ev),500);
+});
+
+/* TARJETA DEL CLIENTE: solo cuatro cosas — escribir (WhatsApp / email), guardar contacto, presentación según su negocio y agendar demo */
+function viewClient(slug,refreshed){
+  let rep=DB.reps.find(x=>x.slug===slug&&x.active);
+  const X=readData(slug);if(X)rep={...X.rep,photo:(rep&&rep.photo)||""};
+  if(!rep&&PROFILES[slug])rep={slug,name:"",roleEs:"",roleEn:"",phone:"",email:"",linkedin:"",cal:"",photo:"",active:true};
+  if(rep)rep=applyProfile(rep,PROFILES[slug]);
+  document.body.className="";
+  if(!rep){
+    if(!(slug in PROFILES)){app.innerHTML=`<div class="nf">…</div>`;Promise.all([loadProfile(slug),loadCurrentEvent(slug)]).then(()=>{if(params.get("c")===slug)viewClient(slug,true)});return}
+    app.innerHTML=`<div class="nf">${t("notFound")}</div>`;return;
+  }
+  document.title="Chekin Connect · "+rep.name;
+  const ic=s=>`<span class="ic"><svg class="i2"><use href="#${s}"/></svg></span>`,sv=s=>`<svg class="i2"><use href="#${s}"/></svg>`,chev='<svg class="chev"><use href="#chev"/></svg>';
+  const S=DB.settings,ev=evNow(slug),cal=rep.cal||S.cal,first=(rep.name||"").split(" ")[0];
+  if(!refreshed){track("open",rep,ev);flushLeads()}
+  app.innerHTML=`<div class="col cl">
+    ${langSel("cl-lang")}
+    <div class="cband"><img class="logo" src="${LOGOW}" alt="Chekin">
+    <div class="avatar">${rep.photo?`<img src="${esc(rep.photo)}" alt="">`:AVATAR}</div></div>
+    <div class="name">${esc(rep.name)}</div><div class="role">${esc([roleOf(rep),"Chekin"].filter(Boolean).join(" · "))}</div>
+    <i class="sp s2"></i><div class="hero">${arcSvg("mp2",true)}<div class="tag1"><span class="line1"><span class="verb" id="verb"></span><span class="caret"></span> <span>${t("tailA")}</span></span><span class="tail">${t("tailB")}</span></div></div>
+    <i class="sp s3"></i><div class="list big">
+      <div class="item primary" data-grp="c"><button class="head">${ic("i-chat")}<span class="lb">${t("writeMe")}</span>${chev}</button>
+        <div class="pan"><div><div class="in" id="writeBody"></div></div></div></div>
+      <div class="item" data-grp="c"><button class="head" id="saveVcf">${ic("i-card")}<span class="lb">${t("save")}</span></button></div>
+      <div class="item" data-grp="c"><button class="head" id="deckBtn">${ic("i-doc")}<span class="lb">${t("deck")}</span>${chev}</button></div>
+      <div class="item" data-grp="c"><button class="head" id="lCal">${ic("i-cal")}<span class="lb">${t("book")}</span></button></div>
+    </div><i class="sp s4"></i><p class="foot">Chekin Connect</p></div>`;
+  bindLang();
+  $("#deckBtn").onclick=()=>openDeck(rep,ev);
+
+  /* «Escríbeme»: primero sus datos (una sola vez), después WhatsApp o email ya escritos con su nombre */
+  const hasWA=!!waLink(rep,ev),hasML=!!mailLink(rep,ev);
+  function renderWrite(){
+    const L=getLead(slug),box=$("#writeBody");
+    if(L){
+      const wa=waLink(rep,ev,L),ml=mailLink(rep,ev,L);
+      box.innerHTML=`<div class="wbtns">
+        ${wa?`<a class="wb" id="wa" href="${esc(wa)}" target="_blank" rel="noopener">${sv("i-chat")}WhatsApp</a>`:`<span class="wb off">${sv("i-chat")}WhatsApp</span>`}
+        ${ml?`<a class="wb" id="ml" href="${esc(ml)}">${sv("i-mail")}Email</a>`:`<span class="wb off">${sv("i-mail")}Email</span>`}
+      </div>${!wa&&!ml?`<p class="hint2">${t("noChannel")}</p>`:`<p class="msgprev"><b>${t("msgReady")}</b><span>“${esc(outMsg(rep,ev,wa?"wa":"mail",L))}”</span></p>`}
+      <p class="hint2 lf-who">${t("lfYou",{n:esc(L.first+" "+L.last)})} · <a href="#" id="lfEdit">${t("change")}</a></p>`;
+      if($("#wa"))$("#wa").addEventListener("click",()=>track("wa",rep,ev));
+      if($("#ml"))$("#ml").addEventListener("click",()=>track("mail",rep,ev));
+      $("#lfEdit").onclick=e=>{e.preventDefault();try{const s=leadStore();if(s&&s.consent){delete s.consent[slug];localStorage.setItem(LEAD_KEY,JSON.stringify(s))}}catch(x){}renderWrite()};
+      return;
+    }
+    const btns=(hasWA||hasML)
+      ?`<div class="wbtns">
+          <button type="button" class="wb ${hasWA?"":"off"}" id="lfWA">${sv("i-chat")}WhatsApp</button>
+          <button type="button" class="wb ${hasML?"":"off"}" id="lfML">${sv("i-mail")}Email</button></div>${!hasWA?`<p class="hint2">${t("lfNoWA",{r:esc(first)})}</p>`:""}`
+      :`<div class="wbtns one"><button type="button" class="wb" id="lfGo">${t("lfSend")}</button></div><p class="hint2">${t("noChannel")}</p>`;
+    box.innerHTML=`<p class="lf-title">${t("leadTitle",{r:esc(first)})}</p>${leadFormHTML({id:"lfC",saved:lastLead()})}${btns}`;
+    const f=$("#lfC");
+    const go=kind=>{
+      const r=readLead(f);if(!r.ok){f.querySelector(".lf-err").textContent=t(r.err);return}
+      f.querySelector(".lf-err").textContent="";
+      sendLead(rep,ev,r.data,kind==="wa"?"whatsapp":kind==="ml"?"email":"card");
+      if(kind==="wa")window.open(waLink(rep,ev,r.data),"_blank");
+      else if(kind==="ml")location.href=mailLink(rep,ev,r.data);
+      if(kind==="wa")track("wa",rep,ev);else if(kind==="ml")track("mail",rep,ev);
+      toast(t("lfThanks",{n:r.data.first}));renderWrite();
+    };
+    if($("#lfWA")&&hasWA)$("#lfWA").onclick=()=>go("wa");
+    if($("#lfML")&&hasML)$("#lfML").onclick=()=>go("ml");
+    if($("#lfGo"))$("#lfGo").onclick=()=>go("card");
+  }
+  renderWrite();window._renderWrite=renderWrite;
+
+  /* «Agendar demo»: abre el Calendly del Account Executive (con nombre y email ya puestos); si aún no dejó sus datos, se los pide antes */
+  $("#lCal").addEventListener("click",()=>{
+    track("demo",rep,ev);
+    if(!cal){toast(t("calSoon"));return}
+    const L=getLead(slug);
+    if(L){window.open(calUrl(cal,L),"_blank","noopener");return}
+    openLeadSheet(rep,ev,cal,first);
+  });
+
+  /* acordeón: una fila abierta a la vez; pulsar la abierta la cierra */
+  $$(".item .head").forEach(h=>h.addEventListener("click",()=>{
+    const it=h.closest(".item");it.classList.add("done");if(!it.querySelector(".pan"))return;const was=it.classList.contains("open");
+    $$(".item").forEach(x=>x.classList.remove("open"));if(!was)it.classList.add("open");
+  }));
+
+  typeVerb();
+
+  $("#saveVcf").onclick=()=>{
+    track("save",rep,ev);
+    const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([makeVcf(rep,ev,S)],{type:"text/vcard;charset=utf-8"}));
+    a.download=rep.slug+"-chekin.vcf";document.body.appendChild(a);a.click();a.remove();toast(t("vcSaved"));
+  };
+
+  /* de vuelta de la presentación (?from=deck, o con el botón «atrás»): si no dejó sus datos se los pedimos; «Reservar demo» abre su agenda */
+  if(!refreshed&&!window._pd){
+    let back=params.get("from")==="deck",flag=false;try{flag=!!sessionStorage.getItem("chekin-deck-"+slug);sessionStorage.removeItem("chekin-deck-"+slug)}catch(e){}
+    if(back||flag)window._pd={slug,go:params.get("go")||""};
+    if(back){params.delete("from");params.delete("go");try{history.replaceState({},"","?"+params.toString())}catch(e){}}
+  }
+  const runPD=()=>{
+    const pd=window._pd;if(!pd||pd.slug!==slug)return;window._pd=null;window._deckPending=null;
+    setTimeout(()=>{
+      if($(".modal")||params.get("c")!==slug)return;
+      if(pd.go==="demo"&&cal)openLeadSheet(rep,ev,cal,first);else openDeckLead(rep,ev);
+    },300);
+  };
+  if(window._pd&&window._pd.slug===slug){if(refreshed||slug in PROFILES)runPD();else setTimeout(runPD,1800)}   /* si la base no responde, se abre igualmente */
+
+  /* datos al día: nombre, teléfono, email, Calendly y foto del Account Executive vienen de la base de datos */
+  /* si el cliente ya ha abierto algo (o está escribiendo), no se vuelve a pintar: perdería lo escrito. Los datos nuevos se aplican en la siguiente apertura. */
+  if(!refreshed&&(!(slug in PROFILES)||!(slug in CUR)))Promise.all([loadProfile(slug),loadCurrentEvent(slug)]).then(([p])=>{if((p||slug in CUR)&&params.get("c")===slug&&!$(".item.open")&&!$(".modal"))viewClient(slug,true)});
+}
+function openLeadSheet(rep,ev,cal,first){
+  const m=document.createElement("div");m.className="modal";
+  m.innerHTML=`<div class="sheet"><div class="grab"></div><button class="x" id="lx" aria-label="close">×</button>
+    <h2>${t("calSheetTitle")}</h2><p class="hint" style="margin:0 0 8px">${t("calSheetSub",{r:esc(first)})}</p>
+    ${leadFormHTML({id:"lfD",light:true,saved:lastLead()})}
+    <button class="btn primary full" id="lfGoCal" type="button" style="margin-top:12px">${t("lfCal")}</button></div>`;
+  document.body.appendChild(m);const close=()=>m.remove();
+  m.addEventListener("click",e=>{if(e.target===m)close()});$("#lx",m).onclick=close;
+  $("#lfGoCal",m).onclick=()=>{
+    const f=$("#lfD",m),r=readLead(f);if(!r.ok){f.querySelector(".lf-err").textContent=t(r.err);return}
+    sendLead(rep,ev,r.data,"demo");close();window.open(calUrl(cal,r.data),"_blank","noopener");toast(t("lfThanks",{n:r.data.first}));
+    if(window._renderWrite&&params.get("c")===rep.slug)window._renderWrite();
+  };
+}
+
+/* ================================================================ ?me=1 · /mi-perfil — acceso de cada persona ================================================================
+   Account Executive: su perfil (teléfono, email, Calendly, foto) y SUS contactos. Administración: todos los contactos. */
+const ME_CAM=`<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>`;
+let ME=null;
+const mailOK=v=>/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+function normPhone(v){
+  let s=(v||"").trim().replace(/[()\-.]/g," ").replace(/\s+/g," ");if(!s)return"";
+  if(s.startsWith("00"))s="+"+s.slice(2);
+  if(!s.startsWith("+")){const d=s.replace(/\D/g,"");if(/^[679]\d{8}$/.test(d))s="+34 "+d}   /* sin prefijo y con formato español: se añade +34 */
+  return s;
+}
+const repLinkFor=r=>baseUrl()+"?r="+encodeURIComponent(r.slug)+"&d="+dataParam(r);
+const meRepOf=p=>({slug:p.slug,name:p.name,roleEs:p.title,roleEn:p.title,phone:p.phone,email:p.contact_email||p.email,linkedin:"",cal:p.calendly_url});
+function meTop(){return `<div class="me-top"><img class="logo" src="${LOGO}" alt="Chekin"><div class="me-tools">${langSel()}<button class="langBtn exit" id="meOut" type="button">${t("meLogout")}</button></div></div>`}
+function meBindTop(){bindLang();$("#meOut").onclick=()=>{sb.logout();ME=null;viewMe()}}
+const meErrText=e=>(e&&e.status)?t("meErrServer"):t("meErrNet");
+
+async function viewMe(){
+  clearTimeout(window._typeTimer);document.title="Chekin Connect · "+t("meTitle");
+  const s=sb.session();
+  if(!s){meLogin();return}
+  document.body.className="";app.innerHTML=`<div class="me-wrap"><p class="me-hint" style="padding:60px 0;text-align:center">…</p></div>`;
+  try{
+    const rows=await sb.authed("/rest/v1/profiles?id=eq."+encodeURIComponent(s.user.id)+"&select=*");
+    const p=rows&&rows[0];
+    if(!p){sb.logout();meLogin(t("meErrNoProfile"));return}
+    ME=p;
+    if(p.must_change_password){mePasswordFirst();return}
+    if(p.role==="admin")meAdmin();else meAe();
+  }catch(e){
+    if(e.status===401||e.message==="no_session"||e.status===403){sb.save(null);meLogin();return}
+    app.innerHTML=`<div class="me-wrap">${meTop()}<p class="me-err" style="padding:30px 0">${meErrText(e)}</p><button class="me-btn" id="meRetry" type="button">${t("meRetry")}</button></div>`;
+    meBindTop();$("#meRetry").onclick=viewMe;
+  }
+}
+
+function meLogin(msg,onOk){
+  document.body.className="mode-login";
+  let last="";try{last=localStorage.getItem("chekin-me-email")||""}catch(e){}
+  app.innerHTML=`<div class="me-login"><img class="logo" src="${LOGOW}" alt="Chekin">
+    <form class="me-card" id="meF" novalidate>
+      <div class="me-ic"><img src="${ICON}" alt=""></div>
+      <h1>Chekin Connect</h1><p class="sub">${t("meLoginSub")}</p>
+      <div class="me-field"><label for="meE">${t("meEmail")}</label><input id="meE" name="email" type="email" autocomplete="username" inputmode="email" autocapitalize="none" autocorrect="off" required value="${esc(last)}" placeholder="nombre@chekin.com"></div>
+      <div class="me-field"><label for="meP">${t("mePass")}</label><div class="me-pw"><input id="meP" name="password" type="password" autocomplete="current-password" required><button type="button" id="meEye">${t("meSee")}</button></div></div>
+      <p class="me-err" id="meErr" role="alert">${esc(msg||"")}</p>
+      <button class="me-btn" type="submit" id="meGo">${t("meEnter")}</button>
+      <p class="me-help">${t("meForgot")}</p>
+    </form></div>`;
+  $("#meEye").onclick=function(){const i=$("#meP"),show=i.type==="password";i.type=show?"text":"password";this.textContent=show?t("meHide"):t("meSee")};
+  const f=$("#meF");(last?$("#meP"):$("#meE")).focus();
+  f.onsubmit=async ev=>{
+    ev.preventDefault();
+    const email=f.elements.email.value.trim().toLowerCase(),pw=f.elements.password.value,err=$("#meErr"),btn=$("#meGo");
+    if(!mailOK(email)||!pw){err.textContent=t("meErrLogin");return}
+    btn.disabled=true;err.textContent="";
+    try{await sb.login(email,pw);try{localStorage.setItem("chekin-me-email",email)}catch(e){}(onOk||viewMe)()}
+    catch(e){btn.disabled=false;err.textContent=(e.status===400||e.status===401||e.status===422)?t("meErrLogin"):meErrText(e)}
+  };
+}
+
+/* contraseña: obligatoria en el primer acceso; también se puede cambiar desde el perfil */
+function pwFormHTML(){
+  return `<form class="me-pwform" novalidate>
+    <div class="me-field"><label>${t("meNew")}</label><input name="p1" type="password" autocomplete="new-password" minlength="10"></div>
+    <div class="me-field"><label>${t("meNew2")}</label><input name="p2" type="password" autocomplete="new-password" minlength="10"></div>
+    <p class="me-err" role="alert"></p>
+    <button class="me-btn" type="submit">${t("meSavePw")}</button></form>`;
+}
+function bindPw(root,done){
+  const f=$("form.me-pwform",root),err=$(".me-err",f),btn=$("button[type=submit]",f);
+  f.onsubmit=async ev=>{
+    ev.preventDefault();const a=f.elements.p1.value,b=f.elements.p2.value;err.textContent="";
+    if(a.length<10){err.textContent=t("meErrShort");return}
+    if(a!==b){err.textContent=t("meErrMatch");return}
+    btn.disabled=true;
+    try{
+      await sb.authed("/auth/v1/user",{method:"PUT",body:{password:a}});
+      await sb.authed("/rest/v1/rpc/mark_password_changed",{method:"POST",body:{}});
+      if(ME)ME.must_change_password=false;toast(t("mePwOk"));done();
+    }catch(e){btn.disabled=false;err.textContent=/different|same/i.test(e.message||"")?t("meErrSame"):(e.status===422?t("meErrWeak"):meErrText(e))}
+  };
+}
+function mePasswordFirst(){
+  document.body.className="mode-login";
+  app.innerHTML=`<div class="me-login"><img class="logo" src="${LOGOW}" alt="Chekin">
+    <div class="me-card"><div class="me-ic"><img src="${ICON}" alt=""></div><h1>${t("meNewTitle")}</h1><p class="sub">${t("meNewSub",{n:esc((ME.name||"").split(" ")[0])})}</p>${pwFormHTML()}
+    <button class="me-link" id="meOut2" type="button" style="display:block;margin:14px auto 0">${t("meLogout")}</button></div></div>`;
+  bindPw($(".me-card"),()=>viewMe());$("#meOut2").onclick=()=>{sb.logout();ME=null;viewMe()};
+}
+
+/* ---------- contactos ---------- */
+const meWhen=iso=>new Date(iso).toLocaleDateString(LANG==="es"?"es-ES":"en-GB",{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"});
+function leadCard(l,who){
+  const wa="https://wa.me/"+String(l.phone||"").replace(/\D/g,"");
+  return `<div class="me-lead"><div class="me-lead-h"><b>${esc(l.first_name+" "+l.last_name)}</b><span>${esc(meWhen(l.created_at))}</span></div>
+    <div class="me-lead-m">${esc(l.phone)} · ${esc(l.email)}</div>
+    <div class="me-lead-m">${esc(t("meProps",{n:l.properties}))}${l.event_name?" · "+esc(l.event_name)+(l.event_city?" · "+esc(l.event_city):""):""}${who?" · "+esc(who):""}</div>
+    <div class="me-lead-a"><a class="btn sm" href="${esc(wa)}" target="_blank" rel="noopener">WhatsApp</a><a class="btn sm" href="mailto:${esc(l.email)}">Email</a></div></div>`;
+}
+const csvCell=v=>{let s=String(v??"");if(/^[=+\-@\t\r]/.test(s))s="'"+s;return '"'+s.replace(/"/g,'""')+'"'};
+function downloadCsv(rows,names){
+  const head=["Fecha","Account Executive","Evento","Ciudad","Nombre","Apellido","Teléfono","Email","Propiedades","Canal"];
+  const lines=[head.map(csvCell).join(",")].concat(rows.map(l=>[l.created_at,names[l.ae_id]||l.ae_slug,l.event_name,l.event_city,l.first_name,l.last_name,l.phone,l.email,l.properties,l.channel].map(csvCell).join(",")));
+  const a=document.createElement("a");a.href=URL.createObjectURL(new Blob(["﻿"+lines.join("\r\n")],{type:"text/csv;charset=utf-8"}));
+  a.download="contactos-chekin-"+new Date().toISOString().slice(0,10)+".csv";document.body.appendChild(a);a.click();a.remove();
+}
+
+/* ---------- Account Executive ---------- */
+function loadImage(file){return new Promise((res,rej)=>{const u=URL.createObjectURL(file),im=new Image();im.onload=()=>{URL.revokeObjectURL(u);res(im)};im.onerror=()=>{URL.revokeObjectURL(u);rej(new Error("img"))};im.src=u})}
+async function uploadPhoto(file){
+  const im=await loadImage(file),k=Math.min(im.width,im.height),c=document.createElement("canvas");c.width=c.height=400;
+  c.getContext("2d").drawImage(im,(im.width-k)/2,(im.height-k)/2,k,k,0,0,400,400);
+  const blob=await new Promise((res,rej)=>c.toBlob(b=>b?res(b):rej(new Error("blob")),"image/jpeg",.85));
+  const path=ME.id+"/"+Date.now()+".jpg",old=ME.photo_path;
+  await sb.authed("/storage/v1/object/avatars/"+path,{method:"POST",raw:true,body:blob,headers:{"Content-Type":"image/jpeg"}});
+  const rows=await sb.authed("/rest/v1/profiles?id=eq."+encodeURIComponent(ME.id),{method:"PATCH",body:{photo_path:path},headers:{Prefer:"return=representation"}});
+  ME=(rows&&rows[0])||{...ME,photo_path:path};
+  if(old)sb.authed("/storage/v1/object/avatars/"+old,{method:"DELETE"}).catch(()=>{});
+}
+async function meAe(){
+  const p=ME,r=meRepOf(p),photo=photoUrl(p);
+  document.body.className="";
+  app.innerHTML=`<div class="me-wrap">${meTop()}
+    <div class="me-prof">
+      <div class="me-ph"><button type="button" class="me-av" id="mePh" aria-label="${t("mePhoto")}">${photo?`<img src="${esc(photo)}" alt="">`:AVATAR}<span class="cam">${ME_CAM}</span></button>
+        <div><div class="me-name">${esc(p.name)}</div><div class="me-role">${esc(p.title)} · Chekin</div><button type="button" class="me-link" id="mePh2">${t("mePhoto")}</button></div></div>
+      <input type="file" id="meFile" accept="image/*" hidden>
+      <form id="meProf" novalidate>
+        <div class="me-field"><label for="mePhone">${t("mePhone")}</label><input id="mePhone" name="phone" type="tel" inputmode="tel" autocomplete="tel" value="${esc(p.phone)}" placeholder="+34 600 000 000"><p class="me-hint">${t("mePhoneHint")}</p></div>
+        <div class="me-field"><label for="meMail">${t("meMail")}</label><input id="meMail" name="mail" type="email" inputmode="email" value="${esc(p.contact_email||p.email)}"><p class="me-hint">${t("meMailHint")}</p></div>
+        <div class="me-field"><label for="meCal">${t("meCal")}</label><input id="meCal" name="cal" type="url" inputmode="url" value="${esc(p.calendly_url)}" placeholder="https://calendly.com/tu-nombre"><p class="me-hint">${t("meCalHint")}</p></div>
+        <p class="me-err" id="meProfErr" role="alert"></p>
+        <button class="me-btn" type="submit">${t("meSaveProfile")}</button>
+      </form>
+    </div>
+    <p class="me-ev" id="meEv">…</p>
+    <div class="me-links"><a class="btn sm" href="${esc(cliLinkFor(r))}" target="_blank" rel="noopener">${t("meCard")}</a><a class="btn sm" href="${esc(repLinkFor(r))}" target="_blank" rel="noopener">${t("meQR")}</a></div>
+    <h2 class="me-h">${t("meLeads")} <span id="meCount"></span></h2><div id="meLeads"><p class="me-hint">…</p></div>
+    <details class="me-pwbox"><summary>${t("mePwTitle")}</summary>${pwFormHTML()}</details>
+  </div>`;
+  meBindTop();
+  loadCurrentEvent(p.slug).then(e=>{const el=$("#meEv");if(el)el.innerHTML=e?t("meEvNow",{n:"<b>"+esc(e.name)+"</b>"+(e.city?" · "+esc(e.city):"")}):(e===null?t("meEvNone"):"")});
+  $("#mePh").onclick=$("#mePh2").onclick=()=>$("#meFile").click();
+  $("#meFile").onchange=async e=>{
+    const file=e.target.files&&e.target.files[0];if(!file)return;toast(t("mePhotoUp"));
+    try{await uploadPhoto(file);toast(t("mePhotoOk"));meAe()}catch(x){toast(t("mePhotoErr"))}
+  };
+  const f=$("#meProf");
+  f.onsubmit=async ev=>{
+    ev.preventDefault();const err=$("#meProfErr");err.textContent="";
+    const phone=normPhone(f.elements.phone.value),mail=f.elements.mail.value.trim(),cal=f.elements.cal.value.trim();
+    if(phone&&phone.replace(/\D/g,"").length<9){err.textContent=t("meErrPhone");return}
+    if(mail&&!mailOK(mail)){err.textContent=t("meErrMail");return}
+    if(cal&&!/^https:\/\/[^\s/]+\.[^\s]+$/i.test(cal)){err.textContent=t("meErrCal");return}
+    const btn=$("button[type=submit]",f);btn.disabled=true;
+    try{
+      const rows=await sb.authed("/rest/v1/profiles?id=eq."+encodeURIComponent(ME.id),{method:"PATCH",body:{phone,contact_email:mail,calendly_url:cal},headers:{Prefer:"return=representation"}});
+      ME=(rows&&rows[0])||{...ME,phone,contact_email:mail,calendly_url:cal};f.elements.phone.value=ME.phone;toast(t("meSaved"));
+    }catch(x){err.textContent=meErrText(x)}
+    btn.disabled=false;
+  };
+  bindPw($(".me-pwbox"),()=>{$(".me-pwbox").open=false;$(".me-pwform").reset()});
+  try{
+    const rows=await sb.authed("/rest/v1/leads?select=*&order=created_at.desc&limit=500");
+    $("#meCount").textContent=rows.length?"("+rows.length+")":"";
+    $("#meLeads").innerHTML=rows.length?rows.map(l=>leadCard(l)).join(""):`<p class="me-hint">${t("meNoLeads")}</p>`;
+  }catch(x){if($("#meLeads"))$("#meLeads").innerHTML=`<p class="me-err">${meErrText(x)}</p>`}
+}
+
+/* ---------- administración ---------- */
+async function meAdmin(){
+  document.body.className="";
+  app.innerHTML=`<div class="me-wrap wide">${meTop()}<h1 class="me-h1">${t("meAdminTitle")}</h1><p class="me-hint" id="meAdminSub">…</p><div id="meAdminBody"></div>
+    <details class="me-pwbox"><summary>${t("mePwTitle")}</summary>${pwFormHTML()}</details></div>`;
+  meBindTop();bindPw($(".me-pwbox"),()=>{$(".me-pwbox").open=false;$(".me-pwform").reset()});
+  let leads=[],profs=[],evs=[];
+  try{[leads,profs,evs]=await Promise.all([sb.authed("/rest/v1/leads?select=*&order=created_at.desc&limit=2000"),sb.authed("/rest/v1/profiles?select=*&order=name.asc"),sb.authed("/rest/v1/events?select=name,kind").catch(()=>[])])}
+  catch(x){$("#meAdminSub").textContent=meErrText(x);return}
+  const aes=profs.filter(q=>q.role==="ae"),names={};profs.forEach(q=>names[q.id]=q.name);
+  let filter="all";
+  const draw=()=>{
+    const rows=filter==="all"?leads:leads.filter(l=>l.ae_id===filter);
+    $("#meAdminSub").textContent=t("meCount",{n:rows.length});
+    $("#meAdminBody").innerHTML=`<div class="me-bar"><select id="meFilter" aria-label="${t("meAll")}"><option value="all">${t("meAll")} (${leads.length})</option>${aes.map(a=>`<option value="${esc(a.id)}" ${filter===a.id?"selected":""}>${esc(a.name)} (${leads.filter(l=>l.ae_id===a.id).length})</option>`).join("")}</select>
+      <button class="btn sm primary" id="meCsv" type="button" ${rows.length?"":"disabled"}>${t("meExport")}</button><a class="btn sm" href="${esc(baseUrl())}">${t("mePanel")}</a></div>
+      <div class="me-q"><h2 class="me-h">${t("tabEvents")}</h2>${qualityHTML(qualityRows(leads,evs),"event")}<h2 class="me-h">${t("tabWebinars")}</h2>${qualityHTML(qualityRows(leads,evs),"webinar")}</div>
+      <div class="me-list">${rows.length?rows.map(l=>leadCard(l,names[l.ae_id]||l.ae_slug)).join(""):`<p class="me-hint">${t("meNoLeadsAdmin")}</p>`}</div>
+      <h2 class="me-h">${t("meTeam")}</h2><div class="me-team">${aes.map(a=>`<div class="me-tm"><b>${esc(a.name)}</b>${fillChip(a.phone,t("mePhoneS"))}${fillChip(a.calendly_url,"Calendly")}${fillChip(a.photo_path,t("mePhotoS"))}${a.must_change_password?`<span class="chip pend">${t("mePwPending")}</span>`:""}</div>`).join("")}</div>`;
+    $("#meFilter").onchange=e=>{filter=e.target.value;draw()};
+    $("#meCsv").onclick=()=>downloadCsv(rows,names);
+  };
+  draw();
+}
+
+/* Navegación interna: los enlaces de la propia web (?r= ?c= ?team) se abren dentro de la página.
+   Así la vista previa funciona aunque el archivo se abra desde el móvil sin dirección web. */
+let fromAdmin=false;
+const inView=()=>params.get("c")||params.get("r")||params.has("team");
+function nav(q){
+  const was=!inView();
+  params=new URLSearchParams(q);
+  fromAdmin=inView()?(was||fromAdmin):false;
+  try{history.pushState({},"","?"+params.toString())}catch(e){}
+  route();window.scrollTo(0,0);
+}
+window.addEventListener("popstate",()=>{params=new URLSearchParams(location.search);if(!inView())fromAdmin=false;route()});
+document.addEventListener("click",e=>{
+  const a=e.target.closest("a[href]");if(!a)return;
+  if(a.target==="_blank")return;const raw=a.getAttribute("href")||"";if(!/^[^#]*[?](c|r|team)(=|$|&)/.test(raw))return;   /* solo enlaces propios con ?c= ?r= ?team */
+  const href=a.href||"",here=location.href.split(/[?#]/)[0],base=baseUrl().split(/[?#]/)[0];
+  const q=href.slice(href.indexOf("?")).split("#")[0];
+  if(href.startsWith(here)||href.startsWith(base)){e.preventDefault();nav(q)}
+});
+/* campos: vacíos en gris, con contenido en blanco y borde azul oscuro (sistema de diseño) */
+const markFilled=()=>$$("input:not([type=checkbox]):not([type=radio]):not([type=file]):not([type=hidden]):not([type=range]),select,textarea").forEach(e=>e.classList.toggle("filled",!!e.value));
+document.addEventListener("input",e=>{const x=e.target;if(x&&x.matches&&x.matches("input,select,textarea"))x.classList.toggle("filled",!!x.value)});
+new MutationObserver(()=>{clearTimeout(window._mf);window._mf=setTimeout(markFilled,30)}).observe(document.body,{childList:true,subtree:true});
+route();
+})();
+</script>
+</body>
+</html>

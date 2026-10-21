@@ -1,0 +1,1 @@
+{ "rewrites": [ { "source": "/mi-perfil", "destination": "/index.html" } ] }
