@@ -291,6 +291,8 @@ body.mode-login{background:linear-gradient(180deg,#002CFA 0%,#274BF0 100%) fixed
 .me-scan>.me-link{display:block;margin:6px auto 0}
 .me-scan-box{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 0 5px rgba(26,148,255,.173);padding:16px 16px 18px}
 .me-scan-box h3{font:700 16px var(--f);margin:0}
+.me-scan-box .me-field label{color:#385BF8}
+.me-scan-box .me-field input.filled,.me-scan-box .me-field textarea.filled{border-color:#385BF8}
 .me-scan-box>.me-link{display:block;margin:8px auto 0}
 .me-scan-img{display:block;width:100%;max-height:180px;object-fit:contain;border-radius:8px;background:#F4F6F9;margin-top:12px}
 .me-scan-st{font:500 13px/1.4 var(--f);color:var(--muted);margin-top:10px}
@@ -3896,19 +3898,23 @@ function parseCard(text){
   const lines=String(text||"").split(/\n+/).map(s=>s.replace(/[|_~•·]+/g," ").replace(/\s+/g," ").trim()).filter(s=>s.length>1);
   const all=lines.join("\n");
   const email=((all.match(/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/)||[""])[0]).toLowerCase();
-  let phone="";
+  /* teléfono: el que lleva delante M./Móvil/Mobile gana (fijo y móvil suelen ir en la misma línea); si no hay, el primero */
+  let phone="",mobile="";
   for(const l of lines){
     if(l.includes("@"))continue;
-    const mob=/\b(m|mob|movil|móvil|cell|cel|mobile)\b/i.test(l);
-    for(const c of (l.match(/(?:\+|00)?\d[\d\s().\/-]{7,}\d/g)||[])){
-      const n=c.replace(/\D/g,"").length;
-      if(n>=9&&n<=15&&(!phone||mob)){phone=normPhone(c.replace(/[\/]/g," "));break}
+    const rx=/(?:\+|00)?\d[\d\s().\/-]{7,}\d/g;let m;
+    while((m=rx.exec(l))){
+      const n=m[0].replace(/\D/g,"").length;if(n<9||n>15)continue;
+      const p=normPhone(m[0].replace(/[\/]/g," ")),before=l.slice(Math.max(0,m.index-12),m.index);
+      if(/(^|[^\p{L}])(m|mob|movil|móvil|cell|cel|mobile|whatsapp)\.?\s*:?\s*$/iu.test(before)){if(!mobile)mobile=p}
+      else if(!phone)phone=p;
     }
-    if(phone&&mob)break;
   }
+  phone=mobile||phone;
   const web=(all.match(/(?:www\.)?([a-z0-9-]+\.(?:com|es|it|pt|fr|de|net|org|eu|co\.uk|io|travel))\b/i)||[])[1]||"";
   const domain=email?email.split("@")[1]:"";
   let company=lines.find(l=>CO_RX.test(l)&&!l.includes("@")&&!/www\.|\d{4,}/i.test(l))||"";
+  company=company.replace(/[*®™©]+/g,"").replace(/^(?:\p{L}\s+)+/u,"").replace(/\s+/g," ").trim();   /* «a GRAN HOTEL ALMAR* & Spa*» → «GRAN HOTEL ALMAR & Spa» */
   if(!company){const base=(domain&&!FREE_MAIL.test(domain))?domain:web;if(base)company=base.split(".")[0].replace(/[-_]+/g," ").replace(/\b\w/g,c=>c.toUpperCase())}
   const plain=s=>s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");
   /* restos del lector (logos, adornos) pegados al nombre: «EE Marta Ruiz» → «Marta Ruiz» */
