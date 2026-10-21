@@ -3865,6 +3865,7 @@ const TLD_COUNTRY={es:"Spain",it:"Italy",pt:"Portugal",fr:"France",de:"Germany",
 const FREE_MAIL=/^(gmail|googlemail|hotmail|outlook|live|yahoo|icloud|me|msn|aol|proton|protonmail|gmx|libero|orange|wanadoo|telefonica|movistar)\./i;
 const CO_RX=/\b(s\.?\s?l\.?u?|s\.?\s?a\.?u?|s\.?r\.?l\.?|s\.?p\.?a\.?|ltd|limited|llc|inc|gmbh|sas|sarl|lda|group|grupo|hotel(es|s)?|resort|apartament(os|s)?|apartments?|villas?|rentals?|homes|suites|hostel|camping|properties|inmobiliaria|management)\b/i;
 const ROLE_RX=/\b(ceo|cto|cfo|coo|founder|co-?founder|fundador(a)?|director(a)?|manager|gerente|responsable|head|jef[ea]|owner|propietari[oa]|soci[oa]|partner|sales|ventas|marketing|comercial|revenue|operations|operaciones|account|executive|consultant|consultor(a)?|recepci[oó]n|reception|front office|general)\b/i;
+const COMPOUND=/^(luis|jose|maria|carlos|antonio|manuel|miguel|angel|jesus|javier|ignacio|francisco|pablo|alberto|andres|ramon|enrique|isabel|carmen|elena|teresa|luisa|pilar|dolores|victoria|cristina|eugenia|paz|mar|sol|rosa|ana|juan)$/;
 let ocrLib=null;
 function loadOcr(){
   if(window.Tesseract)return Promise.resolve(window.Tesseract);
@@ -3910,12 +3911,21 @@ function parseCard(text){
   let company=lines.find(l=>CO_RX.test(l)&&!l.includes("@")&&!/www\.|\d{4,}/i.test(l))||"";
   if(!company){const base=(domain&&!FREE_MAIL.test(domain))?domain:web;if(base)company=base.split(".")[0].replace(/[-_]+/g," ").replace(/\b\w/g,c=>c.toUpperCase())}
   const plain=s=>s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");
+  /* restos del lector (logos, adornos) pegados al nombre: «EE Marta Ruiz» → «Marta Ruiz» */
+  const PART=/^(de|del|da|das|do|dos|di|la|le|van|von|y|e)$/i;
+  const junk=w=>!PART.test(w)&&((w.replace(/[^\p{L}]/gu,"").length<3&&w===w.toUpperCase())||!/[aeiouyáéíóúàèìòùâêîôûäëïöü]/i.test(w));
+  const clean=l=>{const w=l.split(" ");while(w.length&&junk(w[0]))w.shift();while(w.length&&junk(w[w.length-1]))w.pop();return w.join(" ")};
   const nameish=l=>l!==company&&!/[\d@:\/]/.test(l)&&!/www|\.com/i.test(l)&&!ROLE_RX.test(plain(l))&&!CO_RX.test(l)&&/^[\p{L}'’.-]+(?: [\p{L}'’.-]+){1,3}$/u.test(l);
-  let name=lines.find(nameish)||"";
-  if(email){const lp=plain(email.split("@")[0]).replace(/[^a-z]/g,"");const hit=lines.find(l=>nameish(l)&&plain(l).split(" ").some(w=>w.length>2&&lp.includes(w)));if(hit)name=hit}
+  const cand=lines.map(clean).filter(nameish);
+  let name=cand[0]||"";
+  if(email){const lp=plain(email.split("@")[0]).replace(/[^a-z]/g,"");const hit=cand.find(l=>plain(l).split(" ").some(w=>w.length>2&&lp.includes(w)));if(hit)name=hit}
   if(name&&name===name.toUpperCase())name=name.toLowerCase().replace(/(^|[\s'’-])(\p{L})/gu,(m,a,b)=>a+b.toUpperCase());
   const parts=name.split(" ").filter(Boolean);
-  return{first:parts[0]||"",last:parts.slice(1).join(" "),company,phone,email,country:countryOf(phone,domain||web)};
+  /* nombre compuesto (José Luis, María José…): por la lista de segundos nombres habituales o porque el email los lleva juntos (joseluis.perez@) */
+  const lp1=email?plain(email.split("@")[0]).split(/[._-]/)[0]:"";
+  const two=parts.length>=3&&(COMPOUND.test(plain(parts[1]))||(lp1&&lp1===plain(parts[0]+parts[1])));
+  const nf=two?2:1;
+  return{first:parts.slice(0,nf).join(" "),last:parts.slice(nf).join(" "),company,phone,email,country:countryOf(phone,domain||web)};
 }
 function scanInit(box,getEv,onSaved){
   const idle=()=>{
