@@ -1739,9 +1739,10 @@ async function meAe(){
 /* ---------- administración ---------- */
 async function meAdmin(){
   document.body.className="";
-  app.innerHTML=`<div class="me-wrap wide">${meTop()}<h1 class="me-h1">${t("meAdminTitle")}</h1><p class="me-hint" id="meAdminSub">…</p><div id="meAdminBody"></div>
+  app.innerHTML=`<div class="me-wrap wide">${meTop()}<h1 class="me-h1">${t("meAdminTitle")}</h1><p class="me-hint" id="meAdminSub">…</p><div class="me-scan" id="meScan" style="max-width:560px"></div><div id="meAdminBody"></div>
     <details class="me-pwbox"><summary>${t("mePwTitle")}</summary>${pwFormHTML()}</details></div>`;
   meBindTop();bindPw($(".me-pwbox"),()=>{$(".me-pwbox").open=false;$(".me-pwform").reset()});
+  scanInit($("#meScan"),()=>null,meAdmin);   /* Growth también puede escanear tarjetas en los eventos */
   let leads=[],profs=[],evs=[];
   try{[leads,profs,evs]=await Promise.all([sb.authed("/rest/v1/leads?select=*&order=created_at.desc&limit=2000"),sb.authed("/rest/v1/profiles?select=*&order=name.asc"),sb.authed("/rest/v1/events?select=name,kind").catch(()=>[])])}
   catch(x){$("#meAdminSub").textContent=meErrText(x);return}
