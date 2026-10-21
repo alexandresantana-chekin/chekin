@@ -18,4 +18,5 @@
 - **P1 · Onboarding de producto** — Alexandre pregunta a producto el 2026-10-22 y empieza. Irá lento, a base de feedback. KPI de activación por definir con Daniel.
 - **P4 · Web, CR y experimentos en WordPress** — el último en empezar.
 - **Backlog:** MRR automático.
-- Asana: "Tarea 1/2/3" asignadas y vencidas, sin proyecto [POR COMPROBAR si son de prueba].
+- Crear en Asana las tareas de los 4 proyectos GTM (propuesta hecha, falta OK).
+- Traer la app del QR a GitHub [POR COMPROBAR dónde está ahora].
