@@ -22,7 +22,7 @@ tools/sales-card/            ← fuentes para seguir editando
   assets/                    ← librería de QR, icono, logos oficiales SVG
   decks/                     ← scripts para (re)generar/parchear presentaciones
   tests/                     ← pruebas Playwright con Supabase simulado (run.sh)
-supabase/migrations/         ← esquema de la base (ya aplicado en producción; en orden de fecha)
+supabase/migrations/         ← esquema de la base (en orden de fecha; aplicado en producción hasta 20261023; 20261024_scan_leads PENDIENTE)
 landing-evento/index.html    ← landing del evento de Madrid (archivo único, sin conectar a nada)
 docs/TRASPASO.md            ← guía de traspaso y cuentas
 ```
@@ -41,6 +41,7 @@ docs/TRASPASO.md            ← guía de traspaso y cuentas
 - **Quién ve qué**: admins (Growth) ven todo; cada AE ve solo su perfil, sus contactos y su QR (RLS). Los clientes (anónimos) solo leen el perfil público del AE, el evento actual (`current_event`) y envían datos con `submit_lead`.
 - **Eventos**: un evento automático está activo desde las 00:00 (Europe/Madrid) de `fecha_inicio − days_before` hasta el final de su último día. Si un AE tiene varios activos, se usa el primero por fecha. Los webinars usan `days_before = 0`.
 - **Contactos (leads)**: el cliente deja nombre, apellido, teléfono, email, nº de propiedades y consentimiento; se encola en `localStorage` (`chekin-lead-queue`) y se envía a `submit_lead`.
+- **Escáner de tarjetas** (perfil del AE, `scanInit`): el AE fotografía la tarjeta de visita; Tesseract.js (CDN jsdelivr, se descarga al primer uso) lee el texto en el móvil y `parseCard` rellena nombre, empresa, teléfono, email y país. El AE añade Country, Number of properties or rooms (opcional) y Comments, marca "me ha dado su tarjeta" y se guarda con `add_scanned_lead` (`channel='scan'`, `legal_basis='card_given'`). Obligatorio: nombre + email o teléfono. Migración `20261024_scan_leads.sql`.
 - **Idiomas**: es, en, it, pt (Portugal), fr, de (`LANGS` + `DICT`). Se detecta del móvil; el selector es un desplegable. Lo que falta en un idioma cae a inglés.
 - **Presentaciones**: `PRES` en el template. Hoteles y Alquiler vacacional son un archivo multilingüe cada uno (`#es`, `#en`…); Hoteles en italiano es `hotels-it.html` (diseño anterior). Si la tarjeta abre una presentación, se pasa `?card=` para que «← Tarjeta» y «Reservar demo» vuelvan a la tarjeta (`?from=deck&go=demo`).
 - **Claves de localStorage**: `chekin-cards-v1`, `chekin-cards-lang`, `chekin-sb-session`, `chekin-lead`, `chekin-lead-queue`, `chekin-act-queue`, `chekin-ev-<slug>`, `chekin-ev-imported`, `chekin-me-email`.

@@ -19,4 +19,4 @@
 - **P1 · Onboarding de producto** — Alexandre pregunta a producto el 2026-10-22 y empieza. Irá lento, a base de feedback. KPI de activación por definir con Daniel.
 - **P4 · Web, CR y experimentos en WordPress** — el último en empezar.
 - **Backlog:** MRR automático.
-- Traer la app del QR a GitHub [POR COMPROBAR dónde está ahora].
+- P2 · Escáner de tarjetas programado y probado en local (21/10), **sin publicar**. Para publicar: 1) aplicar `chekin-connect/supabase/migrations/20261024_scan_leads.sql` en Supabase, 2) reconectar Vercel a este repo (Root Directory `chekin-connect/sales-card`), 3) probar en el móvil con una versión de prueba antes de pasar a producción.

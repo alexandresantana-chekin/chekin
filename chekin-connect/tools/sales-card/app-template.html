@@ -286,6 +286,23 @@ body.mode-login{background:linear-gradient(180deg,#002CFA 0%,#274BF0 100%) fixed
 .me-team{display:grid;gap:8px}
 .me-tm{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px 14px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
 .me-tm b{flex:1 1 140px;font:700 14px var(--f)}
+/* escáner de tarjetas (perfil del Account Executive) */
+.me-scan{margin-top:18px}
+.me-scan>.me-link{display:block;margin:6px auto 0}
+.me-scan-box{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 0 5px rgba(26,148,255,.173);padding:16px 16px 18px}
+.me-scan-box h3{font:700 16px var(--f);margin:0}
+.me-scan-box>.me-link{display:block;margin:8px auto 0}
+.me-scan-img{display:block;width:100%;max-height:180px;object-fit:contain;border-radius:8px;background:#F4F6F9;margin-top:12px}
+.me-scan-st{font:500 13px/1.4 var(--f);color:var(--muted);margin-top:10px}
+.me-row2{display:grid;grid-template-columns:1fr 1fr;gap:0 10px}
+.me-field textarea{width:100%;min-height:84px;resize:vertical;font:500 16px var(--f);color:#161643;padding:13px 14px;border-radius:8px;border:1px solid rgba(22,22,67,.2);background:#F4F6F8}
+.me-field textarea.filled{background:#fff;border-color:#161643}
+.me-field textarea:focus{outline:0;border-color:#161643;box-shadow:0 0 0 3px rgba(56,91,248,.2)}
+.me-check{display:flex;gap:10px;align-items:flex-start;margin-top:16px;font:500 14px/1.4 var(--f);color:#161643;cursor:pointer}
+.me-check input{width:20px;height:20px;margin:0;flex:none;accent-color:#385BF8}
+.me-scan-a{display:flex;gap:8px}.me-scan-a .me-btn{flex:1}
+.me-btn.ghost{background:#fff;color:#385BF8;box-shadow:inset 0 0 0 1px #385BF8}
+.me-tag{display:inline-block;font:700 11px var(--f);font-style:normal;color:#385BF8;background:#EEF2FF;border-radius:6px;padding:2px 6px;margin-left:6px;vertical-align:2px}
 
 /* pantalla de QR: logo, frase animada y QR repartidos por toda la altura (QR en la parte baja) */
 .col.qr{display:flex;flex-direction:column;min-height:100dvh;padding-bottom:max(22px,env(safe-area-inset-bottom))}
@@ -526,6 +543,7 @@ function persist(opts={}){
 /* ================================================================ i18n */
 const DICT={
 es:{
+ scanBtn:"Escanear tarjeta de visita",scanManual:"O añadir un contacto a mano",scanTitle:"Nuevo contacto",scanLoading:"Preparando el lector. La primera vez tarda unos segundos.",scanReading:"Leyendo la tarjeta… {p} %",scanDone:"Revisa los datos leídos y completa el resto.",scanFail:"No hemos podido leer la tarjeta. Rellena los datos a mano.",scanHandHint:"Rellena los datos del contacto.",scanCompany:"Empresa",scanCountry:"Country",scanProps:"Number of properties or rooms",scanComments:"Comments",scanCard:"La persona me ha dado su tarjeta",scanSave:"Guardar contacto",scanRetake:"Repetir la foto",scanErrName:"Escribe al menos el nombre.",scanErrContact:"Hace falta un email o un teléfono.",scanErrPhone:"Escribe un teléfono válido.",scanErrProps:"El número de propiedades o habitaciones tiene que ser un número entero.",scanErrCard:"Marca la casilla para confirmar que la persona te ha dado su tarjeta.",scanOk:"Contacto guardado.",scanTag:"Tarjeta",
  scan:"Escanéame",myData:"Tus datos",formSub:"Te preparo una demo a tu medida.",save:"Guardar contacto",book:"Agendar demo",web:"Web",event:"Evento",
  fName:"Nombre",lName:"Apellido",email:"Email",phone:"Teléfono",pType:"Tipo de alojamiento",pPlace:"Selecciona",nProps:"Nº de propiedades o habitaciones",
  typeLabels:["Apartamentos","Villas","Hoteles","Campings","Otro"],fields:"{n}/6 datos",ready:"6/6 · listo",send:"Enviar",err:"Faltan datos: necesitamos todos los campos (teléfono y email válidos).",
@@ -559,6 +577,7 @@ es:{
  calSoon:"El calendario estará disponible muy pronto.",vcSaved:"Contacto listo para guardar",teamTitle:"Nuestro equipo de ventas",teamSub:"Conoce a las personas detrás de Chekin.",allTeam:"Todos",teamEmpty:"Aún no hay Account Executives publicados.",meetTeam:"Conoce al equipo",
  teamPage:"Página pública del equipo",teamPageHint:"Cuadrícula con foto, nombre y cargo. Cada tarjeta lleva a su Account Executive. Los «por completar» no aparecen.",openTeam:"Ver página",sDeck:"Enlace de la presentación (PDF, opcional)",pending:"Por completar",noEvent:"Sin evento",evActives:"Activos",evInactive:"Inactivos",evTeam:"Equipo",evNoTeam:"Sin Account Executives asignados",evAssign:"Asignar",evDeactivate:"Desactivar",evPool:"Account Executives",evPoolHint:"Arrastra un Account Executive sobre un evento para asignarlo (o usa «Asignar»). Quita con la ×.",evAssignTitle:"Account Executives de {n}",evAlsoIn:"también en {n}",evNoActive:"Ningún evento activo.",conflict:"{n} está en {k} eventos activos ({list}). Se usa {first}.",evOf:"Evento",filterEv:"Evento",allEvents:"Todos los eventos",byEvent:"Por evento",thEvent:"Evento",evLeadsN:"{n} leads",activeNow:"Activo ahora"},
 en:{
+ scanBtn:"Scan business card",scanManual:"Or add a contact by hand",scanTitle:"New contact",scanLoading:"Getting the reader ready. The first time takes a few seconds.",scanReading:"Reading the card… {p} %",scanDone:"Check the details we read and fill in the rest.",scanFail:"We couldn't read the card. Fill in the details by hand.",scanHandHint:"Fill in the contact's details.",scanCompany:"Company",scanCountry:"Country",scanProps:"Number of properties or rooms",scanComments:"Comments",scanCard:"This person gave me their business card",scanSave:"Save contact",scanRetake:"Retake the photo",scanErrName:"Enter at least the first name.",scanErrContact:"An email or a phone number is needed.",scanErrPhone:"Enter a valid phone number.",scanErrProps:"The number of properties or rooms must be a whole number.",scanErrCard:"Tick the box to confirm this person gave you their card.",scanOk:"Contact saved.",scanTag:"Card",
  scan:"Scan me",myData:"Your details",formSub:"I'll prepare a demo tailored to you.",save:"Save contact",book:"Book a demo",web:"Website",event:"Event",
  fName:"First name",lName:"Last name",email:"Email",phone:"Phone",pType:"Property type",pPlace:"Please select",nProps:"Number of properties or rooms",
  typeLabels:["Apartments","Villas","Hotels","Campsites","Other"],fields:"{n}/6 fields",ready:"6/6 · ready",send:"Send",err:"Missing info: we need every field (valid phone and email).",
@@ -1088,7 +1107,7 @@ async function leadsPull(){
 function qualityRows(leads,events){
   const kb={};events.forEach(e=>kb[e.name]=kindOf(e));
   const by={};
-  leads.forEach(l=>{const n=l.event_name||"";if(!n)return;const r=by[n]||(by[n]={n,k:kb[n]||"event",c:0,d:0,p:0,pn:0});r.c++;if(l.channel==="demo")r.d++;const p=Number(l.properties);if(Number.isFinite(p)){r.p+=p;r.pn++}});
+  leads.forEach(l=>{const n=l.event_name||"";if(!n)return;const r=by[n]||(by[n]={n,k:kb[n]||"event",c:0,d:0,p:0,pn:0});r.c++;if(l.channel==="demo")r.d++;const p=l.properties==null?NaN:Number(l.properties);if(Number.isFinite(p)){r.p+=p;r.pn++}});
   return Object.values(by);
 }
 function qualityHTML(rows,kind){
@@ -1511,15 +1530,19 @@ function mePasswordFirst(){
 const meWhen=iso=>new Date(iso).toLocaleDateString(LANG==="es"?"es-ES":"en-GB",{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"});
 function leadCard(l,who){
   const wa="https://wa.me/"+String(l.phone||"").replace(/\D/g,"");
-  return `<div class="me-lead"><div class="me-lead-h"><b>${esc(l.first_name+" "+l.last_name)}</b><span>${esc(meWhen(l.created_at))}</span></div>
-    <div class="me-lead-m">${esc(l.phone)} · ${esc(l.email)}</div>
-    <div class="me-lead-m">${esc(t("meProps",{n:l.properties}))}${l.event_name?" · "+esc(l.event_name)+(l.event_city?" · "+esc(l.event_city):""):""}${who?" · "+esc(who):""}</div>
-    <div class="me-lead-a"><a class="btn sm" href="${esc(wa)}" target="_blank" rel="noopener">WhatsApp</a><a class="btn sm" href="mailto:${esc(l.email)}">Email</a></div></div>`;
+  const meta=[l.properties==null?"":t("meProps",{n:l.properties}),l.event_name?l.event_name+(l.event_city?" · "+l.event_city:""):"",who||""].filter(Boolean).join(" · ");
+  const firm=[l.company,l.country].filter(Boolean).join(" · ");
+  return `<div class="me-lead"><div class="me-lead-h"><b>${esc((l.first_name+" "+(l.last_name||"")).trim())}${l.channel==="scan"?`<i class="me-tag">${t("scanTag")}</i>`:""}</b><span>${esc(meWhen(l.created_at))}</span></div>
+    ${firm?`<div class="me-lead-m">${esc(firm)}</div>`:""}
+    <div class="me-lead-m">${esc([l.phone,l.email].filter(Boolean).join(" · "))}</div>
+    ${meta?`<div class="me-lead-m">${esc(meta)}</div>`:""}
+    ${l.comments?`<div class="me-lead-m">${esc(l.comments)}</div>`:""}
+    <div class="me-lead-a">${l.phone?`<a class="btn sm" href="${esc(wa)}" target="_blank" rel="noopener">WhatsApp</a>`:""}${l.email?`<a class="btn sm" href="mailto:${esc(l.email)}">Email</a>`:""}</div></div>`;
 }
 const csvCell=v=>{let s=String(v??"");if(/^[=+\-@\t\r]/.test(s))s="'"+s;return '"'+s.replace(/"/g,'""')+'"'};
 function downloadCsv(rows,names){
-  const head=["Fecha","Account Executive","Evento","Ciudad","Nombre","Apellido","Teléfono","Email","Propiedades","Canal"];
-  const lines=[head.map(csvCell).join(",")].concat(rows.map(l=>[l.created_at,names[l.ae_id]||l.ae_slug,l.event_name,l.event_city,l.first_name,l.last_name,l.phone,l.email,l.properties,l.channel].map(csvCell).join(",")));
+  const head=["Fecha","Account Executive","Evento","Ciudad","Nombre","Apellido","Empresa","País","Teléfono","Email","Propiedades","Comentarios","Canal","Base legal"];
+  const lines=[head.map(csvCell).join(",")].concat(rows.map(l=>[l.created_at,names[l.ae_id]||l.ae_slug,l.event_name,l.event_city,l.first_name,l.last_name,l.company,l.country,l.phone,l.email,l.properties,l.comments,l.channel,l.legal_basis||"consent"].map(csvCell).join(",")));
   const a=document.createElement("a");a.href=URL.createObjectURL(new Blob(["﻿"+lines.join("\r\n")],{type:"text/csv;charset=utf-8"}));
   a.download="contactos-chekin-"+new Date().toISOString().slice(0,10)+".csv";document.body.appendChild(a);a.click();a.remove();
 }
@@ -1536,6 +1559,127 @@ async function uploadPhoto(file){
   ME=(rows&&rows[0])||{...ME,photo_path:path};
   if(old)sb.authed("/storage/v1/object/avatars/"+old,{method:"DELETE"}).catch(()=>{});
 }
+/* ---------- escáner de tarjetas: el AE fotografía la tarjeta de visita de un contacto ----------
+   El texto se lee en el propio móvil (Tesseract.js, se descarga la primera vez que se usa) y el AE revisa los datos antes de guardar. */
+const OCR_SRC="https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js";
+const SCAN_COUNTRIES=["Spain","Italy","Portugal","France","Germany","United Kingdom","Greece","Croatia","Austria","Switzerland","Netherlands","Belgium","Ireland","Bulgaria","Hungary","Czech Republic","Poland","Romania","Andorra","Morocco","United Arab Emirates","Mexico","Argentina","Colombia","Chile","Brazil","United States"];
+const PHONE_COUNTRY=[["+351","Portugal"],["+385","Croatia"],["+359","Bulgaria"],["+420","Czech Republic"],["+353","Ireland"],["+376","Andorra"],["+212","Morocco"],["+971","United Arab Emirates"],["+34","Spain"],["+39","Italy"],["+33","France"],["+49","Germany"],["+44","United Kingdom"],["+30","Greece"],["+43","Austria"],["+41","Switzerland"],["+31","Netherlands"],["+32","Belgium"],["+36","Hungary"],["+48","Poland"],["+40","Romania"],["+52","Mexico"],["+54","Argentina"],["+57","Colombia"],["+56","Chile"],["+55","Brazil"],["+1","United States"]];
+const TLD_COUNTRY={es:"Spain",it:"Italy",pt:"Portugal",fr:"France",de:"Germany",uk:"United Kingdom",gr:"Greece",hr:"Croatia",at:"Austria",ch:"Switzerland",nl:"Netherlands",be:"Belgium",ie:"Ireland",bg:"Bulgaria",hu:"Hungary",cz:"Czech Republic",pl:"Poland",ro:"Romania",ad:"Andorra",ma:"Morocco",ae:"United Arab Emirates",mx:"Mexico",ar:"Argentina",cl:"Chile",br:"Brazil"};
+const FREE_MAIL=/^(gmail|googlemail|hotmail|outlook|live|yahoo|icloud|me|msn|aol|proton|protonmail|gmx|libero|orange|wanadoo|telefonica|movistar)\./i;
+const CO_RX=/\b(s\.?\s?l\.?u?|s\.?\s?a\.?u?|s\.?r\.?l\.?|s\.?p\.?a\.?|ltd|limited|llc|inc|gmbh|sas|sarl|lda|group|grupo|hotel(es|s)?|resort|apartament(os|s)?|apartments?|villas?|rentals?|homes|suites|hostel|camping|properties|inmobiliaria|management)\b/i;
+const ROLE_RX=/\b(ceo|cto|cfo|coo|founder|co-?founder|fundador(a)?|director(a)?|manager|gerente|responsable|head|jef[ea]|owner|propietari[oa]|soci[oa]|partner|sales|ventas|marketing|comercial|revenue|operations|operaciones|account|executive|consultant|consultor(a)?|recepci[oó]n|reception|front office|general)\b/i;
+let ocrLib=null;
+function loadOcr(){
+  if(window.Tesseract)return Promise.resolve(window.Tesseract);
+  if(!ocrLib)ocrLib=new Promise((res,rej)=>{const s=document.createElement("script");s.src=OCR_SRC;s.async=true;s.onload=()=>window.Tesseract?res(window.Tesseract):rej(new Error("ocr"));s.onerror=()=>{ocrLib=null;rej(new Error("ocr"))};document.head.appendChild(s)});
+  return ocrLib;
+}
+async function cardCanvas(file){   /* foto reducida y en escala de grises: lee mejor y más rápido */
+  const im=await loadImage(file),k=Math.min(1,1800/Math.max(im.width,im.height)),c=document.createElement("canvas");
+  c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);
+  const x=c.getContext("2d");x.drawImage(im,0,0,c.width,c.height);
+  const d=x.getImageData(0,0,c.width,c.height),px=d.data;
+  for(let i=0;i<px.length;i+=4){const g=.299*px[i]+.587*px[i+1]+.114*px[i+2];px[i]=px[i+1]=px[i+2]=g}
+  x.putImageData(d,0,0);return c;
+}
+async function readCard(file,onProg){
+  const [T,c]=await Promise.all([loadOcr(),cardCanvas(file)]);
+  const r=await T.recognize(c,"eng+spa",{logger:m=>{if(m&&m.status==="recognizing text")onProg(Math.round((m.progress||0)*100))}});
+  return (r&&r.data&&r.data.text)||"";
+}
+function countryOf(phone,mailOrWeb){
+  const ph=String(phone||"").replace(/\s/g,"");
+  for(const [pre,c] of PHONE_COUNTRY)if(ph.startsWith(pre))return c;
+  const tld=String(mailOrWeb||"").toLowerCase().split(".").pop();
+  return TLD_COUNTRY[tld]||"";
+}
+/* de texto suelto a campos: email y teléfono por patrón; empresa por forma jurídica o dominio; nombre = línea corta sin cargo ni empresa */
+function parseCard(text){
+  const lines=String(text||"").split(/\n+/).map(s=>s.replace(/[|_~•·]+/g," ").replace(/\s+/g," ").trim()).filter(s=>s.length>1);
+  const all=lines.join("\n");
+  const email=((all.match(/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/)||[""])[0]).toLowerCase();
+  let phone="";
+  for(const l of lines){
+    if(l.includes("@"))continue;
+    const mob=/\b(m|mob|movil|móvil|cell|cel|mobile)\b/i.test(l);
+    for(const c of (l.match(/(?:\+|00)?\d[\d\s().\/-]{7,}\d/g)||[])){
+      const n=c.replace(/\D/g,"").length;
+      if(n>=9&&n<=15&&(!phone||mob)){phone=normPhone(c.replace(/[\/]/g," "));break}
+    }
+    if(phone&&mob)break;
+  }
+  const web=(all.match(/(?:www\.)?([a-z0-9-]+\.(?:com|es|it|pt|fr|de|net|org|eu|co\.uk|io|travel))\b/i)||[])[1]||"";
+  const domain=email?email.split("@")[1]:"";
+  let company=lines.find(l=>CO_RX.test(l)&&!l.includes("@")&&!/www\.|\d{4,}/i.test(l))||"";
+  if(!company){const base=(domain&&!FREE_MAIL.test(domain))?domain:web;if(base)company=base.split(".")[0].replace(/[-_]+/g," ").replace(/\b\w/g,c=>c.toUpperCase())}
+  const plain=s=>s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");
+  const nameish=l=>l!==company&&!/[\d@:\/]/.test(l)&&!/www|\.com/i.test(l)&&!ROLE_RX.test(plain(l))&&!CO_RX.test(l)&&/^[\p{L}'’.-]+(?: [\p{L}'’.-]+){1,3}$/u.test(l);
+  let name=lines.find(nameish)||"";
+  if(email){const lp=plain(email.split("@")[0]).replace(/[^a-z]/g,"");const hit=lines.find(l=>nameish(l)&&plain(l).split(" ").some(w=>w.length>2&&lp.includes(w)));if(hit)name=hit}
+  if(name&&name===name.toUpperCase())name=name.toLowerCase().replace(/(^|[\s'’-])(\p{L})/gu,(m,a,b)=>a+b.toUpperCase());
+  const parts=name.split(" ").filter(Boolean);
+  return{first:parts[0]||"",last:parts.slice(1).join(" "),company,phone,email,country:countryOf(phone,domain||web)};
+}
+function scanInit(box,getEv,onSaved){
+  const idle=()=>{
+    box.innerHTML=`<button class="me-btn" type="button" id="scGo">${t("scanBtn")}</button><button class="me-link" type="button" id="scHand">${t("scanManual")}</button><input type="file" id="scFile" accept="image/*" capture="environment" hidden>`;
+    $("#scGo",box).onclick=()=>$("#scFile",box).click();
+    $("#scHand",box).onclick=()=>form(null);
+    $("#scFile",box).onchange=e=>{const f=e.target.files&&e.target.files[0];if(f)form(f)};
+  };
+  const form=file=>{
+    const url=file?URL.createObjectURL(file):"";
+    const fld=(id,name,label,extra="")=>`<div class="me-field"><label for="${id}">${label}</label><input id="${id}" name="${name}" autocomplete="off" ${extra}></div>`;
+    box.innerHTML=`<form class="me-scan-box" novalidate><h3>${t("scanTitle")}</h3>
+      ${file?`<img class="me-scan-img" src="${esc(url)}" alt="">`:""}
+      <p class="me-scan-st" id="scSt" role="status">${file?t("scanLoading"):t("scanHandHint")}</p>
+      <div class="me-row2">${fld("scFirst","first",t("lfFirst"))}${fld("scLast","last",t("lfLast"))}</div>
+      ${fld("scCo","company",t("scanCompany"))}
+      ${fld("scPhone","phone",t("lfPhone"),'type="tel" inputmode="tel"')}
+      ${fld("scMail","email",t("lfMail"),'type="email" inputmode="email" autocapitalize="none"')}
+      ${fld("scCountry","country",t("scanCountry"),'list="scCountries"')}<datalist id="scCountries">${SCAN_COUNTRIES.map(c=>`<option value="${esc(c)}">`).join("")}</datalist>
+      ${fld("scProps","props",t("scanProps"),'type="number" inputmode="numeric" min="0" max="100000" step="1"')}
+      <div class="me-field"><label for="scNotes">${t("scanComments")}</label><textarea id="scNotes" name="notes" maxlength="1000"></textarea></div>
+      <label class="me-check"><input type="checkbox" name="card"><span>${t("scanCard")}</span></label>
+      <p class="me-err" id="scErr" role="alert"></p>
+      <div class="me-scan-a"><button class="me-btn ghost" type="button" id="scCancel">${t("cancel")}</button><button class="me-btn" type="submit" id="scSave">${t("scanSave")}</button></div>
+      ${file?`<button class="me-link" type="button" id="scAgain">${t("scanRetake")}</button>`:""}
+    </form>`;
+    const f=$("form",box),E=f.elements,st=$("#scSt",box);let alive=true;
+    const close=()=>{alive=false;if(url)URL.revokeObjectURL(url);idle()};
+    const put=(n,v)=>{if(v&&!E[n].value){E[n].value=v;E[n].classList.add("filled")}};
+    $("#scCancel",box).onclick=close;
+    E.phone.addEventListener("change",()=>put("country",countryOf(normPhone(E.phone.value),E.email.value.split("@")[1])));
+    if(file){
+      $("#scAgain",box).onclick=()=>{close();$("#scFile",box).click()};
+      readCard(file,p=>{if(alive)st.textContent=t("scanReading",{p})}).then(text=>{
+        if(!alive)return;const d=parseCard(text);
+        ["first","last","company","phone","email","country"].forEach(k=>put(k,d[k]));
+        st.textContent=(d.first||d.email||d.phone)?t("scanDone"):t("scanFail");
+      }).catch(()=>{if(alive)st.textContent=t("scanFail")});
+    }else E.first.focus();
+    f.onsubmit=async ev=>{
+      ev.preventDefault();const err=$("#scErr",box);err.textContent="";
+      const first=E.first.value.trim(),email=E.email.value.trim().toLowerCase(),phone=normPhone(E.phone.value),pr=E.props.value.trim();
+      if(!first){err.textContent=t("scanErrName");return}
+      if(!email&&!phone){err.textContent=t("scanErrContact");return}
+      if(email&&!mailOK(email)){err.textContent=t("meErrMail");return}
+      if(phone&&phone.replace(/\D/g,"").length<7){err.textContent=t("scanErrPhone");return}
+      if(pr&&!/^\d{1,6}$/.test(pr)){err.textContent=t("scanErrProps");return}
+      if(!E.card.checked){err.textContent=t("scanErrCard");return}
+      const btn=$("#scSave",box),ev2=getEv()||null;btn.disabled=true;
+      try{
+        await sb.authed("/rest/v1/rpc/add_scanned_lead",{method:"POST",body:{p_first:first,p_last:E.last.value.trim(),p_company:E.company.value.trim(),p_phone:phone,p_email:email,p_country:E.country.value.trim(),p_properties:pr?Number(pr):null,p_comments:E.notes.value.trim(),p_card_given:true,p_event_name:ev2?ev2.name||"":"",p_event_city:ev2?ev2.city||"":"",p_lang:LANG}});
+        toast(t("scanOk"));close();onSaved();
+      }catch(x){
+        btn.disabled=false;const m=String(x&&x.message||"");
+        err.textContent=/invalid_email/.test(m)?t("meErrMail"):/invalid_phone/.test(m)?t("scanErrPhone"):/contact_required/.test(m)?t("scanErrContact"):/invalid_name/.test(m)?t("scanErrName"):/card_required/.test(m)?t("scanErrCard"):meErrText(x);
+      }
+    };
+  };
+  idle();
+}
+
 async function meAe(){
   const p=ME,r=meRepOf(p),photo=photoUrl(p);
   document.body.className="";
@@ -1554,11 +1698,13 @@ async function meAe(){
     </div>
     <p class="me-ev" id="meEv">…</p>
     <div class="me-links"><a class="btn sm" href="${esc(cliLinkFor(r))}" target="_blank" rel="noopener">${t("meCard")}</a><a class="btn sm" href="${esc(repLinkFor(r))}" target="_blank" rel="noopener">${t("meQR")}</a></div>
+    <div class="me-scan" id="meScan"></div>
     <h2 class="me-h">${t("meLeads")} <span id="meCount"></span></h2><div id="meLeads"><p class="me-hint">…</p></div>
     <details class="me-pwbox"><summary>${t("mePwTitle")}</summary>${pwFormHTML()}</details>
   </div>`;
   meBindTop();
-  loadCurrentEvent(p.slug).then(e=>{const el=$("#meEv");if(el)el.innerHTML=e?t("meEvNow",{n:"<b>"+esc(e.name)+"</b>"+(e.city?" · "+esc(e.city):"")}):(e===null?t("meEvNone"):"")});
+  let scanEv=null;
+  loadCurrentEvent(p.slug).then(e=>{scanEv=e||null;const el=$("#meEv");if(el)el.innerHTML=e?t("meEvNow",{n:"<b>"+esc(e.name)+"</b>"+(e.city?" · "+esc(e.city):"")}):(e===null?t("meEvNone"):"")});
   $("#mePh").onclick=$("#mePh2").onclick=()=>$("#meFile").click();
   $("#meFile").onchange=async e=>{
     const file=e.target.files&&e.target.files[0];if(!file)return;toast(t("mePhotoUp"));
@@ -1579,11 +1725,15 @@ async function meAe(){
     btn.disabled=false;
   };
   bindPw($(".me-pwbox"),()=>{$(".me-pwbox").open=false;$(".me-pwform").reset()});
-  try{
-    const rows=await sb.authed("/rest/v1/leads?select=*&order=created_at.desc&limit=500");
-    $("#meCount").textContent=rows.length?"("+rows.length+")":"";
-    $("#meLeads").innerHTML=rows.length?rows.map(l=>leadCard(l)).join(""):`<p class="me-hint">${t("meNoLeads")}</p>`;
-  }catch(x){if($("#meLeads"))$("#meLeads").innerHTML=`<p class="me-err">${meErrText(x)}</p>`}
+  const loadLeads=async()=>{
+    try{
+      const rows=await sb.authed("/rest/v1/leads?select=*&order=created_at.desc&limit=500");
+      $("#meCount").textContent=rows.length?"("+rows.length+")":"";
+      $("#meLeads").innerHTML=rows.length?rows.map(l=>leadCard(l)).join(""):`<p class="me-hint">${t("meNoLeads")}</p>`;
+    }catch(x){if($("#meLeads"))$("#meLeads").innerHTML=`<p class="me-err">${meErrText(x)}</p>`}
+  };
+  scanInit($("#meScan"),()=>scanEv,loadLeads);
+  await loadLeads();
 }
 
 /* ---------- administración ---------- */
