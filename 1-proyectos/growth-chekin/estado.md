@@ -20,4 +20,8 @@
 - **P1 · Onboarding de producto** — Alexandre pregunta a producto el 2026-10-22 y empieza. Irá lento, a base de feedback. KPI de activación por definir con Daniel.
 - **P4 · Web, CR y experimentos en WordPress** — el último en empezar.
 - **Backlog:** MRR automático.
-- P2 · Escáner de tarjetas programado y probado en local (21/10), **sin publicar**. Para publicar: 1) aplicar `chekin-connect/supabase/migrations/20261024_scan_leads.sql` en Supabase, 2) reconectar Vercel a este repo (Root Directory `chekin-connect/sales-card`), 3) probar en el móvil con una versión de prueba antes de pasar a producción.
+- P2 · Escáner de tarjetas (21/10):
+  - Hecho: migración `20261024_scan_leads.sql` **aplicada en Supabase** (comprobada). Versión de prueba en Vercel, cuenta nueva: https://chekin-sales-card-navy.vercel.app (despliega solo desde `main` de este repo). Escáner también en la vista de admins.
+  - Problema: el lector gratuito del móvil (Tesseract) **falla mucho con fotos reales**. Propuesta: opción B, IA de visión vía función en Vercel; necesita clave de API de empresa → decisión de Carlos.
+  - Web real `qrsaleschekin` (cuenta Vercel antigua `alexsantanajimenez-afk`): **desconectada de Git**, sigue funcionando con la versión de antes. No se ha tocado.
+  - Contactos de prueba guardados con "PRUEBA" en comentarios: borrarlos.

@@ -8,6 +8,9 @@
 - **Asana:** borradas las tareas de prueba "Tarea 1/2/3".
 - **P1 · Onboarding en ciclos:** analizar funnel hasta activación → proponer → ejecutar → medir a las X semanas. Frecuencia con Daniel en la meet del 22/10.
 - **P3 · Plazo:** España e Italia listas como mínimo el 27/10.
+- **P2 · Código de Chekin Connect en la casa**, carpeta `chekin-connect/` (decisión de Alex frente a repo propio).
+- **P2 · Escáner:** consentimiento = casilla "me ha dado su tarjeta" (interés legítimo); obligatorio nombre + email o teléfono; también disponible para admins.
+- **P2 · Publicación:** primero versión de prueba en proyecto Vercel nuevo; la web real no se toca hasta probarlo en el móvil.
 - **P3 · Solo se cambia la landing**, en la misma URL de la PMax. No se tocan anuncios, puja, presupuesto ni audiencias. Motivo: aislar el efecto y evitar revisión de anuncios y reaprendizaje de la PMax.
 - **P3 · Método:** A/B de HubSpot 50/50; si el plan no lo permite, antes/después con periodos iguales. Éxito: conversión mayor con p < 0,05 y MQL→SQL igual o mejor.
 - **P3 · Medir por página, no por UTM.** Motivo: las UTM mezclan campañas (589 contactos etiquetados como PMax Competitors ES; solo 6 entraron por chekin-hoteles).
