@@ -3,6 +3,7 @@
 ## Hecho
 - P3: diagnóstico de la landing de PMax España Hoteles, deck de 14 diapositivas y tracker de tests creados.
 - Casa `chekin` montada.
+- Asana: tareas creadas en los 4 proyectos GTM (QR, Auditoría, Onboarding, Web). Faltan fechas de P1 tras la meet con Daniel.
 
 ## A medias
 - **P2 · QR para eventos (AEs)** — fichas hechas; falta una mejora: [POR COMPROBAR qué mejora]. Fecha límite en Notion: 2026-10-22.
@@ -18,5 +19,4 @@
 - **P1 · Onboarding de producto** — Alexandre pregunta a producto el 2026-10-22 y empieza. Irá lento, a base de feedback. KPI de activación por definir con Daniel.
 - **P4 · Web, CR y experimentos en WordPress** — el último en empezar.
 - **Backlog:** MRR automático.
-- Crear en Asana las tareas de los 4 proyectos GTM (propuesta hecha, falta OK).
 - Traer la app del QR a GitHub [POR COMPROBAR dónde está ahora].
