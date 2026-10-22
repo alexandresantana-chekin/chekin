@@ -1,5 +1,10 @@
 # Decisiones (solo crece)
 
+## 2026-10-22
+- **Cierre de tareas:** cada tarea terminada se comenta en Asana mencionando a Carlos.
+- **P5:** GIF definitivo = versión 5 (cohete por la «e» que choca con el check + zoom al check). Enlace público en Vercel porque Gmail solo acepta imagen por URL o Drive.
+- **P1:** propuesta de herramienta para medir el funnel = PostHog (parece estar ya en uso) [POR COMPROBAR con Daniel].
+
 ## 2026-10-21
 - **Casa:** un solo proyecto `growth-chekin` con P1–P4 dentro, en vez de una carpeta por P. Motivo: proyectos pequeños, mismo responsable y misma métrica (MRR).
 - **Regla de oro:** nada se toca, envía ni publica sin aprobación y revisión de Alexandre.

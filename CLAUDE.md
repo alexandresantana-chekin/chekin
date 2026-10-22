@@ -12,6 +12,7 @@ Tono: directo y breve, en español. Claude propone y Alex decide.
 - La conversión se mide por página, no por UTM (las UTM mezclan campañas).
 - Ninguna clave ni token en el chat ni en el repo. Van solo en el terminal o en el gestor del servicio. No subir `.env`.
 - Archivar, no borrar (`3-archivo/`). Borradores para copiar y pegar: en el chat o en Notion.
+- **Al terminar una tarea:** comentar en esa tarea de Asana mencionando a Carlos Cedrés (@Carlos, gid Asana `1216414955096276`) con qué se ha hecho y dónde está el entregable. Regla de Alex (22/10).
 
 ## Dónde vive cada dato
 | Qué | Dónde |
