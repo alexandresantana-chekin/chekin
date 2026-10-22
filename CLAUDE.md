@@ -35,6 +35,7 @@ Tono: directo y breve, en español. Claude propone y Alex decide.
 - **P3 · Landings de paid (Google).** España e Italia listas como mínimo para el 27/10. Orden: ES hoteles → ES resto → IT hoteles → IT resto. Se trabaja en el chat "Landing Page".
 - **P1 · Onboarding con producto.** Hasta el 15/01. Ciclos: analizar el funnel hasta la activación → proponer → ejecutar → medir a las X semanas. Frecuencia de reuniones: se decide con Daniel.
 - **P4 · Web y CRO en WordPress.** El último, después de P3.
+- **P5 · Animación del logo para la firma de Gmail.** GIF para Ventas y Partnerships; entrega a Carlos el 27/10. Archivos en `2-herramientas/firma-gmail/`.
 - **Backlog · MRR automático del onboarding.** Para después.
 
 ## Flujo semanal (4 h/día)
