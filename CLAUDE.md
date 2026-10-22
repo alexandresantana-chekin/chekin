@@ -23,7 +23,7 @@ Tono: directo y breve, en español. Claude propone y Alex decide.
 | Datos de Google Ads | Windsor.ai |
 | Registro de tests de landing | Artifact "Tests de landing Chekin" |
 | Web | WordPress |
-| Funnel del onboarding | [POR COMPROBAR: se sabrá en la meet con Daniel] |
+| Funnel del onboarding (P1) | **PostHog**: llegada a la web → registro → pasos del onboarding → activación. [POR COMPROBAR con Daniel: si cubre web, registro y webapp, y quién añade eventos] |
 | Horas dedicadas | `1-proyectos/growth-chekin/horas.md` |
 | Código de la app QR (Chekin Connect) | `chekin-connect/` (tiene su propio `CLAUDE.md`; leerlo antes de tocar código) |
 
@@ -34,7 +34,7 @@ Tono: directo y breve, en español. Claude propone y Alex decide.
 ## Proyectos
 - **P2 · Ficha QR para AEs en eventos.** Entrega el 22/10. Falta el último retoque.
 - **P3 · Landings de paid (Google).** España e Italia listas como mínimo para el 27/10. Orden: ES hoteles → ES resto → IT hoteles → IT resto. Se trabaja en el chat "Landing Page".
-- **P1 · Onboarding con producto.** Hasta el 15/01. Ciclos: analizar el funnel hasta la activación → proponer → ejecutar → medir a las X semanas. Frecuencia de reuniones: se decide con Daniel.
+- **P1 · Onboarding con producto.** Hasta el 15/01. Ciclos: analizar el funnel hasta la activación → proponer → ejecutar → medir a las X semanas. Herramienta de medición: PostHog (funnels, grabaciones de sesión y A/B). Frecuencia de reuniones: se decide con Daniel.
 - **P4 · Web y CRO en WordPress.** El último, después de P3.
 - **P5 · Animación del logo para la firma de Gmail.** GIF para Ventas y Partnerships; entrega a Carlos el 27/10. Archivos en `2-herramientas/firma-gmail/`.
 - **Backlog · MRR automático del onboarding.** Para después.
