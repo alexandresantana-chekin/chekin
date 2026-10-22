@@ -1,6 +1,9 @@
 # Decisiones (solo crece)
 
 ## 2026-10-22
+- **P1 · Reunión con Daniel:** el lunes 26/10 se le enseña un funnel con datos limpios de PostHog, mes a mes, con variantes y huecos de medición señalados y propuesta para medir bien desde ahora.
+- **P2 · Escáner:** lectura de tarjetas con Claude (`claude-opus-5-5`, esfuerzo bajo, salida JSON fija) en una función de Supabase; la clave solo vive en Supabase. Si falla, entra el lector del móvil.
+- **P2 · HubSpot:** se conecta (decisión de Alex).
 - **Cierre de tareas:** cada tarea terminada se comenta en Asana mencionando a Carlos.
 - **P5:** GIF definitivo = versión 5 (cohete por la «e» que choca con el check + zoom al check). Enlace público en Vercel porque Gmail solo acepta imagen por URL o Drive.
 - **P1:** propuesta de herramienta para medir el funnel = PostHog (parece estar ya en uso) [POR COMPROBAR con Daniel].

@@ -2842,7 +2842,7 @@ function persist(opts={}){
 /* ================================================================ i18n */
 const DICT={
 es:{
- scanBtn:"Escanear tarjeta de visita",scanManual:"O añadir un contacto a mano",scanTitle:"Nuevo contacto",scanLoading:"Preparando el lector. La primera vez tarda unos segundos.",scanReading:"Leyendo la tarjeta… {p} %",scanDone:"Revisa los datos leídos y completa el resto.",scanFail:"No hemos podido leer la tarjeta. Rellena los datos a mano.",scanHandHint:"Rellena los datos del contacto.",scanCompany:"Empresa",scanCountry:"Country",scanProps:"Number of properties or rooms",scanComments:"Comments",scanCard:"La persona me ha dado su tarjeta",scanSave:"Guardar contacto",scanRetake:"Repetir la foto",scanErrName:"Escribe al menos el nombre.",scanErrContact:"Hace falta un email o un teléfono.",scanErrPhone:"Escribe un teléfono válido.",scanErrProps:"El número de propiedades o habitaciones tiene que ser un número entero.",scanErrCard:"Marca la casilla para confirmar que la persona te ha dado su tarjeta.",scanOk:"Contacto guardado.",scanTag:"Tarjeta",
+ scanBtn:"Escanear tarjeta de visita",scanAi:"Leyendo la tarjeta…",scanManual:"O añadir un contacto a mano",scanTitle:"Nuevo contacto",scanLoading:"Preparando el lector. La primera vez tarda unos segundos.",scanReading:"Leyendo la tarjeta… {p} %",scanDone:"Revisa los datos leídos y completa el resto.",scanFail:"No hemos podido leer la tarjeta. Rellena los datos a mano.",scanHandHint:"Rellena los datos del contacto.",scanCompany:"Empresa",scanCountry:"Country",scanProps:"Number of properties or rooms",scanComments:"Comments",scanCard:"La persona me ha dado su tarjeta",scanSave:"Guardar contacto",scanRetake:"Repetir la foto",scanErrName:"Escribe al menos el nombre.",scanErrContact:"Hace falta un email o un teléfono.",scanErrPhone:"Escribe un teléfono válido.",scanErrProps:"El número de propiedades o habitaciones tiene que ser un número entero.",scanErrCard:"Marca la casilla para confirmar que la persona te ha dado su tarjeta.",scanOk:"Contacto guardado.",scanTag:"Tarjeta",
  scan:"Escanéame",myData:"Tus datos",formSub:"Te preparo una demo a tu medida.",save:"Guardar contacto",book:"Agendar demo",web:"Web",event:"Evento",
  fName:"Nombre",lName:"Apellido",email:"Email",phone:"Teléfono",pType:"Tipo de alojamiento",pPlace:"Selecciona",nProps:"Nº de propiedades o habitaciones",
  typeLabels:["Apartamentos","Villas","Hoteles","Campings","Otro"],fields:"{n}/6 datos",ready:"6/6 · listo",send:"Enviar",err:"Faltan datos: necesitamos todos los campos (teléfono y email válidos).",
@@ -2876,7 +2876,7 @@ es:{
  calSoon:"El calendario estará disponible muy pronto.",vcSaved:"Contacto listo para guardar",teamTitle:"Nuestro equipo de ventas",teamSub:"Conoce a las personas detrás de Chekin.",allTeam:"Todos",teamEmpty:"Aún no hay Account Executives publicados.",meetTeam:"Conoce al equipo",
  teamPage:"Página pública del equipo",teamPageHint:"Cuadrícula con foto, nombre y cargo. Cada tarjeta lleva a su Account Executive. Los «por completar» no aparecen.",openTeam:"Ver página",sDeck:"Enlace de la presentación (PDF, opcional)",pending:"Por completar",noEvent:"Sin evento",evActives:"Activos",evInactive:"Inactivos",evTeam:"Equipo",evNoTeam:"Sin Account Executives asignados",evAssign:"Asignar",evDeactivate:"Desactivar",evPool:"Account Executives",evPoolHint:"Arrastra un Account Executive sobre un evento para asignarlo (o usa «Asignar»). Quita con la ×.",evAssignTitle:"Account Executives de {n}",evAlsoIn:"también en {n}",evNoActive:"Ningún evento activo.",conflict:"{n} está en {k} eventos activos ({list}). Se usa {first}.",evOf:"Evento",filterEv:"Evento",allEvents:"Todos los eventos",byEvent:"Por evento",thEvent:"Evento",evLeadsN:"{n} leads",activeNow:"Activo ahora"},
 en:{
- scanBtn:"Scan business card",scanManual:"Or add a contact by hand",scanTitle:"New contact",scanLoading:"Getting the reader ready. The first time takes a few seconds.",scanReading:"Reading the card… {p} %",scanDone:"Check the details we read and fill in the rest.",scanFail:"We couldn't read the card. Fill in the details by hand.",scanHandHint:"Fill in the contact's details.",scanCompany:"Company",scanCountry:"Country",scanProps:"Number of properties or rooms",scanComments:"Comments",scanCard:"This person gave me their business card",scanSave:"Save contact",scanRetake:"Retake the photo",scanErrName:"Enter at least the first name.",scanErrContact:"An email or a phone number is needed.",scanErrPhone:"Enter a valid phone number.",scanErrProps:"The number of properties or rooms must be a whole number.",scanErrCard:"Tick the box to confirm this person gave you their card.",scanOk:"Contact saved.",scanTag:"Card",
+ scanBtn:"Scan business card",scanAi:"Reading the card…",scanManual:"Or add a contact by hand",scanTitle:"New contact",scanLoading:"Getting the reader ready. The first time takes a few seconds.",scanReading:"Reading the card… {p} %",scanDone:"Check the details we read and fill in the rest.",scanFail:"We couldn't read the card. Fill in the details by hand.",scanHandHint:"Fill in the contact's details.",scanCompany:"Company",scanCountry:"Country",scanProps:"Number of properties or rooms",scanComments:"Comments",scanCard:"This person gave me their business card",scanSave:"Save contact",scanRetake:"Retake the photo",scanErrName:"Enter at least the first name.",scanErrContact:"An email or a phone number is needed.",scanErrPhone:"Enter a valid phone number.",scanErrProps:"The number of properties or rooms must be a whole number.",scanErrCard:"Tick the box to confirm this person gave you their card.",scanOk:"Contact saved.",scanTag:"Card",
  scan:"Scan me",myData:"Your details",formSub:"I'll prepare a demo tailored to you.",save:"Save contact",book:"Book a demo",web:"Website",event:"Event",
  fName:"First name",lName:"Last name",email:"Email",phone:"Phone",pType:"Property type",pPlace:"Please select",nProps:"Number of properties or rooms",
  typeLabels:["Apartments","Villas","Hotels","Campsites","Other"],fields:"{n}/6 fields",ready:"6/6 · ready",send:"Send",err:"Missing info: we need every field (valid phone and email).",
@@ -3882,6 +3882,15 @@ async function cardCanvas(file){   /* foto reducida y en escala de grises: lee m
   for(let i=0;i<px.length;i+=4){const g=.299*px[i]+.587*px[i+1]+.114*px[i+2];px[i]=px[i+1]=px[i+2]=g}
   x.putImageData(d,0,0);return c;
 }
+/* lector principal: Claude (función scan-card en Supabase). Si no responde, se usa el lector del móvil de abajo. */
+async function readCardClaude(file){
+  const im=await loadImage(file),k=Math.min(1,1600/Math.max(im.width,im.height)),c=document.createElement("canvas");
+  c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext("2d").drawImage(im,0,0,c.width,c.height);
+  const image=c.toDataURL("image/jpeg",.85).split(",")[1];
+  const d=await sb.authed("/functions/v1/scan-card",{method:"POST",body:{image,media_type:"image/jpeg"}});
+  if(!d||typeof d!=="object"||d.error)throw new Error((d&&d.error)||"scan");
+  return{first:d.first_name||"",last:d.last_name||"",company:d.company||"",phone:normPhone(d.phone||""),email:(d.email||"").toLowerCase(),country:d.country||countryOf(normPhone(d.phone||""),(d.email||"").split("@")[1]||d.website||"")};
+}
 async function readCard(file,onProg){
   const [T,c]=await Promise.all([loadOcr(),cardCanvas(file)]);
   const r=await T.recognize(c,"eng+spa",{logger:m=>{if(m&&m.status==="recognizing text")onProg(Math.round((m.progress||0)*100))}});
@@ -3965,11 +3974,14 @@ function scanInit(box,getEv,onSaved){
     E.phone.addEventListener("change",()=>put("country",countryOf(normPhone(E.phone.value),E.email.value.split("@")[1])));
     if(file){
       $("#scAgain",box).onclick=()=>{close();$("#scFile",box).click()};
-      readCard(file,p=>{if(alive)st.textContent=t("scanReading",{p})}).then(text=>{
-        if(!alive)return;const d=parseCard(text);
-        ["first","last","company","phone","email","country"].forEach(k=>put(k,d[k]));
-        st.textContent=(d.first||d.email||d.phone)?t("scanDone"):t("scanFail");
-      }).catch(()=>{if(alive)st.textContent=t("scanFail")});
+      st.textContent=t("scanAi");
+      readCardClaude(file)
+        .catch(()=>{if(alive)st.textContent=t("scanLoading");return readCard(file,p=>{if(alive)st.textContent=t("scanReading",{p})}).then(parseCard)})
+        .then(d=>{
+          if(!alive)return;
+          ["first","last","company","phone","email","country"].forEach(k=>put(k,d[k]));
+          st.textContent=(d.first||d.email||d.phone)?t("scanDone"):t("scanFail");
+        }).catch(()=>{if(alive)st.textContent=t("scanFail")});
     }else E.first.focus();
     f.onsubmit=async ev=>{
       ev.preventDefault();const err=$("#scErr",box);err.textContent="";
