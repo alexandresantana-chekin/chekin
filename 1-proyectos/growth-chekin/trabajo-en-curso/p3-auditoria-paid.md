@@ -45,5 +45,9 @@ El trabajo corre en el chat de Claude Code "Landing Page". Aquí solo estado y c
 - Google Ads optimiza con una sola conversión: "SB - (MQL)Registro Landing Hubspot" (80 en 30 días). Cuenta cualquier formulario de landing, plantillas incluidas.
 - Descuadre: Google atribuye ~40 conversiones/mes a páginas de plantillas, pero en HubSpot solo hay 11 contactos de plantillas con esta UTM en 3 meses [POR COMPROBAR: si esos formularios no guardan la UTM o el contacto ya existía].
 
+## Tracker (22-10-2026)
+- Test ES · Hoteles pasado a **Pausado** en el tracker, con el motivo (expansión de URL, ~190 clics/mes a chekin-hoteles) y la propuesta de Carlos (una landing por anuncio). Se reactiva o se rehace cuando se decida con Carlos.
+- El deck sigue diciendo "~1.300 clics/mes" para el test: desactualizado.
+
 ## Pendiente
 Ver `estado.md` → "A medias".
