@@ -29,5 +29,21 @@ El trabajo corre en el chat de Claude Code "Landing Page". Aquí solo estado y c
 - Muestra: 1.560–2.900 visitas por variante. ~1.300 clics/mes → de 5 semanas a 2,5 meses.
 - Revisión cada 2 semanas en el tracker.
 
+## Hallazgo 22-10-2026: la PMax ES no manda el tráfico a chekin-hoteles
+- Fuente: Google Ads vía Windsor, últimos 30 días (hasta 21/10). 913 clics, 72 conversiones (según Google), 2.794 €.
+- **Expansión de URL final activada** (`FINAL_URL_EXPANSION_TEXT_ASSET_AUTOMATION = OPTED_IN`). URL final del grupo de recursos: `chekin-hoteles`.
+- Google reparte los clics entre 21 páginas. `chekin-hoteles`: 193 clics (21%), 0 conversiones, 266 €.
+- El resto: plantillas SES Hospedajes Word (171 clics, 23,5 conv.), `/es/check-in-online-ses-hospedajes` (158, 18,2), guía SES (75, 2), guestapp (67, 7), otras plantillas, `/en/online-check-in`, `/precio`, `/legalidad`…
+- HubSpot (200 contactos más recientes con UTM PMax Competitors, 12–22/10): 100 de 110 de la PMax ES entraron por `/es/check-in-online-ses-hospedajes`; ninguno por `chekin-hoteles`.
+- Consecuencia: con ~190 clics/mes en `chekin-hoteles`, el A/B (1.560–2.900 visitas por variante) no sale en plazo. Decisión pendiente (Alex/Carlos): desactivar o acotar la expansión, o testear en las páginas que reciben el tráfico. Antes, mirar la calidad (MQL→SQL) de los contactos de plantillas.
+
+### Calidad de los leads de la PMax ES (HubSpot, 22-10-2026)
+- 589 contactos con `utm_campaign = SB_ES_GOOGLE_PMAX_COMPETITORS_CHEKIN` creados desde el 21/07 (3 en agosto, 243 en septiembre, 343 en octubre). Página = primera página vista (`hs_analytics_first_url`).
+- Todos pasan por MQL. Alguna vez SQL: 18 (3,1%); oportunidad: 9; clientes: 3. Etapa actual: Nurturing 276 (47%), Not ICP 169 (29%), MQL 130.
+- `/es/check-in-online-ses-hospedajes`: 508 (86%) · SQL alguna vez 10 (2,0%) · Not ICP 157 (31%) · 1 cliente.
+- Plantillas: 11 · SQL 2 · 0 oportunidades. `chekin-hoteles`: 6 · 0 SQL. Inglés/alemán (`/ads/online-check-in-uk`, `/de/`, `/en/`): 40 · 0 SQL · 8 Not ICP.
+- Google Ads optimiza con una sola conversión: "SB - (MQL)Registro Landing Hubspot" (80 en 30 días). Cuenta cualquier formulario de landing, plantillas incluidas.
+- Descuadre: Google atribuye ~40 conversiones/mes a páginas de plantillas, pero en HubSpot solo hay 11 contactos de plantillas con esta UTM en 3 meses [POR COMPROBAR: si esos formularios no guardan la UTM o el contacto ya existía].
+
 ## Pendiente
 Ver `estado.md` → "A medias".
