@@ -88,6 +88,8 @@ Fuente: Biblioteca de anuncios Chekin (clics y gasto de Google Ads por URL servi
 - Vacational ES: ~10,7 €/formulario, calidad baja (alquiler vacacional pequeño).
 - Competitors ES: ~128 €/formulario, pero 13 SQL y 4 ganados: mucha mejor calidad por lead.
 
+**Página SES en la vista "por landing" de la biblioteca:** 14.622 clics, 535 formularios, **3,7%** clic→form. Suma 4 campañas: ES PMax Vacational (11.600 clics, 493 forms), ES PMax Competitors (156, 8), ES Search Intención y Meta Vacation Form ES (~2.866 clics, ~34 forms entre las dos). Solo la parte de las PMax: 11.756 clics, 501 forms, 4,3%.
+
 **Resto de PMax (% de clics que llegan a la URL configurada, 90 días):** PT Competitors 100%, PT Vacational 100%, GB Vacational 100%, DE Vacational 100%, ES Vacational 99%, **IT Competitors 67%** (29% a /modello/contrattoaffittoturistico), **IT Vacational 30%** (65% a /modello/contrattoaffittoturistico), ES Competitors 41%.
 
 ## Tracker (22-10-2026)
