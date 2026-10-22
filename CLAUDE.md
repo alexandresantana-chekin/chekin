@@ -10,6 +10,7 @@ Tono: directo y breve, en español. Claude propone y Alex decide.
 - Toda mejora se justifica contra el MRR o un KPI que lo mueva (conversión, activación).
 - Paid: solo se cambian las landings de Google Ads. Meta usa su propia plantilla de formulario: no se toca.
 - La conversión se mide por página, no por UTM (las UTM mezclan campañas).
+- **Toda cifra de Ads/HubSpot lleva su periodo.** Carlos trabaja con los **últimos 90 días**; nosotros a veces con 30. Ejemplo: clics de la PMax ES Competitors que llegan a /chekin-hoteles = 41% en 90 días (21 jul – 18 oct) y 21% en los últimos 30. Para comparar con Carlos, usar 90 días; para ver tendencia, mes a mes.
 - Ninguna clave ni token en el chat ni en el repo. Van solo en el terminal o en el gestor del servicio. No subir `.env`.
 - Archivar, no borrar (`3-archivo/`). Borradores para copiar y pegar: en el chat o en Notion.
 - **Al terminar una tarea:** comentar en esa tarea de Asana mencionando a Carlos Cedrés (@Carlos, gid Asana `1216414955096276`) con qué se ha hecho y dónde está el entregable. Regla de Alex (22/10).
@@ -62,5 +63,4 @@ Actualizar `estado.md`, `decisiones.md` (solo crece) y `horas.md`, y subir a `ma
 ## Contradicciones abiertas
 - En Notion, P3 figura como "Por empezar", pero en realidad está en curso.
 - Traspaso P3 (22/10) dice "~1.300 clics/mes" para el test de chekin-hoteles; el hallazgo del mismo día (expansión de URL) muestra que solo ~190 clics/mes llegan a esa landing. Manda el hallazgo: test pausado en el tracker.
-- % de clics de la PMax ES Competitors que llegan a /chekin-hoteles: 41% (21 jul – 18 oct, export de Google Ads) frente a 21% (últimos 30 días, Windsor). Comprobar mes a mes antes de usar una cifra.
 - Seguridad: el kit `mkgt-auto` (en Descargas) trae un `wp_api.py` con una contraseña de aplicación de WordPress en el código. No usarla; pedir que se rote.

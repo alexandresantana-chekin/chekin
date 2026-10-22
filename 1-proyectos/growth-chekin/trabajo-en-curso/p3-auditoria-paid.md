@@ -65,7 +65,7 @@ El trabajo corre en el chat de Claude Code "Landing Page". Aquí solo estado y c
   - Ojo: en la tabla por titular un mismo clic cuenta para cada texto del anuncio; las filas no suman el total. El reparto real es la tabla de URLs.
 - **ES PMax Competitors: a /chekin-hoteles va el 41% de los clics** (21 jul – 18 oct). Algunos titulares en inglés ("Online Check-in") llevan a /en/online-check-in.
 - **IT PMax (Competitors y Vacational):** casi todo el tráfico atribuido a titulares viene de "Modello Contratto Affitti Brevi" y "Contratto Affitto Turistico" → /modello/contrattoaffittoturistico. Tenerlo en cuenta antes de diseñar las landings de Italia.
-- **Dos cifras, dos periodos:** 41% (21 jul – 18 oct, export de Google Ads) frente a 21% / ~190 clics (últimos 30 días hasta el 21/10, Windsor). No se contradicen necesariamente: la expansión puede haber ido llevándose más tráfico con el tiempo [POR COMPROBAR mes a mes].
+- **Dos cifras, dos periodos (aclarado 22/10):** 41% en los últimos 90 días (21 jul – 18 oct, export de Google Ads, el periodo que usa Carlos) y 21% / ~190 clics en los últimos 30 días (Windsor). El último mes llega menos tráfico a /chekin-hoteles que la media de 90 días.
 
 ## Tracker (22-10-2026)
 - Test ES · Hoteles pasado a **Pausado** en el tracker, con el motivo (expansión de URL, ~190 clics/mes a chekin-hoteles) y la propuesta de Carlos (una landing por anuncio). Se reactiva o se rehace cuando se decida con Carlos.
