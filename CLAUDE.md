@@ -30,6 +30,7 @@ Tono: directo y breve, en español. Claude propone y Alex decide.
 ## Personas
 - Carlos Cedrés: responsable de Alex en todos los proyectos.
 - Daniel Clemares: producto; P1 Onboarding.
+- **Vacaciones de Carlos: 28/10 → 3/11.** Antes del 27/10, cada tarea de Alex en Asana *Growth Daily* (sección "Alexandre") con owner, fecha y definición de "hecho"; estado por comentario en la propia tarea.
 
 ## Proyectos
 - **P2 · Ficha QR para AEs en eventos.** Entrega el 22/10. Falta el último retoque.
@@ -37,7 +38,7 @@ Tono: directo y breve, en español. Claude propone y Alex decide.
 - **P1 · Onboarding con producto.** Hasta el 15/01. Ciclos: analizar el funnel hasta la activación → proponer → ejecutar → medir a las X semanas. Herramienta de medición: PostHog (funnels, grabaciones de sesión y A/B). Frecuencia de reuniones: se decide con Daniel.
 - **P4 · Web y CRO en WordPress.** El último, después de P3.
 - **P5 · Animación del logo para la firma de Gmail.** GIF para Ventas y Partnerships; entrega a Carlos el 27/10. Archivos en `2-herramientas/firma-gmail/`.
-- **Backlog · MRR automático del onboarding.** Para después.
+- **MRR automático.** Pasa a Alex (Growth Check 22/10). Primero, sesión de traspaso con Carlos.
 
 ## Flujo semanal (4 h/día)
 - Lunes: planificación, repaso de Asana y Notion y prioridades de la semana.

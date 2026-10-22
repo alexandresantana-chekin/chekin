@@ -1,6 +1,7 @@
 # Decisiones (solo crece)
 
 ## 2026-10-22
+- **Growth Check:** el MRR automático pasa a Alex. Carlos de vacaciones 28/10–3/11: todo en Growth Daily con owner, fecha y "hecho" antes del 27/10; estado por comentario en la tarea.
 - **P1 · Reunión con Daniel:** el lunes 26/10 se le enseña un funnel con datos limpios de PostHog, mes a mes, con variantes y huecos de medición señalados y propuesta para medir bien desde ahora.
 - **P2 · Escáner:** lectura de tarjetas con Claude (`claude-opus-5-5`, esfuerzo bajo, salida JSON fija) en una función de Supabase; la clave solo vive en Supabase. Si falla, entra el lector del móvil.
 - **P2 · HubSpot:** se conecta (decisión de Alex).
