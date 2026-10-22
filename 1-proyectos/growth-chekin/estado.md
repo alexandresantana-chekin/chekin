@@ -9,6 +9,7 @@
 - **P2 · QR para eventos (AEs)** — fichas hechas; falta un retoque: el lector del escáner con IA de visión vía API (opción B, ver abajo). Bloqueado: se espera la decisión de Carlos sobre la clave (22/10). Fecha límite en Notion: 2026-10-22.
 - **P3 · Auditoría de landings y creatividades de paid** — corre en el chat "Landing Page". Pendiente:
   - Aprobación del plan (Carlos).
+  - 22/10: Carlos propone una landing por anuncio (funcionalidad concreta primero, luego el resto de Chekin), más innovadoras. Se alinea en la reunión de growth check. Choca con la expansión de URL final activada en la PMax ES y con la conversión "cualquier formulario" (ver `trabajo-en-curso/p3-auditoria-paid.md`).
   - Corregir las UTM de las PMax.
   - Confirmar si el plan de HubSpot permite A/B de landings.
   - Medir línea base: demo, guía y fuga.
