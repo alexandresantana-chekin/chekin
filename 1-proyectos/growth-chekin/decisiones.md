@@ -25,3 +25,8 @@
 - **P3 · Medir por página, no por UTM.** Motivo: las UTM mezclan campañas (589 contactos etiquetados como PMax Competitors ES; solo 6 entraron por chekin-hoteles).
 - **P3 · Solo se cambian las landings de Google Ads.** Meta usa su propia plantilla de formulario, así que sus anuncios quedan fuera de los cambios de landing. Las mejoras salen de las campañas activas y se registran en el tracker "Tests de landing Chekin".
 - **P3 · Despliegue:** España hoteles → España resto → Italia hoteles → Italia resto → siguientes países. Un test nuevo solo cuando termine el anterior del mismo país y segmento.
+
+## 2026-10-22 (tarde)
+- **P5 · Animación cuadrada:** solo el check (no el logo completo), porque es lo que se reconoce en el círculo pequeño de la foto de Google. Con acercamiento fuerte y destello de halo (elegido frente al anillo). El primer fotograma es el check entero, porque Outlook solo muestra ese.
+- **P5 · Foto de perfil de Google:** imagen fija de 1024 px, porque Google no anima las fotos de perfil.
+- **P1 · Dashboard de activación:** datos de 2026 con marzo fuera por defecto (volcado masivo de Holidu). LTV estimado con Stripe (ingreso medio × vida media por retención a 12 meses de 2024), editable a mano. El coste de oportunidad se calcula por la diferencia de tasa de pago entre los que siguen y los que se quedan en cada paso.
