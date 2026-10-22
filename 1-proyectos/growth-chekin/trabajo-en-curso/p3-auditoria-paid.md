@@ -59,6 +59,14 @@ El trabajo corre en el chat de Claude Code "Landing Page". Aquí solo estado y c
 - Google Ads optimiza con una sola conversión: "SB - (MQL)Registro Landing Hubspot" (80 en 30 días). Cuenta cualquier formulario de landing, plantillas incluidas.
 - Descuadre: Google atribuye ~40 conversiones/mes a páginas de plantillas, pero en HubSpot solo hay 11 contactos de plantillas con esta UTM en 3 meses [POR COMPROBAR: si esos formularios no guardan la UTM o el contacto ya existía].
 
+## Biblioteca de anuncios: URLs servidas de verdad (22-10-2026, otro chat)
+- La biblioteca usaba solo la URL configurada en el grupo de recursos; con la expansión de URL final Google lleva el clic a otras páginas. Ahora el reparto por landing de cada campaña de Google usa **las URLs que Google sirvió**, cruzadas con los formularios de HubSpot de cada URL.
+- Cada ficha de PMax tiene una tabla nueva: qué titular o descripción lleva a qué URL y qué % de sus clics va a cada una (export de Google Ads, 21 jul – 18 oct, todas las PMax).
+  - Ojo: en la tabla por titular un mismo clic cuenta para cada texto del anuncio; las filas no suman el total. El reparto real es la tabla de URLs.
+- **ES PMax Competitors: a /chekin-hoteles va el 41% de los clics** (21 jul – 18 oct). Algunos titulares en inglés ("Online Check-in") llevan a /en/online-check-in.
+- **IT PMax (Competitors y Vacational):** casi todo el tráfico atribuido a titulares viene de "Modello Contratto Affitti Brevi" y "Contratto Affitto Turistico" → /modello/contrattoaffittoturistico. Tenerlo en cuenta antes de diseñar las landings de Italia.
+- **Dos cifras, dos periodos:** 41% (21 jul – 18 oct, export de Google Ads) frente a 21% / ~190 clics (últimos 30 días hasta el 21/10, Windsor). No se contradicen necesariamente: la expansión puede haber ido llevándose más tráfico con el tiempo [POR COMPROBAR mes a mes].
+
 ## Tracker (22-10-2026)
 - Test ES · Hoteles pasado a **Pausado** en el tracker, con el motivo (expansión de URL, ~190 clics/mes a chekin-hoteles) y la propuesta de Carlos (una landing por anuncio). Se reactiva o se rehace cuando se decida con Carlos.
 - El deck sigue diciendo "~1.300 clics/mes" para el test: desactualizado.

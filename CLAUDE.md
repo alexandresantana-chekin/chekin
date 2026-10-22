@@ -62,4 +62,5 @@ Actualizar `estado.md`, `decisiones.md` (solo crece) y `horas.md`, y subir a `ma
 ## Contradicciones abiertas
 - En Notion, P3 figura como "Por empezar", pero en realidad está en curso.
 - Traspaso P3 (22/10) dice "~1.300 clics/mes" para el test de chekin-hoteles; el hallazgo del mismo día (expansión de URL) muestra que solo ~190 clics/mes llegan a esa landing. Manda el hallazgo: test pausado en el tracker.
+- % de clics de la PMax ES Competitors que llegan a /chekin-hoteles: 41% (21 jul – 18 oct, export de Google Ads) frente a 21% (últimos 30 días, Windsor). Comprobar mes a mes antes de usar una cifra.
 - Seguridad: el kit `mkgt-auto` (en Descargas) trae un `wp_api.py` con una contraseña de aplicación de WordPress en el código. No usarla; pedir que se rote.
