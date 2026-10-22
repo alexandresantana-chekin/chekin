@@ -10,6 +10,7 @@ Tono: directo y breve, en español. Claude propone y Alex decide.
 - Toda mejora se justifica contra el MRR o un KPI que lo mueva (conversión, activación).
 - Paid: solo se cambian las landings de Google Ads. Meta usa su propia plantilla de formulario: no se toca.
 - La conversión se mide por página, no por UTM (las UTM mezclan campañas).
+- **Cada descubrimiento con datos se apunta en `1-proyectos/growth-chekin/hallazgos.md`** (fecha, qué, fuente y periodo, qué implica, estado) en el momento en que aparece, y los de P3 también en la sección "Hallazgos" de la ficha P3 de Notion.
 - **Toda cifra de Ads/HubSpot lleva su periodo.** Carlos trabaja con los **últimos 90 días**; nosotros a veces con 30. Ejemplo: clics de la PMax ES Competitors que llegan a /chekin-hoteles = 41% en 90 días (21 jul – 18 oct) y 21% en los últimos 30. Para comparar con Carlos, usar 90 días; para ver tendencia, mes a mes.
 - Ninguna clave ni token en el chat ni en el repo. Van solo en el terminal o en el gestor del servicio. No subir `.env`.
 - Archivar, no borrar (`3-archivo/`). Borradores para copiar y pegar: en el chat o en Notion.
@@ -26,6 +27,7 @@ Tono: directo y breve, en español. Claude propone y Alex decide.
 | Web | WordPress |
 | Funnel del onboarding (P1) | **PostHog**: llegada a la web → registro → pasos del onboarding → activación. [POR COMPROBAR con Daniel: si cubre web, registro y webapp, y quién añade eventos] |
 | Horas dedicadas | `1-proyectos/growth-chekin/horas.md` |
+| Hallazgos con datos (registro único) | `1-proyectos/growth-chekin/hallazgos.md` |
 | Código de la app QR (Chekin Connect) | `chekin-connect/` (tiene su propio `CLAUDE.md`; leerlo antes de tocar código) |
 
 ## Personas
