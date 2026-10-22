@@ -1,6 +1,20 @@
 # P3 · Auditoría de landing pages y creatividades de paid
 
 El trabajo corre en el chat de Claude Code "Landing Page". Aquí solo estado y contexto.
+**Contexto completo (traspaso del 22/10):** `../sobre-el-proyecto/traspaso-landings-paid.md` — oferta, formulario, cifras oficiales, design system, hallazgos y plan del test. Plan del test: `p3-landings/plan-test-landing-hoteles-es.md`.
+
+## Las 5 landings (estado: Boceto) · archivos en `p3-landings/`
+| # | Landing | Ángulo | H1 | Valor del campo `landing` | Archivo |
+|---|---|---|---|---|---|
+| 1 | PMax Competitors (fase 1) | General | Automatiza la recepción de tu hotel | `pmax-competitors-es-v6-prueba14-contacto` | `landing-pmax-competitors-hoteles-es.html` |
+| 2 | El parte, sin ti | Normativa (SES) | Olvídate del portal del Ministerio | `angulo-normativa-ses-hoteles-es-v1` | `landing-ses-el-parte-sin-ti.html` |
+| 3 | Así se vende sola una reserva | Ingresos / upselling | Misma ocupación, +55 € por reserva | `angulo-ingresos-upselling-hoteles-es-v1` | `landing-upselling-reserva-se-vende-sola.html` |
+| 4 | Inbox IA | Inbox IA | Tu recepción también responde a las 3 de la mañana | `angulo-inbox-ia-hoteles-es-v1` | `landing-inbox-ia-recepcion-3am.html` |
+| 5 | Recepción | Recepción | Recupera horas en recepción | `angulo-recepcion-hoteles-es-v1` | `landing-recepcion-recupera-horas.html` |
+
+- Notion · Biblioteca de landings (dentro de la ficha P3): https://app.notion.com/p/9553538748a748528a94ece777a675c8
+- Fase 1 = landing 1 en la URL actual. Fase 2 (idea de Carlos) = una landing por ángulo (2–5), cada una con su grupo de recursos de la PMax; nunca a la vez que la fase 1.
+- Oferta en todas: "Prueba Chekin gratis 14 días" + un experto en Chekin contacta. Formulario de 5 campos (nombre, teléfono, email, tipo de alojamiento, nº exacto de habitaciones) + campos ocultos (UTM, gclid, fbclid, `landing`). CTA: "Empieza tu prueba gratis". Texto legal a validar por el DPO.
 
 - KPI: +30% conversion rate de las landings de paid en noviembre 2026 vs baseline de octubre. Fecha límite: 2026-11-30.
 - Artifacts (privados):

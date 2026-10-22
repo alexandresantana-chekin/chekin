@@ -10,7 +10,13 @@
 - **P3 · Auditoría de landings y creatividades de paid** — corre en el chat "Landing Page". Pendiente:
   - Aprobación del plan (Carlos).
   - 22/10: Carlos propone una landing por anuncio (funcionalidad concreta primero, luego el resto de Chekin), más innovadoras. Se alinea en la reunión de growth check. Choca con la expansión de URL final activada en la PMax ES y con la conversión "cualquier formulario" (ver `trabajo-en-curso/p3-auditoria-paid.md`).
-  - Corregir las UTM de las PMax.
+  - 5 landings en Boceto (PMax general + 4 ángulos: SES, upselling, Inbox IA, recepción) en `trabajo-en-curso/p3-landings/` y en la Biblioteca de landings de Notion. Siguiente: compartir los 5 enlaces, revisarlas con Carlos, montar la 1 en HubSpot con OK.
+  - Test fase 1 **pausado** en el tracker (expansión de URL).
+  - Formulario de HubSpot con 5 campos + ocultos; texto legal al DPO.
+  - Ventas: qué recibe el hotel al enviar, cuándo le contacta el experto y si debe registrarse en el dashboard.
+  - Sacar los términos de búsqueda de la PMax (Windsor.ai).
+  - Producto: "120 PMS" → "+200" en el registro; confirmar Inbox IA para hoteles.
+  - Corregir las UTM de las PMax (prioritario: plantilla de seguimiento / sufijo de URL final de Competitors y Vacational ES/GB/DE).
   - Confirmar si el plan de HubSpot permite A/B de landings.
   - Medir línea base: demo, guía y fuga.
   - Ticket medio de un hotel y su pipeline [€__].

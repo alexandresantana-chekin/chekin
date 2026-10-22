@@ -34,7 +34,13 @@ Tono: directo y breve, en español. Claude propone y Alex decide.
 
 ## Proyectos
 - **P2 · Ficha QR para AEs en eventos.** Entrega el 22/10. Falta el último retoque.
-- **P3 · Landings de paid (Google).** España e Italia listas como mínimo para el 27/10. Orden: ES hoteles → ES resto → IT hoteles → IT resto. Se trabaja en el chat "Landing Page".
+- **P3 · Landings de paid (Google).** España e Italia listas como mínimo para el 27/10. Orden: ES hoteles → ES resto → IT hoteles → IT resto. Se trabaja en el chat "Landing Page". **Antes de tocar P3, leer `1-proyectos/growth-chekin/sobre-el-proyecto/traspaso-landings-paid.md`.** Reglas propias:
+  - Google y Meta por separado; la landing se adapta al anuncio; una sola variable por test.
+  - Oferta "Prueba Chekin gratis 14 días" (un experto en Chekin contacta). Formulario de 5 campos. CTA único "Empieza tu prueba gratis".
+  - Solo cifras oficiales de la lista del traspaso y casos publicados en chekin.com. Nada de logos de Iberostar/Meliá/Barceló ni la nota de Capterra.
+  - Público: hoteles y cadenas. Responsive: formulario visible sin bajar en 1512×780; móvil sin scroll horizontal, calculadoras incluidas.
+  - Datos personales de HubSpot solo en agregado.
+  - Notion y enlaces de Claude: permitidos para revisión interna. HubSpot, WordPress y Ads: nunca sin OK.
 - **P1 · Onboarding con producto.** Hasta el 15/01. Ciclos: analizar el funnel hasta la activación → proponer → ejecutar → medir a las X semanas. Herramienta de medición: PostHog (funnels, grabaciones de sesión y A/B). Frecuencia de reuniones: se decide con Daniel.
 - **P4 · Web y CRO en WordPress.** El último, después de P3.
 - **P5 · Animación del logo para la firma de Gmail.** GIF para Ventas y Partnerships; entrega a Carlos el 27/10. Archivos en `2-herramientas/firma-gmail/`.
@@ -55,3 +61,5 @@ Actualizar `estado.md`, `decisiones.md` (solo crece) y `horas.md`, y subir a `ma
 
 ## Contradicciones abiertas
 - En Notion, P3 figura como "Por empezar", pero en realidad está en curso.
+- Traspaso P3 (22/10) dice "~1.300 clics/mes" para el test de chekin-hoteles; el hallazgo del mismo día (expansión de URL) muestra que solo ~190 clics/mes llegan a esa landing. Manda el hallazgo: test pausado en el tracker.
+- Seguridad: el kit `mkgt-auto` (en Descargas) trae un `wp_api.py` con una contraseña de aplicación de WordPress en el código. No usarla; pedir que se rote.
