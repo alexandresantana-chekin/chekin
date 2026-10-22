@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Check-in online y registro de viajeros | Chekin</title>
+<meta name="description" content="Tus huéspedes se registran desde el móvil y Chekin envía el parte a SES.Hospedajes, Mossos y Ertzaintza en automático. Prueba gratis 14 días.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* Boceto v2 de /es/check-in-online-ses-hospedajes · design system de Chekin:
+   azul #385BF8 (único acento), navy #19194B, Montserrat (sustituto de Proxima Nova), botones radio 12,
+   tarjetas sin borde con sombra azulada, un solo degradado (banda final), fondos alternos, footer navy. */
+:root{--blue:#385BF8;--navy:#19194B;--ink:#161643;--g1:#6B6B95;--g2:#9696B9;--g3:#DEDEEB;--bg:#FFFFFF;--alt:#F4F6F9;--soft:#EEF2FF;--shadow:0 0 5px rgba(26,148,255,.173);--ring:0 0 0 3px rgba(56,91,248,.2);--f:'Montserrat',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--f);color:var(--navy);background:var(--bg);line-height:1.5;overflow-x:hidden}
+img{max-width:100%;display:block}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+h1,h2,h3{color:var(--navy);overflow-wrap:break-word}
+a{color:var(--blue)}
+
+/* cabecera: solo el logo, sin enlaces de salida */
+.top{height:64px;display:flex;align-items:center;border-bottom:1px solid var(--g3)}
+.top .wrap{width:100%}
+.top img{height:26px;width:auto}
+
+/* HERO */
+.hero{padding:28px 0 40px;background:var(--bg)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:48px;align-items:start}
+.eyebrow{display:inline-block;font:700 12px var(--f);letter-spacing:.06em;text-transform:uppercase;color:var(--blue);margin-bottom:14px}
+.hero h1{font-size:46px;line-height:1.1;font-weight:800;letter-spacing:-.02em}
+.hero h1 span{color:var(--blue)}
+.lead{margin-top:16px;font-size:18px;color:var(--g1);max-width:560px}
+.checks{list-style:none;margin-top:22px;display:grid;gap:10px}
+.checks li{position:relative;padding-left:30px;font-weight:600;font-size:16px}
+.checks li::before{content:"";position:absolute;left:0;top:3px;width:20px;height:20px;border-radius:6px;background:var(--soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 10.5l3.2 3L15 6.5' fill='none' stroke='%23385BF8' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat}
+.trustline{margin-top:24px;font-size:14px;color:var(--g1)}
+.trustline b{color:var(--navy)}
+
+/* FORMULARIO compacto: botón visible sin bajar en 1512×780 */
+.card{background:#fff;border-radius:16px;box-shadow:0 8px 28px rgba(26,148,255,.16),var(--shadow);padding:22px 22px 18px}
+.card h2{font-size:22px;font-weight:700}
+.card .sub{font-size:14px;color:var(--g1);margin:2px 0 14px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:end}
+.fld{margin-bottom:10px;min-width:0}
+.fld label{display:block;font:600 13px var(--f);margin-bottom:4px}
+.fld input,.fld select{width:100%;height:44px;border-radius:8px;border:1px solid rgba(22,22,67,.2);background:#F4F6F8;padding:0 12px;font:500 16px var(--f);color:var(--ink);appearance:none;-webkit-appearance:none}
+.fld select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' fill='none' stroke='%2319194B' stroke-width='1.6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;background-size:12px;padding-right:32px}
+.fld input:focus,.fld select:focus{outline:0;border-color:var(--ink);background:#fff;box-shadow:var(--ring)}
+.fld input.filled,.fld select.filled{background-color:#fff;border-color:var(--ink)}
+.tel{display:grid;grid-template-columns:112px minmax(0,1fr);gap:8px}
+.btn{display:flex;align-items:center;justify-content:center;width:100%;height:52px;border:0;border-radius:12px;background:var(--blue);color:#fff;font:700 16px var(--f);cursor:pointer;text-decoration:none}
+.btn:hover{background-image:linear-gradient(rgba(255,255,255,.1),rgba(255,255,255,.1))}
+.btn:focus-visible{outline:0;box-shadow:var(--ring)}
+.under{margin-top:8px;text-align:center;font-size:13px;color:var(--g1)}
+.alt{display:block;margin-top:10px;text-align:center;font-size:14px;font-weight:600;color:var(--blue);text-decoration:underline;background:none;border:0;cursor:pointer;font-family:var(--f);width:100%}
+.legal{margin-top:10px;font-size:11.5px;line-height:1.45;color:var(--g1)}
+.legal a{color:var(--g1)}
+.err{color:#FF2467;font-size:13px;font-weight:600;margin-top:6px;min-height:0}
+.ok{display:none;text-align:center;padding:30px 6px}
+.ok h3{font-size:20px;margin-bottom:6px}
+
+/* CIFRAS (oficiales) */
+.stats{background:var(--alt);padding:36px 0}
+.stats .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;text-align:center}
+.stat b{display:block;font-size:34px;font-weight:800;color:var(--blue);letter-spacing:-.02em}
+.stat span{font-size:15px;color:var(--g1)}
+
+/* SECCIONES */
+.sec{padding:64px 0}
+.sec.alt{background:var(--alt)}
+.kicker{font:700 12px var(--f);letter-spacing:.06em;text-transform:uppercase;color:var(--blue)}
+.sec h2{font-size:44px;font-weight:400;line-height:1.15;letter-spacing:-.01em;margin:8px 0 12px;max-width:760px}
+.sec .intro{font-size:17px;color:var(--g1);max-width:720px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:32px}
+.tile{background:#fff;border-radius:16px;box-shadow:var(--shadow);padding:22px}
+.tile h3{font-size:18px;font-weight:700;margin-bottom:6px}
+.tile p{font-size:15px;color:var(--g1)}
+.warn{margin-top:22px;background:#fff;border-radius:16px;box-shadow:var(--shadow);padding:18px 22px;font-size:15px;border-left:4px solid var(--blue)}
+.steps{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-top:32px;counter-reset:s}
+.steps li{background:#fff;border-radius:16px;box-shadow:var(--shadow);padding:22px;counter-increment:s}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:var(--soft);color:var(--blue);font-weight:800;margin-bottom:12px}
+.steps h3{font-size:17px;font-weight:700;margin-bottom:6px}
+.steps p{font-size:14.5px;color:var(--g1)}
+.inline-cta{margin-top:28px;max-width:320px}
+
+/* BANDA FINAL: el único degradado de la página */
+.band{background:linear-gradient(180deg,#002CFA 0%,#274BF0 100%);color:#fff;padding:56px 0;text-align:center}
+.band h2{color:#fff;font-size:40px;font-weight:700;letter-spacing:-.01em}
+.band p{margin:10px auto 24px;font-size:17px;opacity:.92;max-width:560px}
+.band .btn{max-width:320px;margin:0 auto;background:#fff;color:var(--blue)}
+footer{background:var(--navy);color:#C9CBE6;padding:28px 0;font-size:13px}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+footer img{height:22px;width:auto}
+footer a{color:#C9CBE6}
+
+/* MÓVIL: formulario justo después del titular; sin scroll horizontal; inputs a 16 px */
+@media (max-width:900px){
+  .hero{padding:18px 0 28px}
+  .hero .wrap{grid-template-columns:minmax(0,1fr);gap:18px}
+  .hero h1{font-size:30px}
+  .lead{font-size:16px;margin-top:10px}
+  .hero-copy .checks,.hero-copy .trustline{display:none}
+  .after-form{display:block}
+  .stats .wrap{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+  .stat b{font-size:22px}.stat span{font-size:12.5px}
+  .sec{padding:44px 0}
+  .sec h2{font-size:30px}
+  .grid{grid-template-columns:minmax(0,1fr)}
+  .steps{grid-template-columns:minmax(0,1fr)}
+  .band h2{font-size:28px}
+  .wrap{padding:0 16px}
+}
+@media (min-width:901px){.after-form{display:none}}
+.after-form .checks{margin-top:18px}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="wrap"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjgyIDY2IDg1MiAyNTIiPgogIDxnIGlkPSJsb2dvLW5ldy1jaGVraW4tbGFuZHNjYXBlIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMjg0NyAxNTU4OSkiPgogICAgPHJlY3QgaWQ9IlJlY3RhbmdsZV8zMjA0IiBkYXRhLW5hbWU9IlJlY3RhbmdsZSAzMjA0IiB3aWR0aD0iMTAwMCIgaGVpZ2h0PSIzOTkiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI4NDcgLTE1NTg5KSIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iMCIvPgogICAgPGcgaWQ9ImxvZ28iIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI5MjMuMjk0IC0xNTUyOS4wNTUpIj4KICAgICAgPGcgaWQ9Ikdyb3VwXzEyOTc0IiBkYXRhLW5hbWU9Ikdyb3VwIDEyOTc0IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIDApIj4KICAgICAgICA8ZyBpZD0iR3JvdXBfMTMxNDIiIGRhdGEtbmFtZT0iR3JvdXAgMTMxNDIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgMCkiPgogICAgICAgICAgPHBhdGggaWQ9IlBhdGhfMjYyMTgiIGRhdGEtbmFtZT0iUGF0aCAyNjIxOCIgZD0iTS0yMzQuOS05LjE4N2MwLDU2LjQ5NCwzOC45LDEwMC4wMTMsOTkuMTM5LDEwMC4wMTNhMTA3LjQ4LDEwNy40OCwwLDAsMCw2Ny44LTIzLjc4N2M1LjQtNC42LDUuNjczLTEwLjI3MiwxLjYyMS0xNS42NzhsLTUuNC03LjNjLTQuMzIyLTYuMjE3LTkuNzI1LTYuMjE3LTE1LjY2OC0xLjg5Mi04LjkxNSw2LjQ4Ny0yNS4zOTMsMTYuNzU5LTQ3LDE2Ljc1OS00MS4zMzEsMC02NC41NjItMzIuNzA3LTY0LjU2Mi02OC42NTgsMC0zNS40MSwyMi40MjEtNjUuOTU1LDY0LjI5Mi02NS45NTUsMTkuNzIsMCwzNC44NDcsOC4xMDksNDMuMjIyLDEzLjUxNSw2LjQ4Myw0LjA1NSwxMS42MTYsMy41MTQsMTUuNC0yLjdsNC44NjMtNy44MzljMy43ODItNS45NDcsMy41MTItMTEuMzUzLTIuMTYxLTE1LjY3OC0xMC4yNjUtNy4zLTMxLjMzNS0xOS4xOTItNjIuNjcxLTE5LjE5MkMtMTk0LjEwOC0xMDcuNTc4LTIzNC45LTY0Ljg3LTIzNC45LTkuMTg3Wk0tMzguNTExLDc2LjIzYzAsNy41NjksNC4wNTIsMTEuMzUzLDExLjM0NiwxMS4zNTNoMTEuNjE2US00LjIsODcuNTgzLTQuMiw3Ni4yM1YyMy41MmMwLTI2LjIyLDE1LjY2OC00NS42ODIsMzkuNzEtNDUuNjgyLDE3LjI4OCwwLDIxLjYxMSwxMS4zNTMsMjEuNjExLDI4LjExMlY3Ni4yM3EwLDExLjM1MywxMS4zNDYsMTEuMzUzSDgwLjA3OGM3LjI5NCwwLDExLjM0Ni0zLjc4NCwxMS4zNDYtMTEuMzUzVi0xLjA3N2MwLTM2LjQ5MS0xNy41NTktNTIuNDM5LTQ4LjA4NC01Mi40MzktMjMuNzcyLDAtNDEuMDYxLDE0LjYtNDcuODE0LDI3Ljg0MmgtLjU0QTc4LjMsNzguMywwLDAsMC00LjItMzcuM1YtOTIuOTgxYzAtNy4zLTMuNzgyLTExLjM1My0xMS4zNDYtMTEuMzUzSC0yNy4xNjVjLTcuMjk0LDAtMTEuMzQ2LDQuMDU1LTExLjM0NiwxMS4zNTNaTTExNC45MjYsMTguNjU1YzAsMzkuMTk0LDI4LjM2NCw3Mi4xNzIsNzQuMDE3LDcyLjE3MmE4Ny4wMzgsODcuMDM4LDAsMCwwLDQ2LjczMy0xMy43ODZjNS45NDMtMy41MTQsNy4wMjMtOC45MiwzLjc4Mi0xNS4xMzdMMjM2LjIxNiw1Ni41Yy0zLjUxMi02LjIxNy04LjM3NC03LjAyOC0xNS4xMjgtMy43ODQtNi40ODMsNC4wNTUtMTcuMDE4LDguOTItMjkuNzE1LDguOTItMjAuOCwwLTM5LjE3LTEyLjk3NS00MS4zMzEtMzcuODQzaDg0LjAxMmExMS45NDIsMTEuOTQyLDAsMCwwLDExLjg4Ni0xMS42MjNjMC0zNy44NDMtMjEuODgxLTY1LjY4NC02MS4wNTEtNjUuNjg0QzE0My41Ni01My41MTcsMTE0LjkyNi0yMy43ODMsMTE0LjkyNiwxOC42NTVaTTE1MC44NTQsMi45NzdDMTU0LjEtMTUuNCwxNjYuNTIxLTI3LjU2NywxODQuMDgtMjcuNTY3YzE1LjY2OCwwLDI3LjI4NCwxMS4zNTMsMjcuODI0LDMwLjU0NVpNMjcwLjc5Myw3Ni4yM2MwLDcuNTY5LDQuMDUyLDExLjM1MywxMS4zNDYsMTEuMzUzaDExLjYxNnExMS4zNDUsMCwxMS4zNDYtMTEuMzUzVjI3LjNoMTcuODI5bDMyLjE0Niw1Mi40MzljMi45NzIsNS40MDYsNy4wMjQsNy44MzksMTMuMjM3LDcuODM5SDM4Mi45YzkuMTg1LDAsMTIuMTU2LTUuNjc2LDcuNTY0LTEzLjUxNUwzNDkuOTQzLDExLjl2LS41NDFMMzg0LjI1LTM2Ljc1OGM1LjEzMi03LjMsMi4xNjEtMTMuNTE1LTcuMDIzLTEzLjUxNUgzNjQuMjZjLTYuMjEzLDAtMTAuMjY1LDIuMTYzLTEzLjUwNyw3LjU2OUwzMjIuMTE5LTEuNjE4SDMwNS4xVi05Mi45ODFjMC03LjMtMy43ODItMTEuMzUzLTExLjM0Ni0xMS4zNTNIMjgyLjEzOWMtNy4yOTQsMC0xMS4zNDYsNC4wNTUtMTEuMzQ2LDExLjM1M1ptMTQzLjk4MiwwYzAsNy41NjksMy43ODIsMTEuMzUzLDExLjA3NiwxMS4zNTNoMTEuODg2YzcuMjk0LDAsMTEuMDc2LTMuNzg0LDExLjA3Ni0xMS4zNTNWLTM4LjkyYzAtNy4zLTMuNzgyLTExLjM1My0xMS4wNzYtMTEuMzUzSDQyNS44NTFjLTcuMjkzLDAtMTEuMDc2LDQuMDU1LTExLjA3NiwxMS4zNTNabTY4LjA3NCwwYzAsNy41NjksMy43ODIsMTEuMzUzLDExLjA3NiwxMS4zNTNoMTEuODg2YzcuMjk0LDAsMTEuMDc1LTMuNzg0LDExLjA3NS0xMS4zNTNWMjIuOThjMC0yNC44NjgsMTUuNC00NS4xNDEsMzkuNzEtNDUuMTQxLDE3LjI4OSwwLDIxLjYxMSwxMS4zNTMsMjEuNjExLDI4LjExMlY3Ni4yM2MwLDcuNTY5LDQuMDUyLDExLjM1MywxMS4zNDYsMTEuMzUzaDExLjYxNnExMS4zNDYsMCwxMS4zNDYtMTEuMzUzVi0xLjA3N2MwLTM2LjQ5MS0xNy41NTktNTIuNDM5LTQ4LjA4NC01Mi40MzktMjcuODI0LDAtNDIuOTUxLDE3LjU3LTQ4Ljg5NCwyOS4xOTNINTE1YTQ0LjEsNDQuMSwwLDAsMCwuNTQtNi4yMTdWLTM4LjkyYzAtNy4zLTMuNzgyLTExLjM1My0xMS4wNzYtMTEuMzUzSDQ5My45MjVjLTcuMjk0LDAtMTEuMDc2LDQuMDU1LTExLjA3NiwxMS4zNTNaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyMzQuODk4IDE1Ny43ODMpIiBmaWxsPSIjMTkxOTRiIi8+CiAgICAgICAgICA8ZyBpZD0idGljayIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNjIwLjUxNikiPgogICAgICAgICAgICA8ZyBpZD0iR3JvdXBfMTI5NjYiIGRhdGEtbmFtZT0iR3JvdXAgMTI5NjYiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDApIj4KICAgICAgICAgICAgICA8cGF0aCBpZD0iUGF0aF8yNjIwNyIgZGF0YS1uYW1lPSJQYXRoIDI2MjA3IiBkPSJNMTQ0LjkyMywyMzcuNDU2YTEwLjIzMywxMC4yMzMsMCwwLDEsMCwxNC4yMTNMMTM3LDI1OS42YTEwLjIzMywxMC4yMzMsMCwwLDEtMTQuMjEzLDBMODguMDcsMjI0LjYwOWExMC4yMzMsMTAuMjMzLDAsMCwxLDAtMTQuMjEzTDk2LDIwMi40N2ExMC4yMzQsMTAuMjM0LDAsMCwxLDE0LjIxMywwWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTg1LjIgLTE3NC4xOCkiIGZpbGw9IiMzODViZjgiLz4KICAgICAgICAgICAgICA8cGF0aCBpZD0iUGF0aF8yNjIwOCIgZGF0YS1uYW1lPSJQYXRoIDI2MjA4IiBkPSJNMjI3LjQsMTI4LjA3YTEwLjIzNCwxMC4yMzQsMCwwLDEsMTQuMjEzLDBMMjQ5LjU0MiwxMzZhMTAuMjM0LDEwLjIzNCwwLDAsMSwwLDE0LjIxM0wxODkuNDEsMjEwLjA2OGExMC4yMzMsMTAuMjMzLDAsMCwxLTE0LjIxMywwbC03LjkyNi03LjkyNmExMC4yMzMsMTAuMjMzLDAsMCwxLDAtMTQuMjEzWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTEzNy4zNCAtMTI1LjIpIiBmaWxsPSIjMzg1YmY4Ii8+CiAgICAgICAgICAgIDwvZz4KICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICAgIDwvZz4KICAgIDwvZz4KICA8L2c+Cjwvc3ZnPgo=" alt="Chekin"></div></header>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <!-- Antes: etiqueta con flecha y enlace a #form que no hacía nada visible. Ahora: texto, no botón. -->
+      <span class="eyebrow">SES.Hospedajes · Mossos · Ertzaintza</span>
+      <h1>Ahorra tiempo y <span>evita multas</span>: automatiza el registro de viajeros</h1>
+      <p class="lead">Tus huéspedes se registran desde el móvil antes de llegar y Chekin envía el parte a la autoridad en automático y en plazo.</p>
+      <ul class="checks">
+        <li>Parte de viajeros enviado en automático y en plazo</li>
+        <li>Escáner del documento, sin apps que descargar</li>
+        <li>Conectado con más de 200 PMS</li>
+      </ul>
+      <p class="trustline"><b>+200.000</b> alojamientos y <b>+25M</b> de check-ins con Chekin</p>
+    </div>
+
+    <div class="card" id="form">
+      <form id="lead" novalidate>
+        <h2>Prueba Chekin gratis 14 días</h2>
+        <p class="sub">Sin tarjeta de crédito y sin permanencia.</p>
+        <div class="row">
+          <div class="fld"><label for="f-name">Nombre</label><input id="f-name" name="firstname" autocomplete="given-name" required></div>
+          <div class="fld"><label for="f-mail">Email</label><input id="f-mail" name="email" type="email" inputmode="email" autocomplete="email" required></div>
+        </div>
+        <div class="fld"><label for="f-tel">Teléfono</label>
+          <div class="tel">
+            <select id="f-pre" name="phone_prefix" aria-label="Prefijo">
+              <option value="+34" selected>ES +34</option><option value="+351">PT +351</option><option value="+39">IT +39</option><option value="+33">FR +33</option><option value="+49">DE +49</option><option value="+44">UK +44</option><option value="">Otro</option>
+            </select>
+            <input id="f-tel" name="phone" type="tel" inputmode="tel" autocomplete="tel-national" required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="fld"><label for="f-type">Tipo de alojamiento</label>
+            <select id="f-type" name="property_type" required>
+              <option value="" selected disabled>Selecciona</option>
+              <option>Vivienda turística</option><option>Hotel/Hostal</option><option>Camping</option><option>Otro</option>
+            </select></div>
+          <div class="fld"><label for="f-units">Nº de alojamientos o habitaciones</label><input id="f-units" name="number_of_units" type="number" inputmode="numeric" min="1" step="1" required></div>
+        </div>
+        <!-- campos ocultos de medición -->
+        <input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign"><input type="hidden" name="utm_term"><input type="hidden" name="utm_content"><input type="hidden" name="gclid"><input type="hidden" name="fbclid">
+        <input type="hidden" name="landing" value="ses-hospedajes-es-v2-boceto">
+        <input type="hidden" name="request_type" id="f-req" value="trial">
+        <button class="btn" type="submit">Empieza tu prueba gratis</button>
+        <p class="err" id="f-err" role="alert"></p>
+        <!-- secundario: más pequeño y distinto del principal; marca la petición como "hablar con un experto" -->
+        <button class="alt" type="button" id="f-expert">¿Prefieres que te llame un experto?</button>
+        <p class="legal">Al enviar este formulario confirmas que has leído nuestros <a href="https://chekin.com/terminos/" target="_blank" rel="noopener">Términos y condiciones</a>. Tus datos están protegidos. Cumplimos el RGPD.</p>
+      </form>
+      <div class="ok" id="f-ok" role="status"><h3>Gracias</h3><p>Boceto: este formulario todavía no envía datos.</p></div>
+    </div>
+
+    <div class="after-form">
+      <ul class="checks">
+        <li>Parte de viajeros enviado en automático y en plazo</li>
+        <li>Escáner del documento, sin apps que descargar</li>
+        <li>Conectado con más de 200 PMS</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="stats" aria-label="Chekin en cifras">
+  <div class="wrap">
+    <div class="stat"><b>+200.000</b><span>propiedades</span></div>
+    <div class="stat"><b>+25M</b><span>check-ins</span></div>
+    <div class="stat"><b>+200</b><span>PMS conectados</span></div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <span class="kicker">Cumplimiento legal en España</span>
+    <h2>El parte de viajeros, enviado solo y en plazo</h2>
+    <p class="intro">Chekin envía el parte a SES.Hospedajes, y a los Mossos d'Esquadra y la Ertzaintza donde corresponde, sin que tengas que entrar en ningún portal.</p>
+    <div class="grid">
+      <div class="tile"><h3>Check-in online conforme a la ley</h3><p>El formulario recoge los datos obligatorios, el tipo y número de documento y las fechas de la estancia, y valida los formatos antes de enviar nada.</p></div>
+      <div class="tile"><h3>En plazo: 24 horas</h3><p>Los datos se transmiten dentro de las 24 horas siguientes al check-in. Si el registro se hace entre las 22:00 y las 24:00, el envío se hace ese mismo día.</p></div>
+      <div class="tile"><h3>Libro de visitas digital</h3><p>Histórico de tres años, datado y exportable. Si llega una inspección, no dependes de buscar papeles.</p></div>
+      <div class="tile"><h3>Estadística al INE y tasas turísticas</h3><p>El envío estadístico se hace solo, incluido Turespazo en Galicia. Las tasas turísticas se calculan y se cobran al huésped durante el check-in.</p></div>
+    </div>
+    <p class="warn">No comunicar los datos, o hacerlo tarde, es una infracción grave con multas de <b>601 € a 30.000 €</b> según la Ley Orgánica 4/2015. Con Chekin el parte sale solo, en plazo y en el formato exigido.</p>
+  </div>
+</section>
+
+<section class="sec alt">
+  <div class="wrap">
+    <span class="kicker">Check-in online</span>
+    <h2>Así se registran tus huéspedes</h2>
+    <p class="intro">Reciben un enlace que abre directamente el formulario. Sin descargar ninguna app y antes de llegar al alojamiento.</p>
+    <ol class="steps">
+      <li><h3>Recibe el enlace</h3><p>Por email, WhatsApp, SMS o el canal que uses. Un solo enlace vale para todos los ocupantes de la reserva.</p></li>
+      <li><h3>Escanea el documento</h3><p>El escáner lee el DNI, el pasaporte o el carné y rellena el formulario solo. También se puede escribir a mano.</p></li>
+      <li><h3>Firma y listo</h3><p>Firma el contrato de arrendamiento y las normas de la casa.</p></li>
+      <li><h3>Reporte automático</h3><p>Chekin genera el parte y lo envía a la autoridad que corresponde, en plazo y en formato. Tú no tocas nada.</p></li>
+    </ol>
+    <a class="btn inline-cta" href="#form">Empieza tu prueba gratis</a>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <h2>Deja de preocuparte por el parte</h2>
+    <p>Prueba Chekin gratis durante 14 días. Sin tarjeta de crédito y sin permanencia.</p>
+    <a class="btn" href="#form">Empieza tu prueba gratis</a>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjgyIDY2IDg1MiAyNTIiPgogIDxnIGlkPSJsb2dvLW5ldy1jaGVraW4tbGFuZHNjYXBlIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMjg0NyAxNTU4OSkiPgogICAgPHJlY3QgaWQ9IlJlY3RhbmdsZV8zMjA0IiBkYXRhLW5hbWU9IlJlY3RhbmdsZSAzMjA0IiB3aWR0aD0iMTAwMCIgaGVpZ2h0PSIzOTkiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI4NDcgLTE1NTg5KSIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iMCIvPgogICAgPGcgaWQ9ImxvZ28iIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI5MjMuMjk0IC0xNTUyOS4wNTUpIj4KICAgICAgPGcgaWQ9Ikdyb3VwXzEyOTc0IiBkYXRhLW5hbWU9Ikdyb3VwIDEyOTc0IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIDApIj4KICAgICAgICA8ZyBpZD0iR3JvdXBfMTMxNDIiIGRhdGEtbmFtZT0iR3JvdXAgMTMxNDIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgMCkiPgogICAgICAgICAgPHBhdGggaWQ9IlBhdGhfMjYyMTgiIGRhdGEtbmFtZT0iUGF0aCAyNjIxOCIgZD0iTS0yMzQuOS05LjE4N2MwLDU2LjQ5NCwzOC45LDEwMC4wMTMsOTkuMTM5LDEwMC4wMTNhMTA3LjQ4LDEwNy40OCwwLDAsMCw2Ny44LTIzLjc4N2M1LjQtNC42LDUuNjczLTEwLjI3MiwxLjYyMS0xNS42NzhsLTUuNC03LjNjLTQuMzIyLTYuMjE3LTkuNzI1LTYuMjE3LTE1LjY2OC0xLjg5Mi04LjkxNSw2LjQ4Ny0yNS4zOTMsMTYuNzU5LTQ3LDE2Ljc1OS00MS4zMzEsMC02NC41NjItMzIuNzA3LTY0LjU2Mi02OC42NTgsMC0zNS40MSwyMi40MjEtNjUuOTU1LDY0LjI5Mi02NS45NTUsMTkuNzIsMCwzNC44NDcsOC4xMDksNDMuMjIyLDEzLjUxNSw2LjQ4Myw0LjA1NSwxMS42MTYsMy41MTQsMTUuNC0yLjdsNC44NjMtNy44MzljMy43ODItNS45NDcsMy41MTItMTEuMzUzLTIuMTYxLTE1LjY3OC0xMC4yNjUtNy4zLTMxLjMzNS0xOS4xOTItNjIuNjcxLTE5LjE5MkMtMTk0LjEwOC0xMDcuNTc4LTIzNC45LTY0Ljg3LTIzNC45LTkuMTg3Wk0tMzguNTExLDc2LjIzYzAsNy41NjksNC4wNTIsMTEuMzUzLDExLjM0NiwxMS4zNTNoMTEuNjE2US00LjIsODcuNTgzLTQuMiw3Ni4yM1YyMy41MmMwLTI2LjIyLDE1LjY2OC00NS42ODIsMzkuNzEtNDUuNjgyLDE3LjI4OCwwLDIxLjYxMSwxMS4zNTMsMjEuNjExLDI4LjExMlY3Ni4yM3EwLDExLjM1MywxMS4zNDYsMTEuMzUzSDgwLjA3OGM3LjI5NCwwLDExLjM0Ni0zLjc4NCwxMS4zNDYtMTEuMzUzVi0xLjA3N2MwLTM2LjQ5MS0xNy41NTktNTIuNDM5LTQ4LjA4NC01Mi40MzktMjMuNzcyLDAtNDEuMDYxLDE0LjYtNDcuODE0LDI3Ljg0MmgtLjU0QTc4LjMsNzguMywwLDAsMC00LjItMzcuM1YtOTIuOTgxYzAtNy4zLTMuNzgyLTExLjM1My0xMS4zNDYtMTEuMzUzSC0yNy4xNjVjLTcuMjk0LDAtMTEuMzQ2LDQuMDU1LTExLjM0NiwxMS4zNTNaTTExNC45MjYsMTguNjU1YzAsMzkuMTk0LDI4LjM2NCw3Mi4xNzIsNzQuMDE3LDcyLjE3MmE4Ny4wMzgsODcuMDM4LDAsMCwwLDQ2LjczMy0xMy43ODZjNS45NDMtMy41MTQsNy4wMjMtOC45MiwzLjc4Mi0xNS4xMzdMMjM2LjIxNiw1Ni41Yy0zLjUxMi02LjIxNy04LjM3NC03LjAyOC0xNS4xMjgtMy43ODQtNi40ODMsNC4wNTUtMTcuMDE4LDguOTItMjkuNzE1LDguOTItMjAuOCwwLTM5LjE3LTEyLjk3NS00MS4zMzEtMzcuODQzaDg0LjAxMmExMS45NDIsMTEuOTQyLDAsMCwwLDExLjg4Ni0xMS42MjNjMC0zNy44NDMtMjEuODgxLTY1LjY4NC02MS4wNTEtNjUuNjg0QzE0My41Ni01My41MTcsMTE0LjkyNi0yMy43ODMsMTE0LjkyNiwxOC42NTVaTTE1MC44NTQsMi45NzdDMTU0LjEtMTUuNCwxNjYuNTIxLTI3LjU2NywxODQuMDgtMjcuNTY3YzE1LjY2OCwwLDI3LjI4NCwxMS4zNTMsMjcuODI0LDMwLjU0NVpNMjcwLjc5Myw3Ni4yM2MwLDcuNTY5LDQuMDUyLDExLjM1MywxMS4zNDYsMTEuMzUzaDExLjYxNnExMS4zNDUsMCwxMS4zNDYtMTEuMzUzVjI3LjNoMTcuODI5bDMyLjE0Niw1Mi40MzljMi45NzIsNS40MDYsNy4wMjQsNy44MzksMTMuMjM3LDcuODM5SDM4Mi45YzkuMTg1LDAsMTIuMTU2LTUuNjc2LDcuNTY0LTEzLjUxNUwzNDkuOTQzLDExLjl2LS41NDFMMzg0LjI1LTM2Ljc1OGM1LjEzMi03LjMsMi4xNjEtMTMuNTE1LTcuMDIzLTEzLjUxNUgzNjQuMjZjLTYuMjEzLDAtMTAuMjY1LDIuMTYzLTEzLjUwNyw3LjU2OUwzMjIuMTE5LTEuNjE4SDMwNS4xVi05Mi45ODFjMC03LjMtMy43ODItMTEuMzUzLTExLjM0Ni0xMS4zNTNIMjgyLjEzOWMtNy4yOTQsMC0xMS4zNDYsNC4wNTUtMTEuMzQ2LDExLjM1M1ptMTQzLjk4MiwwYzAsNy41NjksMy43ODIsMTEuMzUzLDExLjA3NiwxMS4zNTNoMTEuODg2YzcuMjk0LDAsMTEuMDc2LTMuNzg0LDExLjA3Ni0xMS4zNTNWLTM4LjkyYzAtNy4zLTMuNzgyLTExLjM1My0xMS4wNzYtMTEuMzUzSDQyNS44NTFjLTcuMjkzLDAtMTEuMDc2LDQuMDU1LTExLjA3NiwxMS4zNTNabTY4LjA3NCwwYzAsNy41NjksMy43ODIsMTEuMzUzLDExLjA3NiwxMS4zNTNoMTEuODg2YzcuMjk0LDAsMTEuMDc1LTMuNzg0LDExLjA3NS0xMS4zNTNWMjIuOThjMC0yNC44NjgsMTUuNC00NS4xNDEsMzkuNzEtNDUuMTQxLDE3LjI4OSwwLDIxLjYxMSwxMS4zNTMsMjEuNjExLDI4LjExMlY3Ni4yM2MwLDcuNTY5LDQuMDUyLDExLjM1MywxMS4zNDYsMTEuMzUzaDExLjYxNnExMS4zNDYsMCwxMS4zNDYtMTEuMzUzVi0xLjA3N2MwLTM2LjQ5MS0xNy41NTktNTIuNDM5LTQ4LjA4NC01Mi40MzktMjcuODI0LDAtNDIuOTUxLDE3LjU3LTQ4Ljg5NCwyOS4xOTNINTE1YTQ0LjEsNDQuMSwwLDAsMCwuNTQtNi4yMTdWLTM4LjkyYzAtNy4zLTMuNzgyLTExLjM1My0xMS4wNzYtMTEuMzUzSDQ5My45MjVjLTcuMjk0LDAtMTEuMDc2LDQuMDU1LTExLjA3NiwxMS4zNTNaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyMzQuODk4IDE1Ny43ODMpIiBmaWxsPSIjZmZmIi8+CiAgICAgICAgICA8ZyBpZD0idGljayIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNjIwLjUxNikiPgogICAgICAgICAgICA8ZyBpZD0iR3JvdXBfMTI5NjYiIGRhdGEtbmFtZT0iR3JvdXAgMTI5NjYiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDApIj4KICAgICAgICAgICAgICA8cGF0aCBpZD0iUGF0aF8yNjIwNyIgZGF0YS1uYW1lPSJQYXRoIDI2MjA3IiBkPSJNMTQ0LjkyMywyMzcuNDU2YTEwLjIzMywxMC4yMzMsMCwwLDEsMCwxNC4yMTNMMTM3LDI1OS42YTEwLjIzMywxMC4yMzMsMCwwLDEtMTQuMjEzLDBMODguMDcsMjI0LjYwOWExMC4yMzMsMTAuMjMzLDAsMCwxLDAtMTQuMjEzTDk2LDIwMi40N2ExMC4yMzQsMTAuMjM0LDAsMCwxLDE0LjIxMywwWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTg1LjIgLTE3NC4xOCkiIGZpbGw9IiNmZmYiLz4KICAgICAgICAgICAgICA8cGF0aCBpZD0iUGF0aF8yNjIwOCIgZGF0YS1uYW1lPSJQYXRoIDI2MjA4IiBkPSJNMjI3LjQsMTI4LjA3YTEwLjIzNCwxMC4yMzQsMCwwLDEsMTQuMjEzLDBMMjQ5LjU0MiwxMzZhMTAuMjM0LDEwLjIzNCwwLDAsMSwwLDE0LjIxM0wxODkuNDEsMjEwLjA2OGExMC4yMzMsMTAuMjMzLDAsMCwxLTE0LjIxMywwbC03LjkyNi03LjkyNmExMC4yMzMsMTAuMjMzLDAsMCwxLDAtMTQuMjEzWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTEzNy4zNCAtMTI1LjIpIiBmaWxsPSIjZmZmIi8+CiAgICAgICAgICAgIDwvZz4KICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICAgIDwvZz4KICAgIDwvZz4KICA8L2c+Cjwvc3ZnPgo=" alt="Chekin"><span>© Chekin · <a href="https://chekin.com/terminos/" target="_blank" rel="noopener">Términos</a> · <a href="https://chekin.com/privacidad/" target="_blank" rel="noopener">Privacidad</a></span></div></footer>
+
+<script>
+(function(){
+  var f=document.getElementById('lead'),err=document.getElementById('f-err'),req=document.getElementById('f-req');
+  var q=new URLSearchParams(location.search);
+  ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid','fbclid'].forEach(function(k){var v=q.get(k);if(v&&f.elements[k])f.elements[k].value=v});
+  f.addEventListener('input',function(e){var t=e.target;if(t.matches('input,select'))t.classList.toggle('filled',!!t.value)});
+  f.addEventListener('change',function(e){var t=e.target;if(t.matches('select'))t.classList.toggle('filled',!!t.value)});
+  document.getElementById('f-expert').addEventListener('click',function(){
+    req.value='expert';this.textContent='Perfecto, te llamará un experto. Rellena tus datos.';
+    f.querySelector('.btn').textContent='Quiero que me llamen';document.getElementById('f-name').focus();
+  });
+  f.addEventListener('submit',function(e){
+    e.preventDefault();err.textContent='';
+    var E=f.elements,mail=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    if(!E.firstname.value.trim()){err.textContent='Escribe tu nombre.';return}
+    if(!mail.test(E.email.value.trim())){err.textContent='Escribe un email válido.';return}
+    if(E.phone.value.replace(/\D/g,'').length<6){err.textContent='Escribe un teléfono válido.';return}
+    if(!E.property_type.value){err.textContent='Elige el tipo de alojamiento.';return}
+    if(!(+E.number_of_units.value>=1)){err.textContent='Indica cuántas propiedades o habitaciones tienes.';return}
+    f.style.display='none';document.getElementById('f-ok').style.display='block';
+  });
+})();
+</script>
+</body>
+</html>

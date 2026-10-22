@@ -29,3 +29,18 @@ Revisada en el navegador a 1512×780 (portátil 14") y 375×812 (móvil). Captur
 - Cambiar "+50 integraciones" por la cifra oficial.
 - Acortar la página.
 - Medir antes y después por página (formularios ÷ visitas), con el periodo indicado.
+
+## Boceto v2 (22-10-2026) · `../landing-ses-hospedajes-v2.html`
+Archivo único, se abre con doble clic. **No conectado a HubSpot** (el formulario muestra "Boceto"). Campo oculto `landing = ses-hospedajes-es-v2-boceto`.
+| | Actual | v2 |
+|---|---|---|
+| Botón de enviar en portátil 1512×780 | por debajo del pliegue (~824 px) | a 474 px |
+| Formulario en móvil 375×812 | empieza a 961 px, botón a 1.559 | empieza a 316 px, botón a 731 (sin bajar) |
+| Texto del hero en móvil | cortado por la derecha | entero, sin scroll horizontal |
+| Alto de página (portátil / móvil) | 7.669 / 13.963 px | 2.520 / 4.085 px |
+| Botones | 11, dos iguales al mismo sitio | 1 principal ("Empieza tu prueba gratis", 3 veces) + enlace secundario "¿Prefieres que te llame un experto?" que marca `request_type = expert` |
+| Etiqueta sobre el título | enlace a #form que no hace nada | texto, no clicable |
+| Letra de los campos en móvil | 15 px | 16 px |
+| Cifras | "+50 integraciones", "+45 países" | solo oficiales: +200.000 propiedades, +25M check-ins, +200 PMS |
+Se quitó: el bloque de upselling y la calculadora (+1.260 €/mes), cerraduras, verificación de identidad, Veri*Factu y el resumen de integraciones (para acortar y centrar la página en SES). Se mantiene el texto legal actual bajo el botón [validar con DPO].
+[POR COMPROBAR] "+45 países" (página actual) frente a "+20 países" (cifra oficial del traspaso); no se usa ninguna de las dos.
