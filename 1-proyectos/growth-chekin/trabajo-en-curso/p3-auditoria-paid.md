@@ -67,6 +67,29 @@ El trabajo corre en el chat de Claude Code "Landing Page". Aquí solo estado y c
 - **IT PMax (Competitors y Vacational):** casi todo el tráfico atribuido a titulares viene de "Modello Contratto Affitti Brevi" y "Contratto Affitto Turistico" → /modello/contrattoaffittoturistico. Tenerlo en cuenta antes de diseñar las landings de Italia.
 - **Dos cifras, dos periodos (aclarado 22/10):** 41% en los últimos 90 días (21 jul – 18 oct, export de Google Ads, el periodo que usa Carlos) y 21% / ~190 clics en los últimos 30 días (Windsor). El último mes llega menos tráfico a /chekin-hoteles que la media de 90 días.
 
+## Análisis de la Biblioteca de anuncios (data.json, 21 jul – 18 oct, 90 días) · 22-10-2026
+Fuente: Biblioteca de anuncios Chekin (clics y gasto de Google Ads por URL servida; formularios = contactos nuevos de HubSpot con fuente paid atribuidos por el ID de campaña de la URL; MQL/SQL del funnel de la biblioteca).
+
+**ES PMax Competitors** (configurada: /chekin-hoteles) · 3.791 clics · 10.384 € · 81 formularios (2,1%) · 122 MQL · 13 SQL · 4 ganados
+| URL servida | Clics | % | Gasto € | Forms | Clic→form |
+|---|---|---|---|---|---|
+| /chekin-hoteles | 1.559 | 41,1% | 1.916 | 6 | 0,38% |
+| /plantillas/contratoalquilervacacionalpdf | 481 | 12,7% | 1.557 | 14 | 2,9% |
+| /check-in-guestapp | 377 | 9,9% | 2.009 | 10 | 2,7% |
+| /plantillas/plantillaseshospedajesword | 374 | 9,9% | 1.687 | 17 | 4,5% |
+| /es/guia/seshospedajes | 202 | 5,3% | 626 | 7 | 3,5% |
+| /plantillas-seshospedajes | 180 | 4,7% | 532 | 7 | 3,9% |
+| /es/check-in-online-ses-hospedajes | 156 | 4,1% | 548 | 8 | 5,1% |
+| /plantillas/modelofacturaalquilervacacional | 120 | 3,2% | 302 | 6 | 5,0% |
+| /en/online-check-in | 69 | 1,8% | 258 | 2 | 2,9% |
+| Resto (14 URLs) | 273 | 7,2% | 950 | 4 | — |
+
+**Hallazgo clave:** la página SES (/es/check-in-online-ses-hospedajes) es la landing de la **ES PMax Vacational**, no de Competitors: 11.600 de sus 11.707 clics (99%), 5.273 €, 493 formularios (4,25%), 500 MQL, **8 SQL (1,6%), 0 ganados**. Los ~508 contactos "de Competitors" que entraban por la página SES en HubSpot son casi seguro **tráfico de Vacational mal etiquetado por las UTM**.
+- Vacational ES: ~10,7 €/formulario, calidad baja (alquiler vacacional pequeño).
+- Competitors ES: ~128 €/formulario, pero 13 SQL y 4 ganados: mucha mejor calidad por lead.
+
+**Resto de PMax (% de clics que llegan a la URL configurada, 90 días):** PT Competitors 100%, PT Vacational 100%, GB Vacational 100%, DE Vacational 100%, ES Vacational 99%, **IT Competitors 67%** (29% a /modello/contrattoaffittoturistico), **IT Vacational 30%** (65% a /modello/contrattoaffittoturistico), ES Competitors 41%.
+
 ## Tracker (22-10-2026)
 - Test ES · Hoteles pasado a **Pausado** en el tracker, con el motivo (expansión de URL, ~190 clics/mes a chekin-hoteles) y la propuesta de Carlos (una landing por anuncio). Se reactiva o se rehace cuando se decida con Carlos.
 - El deck sigue diciendo "~1.300 clics/mes" para el test: desactualizado.
