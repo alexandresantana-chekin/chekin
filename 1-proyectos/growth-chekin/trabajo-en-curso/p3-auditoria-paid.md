@@ -92,6 +92,13 @@ Fuente: Biblioteca de anuncios Chekin (clics y gasto de Google Ads por URL servi
 
 **Resto de PMax (% de clics que llegan a la URL configurada, 90 días):** PT Competitors 100%, PT Vacational 100%, GB Vacational 100%, DE Vacational 100%, ES Vacational 99%, **IT Competitors 67%** (29% a /modello/contrattoaffittoturistico), **IT Vacational 30%** (65% a /modello/contrattoaffittoturistico), ES Competitors 41%.
 
+## Por qué Vacational se queda en su landing y Competitors no (22-10-2026, biblioteca 90 días)
+- Vacational ES también reparte en 10 URLs (99,1% a la página SES; las otras 9 suman <110 clics). Competitors ES: 23 URLs, 41% a /chekin-hoteles.
+- **Las dos tienen textos automáticos generados con los títulos de otras páginas** (expansión de URL + recursos de texto automáticos): en Competitors, "Plantilla SES Hospedajes" (título de la plantilla Word) = 1.066 clics y 4.636 €; "Guía sobre la plataforma Ses.Hospedajes…" 494 clics; "Guestapp Chekin" 408; "Online Check-in" (inglés) 120. En Vacational aparecen los mismos textos con muy pocos clics.
+- **Causa probable:** Google optimiza hacia "cualquier formulario" y manda el clic a la página que más convierte. Vacational: su landing configurada convierte al 4,25% → no hay a dónde ir mejor, se queda. Competitors: /chekin-hoteles convierte al 0,38% (y carga en 3,9 s, `lang="en"`, formulario al 93%) → Google desvía a plantillas (4–5%).
+- **Comprobar en Google Ads (Carlos/Snowball):** expansión de URL final y exclusiones en las dos PMax; recursos de texto automáticos; objetivo de conversión (que no valga lo mismo una plantilla que una prueba); términos de búsqueda (Windsor).
+- Para el test SES en Vacational: excluir las otras URLs mientras dure, o Google puede mover tráfico si cambia la conversión.
+
 ## Tracker (22-10-2026)
 - Test ES · Hoteles pasado a **Pausado** en el tracker, con el motivo (expansión de URL, ~190 clics/mes a chekin-hoteles) y la propuesta de Carlos (una landing por anuncio). Se reactiva o se rehace cuando se decida con Carlos.
 - El deck sigue diciendo "~1.300 clics/mes" para el test: desactualizado.
