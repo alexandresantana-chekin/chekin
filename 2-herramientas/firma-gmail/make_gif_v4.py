@@ -29,13 +29,15 @@ BASE = np.asarray(base).astype(np.float32)
 TICK = (SS + 0.800 * LW, TOP + 0.177 * LH)        # centro del check
 E_Y = TOP + 0.710 * LH                            # altura del centro de la «e» (por aquí pasa el cohete)
 
-def zoom(t, S=5.0):
+def zoom(t, S=3.0):   # 3x: el check entero cabe en el alto del GIF
     """Cámara que se lanza hacia el check: t=0 logo normal, t=1 el check ampliado S veces y centrado."""
     if t <= 0:
         return base
     s = 1 + (S - 1) * t
-    ccx = CW / 2 + (TICK[0] - CW / 2) * t          # el centro de la cámara viaja hasta el check
-    ccy = CH / 2 + (TICK[1] - CH / 2) * t
+    # el check va de su sitio al centro de la pantalla mientras crece: así nunca se sale por arriba
+    px, py = TICK[0] + (CW / 2 - TICK[0]) * t, TICK[1] + (CH / 2 - TICK[1]) * t
+    ccx = TICK[0] - (px - CW / 2) / s
+    ccy = TICK[1] - (py - CH / 2) / s
     # píxel de salida (x, y) ← punto del lienzo grande: (cc + (x − centro)/s) · HI
     a = HI / s
     return big.transform((CW, CH), Image.AFFINE,
@@ -73,17 +75,17 @@ frames, durs = [], []
 add = lambda im, ms: (frames.append(frame(im)), durs.append(ms))
 
 add(base, 1000)                                               # quieto
-for i in range(1, 16): add(zoom(ease(i / 15)), MS)            # se lanza hacia el check (0,6 s)
-add(zoom(1.0), 400)                                           # check en grande
-for i in range(1, 16): add(zoom(ease(1 - i / 15)), MS)        # vuelve al logo (0,6 s)
+for i in range(1, 21): add(zoom(ease(i / 20)), 50)            # se acerca al check (1 s)
+add(zoom(1.0), 600)                                           # check en grande, entero
+for i in range(1, 21): add(zoom(ease(1 - i / 20)), 50)        # vuelve al logo (1 s)
 add(base, 300)
-n = 40                                                        # cohete cruzando, más lento (1,6 s)
+n = 32                                                        # cohete cruzando, más lento (1,6 s)
 for i in range(n + 1):
-    add(comet(BASE, -CW * 0.05 + ease(i / n) * CW * 1.15, 0.0), MS)
-for i in range(1, 13):                                        # la estela se apaga (0,5 s)
-    add(comet(BASE, CW * 1.10, i / 12), MS)
+    add(comet(BASE, -CW * 0.05 + ease(i / n) * CW * 1.15, 0.0), 50)
+for i in range(1, 11):                                        # la estela se apaga (0,5 s)
+    add(comet(BASE, CW * 1.10, i / 10), 50)
 add(base, 1400)                                               # quieto antes de repetir
 
-pal = [f.quantize(colors=48, method=Image.Quantize.MEDIANCUT) for f in frames]
+pal = [f.quantize(colors=40, method=Image.Quantize.MEDIANCUT) for f in frames]
 pal[0].save(out, save_all=True, append_images=pal[1:], duration=durs, loop=0, optimize=True, disposal=1)
 print(out, f"{W}x{H}", len(frames), "frames", sum(durs), "ms")
