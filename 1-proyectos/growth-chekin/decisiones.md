@@ -40,3 +40,6 @@
 - **P5 · Animación cuadrada:** solo el check (no el logo completo), porque es lo que se reconoce en el círculo pequeño de la foto de Google. Con acercamiento fuerte y destello de halo (elegido frente al anillo). El primer fotograma es el check entero, porque Outlook solo muestra ese.
 - **P5 · Foto de perfil de Google:** imagen fija de 1024 px, porque Google no anima las fotos de perfil.
 - **P1 · Dashboard de activación:** datos de 2026 con marzo fuera por defecto (volcado masivo de Holidu). LTV estimado con Stripe (ingreso medio × vida media por retención a 12 meses de 2024), editable a mano. El coste de oportunidad se calcula por la diferencia de tasa de pago entre los que siguen y los que se quedan en cada paso.
+
+## 2026-10-23 (tarde)
+- P3: Alex mantiene el 27/10 para las 4 landings (ES hoteles, ES resto, IT hoteles, IT resto). "Lista" = diseño terminado y revisado, listo para montar en HubSpot. Montaje, publicación y tests van aparte y dependen del OK de Carlos. **Por qué:** Alex se compromete a terminarlas; lo que no depende de él (lanzar y medir) se separa para que la fecha no dependa de terceros.

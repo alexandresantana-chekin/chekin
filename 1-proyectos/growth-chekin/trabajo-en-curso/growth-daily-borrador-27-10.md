@@ -33,14 +33,14 @@ Viene de `p3-propuesta-fechas-26-10.md`.
 | Escribir a Snowball sobre el reparto de URLs de PMax (Landing pages · Alexandre) | 26/10 | 26/10 (se mantiene) | Mensaje enviado y respuesta de Snowball registrada en la tarea |
 | Corregir las UTM de las PMax (GTM Auditoría) | 27/10 | 27/10 (se mantiene) · **owner: Carlos o Snowball**; Alex da la especificación | Los contactos nuevos de cada PMax llegan con su nombre de campaña, sin `{campaignname}` |
 | Auditoría de las landings y creatividades de paid (Landing pages · Alexandre) | 30/10 | 30/10 (se mantiene) | Documento con los hallazgos de cada landing |
-| España · Resto: landing lista (GTM Auditoría) | 27/10 | **30/10** montada en HubSpot sin publicar · lanzamiento **2/11** | SES v2 en HubSpot, test 50/50 en marcha y registrado en el tracker |
+| España · Resto: landing lista (GTM Auditoría) | 27/10 | **27/10 (se mantiene, decisión de Alex del 23/10)** | Diseño terminado y revisado, listo para montar en HubSpot (SES v2, guía v2, pack legal, guest app v2). Montaje y lanzamiento aparte: 30/10 y 2/11, con OK de Carlos |
 | Fijar el baseline de CR de octubre por landing (Landing pages · Alexandre) | 31/10 (sábado) | **2/11** | Tabla de baseline rellena en la ficha P3 de Notion |
 | Registrar cada test en el tracker (GTM Auditoría) | 27/10 | **El día de cada lanzamiento** (el primero, 2/11) | Cada test con fecha de inicio, URL, variante y métrica |
 | Lista priorizada de mejoras (Landing pages · Alexandre) | 4/11 | 4/11 (se mantiene) | Lista por impacto y esfuerzo, revisada con Carlos |
-| España · Hoteles: landing nueva (GTM Auditoría) | 27/10 | **6/11** lista · lanzamiento 9/11 | Landing en la URL decidida y test registrado |
+| España · Hoteles: landing nueva (GTM Auditoría) | 27/10 | **27/10 (se mantiene)** | Diseño terminado y revisado, listo para montar. Lanzamiento según la decisión del 26 sobre Competitors (propuesta: 9/11) |
 | Integrar las mejoras en el proyecto de Valery (Landing pages · Alexandre) | 6/11 | 6/11 (se mantiene) | Mejoras en producción o con fecha en el proyecto de Valery |
-| Italia · Hoteles: landing lista (GTM Auditoría) | 27/10 | **20/11** | Landing lista y revisada (italiano revisado por [POR COMPROBAR quién]) |
-| Italia · Resto: landing lista (GTM Auditoría) | 27/10 | **27/11** | Ídem |
+| Italia · Hoteles: landing lista (GTM Auditoría) | 27/10 | **27/10 (se mantiene)** | Diseño terminado en italiano, listo para montar. Revisión nativa del italiano aparte [POR COMPROBAR quién] |
+| Italia · Resto: landing lista (GTM Auditoría) | 27/10 | **27/10 (se mantiene)** | Ídem. Enfoque: el 65% de los clics de IT Vacational va a la plantilla de contrato (H-05) |
 | Cierre de noviembre: CR de paid frente a baseline (Landing pages · Alexandre) | 30/11 | 30/11 (se mantiene) | Columna «Real nov» rellena y conclusión de cada experimento |
 
 ## 3. MRR automático + ShowMe
