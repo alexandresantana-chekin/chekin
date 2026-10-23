@@ -22,7 +22,7 @@ tools/sales-card/            ← fuentes para seguir editando
   assets/                    ← librería de QR, icono, logos oficiales SVG
   decks/                     ← scripts para (re)generar/parchear presentaciones
   tests/                     ← pruebas Playwright con Supabase simulado (run.sh)
-supabase/migrations/         ← esquema de la base (en orden de fecha; aplicado en producción hasta 20261024_scan_leads; 20261025_hubspot_sync y 20261026_demo_requests PENDIENTES)
+supabase/migrations/         ← esquema de la base (en orden de fecha; aplicado en producción hasta 20261027_hubspot_webhook, el 23/10)
 landing-evento/index.html    ← landing del evento de Madrid (archivo único, sin conectar a nada)
 docs/TRASPASO.md            ← guía de traspaso y cuentas
 ```
@@ -49,6 +49,10 @@ docs/TRASPASO.md            ← guía de traspaso y cuentas
 
 ## Sistema de diseño (resumen; el sistema completo lo tiene el equipo de marketing)
 Azul principal `#385BF8` (único acento) · textos `#19194B`/`#161643` (nunca negro puro) · grises `#6B6B95` `#9696B9` `#DEDEEB` · rojo `#FF2467` solo errores · degradado `#002CFA→#274BF0` solo en bandas/cabeceras · fondo plano (`#FDFDFF` panel, `#F4F6F9` tarjeta) · botones 12 px (no píldoras en producto), campos 8 px, campos vacíos `#F4F6F8` y con contenido blanco con borde `#161643` · aro de enfoque `0 0 0 3px rgba(56,91,248,.2)` · desactivado = opacidad .3 · hover con capa, sin mover ni cambiar sombra · sombras azuladas `rgba(26,148,255,.173)` · sin emojis en la interfaz · sin exclamaciones en la interfaz · tipografía Montserrat (sustituto de Proxima Nova, que es de pago).
+
+## Publicación (23/10)
+- **Web de los AEs: https://chekin-connect.vercel.app** (cuenta de empresa de Vercel, equipo chekin2, proyecto `chekin-sales-card`; también https://chekin-sales-card-navy.vercel.app). Se despliega sola con cada push a `main`. La web antigua `qrsaleschekin.vercel.app` (cuenta personal) no se toca: queda con la versión anterior; misma base de datos.
+- **HubSpot:** función `hubspot-sync` desplegada (sin JWT; la protege la cabecera `x-webhook-secret` = secreto `WEBHOOK_SECRET` = Vault `hubspot_webhook_secret`). Disparador `leads_to_hubspot` en `public.leads` (pg_net). Se redespliega con `tools/supabase/desplegar-hubspot-sync.sh` (pide un token de acceso de Supabase sin mostrarlo). **Falta `HUBSPOT_TOKEN`** (app privada; solo la puede crear un superadmin de HubSpot) y las propiedades `chekin_connect_evento` y `chekin_connect_origen`. Sin token, cada contacto se guarda igual y queda con `hubspot_error`.
 
 ## Pendiente / decisiones abiertas
 - HubSpot: sincronizar contactos (token de app privada, propiedad personalizada nº de propiedades, propietario por email del AE, Lead vs SQL).

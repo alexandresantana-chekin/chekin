@@ -1,5 +1,6 @@
 // Chekin Connect → HubSpot: cada contacto nuevo de la app se envía a HubSpot marcado con su evento o webinar.
-// Lo dispara un Database Webhook de Supabase (INSERT en public.leads).
+// Lo dispara el disparador leads_to_hubspot (INSERT en public.leads, migración 20261027) con la cabecera x-webhook-secret.
+// Se despliega sin verificación de JWT (--no-verify-jwt): la protección es esa clave (secreto WEBHOOK_SECRET).
 // Secreto necesario en Supabase (Edge Functions → Secrets): HUBSPOT_TOKEN (token de la app privada de HubSpot).
 // Reglas: si el contacto ya existe en HubSpot no se cambian propietario ni etapa; solo se rellenan campos vacíos y se añade el evento y una nota.
 
@@ -80,6 +81,9 @@ async function sync(l: Lead) {
 }
 
 Deno.serve(async (req) => {
+  // Solo la base de datos puede llamar a la función: el disparador de public.leads manda esta clave (guardada en Vault).
+  const secret = Deno.env.get("WEBHOOK_SECRET") ?? "";
+  if (!secret || req.headers.get("x-webhook-secret") !== secret) return new Response("forbidden", { status: 401 });
   let lead: Lead | null = null;
   try {
     const body = await req.json();

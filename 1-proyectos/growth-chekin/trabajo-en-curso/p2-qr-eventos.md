@@ -32,3 +32,10 @@ Nuevo apartado para los AEs:
 - En HubSpot `number_of_units` ya existe. Faltan las propiedades de contacto `chekin_connect_evento` (texto) y `chekin_connect_origen` (texto o desplegable).
 - App privada "Chekin Connect" con permisos de contactos (lectura y escritura) y de propietarios (lectura); el token va solo a Supabase → Edge Functions → Secrets → `HUBSPOT_TOKEN`.
 - Desplegar la función `hubspot-sync` y crear el Database Webhook (INSERT en `public.leads` → `hubspot-sync`).
+
+## Publicado (23/10, tarde)
+- Web nueva para los AEs: **https://chekin-connect.vercel.app** (cuenta de empresa). La antigua `qrsaleschekin.vercel.app` no se toca (decisión de Alex: "todo en la nueva"). Misma base de datos.
+- Migraciones 20261025, 20261026 y 20261027 aplicadas. `mark_demo_request` responde (204).
+- `hubspot-sync` desplegada con clave interna (401 sin ella) y disparador en `public.leads`. **Falta:** que un superadmin de HubSpot (Carlos) cree la app privada y las 2 propiedades; guardar `HUBSPOT_TOKEN` en Supabase; prueba con un contacto "PRUEBA".
+- Tokens de acceso de Supabase creados hoy: **revocarlos** al terminar (uno se pegó en el chat y otro se vio en pantalla).
+- Avisar a los AEs de la dirección nueva (su QR se genera con la dirección desde la que abren la app).
