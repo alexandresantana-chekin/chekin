@@ -1,4 +1,4 @@
-# Estado · actualizado 2026-10-22
+# Estado · actualizado 2026-10-23
 
 ## Hecho
 - P3: diagnóstico de la landing de PMax España Hoteles, deck de 14 diapositivas y tracker de tests creados.
@@ -23,6 +23,15 @@
   - Permiso para mostrar Iberostar, Meliá y Barceló; logos de PMS; fuente Proxima Nova.
 
 ## Pendiente
+- **Antes del lunes 26 / en Tenerife con Carlos:**
+  - Compartir con Carlos el brief [Landings de paid: antes y después](https://claude.ai/artifact/BPBSyMM1PbQAmiKMijFNAq) y los bocetos nuevos (guía v2, pack legal, guest app v2).
+  - Pedir a Carlos la app privada de HubSpot (superadmin) y las 2 propiedades; guardar `HUBSPOT_TOKEN` en Supabase; prueba con un contacto "PRUEBA".
+  - Enviar el mensaje a Snowball (borrador en `trabajo-en-curso/p3-pmax-que-cambiar.md`) tras hablar con Carlos.
+  - Decidir con Carlos: Competitors ES (expansión de URL), fechas nuevas de P3, Clarity, test SES en Vacational.
+  - Enseñar a Daniel el funnel (dashboard + PostHog) y pedirle grabaciones y eventos de activación.
+  - Avisar a los AEs de la web nueva chekin-connect.vercel.app.
+  - Comentarios en Asana mencionando a Carlos en las tareas del lunes que están hechas (con OK de Alex).
+  - Comprobar /check-in-guestapp en un móvil real (sale en blanco en el emulador, H-16).
 - **P5 · foto de perfil de Carlos (23/10):** `chekin-perfil-carlos-DEFINITIVA.gif` (foto → círculo azul desde el centro → check → vuelve la foto; 166 KB). Plantilla `make_gif_persona.py` para el resto del equipo. Falta que Carlos la suba desde el móvil y comprobarla.
 - **P5 · 23/10:** Carlos quiere la **cuadrada para todo**. Comprobado: subida desde el móvil, se ve **animada como foto de perfil de Google**. La cuadrada no va en Vercel (decisión de Alex); Alex la adjunta en la tarea de Asana. Pendiente: experimento de Hasp (sender con GIF / sin GIF, tarea del 3/11).
 - **P5 · versión cuadrada HECHA (22/10):** solo el check en blanco sobre azul #385BF8, se dibuja, zoom fuerte y vuelve, halo nítido y brillo paralelo al trazo largo del check. Archivos en `2-herramientas/firma-gmail/`: `chekin-firma-cuadrada-DEFINITIVA.gif` (200 px), `-400.gif` y `chekin-foto-perfil-google.png` (1024 px, fija). Script `make_gif_cuadrado.py ... zoom`. Comentario a Carlos en Asana (tarea "Animación del logo de Chekin para la firma de Gmail", Growth Daily) pidiendo OK. **Falta:** adjuntar los archivos en esa tarea (la herramienta de Asana no sube adjuntos: lo hace Alex), el OK de Carlos, subir el GIF a la URL pública y actualizar el paso a paso. Nota: el comentario se escribió antes del último ajuste del brillo; los archivos definitivos ya lo llevan.

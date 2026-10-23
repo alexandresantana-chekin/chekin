@@ -1,5 +1,15 @@
 # Decisiones (solo crece)
 
+## 2026-10-23
+- **P1 · Grabaciones:** no se activan sin Daniel y el DPO. Enmascarar no quita la necesidad de consentimiento; se le pide a Daniel el lunes (solo /register y /setup, todo enmascarado).
+- **P1 · PostHog:** acción "Alta nueva en el dashboard (email o Google)" y funnel guardado (OK de Alex). La estimación del 16% se retira: no se sostenía (H-12).
+- **P3 · Pack legal:** la guía SES y las 4 plantillas se unen en una sola landing con titular según el anuncio (`?recurso=`). Solo tiene sentido si se mantiene la expansión de URL (decisión del lunes con Carlos).
+- **P3 · Guía v2:** formulario arriba con teléfono (decisión de Alex). España: versión nueva de todo lo que tiene más de 100 clics en 90 días.
+- **P2 · Web de los AEs:** todo en la nueva, https://chekin-connect.vercel.app (cuenta de empresa). La antigua `qrsaleschekin` no se toca.
+- **P2 · Lector con Claude:** se aparca por ahora (decisión de Alex). El escáner usa el lector del móvil.
+- **P2 · HubSpot:** función desplegada con clave interna; la app privada la crea un superadmin (Carlos). Tokens solo en el terminal; los de hoy, revocados.
+- **P5:** la versión **cuadrada** es para todo (firma, foto de perfil y Hasp). Se ve animada como foto de perfil de Google si se sube desde el móvil. No va en Vercel: se comparte como archivo. Foto de perfil de Carlos: foto → círculo azul desde el centro → check → vuelve la foto (definitiva).
+
 ## 2026-10-22
 - **Growth Check:** el MRR automático pasa a Alex. Carlos de vacaciones 28/10–3/11: todo en Growth Daily con owner, fecha y "hecho" antes del 27/10; estado por comentario en la tarea.
 - **P1 · Reunión con Daniel:** el lunes 26/10 se le enseña un funnel con datos limpios de PostHog, mes a mes, con variantes y huecos de medición señalados y propuesta para medir bien desde ahora.
