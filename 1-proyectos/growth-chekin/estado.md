@@ -23,6 +23,14 @@
   - Permiso para mostrar Iberostar, Meliá y Barceló; logos de PMS; fuente Proxima Nova.
 
 ## Pendiente
+## Asana al día (23/10, tarde)
+- Growth Daily › Alexandre: tarea índice «Mapa de tareas de Alexandre: owner, fecha y «hecho»» (gid 1219818181506129), con todas las tareas abiertas enlazadas y un comentario a Carlos. Asana no permite añadir desde aquí una tarea existente a otro proyecto: por eso es un índice con enlaces, no tareas duplicadas.
+- Cerradas con comentario: animación del logo, revisión de la configuración de PMax, app del QR en GitHub, «MRR: recibir el traspaso» (repetida) y «Arrancar web y CRO» (sustituida).
+- «Hecho =» añadido en las tareas de P3, P2 y P1 que no lo tenían. Estado como comentario en cada tarea abierta. QR (revisión final) pasa al 27/10 y KPI de activación al 30/10.
+- Experimento de Hasp: ahora es subtarea de la animación (3/11).
+- **P6 · Cello (referidos) con Valery**, nuevo: tarea en Growth Daily › Alexandre con 4 subtareas (29/10, 30/10, 4/11 y 6/11) y ficha P6 en Notion. Plan para el 6/11.
+- P3 Italia: bocetos de hoteles y resto, y brief «Landings de paid Italia: antes y después» (https://claude.ai/artifact/DrJ1sVouzZ6bQkZ4GcsRGz). H-17: las PMax IT no cuentan las conversiones de sus landings.
+
 - **Antes del lunes 26 / en Tenerife con Carlos:**
   - Compartir con Carlos el brief [Landings de paid: antes y después](https://claude.ai/artifact/BPBSyMM1PbQAmiKMijFNAq) y los bocetos nuevos (guía v2, pack legal, guest app v2).
   - Pedir a Carlos la app privada de HubSpot (superadmin) y las 2 propiedades; guardar `HUBSPOT_TOKEN` en Supabase; prueba con un contacto "PRUEBA".

@@ -47,6 +47,7 @@ Tono: directo y breve, en español. Claude propone y Alex decide.
 - **P1 · Onboarding con producto.** Hasta el 15/01. Ciclos: analizar el funnel hasta la activación → proponer → ejecutar → medir a las X semanas. Herramienta de medición: PostHog (funnels, grabaciones de sesión y A/B). Frecuencia de reuniones: se decide con Daniel.
 - **P4 · Web y CRO en WordPress.** El último, después de P3.
 - **P5 · Animación del logo para la firma de Gmail.** GIF para Ventas y Partnerships; entrega a Carlos el 27/10. Archivos en `2-herramientas/firma-gmail/`.
+- **P6 · Cello (programa de referidos).** Con Valery Saavedra; plan para el 6/11. Tarea en Asana Growth Daily › Alexandre y ficha P6 en Notion.
 - **MRR automático.** Pasa a Alex (Growth Check 22/10). Primero, sesión de traspaso con Carlos.
 
 ## Flujo semanal (4 h/día)

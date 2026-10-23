@@ -43,3 +43,5 @@
 
 ## 2026-10-23 (tarde)
 - P3: Alex mantiene el 27/10 para las 4 landings (ES hoteles, ES resto, IT hoteles, IT resto). "Lista" = diseño terminado y revisado, listo para montar en HubSpot. Montaje, publicación y tests van aparte y dependen del OK de Carlos. **Por qué:** Alex se compromete a terminarlas; lo que no depende de él (lanzar y medir) se separa para que la fecha no dependa de terceros.
+- Asana (Alex, 23/10): todo lo hecho pasa a Asana. En Growth Daily › Alexandre va una tarea índice con enlaces (no duplicados), porque el conector no deja añadir una tarea a otro proyecto. Se cierran 2 tareas sobrantes (repetida y sustituida).
+- Nuevo proyecto P6 · Cello (referidos) con Valery, plan para el 6/11 (Alex, 23/10).
