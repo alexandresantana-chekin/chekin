@@ -7,32 +7,8 @@ Regla: toda cifra lleva su periodo (Carlos trabaja con 90 días). Si un dato no 
 
 ## 23-10-2026
 
-### H-19 · Plan de noviembre de Carlos para Snowball: qué cambia para las landings (desde el 24/10)
-- **Qué:** el indicador principal pasa a ser el **Qualified MQL** (en HubSpot, `became_qmql_date`), con un coste objetivo en paid de 120 € por Qualified MQL. Se reactivan 5 campañas antiguas al 60% durante 4 días. Sus landings, según Google Ads en los últimos 12 meses (Windsor, `last_year`):
-  - compliance-ES-2024-05-search: `/ses-hospedajes` (5.359 clics, 248 conversiones)
-  - compliance-IT-2025-11-search: `/it/registrazione-ospiti-questura` (4.007 clics, 87,5 conversiones). Es una versión sin `/ads/` de la landing de hoteles IT.
-  - selfcheckin-IT-2026-01-search: `/identificazione-de-visu` (1.101 clics, 39,5 conversiones)
-  - branding-ES-2026-02-search: `/check-in-online-es` (2.638 clics) y `/check-in-guestapp` (2.541 clics, H-16)
-  - branding-IT-2026-02-search: `/it/check-in-online` (2.593 clics)
-- **Además:** suben Search Intención ES y PMax Competitors IT (la de H-17: 0 conversiones en su landing). Bajan PMax Vacational ES, Meta Vacation ES y PMax Competitors ES. Carlos pide a Snowball las conversiones offline (Qualified MQL y SQL de HubSpot a Google y Meta) y arreglar la UTM de PMax Vacational.
-- **% de Qualified MQL por landing de Italia** (contactos con esa URL exacta como primera página, del 21/07 al 23/10): `/it/ads/registrazione-ospiti-questura` 25 de 149 (17%); plantilla de contrato 7 de 70 (10%), pero 5 clientes; `/it/check-in-online-alloggiati-web` 3 de 27 (11%). Media de paid según Carlos (jul–sep): 15%. Son muestras pequeñas.
-- **Fuente / periodo:** mensaje de Carlos a Snowball (23/10), Google Ads vía Windsor y HubSpot.
-- **Implica:** (1) Las conversiones offline arreglan de raíz lo de H-08 y H-17: Google pasaría a optimizar hacia Qualified MQL, no hacia descargas de plantillas. (2) Subir la PMax Competitors IT antes de arreglar su conversión mete más dinero en una campaña que no ve su propia landing. (3) Cinco landings más empiezan a recibir tráfico mañana y no están auditadas, salvo guest app. (4) La métrica de P3 debería ser el % de Qualified MQL por landing, no solo el % de formularios.
-- **Estado:** para el lunes 26 con Carlos.
-
-### H-18 · Seguridad: hubo campañas ajenas en la cuenta de Google Ads de Chekin (2 y 3 de febrero de 2026)
-- **Qué:** en la cuenta 103-962-2294 aparecen 23 campañas «DATMA…» y «datma…», con nombres en vietnamita, que gastaron unos 1.870 € entre el 2 y el 3 de febrero de 2026. Hoy están eliminadas (REMOVED). Tienen el patrón típico de una cuenta de Google Ads secuestrada.
-- **Fuente / periodo:** Google Ads vía Windsor.ai, últimos 2 años.
-- **Implica:** seguramente ya se resolvió, pero mañana se reactivan campañas antiguas: conviene confirmar con Carlos o Snowball que se revisaron los accesos y la verificación en dos pasos, y si se reclamó el gasto a Google [POR COMPROBAR].
-- **Estado:** avisar a Carlos.
-
-### Corrección de método (23/10): el filtro de HubSpot por URL no es exacto
-- Filtrar `hs_analytics_first_url` con `CONTAINS_TOKEN` y comodines (`*texto*`) devuelve también otras URL que comparten palabras. Por ejemplo, `*chekin-hoteles*` devolvía 89 contactos, pero solo 24 eran de /chekin-hoteles. Hay que bajar los contactos y contar por la URL exacta.
-- Recontado H-17 con la URL exacta: `/it/ads/registrazione-ospiti-questura` 149 contactos (no 154), 11 en SQL, oportunidad o cliente (no 12), 6 clientes; plantilla de contrato 70 (no 71), 5 clientes; alloggiati-web 27. La conclusión de H-17 no cambia.
-
-
 ### H-17 · Italia: Google Ads cuenta 0 conversiones en la landing de la PMax IT Competitors, pero en HubSpot entran contactos
-- **Qué:** la PMax IT Competitors apunta a `landing.chekin.com/it/ads/registrazione-ospiti-questura`. En 90 días le llegaron **3.288 clics y 1.560 €, y Google Ads registra 0 conversiones**. En el mismo periodo, la plantilla de contrato `/modello/contrattoaffittoturistico` recibe 1.431 clics y 2.526 € de esa campaña y **sí cuenta 45 conversiones**. En HubSpot, **149 contactos** (recontado con la URL exacta; antes ponía 154) tienen esta landing como primera página desde el 21/07. La página sí tiene formulario en la primera pantalla («Contattaci», HubSpot, form `5ef250b9…`), declara `lang="en"` y usa cifras no oficiales: «50+ PMS», «4.8/5 Trustpilot», «87%», «100% conformità garantita», y testimonios de clientes de España.
+- **Qué:** la PMax IT Competitors apunta a `landing.chekin.com/it/ads/registrazione-ospiti-questura`. En 90 días le llegaron **3.288 clics y 1.560 €, y Google Ads registra 0 conversiones**. En el mismo periodo, la plantilla de contrato `/modello/contrattoaffittoturistico` recibe 1.431 clics y 2.526 € de esa campaña y **sí cuenta 45 conversiones**. En HubSpot, **154 contactos** tienen esta landing como primera página desde el 21/07. La página sí tiene formulario en la primera pantalla («Contattaci», HubSpot, form `5ef250b9…`), declara `lang="en"` y usa cifras no oficiales: «50+ PMS», «4.8/5 Trustpilot», «87%», «100% conformità garantita», y testimonios de clientes de España.
 - **Fuente / periodo:** Google Ads vía Windsor.ai, 21 jul – 18 oct (90 días), por URL expandida. HubSpot: contactos creados del 21/07 al 23/10, propiedad `hs_analytics_first_url` (primera página, no necesariamente la del formulario). Revisión en navegador el 23/10.
 - **Matiz (mismo día):** en Italia hubo 4 campañas en esos 90 días, no 2. La de búsqueda `SB_IT_GOOGLE_SEARCH_INTENCION_CHEKIN` mandó 2.095 clics (3.928 €) a esta misma landing del 21/07 al 06/08, y ahí Google sí contó 6,7 conversiones. Después se paró: desde el 06/08 solo tiene clics sueltos. La cuarta, `SB_IT_GOOGLE_SEARCH_BRAND_CHEKIN`, sigue activa con poco volumen: 205 clics en 90 días, a `/it/ads/chekin`. Así que la conversión existe en la cuenta; lo que falla es que la PMax IT Competitors no la cuenta.
 - **Implica:** lo más probable es que la PMax IT Competitors optimice hacia otro objetivo de conversión que no incluye este formulario [POR COMPROBAR en Ads: objetivos de conversión de la campaña]. La PMax no ve que la landing convierte y desvía el tráfico a la plantilla, que sí cuenta. Es el mismo mecanismo que H-08 en España. Arreglar la medición puede valer más que cambiar el diseño. Además, muchos contactos parecen alquiler vacacional, no hoteles [POR COMPROBAR el tipo de alojamiento en agregado].
