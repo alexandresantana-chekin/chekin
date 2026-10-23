@@ -8,7 +8,7 @@ function fake(){
     "giulia@x.com":{id:"u-giulia",password:"x",role:"ae",slug:"giulia",name:"Giulia",must:false,phone:"+34 699 999 999",contact_email:"giulia@x.com",calendly_url:"https://calendly.com/giulia/demo",photo_path:"u-giulia/1.jpg"},
     "carlos@x.com":{id:"u-carlos",password:"AdminPass-12345",role:"admin",slug:null,name:"Carlos",must:false,phone:"",contact_email:"",calendly_url:"",photo_path:""}};
   const byId=id=>Object.values(U).find(u=>u.id===id);
-  const leads=[{id:"l1",created_at:"2026-10-19T10:00:00Z",ae_id:"u-prueba",ae_slug:"prueba",event_name:"Scale Fest",event_city:"Barcelona",first_name:"Lead",last_name:"PRUEBA Uno",phone:"+34 600 000 001",email:"p1@e.com",properties:3,channel:"whatsapp"},
+  const leads=[{id:"l1",created_at:"2026-10-19T10:00:00Z",ae_id:"u-prueba",ae_slug:"prueba",event_name:"Scale Fest",event_city:"Barcelona",first_name:"Lead",last_name:"PRUEBA Uno",phone:"+34 600 000 001",email:"p1@e.com",properties:3,channel:"whatsapp",demo_first_at:"2026-10-20T09:00:00Z",demo_last_at:"2026-10-20T09:00:00Z",demo_clicks:1},
     {id:"l2",created_at:"2026-10-19T11:00:00Z",ae_id:"u-giulia",ae_slug:"giulia",event_name:"",event_city:"",first_name:"Lead",last_name:"DE GIULIA",phone:"+34 600 000 003",email:"p3@e.com",properties:5,channel:"email"}];
   const S={U,leads,log:[],uploads:[],deleted:[],offline:false,sessions:{}};
   const cors={"access-control-allow-origin":"*","access-control-allow-headers":"*","access-control-allow-methods":"GET,POST,PUT,PATCH,DELETE,OPTIONS","content-type":"application/json"};
@@ -30,8 +30,12 @@ function fake(){
     if(path==="/rest/v1/rpc/submit_lead"){
       if(body.p_consent!==true)return j(route,400,{message:"consent_required"});
       const ae=Object.values(U).find(x=>x.slug===body.p_slug);if(!ae)return j(route,400,{message:"unknown_ae"});
-      leads.unshift({id:"l"+(leads.length+1),created_at:new Date().toISOString(),ae_id:ae.id,ae_slug:ae.slug,event_name:body.p_event_name,event_city:body.p_event_city,first_name:body.p_first,last_name:body.p_last,phone:body.p_phone,email:body.p_email,properties:body.p_properties,channel:body.p_channel});
+      leads.unshift({id:"l"+(leads.length+1),created_at:new Date().toISOString(),ae_id:ae.id,ae_slug:ae.slug,event_name:body.p_event_name,event_city:body.p_event_city,first_name:body.p_first,last_name:body.p_last,phone:body.p_phone,email:body.p_email,properties:body.p_properties,channel:body.p_channel,...(body.p_channel==="demo"?{demo_first_at:new Date().toISOString(),demo_last_at:new Date().toISOString(),demo_clicks:1}:{})});
       return j(route,200,"uuid-1")}
+    if(path==="/rest/v1/rpc/mark_demo_request"){   /* igual que la función de la base: apunta la demo en el contacto más reciente de ese email con ese AE */
+      const l=leads.find(x=>x.ae_slug===body.p_slug&&(x.email||"").toLowerCase()===(body.p_email||"").toLowerCase());
+      if(l){const now=new Date().toISOString();l.demo_first_at=l.demo_first_at||now;l.demo_last_at=now;l.demo_clicks=(l.demo_clicks||0)+1}
+      return j(route,204)}
     if(path==="/rest/v1/profiles"){
       const us=who(req);
       if(m==="GET"){
@@ -83,6 +87,8 @@ ok(await p.locator("#wa").count()===1,"tras enviar, el panel muestra ya los boto
 await p.click("#lCal");await p.waitForTimeout(300);
 const cu=new URL((await p.evaluate(()=>window._opened)).slice(-1)[0]);
 ok(cu.host==="calendly.com"&&cu.pathname==="/giulia/demo"&&cu.searchParams.get("name")==="Laura Gómez"&&cu.searchParams.get("email")==="laura@hotelsol.com","Agendar demo → Calendly de Giulia con nombre y email ya puestos");
+await p.waitForTimeout(300);
+ok(S.log.some(x=>x.path.includes("mark_demo_request")&&x.body.p_slug==="giulia"&&x.body.p_email==="laura@hotelsol.com")&&!!S.leads.find(l=>l.email==="laura@hotelsol.com").demo_first_at,"Agendar demo con datos ya dejados → la petición de demo se apunta en su contacto");
 ok(p.errs.length===0,"tarjeta sin errores JS "+JSON.stringify(p.errs));
 
 // cliente nuevo: primero pulsa Agendar demo
@@ -149,12 +155,16 @@ ok(p.errs.length===0,"perfil sin errores JS "+JSON.stringify(p.errs));
 S=fake();p=await newPage(S,{acceptDownloads:true});await p.goto(F+"?me=1&lang=es");await p.waitForTimeout(500);
 await p.fill("#meE","carlos@x.com");await p.fill("#meP","AdminPass-12345");await p.click("#meGo");await p.waitForTimeout(900);
 ok((await p.textContent(".me-h1")).includes("Contactos del equipo")&&(await p.textContent("#meAdminSub")).includes("2 contactos"),"administrador: ve TODOS los contactos (2)");
+const dq=await p.locator(".me-q").nth(1).textContent();
+ok(dq.includes("Demos pedidas · 1")&&dq.includes("PRUEBA Uno")&&dq.includes("p1@e.com")&&dq.includes("+34 600 000 001"),"administrador: tabla «Demos pedidas» con la persona, su email y su teléfono");
+ok((await p.textContent(".me-q")).includes("Sin evento"),"la tabla de Leads cuenta también los contactos sin evento");
 await p.selectOption("#meFilter","u-giulia");await p.waitForTimeout(200);
 ok((await p.textContent("#meAdminSub")).includes("1 contactos")&&(await p.textContent(".me-list")).includes("DE GIULIA"),"filtra por Account Executive");
 await p.selectOption("#meFilter","all");
 const [dl]=await Promise.all([p.waitForEvent("download"),p.click("#meCsv")]);
 const csv=require("fs").readFileSync(await dl.path(),"utf8");
 ok(csv.startsWith("﻿\"Fecha\"")&&csv.includes("PRUEBA Uno")&&csv.split("\r\n").length===3,"CSV con los 2 contactos (y cabecera) para Excel");
+ok(csv.split("\r\n")[0].includes("Pidió demo")&&csv.includes("2026-10-20T09:00:00Z"),"el CSV lleva la fecha en que pidió la demo");
 ok((await p.textContent(".me-team")).includes("Giulia")&&(await p.textContent(".me-team")).includes("Alex (prueba)"),"lista de perfiles del equipo con su estado");
 ok(p.errs.length===0,"administración sin errores JS "+JSON.stringify(p.errs));
 

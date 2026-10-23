@@ -22,7 +22,7 @@ tools/sales-card/            ← fuentes para seguir editando
   assets/                    ← librería de QR, icono, logos oficiales SVG
   decks/                     ← scripts para (re)generar/parchear presentaciones
   tests/                     ← pruebas Playwright con Supabase simulado (run.sh)
-supabase/migrations/         ← esquema de la base (en orden de fecha; aplicado en producción hasta 20261023; 20261024_scan_leads PENDIENTE)
+supabase/migrations/         ← esquema de la base (en orden de fecha; aplicado en producción hasta 20261024_scan_leads; 20261025_hubspot_sync y 20261026_demo_requests PENDIENTES)
 landing-evento/index.html    ← landing del evento de Madrid (archivo único, sin conectar a nada)
 docs/TRASPASO.md            ← guía de traspaso y cuentas
 ```
@@ -37,10 +37,11 @@ docs/TRASPASO.md            ← guía de traspaso y cuentas
 ## Arquitectura de la app (un solo archivo)
 - **Rutas por parámetro**: `?c=slug` tarjeta del cliente · `?r=slug` pantalla de QR · `?me=1` o `/mi-perfil` perfil personal (AE y admins) · sin parámetros = panel de administración (pide login; solo admins).
 - **Datos**: Supabase (REST/RPC con `fetch`, sin SDK). La clave `anon` está en el código (es pública por diseño; la protección real es RLS). Nunca uses la `service_role` en el navegador.
-- **Tablas**: `profiles` (AE y admins; `role`, `slug`, `active`, `must_change_password`…), `leads`, `events` (`kind` event|webinar, `auto`, `active`, `archived`, `reps` (slugs), `days_before`), `activity` (acciones anónimas). Funciones: `is_admin()`, `submit_lead()`, `mark_password_changed()`, `current_event(slug)`, `track_activity(...)`. Bucket `avatars` (fotos).
+- **Tablas**: `profiles` (AE y admins; `role`, `slug`, `active`, `must_change_password`…), `leads`, `events` (`kind` event|webinar, `auto`, `active`, `archived`, `reps` (slugs), `days_before`), `activity` (acciones anónimas). Funciones: `is_admin()`, `submit_lead()`, `mark_password_changed()`, `current_event(slug)`, `track_activity(...)`, `mark_demo_request(slug, email)`. Bucket `avatars` (fotos).
 - **Quién ve qué**: admins (Growth) ven todo; cada AE ve solo su perfil, sus contactos y su QR (RLS). Los clientes (anónimos) solo leen el perfil público del AE, el evento actual (`current_event`) y envían datos con `submit_lead`.
 - **Eventos**: un evento automático está activo desde las 00:00 (Europe/Madrid) de `fecha_inicio − days_before` hasta el final de su último día. Si un AE tiene varios activos, se usa el primero por fecha. Los webinars usan `days_before = 0`.
 - **Contactos (leads)**: el cliente deja nombre, apellido, teléfono, email, nº de propiedades y consentimiento; se encola en `localStorage` (`chekin-lead-queue`) y se envía a `submit_lead`.
+- **Demos pedidas** (migración `20261026`): `leads.demo_first_at`, `demo_last_at`, `demo_clicks`. Se rellenan al entrar por «Agendar demo» (trigger) o cuando alguien con datos ya dejados pulsa «Agendar demo» (`markDemo` → `mark_demo_request`). En Actividad, «Clics en Agendar demo» son clics anónimos; la tabla «Demos pedidas» (Actividad y Contactos del equipo) son personas. Si reservó en Calendly no se sabe todavía.
 - **Escáner de tarjetas** (perfil del AE, `scanInit`): el AE fotografía la tarjeta de visita; Tesseract.js (CDN jsdelivr, se descarga al primer uso) lee el texto en el móvil y `parseCard` rellena nombre, empresa, teléfono, email y país. El AE añade Country, Number of properties or rooms (opcional) y Comments, marca "me ha dado su tarjeta" y se guarda con `add_scanned_lead` (`channel='scan'`, `legal_basis='card_given'`). Obligatorio: nombre + email o teléfono. Migración `20261024_scan_leads.sql`.
 - **Idiomas**: es, en, it, pt (Portugal), fr, de (`LANGS` + `DICT`). Se detecta del móvil; el selector es un desplegable. Lo que falta en un idioma cae a inglés.
 - **Presentaciones**: `PRES` en el template. Hoteles y Alquiler vacacional son un archivo multilingüe cada uno (`#es`, `#en`…); Hoteles en italiano es `hotels-it.html` (diseño anterior). Si la tarjeta abre una presentación, se pasa `?card=` para que «← Tarjeta» y «Reservar demo» vuelvan a la tarjeta (`?from=deck&go=demo`).
