@@ -559,7 +559,7 @@ es:{
  active:"Activo",inactive:"Inactivo",noReps:"Aún no hay Account Executives. Añade el primero.",
  edNew:"Nuevo Account Executive",edEdit:"Editar Account Executive",fSlug:"Enlace (slug)",fSlugHint:"Su enlace será …?r=<slug>. Solo minúsculas, números y guiones.",fRoleEs:"Cargo (ES)",fRoleEn:"Cargo (EN)",fPhone:"Teléfono",fMail:"Email",fLinkedin:"LinkedIn personal",fCal:"Enlace de su calendario",fPhoto:"Foto de perfil",rmPhoto:"Quitar foto",
  fActive:"Activo (su tarjeta y QR funcionan)",saveBtn:"Guardar",cancel:"Cancelar",del:"Eliminar",delConfirm:"¿Eliminar a {n}? Sus leads se conservan.",errName:"Pon un nombre.",errSlug:"El enlace solo admite minúsculas, números y guiones, y no puede repetirse.",
- kLeads:"Leads",kQL:"SQL",kClicks:"Clics prueba",byRep:"Por Account Executive",rep:"Account Executive",exportCsv:"Exportar CSV",noLeads:"Aún no hay leads.",thLead:"Lead",thType:"Tipo · Nº",thEv:"Evento · Account Executive",thClick:"Clic",
+ kLeads:"Leads",kQL:"SQL",kClicks:"Clics prueba",byRep:"Por Account Executive",rep:"Account Executive",exportCsv:"Exportar CSV",exportSum:"Exportar resumen",exportLeads:"Exportar contactos",noLeads:"Aún no hay leads.",thLead:"Lead",thType:"Tipo · Nº",thEv:"Evento · Account Executive",thClick:"Clic",
  setTitle:"Ajustes",sBase:"Dirección pública de la web",sBaseHint:"Ej. https://tarjeta.chekin.com. Los QR y enlaces apuntarán aquí. Vacío = la dirección actual.",
  sTrial:"Enlace de prueba gratuita",sWeb:"Enlace de la web",sLinkedin:"LinkedIn de la empresa (por defecto)",sCal:"Calendario por defecto",
  reset:"Restablecer datos de demo",resetConfirm:"Se borrarán Account Executives, evento y leads de esta demo. ¿Seguro?",
@@ -593,7 +593,7 @@ en:{
  active:"Active",inactive:"Inactive",noReps:"No Account Executives yet. Add the first one.",
  edNew:"New Account Executive",edEdit:"Edit Account Executive",fSlug:"Link (slug)",fSlugHint:"Their link will be …?r=<slug>. Lowercase, numbers and dashes only.",fRoleEs:"Role (ES)",fRoleEn:"Role (EN)",fPhone:"Phone",fMail:"Email",fLinkedin:"Personal LinkedIn",fCal:"Their calendar link",fPhoto:"Profile photo",rmPhoto:"Remove photo",
  fActive:"Active (their card and QR work)",saveBtn:"Save",cancel:"Cancel",del:"Delete",delConfirm:"Delete {n}? Their leads are kept.",errName:"Enter a name.",errSlug:"The link only allows lowercase letters, numbers and dashes, and must be unique.",
- kLeads:"Leads",kQL:"SQL",kClicks:"Trial clicks",byRep:"By Account Executive",rep:"Account Executive",exportCsv:"Export CSV",noLeads:"No leads yet.",thLead:"Lead",thType:"Type · No.",thEv:"Event · Account Executive",thClick:"Click",
+ kLeads:"Leads",kQL:"SQL",kClicks:"Trial clicks",byRep:"By Account Executive",rep:"Account Executive",exportCsv:"Export CSV",exportSum:"Export summary",exportLeads:"Export contacts",noLeads:"No leads yet.",thLead:"Lead",thType:"Type · No.",thEv:"Event · Account Executive",thClick:"Click",
  setTitle:"Settings",sBase:"Public web address",sBaseHint:"E.g. https://card.chekin.com. QR codes and links will point here. Empty = current address.",
  sTrial:"Free trial link",sWeb:"Website link",sLinkedin:"Company LinkedIn (default)",sCal:"Default calendar",
  reset:"Reset demo data",resetConfirm:"This deletes the Account Executives, event and leads of this demo. Sure?",
@@ -1230,7 +1230,7 @@ function tabActivity(){
   <div class="kpis kp6">${k(cnt(A,"open"),"kOpens")}${k(cnt(A,"save"),"kSaves")}${k(cnt(A,"wa")+cnt(A,"mail"),"kMsgs")}${k(cnt(A,"deck"),"kDecks")}${k(cnt(A,"demo"),"kDemos")}${k(cnt(A,"share"),"kShares")}</div>
   <div id="demosAct">${ADMIN_LIVE&&ADMIN_LIVE.leadsAll?demosHTML(ADMIN_LIVE.leadsAll,repNameOf,"csvDemos"):`<p class="hint" style="padding:12px 4px">…</p>`}</div>
   ${leadFilter==="all"&&evRows.length>1?`<div class="panel"><h2>${t("byEvent")}</h2>${tbl([t("thEvent"),t("kOpens"),t("kMsgs"),t("kDemos")],evRows.map(x=>[x.n,x.o,x.m,x.g]))}</div>`:""}
-  <div class="panel"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><h2 style="margin:0">${t("byRep")}</h2>${repRows.length?`<button class="btn sm" id="csv">${t("exportCsv")}</button>`:""}</div>
+  <div class="panel"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><h2 style="margin:0">${t("byRep")}</h2><span style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn sm primary" id="csvLeads" type="button">${t("exportLeads")}</button>${repRows.length?`<button class="btn sm" id="csv">${t("exportSum")}</button>`:""}</span></div>
     ${repRows.length?tbl([t("rep"),t("kOpens"),t("kSaves"),"WhatsApp","Email",t("kDecks"),t("kDemos")],repRows.map(x=>[x.n,x.o,x.s,x.w,x.m,x.d,x.g])):`<div class="empty">${t("noActivity")}</div>`}</div>
   ${typeRows.length?`<div class="panel"><h2>${t("byType")}</h2>${tbl([t("pType"),t("kDecks")],typeRows.map(x=>[x.n,x.c]))}</div>`:""}
   ${oldL.length?`<div class="panel"><h2>${t("oldLeads")} (${oldL.length})</h2><p class="psub">${t("oldLeadsHint")}</p><div class="scroll"><table><tr><th>${t("thLead")}</th><th>${t("thType")}</th><th>${t("thEv")}</th></tr>${oldL.map(l=>`<tr><td><b style="font-weight:600">${esc(l.nombre)} ${esc(l.apellido)}</b><br>${esc(l.tel)}<br>${esc(l.email)}</td><td>${esc(tl(l.tipo))}<br>${esc(l.num)}</td><td>${esc(l.evento||t("noEvent"))}<br>${esc(l.comercial)}</td></tr>`).join("")}</table></div></div>`:""}
@@ -1242,7 +1242,16 @@ function tabActivity(){
   const b=$("#csv");if(b)b.onclick=()=>{
     const q=v=>'"'+String(v??"").replace(/"/g,'""')+'"';
     const rows=[["Comercial","Aperturas","Guardados","WhatsApp","Email","Presentaciones","Demos"],...repRows.map(x=>[x.n,x.o,x.s,x.w,x.m,x.d,x.g])];
-    const a=document.createElement("a");a.href=URL.createObjectURL(new Blob(["﻿"+rows.map(r=>r.map(q).join(",")).join("\n")],{type:"text/csv"}));a.download="actividad.csv";document.body.appendChild(a);a.click();a.remove();
+    const a=document.createElement("a");a.href=URL.createObjectURL(new Blob(["﻿"+rows.map(r=>r.map(q).join(",")).join("\n")],{type:"text/csv"}));a.download="actividad-resumen.csv";document.body.appendChild(a);a.click();a.remove();
+  };
+  /* contactos con persona, email, teléfono, AE, evento, alta y demo (según el filtro de evento) */
+  const bl=$("#csvLeads");if(bl)bl.onclick=async()=>{
+    const LL=ADMIN_LIVE;if(!LL)return;
+    if(!LL.leadsAll){bl.disabled=true;try{LL.leadsAll=await leadsPull()}catch(e){bl.disabled=false;toast(meErrText(e));return}bl.disabled=false}
+    const fe2=DB.events.find(e=>e.id===leadFilter);
+    const rows=fe2?LL.leadsAll.filter(l=>l.event_name===fe2.name):leadFilter==="none"?LL.leadsAll.filter(l=>!l.event_name):/^kind:/.test(leadFilter)?LL.leadsAll.filter(l=>{const e=DB.events.find(x=>x.name===l.event_name);return e&&kindOf(e)===leadFilter.slice(5)}):LL.leadsAll;
+    const names={};(LL.reps||[]).forEach(r=>{if(r.id)names[r.id]=r.name});
+    downloadCsv(rows.slice().sort((x,y)=>Date.parse(y.created_at)-Date.parse(x.created_at)),names);
   };
 }
 

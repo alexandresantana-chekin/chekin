@@ -37,5 +37,5 @@ Nuevo apartado para los AEs:
 - Web nueva para los AEs: **https://chekin-connect.vercel.app** (cuenta de empresa). La antigua `qrsaleschekin.vercel.app` no se toca (decisión de Alex: "todo en la nueva"). Misma base de datos.
 - Migraciones 20261025, 20261026 y 20261027 aplicadas. `mark_demo_request` responde (204).
 - `hubspot-sync` desplegada con clave interna (401 sin ella) y disparador en `public.leads`. **Falta:** que un superadmin de HubSpot (Carlos) cree la app privada y las 2 propiedades; guardar `HUBSPOT_TOKEN` en Supabase; prueba con un contacto "PRUEBA".
-- Tokens de acceso de Supabase creados hoy: **revocarlos** al terminar (uno se pegó en el chat y otro se vio en pantalla).
+- Tokens de acceso de Supabase creados hoy: **revocados** por Alex el 23/10. Para volver a desplegar, crear uno nuevo y pegarlo solo en el terminal.
 - Avisar a los AEs de la dirección nueva (su QR se genera con la dirección desde la que abren la app).
