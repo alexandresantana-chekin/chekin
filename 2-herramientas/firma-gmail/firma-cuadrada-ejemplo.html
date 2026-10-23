@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Firma Gmail · cuadrada</title>
+<style>
+  body{margin:0;background:#F4F6F9;font-family:Arial,Helvetica,sans-serif;color:#19194B}
+  .inbox{max-width:640px;margin:24px auto 12px;background:#fff;border:1px solid #DEDEEB;border-radius:8px;padding:14px 18px;display:flex;gap:12px;align-items:center}
+  .inbox img{width:40px;height:40px;border-radius:50%;display:block}
+  .inbox b{font-size:14px}.inbox span{font-size:13px;color:#6B6B95}
+  .mail{max-width:640px;margin:0 auto 12px;background:#fff;border:1px solid #DEDEEB;border-radius:8px;padding:28px 32px}
+  .meta{font-size:13px;color:#6B6B95;border-bottom:1px solid #DEDEEB;padding-bottom:14px;margin-bottom:18px}
+  .body{font-size:14px;line-height:1.6}
+  .note{max-width:640px;margin:0 auto 24px;font-size:12px;color:#6B6B95;padding:0 4px}
+</style>
+</head>
+<body>
+<!-- Así sale en la bandeja de entrada: la foto de perfil de Google (la misma animación, en círculo) -->
+<div class="inbox"><img src="chekin-firma-cuadrada-DEFINITIVA.gif" alt=""><div><b>Alexandre Santana</b><br><span>Encantado de conocerte · Hola Marta, un placer conocerte ayer…</span></div></div>
+
+<div class="mail">
+  <div class="meta">Para: cliente@hotel.com · Asunto: Encantado de conocerte</div>
+  <div class="body">
+    <p>Hola Marta,</p>
+    <p>Un placer conocerte ayer. Te escribo para que tengas mi contacto.</p>
+    <p>Un saludo,</p>
+  </div>
+
+  <!-- FIRMA: tabla simple (es lo que mejor respeta Gmail). Logo cuadrado a la izquierda, a 80 px -->
+  <table cellpadding="0" cellspacing="0" border="0" style="margin-top:18px;font-family:Arial,Helvetica,sans-serif">
+    <tr>
+      <td style="padding-right:14px;vertical-align:middle"><img src="chekin-firma-cuadrada-DEFINITIVA.gif" width="80" height="80" alt="Chekin" style="display:block;border:0;border-radius:12px"></td>
+      <td style="border-left:2px solid #DEDEEB;padding-left:14px;vertical-align:middle">
+        <div style="font-size:15px;font-weight:bold;color:#19194B">Alexandre Santana</div>
+        <div style="font-size:13px;color:#6B6B95;padding:2px 0 8px">Marketing Growth Manager · Chekin</div>
+        <div style="font-size:12px"><a href="mailto:alexandre.santana@chekin.com" style="color:#385BF8;text-decoration:none">alexandre.santana@chekin.com</a>&nbsp;·&nbsp;<a href="https://chekin.com" style="color:#385BF8;text-decoration:none">chekin.com</a></div>
+      </td>
+    </tr>
+  </table>
+</div>
+<p class="note">Arriba: cómo te ve el cliente en su bandeja (foto de perfil animada). Abajo: la firma con la versión cuadrada a 80 px, a la izquierda del nombre. En Gmail el GIF se inserta desde un enlace público (p. ej. Drive compartido de Chekin); en Outlook de escritorio se ve el primer fotograma (el check entero).</p>
+</body>
+</html>

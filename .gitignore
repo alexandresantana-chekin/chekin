@@ -2,3 +2,7 @@
 .env.*
 !.env.example
 .DS_Store
+
+# Fotos de personas y sus GIF de perfil: no se suben al repositorio
+2-herramientas/firma-gmail/fotos/
+2-herramientas/firma-gmail/chekin-perfil-*.gif
