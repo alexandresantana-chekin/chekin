@@ -1,0 +1,269 @@
+<title>Landings de paid Italia</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: una banda por landing, "Antes" y "Después" en dos columnas, fallos debajo. Pensado para compartir pantalla. */
+:root{
+  --bg:#F5F6FB; --panel:#FFFFFF; --fg:#19194B; --muted:#5E5F8A; --line:#DEDFEC;
+  --accent:#385BF8; --accent-soft:#E9EEFF; --bad:#D62D5B; --bad-soft:#FCE9EF; --ok:#13865A; --ok-soft:#E3F5EC; --warn:#A86200; --warn-soft:#FFF2DD;
+  --f-body:'Montserrat',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  --f-num:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#10102C; --panel:#191A3D; --fg:#ECEDFA; --muted:#A9AAD0; --line:#2E2F5C;
+  --accent:#7D95FF; --accent-soft:#232B63; --bad:#FF7A9C; --bad-soft:#3A1830; --ok:#4FD39B; --ok-soft:#123628; --warn:#F2B05A; --warn-soft:#3A2A12; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#10102C; --panel:#191A3D; --fg:#ECEDFA; --muted:#A9AAD0; --line:#2E2F5C;
+  --accent:#7D95FF; --accent-soft:#232B63; --bad:#FF7A9C; --bad-soft:#3A1830; --ok:#4FD39B; --ok-soft:#123628; --warn:#F2B05A; --warn-soft:#3A2A12; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.5;margin:0}
+.page{max-width:1180px;margin:0 auto;padding-block:40px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:40px}
+h1,h2,h3{text-wrap:balance;margin:0}
+h1{font-size:clamp(28px,4vw,40px);font-weight:800;letter-spacing:-.02em}
+h2{font-size:clamp(22px,3vw,28px);font-weight:700;letter-spacing:-.01em}
+h3{font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+p{margin:0}
+a{color:var(--accent)}
+.num{font-family:var(--f-num);font-variant-numeric:tabular-nums}
+.lead{font-size:18px;color:var(--muted);max-width:68ch;margin-top:10px}
+.meta{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:14px;font-size:14px;color:var(--muted)}
+.meta b{color:var(--fg);font-weight:600}
+
+/* Resumen */
+.summary{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600}
+tr:last-child td{border-bottom:0}
+td a{white-space:nowrap}
+
+.pill{display:inline-block;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.pill.bad{background:var(--bad-soft);color:var(--bad)}
+.pill.ok{background:var(--ok-soft);color:var(--ok)}
+.pill.warn{background:var(--warn-soft);color:var(--warn)}
+.pill.new{background:var(--accent-soft);color:var(--accent)}
+
+/* Banda por landing */
+.landing{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:28px;display:flex;flex-direction:column;gap:24px}
+.landing header{display:flex;flex-direction:column;gap:6px}
+.kicker{font-size:13px;font-weight:700;color:var(--accent);letter-spacing:.04em}
+.pair{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:20px}
+.side{display:flex;flex-direction:column;gap:10px;min-width:0}
+.side .label{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.side .label span{font-weight:800;font-size:14px;letter-spacing:.06em;text-transform:uppercase}
+.side.before .label span{color:var(--bad)}
+.side.after .label span{color:var(--ok)}
+.go{font-size:14px;font-weight:600;text-decoration:none;border:1px solid var(--line);border-radius:10px;padding:6px 12px;color:var(--accent);background:var(--panel);overflow-wrap:anywhere}
+.go:hover{border-color:var(--accent)}
+.go:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.shot{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--bg)}
+.shot img{display:block;width:100%;height:auto}
+.shots-mobile{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.shots-mobile .shot img{max-height:420px;object-fit:cover;object-position:top}
+.noshot{border:1px dashed var(--line);border-radius:10px;padding:18px;color:var(--muted);font-size:14px}
+.cap{font-size:13px;color:var(--muted)}
+
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:24px}
+ul.list{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-direction:column;gap:8px}
+ul.list li{position:relative;padding-left:26px}
+ul.list li::before{content:"";position:absolute;left:0;top:.45em;width:12px;height:12px;border-radius:3px}
+ul.fails li::before{background:var(--bad)}
+ul.fixes li::before{background:var(--ok)}
+ul.list b{font-weight:700}
+
+.compare{border:1px solid var(--line);border-radius:12px;overflow-x:auto}
+.compare td:nth-child(2){color:var(--bad)}
+.compare td:nth-child(3){color:var(--ok);font-weight:600}
+
+.status{display:flex;gap:12px;align-items:flex-start;background:var(--bg);border-radius:12px;padding:14px 16px;font-size:15px}
+.status b{font-weight:700}
+
+.angles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:14px}
+.angle{border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.angle .h1{font-weight:700;font-size:16px}
+.angle .ad{font-size:13px;color:var(--muted)}
+.angle .go{align-self:flex-start;margin-top:auto}
+
+.rules{font-size:14px;color:var(--muted);display:flex;flex-direction:column;gap:6px}
+@media (max-width:600px){.landing{padding:18px}th,td{padding:10px 12px}}
+.kicker,.landing h2,.cap,ul.list li{overflow-wrap:anywhere}
+</style>
+
+<main class="page">
+  <header>
+    <h1>Landings de paid Italia: antes y después</h1>
+    <p class="lead">Qué fallaba en las páginas que reciben hoy las campañas de Google en Italia, qué cambia en los bocetos nuevos y qué hay que revisar en Google Ads antes de tocar nada. Para verlo con Carlos el lunes 26.</p>
+    <div class="meta">
+      <span>Preparado por <b>Alexandre</b> · 23/10/2026</span>
+      <span>Google Ads: <b>90 días (21 jul – 18 oct)</b> · HubSpot: contactos del <b>21/07 al 23/10</b></span>
+      <span>Las versiones nuevas son <b>bocetos</b>: nada está en HubSpot</span>
+    </div>
+  </header>
+
+  <section class="summary" aria-label="Campañas de Italia">
+    <table>
+      <thead><tr><th>Campaña</th><th>Estado</th><th>Clics</th><th>Gasto</th><th>Conv. en Ads</th><th>Adónde va el tráfico</th></tr></thead>
+      <tbody>
+        <tr><td>PMax Competitors IT</td><td><span class="pill ok">Activa</span></td><td class="num">4.958</td><td class="num">4.448 €</td><td class="num">51</td><td>67% a /it/ads/registrazione-ospiti-questura (<b>0 conversiones</b>); 29% a la plantilla de contrato (45)</td></tr>
+        <tr><td>PMax Vacational IT</td><td><span class="pill ok">Activa</span></td><td class="num">1.676</td><td class="num">2.284 €</td><td class="num">69</td><td>65% a la plantilla de contrato (68); 30% a /it/check-in-online-alloggiati-web (<b>0 conversiones</b>)</td></tr>
+        <tr><td>Search Intención IT</td><td><span class="pill warn">Parada desde el 06/08</span></td><td class="num">2.139</td><td class="num">4.035 €</td><td class="num">7</td><td>/it/ads/registrazione-ospiti-questura</td></tr>
+        <tr><td>Search Brand IT</td><td><span class="pill ok">Activa</span></td><td class="num">209</td><td class="num">396 €</td><td class="num">2</td><td>/it/ads/chekin (marca: fuera de este brief)</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="landing" aria-labelledby="medir-t">
+    <header>
+      <span class="kicker">Antes de cambiar el diseño</span>
+      <h2 id="medir-t">La PMax no ve las conversiones de sus propias landings</h2>
+    </header>
+    <div class="cols">
+      <div>
+        <h3>Qué pasa</h3>
+        <ul class="list fails">
+          <li>En las dos PMax, la landing configurada tiene <b>0 conversiones</b> en Google Ads: 3.288 clics y 1.560 € en Competitors, 501 clics y 438 € en Vacational.</li>
+          <li>Pero <b>en HubSpot sí entran contactos</b>: 154 con /registrazione-ospiti-questura como primera página (12 llegaron a SQL, oportunidad o cliente) y 27 con /check-in-online-alloggiati-web.</li>
+          <li>La misma landing sí sumó <b>6,7 conversiones</b> cuando la usaba la campaña de búsqueda (21/07–06/08). La conversión existe en la cuenta, pero la PMax no la cuenta.</li>
+          <li>Resultado: Google cree que la plantilla de contrato es lo único que convierte y le manda cada vez más tráfico. Es el mismo mecanismo que en España (H-08).</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Qué revisar en Google Ads</h3>
+        <ul class="list fixes">
+          <li>Objetivos de conversión de las dos PMax IT: que el formulario de la landing cuente como conversión principal y la descarga de la plantilla como secundaria.</li>
+          <li>Expansión de URL final: si se mantiene o se acota.</li>
+          <li>Por qué se paró Search Intención el 06/08 (3.928 € y 6,7 conversiones en 17 días).</li>
+          <li><b>Sin esto, cualquier landing nueva se medirá mal.</b> Apuntado como H-17.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1 · HOTELES IT -->
+  <section class="landing" id="hoteles">
+    <header>
+      <span class="kicker">PMax Competitors IT · SB_IT_GOOGLE_PMAX_COMPETITORS_CHEKIN</span>
+      <h2>Hoteles Italia: /it/ads/registrazione-ospiti-questura</h2>
+      <p class="cap">La que más clics recibe en Italia: 3.288 de la PMax y 2.095 de la búsqueda (90 días). Es la landing de hoteles, pero muchos de sus contactos parecen de alquiler vacacional [por comprobar en agregado].</p>
+    </header>
+    <div class="pair">
+      <div class="side before">
+        <div class="label"><span>Antes</span><a class="go" href="https://landing.chekin.com/it/ads/registrazione-ospiti-questura" target="_blank" rel="noopener">Abrir la actual ↗</a></div>
+        <div class="shot"><img src="img/questura-actual-portatil.jpg" alt="Primera pantalla de la landing actual de hoteles en Italia en portátil"></div>
+        <div class="shots-mobile">
+          <div class="shot"><img src="img/questura-actual-movil.jpg" alt="Landing actual en móvil"></div>
+          <p class="cap">Portátil 1512×780 y móvil 375×812, capturadas el 23/10.</p>
+        </div>
+      </div>
+      <div class="side after">
+        <div class="label"><span>Después</span><a class="go" href="https://claude.ai/artifact/7Jd3wwkK5AXQJ1fdHf1yZh" target="_blank" rel="noopener">Abrir el boceto ↗</a></div>
+        <div class="shot"><img src="img/hotel-it-v1-portatil.jpg" alt="Boceto nuevo de hoteles Italia en portátil, con el formulario de prueba gratis a la derecha"></div>
+        <div class="shots-mobile">
+          <div class="shot"><img src="img/hotel-it-v1-movil.jpg" alt="Boceto nuevo en móvil"></div>
+          <p class="cap">Mismas medidas. El botón queda dentro de la primera pantalla en los dos.</p>
+        </div>
+      </div>
+    </div>
+    <div class="cols">
+      <div>
+        <h3>Qué fallaba</h3>
+        <ul class="list fails">
+          <li><b>Cifras que no son oficiales</b>: "50+ PMS" (la oficial es +200), "4.8/5 su Trustpilot", "87% tempo risparmiato" y "100% conformità garantita".</li>
+          <li><b>Testimonios de clientes de España</b> en una página para Italia, uno de ellos diciendo "gestiamo oltre 120 strutture in tutta la Spagna".</li>
+          <li><b>Formulario genérico "Contattaci"</b>, sin oferta: no dice qué recibe el hotel al enviar.</li>
+          <li><b>Página larga</b>: 6.213 px en portátil y 9.193 px en móvil.</li>
+          <li><b>Idioma declarado inglés</b> (<code>lang="en"</code>) en una página en italiano.</li>
+          <li>Título de la pestaña: "Self Check-in de visu legale", que no tiene que ver con el anuncio.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Qué cambia</h3>
+        <div class="compare">
+          <table>
+            <thead><tr><th></th><th>Actual</th><th>Nueva</th></tr></thead>
+            <tbody>
+              <tr><td>Alto en portátil</td><td class="num">6.213 px</td><td class="num">2.688 px</td></tr>
+              <tr><td>Alto en móvil</td><td class="num">9.193 px</td><td class="num">3.839 px</td></tr>
+              <tr><td>Oferta</td><td>Contattaci</td><td>Prova gratis 14 giorni</td></tr>
+              <tr><td>Campos</td><td>Genéricos</td><td>5: nombre, email, teléfono, tipo y nº de habitaciones</td></tr>
+              <tr><td>Cifras</td><td>No oficiales</td><td>Solo oficiales</td></tr>
+              <tr><td>Testimonios</td><td>De España</td><td>Ninguno (no hay casos de Italia publicados)</td></tr>
+              <tr><td>Idioma declarado</td><td>en</td><td>it</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · RESTO IT -->
+  <section class="landing" id="resto">
+    <header>
+      <span class="kicker">PMax Vacational IT · SB_IT_GOOGLE_PMAX_VACATIONAL_CHEKIN · y el tráfico de plantilla de Competitors</span>
+      <h2>Resto Italia: /check-in-online-alloggiati-web + /modello/contrattoaffittoturistico</h2>
+      <p class="cap">La PMax Vacational manda el 65% de sus clics a la plantilla de contrato, no a su landing. Entre las dos PMax, la plantilla suma 2.515 clics, 4.256 € y 113 conversiones en Ads; en HubSpot, 71 contactos y 5 clientes (90 días). La nueva parte de lo que busca la gente: el contrato.</p>
+    </header>
+    <div class="pair">
+      <div class="side before">
+        <div class="label"><span>Antes · plantilla</span><a class="go" href="https://landing.chekin.com/modello/contrattoaffittoturistico" target="_blank" rel="noopener">Abrir la actual ↗</a></div>
+        <div class="shot"><img src="img/contratto-actual-portatil.jpg" alt="Plantilla de contrato actual en portátil: banner de cookies en español y portada del contrato en español"></div>
+        <div class="label"><span>Antes · landing</span><a class="go" href="https://landing.chekin.com/it/check-in-online-alloggiati-web" target="_blank" rel="noopener">Abrir la actual ↗</a></div>
+        <div class="shots-mobile">
+          <div class="shot"><img src="img/contratto-actual-movil.jpg" alt="Plantilla actual en móvil"></div>
+          <div class="shot"><img src="img/alloggiati-actual-movil.jpg" alt="Landing de Vacational actual en móvil, sin formulario en la primera pantalla"></div>
+        </div>
+      </div>
+      <div class="side after">
+        <div class="label"><span>Después</span><a class="go" href="https://claude.ai/artifact/9JQowwwGyKbF2dZXhzF94x" target="_blank" rel="noopener">Abrir el boceto ↗</a></div>
+        <div class="shot"><img src="img/affitti-it-v1-portatil.jpg" alt="Boceto nuevo: modelo de contrato para affitti brevi con el formulario de descarga a la derecha"></div>
+        <div class="shots-mobile">
+          <div class="shot"><img src="img/affitti-it-v1-movil.jpg" alt="Boceto nuevo en móvil"></div>
+          <p class="cap">Portátil 1512×780 y móvil 375×812. El formulario se ve sin bajar en los dos.</p>
+        </div>
+      </div>
+    </div>
+    <div class="cols">
+      <div>
+        <h3>Qué fallaba</h3>
+        <ul class="list fails">
+          <li><b>Plantilla:</b> la imagen del contrato es <b>la versión española</b> ("Contrato de alquiler vacacional"), el banner de cookies sale en español, el teléfono viene con <b>España +34</b> por defecto y la página declara <code>lang="en"</code>. Tiene 6 enlaces de salida y en móvil el formulario empieza a 1.001 px, fuera de la primera pantalla.</li>
+          <li><b>Landing de Vacational:</b> en móvil el formulario aparece a 1.047 px, debajo de la primera pantalla, y la página mide 16.290 px.</li>
+          <li><b>Cifras no oficiales:</b> "Oltre 50 integrazioni" y "+45 paesi" (las oficiales son +200 PMS y +20 países).</li>
+          <li><b>Oferta distinta</b> de la acordada: "Senza carta di credito. Attivazione immediata".</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Qué cambia</h3>
+        <div class="compare">
+          <table>
+            <thead><tr><th></th><th>Actual</th><th>Nueva</th></tr></thead>
+            <tbody>
+              <tr><td>Páginas</td><td>2 (plantilla + landing)</td><td>1</td></tr>
+              <tr><td>Formulario en móvil</td><td class="num">1.001 / 1.047 px</td><td class="num">370 px</td></tr>
+              <tr><td>Alto en móvil</td><td class="num">2.131 / 16.290 px</td><td class="num">3.241 px</td></tr>
+              <tr><td>Prefijo por defecto</td><td>+34</td><td>+39</td></tr>
+              <tr><td>Idioma</td><td>en (plantilla)</td><td>it</td></tr>
+              <tr><td>Paso a Chekin</td><td>No hay</td><td>"Con la carta / Con Chekin": el contrato se firma en el check-in</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="landing" aria-labelledby="pend-t">
+    <header><h2 id="pend-t">Para decidir el lunes</h2></header>
+    <ul class="list fixes">
+      <li><b>Conversiones de las PMax IT</b> (arriba): revisarlas antes de lanzar nada.</li>
+      <li><b>Resto IT:</b> ¿landing de descarga de contrato (lo que busca el 65% del tráfico de Vacational) o landing de prueba gratis? El boceto va con descarga, como el pack legal de España.</li>
+      <li><b>Search Intención IT:</b> ¿se reactiva con la landing nueva de hoteles?</li>
+      <li><b>Italiano:</b> quién lo revisa (nativo). Y el texto legal, con el DPO.</li>
+    </ul>
+  </section>
+
+  <section class="rules" aria-label="Notas">
+    <p><b>Sobre los datos:</b> clics, gasto y conversiones por URL salen de Google Ads (vía Windsor.ai), 21 jul – 18 oct. Los contactos son de HubSpot, por primera página vista (<code>hs_analytics_first_url</code>), del 21/07 al 23/10. No son la misma medida que las conversiones de Ads. Las medidas de página son de una revisión en navegador a 1512×780 y 375×812 del 23/10.</p>
+    <p><b>Enlaces:</b> los bocetos son privados. Para que Carlos los abra, hay que compartirlos desde el menú Compartir de cada uno.</p>
+  </section>
+</main>
+

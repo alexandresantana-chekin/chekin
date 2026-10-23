@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contratto affitti brevi IT</title>
+<meta name="description" content="Scarica gratis il modello di contratto per affitti brevi in PDF. E con Chekin il contratto si firma nel check-in online e le schedine partono da sole verso Alloggiati Web.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* Boceto v1 · Italia · Resto (affitti brevi) · PMax IT Vacational y tráfico de plantilla de IT Competitors.
+   Gancho: el modelo de contrato (65% de los clics de IT Vacational van a /modello/contrattoaffittoturistico, H-05).
+   Design system de Chekin: azul #385BF8, navy #19194B, Montserrat, botones radio 12, sombra azulada,
+   un solo degradado (banda final), fondos alternos, footer navy. Solo cifras oficiales. */
+:root{--blue:#385BF8;--navy:#19194B;--ink:#161643;--g1:#6B6B95;--g2:#9696B9;--g3:#DEDEEB;--bg:#FFFFFF;--alt:#F4F6F9;--soft:#EEF2FF;--shadow:0 0 5px rgba(26,148,255,.173);--ring:0 0 0 3px rgba(56,91,248,.2);--f:'Montserrat',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--f);color:var(--navy);background:var(--bg);line-height:1.5;overflow-x:hidden}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+h1,h2,h3{color:var(--navy);overflow-wrap:break-word}
+a{color:var(--blue)}
+.top{height:64px;display:flex;align-items:center;border-bottom:1px solid var(--g3)}
+.top .wrap{width:100%;display:flex;justify-content:space-between;align-items:center}
+.top img{height:26px;width:auto;display:block}
+.pill{font:700 12px var(--f);color:var(--blue);background:var(--soft);border-radius:999px;padding:5px 12px}
+
+.hero{padding:36px 0 44px;background:linear-gradient(180deg,var(--soft) 0%,var(--bg) 100%)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) 430px;gap:56px;align-items:center}
+.eyebrow{display:inline-block;font:700 12px var(--f);letter-spacing:.06em;text-transform:uppercase;color:var(--blue);background:#fff;border-radius:999px;padding:5px 12px;margin-bottom:16px}
+.hero h1{font-size:44px;line-height:1.1;font-weight:800;letter-spacing:-.02em}
+.hero h1 span{color:var(--blue)}
+.lead{margin-top:16px;font-size:18px;color:var(--g1);max-width:560px}
+/* Anteprima del documento (maqueta HTML: sustituir por la portada real del PDF) */
+.doc{margin-top:24px;max-width:430px;background:#fff;border-radius:12px;box-shadow:0 12px 30px rgba(26,140,255,.16),var(--shadow);padding:18px 20px;display:grid;grid-template-columns:44px minmax(0,1fr);gap:14px;align-items:center}
+.doc .ic{width:44px;height:54px;border-radius:6px;background:var(--soft);display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px;font:800 11px var(--f);color:var(--blue)}
+.doc b{display:block;font-size:15px}
+.doc span{font-size:13px;color:var(--g1)}
+
+.card{background:#fff;border-radius:16px;box-shadow:0 8px 28px rgba(26,148,255,.16),var(--shadow);padding:22px 24px 16px}
+.card h2{font-size:22px;font-weight:700}
+.card .sub{font-size:14px;color:var(--g1);margin:2px 0 12px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:end}
+.fld{margin-bottom:10px;min-width:0}
+.fld label{display:block;font:600 13px var(--f);margin-bottom:4px}
+.fld input,.fld select{width:100%;height:44px;border-radius:8px;border:1px solid rgba(22,22,67,.2);background:#F4F6F8;padding:0 12px;font:500 16px var(--f);color:var(--ink);appearance:none;-webkit-appearance:none}
+.fld select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' fill='none' stroke='%2319194B' stroke-width='1.6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;background-size:12px;padding-right:32px}
+.fld input:focus,.fld select:focus{outline:0;border-color:var(--ink);background:#fff;box-shadow:var(--ring)}
+.fld input.filled,.fld select.filled{background-color:#fff;border-color:var(--ink)}
+.tel{display:grid;grid-template-columns:104px minmax(0,1fr);gap:8px}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;height:52px;border:0;border-radius:12px;background:var(--blue);color:#fff;font:700 16px var(--f);cursor:pointer;text-decoration:none}
+.btn:hover{background-image:linear-gradient(rgba(255,255,255,.1),rgba(255,255,255,.1))}
+.btn:focus-visible{outline:0;box-shadow:var(--ring)}
+.btn svg{width:20px;height:20px}
+.legal{margin-top:10px;font-size:11.5px;line-height:1.45;color:var(--g1)}
+.legal a{color:var(--g1)}
+.err{color:#FF2467;font-size:13px;font-weight:600;margin-top:6px}
+.err:empty{display:none}
+.ok{display:none;text-align:center;padding:28px 6px}
+.ok h3{font-size:20px;margin-bottom:6px}
+.ok p{color:var(--g1);font-size:15px}
+
+.stats{padding:26px 0;border-bottom:1px solid var(--g3)}
+.stats ul{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;text-align:center}
+.stats b{display:block;font-size:28px;font-weight:800;color:var(--blue)}
+.stats span{font-size:13.5px;color:var(--g1);font-weight:600}
+
+.sec{padding:64px 0}
+.sec.alt{background:var(--alt)}
+.kicker{font:700 12px var(--f);letter-spacing:.06em;text-transform:uppercase;color:var(--blue)}
+.sec h2{font-size:38px;font-weight:400;line-height:1.15;letter-spacing:-.01em;margin:8px 0 12px;max-width:760px}
+.sec h2 b{font-weight:700}
+.sec .intro{color:var(--g1);font-size:17px;max-width:640px;margin-bottom:32px}
+.clauses{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.clauses li{background:#fff;border-radius:14px;box-shadow:var(--shadow);padding:18px 20px;font-weight:600;font-size:15.5px;display:flex;gap:12px;align-items:center}
+.clauses li::before{content:"";flex:0 0 22px;height:22px;border-radius:6px;background:var(--soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 10.5l3.2 3L15 6.5' fill='none' stroke='%23385BF8' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/15px no-repeat}
+.inline-cta{margin-top:28px;max-width:300px}
+
+/* Carta vs Chekin: interruttore interattivo */
+.switch{display:inline-flex;background:#fff;border-radius:12px;box-shadow:var(--shadow);padding:4px;margin-bottom:22px}
+.switch button{border:0;background:transparent;border-radius:9px;padding:10px 18px;font:700 14.5px var(--f);color:var(--g1);cursor:pointer}
+.switch button[aria-pressed=true]{background:var(--blue);color:#fff}
+.switch button:focus-visible{outline:0;box-shadow:var(--ring)}
+.flow{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;counter-reset:f}
+.flow li{counter-increment:f;background:#fff;border-radius:14px;box-shadow:var(--shadow);padding:20px}
+.flow li::before{content:counter(f);display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:9px;background:var(--soft);color:var(--blue);font-weight:800;margin-bottom:12px}
+.flow h3{font-size:16.5px;margin-bottom:4px}
+.flow p{color:var(--g1);font-size:14.5px}
+.flow.paper li::before{background:var(--alt);color:var(--g1)}
+.sum{margin-top:18px;font-weight:700;font-size:16px}
+.sum span{color:var(--blue)}
+
+.band{background:linear-gradient(180deg,#002CFA 0%,#274BF0 100%);color:#fff;padding:48px 0;text-align:center}
+.band h2{color:#fff;font-size:32px;font-weight:700}
+.band p{margin:10px auto 22px;font-size:16px;opacity:.92;max-width:560px}
+.band .btn{max-width:300px;margin:0 auto;background:#fff;color:var(--blue)}
+footer{background:var(--navy);color:#C9CBE6;padding:24px 0;font-size:13px}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+footer img{height:22px;width:auto;display:block;filter:brightness(0) invert(1)}
+
+@media (max-width:900px){
+  .hero{padding:20px 0 32px}
+  .hero .wrap{grid-template-columns:minmax(0,1fr);gap:18px}
+  .hero h1{font-size:30px}
+  .lead{font-size:16px;margin-top:10px}
+  .doc{display:none}
+  .pill{display:none}
+  .sec{padding:44px 0}
+  .sec h2{font-size:28px}
+  .clauses{grid-template-columns:minmax(0,1fr)}
+  .flow{grid-template-columns:minmax(0,1fr)}
+  .switch{display:flex}
+  .switch button{flex:1;padding:10px 8px}
+  .band h2{font-size:26px}
+  .wrap{padding:0 16px}
+}
+@media (max-width:340px){.row{grid-template-columns:minmax(0,1fr)}}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="wrap"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjgyIDY2IDg1MiAyNTIiPgogIDxnIGlkPSJsb2dvLW5ldy1jaGVraW4tbGFuZHNjYXBlIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMjg0NyAxNTU4OSkiPgogICAgPHJlY3QgaWQ9IlJlY3RhbmdsZV8zMjA0IiBkYXRhLW5hbWU9IlJlY3RhbmdsZSAzMjA0IiB3aWR0aD0iMTAwMCIgaGVpZ2h0PSIzOTkiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI4NDcgLTE1NTg5KSIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iMCIvPgogICAgPGcgaWQ9ImxvZ28iIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI5MjMuMjk0IC0xNTUyOS4wNTUpIj4KICAgICAgPGcgaWQ9Ikdyb3VwXzEyOTc0IiBkYXRhLW5hbWU9Ikdyb3VwIDEyOTc0IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIDApIj4KICAgICAgICA8ZyBpZD0iR3JvdXBfMTMxNDIiIGRhdGEtbmFtZT0iR3JvdXAgMTMxNDIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgMCkiPgogICAgICAgICAgPHBhdGggaWQ9IlBhdGhfMjYyMTgiIGRhdGEtbmFtZT0iUGF0aCAyNjIxOCIgZD0iTS0yMzQuOS05LjE4N2MwLDU2LjQ5NCwzOC45LDEwMC4wMTMsOTkuMTM5LDEwMC4wMTNhMTA3LjQ4LDEwNy40OCwwLDAsMCw2Ny44LTIzLjc4N2M1LjQtNC42LDUuNjczLTEwLjI3MiwxLjYyMS0xNS42NzhsLTUuNC03LjNjLTQuMzIyLTYuMjE3LTkuNzI1LTYuMjE3LTE1LjY2OC0xLjg5Mi04LjkxNSw2LjQ4Ny0yNS4zOTMsMTYuNzU5LTQ3LDE2Ljc1OS00MS4zMzEsMC02NC41NjItMzIuNzA3LTY0LjU2Mi02OC42NTgsMC0zNS40MSwyMi40MjEtNjUuOTU1LDY0LjI5Mi02NS45NTUsMTkuNzIsMCwzNC44NDcsOC4xMDksNDMuMjIyLDEzLjUxNSw2LjQ4Myw0LjA1NSwxMS42MTYsMy41MTQsMTUuNC0yLjdsNC44NjMtNy44MzljMy43ODItNS45NDcsMy41MTItMTEuMzUzLTIuMTYxLTE1LjY3OC0xMC4yNjUtNy4zLTMxLjMzNS0xOS4xOTItNjIuNjcxLTE5LjE5MkMtMTk0LjEwOC0xMDcuNTc4LTIzNC45LTY0Ljg3LTIzNC45LTkuMTg3Wk0tMzguNTExLDc2LjIzYzAsNy41NjksNC4wNTIsMTEuMzUzLDExLjM0NiwxMS4zNTNoMTEuNjE2US00LjIsODcuNTgzLTQuMiw3Ni4yM1YyMy41MmMwLTI2LjIyLDE1LjY2OC00NS42ODIsMzkuNzEtNDUuNjgyLDE3LjI4OCwwLDIxLjYxMSwxMS4zNTMsMjEuNjExLDI4LjExMlY3Ni4yM3EwLDExLjM1MywxMS4zNDYsMTEuMzUzSDgwLjA3OGM3LjI5NCwwLDExLjM0Ni0zLjc4NCwxMS4zNDYtMTEuMzUzVi0xLjA3N2MwLTM2LjQ5MS0xNy41NTktNTIuNDM5LTQ4LjA4NC01Mi40MzktMjMuNzcyLDAtNDEuMDYxLDE0LjYtNDcuODE0LDI3Ljg0MmgtLjU0QTc4LjMsNzguMywwLDAsMC00LjItMzcuM1YtOTIuOTgxYzAtNy4zLTMuNzgyLTExLjM1My0xMS4zNDYtMTEuMzUzSC0yNy4xNjVjLTcuMjk0LDAtMTEuMzQ2LDQuMDU1LTExLjM0NiwxMS4zNTNaTTExNC45MjYsMTguNjU1YzAsMzkuMTk0LDI4LjM2NCw3Mi4xNzIsNzQuMDE3LDcyLjE3MmE4Ny4wMzgsODcuMDM4LDAsMCwwLDQ2LjczMy0xMy43ODZjNS45NDMtMy41MTQsNy4wMjMtOC45MiwzLjc4Mi0xNS4xMzdMMjM2LjIxNiw1Ni41Yy0zLjUxMi02LjIxNy04LjM3NC03LjAyOC0xNS4xMjgtMy43ODQtNi40ODMsNC4wNTUtMTcuMDE4LDguOTItMjkuNzE1LDguOTItMjAuOCwwLTM5LjE3LTEyLjk3NS00MS4zMzEtMzcuODQzaDg0LjAxMmExMS45NDIsMTEuOTQyLDAsMCwwLDExLjg4Ni0xMS42MjNjMC0zNy44NDMtMjEuODgxLTY1LjY4NC02MS4wNTEtNjUuNjg0QzE0My41Ni01My41MTcsMTE0LjkyNi0yMy43ODMsMTE0LjkyNiwxOC42NTVaTTE1MC44NTQsMi45NzdDMTU0LjEtMTUuNCwxNjYuNTIxLTI3LjU2NywxODQuMDgtMjcuNTY3YzE1LjY2OCwwLDI3LjI4NCwxMS4zNTMsMjcuODI0LDMwLjU0NVpNMjcwLjc5Myw3Ni4yM2MwLDcuNTY5LDQuMDUyLDExLjM1MywxMS4zNDYsMTEuMzUzaDExLjYxNnExMS4zNDUsMCwxMS4zNDYtMTEuMzUzVjI3LjNoMTcuODI5bDMyLjE0Niw1Mi40MzljMi45NzIsNS40MDYsNy4wMjQsNy44MzksMTMuMjM3LDcuODM5SDM4Mi45YzkuMTg1LDAsMTIuMTU2LTUuNjc2LDcuNTY0LTEzLjUxNUwzNDkuOTQzLDExLjl2LS41NDFMMzg0LjI1LTM2Ljc1OGM1LjEzMi03LjMsMi4xNjEtMTMuNTE1LTcuMDIzLTEzLjUxNUgzNjQuMjZjLTYuMjEzLDAtMTAuMjY1LDIuMTYzLTEzLjUwNyw3LjU2OUwzMjIuMTE5LTEuNjE4SDMwNS4xVi05Mi45ODFjMC03LjMtMy43ODItMTEuMzUzLTExLjM0Ni0xMS4zNTNIMjgyLjEzOWMtNy4yOTQsMC0xMS4zNDYsNC4wNTUtMTEuMzQ2LDExLjM1M1ptMTQzLjk4MiwwYzAsNy41NjksMy43ODIsMTEuMzUzLDExLjA3NiwxMS4zNTNoMTEuODg2YzcuMjk0LDAsMTEuMDc2LTMuNzg0LDExLjA3Ni0xMS4zNTNWLTM4LjkyYzAtNy4zLTMuNzgyLTExLjM1My0xMS4wNzYtMTEuMzUzSDQyNS44NTFjLTcuMjkzLDAtMTEuMDc2LDQuMDU1LTExLjA3NiwxMS4zNTNabTY4LjA3NCwwYzAsNy41NjksMy43ODIsMTEuMzUzLDExLjA3NiwxMS4zNTNoMTEuODg2YzcuMjk0LDAsMTEuMDc1LTMuNzg0LDExLjA3NS0xMS4zNTNWMjIuOThjMC0yNC44NjgsMTUuNC00NS4xNDEsMzkuNzEtNDUuMTQxLDE3LjI4OSwwLDIxLjYxMSwxMS4zNTMsMjEuNjExLDI4LjExMlY3Ni4yM2MwLDcuNTY5LDQuMDUyLDExLjM1MywxMS4zNDYsMTEuMzUzaDExLjYxNnExMS4zNDYsMCwxMS4zNDYtMTEuMzUzVi0xLjA3N2MwLTM2LjQ5MS0xNy41NTktNTIuNDM5LTQ4LjA4NC01Mi40MzktMjcuODI0LDAtNDIuOTUxLDE3LjU3LTQ4Ljg5NCwyOS4xOTNINTE1YTQ0LjEsNDQuMSwwLDAsMCwuNTQtNi4yMTdWLTM4LjkyYzAtNy4zLTMuNzgyLTExLjM1My0xMS4wNzYtMTEuMzUzSDQ5My45MjVjLTcuMjk0LDAtMTEuMDc2LDQuMDU1LTExLjA3NiwxMS4zNTNaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyMzQuODk4IDE1Ny43ODMpIiBmaWxsPSIjMTkxOTRiIi8+CiAgICAgICAgICA8ZyBpZD0idGljayIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNjIwLjUxNikiPgogICAgICAgICAgICA8ZyBpZD0iR3JvdXBfMTI5NjYiIGRhdGEtbmFtZT0iR3JvdXAgMTI5NjYiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDApIj4KICAgICAgICAgICAgICA8cGF0aCBpZD0iUGF0aF8yNjIwNyIgZGF0YS1uYW1lPSJQYXRoIDI2MjA3IiBkPSJNMTQ0LjkyMywyMzcuNDU2YTEwLjIzMywxMC4yMzMsMCwwLDEsMCwxNC4yMTNMMTM3LDI1OS42YTEwLjIzMywxMC4yMzMsMCwwLDEtMTQuMjEzLDBMODguMDcsMjI0LjYwOWExMC4yMzMsMTAuMjMzLDAsMCwxLDAtMTQuMjEzTDk2LDIwMi40N2ExMC4yMzQsMTAuMjM0LDAsMCwxLDE0LjIxMywwWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTg1LjIgLTE3NC4xOCkiIGZpbGw9IiMzODViZjgiLz4KICAgICAgICAgICAgICA8cGF0aCBpZD0iUGF0aF8yNjIwOCIgZGF0YS1uYW1lPSJQYXRoIDI2MjA4IiBkPSJNMjI3LjQsMTI4LjA3YTEwLjIzNCwxMC4yMzQsMCwwLDEsMTQuMjEzLDBMMjQ5LjU0MiwxMzZhMTAuMjM0LDEwLjIzNCwwLDAsMSwwLDE0LjIxM0wxODkuNDEsMjEwLjA2OGExMC4yMzMsMTAuMjMzLDAsMCwxLTE0LjIxMywwbC03LjkyNi03LjkyNmExMC4yMzMsMTAuMjMzLDAsMCwxLDAtMTQuMjEzWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTEzNy4zNCAtMTI1LjIpIiBmaWxsPSIjMzg1YmY4Ii8+CiAgICAgICAgICAgIDwvZz4KICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICAgIDwvZz4KICAgIDwvZz4KICA8L2c+Cjwvc3ZnPgo=" alt="Chekin"><span class="pill">Modello PDF · gratis</span></div></header>
+
+<main>
+<!-- HERO · message match con los titulares que llevan el tráfico (H-05, auditoría): "Modello Contratto Affitti Brevi", "Contratto Affitto Turistico". -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="eyebrow">Affitti brevi · Modello gratuito</span>
+      <h1>Modello di contratto per affitti brevi, <span>gratis in PDF</span></h1>
+      <p class="lead">Il contratto di locazione turistica tra proprietario e ospite, con tutte le clausole già scritte. Lo ricevi subito via email, pronto da compilare.</p>
+      <div class="doc" aria-hidden="true"><span class="ic">PDF</span><div><b>Contratto di locazione turistica</b><span>Durata, canone, deposito, pagamento, accesso e obblighi delle parti</span></div></div>
+    </div>
+
+    <div class="card" id="form">
+      <form id="lead" novalidate>
+        <h2>Scarica il modello gratis</h2>
+        <p class="sub">Te lo inviamo subito via email.</p>
+        <div class="row">
+          <div class="fld"><label for="f-name">Nome</label><input id="f-name" name="firstname" autocomplete="given-name" required></div>
+          <div class="fld"><label for="f-mail">Email</label><input id="f-mail" name="email" type="email" inputmode="email" autocomplete="email" required></div>
+        </div>
+        <div class="fld"><label for="f-tel">Telefono</label>
+          <div class="tel">
+            <select id="f-pre" name="phone_prefix" aria-label="Prefisso">
+              <option value="+39" selected>IT +39</option><option value="+41">CH +41</option><option value="+378">SM +378</option><option value="+34">ES +34</option><option value="+33">FR +33</option><option value="+49">DE +49</option><option value="">Altro</option>
+            </select>
+            <input id="f-tel" name="phone" type="tel" inputmode="tel" autocomplete="tel-national" required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="fld"><label for="f-type">Tipo di struttura</label>
+            <!-- [POR COMPROBAR] valores internos de property_type en HubSpot -->
+            <select id="f-type" name="property_type" required>
+              <option value="" selected disabled>Seleziona</option>
+              <option>Casa vacanze / Appartamento</option><option>B&amp;B / Affittacamere</option><option>Hotel</option><option>Altro</option>
+            </select></div>
+          <div class="fld"><label for="f-units">Numero di alloggi</label><input id="f-units" name="number_of_units" type="number" inputmode="numeric" min="1" step="1" placeholder="Es.: 3" required></div>
+        </div>
+        <input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign"><input type="hidden" name="utm_term"><input type="hidden" name="utm_content"><input type="hidden" name="gclid"><input type="hidden" name="fbclid">
+        <input type="hidden" name="landing" value="it-affitti-brevi-contratto-v1-boceto">
+        <button class="btn" type="submit">Scarica il modello gratis
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m-5-5 5 5 5-5M5 20h14"/></svg>
+        </button>
+        <p class="err" id="f-err" role="alert"></p>
+        <!-- Texto legal: a validar con el DPO. Enlace de privacidad [POR COMPROBAR]. -->
+        <p class="legal">Inviando il modulo ricevi il modello via email e un esperto Chekin potrà contattarti. Maggiori informazioni nell'<a href="https://chekin.com/it/" target="_blank" rel="noopener">informativa sulla privacy</a>.</p>
+      </form>
+      <div class="ok" id="f-ok" role="status"><h3>Grazie</h3><p>Bozza: questo modulo non invia ancora dati.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="stats" aria-label="Chekin in cifre">
+  <div class="wrap"><ul>
+    <li><b>+200.000</b><span>proprietà</span></li>
+    <li><b>+25M</b><span>check-in</span></li>
+    <li><b>+200</b><span>PMS integrati</span></li>
+  </ul></div>
+</section>
+
+<section class="sec alt" aria-labelledby="dentro-t">
+  <div class="wrap">
+    <span class="kicker">Cosa c'è nel modello</span>
+    <h2 id="dentro-t">Tutte le clausole per <b>affittare in modo chiaro</b></h2>
+    <p class="intro">Regola la locazione turistica tra proprietario e ospite. Lo personalizzi con i dati del tuo alloggio.</p>
+    <ul class="clauses">
+      <li>Durata del soggiorno</li>
+      <li>Canone di locazione</li>
+      <li>Deposito cauzionale</li>
+      <li>Modalità di pagamento</li>
+      <li>Accesso alla proprietà</li>
+      <li>Obblighi di proprietario e ospite</li>
+    </ul>
+    <a class="btn inline-cta" href="#form">Scarica il modello gratis</a>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="auto-t">
+  <div class="wrap">
+    <span class="kicker">E quando la carta non basta più</span>
+    <h2 id="auto-t">Il contratto si firma <b>nel check-in online</b></h2>
+    <p class="intro">Con Chekin l'ospite firma contratto e regolamento dal telefono, prima di arrivare, e le schedine partono da sole.</p>
+    <div class="switch" role="group" aria-label="Confronta">
+      <button type="button" data-m="paper" aria-pressed="false">Con la carta</button>
+      <button type="button" data-m="auto" aria-pressed="true">Con Chekin</button>
+    </div>
+    <ol class="flow" id="flow"></ol>
+    <p class="sum" id="sum"></p>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <h2>Il tuo contratto, pronto in un minuto</h2>
+    <p>Scarica gratis il modello di contratto per affitti brevi.</p>
+    <a class="btn" href="#form">Scarica il modello gratis</a>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjgyIDY2IDg1MiAyNTIiPgogIDxnIGlkPSJsb2dvLW5ldy1jaGVraW4tbGFuZHNjYXBlIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMjg0NyAxNTU4OSkiPgogICAgPHJlY3QgaWQ9IlJlY3RhbmdsZV8zMjA0IiBkYXRhLW5hbWU9IlJlY3RhbmdsZSAzMjA0IiB3aWR0aD0iMTAwMCIgaGVpZ2h0PSIzOTkiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI4NDcgLTE1NTg5KSIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iMCIvPgogICAgPGcgaWQ9ImxvZ28iIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI5MjMuMjk0IC0xNTUyOS4wNTUpIj4KICAgICAgPGcgaWQ9Ikdyb3VwXzEyOTc0IiBkYXRhLW5hbWU9Ikdyb3VwIDEyOTc0IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIDApIj4KICAgICAgICA8ZyBpZD0iR3JvdXBfMTMxNDIiIGRhdGEtbmFtZT0iR3JvdXAgMTMxNDIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgMCkiPgogICAgICAgICAgPHBhdGggaWQ9IlBhdGhfMjYyMTgiIGRhdGEtbmFtZT0iUGF0aCAyNjIxOCIgZD0iTS0yMzQuOS05LjE4N2MwLDU2LjQ5NCwzOC45LDEwMC4wMTMsOTkuMTM5LDEwMC4wMTNhMTA3LjQ4LDEwNy40OCwwLDAsMCw2Ny44LTIzLjc4N2M1LjQtNC42LDUuNjczLTEwLjI3MiwxLjYyMS0xNS42NzhsLTUuNC03LjNjLTQuMzIyLTYuMjE3LTkuNzI1LTYuMjE3LTE1LjY2OC0xLjg5Mi04LjkxNSw2LjQ4Ny0yNS4zOTMsMTYuNzU5LTQ3LDE2Ljc1OS00MS4zMzEsMC02NC41NjItMzIuNzA3LTY0LjU2Mi02OC42NTgsMC0zNS40MSwyMi40MjEtNjUuOTU1LDY0LjI5Mi02NS45NTUsMTkuNzIsMCwzNC44NDcsOC4xMDksNDMuMjIyLDEzLjUxNSw2LjQ4Myw0LjA1NSwxMS42MTYsMy41MTQsMTUuNC0yLjdsNC44NjMtNy44MzljMy43ODItNS45NDcsMy41MTItMTEuMzUzLTIuMTYxLTE1LjY3OC0xMC4yNjUtNy4zLTMxLjMzNS0xOS4xOTItNjIuNjcxLTE5LjE5MkMtMTk0LjEwOC0xMDcuNTc4LTIzNC45LTY0Ljg3LTIzNC45LTkuMTg3Wk0tMzguNTExLDc2LjIzYzAsNy41NjksNC4wNTIsMTEuMzUzLDExLjM0NiwxMS4zNTNoMTEuNjE2US00LjIsODcuNTgzLTQuMiw3Ni4yM1YyMy41MmMwLTI2LjIyLDE1LjY2OC00NS42ODIsMzkuNzEtNDUuNjgyLDE3LjI4OCwwLDIxLjYxMSwxMS4zNTMsMjEuNjExLDI4LjExMlY3Ni4yM3EwLDExLjM1MywxMS4zNDYsMTEuMzUzSDgwLjA3OGM3LjI5NCwwLDExLjM0Ni0zLjc4NCwxMS4zNDYtMTEuMzUzVi0xLjA3N2MwLTM2LjQ5MS0xNy41NTktNTIuNDM5LTQ4LjA4NC01Mi40MzktMjMuNzcyLDAtNDEuMDYxLDE0LjYtNDcuODE0LDI3Ljg0MmgtLjU0QTc4LjMsNzguMywwLDAsMC00LjItMzcuM1YtOTIuOTgxYzAtNy4zLTMuNzgyLTExLjM1My0xMS4zNDYtMTEuMzUzSC0yNy4xNjVjLTcuMjk0LDAtMTEuMzQ2LDQuMDU1LTExLjM0NiwxMS4zNTNaTTExNC45MjYsMTguNjU1YzAsMzkuMTk0LDI4LjM2NCw3Mi4xNzIsNzQuMDE3LDcyLjE3MmE4Ny4wMzgsODcuMDM4LDAsMCwwLDQ2LjczMy0xMy43ODZjNS45NDMtMy41MTQsNy4wMjMtOC45MiwzLjc4Mi0xNS4xMzdMMjM2LjIxNiw1Ni41Yy0zLjUxMi02LjIxNy04LjM3NC03LjAyOC0xNS4xMjgtMy43ODQtNi40ODMsNC4wNTUtMTcuMDE4LDguOTItMjkuNzE1LDguOTItMjAuOCwwLTM5LjE3LTEyLjk3NS00MS4zMzEtMzcuODQzaDg0LjAxMmExMS45NDIsMTEuOTQyLDAsMCwwLDExLjg4Ni0xMS42MjNjMC0zNy44NDMtMjEuODgxLTY1LjY4NC02MS4wNTEtNjUuNjg0QzE0My41Ni01My41MTcsMTE0LjkyNi0yMy43ODMsMTE0LjkyNiwxOC42NTVaTTE1MC44NTQsMi45NzdDMTU0LjEtMTUuNCwxNjYuNTIxLTI3LjU2NywxODQuMDgtMjcuNTY3YzE1LjY2OCwwLDI3LjI4NCwxMS4zNTMsMjcuODI0LDMwLjU0NVpNMjcwLjc5Myw3Ni4yM2MwLDcuNTY5LDQuMDUyLDExLjM1MywxMS4zNDYsMTEuMzUzaDExLjYxNnExMS4zNDUsMCwxMS4zNDYtMTEuMzUzVjI3LjNoMTcuODI5bDMyLjE0Niw1Mi40MzljMi45NzIsNS40MDYsNy4wMjQsNy44MzksMTMuMjM3LDcuODM5SDM4Mi45YzkuMTg1LDAsMTIuMTU2LTUuNjc2LDcuNTY0LTEzLjUxNUwzNDkuOTQzLDExLjl2LS41NDFMMzg0LjI1LTM2Ljc1OGM1LjEzMi03LjMsMi4xNjEtMTMuNTE1LTcuMDIzLTEzLjUxNUgzNjQuMjZjLTYuMjEzLDAtMTAuMjY1LDIuMTYzLTEzLjUwNyw3LjU2OUwzMjIuMTE5LTEuNjE4SDMwNS4xVi05Mi45ODFjMC03LjMtMy43ODItMTEuMzUzLTExLjM0Ni0xMS4zNTNIMjgyLjEzOWMtNy4yOTQsMC0xMS4zNDYsNC4wNTUtMTEuMzQ2LDExLjM1M1ptMTQzLjk4MiwwYzAsNy41NjksMy43ODIsMTEuMzUzLDExLjA3NiwxMS4zNTNoMTEuODg2YzcuMjk0LDAsMTEuMDc2LTMuNzg0LDExLjA3Ni0xMS4zNTNWLTM4LjkyYzAtNy4zLTMuNzgyLTExLjM1My0xMS4wNzYtMTEuMzUzSDQyNS44NTFjLTcuMjkzLDAtMTEuMDc2LDQuMDU1LTExLjA3NiwxMS4zNTNabTY4LjA3NCwwYzAsNy41NjksMy43ODIsMTEuMzUzLDExLjA3NiwxMS4zNTNoMTEuODg2YzcuMjk0LDAsMTEuMDc1LTMuNzg0LDExLjA3NS0xMS4zNTNWMjIuOThjMC0yNC44NjgsMTUuNC00NS4xNDEsMzkuNzEtNDUuMTQxLDE3LjI4OSwwLDIxLjYxMSwxMS4zNTMsMjEuNjExLDI4LjExMlY3Ni4yM2MwLDcuNTY5LDQuMDUyLDExLjM1MywxMS4zNDYsMTEuMzUzaDExLjYxNnExMS4zNDYsMCwxMS4zNDYtMTEuMzUzVi0xLjA3N2MwLTM2LjQ5MS0xNy41NTktNTIuNDM5LTQ4LjA4NC01Mi40MzktMjcuODI0LDAtNDIuOTUxLDE3LjU3LTQ4Ljg5NCwyOS4xOTNINTE1YTQ0LjEsNDQuMSwwLDAsMCwuNTQtNi4yMTdWLTM4LjkyYzAtNy4zLTMuNzgyLTExLjM1My0xMS4wNzYtMTEuMzUzSDQ5My45MjVjLTcuMjk0LDAtMTEuMDc2LDQuMDU1LTExLjA3NiwxMS4zNTNaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyMzQuODk4IDE1Ny43ODMpIiBmaWxsPSIjMTkxOTRiIi8+CiAgICAgICAgICA8ZyBpZD0idGljayIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNjIwLjUxNikiPgogICAgICAgICAgICA8ZyBpZD0iR3JvdXBfMTI5NjYiIGRhdGEtbmFtZT0iR3JvdXAgMTI5NjYiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDApIj4KICAgICAgICAgICAgICA8cGF0aCBpZD0iUGF0aF8yNjIwNyIgZGF0YS1uYW1lPSJQYXRoIDI2MjA3IiBkPSJNMTQ0LjkyMywyMzcuNDU2YTEwLjIzMywxMC4yMzMsMCwwLDEsMCwxNC4yMTNMMTM3LDI1OS42YTEwLjIzMywxMC4yMzMsMCwwLDEtMTQuMjEzLDBMODguMDcsMjI0LjYwOWExMC4yMzMsMTAuMjMzLDAsMCwxLDAtMTQuMjEzTDk2LDIwMi40N2ExMC4yMzQsMTAuMjM0LDAsMCwxLDE0LjIxMywwWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTg1LjIgLTE3NC4xOCkiIGZpbGw9IiMzODViZjgiLz4KICAgICAgICAgICAgICA8cGF0aCBpZD0iUGF0aF8yNjIwOCIgZGF0YS1uYW1lPSJQYXRoIDI2MjA4IiBkPSJNMjI3LjQsMTI4LjA3YTEwLjIzNCwxMC4yMzQsMCwwLDEsMTQuMjEzLDBMMjQ5LjU0MiwxMzZhMTAuMjM0LDEwLjIzNCwwLDAsMSwwLDE0LjIxM0wxODkuNDEsMjEwLjA2OGExMC4yMzMsMTAuMjMzLDAsMCwxLTE0LjIxMywwbC03LjkyNi03LjkyNmExMC4yMzMsMTAuMjMzLDAsMCwxLDAtMTQuMjEzWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTEzNy4zNCAtMTI1LjIpIiBmaWxsPSIjMzg1YmY4Ii8+CiAgICAgICAgICAgIDwvZz4KICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICAgIDwvZz4KICAgIDwvZz4KICA8L2c+Cjwvc3ZnPgo=" alt="Chekin"><span>© 2026 Chekin</span></div></footer>
+
+<script>
+(function(){
+  var f=document.getElementById('lead'),err=document.getElementById('f-err');
+  var q=new URLSearchParams(location.search);
+  ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid','fbclid'].forEach(function(k){var v=q.get(k);if(v&&f.elements[k])f.elements[k].value=v});
+  f.addEventListener('input',function(e){var t=e.target;if(t.matches('input,select'))t.classList.toggle('filled',!!t.value)});
+  f.addEventListener('change',function(e){var t=e.target;if(t.matches('select'))t.classList.toggle('filled',!!t.value)});
+  f.addEventListener('submit',function(e){
+    e.preventDefault();err.textContent='';
+    var E=f.elements,mail=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    if(!E.firstname.value.trim()){err.textContent='Scrivi il tuo nome.';return}
+    if(!mail.test(E.email.value.trim())){err.textContent='Scrivi un indirizzo email valido.';return}
+    if(E.phone.value.replace(/\D/g,'').length<6){err.textContent='Scrivi un numero di telefono valido.';return}
+    if(!E.property_type.value){err.textContent='Scegli il tipo di struttura.';return}
+    if(!(+E.number_of_units.value>=1)){err.textContent='Indica quanti alloggi gestisci.';return}
+    f.style.display='none';document.getElementById('f-ok').style.display='block';
+  });
+
+  // Carta vs Chekin (testi presi dalla pagina ufficiale /it/check-in-online-alloggiati-web)
+  var M={
+    paper:{s:[['Stampi il contratto','Lo compili per ogni prenotazione e lo fai firmare all’arrivo.'],['Copi i documenti','Fotografi o fotocopi il documento di ogni ospite.'],['Compili la schedina','Entri in Alloggiati Web e inserisci i dati a mano, entro 24 ore.'],['Rifai tutto per l’ISTAT','Altro portale, altri dati, entro il 5 del mese successivo.']],sum:'Quattro passaggi a mano per ogni prenotazione.'},
+    auto:{s:[['Riceve il link','Via email, WhatsApp o SMS. Un solo link per tutti gli occupanti.'],['Scansiona il documento','Lo scanner legge carta d’identità o passaporto e compila il modulo.'],['Firma ed è fatta','Firma il contratto di locazione e il regolamento della struttura.'],['Invio automatico','Chekin invia la schedina ad Alloggiati Web e i dati all’ISTAT.']],sum:'<span>Tu non tocchi nulla.</span> E l’ospite arriva già registrato.'}
+  };
+  var flow=document.getElementById('flow'),sum=document.getElementById('sum'),bs=[].slice.call(document.querySelectorAll('.switch button'));
+  function show(m){
+    flow.className='flow'+(m==='paper'?' paper':'');
+    flow.innerHTML=M[m].s.map(function(x){return '<li><h3>'+x[0]+'</h3><p>'+x[1]+'</p></li>'}).join('');
+    sum.innerHTML=M[m].sum;
+    bs.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.m===m)});
+  }
+  bs.forEach(function(b){b.addEventListener('click',function(){show(b.dataset.m)})});
+  show('auto');
+})();
+</script>
+</body>
+</html>
