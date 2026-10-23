@@ -20,6 +20,11 @@ El trabajo corre en el chat de Claude Code "Landing Page". Aquí solo estado y c
 - Artifacts (privados):
   - Deck: [Test de landing hoteles España](https://claude.ai/artifact/Ge5ftUWvY1PfLUEMautShs)
   - Tracker: [Tests de landing Chekin](https://claude.ai/artifact/QoftN5oSqEFTFscpd5m4te)
+  - Brief antes/después para Carlos (23/10): [Landings de paid: antes y después](https://claude.ai/artifact/BPBSyMM1PbQAmiKMijFNAq)
+  - Boceto SES v2: https://claude.ai/artifact/WSjWXPdZfVKVF781QqLdNK
+  - Boceto guía SES v2: https://claude.ai/artifact/HWpa7NEiAcJAPwmYzvK1Uz (`p3-landings/landing-guia-ses-v2.html`)
+  - Boceto guest app v2: https://claude.ai/artifact/6H23uPLZEJyBSbnVNWhTPP (`p3-landings/landing-guestapp-es-v2.html`)
+  - Boceto pack legal (guía + 4 plantillas): https://claude.ai/artifact/P8tf8sdAtaTqAXr8f7iZAj (`p3-landings/landing-pack-legal-es-v1.html`)
 
 ## Alcance
 - Se cambian solo las landings de **Google Ads**. **Meta** usa su propia plantilla de formulario: no se toca.

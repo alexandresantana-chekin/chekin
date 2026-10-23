@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Guest app Chekin v2</title>
+<meta name="description" content="La guest app de tu alojamiento: check-in online, parte automático a SES.Hospedajes, firma del contrato, extras y acceso en un solo enlace. Prueba Chekin gratis 14 días.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* Boceto v2 de /check-in-guestapp (PMax Competitors ES: anuncio automático "Guestapp Chekin").
+   Design system de Chekin. Todo visible al cargar: nada empieza en opacidad 0.
+   Solo cifras oficiales del traspaso. */
+:root{--blue:#385BF8;--navy:#19194B;--ink:#161643;--g1:#6B6B95;--g2:#9696B9;--g3:#DEDEEB;--bg:#FFFFFF;--alt:#F4F6F9;--soft:#EEF2FF;--ok:#1E9E5A;--okbg:#E8F6EE;--bad:#FF2467;--shadow:0 0 5px rgba(26,148,255,.173);--elev:0 31px 50px rgba(26,140,255,.22);--ring:0 0 0 3px rgba(56,91,248,.2);--f:'Montserrat',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--f);color:var(--navy);background:var(--bg);line-height:1.5;overflow-x:hidden}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+h1,h2,h3{color:var(--navy);overflow-wrap:break-word}
+a{color:var(--blue)}
+.top{height:64px;display:flex;align-items:center;border-bottom:1px solid var(--g3);background:#fff}
+.top .wrap{width:100%}
+.top img{height:26px;width:auto;display:block}
+
+/* HERO */
+.hero{padding:34px 0 44px;background:radial-gradient(1100px 420px at 85% -20%,#E3E9FF 0%,rgba(227,233,255,0) 60%),linear-gradient(180deg,#F7F8FF 0%,#fff 100%)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:48px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font:700 12px var(--f);letter-spacing:.06em;text-transform:uppercase;color:var(--blue);background:#fff;border-radius:999px;padding:6px 12px;box-shadow:var(--shadow);margin-bottom:16px}
+.eyebrow i{width:6px;height:6px;border-radius:50%;background:var(--blue)}
+.hero h1{font-size:46px;line-height:1.08;font-weight:800;letter-spacing:-.02em;max-width:620px}
+.hero h1 span{color:var(--blue)}
+.lead{margin-top:14px;font-size:18px;color:var(--g1);max-width:560px}
+.ticks{list-style:none;margin-top:18px;display:grid;gap:9px}
+.ticks li{position:relative;padding-left:30px;font-weight:600;font-size:16px}
+.ticks li::before{content:"";position:absolute;left:0;top:3px;width:20px;height:20px;border-radius:6px;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 10.5l3.2 3L15 6.5' fill='none' stroke='%23385BF8' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat;box-shadow:var(--shadow)}
+.hstats{display:flex;flex-wrap:wrap;gap:8px 28px;margin-top:22px;font-size:14px;color:var(--g1)}
+.hstats b{display:block;font-size:22px;color:var(--navy);font-weight:800;letter-spacing:-.01em}
+
+/* FORMULARIO */
+.card{background:#fff;border-radius:16px;box-shadow:var(--elev),var(--shadow);padding:24px 24px 18px}
+.card h2{font-size:22px;font-weight:700;line-height:1.25}
+.card .sub{font-size:14px;color:var(--g1);margin:4px 0 14px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:end}
+.fld{margin-bottom:10px;min-width:0}
+.fld label{display:block;font:600 13px var(--f);margin-bottom:4px}
+.fld input,.fld select{width:100%;height:44px;border-radius:8px;border:1px solid rgba(22,22,67,.2);background:#F4F6F8;padding:0 12px;font:500 16px var(--f);color:var(--ink);appearance:none;-webkit-appearance:none}
+.fld select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' fill='none' stroke='%2319194B' stroke-width='1.6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;background-size:12px;padding-right:32px}
+.fld input:focus,.fld select:focus{outline:0;border-color:var(--ink);background:#fff;box-shadow:var(--ring)}
+.fld input.filled,.fld select.filled{background-color:#fff;border-color:var(--ink)}
+.tel{display:grid;grid-template-columns:112px minmax(0,1fr);gap:8px}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;height:52px;border:0;border-radius:12px;background:var(--blue);color:#fff;font:700 16px var(--f);cursor:pointer;text-decoration:none}
+.btn:hover{background-image:linear-gradient(rgba(255,255,255,.1),rgba(255,255,255,.1))}
+.btn:focus-visible{outline:0;box-shadow:var(--ring)}
+.btn svg{width:20px;height:20px}
+.note{margin-top:10px;font-size:12px;line-height:1.45;color:var(--g1);text-align:center}
+.note a{color:var(--g1)}
+.err{color:var(--bad);font-size:13px;font-weight:600;margin-top:6px}
+.ok{display:none;text-align:center;padding:28px 6px}
+.ok h3{font-size:20px;margin-bottom:6px}
+.ok p{color:var(--g1);font-size:15px}
+
+/* LA APP POR DENTRO (interactivo) */
+.sec{padding:64px 0}
+.sec.alt{background:var(--alt)}
+.kicker{font:700 12px var(--f);letter-spacing:.06em;text-transform:uppercase;color:var(--blue)}
+.sec h2{font-size:40px;font-weight:400;line-height:1.15;letter-spacing:-.01em;margin:8px 0 10px;max-width:760px}
+.sec h2 b{font-weight:700}
+.sec .intro{font-size:17px;color:var(--g1);max-width:680px}
+.demo{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:48px;align-items:center;margin-top:32px}
+.steps{list-style:none;display:grid;gap:10px}
+.step{display:flex;gap:14px;align-items:flex-start;width:100%;text-align:left;background:#fff;border:0;border-radius:14px;box-shadow:var(--shadow);padding:16px 18px;cursor:pointer;font-family:var(--f);color:var(--navy);transition:box-shadow .2s}
+.step:hover{box-shadow:0 12px 22px rgba(26,148,255,.16)}
+.step[aria-selected=true]{box-shadow:0 0 0 2px var(--blue),0 12px 22px rgba(26,148,255,.16)}
+.step:focus-visible{outline:2px solid var(--navy);outline-offset:2px}
+.step .n{flex:0 0 32px;width:32px;height:32px;border-radius:10px;background:var(--soft);color:var(--blue);font-weight:800;display:flex;align-items:center;justify-content:center}
+.step[aria-selected=true] .n{background:var(--blue);color:#fff}
+.step b{display:block;font-size:16px}
+.step span{display:block;font-size:14px;color:var(--g1);margin-top:2px}
+
+.phone{position:relative;width:280px;max-width:100%;aspect-ratio:9/18.5;margin:0 auto;background:var(--navy);border-radius:40px;padding:12px;box-shadow:var(--elev)}
+.phone::before{content:"";position:absolute;top:18px;left:50%;transform:translateX(-50%);width:84px;height:22px;border-radius:12px;background:#0E0E2C;z-index:2}
+.screen{position:relative;height:100%;background:#fff;border-radius:30px;overflow:hidden;display:flex;flex-direction:column}
+.sbar{padding:44px 18px 12px;background:linear-gradient(180deg,#274BF0,#385BF8);color:#fff}
+.sbar small{display:block;font-size:11px;font-weight:600;opacity:.85}
+.sbar strong{display:block;font-size:16px;font-weight:700}
+.pane{display:none;flex:1;padding:16px 16px 18px;flex-direction:column;gap:10px}
+.pane.on{display:flex}
+.pane h4{font-size:15px;font-weight:700;color:var(--navy)}
+.pane p{font-size:12.5px;color:var(--g1)}
+.inp{height:34px;border-radius:8px;background:#F4F6F8;border:1px solid var(--g3);display:flex;align-items:center;padding:0 10px;font-size:12px;color:var(--g1)}
+.inp.f{background:#fff;border-color:var(--navy);color:var(--navy);font-weight:600}
+.docbox{height:96px;border-radius:12px;border:2px dashed #C5CEFF;background:var(--soft);display:flex;align-items:center;justify-content:center;color:var(--blue);font-size:12px;font-weight:700;text-align:center;padding:8px}
+.okline{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;color:var(--ok);background:var(--okbg);border-radius:8px;padding:8px 10px}
+.sig{height:70px;border-radius:10px;border:1px solid var(--g3);position:relative;overflow:hidden}
+.sig svg{position:absolute;inset:0;width:100%;height:100%}
+.extra{display:flex;justify-content:space-between;align-items:center;border:1px solid var(--g3);border-radius:10px;padding:9px 10px;font-size:12.5px;font-weight:600}
+.extra em{font-style:normal;font-size:11px;color:var(--g1);font-weight:500}
+.extra.sel{border-color:var(--blue);box-shadow:var(--ring)}
+.code{font-size:28px;font-weight:800;letter-spacing:.2em;color:var(--navy);text-align:center;padding:10px 0;background:var(--soft);border-radius:12px}
+.sbtn{margin-top:auto;height:38px;border-radius:10px;background:var(--blue);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.cap{font-size:12.5px;color:var(--g2);text-align:center;margin-top:10px}
+
+/* ANTES / DESPUÉS */
+.vs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:32px}
+.vs .col{border-radius:16px;padding:24px}
+.vs .no{background:#fff;box-shadow:var(--shadow)}
+.vs .yes{background:var(--soft)}
+.vs h3{font-size:14px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin-bottom:12px}
+.vs .no h3{color:var(--g1)}.vs .yes h3{color:var(--blue)}
+.vs ul{list-style:none;display:grid;gap:10px}
+.vs li{position:relative;padding-left:26px;font-size:15.5px;font-weight:500}
+.vs .no li::before{content:"✕";position:absolute;left:0;color:var(--g2);font-weight:800}
+.vs .yes li::before{content:"✓";position:absolute;left:0;color:var(--blue);font-weight:800}
+
+/* CIFRAS OFICIALES */
+.nums{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:28px}
+.num{background:#fff;border-radius:14px;box-shadow:var(--shadow);padding:20px 16px;text-align:center}
+.num b{display:block;font-size:30px;font-weight:800;color:var(--blue);letter-spacing:-.02em}
+.num span{font-size:14px;color:var(--g1)}
+
+/* PMS */
+.pms{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.pms span{font-size:14px;font-weight:700;color:var(--navy);background:#fff;border-radius:999px;padding:8px 14px;box-shadow:var(--shadow)}
+.pms span.more{color:var(--blue)}
+
+/* FAQ */
+.faq{max-width:820px;margin-top:24px}
+.faq details{border-bottom:1px solid var(--g3)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:16px;padding:18px 0;font-weight:700;font-size:17px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--blue);font-size:22px;line-height:1}
+.faq details[open] summary::after{content:"–"}
+.faq summary:focus-visible{outline:2px solid var(--blue);outline-offset:2px;border-radius:6px}
+.faq p{padding:0 0 18px;color:var(--g1);font-size:15.5px}
+
+.band{background:linear-gradient(180deg,#002CFA 0%,#274BF0 100%);color:#fff;padding:52px 0;text-align:center}
+.band h2{color:#fff;font-size:32px;font-weight:700;letter-spacing:-.01em}
+.band p{margin:10px auto 22px;font-size:16px;opacity:.92;max-width:560px}
+.band .btn{max-width:300px;margin:0 auto;background:#fff;color:var(--blue)}
+footer{background:var(--navy);color:#C9CBE6;padding:24px 0;font-size:13px}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+footer img{height:22px;width:auto;display:block}
+footer a{color:#C9CBE6}
+
+@media (max-width:980px){
+  .hero{padding:20px 0 32px}
+  .hero .wrap{grid-template-columns:minmax(0,1fr);gap:18px}
+  .hero h1{font-size:28px}
+  .lead{font-size:15.5px;margin-top:10px}
+  .hero .ticks,.hero .hstats{display:none}
+  .card{padding:20px 18px 14px}
+  .card .sub{margin-bottom:10px}
+  .demo{grid-template-columns:minmax(0,1fr);gap:28px}
+  .phone{width:250px}
+  .sec{padding:44px 0}
+  .sec h2{font-size:28px}
+  .vs{grid-template-columns:minmax(0,1fr)}
+  .nums{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .band h2{font-size:26px}
+  .wrap{padding:0 16px}
+}
+@media (max-width:340px){.row{grid-template-columns:minmax(0,1fr)}}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="wrap"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjgyIDY2IDg1MiAyNTIiPgogIDxnIGlkPSJsb2dvLW5ldy1jaGVraW4tbGFuZHNjYXBlIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMjg0NyAxNTU4OSkiPgogICAgPHJlY3QgaWQ9IlJlY3RhbmdsZV8zMjA0IiBkYXRhLW5hbWU9IlJlY3RhbmdsZSAzMjA0IiB3aWR0aD0iMTAwMCIgaGVpZ2h0PSIzOTkiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI4NDcgLTE1NTg5KSIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iMCIvPgogICAgPGcgaWQ9ImxvZ28iIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI5MjMuMjk0IC0xNTUyOS4wNTUpIj4KICAgICAgPGcgaWQ9Ikdyb3VwXzEyOTc0IiBkYXRhLW5hbWU9Ikdyb3VwIDEyOTc0IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIDApIj4KICAgICAgICA8ZyBpZD0iR3JvdXBfMTMxNDIiIGRhdGEtbmFtZT0iR3JvdXAgMTMxNDIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgMCkiPgogICAgICAgICAgPHBhdGggaWQ9IlBhdGhfMjYyMTgiIGRhdGEtbmFtZT0iUGF0aCAyNjIxOCIgZD0iTS0yMzQuOS05LjE4N2MwLDU2LjQ5NCwzOC45LDEwMC4wMTMsOTkuMTM5LDEwMC4wMTNhMTA3LjQ4LDEwNy40OCwwLDAsMCw2Ny44LTIzLjc4N2M1LjQtNC42LDUuNjczLTEwLjI3MiwxLjYyMS0xNS42NzhsLTUuNC03LjNjLTQuMzIyLTYuMjE3LTkuNzI1LTYuMjE3LTE1LjY2OC0xLjg5Mi04LjkxNSw2LjQ4Ny0yNS4zOTMsMTYuNzU5LTQ3LDE2Ljc1OS00MS4zMzEsMC02NC41NjItMzIuNzA3LTY0LjU2Mi02OC42NTgsMC0zNS40MSwyMi40MjEtNjUuOTU1LDY0LjI5Mi02NS45NTUsMTkuNzIsMCwzNC44NDcsOC4xMDksNDMuMjIyLDEzLjUxNSw2LjQ4Myw0LjA1NSwxMS42MTYsMy41MTQsMTUuNC0yLjdsNC44NjMtNy44MzljMy43ODItNS45NDcsMy41MTItMTEuMzUzLTIuMTYxLTE1LjY3OC0xMC4yNjUtNy4zLTMxLjMzNS0xOS4xOTItNjIuNjcxLTE5LjE5MkMtMTk0LjEwOC0xMDcuNTc4LTIzNC45LTY0Ljg3LTIzNC45LTkuMTg3Wk0tMzguNTExLDc2LjIzYzAsNy41NjksNC4wNTIsMTEuMzUzLDExLjM0NiwxMS4zNTNoMTEuNjE2US00LjIsODcuNTgzLTQuMiw3Ni4yM1YyMy41MmMwLTI2LjIyLDE1LjY2OC00NS42ODIsMzkuNzEtNDUuNjgyLDE3LjI4OCwwLDIxLjYxMSwxMS4zNTMsMjEuNjExLDI4LjExMlY3Ni4yM3EwLDExLjM1MywxMS4zNDYsMTEuMzUzSDgwLjA3OGM3LjI5NCwwLDExLjM0Ni0zLjc4NCwxMS4zNDYtMTEuMzUzVi0xLjA3N2MwLTM2LjQ5MS0xNy41NTktNTIuNDM5LTQ4LjA4NC01Mi40MzktMjMuNzcyLDAtNDEuMDYxLDE0LjYtNDcuODE0LDI3Ljg0MmgtLjU0QTc4LjMsNzguMywwLDAsMC00LjItMzcuM1YtOTIuOTgxYzAtNy4zLTMuNzgyLTExLjM1My0xMS4zNDYtMTEuMzUzSC0yNy4xNjVjLTcuMjk0LDAtMTEuMzQ2LDQuMDU1LTExLjM0NiwxMS4zNTNaTTExNC45MjYsMTguNjU1YzAsMzkuMTk0LDI4LjM2NCw3Mi4xNzIsNzQuMDE3LDcyLjE3MmE4Ny4wMzgsODcuMDM4LDAsMCwwLDQ2LjczMy0xMy43ODZjNS45NDMtMy41MTQsNy4wMjMtOC45MiwzLjc4Mi0xNS4xMzdMMjM2LjIxNiw1Ni41Yy0zLjUxMi02LjIxNy04LjM3NC03LjAyOC0xNS4xMjgtMy43ODQtNi40ODMsNC4wNTUtMTcuMDE4LDguOTItMjkuNzE1LDguOTItMjAuOCwwLTM5LjE3LTEyLjk3NS00MS4zMzEtMzcuODQzaDg0LjAxMmExMS45NDIsMTEuOTQyLDAsMCwwLDExLjg4Ni0xMS42MjNjMC0zNy44NDMtMjEuODgxLTY1LjY4NC02MS4wNTEtNjUuNjg0QzE0My41Ni01My41MTcsMTE0LjkyNi0yMy43ODMsMTE0LjkyNiwxOC42NTVaTTE1MC44NTQsMi45NzdDMTU0LjEtMTUuNCwxNjYuNTIxLTI3LjU2NywxODQuMDgtMjcuNTY3YzE1LjY2OCwwLDI3LjI4NCwxMS4zNTMsMjcuODI0LDMwLjU0NVpNMjcwLjc5Myw3Ni4yM2MwLDcuNTY5LDQuMDUyLDExLjM1MywxMS4zNDYsMTEuMzUzaDExLjYxNnExMS4zNDUsMCwxMS4zNDYtMTEuMzUzVjI3LjNoMTcuODI5bDMyLjE0Niw1Mi40MzljMi45NzIsNS40MDYsNy4wMjQsNy44MzksMTMuMjM3LDcuODM5SDM4Mi45YzkuMTg1LDAsMTIuMTU2LTUuNjc2LDcuNTY0LTEzLjUxNUwzNDkuOTQzLDExLjl2LS41NDFMMzg0LjI1LTM2Ljc1OGM1LjEzMi03LjMsMi4xNjEtMTMuNTE1LTcuMDIzLTEzLjUxNUgzNjQuMjZjLTYuMjEzLDAtMTAuMjY1LDIuMTYzLTEzLjUwNyw3LjU2OUwzMjIuMTE5LTEuNjE4SDMwNS4xVi05Mi45ODFjMC03LjMtMy43ODItMTEuMzUzLTExLjM0Ni0xMS4zNTNIMjgyLjEzOWMtNy4yOTQsMC0xMS4zNDYsNC4wNTUtMTEuMzQ2LDExLjM1M1ptMTQzLjk4MiwwYzAsNy41NjksMy43ODIsMTEuMzUzLDExLjA3NiwxMS4zNTNoMTEuODg2YzcuMjk0LDAsMTEuMDc2LTMuNzg0LDExLjA3Ni0xMS4zNTNWLTM4LjkyYzAtNy4zLTMuNzgyLTExLjM1My0xMS4wNzYtMTEuMzUzSDQyNS44NTFjLTcuMjkzLDAtMTEuMDc2LDQuMDU1LTExLjA3NiwxMS4zNTNabTY4LjA3NCwwYzAsNy41NjksMy43ODIsMTEuMzUzLDExLjA3NiwxMS4zNTNoMTEuODg2YzcuMjk0LDAsMTEuMDc1LTMuNzg0LDExLjA3NS0xMS4zNTNWMjIuOThjMC0yNC44NjgsMTUuNC00NS4xNDEsMzkuNzEtNDUuMTQxLDE3LjI4OSwwLDIxLjYxMSwxMS4zNTMsMjEuNjExLDI4LjExMlY3Ni4yM2MwLDcuNTY5LDQuMDUyLDExLjM1MywxMS4zNDYsMTEuMzUzaDExLjYxNnExMS4zNDYsMCwxMS4zNDYtMTEuMzUzVi0xLjA3N2MwLTM2LjQ5MS0xNy41NTktNTIuNDM5LTQ4LjA4NC01Mi40MzktMjcuODI0LDAtNDIuOTUxLDE3LjU3LTQ4Ljg5NCwyOS4xOTNINTE1YTQ0LjEsNDQuMSwwLDAsMCwuNTQtNi4yMTdWLTM4LjkyYzAtNy4zLTMuNzgyLTExLjM1My0xMS4wNzYtMTEuMzUzSDQ5My45MjVjLTcuMjk0LDAtMTEuMDc2LDQuMDU1LTExLjA3NiwxMS4zNTNaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyMzQuODk4IDE1Ny43ODMpIiBmaWxsPSIjMTkxOTRiIi8+CiAgICAgICAgICA8ZyBpZD0idGljayIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNjIwLjUxNikiPgogICAgICAgICAgICA8ZyBpZD0iR3JvdXBfMTI5NjYiIGRhdGEtbmFtZT0iR3JvdXAgMTI5NjYiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDApIj4KICAgICAgICAgICAgICA8cGF0aCBpZD0iUGF0aF8yNjIwNyIgZGF0YS1uYW1lPSJQYXRoIDI2MjA3IiBkPSJNMTQ0LjkyMywyMzcuNDU2YTEwLjIzMywxMC4yMzMsMCwwLDEsMCwxNC4yMTNMMTM3LDI1OS42YTEwLjIzMywxMC4yMzMsMCwwLDEtMTQuMjEzLDBMODguMDcsMjI0LjYwOWExMC4yMzMsMTAuMjMzLDAsMCwxLDAtMTQuMjEzTDk2LDIwMi40N2ExMC4yMzQsMTAuMjM0LDAsMCwxLDE0LjIxMywwWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTg1LjIgLTE3NC4xOCkiIGZpbGw9IiMzODViZjgiLz4KICAgICAgICAgICAgICA8cGF0aCBpZD0iUGF0aF8yNjIwOCIgZGF0YS1uYW1lPSJQYXRoIDI2MjA4IiBkPSJNMjI3LjQsMTI4LjA3YTEwLjIzNCwxMC4yMzQsMCwwLDEsMTQuMjEzLDBMMjQ5LjU0MiwxMzZhMTAuMjM0LDEwLjIzNCwwLDAsMSwwLDE0LjIxM0wxODkuNDEsMjEwLjA2OGExMC4yMzMsMTAuMjMzLDAsMCwxLTE0LjIxMywwbC03LjkyNi03LjkyNmExMC4yMzMsMTAuMjMzLDAsMCwxLDAtMTQuMjEzWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTEzNy4zNCAtMTI1LjIpIiBmaWxsPSIjMzg1YmY4Ii8+CiAgICAgICAgICAgIDwvZz4KICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICAgIDwvZz4KICAgIDwvZz4KICA8L2c+Cjwvc3ZnPgo=" alt="Chekin"></div></header>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="eyebrow"><i></i>Guest app de Chekin</span>
+      <h1>Un solo enlace para tu huésped: <span>check-in, parte, contrato y extras</span></h1>
+      <p class="lead">Tu huésped hace el check-in desde el móvil antes de llegar, y Chekin envía el parte a SES.Hospedajes en automático y en plazo.</p>
+      <ul class="ticks">
+        <li>Check-in online en 3 minutos, sin descargar ninguna app</li>
+        <li>Parte de viajeros enviado solo a SES.Hospedajes</li>
+        <li>+55 € de media por reserva con extras</li>
+      </ul>
+      <div class="hstats"><div><b>+200.000</b>propiedades</div><div><b>+25M</b>check-ins</div><div><b>+200</b>PMS conectados</div></div>
+    </div>
+
+    <div class="card" id="form">
+      <form id="lead-form" novalidate>
+        <h2>Prueba Chekin gratis 14 días</h2>
+        <p class="sub">Déjanos tus datos y un experto en Chekin te contactará para que lo pruebes gratis.</p>
+        <div class="row">
+          <div class="fld"><label for="f-name">Nombre</label><input id="f-name" name="firstname" autocomplete="given-name" required></div>
+          <div class="fld"><label for="f-mail">Email</label><input id="f-mail" name="email" type="email" inputmode="email" autocomplete="email" required></div>
+        </div>
+        <div class="fld"><label for="f-tel">Teléfono</label>
+          <div class="tel">
+            <select id="f-pre" name="phone_prefix" aria-label="Prefijo">
+              <option value="+34" selected>ES +34</option><option value="+351">PT +351</option><option value="+39">IT +39</option><option value="+33">FR +33</option><option value="+49">DE +49</option><option value="+44">UK +44</option><option value="">Otro</option>
+            </select>
+            <input id="f-tel" name="phone" type="tel" inputmode="tel" autocomplete="tel-national" required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="fld"><label for="f-type">Tipo de alojamiento</label>
+            <select id="f-type" name="property_type" required>
+              <option value="" selected disabled>Selecciona</option>
+              <option>Hotel independiente</option><option>Cadena o grupo hotelero</option><option>Aparthotel</option><option>Hostal o pensión</option><option>Vivienda turística</option><option>Otro</option>
+            </select></div>
+          <div class="fld"><label for="f-units">Nº de habitaciones</label><input id="f-units" name="number_of_rooms" type="number" inputmode="numeric" min="1" step="1" required></div>
+        </div>
+        <input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign"><input type="hidden" name="utm_term"><input type="hidden" name="utm_content"><input type="hidden" name="gclid"><input type="hidden" name="fbclid">
+        <input type="hidden" name="landing" value="guestapp-es-v2-boceto">
+        <button class="btn" type="submit">Empieza tu prueba gratis
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-5-5 5 5-5 5"/></svg>
+        </button>
+        <p class="err" id="f-err" role="alert"></p>
+        <p class="note">Sin compromiso. Al enviar, un experto en Chekin te contactará por teléfono o email sobre tu prueba. Más información en la <a href="https://chekin.com/privacidad/" target="_blank" rel="noopener">política de privacidad</a>.</p>
+      </form>
+      <div class="ok" id="f-ok" role="status"><h3>Solicitud recibida</h3><p>Boceto: este formulario todavía no envía datos.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec alt" aria-labelledby="app-t">
+  <div class="wrap">
+    <span class="kicker">La app por dentro</span>
+    <h2 id="app-t">Lo que ve tu huésped, <b>paso a paso</b></h2>
+    <p class="intro">Pulsa cada paso. Todo pasa en el mismo enlace, en el idioma del huésped y sin descargar nada.</p>
+    <div class="demo">
+      <ol class="steps" role="tablist" aria-label="Pasos de la guest app">
+        <li><button class="step" role="tab" aria-selected="true" aria-controls="p1" id="t1"><span class="n">1</span><span><b>Recibe el enlace</b><span>Al reservar, por email o WhatsApp.</span></span></button></li>
+        <li><button class="step" role="tab" aria-selected="false" aria-controls="p2" id="t2"><span class="n">2</span><span><b>Escanea su documento</b><span>Los datos se rellenan solos y se verifica su identidad.</span></span></button></li>
+        <li><button class="step" role="tab" aria-selected="false" aria-controls="p3" id="t3"><span class="n">3</span><span><b>Firma y paga la tasa</b><span>Contrato, normas de la casa y tasa turística.</span></span></button></li>
+        <li><button class="step" role="tab" aria-selected="false" aria-controls="p4" id="t4"><span class="n">4</span><span><b>Añade extras</b><span>Early check-in, late check-out, parking…</span></span></button></li>
+        <li><button class="step" role="tab" aria-selected="false" aria-controls="p5" id="t5"><span class="n">5</span><span><b>Recibe el acceso</b><span>Instrucciones y código de la cerradura, solos.</span></span></button></li>
+      </ol>
+      <div>
+        <div class="phone" aria-live="polite">
+          <div class="screen">
+            <div class="sbar"><small>Hotel Mirador · Hab. 204</small><strong id="sbar-t">Tu check-in online</strong></div>
+            <div class="pane on" id="p1" role="tabpanel" aria-labelledby="t1">
+              <h4>¡Hola, Marta! 👋</h4><p>Completa tu check-in antes de llegar y entra directamente a la habitación.</p>
+              <div class="inp f">Llegada · 14 nov · 15:00</div><div class="inp f">2 huéspedes</div>
+              <div class="sbtn">Empezar check-in</div>
+            </div>
+            <div class="pane" id="p2" role="tabpanel" aria-labelledby="t2">
+              <h4>Escanea tu documento</h4><p>DNI, pasaporte o permiso de residencia.</p>
+              <div class="docbox">Documento leído<br>Datos rellenados</div>
+              <div class="inp f">Marta García López</div><div class="inp f">DNI · ••••••78K</div>
+              <div class="okline">✓ Identidad verificada</div>
+            </div>
+            <div class="pane" id="p3" role="tabpanel" aria-labelledby="t3">
+              <h4>Firma el contrato</h4><p>Contrato de estancia y normas de la casa.</p>
+              <div class="sig"><svg viewBox="0 0 220 70" aria-hidden="true"><path d="M14 48c18-26 30-30 34-14 3 14 12 10 22-6 8-12 16-10 14 4-2 12 10 14 24 0 10-10 20-12 26-2 6 10 22 8 40-8" fill="none" stroke="#19194B" stroke-width="2.4" stroke-linecap="round"/></svg></div>
+              <div class="extra">Tasa turística <span>2 noches</span></div>
+              <div class="okline">✓ Contrato firmado</div>
+              <div class="sbtn">Pagar y continuar</div>
+            </div>
+            <div class="pane" id="p4" role="tabpanel" aria-labelledby="t4">
+              <h4>Mejora tu estancia</h4><p>Elige lo que quieras añadir.</p>
+              <div class="extra sel">Late check-out <em>hasta las 14:00</em></div>
+              <div class="extra">Parking <em>por noche</em></div>
+              <div class="extra sel">Desayuno <em>por persona</em></div>
+              <div class="sbtn">Añadir a mi reserva</div>
+            </div>
+            <div class="pane" id="p5" role="tabpanel" aria-labelledby="t5">
+              <h4>Todo listo ✓</h4><p>Tu parte de viajeros se ha enviado a SES.Hospedajes.</p>
+              <div class="okline">✓ Parte enviado en plazo</div>
+              <p>Código de tu habitación</p>
+              <div class="code">4821</div>
+              <div class="sbtn">Ver cómo llegar</div>
+            </div>
+          </div>
+        </div>
+        <p class="cap">Maqueta ilustrativa: nombres, fechas y extras de ejemplo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="vs-t">
+  <div class="wrap">
+    <span class="kicker">Antes y después</span>
+    <h2 id="vs-t">Así cambia tu día a día <b>con la guest app</b></h2>
+    <div class="vs">
+      <div class="col no"><h3>Sin Chekin</h3><ul>
+        <li>Persigues documentos por email el día antes de la llegada</li>
+        <li>Copias los datos a mano en SES.Hospedajes</li>
+        <li>Pides el DNI por WhatsApp</li>
+        <li>Cobras la tasa turística en recepción</li>
+        <li>Mandas las instrucciones de acceso a última hora</li></ul></div>
+      <div class="col yes"><h3>Con Chekin</h3><ul>
+        <li>El huésped hace el check-in al reservar</li>
+        <li>El parte llega solo al Ministerio del Interior</li>
+        <li>Documento escaneado e identidad verificada</li>
+        <li>Tasa turística cobrada online</li>
+        <li>El acceso se envía solo al completar el check-in</li></ul></div>
+    </div>
+    <div class="nums">
+      <div class="num"><b>3 min</b><span>de check-in</span></div>
+      <div class="num"><b>−80%</b><span>de tiempo en recepción</span></div>
+      <div class="num"><b>+55 €</b><span>de upsell medio por reserva</span></div>
+      <div class="num"><b>+47%</b><span>de reseñas de 5★</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec alt" aria-labelledby="pms-t">
+  <div class="wrap">
+    <span class="kicker">Integraciones</span>
+    <h2 id="pms-t">Conectado con <b>más de 200 PMS</b></h2>
+    <p class="intro">Las reservas entran solas desde tu PMS y el enlace de check-in sale en cuanto llega la reserva.</p>
+    <div class="pms"><span>Mews</span><span>Cloudbeds</span><span>Avantio</span><span>Guesty</span><span>Hostaway</span><span>Lodgify</span><span>Smoobu</span><span>Octorate</span><span>Beds24</span><span>Hostify</span><span>Rentlio</span><span class="more">y más de 200</span></div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="faq-t">
+  <div class="wrap">
+    <span class="kicker">Preguntas frecuentes</span>
+    <h2 id="faq-t">Lo que suelen preguntarnos</h2>
+    <div class="faq">
+      <details><summary>¿Cómo recibe el huésped el enlace de check-in?</summary><p>Por email o WhatsApp en cuanto entra la reserva, desde Booking, Airbnb, tu web o tu PMS.</p></details>
+      <details><summary>¿Tiene que descargarse una app?</summary><p>No. La guest app se abre en el navegador del móvil desde el enlace.</p></details>
+      <details><summary>¿Envía Chekin los datos a SES.Hospedajes?</summary><p>Sí. Y a los Mossos d'Esquadra y la Ertzaintza donde corresponde, en automático y en plazo.</p></details>
+      <details><summary>¿Es compatible con mi PMS?</summary><p>Chekin se conecta con más de 200 PMS. En la prueba, un experto en Chekin revisa contigo la integración.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <h2>Dale a tu huésped su guest app</h2>
+    <p>Prueba Chekin gratis 14 días. Un experto en Chekin te ayuda a ponerlo en marcha.</p>
+    <a class="btn" href="#form">Empieza tu prueba gratis</a>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjgyIDY2IDg1MiAyNTIiPgogIDxnIGlkPSJsb2dvLW5ldy1jaGVraW4tbGFuZHNjYXBlIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMjg0NyAxNTU4OSkiPgogICAgPHJlY3QgaWQ9IlJlY3RhbmdsZV8zMjA0IiBkYXRhLW5hbWU9IlJlY3RhbmdsZSAzMjA0IiB3aWR0aD0iMTAwMCIgaGVpZ2h0PSIzOTkiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI4NDcgLTE1NTg5KSIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iMCIvPgogICAgPGcgaWQ9ImxvZ28iIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI5MjMuMjk0IC0xNTUyOS4wNTUpIj4KICAgICAgPGcgaWQ9Ikdyb3VwXzEyOTc0IiBkYXRhLW5hbWU9Ikdyb3VwIDEyOTc0IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIDApIj4KICAgICAgICA8ZyBpZD0iR3JvdXBfMTMxNDIiIGRhdGEtbmFtZT0iR3JvdXAgMTMxNDIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgMCkiPgogICAgICAgICAgPHBhdGggaWQ9IlBhdGhfMjYyMTgiIGRhdGEtbmFtZT0iUGF0aCAyNjIxOCIgZD0iTS0yMzQuOS05LjE4N2MwLDU2LjQ5NCwzOC45LDEwMC4wMTMsOTkuMTM5LDEwMC4wMTNhMTA3LjQ4LDEwNy40OCwwLDAsMCw2Ny44LTIzLjc4N2M1LjQtNC42LDUuNjczLTEwLjI3MiwxLjYyMS0xNS42NzhsLTUuNC03LjNjLTQuMzIyLTYuMjE3LTkuNzI1LTYuMjE3LTE1LjY2OC0xLjg5Mi04LjkxNSw2LjQ4Ny0yNS4zOTMsMTYuNzU5LTQ3LDE2Ljc1OS00MS4zMzEsMC02NC41NjItMzIuNzA3LTY0LjU2Mi02OC42NTgsMC0zNS40MSwyMi40MjEtNjUuOTU1LDY0LjI5Mi02NS45NTUsMTkuNzIsMCwzNC44NDcsOC4xMDksNDMuMjIyLDEzLjUxNSw2LjQ4Myw0LjA1NSwxMS42MTYsMy41MTQsMTUuNC0yLjdsNC44NjMtNy44MzljMy43ODItNS45NDcsMy41MTItMTEuMzUzLTIuMTYxLTE1LjY3OC0xMC4yNjUtNy4zLTMxLjMzNS0xOS4xOTItNjIuNjcxLTE5LjE5MkMtMTk0LjEwOC0xMDcuNTc4LTIzNC45LTY0Ljg3LTIzNC45LTkuMTg3Wk0tMzguNTExLDc2LjIzYzAsNy41NjksNC4wNTIsMTEuMzUzLDExLjM0NiwxMS4zNTNoMTEuNjE2US00LjIsODcuNTgzLTQuMiw3Ni4yM1YyMy41MmMwLTI2LjIyLDE1LjY2OC00NS42ODIsMzkuNzEtNDUuNjgyLDE3LjI4OCwwLDIxLjYxMSwxMS4zNTMsMjEuNjExLDI4LjExMlY3Ni4yM3EwLDExLjM1MywxMS4zNDYsMTEuMzUzSDgwLjA3OGM3LjI5NCwwLDExLjM0Ni0zLjc4NCwxMS4zNDYtMTEuMzUzVi0xLjA3N2MwLTM2LjQ5MS0xNy41NTktNTIuNDM5LTQ4LjA4NC01Mi40MzktMjMuNzcyLDAtNDEuMDYxLDE0LjYtNDcuODE0LDI3Ljg0MmgtLjU0QTc4LjMsNzguMywwLDAsMC00LjItMzcuM1YtOTIuOTgxYzAtNy4zLTMuNzgyLTExLjM1My0xMS4zNDYtMTEuMzUzSC0yNy4xNjVjLTcuMjk0LDAtMTEuMzQ2LDQuMDU1LTExLjM0NiwxMS4zNTNaTTExNC45MjYsMTguNjU1YzAsMzkuMTk0LDI4LjM2NCw3Mi4xNzIsNzQuMDE3LDcyLjE3MmE4Ny4wMzgsODcuMDM4LDAsMCwwLDQ2LjczMy0xMy43ODZjNS45NDMtMy41MTQsNy4wMjMtOC45MiwzLjc4Mi0xNS4xMzdMMjM2LjIxNiw1Ni41Yy0zLjUxMi02LjIxNy04LjM3NC03LjAyOC0xNS4xMjgtMy43ODQtNi40ODMsNC4wNTUtMTcuMDE4LDguOTItMjkuNzE1LDguOTItMjAuOCwwLTM5LjE3LTEyLjk3NS00MS4zMzEtMzcuODQzaDg0LjAxMmExMS45NDIsMTEuOTQyLDAsMCwwLDExLjg4Ni0xMS42MjNjMC0zNy44NDMtMjEuODgxLTY1LjY4NC02MS4wNTEtNjUuNjg0QzE0My41Ni01My41MTcsMTE0LjkyNi0yMy43ODMsMTE0LjkyNiwxOC42NTVaTTE1MC44NTQsMi45NzdDMTU0LjEtMTUuNCwxNjYuNTIxLTI3LjU2NywxODQuMDgtMjcuNTY3YzE1LjY2OCwwLDI3LjI4NCwxMS4zNTMsMjcuODI0LDMwLjU0NVpNMjcwLjc5Myw3Ni4yM2MwLDcuNTY5LDQuMDUyLDExLjM1MywxMS4zNDYsMTEuMzUzaDExLjYxNnExMS4zNDUsMCwxMS4zNDYtMTEuMzUzVjI3LjNoMTcuODI5bDMyLjE0Niw1Mi40MzljMi45NzIsNS40MDYsNy4wMjQsNy44MzksMTMuMjM3LDcuODM5SDM4Mi45YzkuMTg1LDAsMTIuMTU2LTUuNjc2LDcuNTY0LTEzLjUxNUwzNDkuOTQzLDExLjl2LS41NDFMMzg0LjI1LTM2Ljc1OGM1LjEzMi03LjMsMi4xNjEtMTMuNTE1LTcuMDIzLTEzLjUxNUgzNjQuMjZjLTYuMjEzLDAtMTAuMjY1LDIuMTYzLTEzLjUwNyw3LjU2OUwzMjIuMTE5LTEuNjE4SDMwNS4xVi05Mi45ODFjMC03LjMtMy43ODItMTEuMzUzLTExLjM0Ni0xMS4zNTNIMjgyLjEzOWMtNy4yOTQsMC0xMS4zNDYsNC4wNTUtMTEuMzQ2LDExLjM1M1ptMTQzLjk4MiwwYzAsNy41NjksMy43ODIsMTEuMzUzLDExLjA3NiwxMS4zNTNoMTEuODg2YzcuMjk0LDAsMTEuMDc2LTMuNzg0LDExLjA3Ni0xMS4zNTNWLTM4LjkyYzAtNy4zLTMuNzgyLTExLjM1My0xMS4wNzYtMTEuMzUzSDQyNS44NTFjLTcuMjkzLDAtMTEuMDc2LDQuMDU1LTExLjA3NiwxMS4zNTNabTY4LjA3NCwwYzAsNy41NjksMy43ODIsMTEuMzUzLDExLjA3NiwxMS4zNTNoMTEuODg2YzcuMjk0LDAsMTEuMDc1LTMuNzg0LDExLjA3NS0xMS4zNTNWMjIuOThjMC0yNC44NjgsMTUuNC00NS4xNDEsMzkuNzEtNDUuMTQxLDE3LjI4OSwwLDIxLjYxMSwxMS4zNTMsMjEuNjExLDI4LjExMlY3Ni4yM2MwLDcuNTY5LDQuMDUyLDExLjM1MywxMS4zNDYsMTEuMzUzaDExLjYxNnExMS4zNDYsMCwxMS4zNDYtMTEuMzUzVi0xLjA3N2MwLTM2LjQ5MS0xNy41NTktNTIuNDM5LTQ4LjA4NC01Mi40MzktMjcuODI0LDAtNDIuOTUxLDE3LjU3LTQ4Ljg5NCwyOS4xOTNINTE1YTQ0LjEsNDQuMSwwLDAsMCwuNTQtNi4yMTdWLTM4LjkyYzAtNy4zLTMuNzgyLTExLjM1My0xMS4wNzYtMTEuMzUzSDQ5My45MjVjLTcuMjk0LDAtMTEuMDc2LDQuMDU1LTExLjA3NiwxMS4zNTNaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyMzQuODk4IDE1Ny43ODMpIiBmaWxsPSIjZmZmIi8+CiAgICAgICAgICA8ZyBpZD0idGljayIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNjIwLjUxNikiPgogICAgICAgICAgICA8ZyBpZD0iR3JvdXBfMTI5NjYiIGRhdGEtbmFtZT0iR3JvdXAgMTI5NjYiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDApIj4KICAgICAgICAgICAgICA8cGF0aCBpZD0iUGF0aF8yNjIwNyIgZGF0YS1uYW1lPSJQYXRoIDI2MjA3IiBkPSJNMTQ0LjkyMywyMzcuNDU2YTEwLjIzMywxMC4yMzMsMCwwLDEsMCwxNC4yMTNMMTM3LDI1OS42YTEwLjIzMywxMC4yMzMsMCwwLDEtMTQuMjEzLDBMODguMDcsMjI0LjYwOWExMC4yMzMsMTAuMjMzLDAsMCwxLDAtMTQuMjEzTDk2LDIwMi40N2ExMC4yMzQsMTAuMjM0LDAsMCwxLDE0LjIxMywwWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTg1LjIgLTE3NC4xOCkiIGZpbGw9IiNmZmYiLz4KICAgICAgICAgICAgICA8cGF0aCBpZD0iUGF0aF8yNjIwOCIgZGF0YS1uYW1lPSJQYXRoIDI2MjA4IiBkPSJNMjI3LjQsMTI4LjA3YTEwLjIzNCwxMC4yMzQsMCwwLDEsMTQuMjEzLDBMMjQ5LjU0MiwxMzZhMTAuMjM0LDEwLjIzNCwwLDAsMSwwLDE0LjIxM0wxODkuNDEsMjEwLjA2OGExMC4yMzMsMTAuMjMzLDAsMCwxLTE0LjIxMywwbC03LjkyNi03LjkyNmExMC4yMzMsMTAuMjMzLDAsMCwxLDAtMTQuMjEzWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTEzNy4zNCAtMTI1LjIpIiBmaWxsPSIjZmZmIi8+CiAgICAgICAgICAgIDwvZz4KICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICAgIDwvZz4KICAgIDwvZz4KICA8L2c+Cjwvc3ZnPgo=" alt="Chekin"><span>© Chekin · <a href="https://chekin.com/terminos/" target="_blank" rel="noopener">Términos</a> · <a href="https://chekin.com/privacidad/" target="_blank" rel="noopener">Privacidad</a></span></div></footer>
+
+<script>
+(function(){
+  var TIT={t1:'Tu check-in online',t2:'Tu documento',t3:'Contrato y tasa',t4:'Extras',t5:'Tu acceso'};
+  var tabs=[].slice.call(document.querySelectorAll('.step'));
+  function show(t){
+    tabs.forEach(function(b){var on=b===t;b.setAttribute('aria-selected',String(on));b.tabIndex=on?0:-1;document.getElementById(b.getAttribute('aria-controls')).classList.toggle('on',on)});
+    document.getElementById('sbar-t').textContent=TIT[t.id];
+  }
+  tabs.forEach(function(b,i){
+    b.addEventListener('click',function(){show(b)});
+    b.addEventListener('keydown',function(e){var k=e.key==='ArrowDown'||e.key==='ArrowRight'?1:e.key==='ArrowUp'||e.key==='ArrowLeft'?-1:0;if(k){e.preventDefault();var n=tabs[(i+k+tabs.length)%tabs.length];n.focus();show(n)}});
+  });
+  var f=document.getElementById('lead-form'),err=document.getElementById('f-err'),q=new URLSearchParams(location.search);
+  ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid','fbclid'].forEach(function(k){var v=q.get(k);if(v&&f.elements[k])f.elements[k].value=v});
+  f.addEventListener('input',function(e){var t=e.target;if(t.matches('input,select'))t.classList.toggle('filled',!!t.value)});
+  f.addEventListener('change',function(e){var t=e.target;if(t.matches('select'))t.classList.toggle('filled',!!t.value)});
+  f.addEventListener('submit',function(e){
+    e.preventDefault();err.textContent='';
+    var E=f.elements,mail=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    if(!E.firstname.value.trim()){err.textContent='Escribe tu nombre.';return}
+    if(!mail.test(E.email.value.trim())){err.textContent='Escribe un email válido.';return}
+    if(E.phone.value.replace(/\D/g,'').length<6){err.textContent='Escribe un teléfono válido.';return}
+    if(!E.property_type.value){err.textContent='Elige el tipo de alojamiento.';return}
+    if(!(+E.number_of_rooms.value>=1)){err.textContent='Indica cuántas habitaciones tienes.';return}
+    f.style.display='none';document.getElementById('f-ok').style.display='block';
+  });
+})();
+</script>
+</body>
+</html>

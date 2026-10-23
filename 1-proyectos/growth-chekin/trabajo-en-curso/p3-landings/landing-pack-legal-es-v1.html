@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pack legal del alquiler turístico</title>
+<meta name="description" content="Descarga gratis el pack legal: guía de SES.Hospedajes, plantillas del parte de viajeros en Word y Excel, contrato de alquiler vacacional y modelo de factura.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* Boceto v1 · Pack legal (une la guía SES y las 4 páginas de plantillas de la PMax Competitors ES).
+   Design system de Chekin: azul #385BF8, navy #19194B, Montserrat, botones radio 12, sombras azuladas,
+   un solo degradado fuerte (banda final), fondos alternos, footer navy.
+   ?recurso=contrato|parte|factura|guia adapta el titular y destaca el documento que buscaba el usuario. */
+:root{--blue:#385BF8;--navy:#19194B;--ink:#161643;--g1:#6B6B95;--g2:#9696B9;--g3:#DEDEEB;--bg:#FFFFFF;--alt:#F4F6F9;--soft:#EEF2FF;--shadow:0 0 5px rgba(26,148,255,.173);--elev:0 31px 50px rgba(26,140,255,.22);--ring:0 0 0 3px rgba(56,91,248,.2);
+  --pdf:#E5484D;--doc:#2B6BE6;--xls:#1D8A54;--f:'Montserrat',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--f);color:var(--navy);background:var(--bg);line-height:1.5;overflow-x:hidden}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+h1,h2,h3{color:var(--navy);overflow-wrap:break-word}
+a{color:var(--blue)}
+
+.top{height:64px;display:flex;align-items:center;border-bottom:1px solid var(--g3);background:#fff}
+.top .wrap{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.top img{height:26px;width:auto;display:block}
+.top .pill{font-size:12px;font-weight:700;color:var(--blue);background:var(--soft);border-radius:999px;padding:5px 12px;white-space:nowrap}
+
+/* HERO */
+.hero{position:relative;padding:36px 0 44px;background:radial-gradient(1200px 420px at 80% -10%,#E3E9FF 0%,rgba(227,233,255,0) 60%),linear-gradient(180deg,#F7F8FF 0%,#fff 100%);overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) 430px;gap:48px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font:700 12px var(--f);letter-spacing:.06em;text-transform:uppercase;color:var(--blue);background:#fff;border-radius:999px;padding:6px 12px;box-shadow:var(--shadow);margin-bottom:16px}
+.eyebrow i{width:6px;height:6px;border-radius:50%;background:var(--blue)}
+.hero h1{font-size:46px;line-height:1.08;font-weight:800;letter-spacing:-.02em;max-width:620px}
+.hero h1 span{color:var(--blue)}
+.lead{margin-top:14px;font-size:18px;color:var(--g1);max-width:560px}
+
+/* Abanico de documentos */
+.fan{position:relative;height:200px;margin-top:22px;max-width:560px}
+.doc{position:absolute;bottom:0;width:132px;height:172px;background:#fff;border-radius:10px;box-shadow:0 14px 30px rgba(26,140,255,.18),var(--shadow);padding:14px 12px 10px;display:flex;flex-direction:column;gap:6px;transform-origin:50% 120%;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
+.doc .fmt{align-self:flex-start;font-size:10px;font-weight:800;letter-spacing:.06em;color:#fff;border-radius:4px;padding:2px 6px}
+.doc .fmt.pdf{background:var(--pdf)}.doc .fmt.doc_{background:var(--doc)}.doc .fmt.xls{background:var(--xls)}
+.doc b{font-size:12px;line-height:1.25;color:var(--navy);overflow-wrap:anywhere;hyphens:auto}
+.doc .ln{height:5px;border-radius:3px;background:var(--g3)}
+.doc .ln.s{width:70%}.doc .ln.m{width:85%}
+.doc.d1{left:0;transform:rotate(-10deg) translateY(10px)}
+.doc.d2{left:96px;transform:rotate(-4deg)}
+.doc.d3{left:192px;transform:rotate(2deg) translateY(-4px)}
+.doc.d4{left:288px;transform:rotate(7deg)}
+.doc.d5{left:384px;transform:rotate(12deg) translateY(12px)}
+.doc.hl{z-index:5;box-shadow:0 0 0 3px var(--blue),0 22px 40px rgba(56,91,248,.32)}
+.doc.d1.hl{transform:rotate(-10deg) translateY(-14px)}.doc.d2.hl{transform:rotate(-4deg) translateY(-22px)}.doc.d3.hl{transform:rotate(2deg) translateY(-26px)}.doc.d4.hl{transform:rotate(7deg) translateY(-22px)}.doc.d5.hl{transform:rotate(12deg) translateY(-12px)}
+@media (prefers-reduced-motion:reduce){.doc{transition:none}}
+
+/* FORMULARIO */
+.card{position:relative;background:#fff;border-radius:16px;box-shadow:var(--elev),var(--shadow);padding:24px 24px 18px}
+.card h2{font-size:22px;font-weight:700;line-height:1.25}
+.card .sub{font-size:14px;color:var(--g1);margin:4px 0 14px}
+.count{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--blue);background:var(--soft);border-radius:999px;padding:3px 10px;margin-bottom:10px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:end}
+.fld{margin-bottom:10px;min-width:0}
+.fld label{display:block;font:600 13px var(--f);margin-bottom:4px}
+.fld input,.fld select{width:100%;height:44px;border-radius:8px;border:1px solid rgba(22,22,67,.2);background:#F4F6F8;padding:0 12px;font:500 16px var(--f);color:var(--ink);appearance:none;-webkit-appearance:none}
+.fld select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' fill='none' stroke='%2319194B' stroke-width='1.6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;background-size:12px;padding-right:32px}
+.fld input:focus,.fld select:focus{outline:0;border-color:var(--ink);background:#fff;box-shadow:var(--ring)}
+.fld input.filled,.fld select.filled{background-color:#fff;border-color:var(--ink)}
+.tel{display:grid;grid-template-columns:112px minmax(0,1fr);gap:8px}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;height:52px;border:0;border-radius:12px;background:var(--blue);color:#fff;font:700 16px var(--f);cursor:pointer;text-decoration:none}
+.btn:hover{background-image:linear-gradient(rgba(255,255,255,.1),rgba(255,255,255,.1))}
+.btn:focus-visible{outline:0;box-shadow:var(--ring)}
+.btn svg{width:20px;height:20px}
+.legal{margin-top:10px;font-size:11.5px;line-height:1.45;color:var(--g1)}
+.legal a{color:var(--g1)}
+.err{color:#FF2467;font-size:13px;font-weight:600;margin-top:6px}
+.ok{display:none;text-align:center;padding:28px 6px}
+.ok h3{font-size:20px;margin-bottom:6px}
+.ok p{color:var(--g1);font-size:15px}
+
+/* CIFRAS */
+.stats{background:var(--navy);color:#fff;padding:22px 0}
+.stats .wrap{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 48px;font-size:15px;color:#C9CBE6}
+.stats b{color:#fff;font-size:20px;margin-right:6px}
+
+/* QUÉ HAY DENTRO */
+.sec{padding:64px 0}
+.sec.alt{background:var(--alt)}
+.kicker{font:700 12px var(--f);letter-spacing:.06em;text-transform:uppercase;color:var(--blue)}
+.sec h2{font-size:40px;font-weight:400;line-height:1.15;letter-spacing:-.01em;margin:8px 0 10px;max-width:760px}
+.sec h2 b{font-weight:700}
+.sec .intro{font-size:17px;color:var(--g1);max-width:680px}
+.items{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:18px;margin-top:32px}
+.item{background:#fff;border-radius:16px;box-shadow:var(--shadow);padding:22px;display:flex;flex-direction:column;gap:10px;transition:box-shadow .2s}
+.item:hover{box-shadow:0 20px 25px rgba(26,148,255,.173)}
+.item.hl{box-shadow:0 0 0 2px var(--blue),0 20px 25px rgba(26,148,255,.173)}
+.item .head{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.chip{font-size:10.5px;font-weight:800;letter-spacing:.06em;color:#fff;border-radius:4px;padding:2px 7px}
+.chip.pdf{background:var(--pdf)}.chip.doc_{background:var(--doc)}.chip.xls{background:var(--xls)}
+.item h3{font-size:18px;font-weight:700;line-height:1.3}
+.item ul{list-style:none;display:grid;gap:6px}
+.item li{position:relative;padding-left:20px;font-size:14.5px;color:var(--g1)}
+.item li::before{content:"";position:absolute;left:0;top:7px;width:10px;height:10px;border-radius:3px;background:var(--soft);box-shadow:inset 0 0 0 2px var(--blue)}
+.inline-cta{margin-top:28px;max-width:300px}
+
+/* DEL PAPEL AL AUTOMÁTICO */
+.vs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:32px}
+.vs .col{border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:14px}
+.vs .paper{background:#fff;box-shadow:var(--shadow)}
+.vs .auto{background:var(--soft)}
+.vs h3{font-size:16px;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+.vs .paper h3{color:var(--g1)}.vs .auto h3{color:var(--blue)}
+.vs p{font-size:15.5px}
+.vs p b{font-weight:700}
+
+/* BANDA FINAL */
+.band{background:linear-gradient(180deg,#002CFA 0%,#274BF0 100%);color:#fff;padding:52px 0;text-align:center}
+.band h2{color:#fff;font-size:32px;font-weight:700;letter-spacing:-.01em}
+.band p{margin:10px auto 22px;font-size:16px;opacity:.92;max-width:560px}
+.band .btn{max-width:300px;margin:0 auto;background:#fff;color:var(--blue)}
+footer{background:var(--navy);color:#C9CBE6;padding:24px 0;font-size:13px}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+footer img{height:22px;width:auto;display:block}
+footer a{color:#C9CBE6}
+
+/* Solo boceto: simulador de origen del clic */
+.demo{position:fixed;left:16px;bottom:16px;z-index:40;background:var(--navy);color:#fff;border-radius:12px;padding:10px 12px;font-size:12px;box-shadow:0 10px 30px rgba(0,0,0,.25);display:flex;flex-wrap:wrap;align-items:center;gap:6px;max-width:calc(100% - 32px)}
+.demo span{font-weight:700;margin-right:4px}
+.demo button{font:600 12px var(--f);color:#fff;background:rgba(255,255,255,.12);border:0;border-radius:8px;padding:5px 9px;cursor:pointer}
+.demo button[aria-pressed=true]{background:#fff;color:var(--navy)}
+.demo button:focus-visible{outline:2px solid #fff;outline-offset:2px}
+
+@media (max-width:980px){
+  .hero{padding:20px 0 32px}
+  .hero .wrap{grid-template-columns:minmax(0,1fr);gap:18px}
+  .hero h1{font-size:31px}
+  .lead{font-size:16px;margin-top:10px}
+  .fan{display:none}
+  .sec{padding:44px 0}
+  .sec h2{font-size:28px}
+  .vs{grid-template-columns:minmax(0,1fr)}
+  .band h2{font-size:26px}
+  .wrap{padding:0 16px}
+  .top .pill{display:none}
+  .demo{display:none}
+}
+@media (max-width:340px){.row{grid-template-columns:minmax(0,1fr)}}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="wrap"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjgyIDY2IDg1MiAyNTIiPgogIDxnIGlkPSJsb2dvLW5ldy1jaGVraW4tbGFuZHNjYXBlIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMjg0NyAxNTU4OSkiPgogICAgPHJlY3QgaWQ9IlJlY3RhbmdsZV8zMjA0IiBkYXRhLW5hbWU9IlJlY3RhbmdsZSAzMjA0IiB3aWR0aD0iMTAwMCIgaGVpZ2h0PSIzOTkiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI4NDcgLTE1NTg5KSIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iMCIvPgogICAgPGcgaWQ9ImxvZ28iIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI5MjMuMjk0IC0xNTUyOS4wNTUpIj4KICAgICAgPGcgaWQ9Ikdyb3VwXzEyOTc0IiBkYXRhLW5hbWU9Ikdyb3VwIDEyOTc0IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIDApIj4KICAgICAgICA8ZyBpZD0iR3JvdXBfMTMxNDIiIGRhdGEtbmFtZT0iR3JvdXAgMTMxNDIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgMCkiPgogICAgICAgICAgPHBhdGggaWQ9IlBhdGhfMjYyMTgiIGRhdGEtbmFtZT0iUGF0aCAyNjIxOCIgZD0iTS0yMzQuOS05LjE4N2MwLDU2LjQ5NCwzOC45LDEwMC4wMTMsOTkuMTM5LDEwMC4wMTNhMTA3LjQ4LDEwNy40OCwwLDAsMCw2Ny44LTIzLjc4N2M1LjQtNC42LDUuNjczLTEwLjI3MiwxLjYyMS0xNS42NzhsLTUuNC03LjNjLTQuMzIyLTYuMjE3LTkuNzI1LTYuMjE3LTE1LjY2OC0xLjg5Mi04LjkxNSw2LjQ4Ny0yNS4zOTMsMTYuNzU5LTQ3LDE2Ljc1OS00MS4zMzEsMC02NC41NjItMzIuNzA3LTY0LjU2Mi02OC42NTgsMC0zNS40MSwyMi40MjEtNjUuOTU1LDY0LjI5Mi02NS45NTUsMTkuNzIsMCwzNC44NDcsOC4xMDksNDMuMjIyLDEzLjUxNSw2LjQ4Myw0LjA1NSwxMS42MTYsMy41MTQsMTUuNC0yLjdsNC44NjMtNy44MzljMy43ODItNS45NDcsMy41MTItMTEuMzUzLTIuMTYxLTE1LjY3OC0xMC4yNjUtNy4zLTMxLjMzNS0xOS4xOTItNjIuNjcxLTE5LjE5MkMtMTk0LjEwOC0xMDcuNTc4LTIzNC45LTY0Ljg3LTIzNC45LTkuMTg3Wk0tMzguNTExLDc2LjIzYzAsNy41NjksNC4wNTIsMTEuMzUzLDExLjM0NiwxMS4zNTNoMTEuNjE2US00LjIsODcuNTgzLTQuMiw3Ni4yM1YyMy41MmMwLTI2LjIyLDE1LjY2OC00NS42ODIsMzkuNzEtNDUuNjgyLDE3LjI4OCwwLDIxLjYxMSwxMS4zNTMsMjEuNjExLDI4LjExMlY3Ni4yM3EwLDExLjM1MywxMS4zNDYsMTEuMzUzSDgwLjA3OGM3LjI5NCwwLDExLjM0Ni0zLjc4NCwxMS4zNDYtMTEuMzUzVi0xLjA3N2MwLTM2LjQ5MS0xNy41NTktNTIuNDM5LTQ4LjA4NC01Mi40MzktMjMuNzcyLDAtNDEuMDYxLDE0LjYtNDcuODE0LDI3Ljg0MmgtLjU0QTc4LjMsNzguMywwLDAsMC00LjItMzcuM1YtOTIuOTgxYzAtNy4zLTMuNzgyLTExLjM1My0xMS4zNDYtMTEuMzUzSC0yNy4xNjVjLTcuMjk0LDAtMTEuMzQ2LDQuMDU1LTExLjM0NiwxMS4zNTNaTTExNC45MjYsMTguNjU1YzAsMzkuMTk0LDI4LjM2NCw3Mi4xNzIsNzQuMDE3LDcyLjE3MmE4Ny4wMzgsODcuMDM4LDAsMCwwLDQ2LjczMy0xMy43ODZjNS45NDMtMy41MTQsNy4wMjMtOC45MiwzLjc4Mi0xNS4xMzdMMjM2LjIxNiw1Ni41Yy0zLjUxMi02LjIxNy04LjM3NC03LjAyOC0xNS4xMjgtMy43ODQtNi40ODMsNC4wNTUtMTcuMDE4LDguOTItMjkuNzE1LDguOTItMjAuOCwwLTM5LjE3LTEyLjk3NS00MS4zMzEtMzcuODQzaDg0LjAxMmExMS45NDIsMTEuOTQyLDAsMCwwLDExLjg4Ni0xMS42MjNjMC0zNy44NDMtMjEuODgxLTY1LjY4NC02MS4wNTEtNjUuNjg0QzE0My41Ni01My41MTcsMTE0LjkyNi0yMy43ODMsMTE0LjkyNiwxOC42NTVaTTE1MC44NTQsMi45NzdDMTU0LjEtMTUuNCwxNjYuNTIxLTI3LjU2NywxODQuMDgtMjcuNTY3YzE1LjY2OCwwLDI3LjI4NCwxMS4zNTMsMjcuODI0LDMwLjU0NVpNMjcwLjc5Myw3Ni4yM2MwLDcuNTY5LDQuMDUyLDExLjM1MywxMS4zNDYsMTEuMzUzaDExLjYxNnExMS4zNDUsMCwxMS4zNDYtMTEuMzUzVjI3LjNoMTcuODI5bDMyLjE0Niw1Mi40MzljMi45NzIsNS40MDYsNy4wMjQsNy44MzksMTMuMjM3LDcuODM5SDM4Mi45YzkuMTg1LDAsMTIuMTU2LTUuNjc2LDcuNTY0LTEzLjUxNUwzNDkuOTQzLDExLjl2LS41NDFMMzg0LjI1LTM2Ljc1OGM1LjEzMi03LjMsMi4xNjEtMTMuNTE1LTcuMDIzLTEzLjUxNUgzNjQuMjZjLTYuMjEzLDAtMTAuMjY1LDIuMTYzLTEzLjUwNyw3LjU2OUwzMjIuMTE5LTEuNjE4SDMwNS4xVi05Mi45ODFjMC03LjMtMy43ODItMTEuMzUzLTExLjM0Ni0xMS4zNTNIMjgyLjEzOWMtNy4yOTQsMC0xMS4zNDYsNC4wNTUtMTEuMzQ2LDExLjM1M1ptMTQzLjk4MiwwYzAsNy41NjksMy43ODIsMTEuMzUzLDExLjA3NiwxMS4zNTNoMTEuODg2YzcuMjk0LDAsMTEuMDc2LTMuNzg0LDExLjA3Ni0xMS4zNTNWLTM4LjkyYzAtNy4zLTMuNzgyLTExLjM1My0xMS4wNzYtMTEuMzUzSDQyNS44NTFjLTcuMjkzLDAtMTEuMDc2LDQuMDU1LTExLjA3NiwxMS4zNTNabTY4LjA3NCwwYzAsNy41NjksMy43ODIsMTEuMzUzLDExLjA3NiwxMS4zNTNoMTEuODg2YzcuMjk0LDAsMTEuMDc1LTMuNzg0LDExLjA3NS0xMS4zNTNWMjIuOThjMC0yNC44NjgsMTUuNC00NS4xNDEsMzkuNzEtNDUuMTQxLDE3LjI4OSwwLDIxLjYxMSwxMS4zNTMsMjEuNjExLDI4LjExMlY3Ni4yM2MwLDcuNTY5LDQuMDUyLDExLjM1MywxMS4zNDYsMTEuMzUzaDExLjYxNnExMS4zNDYsMCwxMS4zNDYtMTEuMzUzVi0xLjA3N2MwLTM2LjQ5MS0xNy41NTktNTIuNDM5LTQ4LjA4NC01Mi40MzktMjcuODI0LDAtNDIuOTUxLDE3LjU3LTQ4Ljg5NCwyOS4xOTNINTE1YTQ0LjEsNDQuMSwwLDAsMCwuNTQtNi4yMTdWLTM4LjkyYzAtNy4zLTMuNzgyLTExLjM1My0xMS4wNzYtMTEuMzUzSDQ5My45MjVjLTcuMjk0LDAtMTEuMDc2LDQuMDU1LTExLjA3NiwxMS4zNTNaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyMzQuODk4IDE1Ny43ODMpIiBmaWxsPSIjMTkxOTRiIi8+CiAgICAgICAgICA8ZyBpZD0idGljayIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNjIwLjUxNikiPgogICAgICAgICAgICA8ZyBpZD0iR3JvdXBfMTI5NjYiIGRhdGEtbmFtZT0iR3JvdXAgMTI5NjYiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDApIj4KICAgICAgICAgICAgICA8cGF0aCBpZD0iUGF0aF8yNjIwNyIgZGF0YS1uYW1lPSJQYXRoIDI2MjA3IiBkPSJNMTQ0LjkyMywyMzcuNDU2YTEwLjIzMywxMC4yMzMsMCwwLDEsMCwxNC4yMTNMMTM3LDI1OS42YTEwLjIzMywxMC4yMzMsMCwwLDEtMTQuMjEzLDBMODguMDcsMjI0LjYwOWExMC4yMzMsMTAuMjMzLDAsMCwxLDAtMTQuMjEzTDk2LDIwMi40N2ExMC4yMzQsMTAuMjM0LDAsMCwxLDE0LjIxMywwWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTg1LjIgLTE3NC4xOCkiIGZpbGw9IiMzODViZjgiLz4KICAgICAgICAgICAgICA8cGF0aCBpZD0iUGF0aF8yNjIwOCIgZGF0YS1uYW1lPSJQYXRoIDI2MjA4IiBkPSJNMjI3LjQsMTI4LjA3YTEwLjIzNCwxMC4yMzQsMCwwLDEsMTQuMjEzLDBMMjQ5LjU0MiwxMzZhMTAuMjM0LDEwLjIzNCwwLDAsMSwwLDE0LjIxM0wxODkuNDEsMjEwLjA2OGExMC4yMzMsMTAuMjMzLDAsMCwxLTE0LjIxMywwbC03LjkyNi03LjkyNmExMC4yMzMsMTAuMjMzLDAsMCwxLDAtMTQuMjEzWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTEzNy4zNCAtMTI1LjIpIiBmaWxsPSIjMzg1YmY4Ii8+CiAgICAgICAgICAgIDwvZz4KICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICAgIDwvZz4KICAgIDwvZz4KICA8L2c+Cjwvc3ZnPgo=" alt="Chekin"><span class="pill">5 documentos · gratis</span></div></header>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="eyebrow" id="eyebrow"><i></i>Pack legal gratuito</span>
+      <h1 id="h1">Todo el papeleo legal de tu alquiler turístico, <span>en un solo pack</span></h1>
+      <p class="lead" id="lead">Contrato de alquiler vacacional, plantillas del parte de viajeros para SES.Hospedajes, modelo de factura y la guía para cumplir paso a paso. Gratis y listos para usar.</p>
+      <div class="fan" aria-hidden="true">
+        <div class="doc d1" data-r="contrato"><span class="fmt pdf">PDF</span><b>Contrato de alquiler vacacional</b><i class="ln m"></i><i class="ln"></i><i class="ln s"></i></div>
+        <div class="doc d2" data-r="parte"><span class="fmt doc_">WORD</span><b>Parte de viajeros SES.Hospedajes</b><i class="ln"></i><i class="ln m"></i><i class="ln s"></i></div>
+        <div class="doc d3" data-r="parte"><span class="fmt xls">EXCEL</span><b>Registro de viajeros</b><i class="ln m"></i><i class="ln s"></i><i class="ln"></i></div>
+        <div class="doc d4" data-r="factura"><span class="fmt doc_">PLANTILLA</span><b>Modelo de factura</b><i class="ln"></i><i class="ln s"></i><i class="ln m"></i></div>
+        <div class="doc d5" data-r="guia"><span class="fmt pdf">GUÍA</span><b>SES.Hospedajes paso a paso</b><i class="ln s"></i><i class="ln m"></i><i class="ln"></i></div>
+      </div>
+    </div>
+
+    <div class="card" id="form">
+      <form id="lead-form" novalidate>
+        <span class="count">5 documentos · descarga inmediata</span>
+        <h2 id="form-title">Descarga el pack gratis</h2>
+        <p class="sub">Te lo enviamos a tu email al momento.</p>
+        <div class="row">
+          <div class="fld"><label for="f-name">Nombre</label><input id="f-name" name="firstname" autocomplete="given-name" required></div>
+          <div class="fld"><label for="f-mail">Email</label><input id="f-mail" name="email" type="email" inputmode="email" autocomplete="email" required></div>
+        </div>
+        <div class="fld"><label for="f-tel">Teléfono</label>
+          <div class="tel">
+            <select id="f-pre" name="phone_prefix" aria-label="Prefijo">
+              <option value="+34" selected>ES +34</option><option value="+351">PT +351</option><option value="+39">IT +39</option><option value="+33">FR +33</option><option value="+49">DE +49</option><option value="+44">UK +44</option><option value="">Otro</option>
+            </select>
+            <input id="f-tel" name="phone" type="tel" inputmode="tel" autocomplete="tel-national" required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="fld"><label for="f-type">Tipo de alojamiento</label>
+            <select id="f-type" name="property_type" required>
+              <option value="" selected disabled>Selecciona</option>
+              <option>Vivienda turística</option><option>Hotel/Hostal</option><option>Camping</option><option>Otro</option>
+            </select></div>
+          <div class="fld"><label for="f-units">Nº de alojamientos</label><input id="f-units" name="number_of_units" type="number" inputmode="numeric" min="1" step="1" required></div>
+        </div>
+        <!-- campos ocultos de medición: "recurso" guarda qué documento buscaba (viene del anuncio/URL) -->
+        <input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign"><input type="hidden" name="utm_term"><input type="hidden" name="utm_content"><input type="hidden" name="gclid"><input type="hidden" name="fbclid">
+        <input type="hidden" name="landing" value="pack-legal-es-v1-boceto">
+        <input type="hidden" name="recurso" id="f-rec" value="pack">
+        <button class="btn" type="submit"><span id="btn-txt">Descarga el pack gratis</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m-5-5 5 5 5-5M5 20h14"/></svg>
+        </button>
+        <p class="err" id="f-err" role="alert"></p>
+        <p class="legal">Al enviar este formulario confirmas que has leído nuestros <a href="https://chekin.com/terminos/" target="_blank" rel="noopener">Términos y condiciones</a>. Tus datos están protegidos. Cumplimos el RGPD.</p>
+      </form>
+      <div class="ok" id="f-ok" role="status"><h3>¡Listo!</h3><p>Boceto: este formulario todavía no envía datos.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="stats" aria-label="Chekin en cifras">
+  <div class="wrap"><span><b>+200.000</b>propiedades</span><span><b>+25M</b>check-ins</span><span><b>+200</b>PMS conectados</span></div>
+</section>
+
+<section class="sec alt" aria-labelledby="dentro-t">
+  <div class="wrap">
+    <span class="kicker">Qué hay dentro</span>
+    <h2 id="dentro-t">Cinco documentos para <b>alquilar cumpliendo la ley</b></h2>
+    <p class="intro">Del contrato con el huésped al parte que exige el Ministerio del Interior. Personalizables y gratis.</p>
+    <div class="items">
+      <article class="item" data-r="contrato">
+        <div class="head"><span class="chip pdf">PDF</span></div>
+        <h3>Contrato de alquiler vacacional</h3>
+        <ul><li>Número de huéspedes y periodo de alquiler</li><li>Tarifas, depósito de seguridad y cancelación</li><li>Normas de la casa, mascotas y subarriendos</li><li>Accesos del propietario por mantenimiento o emergencias</li></ul>
+      </article>
+      <article class="item" data-r="parte">
+        <div class="head"><span class="chip doc_">WORD</span><span class="chip xls">EXCEL</span></div>
+        <h3>Plantillas del parte de viajeros (SES.Hospedajes)</h3>
+        <ul><li>Todos los campos del registro de viajeros</li><li>Datos del establecimiento y de cada huésped</li><li>Fechas y horas de entrada y salida</li><li>Datos del pago de la reserva</li></ul>
+      </article>
+      <article class="item" data-r="factura">
+        <div class="head"><span class="chip doc_">PLANTILLA</span></div>
+        <h3>Modelo de factura de alquiler vacacional</h3>
+        <ul><li>Datos del propietario y del huésped</li><li>Alojamiento, fechas y número de huéspedes</li><li>Tarifas, extras y método de pago</li></ul>
+      </article>
+      <article class="item" data-r="guia">
+        <div class="head"><span class="chip pdf">GUÍA</span></div>
+        <h3>Guía de SES.Hospedajes paso a paso</h3>
+        <ul><li>Real Decreto 933/2021: a quién afecta</li><li>Datos obligatorios y sanciones</li><li>Reglas de Cataluña y País Vasco</li><li>Registro en el portal, paso a paso</li></ul>
+      </article>
+    </div>
+    <a class="btn inline-cta" href="#form">Descarga el pack gratis</a>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="auto-t">
+  <div class="wrap">
+    <span class="kicker">Y cuando te canses del papel</span>
+    <h2 id="auto-t">Lo mismo, <b>sin rellenar nada a mano</b></h2>
+    <div class="vs">
+      <div class="col paper"><h3>Con las plantillas</h3>
+        <p>Copias los datos de cada huésped en el Word o el Excel, imprimes el contrato y entras en el portal del Ministerio para enviar el parte.</p></div>
+      <div class="col auto"><h3>Con Chekin</h3>
+        <p>El huésped se registra desde el móvil antes de llegar, <b>firma el contrato y las normas de la casa</b> en el mismo paso y Chekin <b>envía el parte a SES.Hospedajes en automático y en plazo</b>.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <h2>Tu papeleo legal, resuelto hoy</h2>
+    <p>Cinco documentos gratis en tu email en un minuto.</p>
+    <a class="btn" href="#form">Descarga el pack gratis</a>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjgyIDY2IDg1MiAyNTIiPgogIDxnIGlkPSJsb2dvLW5ldy1jaGVraW4tbGFuZHNjYXBlIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMjg0NyAxNTU4OSkiPgogICAgPHJlY3QgaWQ9IlJlY3RhbmdsZV8zMjA0IiBkYXRhLW5hbWU9IlJlY3RhbmdsZSAzMjA0IiB3aWR0aD0iMTAwMCIgaGVpZ2h0PSIzOTkiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI4NDcgLTE1NTg5KSIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iMCIvPgogICAgPGcgaWQ9ImxvZ28iIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI5MjMuMjk0IC0xNTUyOS4wNTUpIj4KICAgICAgPGcgaWQ9Ikdyb3VwXzEyOTc0IiBkYXRhLW5hbWU9Ikdyb3VwIDEyOTc0IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIDApIj4KICAgICAgICA8ZyBpZD0iR3JvdXBfMTMxNDIiIGRhdGEtbmFtZT0iR3JvdXAgMTMxNDIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgMCkiPgogICAgICAgICAgPHBhdGggaWQ9IlBhdGhfMjYyMTgiIGRhdGEtbmFtZT0iUGF0aCAyNjIxOCIgZD0iTS0yMzQuOS05LjE4N2MwLDU2LjQ5NCwzOC45LDEwMC4wMTMsOTkuMTM5LDEwMC4wMTNhMTA3LjQ4LDEwNy40OCwwLDAsMCw2Ny44LTIzLjc4N2M1LjQtNC42LDUuNjczLTEwLjI3MiwxLjYyMS0xNS42NzhsLTUuNC03LjNjLTQuMzIyLTYuMjE3LTkuNzI1LTYuMjE3LTE1LjY2OC0xLjg5Mi04LjkxNSw2LjQ4Ny0yNS4zOTMsMTYuNzU5LTQ3LDE2Ljc1OS00MS4zMzEsMC02NC41NjItMzIuNzA3LTY0LjU2Mi02OC42NTgsMC0zNS40MSwyMi40MjEtNjUuOTU1LDY0LjI5Mi02NS45NTUsMTkuNzIsMCwzNC44NDcsOC4xMDksNDMuMjIyLDEzLjUxNSw2LjQ4Myw0LjA1NSwxMS42MTYsMy41MTQsMTUuNC0yLjdsNC44NjMtNy44MzljMy43ODItNS45NDcsMy41MTItMTEuMzUzLTIuMTYxLTE1LjY3OC0xMC4yNjUtNy4zLTMxLjMzNS0xOS4xOTItNjIuNjcxLTE5LjE5MkMtMTk0LjEwOC0xMDcuNTc4LTIzNC45LTY0Ljg3LTIzNC45LTkuMTg3Wk0tMzguNTExLDc2LjIzYzAsNy41NjksNC4wNTIsMTEuMzUzLDExLjM0NiwxMS4zNTNoMTEuNjE2US00LjIsODcuNTgzLTQuMiw3Ni4yM1YyMy41MmMwLTI2LjIyLDE1LjY2OC00NS42ODIsMzkuNzEtNDUuNjgyLDE3LjI4OCwwLDIxLjYxMSwxMS4zNTMsMjEuNjExLDI4LjExMlY3Ni4yM3EwLDExLjM1MywxMS4zNDYsMTEuMzUzSDgwLjA3OGM3LjI5NCwwLDExLjM0Ni0zLjc4NCwxMS4zNDYtMTEuMzUzVi0xLjA3N2MwLTM2LjQ5MS0xNy41NTktNTIuNDM5LTQ4LjA4NC01Mi40MzktMjMuNzcyLDAtNDEuMDYxLDE0LjYtNDcuODE0LDI3Ljg0MmgtLjU0QTc4LjMsNzguMywwLDAsMC00LjItMzcuM1YtOTIuOTgxYzAtNy4zLTMuNzgyLTExLjM1My0xMS4zNDYtMTEuMzUzSC0yNy4xNjVjLTcuMjk0LDAtMTEuMzQ2LDQuMDU1LTExLjM0NiwxMS4zNTNaTTExNC45MjYsMTguNjU1YzAsMzkuMTk0LDI4LjM2NCw3Mi4xNzIsNzQuMDE3LDcyLjE3MmE4Ny4wMzgsODcuMDM4LDAsMCwwLDQ2LjczMy0xMy43ODZjNS45NDMtMy41MTQsNy4wMjMtOC45MiwzLjc4Mi0xNS4xMzdMMjM2LjIxNiw1Ni41Yy0zLjUxMi02LjIxNy04LjM3NC03LjAyOC0xNS4xMjgtMy43ODQtNi40ODMsNC4wNTUtMTcuMDE4LDguOTItMjkuNzE1LDguOTItMjAuOCwwLTM5LjE3LTEyLjk3NS00MS4zMzEtMzcuODQzaDg0LjAxMmExMS45NDIsMTEuOTQyLDAsMCwwLDExLjg4Ni0xMS42MjNjMC0zNy44NDMtMjEuODgxLTY1LjY4NC02MS4wNTEtNjUuNjg0QzE0My41Ni01My41MTcsMTE0LjkyNi0yMy43ODMsMTE0LjkyNiwxOC42NTVaTTE1MC44NTQsMi45NzdDMTU0LjEtMTUuNCwxNjYuNTIxLTI3LjU2NywxODQuMDgtMjcuNTY3YzE1LjY2OCwwLDI3LjI4NCwxMS4zNTMsMjcuODI0LDMwLjU0NVpNMjcwLjc5Myw3Ni4yM2MwLDcuNTY5LDQuMDUyLDExLjM1MywxMS4zNDYsMTEuMzUzaDExLjYxNnExMS4zNDUsMCwxMS4zNDYtMTEuMzUzVjI3LjNoMTcuODI5bDMyLjE0Niw1Mi40MzljMi45NzIsNS40MDYsNy4wMjQsNy44MzksMTMuMjM3LDcuODM5SDM4Mi45YzkuMTg1LDAsMTIuMTU2LTUuNjc2LDcuNTY0LTEzLjUxNUwzNDkuOTQzLDExLjl2LS41NDFMMzg0LjI1LTM2Ljc1OGM1LjEzMi03LjMsMi4xNjEtMTMuNTE1LTcuMDIzLTEzLjUxNUgzNjQuMjZjLTYuMjEzLDAtMTAuMjY1LDIuMTYzLTEzLjUwNyw3LjU2OUwzMjIuMTE5LTEuNjE4SDMwNS4xVi05Mi45ODFjMC03LjMtMy43ODItMTEuMzUzLTExLjM0Ni0xMS4zNTNIMjgyLjEzOWMtNy4yOTQsMC0xMS4zNDYsNC4wNTUtMTEuMzQ2LDExLjM1M1ptMTQzLjk4MiwwYzAsNy41NjksMy43ODIsMTEuMzUzLDExLjA3NiwxMS4zNTNoMTEuODg2YzcuMjk0LDAsMTEuMDc2LTMuNzg0LDExLjA3Ni0xMS4zNTNWLTM4LjkyYzAtNy4zLTMuNzgyLTExLjM1My0xMS4wNzYtMTEuMzUzSDQyNS44NTFjLTcuMjkzLDAtMTEuMDc2LDQuMDU1LTExLjA3NiwxMS4zNTNabTY4LjA3NCwwYzAsNy41NjksMy43ODIsMTEuMzUzLDExLjA3NiwxMS4zNTNoMTEuODg2YzcuMjk0LDAsMTEuMDc1LTMuNzg0LDExLjA3NS0xMS4zNTNWMjIuOThjMC0yNC44NjgsMTUuNC00NS4xNDEsMzkuNzEtNDUuMTQxLDE3LjI4OSwwLDIxLjYxMSwxMS4zNTMsMjEuNjExLDI4LjExMlY3Ni4yM2MwLDcuNTY5LDQuMDUyLDExLjM1MywxMS4zNDYsMTEuMzUzaDExLjYxNnExMS4zNDYsMCwxMS4zNDYtMTEuMzUzVi0xLjA3N2MwLTM2LjQ5MS0xNy41NTktNTIuNDM5LTQ4LjA4NC01Mi40MzktMjcuODI0LDAtNDIuOTUxLDE3LjU3LTQ4Ljg5NCwyOS4xOTNINTE1YTQ0LjEsNDQuMSwwLDAsMCwuNTQtNi4yMTdWLTM4LjkyYzAtNy4zLTMuNzgyLTExLjM1My0xMS4wNzYtMTEuMzUzSDQ5My45MjVjLTcuMjk0LDAtMTEuMDc2LDQuMDU1LTExLjA3NiwxMS4zNTNaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyMzQuODk4IDE1Ny43ODMpIiBmaWxsPSIjZmZmIi8+CiAgICAgICAgICA8ZyBpZD0idGljayIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNjIwLjUxNikiPgogICAgICAgICAgICA8ZyBpZD0iR3JvdXBfMTI5NjYiIGRhdGEtbmFtZT0iR3JvdXAgMTI5NjYiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDApIj4KICAgICAgICAgICAgICA8cGF0aCBpZD0iUGF0aF8yNjIwNyIgZGF0YS1uYW1lPSJQYXRoIDI2MjA3IiBkPSJNMTQ0LjkyMywyMzcuNDU2YTEwLjIzMywxMC4yMzMsMCwwLDEsMCwxNC4yMTNMMTM3LDI1OS42YTEwLjIzMywxMC4yMzMsMCwwLDEtMTQuMjEzLDBMODguMDcsMjI0LjYwOWExMC4yMzMsMTAuMjMzLDAsMCwxLDAtMTQuMjEzTDk2LDIwMi40N2ExMC4yMzQsMTAuMjM0LDAsMCwxLDE0LjIxMywwWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTg1LjIgLTE3NC4xOCkiIGZpbGw9IiNmZmYiLz4KICAgICAgICAgICAgICA8cGF0aCBpZD0iUGF0aF8yNjIwOCIgZGF0YS1uYW1lPSJQYXRoIDI2MjA4IiBkPSJNMjI3LjQsMTI4LjA3YTEwLjIzNCwxMC4yMzQsMCwwLDEsMTQuMjEzLDBMMjQ5LjU0MiwxMzZhMTAuMjM0LDEwLjIzNCwwLDAsMSwwLDE0LjIxM0wxODkuNDEsMjEwLjA2OGExMC4yMzMsMTAuMjMzLDAsMCwxLTE0LjIxMywwbC03LjkyNi03LjkyNmExMC4yMzMsMTAuMjMzLDAsMCwxLDAtMTQuMjEzWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTEzNy4zNCAtMTI1LjIpIiBmaWxsPSIjZmZmIi8+CiAgICAgICAgICAgIDwvZz4KICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICAgIDwvZz4KICAgIDwvZz4KICA8L2c+Cjwvc3ZnPgo=" alt="Chekin"><span>© Chekin · <a href="https://chekin.com/terminos/" target="_blank" rel="noopener">Términos</a> · <a href="https://chekin.com/privacidad/" target="_blank" rel="noopener">Privacidad</a></span></div></footer>
+
+<!-- SOLO BOCETO: simula desde qué anuncio llega el usuario. Se quita al pasar a HubSpot. -->
+<div class="demo" role="group" aria-label="Simular origen del clic (solo boceto)">
+  <span>Llega desde:</span>
+  <button type="button" data-set="">Pack</button>
+  <button type="button" data-set="contrato">Contrato</button>
+  <button type="button" data-set="parte">Plantilla SES</button>
+  <button type="button" data-set="factura">Factura</button>
+  <button type="button" data-set="guia">Guía</button>
+</div>
+
+<script>
+(function(){
+  // Mensaje del anuncio → titular: cada URL antigua manda aquí con ?recurso=…
+  var COPY={
+    '':{eye:'Pack legal gratuito',h1:'Todo el papeleo legal de tu alquiler turístico, <span>en un solo pack</span>',form:'Descarga el pack gratis'},
+    contrato:{eye:'Contrato de alquiler vacacional · PDF',h1:'Tu contrato de alquiler vacacional, <span>y todo lo demás que necesitas</span>',form:'Descarga el contrato y el pack'},
+    parte:{eye:'Plantilla SES.Hospedajes · Word y Excel',h1:'Plantillas del parte de viajeros para <span>SES.Hospedajes</span>',form:'Descarga las plantillas y el pack'},
+    factura:{eye:'Modelo de factura · alquiler vacacional',h1:'Tu modelo de factura de alquiler vacacional, <span>y el resto del papeleo</span>',form:'Descarga la factura y el pack'},
+    guia:{eye:'Guía SES.Hospedajes · PDF',h1:'Registro de viajeros en <span>SES.Hospedajes</span>: la guía y las plantillas',form:'Descarga la guía y el pack'}
+  };
+  var $=function(id){return document.getElementById(id)};
+  function apply(r){
+    if(!COPY.hasOwnProperty(r))r='';
+    var c=COPY[r];
+    $('eyebrow').innerHTML='<i></i>'+c.eye; $('h1').innerHTML=c.h1; $('form-title').textContent=c.form; $('f-rec').value=r||'pack';
+    document.querySelectorAll('[data-r]').forEach(function(el){el.classList.toggle('hl',!!r&&el.getAttribute('data-r')===r)});
+    document.querySelectorAll('.demo button').forEach(function(b){b.setAttribute('aria-pressed',String(b.getAttribute('data-set')===r))});
+  }
+  var q=new URLSearchParams(location.search);
+  apply(q.get('recurso')||'');
+  document.querySelectorAll('.demo button').forEach(function(b){b.addEventListener('click',function(){apply(b.getAttribute('data-set'))})});
+
+  var f=$('lead-form'),err=$('f-err');
+  ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid','fbclid'].forEach(function(k){var v=q.get(k);if(v&&f.elements[k])f.elements[k].value=v});
+  f.addEventListener('input',function(e){var t=e.target;if(t.matches('input,select'))t.classList.toggle('filled',!!t.value)});
+  f.addEventListener('change',function(e){var t=e.target;if(t.matches('select'))t.classList.toggle('filled',!!t.value)});
+  f.addEventListener('submit',function(e){
+    e.preventDefault();err.textContent='';
+    var E=f.elements,mail=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    if(!E.firstname.value.trim()){err.textContent='Escribe tu nombre.';return}
+    if(!mail.test(E.email.value.trim())){err.textContent='Escribe un email válido.';return}
+    if(E.phone.value.replace(/\D/g,'').length<6){err.textContent='Escribe un teléfono válido.';return}
+    if(!E.property_type.value){err.textContent='Elige el tipo de alojamiento.';return}
+    if(!(+E.number_of_units.value>=1)){err.textContent='Indica cuántos alojamientos tienes.';return}
+    f.style.display='none';$('f-ok').style.display='block';
+  });
+})();
+</script>
+</body>
+</html>

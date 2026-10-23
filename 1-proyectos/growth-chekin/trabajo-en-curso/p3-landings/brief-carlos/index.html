@@ -1,0 +1,416 @@
+<title>Landings de paid: antes y después</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: una banda por landing, "Antes" y "Después" en dos columnas, fallos debajo. Pensado para compartir pantalla. */
+:root{
+  --bg:#F5F6FB; --panel:#FFFFFF; --fg:#19194B; --muted:#5E5F8A; --line:#DEDFEC;
+  --accent:#385BF8; --accent-soft:#E9EEFF; --bad:#D62D5B; --bad-soft:#FCE9EF; --ok:#13865A; --ok-soft:#E3F5EC; --warn:#A86200; --warn-soft:#FFF2DD;
+  --f-body:'Montserrat',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  --f-num:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#10102C; --panel:#191A3D; --fg:#ECEDFA; --muted:#A9AAD0; --line:#2E2F5C;
+  --accent:#7D95FF; --accent-soft:#232B63; --bad:#FF7A9C; --bad-soft:#3A1830; --ok:#4FD39B; --ok-soft:#123628; --warn:#F2B05A; --warn-soft:#3A2A12; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#10102C; --panel:#191A3D; --fg:#ECEDFA; --muted:#A9AAD0; --line:#2E2F5C;
+  --accent:#7D95FF; --accent-soft:#232B63; --bad:#FF7A9C; --bad-soft:#3A1830; --ok:#4FD39B; --ok-soft:#123628; --warn:#F2B05A; --warn-soft:#3A2A12; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.5;margin:0}
+.page{max-width:1180px;margin:0 auto;padding-block:40px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:40px}
+h1,h2,h3{text-wrap:balance;margin:0}
+h1{font-size:clamp(28px,4vw,40px);font-weight:800;letter-spacing:-.02em}
+h2{font-size:clamp(22px,3vw,28px);font-weight:700;letter-spacing:-.01em}
+h3{font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+p{margin:0}
+a{color:var(--accent)}
+.num{font-family:var(--f-num);font-variant-numeric:tabular-nums}
+.lead{font-size:18px;color:var(--muted);max-width:68ch;margin-top:10px}
+.meta{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:14px;font-size:14px;color:var(--muted)}
+.meta b{color:var(--fg);font-weight:600}
+
+/* Resumen */
+.summary{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600}
+tr:last-child td{border-bottom:0}
+td a{white-space:nowrap}
+
+.pill{display:inline-block;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.pill.bad{background:var(--bad-soft);color:var(--bad)}
+.pill.ok{background:var(--ok-soft);color:var(--ok)}
+.pill.warn{background:var(--warn-soft);color:var(--warn)}
+.pill.new{background:var(--accent-soft);color:var(--accent)}
+
+/* Banda por landing */
+.landing{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:28px;display:flex;flex-direction:column;gap:24px}
+.landing header{display:flex;flex-direction:column;gap:6px}
+.kicker{font-size:13px;font-weight:700;color:var(--accent);letter-spacing:.04em}
+.pair{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:20px}
+.side{display:flex;flex-direction:column;gap:10px;min-width:0}
+.side .label{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.side .label span{font-weight:800;font-size:14px;letter-spacing:.06em;text-transform:uppercase}
+.side.before .label span{color:var(--bad)}
+.side.after .label span{color:var(--ok)}
+.go{font-size:14px;font-weight:600;text-decoration:none;border:1px solid var(--line);border-radius:10px;padding:6px 12px;color:var(--accent);background:var(--panel);overflow-wrap:anywhere}
+.go:hover{border-color:var(--accent)}
+.go:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.shot{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--bg)}
+.shot img{display:block;width:100%;height:auto}
+.shots-mobile{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.shots-mobile .shot img{max-height:420px;object-fit:cover;object-position:top}
+.noshot{border:1px dashed var(--line);border-radius:10px;padding:18px;color:var(--muted);font-size:14px}
+.cap{font-size:13px;color:var(--muted)}
+
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:24px}
+ul.list{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-direction:column;gap:8px}
+ul.list li{position:relative;padding-left:26px}
+ul.list li::before{content:"";position:absolute;left:0;top:.45em;width:12px;height:12px;border-radius:3px}
+ul.fails li::before{background:var(--bad)}
+ul.fixes li::before{background:var(--ok)}
+ul.list b{font-weight:700}
+
+.compare{border:1px solid var(--line);border-radius:12px;overflow-x:auto}
+.compare td:nth-child(2){color:var(--bad)}
+.compare td:nth-child(3){color:var(--ok);font-weight:600}
+
+.status{display:flex;gap:12px;align-items:flex-start;background:var(--bg);border-radius:12px;padding:14px 16px;font-size:15px}
+.status b{font-weight:700}
+
+.angles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:14px}
+.angle{border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.angle .h1{font-weight:700;font-size:16px}
+.angle .ad{font-size:13px;color:var(--muted)}
+.angle .go{align-self:flex-start;margin-top:auto}
+
+.rules{font-size:14px;color:var(--muted);display:flex;flex-direction:column;gap:6px}
+@media (max-width:600px){.landing{padding:18px}th,td{padding:10px 12px}}
+</style>
+
+<main class="page">
+  <header>
+    <h1>Landings de paid: antes y después</h1>
+    <p class="lead">Qué fallaba en cada landing que hoy reciben las campañas de Google, qué cambia en la versión nueva y en qué estado está. Para revisarlo con Carlos el lunes 26.</p>
+    <div class="meta">
+      <span>Preparado por <b>Alexandre</b> · 23/10/2026</span>
+      <span>Datos de Google Ads y HubSpot: <b>90 días (21 jul – 18 oct)</b> salvo que se diga otra cosa</span>
+      <span>Las versiones nuevas son <b>bocetos</b>: nada está en HubSpot</span>
+    </div>
+  </header>
+
+  <section class="summary" aria-label="Resumen">
+    <table>
+      <thead><tr><th>Landing</th><th>Campaña</th><th>Antes</th><th>Después</th><th>Estado</th></tr></thead>
+      <tbody>
+        <tr><td><a href="#hoteles">Hoteles España</a></td><td>PMax Competitors ES</td><td><a href="https://landing.chekin.com/chekin-hoteles" target="_blank" rel="noopener">/chekin-hoteles</a></td><td><a href="https://claude.ai/artifact/MNjzT6AykyJskR75SzasEc" target="_blank" rel="noopener">Boceto v6</a></td><td><span class="pill warn">Test pausado</span></td></tr>
+        <tr><td><a href="#ses">SES Hospedajes</a></td><td>PMax Vacational ES</td><td><a href="https://landing.chekin.com/es/check-in-online-ses-hospedajes" target="_blank" rel="noopener">/check-in-online-ses-hospedajes</a></td><td><a href="https://claude.ai/artifact/WSjWXPdZfVKVF781QqLdNK" target="_blank" rel="noopener">Boceto v2</a></td><td><span class="pill ok">Listo para decidir</span></td></tr>
+        <tr><td><a href="#guia">Guía SES</a></td><td>PMax Competitors ES</td><td><a href="https://landing.chekin.com/es/guia/seshospedajes" target="_blank" rel="noopener">/es/guia/seshospedajes</a></td><td><a href="https://claude.ai/artifact/HWpa7NEiAcJAPwmYzvK1Uz" target="_blank" rel="noopener">Boceto v2</a></td><td><span class="pill ok">Listo para decidir</span></td></tr>
+        <tr><td><a href="#guestapp">Guest app</a></td><td>PMax Competitors ES</td><td><a href="https://landing.chekin.com/check-in-guestapp" target="_blank" rel="noopener">/check-in-guestapp</a></td><td><a href="https://claude.ai/artifact/6H23uPLZEJyBSbnVNWhTPP" target="_blank" rel="noopener">Boceto v2</a></td><td><span class="pill ok">Listo para decidir</span></td></tr>
+        <tr><td><a href="#pack">Pack legal (une 5 páginas)</a></td><td>PMax Competitors ES</td><td>Guía + 4 plantillas</td><td><a href="https://claude.ai/artifact/P8tf8sdAtaTqAXr8f7iZAj" target="_blank" rel="noopener">Boceto v1</a></td><td><span class="pill new">Propuesta</span></td></tr>
+        <tr><td><a href="#angulos">Una landing por anuncio</a></td><td>PMax hoteles (fase 2)</td><td>No existían</td><td>4 bocetos</td><td><span class="pill new">Propuesta</span></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 1 · HOTELES -->
+  <section class="landing" id="hoteles">
+    <header>
+      <span class="kicker">PMax Competitors ES · SB_ES_GOOGLE_PMAX_COMPETITORS_CHEKIN</span>
+      <h2>Hoteles España: /chekin-hoteles</h2>
+      <p class="cap">De 1.559 clics que llegaron en 90 días salieron <b class="num">6</b> formularios: <b class="num">0,38%</b>. Las plantillas y la guía SES de la misma campaña convierten entre el 2,9% y el 5,0%.</p>
+    </header>
+    <div class="pair">
+      <div class="side before">
+        <div class="label"><span>Antes</span><a class="go" href="https://landing.chekin.com/chekin-hoteles" target="_blank" rel="noopener">Abrir la actual ↗</a></div>
+        <div class="shot"><img src="img/hoteles-actual-portatil.jpg" alt="Primera pantalla de /chekin-hoteles en portátil: titular general y botón Hablar con un experto, sin formulario"></div>
+        <p class="cap">Portátil de 14" (1512×780), capturada el 23/10. No hay formulario a la vista.</p>
+      </div>
+      <div class="side after">
+        <div class="label"><span>Después</span><a class="go" href="https://claude.ai/artifact/MNjzT6AykyJskR75SzasEc" target="_blank" rel="noopener">Abrir el boceto ↗</a></div>
+        <div class="noshot">Ábrela en el enlace: titular <b>"Automatiza la recepción de tu hotel"</b>, el mismo mensaje que los anuncios, y el formulario de prueba gratis en la primera pantalla.</div>
+      </div>
+    </div>
+    <div class="cols">
+      <div>
+        <h3>Qué fallaba</h3>
+        <ul class="list fails">
+          <li><b>El formulario está al final</b>: a unos 6.900 px, en una página de 7.000–7.400 px. Quien no baja hasta el final no ve dónde dejar sus datos.</li>
+          <li><b>Tres objetivos a la vez</b>: hablar con un experto, la calculadora y la guía gratuita. No hay una acción clara.</li>
+          <li><b>9 enlaces que sacan de la página</b> (medido el 23/10).</li>
+          <li><b>El titular no repite el anuncio</b>: los anuncios dicen "Automatiza tu recepción" o "Check-in en 3 minutos"; la página, "Toda la experiencia del huésped".</li>
+          <li><b>Lenta</b>: 3,9 s y 716 KB (21/10). <b>Idioma declarado inglés</b> en una página en español.</li>
+          <li><b>"+15 países"</b>: cifra antigua (la oficial es +20).</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Qué cambia</h3>
+        <div class="compare">
+          <table>
+            <thead><tr><th></th><th>Actual</th><th>Nueva</th></tr></thead>
+            <tbody>
+              <tr><td>Formulario</td><td class="num">≈6.900 px</td><td class="num">185 px</td></tr>
+              <tr><td>Alto de la página</td><td class="num">7.374 px</td><td class="num">4.362 px</td></tr>
+              <tr><td>Enlaces de salida</td><td class="num">9–14</td><td class="num">3</td></tr>
+              <tr><td>Objetivos</td><td class="num">3</td><td class="num">1</td></tr>
+              <tr><td>Idioma declarado</td><td>en</td><td>es</td></tr>
+              <tr><td>Oferta</td><td>Hablar con un experto</td><td>Prueba gratis 14 días</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="status"><span class="pill warn">Test pausado</span><p>Google solo manda a esta página el <b>41%</b> de los clics de la campaña (90 días), y el <b>21%</b> en los últimos 30. El resto va a plantillas y guías por la expansión de URL. Con ~190 clics al mes el test no termina en plazo. <b>Decidir el lunes</b>: acotar la expansión, testear donde va el tráfico o pasar a una landing por anuncio.</p></div>
+  </section>
+
+  <!-- 2 · SES -->
+  <section class="landing" id="ses">
+    <header>
+      <span class="kicker">PMax Vacational ES · el 99% de sus clics llega aquí</span>
+      <h2>SES Hospedajes: /check-in-online-ses-hospedajes</h2>
+      <p class="cap">La página que más formularios trae: <b class="num">14.622</b> clics y <b class="num">535</b> formularios (<b class="num">3,7%</b>) en 90 días. Leads baratos de alquiler vacacional: 500 MQL, 8 SQL, 0 ganados.</p>
+    </header>
+    <div class="pair">
+      <div class="side before">
+        <div class="label"><span>Antes</span><a class="go" href="https://landing.chekin.com/es/check-in-online-ses-hospedajes" target="_blank" rel="noopener">Abrir la actual ↗</a></div>
+        <div class="shot"><img src="img/ses-portatil-1512x780.jpg" alt="Primera pantalla de la landing SES actual en portátil: el botón de enviar queda por debajo del pliegue"></div>
+        <div class="shots-mobile">
+          <div class="shot"><img src="img/ses-movil-375x812.jpg" alt="Landing SES actual en móvil: el titular sale cortado por la derecha"></div>
+          <p class="cap">Móvil (375×812): el titular sale cortado y el formulario empieza a 961 px, fuera de la primera pantalla.</p>
+        </div>
+      </div>
+      <div class="side after">
+        <div class="label"><span>Después</span><a class="go" href="https://claude.ai/artifact/WSjWXPdZfVKVF781QqLdNK" target="_blank" rel="noopener">Abrir el boceto ↗</a></div>
+        <div class="shot"><img src="img/v2-portatil-1512x780.jpg" alt="Boceto v2 en portátil: formulario compacto con el botón visible sin bajar"></div>
+        <div class="shots-mobile">
+          <div class="shot"><img src="img/v2-movil-375x812.jpg" alt="Boceto v2 en móvil: titular entero y formulario justo debajo"></div>
+          <p class="cap">Móvil: titular entero y el botón de enviar a 731 px, sin bajar.</p>
+        </div>
+      </div>
+    </div>
+    <div class="cols">
+      <div>
+        <h3>Qué fallaba</h3>
+        <ul class="list fails">
+          <li><b>Móvil: el titular sale cortado</b> por la derecha. Es lo primero que ve el usuario.</li>
+          <li><b>Móvil: el formulario empieza a 961 px</b> y el botón termina a 1.559 px.</li>
+          <li><b>Portátil: el botón de enviar queda cortado</b>, a ~824 px con una pantalla de 780.</li>
+          <li><b>Dos botones iguales que llevan al mismo sitio</b> ("Prueba gratuita" y "Hablar con un experto"), repetidos 4 veces; 11 botones en total.</li>
+          <li><b>Página larguísima</b>: 7.669 px en portátil y 13.963 px en móvil.</li>
+          <li><b>Cifra no oficial</b>: "+50 integraciones" (la oficial es +200 PMS). Campos a 15 px: iOS hace zoom al tocarlos.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Qué cambia</h3>
+        <div class="compare">
+          <table>
+            <thead><tr><th></th><th>Actual</th><th>v2</th></tr></thead>
+            <tbody>
+              <tr><td>Botón de enviar (portátil)</td><td class="num">≈824 px</td><td class="num">474 px</td></tr>
+              <tr><td>Formulario (móvil)</td><td class="num">961 px</td><td class="num">316 px</td></tr>
+              <tr><td>Alto (portátil / móvil)</td><td class="num">7.669 / 13.963</td><td class="num">2.520 / 4.085</td></tr>
+              <tr><td>Botones</td><td class="num">11</td><td>1 principal + enlace "que me llame un experto"</td></tr>
+              <tr><td>Letra de los campos (móvil)</td><td class="num">15 px</td><td class="num">16 px</td></tr>
+              <tr><td>Cifras</td><td>+50 integraciones</td><td>Solo oficiales</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="status"><span class="pill ok">Listo para decidir</span><p>Propuesta: test actual frente a v2 en la PMax Vacational, que ya manda aquí el 99% del tráfico. Hay volumen para terminarlo rápido. <b>Durante el test, excluir las otras URL de la campaña</b>, para que Google no mueva el tráfico si cambia la conversión. Antes de lanzar falta el OK del DPO al texto legal y conectar el formulario de HubSpot.</p></div>
+  </section>
+
+  <!-- 3 · GUÍA -->
+  <section class="landing" id="guia">
+    <header>
+      <span class="kicker">PMax Competitors ES · 202 de sus 236 clics</span>
+      <h2>Guía SES: /es/guia/seshospedajes</h2>
+      <p class="cap"><b class="num">236</b> clics y <b class="num">8</b> formularios (<b class="num">3,4%</b>) en 90 días.</p>
+    </header>
+    <div class="pair">
+      <div class="side before">
+        <div class="label"><span>Antes</span><a class="go" href="https://landing.chekin.com/es/guia/seshospedajes" target="_blank" rel="noopener">Abrir la actual ↗</a></div>
+        <div class="shot"><img src="img/guia-portatil-1512x780.jpg" alt="Primera pantalla de la guía SES en portátil: sin formulario, solo un botón Descargar gratis"></div>
+        <div class="shots-mobile">
+          <div class="shot"><img src="img/guia-movil-375x812.jpg" alt="Guía SES actual en móvil: sin formulario en la primera pantalla"></div>
+          <p class="cap">Móvil: el formulario empieza a 2.337 px.</p>
+        </div>
+      </div>
+      <div class="side after">
+        <div class="label"><span>Después</span><a class="go" href="https://claude.ai/artifact/HWpa7NEiAcJAPwmYzvK1Uz" target="_blank" rel="noopener">Abrir el boceto ↗</a></div>
+        <div class="shot"><img src="img/guia-v2-portatil.jpg" alt="Guía v2 en portátil: titular a la izquierda y formulario de descarga a la derecha, visible sin bajar"></div>
+        <div class="shots-mobile">
+          <div class="shot"><img src="img/guia-v2-movil.jpg" alt="Guía v2 en móvil: titular y formulario de 5 campos con el botón visible sin bajar"></div>
+          <p class="cap">Móvil: el botón de descarga queda a 717 px, sin bajar.</p>
+        </div>
+      </div>
+    </div>
+    <div class="cols">
+      <div>
+        <h3>Qué fallaba</h3>
+        <ul class="list fails">
+          <li><b>El formulario está al final</b> (1.823 px en portátil, 2.337 en móvil) y tiene <b>7 campos</b> para descargar una guía.</li>
+          <li><b>Errata</b>: "El registro de viajeros <i>en</i> un proceso obligatorio".</li>
+          <li><b>Texto de 2024</b>: "obligatoria desde el pasado 2 de diciembre de 2024".</li>
+          <li><b>Enlaces de salida con UTM de otra campaña</b> y a un formulario externo.</li>
+          <li>Fuera del design system: otra tipografía, sin logo arriba, idioma sin declarar.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Qué cambia</h3>
+        <div class="compare">
+          <table>
+            <thead><tr><th></th><th>Actual</th><th>v2</th></tr></thead>
+            <tbody>
+              <tr><td>Botón de descarga (portátil)</td><td class="num">≈1.823 px</td><td class="num">472 px</td></tr>
+              <tr><td>Botón de descarga (móvil)</td><td class="num">≈2.337 px</td><td class="num">717 px</td></tr>
+              <tr><td>Campos del formulario</td><td class="num">7</td><td>5 (con teléfono)</td></tr>
+              <tr><td>Alto de la página (portátil)</td><td>—</td><td class="num">1.637 px</td></tr>
+              <tr><td>Enlaces de salida</td><td>Sí, con UTM de otra campaña</td><td>Solo legales</td></tr>
+              <tr><td>Contenido de la guía</td><td>Lista en el hero</td><td>Paso 2, con la portada</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="status"><span class="pill ok">Listo para decidir</span><p>Página corta: titular y formulario de 5 campos arriba (nombre, email, teléfono, tipo de alojamiento y nº de alojamientos); la portada y los 12 temas de la guía, en el segundo bloque. La portada es una maqueta: falta la imagen real de la guía. <b>Ojo</b>: la guía recibe tráfico de la PMax Competitors, así que no debería lanzarse a la vez que otro cambio en esa campaña (una sola variable).</p></div>
+  </section>
+
+  <!-- 3a · GUESTAPP -->
+  <section class="landing" id="guestapp">
+    <header>
+      <span class="kicker">PMax Competitors ES · anuncio automático "Guestapp Chekin"</span>
+      <h2>Guest app: /check-in-guestapp</h2>
+      <p class="cap">La página donde <b>más gasta</b> la campaña: <b class="num">377</b> clics, <b class="num">2.009 €</b> y <b class="num">10</b> formularios (<b class="num">2,7%</b>) en 90 días, más que /chekin-hoteles (1.916 €). Es una página de producto, no de contenido: la que más encaja con hoteles después de la landing principal.</p>
+    </header>
+    <div class="pair">
+      <div class="side before">
+        <div class="label"><span>Antes</span><a class="go" href="https://landing.chekin.com/check-in-guestapp" target="_blank" rel="noopener">Abrir la actual ↗</a></div>
+        <div class="shot"><img src="img/guestapp-actual-portatil.jpg" alt="Guestapp actual en portátil: titular y formulario con el botón Enviar cortado por abajo"></div>
+        <div class="shots-mobile">
+          <div class="shot"><img src="img/guestapp-actual-movil.jpg" alt="Guestapp actual en móvil: la pantalla aparece en blanco, solo se ve el botón Probar Chekin gratis"></div>
+          <p class="cap">Móvil, 6 s después de cargar: el titular sigue invisible (opacidad 0, espera una animación). [Por comprobar en un móvil real.]</p>
+        </div>
+      </div>
+      <div class="side after">
+        <div class="label"><span>Después</span><a class="go" href="https://claude.ai/artifact/6H23uPLZEJyBSbnVNWhTPP" target="_blank" rel="noopener">Abrir el boceto ↗</a></div>
+        <div class="shot"><img src="img/guestapp-v2-portatil.jpg" alt="Guestapp v2 en portátil: titular de la guest app y formulario de prueba con el botón visible"></div>
+        <div class="shots-mobile">
+          <div class="shot"><img src="img/guestapp-v2-movil.jpg" alt="Guestapp v2 en móvil: titular y formulario visibles al cargar, botón sin bajar"></div>
+          <div class="shot"><img src="img/guestapp-v2-app.jpg" alt="Bloque interactivo de la guestapp v2: cinco pasos y un móvil que enseña cada pantalla"></div>
+        </div>
+        <p class="cap">Todo visible al cargar. Botón a 487 px en portátil y 721 px en móvil. A la derecha, la app por dentro: cada paso cambia la pantalla del móvil.</p>
+      </div>
+    </div>
+    <div class="cols">
+      <div>
+        <h3>Qué fallaba</h3>
+        <ul class="list fails">
+          <li><b>Móvil: la página aparece en blanco.</b> El titular sigue con opacidad 0 a los 6 s; solo se ve el botón fijo "Probar Chekin gratis". En portátil aparece tras 1–2 s.</li>
+          <li><b>Portátil: el botón "Enviar" queda cortado</b> en el borde de la pantalla, y es naranja (fuera del design system).</li>
+          <li><b>Cifras no oficiales:</b> "50+ integraciones PMS" (la oficial es +200), "★ 4.8 valoración media", "hasta 1 hora por reserva" y "cero riesgo de multas".</li>
+          <li><b>Oferta distinta</b>: "Activación inmediata", cuando el resto de landings promete que un experto en Chekin contacta.</li>
+          <li><b>Página larguísima</b>: 7.116 px en portátil y 11.076 px en móvil. Idioma declarado inglés.</li>
+          <li><b>Testimonios</b> (Greystar, R2R, Hostmacher) sin comprobar que estén publicados en chekin.com.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Qué cambia</h3>
+        <div class="compare">
+          <table>
+            <thead><tr><th></th><th>Actual</th><th>v2</th></tr></thead>
+            <tbody>
+              <tr><td>Titular en móvil</td><td>Invisible al cargar</td><td>Visible al cargar</td></tr>
+              <tr><td>Botón (portátil)</td><td>Cortado en el borde</td><td class="num">487 px</td></tr>
+              <tr><td>Botón (móvil)</td><td>Fuera de la pantalla</td><td class="num">721 px</td></tr>
+              <tr><td>Alto (portátil / móvil)</td><td class="num">7.116 / 11.076</td><td class="num">3.403 / 4.862</td></tr>
+              <tr><td>Cifras</td><td>50+ PMS, 4.8★</td><td>Solo oficiales</td></tr>
+              <tr><td>Oferta</td><td>Activación inmediata</td><td>Prueba 14 días + experto</td></tr>
+              <tr><td>Titular</td><td>Check-in genérico</td><td>Guest app, como el anuncio</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="status"><span class="pill ok">Listo para decidir</span><p>El anuncio que trae este tráfico lo generó Google con el título de la página ("Guestapp Chekin": 408 clics en 90 días). Por eso el titular nuevo habla de la guest app, y debajo un bloque interactivo enseña lo que ve el huésped en cinco pasos. Faltan capturas reales del producto (la app es una maqueta) y el caso de éxito oficial.</p></div>
+  </section>
+
+  <!-- 3b · PACK -->
+  <section class="landing" id="pack">
+    <header>
+      <span class="kicker">PMax Competitors ES · 5 páginas que Google ya usa como landing</span>
+      <h2>Pack legal: la guía y las 4 plantillas, en una sola página</h2>
+      <p class="cap">Hoy son cinco páginas sueltas. Juntas se llevaron <b class="num">1.357</b> clics, <b class="num">51</b> formularios (<b class="num">3,8%</b>) y <b class="num">4.704 €</b> en 90 días: el <b>45% del gasto</b> de la campaña.</p>
+    </header>
+    <div class="compare">
+      <table>
+        <thead><tr><th>Página que se une al pack</th><th>Clics</th><th>Formularios</th><th>Conversión</th><th>Gasto</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://landing.chekin.com/plantillas/contratoalquilervacacionalpdf" target="_blank" rel="noopener">Contrato de alquiler vacacional (PDF)</a></td><td class="num">481</td><td class="num">14</td><td class="num">2,9%</td><td class="num">1.557 €</td></tr>
+          <tr><td><a href="https://landing.chekin.com/plantillas/plantillaseshospedajesword" target="_blank" rel="noopener">Plantilla SES Hospedajes (Word)</a></td><td class="num">374</td><td class="num">17</td><td class="num">4,5%</td><td class="num">1.687 €</td></tr>
+          <tr><td><a href="https://landing.chekin.com/es/guia/seshospedajes" target="_blank" rel="noopener">Guía SES</a></td><td class="num">202</td><td class="num">7</td><td class="num">3,5%</td><td class="num">626 €</td></tr>
+          <tr><td><a href="https://landing.chekin.com/plantillas-seshospedajes" target="_blank" rel="noopener">Plantillas SES (Word y Excel)</a></td><td class="num">180</td><td class="num">7</td><td class="num">3,9%</td><td class="num">532 €</td></tr>
+          <tr><td><a href="https://landing.chekin.com/plantillas/modelofacturaalquilervacacional" target="_blank" rel="noopener">Modelo de factura</a></td><td class="num">120</td><td class="num">6</td><td class="num">5,0%</td><td class="num">302 €</td></tr>
+          <tr><td><b>Total</b></td><td class="num"><b>1.357</b></td><td class="num"><b>51</b></td><td class="num"><b>3,8%</b></td><td class="num"><b>4.704 €</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="pair">
+      <div class="side before">
+        <div class="label"><span>Antes (ejemplo: contrato)</span><a class="go" href="https://landing.chekin.com/plantillas/contratoalquilervacacionalpdf" target="_blank" rel="noopener">Abrir la actual ↗</a></div>
+        <div class="shot"><img src="img/contrato-actual-portatil.jpg" alt="Plantilla de contrato actual en portátil: formulario a la derecha con el botón por debajo de la primera pantalla"></div>
+        <p class="cap">Portátil: el formulario está arriba, pero el botón "Descargar ahora!" queda a 939 px, por debajo de la pantalla. Página en inglés para el navegador y 6 enlaces de salida. Medido el 23/10.</p>
+      </div>
+      <div class="side after">
+        <div class="label"><span>Después</span><a class="go" href="https://claude.ai/artifact/P8tf8sdAtaTqAXr8f7iZAj" target="_blank" rel="noopener">Abrir el boceto ↗</a></div>
+        <div class="shot"><img src="img/pack-portatil.jpg" alt="Pack legal en portátil: titular, abanico de cinco documentos y formulario a la derecha"></div>
+        <div class="shots-mobile">
+          <div class="shot"><img src="img/pack-movil.jpg" alt="Pack legal en móvil: titular y formulario con el botón visible sin bajar"></div>
+          <div class="shot"><img src="img/pack-desde-plantilla-ses.jpg" alt="Pack legal cuando el clic viene del anuncio de la plantilla SES: titular adaptado y documentos destacados"></div>
+        </div>
+        <p class="cap">Botón a 516 px en portátil y 786 px en móvil. A la derecha: la misma página cuando el clic viene del anuncio "Plantilla SES Hospedajes".</p>
+      </div>
+    </div>
+    <div class="cols">
+      <div>
+        <h3>Por qué así: los datos</h3>
+        <ul class="list fixes">
+          <li><b>El formulario arriba ya funciona.</b> Las plantillas, con el formulario al lado del titular, convierten entre el 2,9% y el 5,0%; /chekin-hoteles, con el formulario al final, el 0,38%. Se mantiene y se lleva el botón dentro de la primera pantalla (939 px → 516 px).</li>
+          <li><b>El titular repite lo que buscaba.</b> Google ya hace anuncios con el título de cada documento: "Plantilla SES Hospedajes" se llevó 1.066 clics y 4.636 €. Cada URL antigua puede mandar al pack con su documento (<code>?recurso=parte</code>, <code>contrato</code>, <code>factura</code>, <code>guia</code>): el titular cambia y ese documento sale destacado.</li>
+          <li><b>Una página que se puede medir.</b> Hoy son cinco páginas de 120 a 481 clics en 90 días, y ninguna llega sola a la muestra de un test. Juntas suman 1.357.</li>
+          <li><b>Saber qué atrae a quién.</b> Un campo oculto guarda el documento de origen, y el tipo de alojamiento y el nº separan hoteles de alquiler vacacional para Ventas.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Por qué así: producto parecido</h3>
+        <ul class="list fixes">
+          <li><b>Kits de recursos de software B2B</b>, como los de plantillas de HubSpot: un solo formulario da acceso a varios documentos y la página enseña qué hay dentro (formato y contenido) antes de pedir los datos.</li>
+          <li><b>Más valor por el mismo formulario.</b> Quien buscaba un contrato se lleva también el parte, la factura y la guía.</li>
+          <li><b>El paso a Chekin, al final.</b> Un bloque compara las plantillas con hacerlo en Chekin: firma del contrato en el check-in online y parte enviado solo a SES.Hospedajes.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="status"><span class="pill new">Propuesta</span><p><b>Ojo con la calidad:</b> este tráfico es sobre todo alquiler vacacional (plantillas: 2 SQL y 0 oportunidades desde el 21/07). El pack sube los formularios, no las ventas de hoteles. Solo tiene sentido si el lunes se decide <b>mantener la expansión de URL</b>; si se acota, estas páginas dejan de recibir tráfico de paid. Falta: los archivos reales del pack, el envío por email en HubSpot y las redirecciones de las URL antiguas con su <code>?recurso=</code>.</p></div>
+  </section>
+
+  <!-- 4 · ÁNGULOS -->
+  <section class="landing" id="angulos">
+    <header>
+      <span class="kicker">Fase 2 · idea de Carlos</span>
+      <h2>Una landing por anuncio</h2>
+      <p class="cap">No sustituyen a ninguna página: son nuevas. Cada una repite la promesa de su anuncio en el titular y enseña primero esa función. Irían cada una con su grupo de recursos en la PMax, nunca a la vez que el test de la fase 1.</p>
+    </header>
+    <div class="angles">
+      <div class="angle"><span class="pill new">Normativa</span><p class="h1">Olvídate del portal del Ministerio</p><p class="ad">Anuncio: imagen "Reportado" (SES). Calculadora de horas de parte.</p><a class="go" href="https://claude.ai/artifact/CXeYwzSb8QDeKUp8c4YsfT" target="_blank" rel="noopener">Abrir ↗</a></div>
+      <div class="angle"><span class="pill new">Upselling</span><p class="h1">Misma ocupación, +55 € por reserva</p><p class="ad">Anuncio: imagen "+55 € por reserva". Calculadora de ingresos.</p><a class="go" href="https://claude.ai/artifact/4fDrhTjoJadYxYvW1YZ2Ux" target="_blank" rel="noopener">Abrir ↗</a></div>
+      <div class="angle"><span class="pill new">Inbox IA</span><p class="h1">Tu recepción también responde a las 3 de la mañana</p><p class="ad">Anuncio con el mismo texto. Chat de madrugada.</p><a class="go" href="https://claude.ai/artifact/Sd6hUVhNff1iwBXmq3ZcwC" target="_blank" rel="noopener">Abrir ↗</a></div>
+      <div class="angle"><span class="pill new">Recepción</span><p class="h1">Recupera horas en recepción</p><p class="ad">Anuncio de Meta y titulares de Google "Automatiza tu Recepción". Simulador de la cola.</p><a class="go" href="https://claude.ai/artifact/3PJSV3FSwNNK3GiU7yMTHn" target="_blank" rel="noopener">Abrir ↗</a></div>
+    </div>
+  </section>
+
+  <section class="rules" aria-label="Notas">
+    <p><b>Igual en todas las versiones nuevas:</b> oferta "Prueba Chekin gratis 14 días" (un experto en Chekin contacta), formulario de 5 campos, un solo botón "Empieza tu prueba gratis", solo cifras oficiales y casos publicados en chekin.com.</p>
+    <p><b>Sobre los datos:</b> los clics y formularios por URL salen del informe de URLs de Google Ads cruzado con HubSpot (biblioteca de anuncios). Las medidas de página son de una revisión en navegador a 1512×780 y 375×812 (21–23/10).</p>
+    <p><b>Enlaces:</b> los bocetos son privados; para que Carlos los abra hay que compartirlos desde el menú Compartir de cada uno.</p>
+  </section>
+</main>

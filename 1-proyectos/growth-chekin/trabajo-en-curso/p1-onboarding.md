@@ -99,6 +99,23 @@ Por origen (HOU + HOT):
 - La reserva y el huésped son indicadores sin fecha: se exige que existan, no que vinieran después de la vivienda.
 - Hallazgo: en hoteles con alta propia solo 1 de cada 3 registra una vivienda.
 
+## Medición del funnel (23-10-2026, para el lunes 26 con Daniel)
+Tres secciones nuevas en el dashboard, bajo "Medición del funnel":
+- **Qué datos hay y de qué fechas:** línea de tiempo por fuente y paso. Base de la app: del 01/01 al 03/09 (altas) y al 04/09 (viviendas). PostHog: todo desde el 13/10, también las páginas vistas. Hueco sin datos del 04/09 al 12/10 (H-10).
+- **Altas propias mes a mes, con las dos fuentes:** de enero a septiembre, alta → vivienda → reserva → huésped; octubre, registro → bienvenida → configuración → PMS → completada; fila roja para el hueco. Octubre cuenta alta con email + alta con Google (61 del 13 al 23/10); aparte, 96 personas pasan por el alta antigua sin evento (H-12, corrige el 16% de H-11).
+- **Cómo medir bien a partir de ahora:** 9 pasos por orden (sincronización, registro en todos los flujos, eventos de vivienda/reserva/huésped, identify con id de cuenta, variante una sola vez, motivo del fallo del PMS, separar pruebas internas, grabaciones, funnel oficial en PostHog).
+
+## En PostHog (creado el 23-10-2026, OK de Alex)
+- Acción **"Alta nueva en el dashboard (email o Google)"** (id 172704): `auth_registration_succeeded` o `auth_social_succeeded` con `created = true`, en dashboard.chekin.com. https://eu.posthog.com/project/125487/data-management/actions/172704
+- Insight **"Funnel de onboarding: alta nueva → configuración completada"** (TyO9mkZy), desde el 13/10, en orden, ventana de 14 días. https://eu.posthog.com/project/125487/insights/TyO9mkZy
+- Validado contra el SQL del dashboard (13–23/10): mismas personas por paso (alta 61–62, bienvenida 46, configuración 33, PMS 13, completada 12).
+- No incluye el alta antigua (`/register/accommodation-type`) ni vivienda/reserva/huésped: no hay eventos.
+
+## Qué hace el cliente: no se ve (23-10-2026, H-13)
+- En `/register*` y `/setup*` de dashboard.chekin.com **no hay ningún clic** (`$autocapture`), ni clics de rabia, clics muertos, salidas de página ni errores desde el 13/10. **No hay grabaciones** (`session_recording_opt_in: false`).
+- Sabemos dónde se cae la gente, no por qué.
+- Propuesta para Daniel (no activar sin su OK ni el del DPO): grabaciones solo en esas URL, todo enmascarado y solo con consentimiento de cookies; autocapture, clics de rabia y errores en esas páginas. Enmascarar no quita la necesidad de consentimiento (LSSI/AEPD) [POR COMPROBAR con el DPO]; PostHog parece medir sin pasar por el banner.
+
 ## Preguntas para Daniel
 - ¿Qué cuenta como activación (primer check-in enviado, primera reserva sincronizada…)? ¿Se registra?
 - ¿Se puede añadir el proveedor y el motivo del error a `pms_connect_failed`?
