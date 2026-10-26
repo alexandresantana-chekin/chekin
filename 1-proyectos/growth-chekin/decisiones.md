@@ -52,3 +52,5 @@
 - **P2 · Web de los AEs:** se queda https://chekin-connect.vercel.app/mi-perfil. Alex quería el nombre `qrsaleschekin.vercel.app`, pero sin acceso a la cuenta personal de Vercel no se puede mover. Si se recupera la cuenta, se pasa el nombre al proyecto de empresa.
 - **P2 · Rutina de eventos terminados (Alex):** L–V 9:00, una tarea por evento en Growth Daily › Alexandre, con una subtarea por AE y solo cifras (sin datos personales en Asana). La clave va en el Llavero de macOS.
 - **Contraseñas:** nunca en el chat. Se generan en el terminal de Alex con un script y la app obliga a cambiarlas al primer acceso.
+- **P3 · Landings (Carlos, vía Alex, 26/10):** a Carlos le gustan los bocetos de las 4 landings (ES hoteles, ES resto, IT hoteles, IT resto). Siguiente paso: analizar las landings de la competencia para copiar lo que hagan mejor.
+- **P3 · Competencia (Alex, 26/10):** se copia «sin tarjeta y sin compromiso» (la prueba es así, confirmado por Alex) y la opción «habla con un experto» en IT hoteles (boceto v1, versión 3 del artifact). El precio («desde X €/mes») no se pone: Alex cree que son ~17 € con IVA [POR COMPROBAR], así que no hay cifra oficial.

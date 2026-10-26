@@ -7,6 +7,12 @@ Regla: toda cifra lleva su periodo (Carlos trabaja con 90 días). Si un dato no 
 
 ## 26-10-2026
 
+### H-22 · PostHog mide sobre todo a los huéspedes; el dashboard de anfitriones, solo desde octubre
+- **Qué:** en 2026, la app de huéspedes envía eventos a PostHog desde marzo (entre 1,7 y 8,6 millones de eventos al mes) y también lo hacen los portales de huéspedes, las webs de clientes y PMS y el servidor. El **dashboard de anfitriones** (dashboard.chekin.com, donde está el registro y el onboarding) **solo envía eventos desde octubre** (58.624 eventos de 9.253 personas, del 1 al 26/10). La web chekin.com no está en PostHog.
+- **Fuente / periodo:** PostHog, eventos por web y mes, 01/01 – 26/10/2026.
+- **Implica:** el hueco "desde septiembre sin datos" es solo del lado del anfitrión: hasta el 04/09 venía de la copia de la base de la app (rota) y los eventos del dashboard no existían. Antes de octubre, PostHog no ha medido nunca el onboarding de anfitriones.
+- **Estado:** para Daniel: arreglar la copia de la base y añadir eventos de vivienda y reserva.
+
 ### H-21 · PMax Vacational IT: la landing alloggiati sí saca formularios (17), y el 98% de los clics por título va a títulos de «contrato»
 - **Qué:** en la Biblioteca de anuncios, la PMax Vacational IT tiene 1.676 clics, 52 formularios (3,1%) y 2.284 €. Por página: plantilla de contrato, 1.084 clics y **34 formularios (3,1%)**; `/it/check-in-online-alloggiati-web`, 501 clics y **17 formularios (3,4%)**. Google Ads cuenta 0 conversiones en alloggiati, pero sí convierte, incluso un poco mejor que la plantilla. Es la confirmación de H-18 (formulario como conversión secundaria). Los títulos «Modello Contratto Affitti Brevi» (1.814 clics, 2.777 €) y «Contratto Affitto Turistico» (472 clics) se llevan casi todos los clics de títulos de la campaña (2.286 de 2.330) y mandan todos a la plantilla. En HubSpot: 52 MQL (36 de alquiler vacacional, 5 de hoteles) → 4 SQL → 1 deal → 1 cliente; 5 trials.
 - **Fuente / periodo:** artifact «Biblioteca de anuncios» (data.json, extraído el 19/10): Google Ads y GA4, 21 jul – 18 oct 2026 (90 días); formularios por página y embudo de HubSpot por MQL en el mismo periodo. Las cargas de GA4 (762 de 1.676 clics, 45%) no son comparables entre campañas: van del 3% al 96%, así que no se usan para sacar conclusiones.
