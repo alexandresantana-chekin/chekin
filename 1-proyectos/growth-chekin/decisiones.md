@@ -64,3 +64,4 @@
 - **P3 · Mensaje a Snowball (Alex, 26/10):** se deja como está, sin cambios ni envío por ahora.
 - **P3 · Autonomía con Snowball (Carlos, vía Alex, 26/10):** en P3, Alex trabaja de forma autónoma y habla directamente con Snowball, sin esperar a Carlos para cada cambio. A Carlos le parece bien. Las reglas de la casa siguen igual: nada se envía ni se publica sin el OK y la revisión de Alex.
 - **P2 · AEs (Alex, 26/10):** enlace nuevo, contraseñas y perfiles de los AEs, resueltos.
+- **P5 · GIF de la firma (Carlos, vía Alex, 26/10):** Carlos da el OK al GIF de la firma de Gmail. P5 queda entregado.
