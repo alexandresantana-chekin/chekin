@@ -7,6 +7,12 @@ Regla: toda cifra lleva su periodo (Carlos trabaja con 90 días). Si un dato no 
 
 ## 26-10-2026
 
+### H-24 · GA4 no sirve para unir visitas a la web con registros: ve menos gente entrando al registro de la que se da de alta
+- **Qué:** según GA4 ("CheKin web (.com)"), a las páginas de registro del dashboard entran unas 170–210 personas al mes (ene–sep), pero en la app se dan de alta por su cuenta entre 574 y 1.027 al mes. GA4 ve, como mucho, 1 de cada 3–5 altas. Además, las dos propiedades de GA4 dan cifras muy distintas de la web: entre 21.000 y 35.000 frente a entre 58.000 y 72.000 usuarios al mes, y "Chekin.com GA4" casi no mide el dashboard en enero y abril.
+- **Fuente / periodo:** GA4 vía Windsor y base de la app en PostHog, 01/01 – 25/10/2026.
+- **Implica:** "visitas a la web (GA4) → registro" quedaría mal medido: el paso de entrada al registro está infracontado (cookies, bloqueadores) y no se pueden mezclar fuentes. Sirve para tendencias de la web, no para tasas de conversión.
+- **Estado:** para medir web → registro bien, PostHog en chekin.com (con OK del DPO) o eventos de registro en GA4 con consentimiento. [POR COMPROBAR cuál de las dos propiedades de GA4 es la oficial].
+
 ### H-23 · El pico de marzo son tres cargas masivas de cuentas de Holidu con prueba de 14 días, no clientes nuevos
 - **Qué:** 3 días concentran 64.909 altas: 9/03 (15.034), 17/03 (42.592) y 10/04 (7.283), casi todas de Holidu (99,6%). Ese mismo día Stripe crea el mismo número de suscripciones (15.052, 42.618 y 7.294), y el 99,8% termina en menos de un mes (mediana: 14 días, la duración de una prueba). Siguen activas 44.
 - **Fuente / periodo:** base de la app (person_users) y Stripe (suscripciones) en PostHog, 01/03 – 30/04/2026.

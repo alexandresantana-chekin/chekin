@@ -60,3 +60,5 @@
   3. Lo decide Claude: se promete el plazo («nei tempi di legge», «en plazo»), no «sin multas» como garantía. La cifra de multas solo donde ya estaba (SES v2, Ley Orgánica 4/2015). **Por qué:** Chekin no puede garantizar que un cliente no reciba multas, y la cifra no está en la lista oficial del traspaso.
   4. Sí a una línea de prueba social bajo el botón, con cifras oficiales (IT hoteles: +10.000 hotel y +25M check-in; IT resto y SES v2: +200.000 propiedades y +25M check-in). En SES v2 sustituye la línea junto al titular, para no repetirla.
   5. Vídeos: de momento no.
+- **MRR automático (Alex, 26/10):** la fuente buena del MRR es **LEOPARD**, que en HubSpot se ve en la propiedad de contacto `mrr_leopard_eur` («MRR (LEOPARD)»: MRR del último mes cerrado, con reembolsos y descuentos ya restados; lo escribe la integración). El traspaso con Carlos sigue pendiente.
+- **P3 · Mensaje a Snowball (Alex, 26/10):** se deja como está, sin cambios ni envío por ahora.
