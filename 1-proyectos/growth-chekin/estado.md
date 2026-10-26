@@ -30,6 +30,13 @@
   - Contraseñas provisionales (con cambio obligatorio) para Giulia y Joan, generadas en el terminal de Alex. Rocco ya había entrado con su contraseña; el último script incluía también la suya [POR COMPROBAR si se ejecutó ese SQL]. Faltan en sus tarjetas: Giulia, Calendly y foto; Joan, teléfono, Calendly y foto; Pablo, foto.
   - **Envío a HubSpot activo:** app privada «Chekin Connect» (3 permisos de contactos y propietarios), token en Supabase y función desplegada. Sin propiedades nuevas: MQL Type solo si estaba vacío y Last MQL type siempre, con Event, Webinar o **Digital QR** (opción creada el 26/10). El evento concreto va en la nota. Probado con un contacto PRUEBA (borrado de la app; en HubSpot, a la papelera). Reenviados los 5 leads antiguos: 5 en HubSpot, 0 errores.
   - **Rutina «Chekin Connect · eventos terminados → Asana»** (L–V 9:00, modo Auto): crea en Growth Daily › Alexandre una tarea por evento terminado, con cifras y una subtarea por AE. Clave en el Llavero. Primeras 5 tareas creadas hoy. Documentación en `agentes-rutinarios/chekin-connect-eventos-terminados.md`.
+- **Tarde del 26/10:**
+  - **P3:** H-21 (PMax Vacational IT: alloggiati convierte al 3,4% aunque Ads le cuente 0). Análisis de competencia en `trabajo-en-curso/p3-competencia-landings.md`: Vikey, Partee y 9 más. A Carlos le gustan las 4 landings. Aplicado en IT hoteles (v4), IT resto (v3) y SES v2: «sin tarjeta y sin compromiso», «habla con un experto» (IT hoteles), los 3 portales en IT, el plazo legal y una línea de prueba social bajo el botón. Se mantienen los 5 campos; sin vídeos ni precio (¿~17 € con IVA? [POR COMPROBAR]).
+  - **P3:** Alex trabaja de forma autónoma y habla directamente con Snowball (OK de Carlos). El mensaje a Snowball sigue sin enviar.
+  - **MRR:** la fuente buena es LEOPARD (`mrr_leopard_eur` en HubSpot). Falta el traspaso con Carlos.
+  - **P5:** OK de Carlos al GIF de la firma. Entregado.
+  - **Portugal:** tarea en Growth Daily › Alexandre: 50 al día con Showme_PT_recovery = Yes. 26/10: 50 acumulados.
+  - **P2:** los AEs están bien. The TOPO Connect: 2 leads reales y 2 pruebas (Asana corregida).
 - **Pendiente de P2:**
   - **Seguridad:** revocar el token de Supabase `chekin-connect-despliegue` y rotar el token de HubSpot (los dos quedaron a la vista en el terminal). Tras rotar el de HubSpot, volver a guardarlo con `desplegar-hubspot-sync.sh`. Borrar `sbp_` y `pat-na1` del historial del terminal.
   - Preguntar a Marta cuáles de sus 4 leads de The TOPO Connect eran pruebas (aparecen su email y el de Carlos) y corregir la tarea de Asana. En la ficha de Carlos en HubSpot, Last MQL type ha pasado a «Event».
