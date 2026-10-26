@@ -34,7 +34,7 @@
   - **Seguridad:** revocar el token de Supabase `chekin-connect-despliegue` y rotar el token de HubSpot (los dos quedaron a la vista en el terminal). Tras rotar el de HubSpot, volver a guardarlo con `desplegar-hubspot-sync.sh`. Borrar `sbp_` y `pat-na1` del historial del terminal.
   - Preguntar a Marta cuáles de sus 4 leads de The TOPO Connect eran pruebas (aparecen su email y el de Carlos) y corregir la tarea de Asana. En la ficha de Carlos en HubSpot, Last MQL type ha pasado a «Event».
   - Asignar las subtareas de seguimiento a Marta y Pablo. Preguntar a los AEs por qué 3 de los 5 eventos tienen 0 leads (H-20).
-  - Enviar a Giulia y Joan su enlace y contraseña. Avisar a todos los AEs del enlace nuevo.
+  - ✅ (26/10, Alex) Enviados a Giulia y Joan su enlace y contraseña; Rocco ya tiene acceso. AEs avisados del enlace nuevo.
 
 ## Asana al día (23/10, tarde)
 - Growth Daily › Alexandre: tarea índice «Mapa de tareas de Alexandre: owner, fecha y «hecho»» (gid 1219818181506129), con todas las tareas abiertas enlazadas y un comentario a Carlos. Asana no permite añadir desde aquí una tarea existente a otro proyecto: por eso es un índice con enlaces, no tareas duplicadas.
