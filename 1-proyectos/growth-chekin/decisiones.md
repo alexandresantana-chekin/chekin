@@ -66,3 +66,10 @@
 - **P2 · AEs (Alex, 26/10):** enlace nuevo, contraseñas y perfiles de los AEs, resueltos.
 - **P5 · GIF de la firma (Carlos, vía Alex, 26/10):** Carlos da el OK al GIF de la firma de Gmail. P5 queda entregado.
 - **P7 · ShowMe (Alex, 26/10):** ShowMe pasa a ser un proyecto propio de Alex, que lo trabaja directamente con ShowMe. Cello (P6) se sigue tratando con Valery.
+- **P3 · Fechas nuevas en Asana (Alex, 26/10):** el 2/11 es festivo. Quedan así:
+  - SES v2: montaje en HubSpot el 30/10 y lanzamiento del test el **3/11**;
+  - registro en el tracker y línea base de octubre: 3/11;
+  - España hoteles: lista el 6/11 y lanzamiento el 10/11;
+  - Italia hoteles: 13/11; Italia resto: 20/11 (los bocetos ya están aprobados);
+  - UTM: se mantiene el 27/10.
+  Comentario con el motivo en cada tarea.
