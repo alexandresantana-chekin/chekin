@@ -1,0 +1,373 @@
+<title>Tests de landing Chekin</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+/* Layout: registro operativo — cabecera con filtros, resumen, y tests agrupados por país en orden de despliegue (hoteles primero) */
+:root{
+  --bg:#F5F6FB; --surface:#FFFFFF; --sunk:#EEF1FA; --line:#DEDEEB;
+  --fg:#19194B; --muted:#5E5F86; --faint:#8B8CAD;
+  --accent:#385BF8; --accent-soft:#E9EDFF; --on-accent:#FFFFFF;
+  --good:#16804A; --good-soft:#E3F5EA; --warn:#A15C00; --warn-soft:#FFF1DB; --bad:#C8114A; --bad-soft:#FFE4EC;
+  --font:'Montserrat',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+  --ring:0 0 0 3px rgba(56,91,248,.22);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#10112B; --surface:#181A3A; --sunk:#1F2247; --line:#2E3163;
+  --fg:#EEF0FF; --muted:#B3B6DA; --faint:#8689B4;
+  --accent:#7C93FF; --accent-soft:#252B5C; --on-accent:#0E0F2A;
+  --good:#5FD39A; --good-soft:#163A2B; --warn:#F3B65C; --warn-soft:#3A2C14; --bad:#FF7FA6; --bad-soft:#3E1A2A;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#10112B; --surface:#181A3A; --sunk:#1F2247; --line:#2E3163;
+  --fg:#EEF0FF; --muted:#B3B6DA; --faint:#8689B4;
+  --accent:#7C93FF; --accent-soft:#252B5C; --on-accent:#0E0F2A;
+  --good:#5FD39A; --good-soft:#163A2B; --warn:#F3B65C; --warn-soft:#3A2C14; --bad:#FF7FA6; --bad-soft:#3E1A2A;
+  color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--font);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding-block:28px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3,p{margin:0}
+h1{font-size:28px;font-weight:700;letter-spacing:-.01em;text-wrap:balance}
+h2{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.sub{color:var(--muted);margin-top:4px;max-width:70ch}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:none;box-shadow:var(--ring);border-radius:8px}
+.num{font-variant-numeric:tabular-nums}
+
+/* Cabecera */
+.head{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;justify-content:space-between}
+.btn{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 16px;border-radius:10px;border:0;font-weight:600;font-size:14px;white-space:nowrap}
+.btn-primary{background:var(--accent);color:var(--on-accent);box-shadow:var(--ring)}
+.btn-primary:hover{filter:brightness(1.07)}
+.btn-ghost{background:transparent;box-shadow:0 0 0 1px var(--line) inset}
+.btn-ghost:hover{background:var(--sunk)}
+.btn-sm{height:32px;padding:0 12px;font-size:13px}
+.btn-danger{background:transparent;color:var(--bad);box-shadow:0 0 0 1px var(--line) inset}
+
+/* Filtros */
+.filters{display:flex;flex-wrap:wrap;gap:10px 20px;margin-top:20px;padding:14px 16px;background:var(--surface);border-radius:14px;border:1px solid var(--line)}
+.fgroup{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.fgroup > span{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);margin-right:4px}
+.chip{height:30px;padding:0 12px;border-radius:999px;border:0;background:var(--sunk);color:var(--muted);font-size:13px;font-weight:600}
+.chip[aria-pressed="true"]{background:var(--accent);color:var(--on-accent)}
+
+/* Resumen */
+.summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:16px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.kpi b{display:block;font-size:26px;font-weight:700;line-height:1.2}
+.kpi span{font-size:13px;color:var(--muted)}
+
+/* Grupos por país */
+.country{margin-top:32px;display:flex;flex-direction:column;gap:12px}
+.country-h{display:flex;align-items:baseline;gap:10px}
+.country-h h3{font-size:18px;font-weight:700}
+.country-h small{color:var(--faint);font-size:13px}
+
+/* Tarjeta de test */
+.test{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.test-top{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px 24px;padding:18px 20px}
+.camp{font-family:var(--mono);font-size:14px;word-break:break-all}
+.meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.pill{display:inline-flex;align-items:center;height:24px;padding:0 10px;border-radius:999px;font-size:12px;font-weight:700;background:var(--sunk);color:var(--muted)}
+.st-plan{background:var(--sunk);color:var(--muted)}
+.st-run{background:var(--accent-soft);color:var(--accent)}
+.st-done{background:var(--good-soft);color:var(--good)}
+.st-pause{background:var(--warn-soft);color:var(--warn)}
+.due{background:var(--warn-soft);color:var(--warn)}
+.timing{text-align:right;font-size:13px;color:var(--muted);display:flex;flex-direction:column;gap:2px}
+.timing b{font-size:20px;color:var(--fg)}
+.result{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line)}
+.result > div{padding:14px 20px;border-left:1px solid var(--line)}
+.result > div:first-child{border-left:0}
+.result small{display:block;font-size:12px;font-weight:600;color:var(--faint);text-transform:uppercase;letter-spacing:.05em}
+.result b{display:block;font-size:20px;font-weight:700;margin-top:2px}
+.result span{font-size:13px;color:var(--muted)}
+.up{color:var(--good)} .down{color:var(--bad)}
+.bar{height:6px;border-radius:999px;background:var(--sunk);margin-top:8px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent);border-radius:999px}
+details.more{border-top:1px solid var(--line)}
+details.more > summary{list-style:none;cursor:pointer;padding:12px 20px;font-size:13px;font-weight:600;color:var(--accent)}
+details.more > summary::-webkit-details-marker{display:none}
+.more-body{padding:0 20px 20px;display:flex;flex-direction:column;gap:16px}
+.kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px 24px;font-size:14px}
+.kv div small{display:block;font-size:12px;color:var(--faint);font-weight:600}
+.kv a{color:var(--accent);word-break:break-all}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px}
+table{border-collapse:collapse;width:100%;min-width:720px;font-size:13px}
+th,td{padding:9px 12px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}
+th:first-child,td:first-child,th:nth-child(2),td:nth-child(2){text-align:left}
+th{font-size:12px;color:var(--faint);font-weight:700;background:var(--sunk)}
+tr:last-child td{border-bottom:0}
+.actions{display:flex;flex-wrap:wrap;gap:8px}
+
+/* Formularios */
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;margin-top:16px}
+.panel h3{font-size:16px;font-weight:700;margin-bottom:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.field{display:flex;flex-direction:column;gap:4px;min-width:0}
+.field label{font-size:12px;font-weight:700;color:var(--muted)}
+.field input,.field select,.field textarea{height:38px;padding:0 10px;border-radius:8px;border:1px solid var(--line);background:var(--bg);min-width:0}
+.field textarea{height:72px;padding:8px 10px;resize:vertical}
+.field.wide{grid-column:1/-1}
+.arm{border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:10px}
+.arm h4{margin:0;font-size:13px;font-weight:700}
+.form-actions{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.msg{font-size:13px;color:var(--bad);margin-top:8px}
+.empty{margin-top:24px;padding:32px;border:1px dashed var(--line);border-radius:16px;text-align:center;color:var(--muted)}
+.note{font-size:12px;color:var(--faint);margin-top:28px;max-width:80ch}
+
+@media (max-width:760px){
+  .summary{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .result{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .result > div:nth-child(3){border-left:0}
+  .result > div:nth-child(n+3){border-top:1px solid var(--line)}
+  .test-top{grid-template-columns:minmax(0,1fr)}
+  .timing{text-align:left;flex-direction:row;gap:12px;align-items:baseline}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+  <header class="head">
+    <div>
+      <h1>Tests de landing</h1>
+      <p class="sub">Registro de los A/B tests de landings de pago. Una sola variable por test: la landing. Revisión cada pocas semanas, país a país y hoteles primero.</p>
+    </div>
+    <button class="btn btn-primary" id="btn-new" hidden>+ Nuevo test</button>
+  </header>
+
+  <section class="filters" aria-label="Filtros">
+    <div class="fgroup" id="f-country"><span>País</span></div>
+    <div class="fgroup" id="f-segment"><span>Segmento</span></div>
+    <div class="fgroup" id="f-status"><span>Estado</span></div>
+  </section>
+
+  <section class="summary" aria-label="Resumen" id="summary"></section>
+
+  <section id="new-panel" class="panel" hidden aria-labelledby="new-h">
+    <h3 id="new-h">Nuevo test</h3>
+    <form id="new-form" novalidate>
+      <div class="grid">
+        <div class="field"><label for="n-country">País</label><select id="n-country" required></select></div>
+        <div class="field"><label for="n-segment">Segmento</label><select id="n-segment" required></select></div>
+        <div class="field"><label for="n-platform">Plataforma</label><select id="n-platform"><option>Google Ads</option><option>Meta Ads</option></select></div>
+        <div class="field"><label for="n-method">Método</label><select id="n-method"><option>A/B de HubSpot (50/50)</option><option>Antes / después</option></select></div>
+        <div class="field wide"><label for="n-campaign">Campaña (nombre exacto)</label><input id="n-campaign" required placeholder="SB_ES_GOOGLE_PMAX_COMPETITORS_CHEKIN"></div>
+        <div class="field"><label for="n-control">Landing actual (control)</label><input id="n-control" placeholder="landing.chekin.com/…"></div>
+        <div class="field"><label for="n-variant">Landing nueva (variante)</label><input id="n-variant" placeholder="landing.chekin.com/…"></div>
+        <div class="field"><label for="n-start">Fecha de inicio</label><input id="n-start" type="date"></div>
+        <div class="field"><label for="n-every">Revisar cada (semanas)</label><input id="n-every" type="number" min="1" max="12" value="2"></div>
+        <div class="field"><label for="n-target">Visitas objetivo por versión</label><input id="n-target" type="number" min="100" step="10" value="1560"></div>
+        <div class="field"><label for="n-status">Estado</label><select id="n-status"></select></div>
+        <div class="field wide"><label for="n-hyp">Hipótesis</label><textarea id="n-hyp" placeholder="Si … entonces … porque …"></textarea></div>
+      </div>
+      <div class="form-actions"><button class="btn btn-primary" type="submit">Guardar test</button><button class="btn btn-ghost" type="button" id="new-cancel">Cancelar</button></div>
+      <p class="msg" id="new-msg" role="alert" hidden></p>
+    </form>
+  </section>
+
+  <div id="list" aria-live="polite"></div>
+
+  <p class="note">CRO = formularios enviados en la landing ÷ visitas a la landing (HubSpot), medido por página y no por UTM. La significación es un test z de dos proporciones (bilateral). Una mejora se da por buena con p &lt; 0,05 y la muestra objetivo alcanzada.</p>
+</div>
+
+<script>
+(function(){
+  var COUNTRIES=[["ES","España"],["IT","Italia"],["PT","Portugal"],["DE","Alemania"],["GB","Reino Unido"],["FR","Francia"],["CZ","Chequia"],["WW","Global"]];
+  var SEGMENTS=["Hoteles","Alquiler vacacional","Genéricas"];
+  var STATUSES=[["plan","Planificado"],["run","En curso"],["pause","Pausado"],["done","Terminado"]];
+  var state={tests:[],checks:{},filters:{country:"all",segment:"all",status:"all"},canEdit:false,db:null,ready:false,err:null};
+  var checkSubs={};
+  var $=function(id){return document.getElementById(id)};
+  function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]})}
+  function countryName(c){for(var i=0;i<COUNTRIES.length;i++)if(COUNTRIES[i][0]===c)return COUNTRIES[i][1];return c||"Sin país"}
+  function statusName(s){for(var i=0;i<STATUSES.length;i++)if(STATUSES[i][0]===s)return STATUSES[i][1];return s}
+  var fmtPct=function(x,d){return isFinite(x)?(x*100).toLocaleString("es-ES",{minimumFractionDigits:d==null?2:d,maximumFractionDigits:d==null?2:d})+"%":"–"};
+  var fmtInt=function(x){return isFinite(x)?Math.round(x).toLocaleString("es-ES"):"–"};
+  function fmtDate(iso){if(!iso)return"–";var d=new Date(iso+"T00:00:00");return d.toLocaleDateString("es-ES",{day:"numeric",month:"short",year:"numeric"})}
+  function today(){var d=new Date();d.setHours(0,0,0,0);return d}
+  function daysSince(iso){if(!iso)return null;return Math.floor((today()-new Date(iso+"T00:00:00"))/864e5)}
+  function addDays(iso,n){var d=new Date(iso+"T00:00:00");d.setDate(d.getDate()+n);return d.toISOString().slice(0,10)}
+
+  // Test z de dos proporciones, bilateral
+  function erf(x){var s=x<0?-1:1;x=Math.abs(x);var t=1/(1+.3275911*x);var y=1-(((((1.061405429*t-1.453152027)*t)+1.421413741)*t-.284496736)*t+.254829592)*t*Math.exp(-x*x);return s*y}
+  function pValue(c1,n1,c2,n2){if(!(n1>0&&n2>0))return NaN;var p1=c1/n1,p2=c2/n2,p=(c1+c2)/(n1+n2);var se=Math.sqrt(p*(1-p)*(1/n1+1/n2));if(!(se>0))return NaN;var z=(p2-p1)/se;return 2*(1-.5*(1+erf(Math.abs(z)/Math.SQRT2)))}
+
+  function totals(list){var t={cv:0,cf:0,vv:0,vf:0,csql:0,vsql:0};list.forEach(function(k){var c=k.control||{},v=k.variant||{};t.cv+=+c.visits||0;t.cf+=+c.forms||0;t.vv+=+v.visits||0;t.vf+=+v.forms||0;t.csql+=+c.sql||0;t.vsql+=+v.sql||0});return t}
+
+  // ---------- Filtros ----------
+  function buildFilters(){
+    var mk=function(box,key,opts){var el=$(box);opts.forEach(function(o){var b=document.createElement("button");b.className="chip";b.type="button";b.textContent=o[1];b.dataset.v=o[0];b.setAttribute("aria-pressed",String(state.filters[key]===o[0]));b.addEventListener("click",function(){state.filters[key]=o[0];[].forEach.call(el.querySelectorAll(".chip"),function(x){x.setAttribute("aria-pressed",String(x.dataset.v===o[0]))});render()});el.appendChild(b)})};
+    mk("f-country","country",[["all","Todos"]].concat(COUNTRIES));
+    mk("f-segment","segment",[["all","Todos"]].concat(SEGMENTS.map(function(s){return[s,s]})));
+    mk("f-status","status",[["all","Todos"]].concat(STATUSES));
+    var opt=function(sel,arr){arr.forEach(function(a){var o=document.createElement("option");o.value=a[0];o.textContent=a[1];sel.appendChild(o)})};
+    opt($("n-country"),COUNTRIES);opt($("n-segment"),SEGMENTS.map(function(s){return[s,s]}));opt($("n-status"),STATUSES);
+  }
+
+  function visibleTests(){var f=state.filters;return state.tests.filter(function(t){return(f.country==="all"||t.country===f.country)&&(f.segment==="all"||t.segment===f.segment)&&(f.status==="all"||t.status===f.status)})}
+
+  // ---------- Render ----------
+  function render(){
+    var tests=visibleTests();
+    var running=tests.filter(function(t){return t.status==="run"}).length;
+    var done=tests.filter(function(t){return t.status==="done"}).length;
+    var dueCount=0,best=null;
+    tests.forEach(function(t){var info=timing(t);if(info.due)dueCount++;var tt=totals(state.checks[t.id]||[]);var cc=tt.cv?tt.cf/tt.cv:NaN,vc=tt.vv?tt.vf/tt.vv:NaN;var up=cc>0?(vc-cc)/cc:NaN;if(isFinite(up)&&(best===null||up>best.up))best={up:up,c:t.campaign}});
+    $("summary").innerHTML=
+      kpi(fmtInt(tests.length),"tests en la vista")+
+      kpi(fmtInt(running),"en curso")+
+      kpi(fmtInt(dueCount),dueCount===1?"revisión pendiente":"revisiones pendientes")+
+      kpi(best?((best.up>=0?"+":"")+fmtPct(best.up,0)):"–",best?"mejor mejora de CRO":"aún sin mediciones");
+    var list=$("list");
+    if(!state.ready){list.innerHTML='<div class="empty">'+(state.err?esc(state.err):"Cargando los tests…")+'</div>';return}
+    if(!tests.length){list.innerHTML='<div class="empty">'+(state.tests.length?"Ningún test coincide con estos filtros.":"Todavía no hay tests. "+(state.canEdit?"Pulsa «+ Nuevo test» para registrar el primero.":"Los añadirá quien edite esta página."))+'</div>';return}
+    var order=COUNTRIES.map(function(c){return c[0]});
+    var groups={};tests.forEach(function(t){(groups[t.country]=groups[t.country]||[]).push(t)});
+    var keys=Object.keys(groups).sort(function(a,b){return(order.indexOf(a)+99*(order.indexOf(a)<0))-(order.indexOf(b)+99*(order.indexOf(b)<0))});
+    var segOrder=function(s){var i=SEGMENTS.indexOf(s);return i<0?9:i};
+    var openIds={};[].forEach.call(list.querySelectorAll("details.more[open]"),function(d){openIds[d.dataset.id]=1});
+    var kept={},focusId=document.activeElement&&document.activeElement.closest&&document.activeElement.closest(".check-form")?document.activeElement.id:null;
+    [].forEach.call(list.querySelectorAll(".check-form input"),function(i){if(i.id)kept[i.id]=i.value});
+    list.innerHTML=keys.map(function(k){
+      var arr=groups[k].sort(function(a,b){return segOrder(a.segment)-segOrder(b.segment)||String(a.startDate||"9").localeCompare(String(b.startDate||"9"))});
+      return '<section class="country"><div class="country-h"><h3>'+esc(countryName(k))+'</h3><small>'+arr.length+(arr.length===1?" test":" tests")+'</small></div>'+arr.map(function(t){return card(t,openIds[t.id])}).join("")+'</section>';
+    }).join("");
+    Object.keys(kept).forEach(function(id){var el=document.getElementById(id);if(el)el.value=kept[id]});
+    if(focusId&&document.getElementById(focusId))document.getElementById(focusId).focus();
+    wireCards();
+  }
+  function kpi(v,l){return '<div class="kpi"><b class="num">'+v+'</b><span>'+esc(l)+'</span></div>'}
+
+  function timing(t){
+    var every=Math.max(1,+t.checkEveryWeeks||2);
+    if(!t.startDate||t.status==="plan")return{label:"Sin empezar",week:null,next:null,due:false};
+    var d=daysSince(t.startDate);if(d<0)return{label:"Empieza el "+fmtDate(t.startDate),week:null,next:t.startDate,due:false};
+    var week=Math.floor(d/7)+1;
+    var checks=state.checks[t.id]||[];
+    var lastWeek=checks.reduce(function(m,c){return Math.max(m,+c.week||0)},0);
+    var nextWeek=(Math.floor(lastWeek/every)+1)*every; // siguiente múltiplo del intervalo
+    var nextDate=addDays(t.startDate,nextWeek*7);
+    var due=t.status==="run"&&daysSince(nextDate)>=0;
+    return{label:"Semana "+week,week:week,next:nextDate,nextWeek:nextWeek,due:due,every:every};
+  }
+
+  function card(t,isOpen){
+    var info=timing(t);var checks=(state.checks[t.id]||[]).slice().sort(function(a,b){return(+a.week||0)-(+b.week||0)});
+    var tt=totals(checks);var cc=tt.cv?tt.cf/tt.cv:NaN,vc=tt.vv?tt.vf/tt.vv:NaN;var up=cc>0?(vc-cc)/cc:NaN;
+    var p=pValue(tt.cf,tt.cv,tt.vf,tt.vv);var target=+t.targetPerArm||1560;var prog=Math.min(1,Math.min(tt.cv,tt.vv)/target);
+    var sigTxt=!isFinite(p)?"Sin datos":p<.05?"Significativo":"Aún no significativo";
+    var stCls={plan:"st-plan",run:"st-run",done:"st-done",pause:"st-pause"}[t.status]||"st-plan";
+    var h='<article class="test" data-id="'+esc(t.id)+'">'+
+      '<div class="test-top"><div><p class="camp">'+esc(t.campaign)+'</p><div class="meta">'+
+        '<span class="pill '+stCls+'">'+esc(statusName(t.status))+'</span>'+
+        '<span class="pill">'+esc(t.segment)+'</span><span class="pill">'+esc(t.platform||"")+'</span><span class="pill">'+esc(t.method||"")+'</span>'+
+        (info.due?'<span class="pill due">Toca revisar · semana '+info.nextWeek+'</span>':'')+
+      '</div></div>'+
+      '<div class="timing"><b class="num">'+esc(info.label)+'</b><span>Inicio: '+fmtDate(t.startDate)+'</span>'+(info.next&&t.status==="run"?'<span>Próxima revisión: '+fmtDate(info.next)+'</span>':'')+'</div></div>'+
+      '<div class="result">'+
+        '<div><small>CRO actual</small><b class="num">'+fmtPct(cc)+'</b><span class="num">'+fmtInt(tt.cf)+' / '+fmtInt(tt.cv)+' visitas</span></div>'+
+        '<div><small>CRO nueva</small><b class="num">'+fmtPct(vc)+'</b><span class="num">'+fmtInt(tt.vf)+' / '+fmtInt(tt.vv)+' visitas</span></div>'+
+        '<div><small>Mejora</small><b class="num '+(up>0?"up":up<0?"down":"")+'">'+(isFinite(up)?(up>=0?"+":"")+fmtPct(up,0):"–")+'</b><span>'+esc(sigTxt)+(isFinite(p)?' · p = '+p.toFixed(3).replace(".",","):'')+'</span></div>'+
+        '<div><small>Muestra</small><b class="num">'+fmtPct(prog,0)+'</b><span class="num">de '+fmtInt(target)+' visitas por versión</span><div class="bar" aria-hidden="true"><i style="width:'+(prog*100).toFixed(1)+'%"></i></div></div>'+
+      '</div>'+
+      '<details class="more" data-id="'+esc(t.id)+'"'+(isOpen?" open":"")+'><summary>Detalle y mediciones ('+checks.length+')</summary><div class="more-body">'+
+        '<div class="kv">'+
+          '<div><small>País</small>'+esc(countryName(t.country))+'</div>'+
+          '<div><small>Landing actual</small>'+link(t.controlUrl)+'</div>'+
+          '<div><small>Landing nueva</small>'+link(t.variantUrl)+'</div>'+
+          '<div><small>Revisar cada</small>'+esc((+t.checkEveryWeeks||2)+" semanas")+'</div>'+
+          (t.hypothesis?'<div style="grid-column:1/-1"><small>Hipótesis</small>'+esc(t.hypothesis)+'</div>':'')+
+        '</div>'+
+        (checks.length?'<div class="table-wrap"><table><thead><tr><th>Semana</th><th>Fecha</th><th>Visitas actual</th><th>Form. actual</th><th>CRO actual</th><th>Visitas nueva</th><th>Form. nueva</th><th>CRO nueva</th><th>SQL actual</th><th>SQL nueva</th><th></th></tr></thead><tbody>'+
+          checks.map(function(k){var c=k.control||{},v=k.variant||{};return '<tr><td class="num">'+esc(k.week)+'</td><td>'+fmtDate(k.date)+(k.notes?' · '+esc(k.notes):'')+'</td><td class="num">'+fmtInt(+c.visits)+'</td><td class="num">'+fmtInt(+c.forms)+'</td><td class="num">'+fmtPct(c.visits?c.forms/c.visits:NaN)+'</td><td class="num">'+fmtInt(+v.visits)+'</td><td class="num">'+fmtInt(+v.forms)+'</td><td class="num">'+fmtPct(v.visits?v.forms/v.visits:NaN)+'</td><td class="num">'+(c.sql==null?"–":fmtInt(+c.sql))+'</td><td class="num">'+(v.sql==null?"–":fmtInt(+v.sql))+'</td><td>'+(state.canEdit?'<button class="btn btn-danger btn-sm" data-del-check="'+esc(k.id)+'">Borrar</button>':'')+'</td></tr>'}).join("")+
+          '</tbody></table></div>':'<p class="sub">Sin mediciones todavía. Cada medición recoge las visitas y formularios del periodo, no acumulados.</p>')+
+        (state.canEdit?checkForm(t,info)+'<div class="actions">'+statusButtons(t)+'<button class="btn btn-danger btn-sm" data-del-test="'+esc(t.id)+'">Eliminar test</button></div>':'')+
+      '</div></details></article>';
+    return h;
+  }
+  function link(u){if(!u)return"–";var href=/^https?:\/\//.test(u)?u:"https://"+u;return '<a href="'+esc(href)+'" target="_blank" rel="noopener">'+esc(u)+'</a>'}
+  function statusButtons(t){
+    var b=[];
+    if(t.status==="plan")b.push('<button class="btn btn-primary btn-sm" data-start="'+esc(t.id)+'">Arrancar hoy</button>');
+    if(t.status==="run"){b.push('<button class="btn btn-ghost btn-sm" data-status="pause" data-t="'+esc(t.id)+'">Pausar</button>');b.push('<button class="btn btn-ghost btn-sm" data-status="done" data-t="'+esc(t.id)+'">Marcar terminado</button>')}
+    if(t.status==="pause")b.push('<button class="btn btn-ghost btn-sm" data-status="run" data-t="'+esc(t.id)+'">Reanudar</button>');
+    if(t.status==="done")b.push('<button class="btn btn-ghost btn-sm" data-status="run" data-t="'+esc(t.id)+'">Reabrir</button>');
+    return b.join("");
+  }
+  function checkForm(t,info){
+    var w=info.nextWeek||(info.week||1);var id=esc(t.id);
+    return '<form class="panel check-form" data-t="'+id+'" novalidate style="margin-top:0"><h3>Añadir medición</h3><div class="grid">'+
+      '<div class="field"><label for="w-'+id+'">Semana</label><input id="w-'+id+'" name="week" type="number" min="1" value="'+w+'" required></div>'+
+      '<div class="field"><label for="d-'+id+'">Fecha</label><input id="d-'+id+'" name="date" type="date" value="'+new Date().toISOString().slice(0,10)+'" required></div>'+
+      '<div class="arm"><h4>Landing actual</h4><div class="field"><label for="cv-'+id+'">Visitas</label><input id="cv-'+id+'" name="cv" type="number" min="0" required></div><div class="field"><label for="cf-'+id+'">Formularios</label><input id="cf-'+id+'" name="cf" type="number" min="0" required></div><div class="field"><label for="cs-'+id+'">SQL (opcional)</label><input id="cs-'+id+'" name="cs" type="number" min="0"></div></div>'+
+      '<div class="arm"><h4>Landing nueva</h4><div class="field"><label for="vv-'+id+'">Visitas</label><input id="vv-'+id+'" name="vv" type="number" min="0" required></div><div class="field"><label for="vf-'+id+'">Formularios</label><input id="vf-'+id+'" name="vf" type="number" min="0" required></div><div class="field"><label for="vs-'+id+'">SQL (opcional)</label><input id="vs-'+id+'" name="vs" type="number" min="0"></div></div>'+
+      '<div class="field wide"><label for="no-'+id+'">Nota</label><input id="no-'+id+'" name="notes" placeholder="Cambios en la campaña, incidencias…"></div>'+
+      '</div><div class="form-actions"><button class="btn btn-primary" type="submit">Guardar medición</button></div><p class="msg" role="alert" hidden></p></form>';
+  }
+
+  function showMsg(el,txt){el.textContent=txt;el.hidden=!txt}
+  function wireCards(){
+    var list=$("list");
+    [].forEach.call(list.querySelectorAll(".check-form"),function(f){
+      f.addEventListener("submit",function(e){
+        e.preventDefault();var m=f.querySelector(".msg");var n=function(k){var v=f.elements[k].value;return v===""?null:Number(v)};
+        var cv=n("cv"),cf=n("cf"),vv=n("vv"),vf=n("vf"),wk=n("week");
+        if([cv,cf,vv,vf,wk].some(function(x){return x==null||!isFinite(x)||x<0})){showMsg(m,"Rellena semana, visitas y formularios de las dos landings.");return}
+        if(cf>cv||vf>vv){showMsg(m,"Los formularios no pueden superar las visitas.");return}
+        var body={week:wk,date:f.elements.date.value,control:{visits:cv,forms:cf},variant:{visits:vv,forms:vf},notes:f.elements.notes.value.trim(),createdAt:new Date().toISOString()};
+        if(n("cs")!=null)body.control.sql=n("cs");if(n("vs")!=null)body.variant.sql=n("vs");
+        showMsg(m,"");
+        state.db.collection("tests/"+f.dataset.t+"/checks").add(body).catch(function(err){showMsg(m,writeError(err))});
+      });
+    });
+  }
+  function onListClick(e){
+    var b=e.target.closest("button");if(!b||!state.db)return;
+    if(b.dataset.start){state.db.doc("tests/"+b.dataset.start).update({status:"run",startDate:new Date().toISOString().slice(0,10)}).catch(alertErr)}
+    else if(b.dataset.status){state.db.doc("tests/"+b.dataset.t).update(Object.assign({status:b.dataset.status},b.dataset.status==="done"?{endDate:new Date().toISOString().slice(0,10)}:{})).catch(alertErr)}
+    else if(b.dataset.delCheck){var tid=b.closest("article").dataset.id;if(b.dataset.confirm){state.db.doc("tests/"+tid+"/checks/"+b.dataset.delCheck).delete().catch(alertErr)}else{b.dataset.confirm="1";b.textContent="¿Seguro?"}}
+    else if(b.dataset.delTest){if(b.dataset.confirm){var id=b.dataset.delTest;(state.checks[id]||[]).forEach(function(c){state.db.doc("tests/"+id+"/checks/"+c.id).delete().catch(function(){})});state.db.doc("tests/"+id).delete().catch(alertErr)}else{b.dataset.confirm="1";b.textContent="Pulsa otra vez para eliminar"}}
+  }
+  function writeError(err){var c=err&&err.code;if(c==="quota_exceeded")return"El almacenamiento está lleno: elimina tests antiguos.";if(c==="invalid_argument")return"No tienes permiso para editar o hay un dato no válido.";if(c==="resource_exhausted")return"Demasiadas operaciones seguidas. Espera unos segundos.";return"No se pudo guardar. Inténtalo de nuevo."}
+  function alertErr(err){state.err=writeError(err);render();state.err=null}
+
+  // ---------- Nuevo test ----------
+  $("btn-new").addEventListener("click",function(){$("new-panel").hidden=false;$("n-campaign").focus()});
+  $("new-cancel").addEventListener("click",function(){$("new-panel").hidden=true});
+  $("new-form").addEventListener("submit",function(e){
+    e.preventDefault();var m=$("new-msg");var camp=$("n-campaign").value.trim();
+    if(!camp){showMsg(m,"Escribe el nombre exacto de la campaña.");return}
+    var start=$("n-start").value||null;var status=$("n-status").value;
+    if(status==="run"&&!start){showMsg(m,"Un test en curso necesita fecha de inicio.");return}
+    var body={country:$("n-country").value,segment:$("n-segment").value,platform:$("n-platform").value,method:$("n-method").value,campaign:camp,controlUrl:$("n-control").value.trim(),variantUrl:$("n-variant").value.trim(),startDate:start,checkEveryWeeks:Math.max(1,+$("n-every").value||2),targetPerArm:Math.max(100,+$("n-target").value||1560),status:status,hypothesis:$("n-hyp").value.trim(),createdAt:new Date().toISOString()};
+    showMsg(m,"");
+    state.db.collection("tests").add(body).then(function(){$("new-form").reset();$("n-every").value=2;$("n-target").value=1560;$("new-panel").hidden=true}).catch(function(err){showMsg(m,writeError(err))});
+  });
+
+  // ---------- Datos ----------
+  function subscribeChecks(id){
+    if(checkSubs[id])return;
+    checkSubs[id]=state.db.collection("tests/"+id+"/checks").onSnapshot(function(s){state.checks[id]=s.docs.map(function(d){return Object.assign({id:d.id},d.data())});render()},function(){});
+  }
+  buildFilters();render();
+  $("list").addEventListener("click",onListClick);
+  var c=window.claude;
+  if(!c||!c.use){state.err="Esta copia no está conectada al registro compartido. Ábrela desde su enlace de Claude.";state.ready=false;render();return}
+  c.use("user").then(function(u){if(u&&u.canEdit){Promise.resolve(u.canEdit()).then(function(v){state.canEdit=!!v;$("btn-new").hidden=!v;render()})}});
+  c.use("db").then(function(db){
+    if(!db){state.err="No se pudo conectar con el registro compartido.";render();return}
+    state.db=db;
+    db.collection("tests").onSnapshot(function(s){
+      state.tests=s.docs.map(function(d){return Object.assign({id:d.id},d.data())});
+      var ids={};state.tests.forEach(function(t){ids[t.id]=1;subscribeChecks(t.id)});
+      Object.keys(checkSubs).forEach(function(id){if(!ids[id]){checkSubs[id]();delete checkSubs[id];delete state.checks[id]}});
+      state.ready=true;render();
+    },function(){state.err="Se perdió la conexión con el registro. Recarga la página.";state.ready=false;render()});
+  });
+})();
+</script>

@@ -1,13 +1,41 @@
 # Estado · actualizado 2026-10-26
 
+## ▶ EMPIEZA AQUÍ (martes 27/10 · último día de Carlos antes de vacaciones 28/10–3/11)
+Fuente de fechas: Asana (consultado el 26/10 por la tarde). Lo de abajo de este bloque es el histórico.
+
+**0. Primero, seguridad (quedó a medias el 26/10 por la tarde):** revocar el token de Supabase `chekin-connect-despliegue`, rotar el de HubSpot y volver a guardarlo con `desplegar-hubspot-sync.sh`, borrar `sbp_` y `pat-na1` del historial del terminal. [POR COMPROBAR si se terminó]
+
+**1. Vence el 27/10 (con Carlos, antes de que se vaya):**
+- Mapa de tareas de Alexandre en Growth Daily: owner, fecha y «hecho» en todo (tarea índice gid 1219818181506129).
+- Kickoff del MRR automático con Carlos (alcance, fuentes, para quién) + handover de la verificación ShowMe. Fuente buena del MRR: LEOPARD (`mrr_leopard_eur`).
+- P2 · Revisión final del QR con Carlos y entrega a los AEs (enlace nuevo: chekin-connect.vercel.app/mi-perfil).
+- P3 · Corregir las UTM de las PMax (con Snowball).
+
+**2. Atrasado (venció el 26/10):**
+- Mensaje a Snowball sobre el reparto de URLs de las PMax (borrador en `trabajo-en-curso/p3-pmax-que-cambiar.md`). Alex ya habla directo con Snowball (OK de Carlos).
+- Alternativas de landing y CTA por bloques para test rápido.
+- P1 · Funnel con datos limpios de PostHog para Daniel [POR COMPROBAR si se le enseñó].
+- Seguimiento de los 5 eventos terminados (tareas creadas por la rutina): preguntar a Marta por las pruebas de The TOPO Connect y a los AEs por los 3 eventos con 0 leads.
+- Portugal: 50 al día con Showme_PT_recovery = Yes (diaria).
+
+**3. Resto de la semana:** 29/10 Cello con Valery (qué hay y qué falla) · 30/10 KPI de activación con Daniel y Carlos, auditoría de landings y creatividades, qué cifra de MRR usamos · 30/10 presentar a Óscar (Cálido) a Valery.
+
+**4. Próximas fechas:** 3/11 lanzamiento SES v2, baseline de CR de octubre, España resto, tracker, experimento Hasp con GIF · 4/11 Italia hoteles, lista priorizada de mejoras, medir Cello · 5/11 Italia resto · 6/11 plan de Cello, feedback del onboarding, informe de MRR, revisión con Carlos y Alessandro.
+
+**Horas:** semana 19–23/10 ≈ 30,4 h (+10,4 sobre 20). Semana 26–30/10: lunes ≈ 8 h → quedan ~12 h para el resto de la semana.
+
+**Dónde está cada cosa:** reglas y mapa en `/CLAUDE.md` · hallazgos en `hallazgos.md` (H-01…H-21) · decisiones en `decisiones.md` · fichas en `trabajo-en-curso/` · landings y sus fuentes en `trabajo-en-curso/p3-landings/` (fuentes editables en `p3-landings/fuentes/`, copiadas del chat "Landing Page" el 26/10).
+
+---
+
 ## Hecho
 - P3: diagnóstico de la landing de PMax España Hoteles, deck de 14 diapositivas y tracker de tests creados.
 - Casa `chekin` montada.
 - Asana: tareas creadas en los 4 proyectos GTM (QR, Auditoría, Onboarding, Web). Faltan fechas de P1 tras la meet con Daniel.
 
 ## A medias
-- **P2 · QR para eventos (AEs)** — fichas hechas; falta un retoque: el lector del escáner con IA de visión vía API (opción B, ver abajo). Bloqueado: se espera la decisión de Carlos sobre la clave (22/10). Fecha límite en Notion: 2026-10-22.
-- **P3 · Auditoría de landings y creatividades de paid** — corre en el chat "Landing Page". Pendiente:
+- **P2 · QR para eventos (AEs)** — web nueva activa (chekin-connect.vercel.app) y envío a HubSpot activo desde el 26/10 (ver «Lunes 26/10»). Pendiente: revisión final con Carlos (27/10), seguridad de tokens y seguimiento de eventos. [El escáner con Claude: ver histórico de P2]
+- **P3 · Auditoría de landings y creatividades de paid** — todo el contexto está ya en la casa (traspaso, landings, fuentes, hallazgos). Pendiente:
   - Aprobación del plan (Carlos).
   - 22/10: Carlos propone una landing por anuncio (funcionalidad concreta primero, luego el resto de Chekin), más innovadoras. Se alinea en la reunión de growth check. Choca con la expansión de URL final activada en la PMax ES y con la conversión "cualquier formulario" (ver `trabajo-en-curso/p3-auditoria-paid.md`).
   - 5 landings en Boceto (PMax general + 4 ángulos: SES, upselling, Inbox IA, recepción) en `trabajo-en-curso/p3-landings/` y en la Biblioteca de landings de Notion. Siguiente: compartir los 5 enlaces, revisarlas con Carlos, montar la 1 en HubSpot con OK.

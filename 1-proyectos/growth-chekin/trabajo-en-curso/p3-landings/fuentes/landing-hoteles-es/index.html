@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Check-in online para hoteles | Chekin</title>
+<meta name="description" content="Check-in online para hoteles en España: −80% de tiempo en recepción, verificación de identidad y parte de viajeros automático a SES.Hospedajes. Conectado con tu PMS.">
+<meta name="robots" content="noindex">
+<!-- Proxima Nova pendiente: Montserrat es el sustituto oficial del design system -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   Landing piloto · Check-in online para hoteles · ES
+   Chekin Design System · CSS autocontenido y con ámbito .ck
+   ============================================================ */
+.ck{
+  --blue:#385BF8; --anim-blue:#294DF1; --hover-blue:#5975F5;
+  --dark:#19194B; --navy:#161643; --dark-blue:#23235D;
+  --g1:#6B6B95; --g2:#9696B9; --g3:#DEDEEB;
+  --input-empty:#F4F6F8; --tint:#EFEFFF; --tint-2:#EFF6FF; --lavender:#F4F4FD; --pressed:#F0F3FF;
+  --red:#FF2467;
+  --gradient:linear-gradient(180deg,#002CFA,#274BF0);
+  --ring:0 0 0 3px rgba(56,91,248,.2);
+  --ring-subtle:0 0 0 1px rgba(56,91,248,.2);
+  --card:0 0 5px rgba(26,148,255,.173);
+  --card-hover:0 20px 25px rgba(26,148,255,.173);
+  --elev:0 31px 50px rgba(26,140,255,.25);
+  --font:'Proxima Nova','Montserrat',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
+  font-family:var(--font); color:var(--navy); background:#fff;
+  -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+}
+.ck *,.ck *::before,.ck *::after{box-sizing:border-box}
+.ck h1,.ck h2,.ck h3,.ck h4,.ck p,.ck ul,.ck ol,.ck figure,.ck blockquote{margin:0;padding:0}
+.ck ul,.ck ol{list-style:none}
+.ck img,.ck svg{display:block;max-width:100%}
+.ck a{color:inherit;text-decoration:none}
+.ck .wrap{width:100%;max-width:1200px;margin:0 auto;padding-left:24px;padding-right:24px}
+.ck section{padding:80px 0}
+
+/* ---------- Type ---------- */
+.ck h1{font-weight:700;font-size:clamp(44px,4.6vw,62px);line-height:1.08;letter-spacing:-.015em;color:var(--dark)}
+.ck h1 .accent{color:var(--blue)}
+.ck h2{font-weight:400;font-size:44px;line-height:1.1;color:var(--dark)}
+.ck h2 b{font-weight:700}
+.ck h3{font-weight:700;font-size:22px;line-height:1.4;color:var(--navy)}
+.ck p{font-weight:500;font-size:16px;line-height:1.5;color:var(--g1)}
+.ck .lead{font-size:19px;line-height:1.55;max-width:520px}
+.ck .eyebrow{display:inline-block;font-weight:600;font-size:14px;line-height:24px;color:var(--blue);background:var(--lavender);border-radius:51px;padding:4px 14px;margin-bottom:24px}
+.ck .section-head{max-width:720px;margin:0 auto 48px;text-align:center}
+.ck .section-head p{margin-top:16px;font-size:18px}
+
+/* ---------- Buttons ---------- */
+.ck .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 20px;border:0;border-radius:12px;font-family:var(--font);font-weight:600;font-size:16px;line-height:1.25;cursor:pointer;transition:background 150ms ease-out;white-space:nowrap}
+.ck .btn-lg{height:52px;padding:0 24px}
+.ck .btn-primary{background:var(--blue);color:#fff;box-shadow:var(--ring)}
+.ck .btn-primary:hover{background:linear-gradient(0deg,rgba(255,255,255,.1),rgba(255,255,255,.1)),var(--blue)}
+.ck .btn-primary:active{background:linear-gradient(0deg,rgba(0,0,0,.1),rgba(0,0,0,.1)),var(--blue)}
+.ck .btn-primary:focus-visible{outline:1px solid var(--navy);outline-offset:0}
+.ck .btn-on-dark{background:rgba(255,255,255,.9);color:var(--navy);box-shadow:none}
+.ck .btn-on-dark:hover{background:#fff}
+.ck .btn-on-dark:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.ck .btn svg{width:20px;height:20px}
+
+/* ---------- Header ---------- */
+.ck .top{position:sticky;top:0;z-index:20;background:#fff;box-shadow:0 1px 0 var(--g3)}
+.ck .top .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+.ck .top .logo{width:132px;height:auto}
+.ck .top .btn{height:40px}
+
+/* ---------- Hero ---------- */
+.ck .hero{padding:64px 0 80px}
+.ck .hero-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:64px;align-items:start}
+.ck .hero h1{margin-bottom:24px}
+.ck .ticks{margin-top:32px;display:grid;gap:16px}
+.ck .ticks li{display:flex;gap:16px;align-items:flex-start;font-weight:500;font-size:18px;line-height:1.5;color:var(--navy)}
+.ck .ticks .ico{flex:0 0 28px;width:28px;height:28px;border-radius:50%;background:var(--pressed);color:var(--blue);display:flex;align-items:center;justify-content:center}
+.ck .ticks .ico svg{width:16px;height:16px}
+.ck .trust{margin-top:40px;display:flex;flex-wrap:wrap;gap:8px 32px}
+.ck .trust div{font-size:14px;line-height:24px;font-weight:500;color:var(--g1)}
+.ck .trust b{display:block;font-size:28px;line-height:1.2;font-weight:700;color:var(--dark)}
+
+/* ---------- Form card ---------- */
+.ck .form-card{background:#fff;border-radius:14px;box-shadow:var(--elev);padding:40px 32px 32px;scroll-margin-top:96px}
+.ck .form-card h2{font-size:28px;line-height:1.25;font-weight:700;margin-bottom:8px}
+.ck .form-card .form-intro{font-size:15px;margin-bottom:24px}
+.ck .field{margin-bottom:16px}
+.ck .field label{display:block;font-weight:500;font-size:15px;line-height:20px;color:var(--navy);margin-bottom:8px}
+.ck .field input,.ck .field select{width:100%;height:44px;padding:10px 14px;border-radius:8px;border:1px solid rgba(22,22,67,.2);background:var(--input-empty);font-family:var(--font);font-weight:500;font-size:16px;line-height:20px;color:var(--navy);transition:box-shadow 150ms ease-out,border-color 150ms ease-out;-webkit-appearance:none;appearance:none}
+.ck .field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236B6B95' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;background-size:20px;padding-right:40px}
+.ck .field input::placeholder{color:var(--g1)}
+.ck .field input:not(:placeholder-shown),.ck .field select.filled{background-color:#fff;border-color:var(--navy)}
+.ck .field input:focus,.ck .field select:focus{outline:none;box-shadow:var(--ring);border-color:var(--blue)}
+.ck .field .err{display:none;margin-top:4px;text-align:right;font-size:12px;line-height:16px;font-weight:500;color:var(--red)}
+.ck .field.invalid input,.ck .field.invalid select{border-color:var(--red);background:#fff}
+.ck .field.invalid .err{display:block}
+.ck .form-card .btn{width:100%;margin-top:8px}
+.ck .form-note{margin-top:16px;font-size:12px;line-height:16px;color:var(--g2);font-weight:500;text-align:center}
+.ck .form-note a{text-decoration:underline}
+.ck .form-ok{display:none;text-align:center;padding:24px 0}
+.ck .form-ok .ico{width:56px;height:56px;margin:0 auto 16px;border-radius:50%;background:var(--pressed);color:var(--blue);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 6px rgba(56,91,248,.2)}
+.ck .form-ok h2{margin-bottom:8px}
+.ck .form-card.sent form{display:none}
+.ck .form-card.sent .form-ok{display:block}
+
+/* ---------- PMS strip ---------- */
+.ck .pms{padding:48px 0;background:#fff;border-top:1px solid var(--g3);border-bottom:1px solid var(--g3)}
+.ck .pms p.label{text-align:center;font-size:14px;font-weight:600;color:var(--g1);margin-bottom:24px}
+.ck .pms ul{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:16px 48px}
+.ck .pms li{font-weight:700;font-size:22px;letter-spacing:-.01em;color:var(--g2)}
+.ck .pms li.more{font-weight:600;font-size:16px;color:var(--blue)}
+
+/* ---------- Stats ---------- */
+.ck .stats-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
+.ck .stat{text-align:center;padding:32px 16px;background:var(--tint);border-radius:14px}
+.ck .stat b{display:block;font-weight:700;font-size:44px;line-height:1.1;color:var(--dark);white-space:nowrap}
+.ck .stat span{display:block;margin-top:8px;font-weight:500;font-size:16px;line-height:1.5;color:var(--g1)}
+
+/* ---------- Features ---------- */
+.ck .features{background:#fff}
+.ck .grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.ck .feat{background:#fff;border-radius:14px;box-shadow:var(--card);padding:32px;transition:box-shadow 200ms ease-out}
+.ck .feat:hover{box-shadow:var(--card-hover)}
+.ck .feat .ico{width:48px;height:48px;border-radius:12px;background:var(--pressed);color:var(--blue);display:flex;align-items:center;justify-content:center;margin-bottom:24px}
+.ck .feat .ico svg{width:24px;height:24px}
+.ck .feat h3{margin-bottom:8px}
+
+/* ---------- How it works ---------- */
+.ck .how{background:var(--tint-2)}
+.ck .how-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:center}
+.ck .how h2{margin-bottom:40px}
+.ck .steps{display:grid;gap:32px;counter-reset:s}
+.ck .steps li{display:flex;gap:24px;align-items:flex-start}
+.ck .steps .n{flex:0 0 40px;width:40px;height:40px;border-radius:50%;background:var(--blue);color:#fff;font-weight:700;font-size:18px;display:flex;align-items:center;justify-content:center;box-shadow:var(--ring)}
+.ck .steps h3{font-size:20px;margin-bottom:4px}
+
+/* Product mock — una sola imagen, una sola sombra */
+.ck .mock{background:#fff;border-radius:14px;box-shadow:var(--elev);overflow:hidden}
+.ck .mock-bar{display:flex;gap:6px;align-items:center;height:36px;padding:0 16px;background:#fff;border-bottom:1px solid var(--g3)}
+.ck .mock-bar i{width:10px;height:10px;border-radius:50%;background:var(--g3)}
+.ck .mock-bar span{margin-left:12px;font-size:12px;font-weight:600;color:var(--g2)}
+.ck .mock-body{padding:24px}
+.ck .mock-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px}
+.ck .mock-head strong{font-size:18px;color:var(--dark)}
+.ck .mock-head small{font-size:12px;font-weight:600;color:var(--g1)}
+.ck .mock-row{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,1.2fr);gap:12px;align-items:center;padding:12px 0;border-top:1px solid var(--g3);font-size:14px;font-weight:500;color:var(--navy)}
+.ck .mock-row.h{border-top:0;font-size:12px;font-weight:600;color:var(--g2);padding-top:0}
+.ck .mock-row .room{color:var(--g1)}
+.ck .tag{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;line-height:20px;padding:2px 10px;border-radius:6px;white-space:nowrap}
+.ck .tag-ok{background:var(--pressed);color:var(--blue)}
+.ck .tag-wait{background:var(--input-empty);color:var(--g1)}
+.ck .tag svg{width:14px;height:14px}
+
+/* ---------- Testimonial (pendiente) ---------- */
+.ck .quote{max-width:880px;margin:0 auto;background:var(--tint-2);border-radius:14px;padding:40px 48px;position:relative}
+.ck .quote .q{width:40px;height:40px;color:var(--blue);opacity:.2;margin-bottom:16px}
+.ck .quote blockquote{font-weight:500;font-size:22px;line-height:1.5;color:var(--dark)}
+.ck .quote cite{display:block;margin-top:24px;font-style:normal;font-weight:600;font-size:16px;color:var(--navy)}
+.ck .quote cite span{display:block;font-weight:500;font-size:14px;color:var(--g1)}
+.ck .pending{position:absolute;top:16px;right:16px;font-size:12px;font-weight:700;letter-spacing:.04em;color:var(--red);background:#fff;border-radius:6px;padding:2px 8px}
+
+/* ---------- FAQ ---------- */
+.ck .faq-list{max-width:800px;margin:0 auto}
+.ck .faq-list details{border-bottom:1px solid var(--g3)}
+.ck .faq-list summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:24px 0;font-weight:600;font-size:18px;line-height:1.4;color:var(--dark)}
+.ck .faq-list summary::-webkit-details-marker{display:none}
+.ck .faq-list summary svg{flex:0 0 24px;width:24px;height:24px;color:var(--blue);transition:transform 150ms ease-out}
+.ck .faq-list details[open] summary svg{transform:rotate(45deg)}
+.ck .faq-list summary:focus-visible{outline:none;box-shadow:var(--ring);border-radius:8px}
+.ck .faq-list details p{padding:0 48px 24px 0}
+
+/* ---------- Final CTA (único gradiente de la página) ---------- */
+.ck .final{padding:0 0 80px}
+.ck .final-box{background:var(--gradient);border-radius:14px;padding:64px 48px;text-align:center}
+.ck .final-box h2{color:#fff;margin-bottom:16px}
+.ck .final-box p{color:rgba(255,255,255,.85);font-size:18px;max-width:560px;margin:0 auto 32px}
+
+/* ---------- Footer legal mínimo ---------- */
+.ck .foot{background:var(--dark);padding:32px 0}
+.ck .foot .wrap{display:flex;flex-wrap:wrap;gap:16px 32px;align-items:center;justify-content:space-between}
+.ck .foot img{width:110px;height:auto}
+.ck .foot nav{display:flex;flex-wrap:wrap;gap:8px 24px}
+.ck .foot nav a,.ck .foot small{font-size:14px;font-weight:400;color:var(--g2)}
+.ck .foot nav a:hover{color:#fff}
+
+/* ---------- Mobile sticky CTA ---------- */
+.ck .sticky-cta{display:none}
+
+/* ---------- Responsive ---------- */
+@media (max-width:980px){
+  .ck section{padding:64px 0}
+  .ck .hero{padding:40px 0 64px}
+  .ck h1{font-size:44px}
+  .ck h2{font-size:36px}
+  .ck .hero-grid,.ck .how-grid{grid-template-columns:minmax(0,1fr);gap:40px}
+  .ck .grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ck .stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:640px){
+  .ck .wrap{padding-left:16px;padding-right:16px}
+  .ck section{padding:48px 0}
+  .ck .hero{padding:32px 0 48px}
+  .ck h1{font-size:36px}
+  .ck h2{font-size:30px}
+  .ck .lead{font-size:17px}
+  .ck .ticks li{font-size:16px}
+  .ck .trust b{font-size:24px}
+  .ck .top .wrap{height:60px}
+  .ck .top .logo{width:108px}
+  .ck .top .btn{display:none}
+  .ck .grid-3{grid-template-columns:minmax(0,1fr)}
+  .ck .stat b{font-size:34px}
+  .ck .stat{padding:24px 12px}
+  .ck .form-card{padding:32px 20px 24px}
+  .ck .feat{padding:24px}
+  .ck .quote{padding:32px 24px}
+  .ck .quote blockquote{font-size:18px}
+  .ck .final-box{padding:48px 24px}
+  .ck .faq-list summary{font-size:16px}
+  .ck .faq-list details p{padding-right:0}
+  .ck .pms li{font-size:18px}
+  .ck .mock-row{grid-template-columns:minmax(0,1fr) minmax(0,1fr);}
+  .ck .mock-row .room{display:none}
+  .ck .sticky-cta{display:block;position:fixed;left:0;right:0;bottom:0;z-index:30;background:#fff;padding:12px 16px;box-shadow:0 -1px 0 var(--g3)}
+  .ck .sticky-cta .btn{width:100%}
+  .ck .sticky-cta.hide{display:none}
+  .ck .foot{padding-bottom:96px}
+}
+@media (prefers-reduced-motion:reduce){
+  .ck *{transition:none !important}
+}
+</style>
+</head>
+<body style="margin:0;background:#fff">
+<div class="ck">
+
+  <!-- Cabecera mínima: sin menú. Único botón = mismo objetivo que la página -->
+  <header class="top">
+    <div class="wrap">
+      <img class="logo" src="assets/logo.svg" alt="Chekin" width="132" height="39">
+      <a class="btn btn-primary" href="#demo">Pide tu demo</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO: message match con el anuncio "Check-in Online para Hoteles · −80% Tiempo en Recepción" -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow">Para hoteles en España</span>
+          <h1>Check-in online para hoteles: <span class="accent">−80% de tiempo</span> en recepción</h1>
+          <p class="lead">Tus huéspedes se registran y verifican su identidad antes de llegar. El parte de viajeros se envía solo a SES.Hospedajes. Y todo se sincroniza con tu PMS.</p>
+          <ul class="ticks">
+            <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Check-in en 3 minutos, sin colas en el mostrador</li>
+            <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Parte a SES.Hospedajes, Mossos y Ertzaintza sin tocar un papel</li>
+            <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>+55 € de media por reserva con upselling en el check-in</li>
+          </ul>
+          <div class="trust">
+            <div><b>+10.000</b>hoteles ya usan Chekin</div>
+            <div><b>+200</b>integraciones con PMS</div>
+            <div><b>+25M</b>check-ins realizados</div>
+          </div>
+        </div>
+
+        <!-- FORMULARIO: aquí va el embed de HubSpot (hbspt.forms.create). Este es una maqueta con los mismos campos. -->
+        <div class="form-card" id="demo">
+          <form novalidate>
+            <h2>Pide tu demo gratuita</h2>
+            <p class="form-intro">Un especialista en hoteles te enseña cómo funciona Chekin con tu PMS.</p>
+            <div class="field">
+              <label for="f-name">Nombre</label>
+              <input id="f-name" name="firstname" type="text" placeholder="Tu nombre" autocomplete="given-name" required>
+              <span class="err">Escribe tu nombre</span>
+            </div>
+            <div class="field">
+              <label for="f-email">Email de trabajo</label>
+              <input id="f-email" name="email" type="email" placeholder="nombre@tuhotel.com" autocomplete="email" required>
+              <span class="err">Escribe un email válido</span>
+            </div>
+            <div class="field">
+              <label for="f-phone">Teléfono</label>
+              <input id="f-phone" name="phone" type="tel" placeholder="+34 600 000 000" autocomplete="tel" required>
+              <span class="err">Escribe tu teléfono</span>
+            </div>
+            <div class="field">
+              <label for="f-rooms">Número de habitaciones</label>
+              <select id="f-rooms" name="numero_de_habitaciones" required>
+                <option value="" selected disabled>Selecciona</option>
+                <option>1–20</option>
+                <option>21–50</option>
+                <option>51–150</option>
+                <option>Más de 150</option>
+              </select>
+              <span class="err">Selecciona una opción</span>
+            </div>
+            <!-- Campos ocultos para atribución (se rellenan desde la URL) -->
+            <input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign">
+            <input type="hidden" name="utm_term"><input type="hidden" name="utm_content"><input type="hidden" name="gclid"><input type="hidden" name="fbclid">
+            <input type="hidden" name="landing" value="hoteles-es-checkin">
+            <button class="btn btn-primary btn-lg" type="submit">Pide tu demo
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-5-5 5 5-5 5"/></svg>
+            </button>
+            <p class="form-note">Te contactamos en menos de 24 h laborables. Al enviar aceptas la <a href="https://chekin.com/privacidad/" target="_blank" rel="noopener">política de privacidad</a>.</p>
+          </form>
+          <div class="form-ok" role="status" aria-live="polite">
+            <div class="ico"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+            <h2>Solicitud recibida</h2>
+            <p>Un especialista en hoteles te escribirá en menos de 24 h laborables para agendar tu demo.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OBJECIÓN PRINCIPAL: ¿funciona con mi PMS? (logos oficiales pendientes: sustituir por SVG en gris) -->
+    <div class="pms">
+      <div class="wrap">
+        <p class="label">Conectado con el PMS que ya usas</p>
+        <ul>
+          <li>Mews</li><li>Cloudbeds</li><li>Little Hotelier</li><li>eviivo</li><li>Amenitiz</li><li class="more">y +200 más</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CIFRAS -->
+    <section class="stats">
+      <div class="wrap stats-grid">
+        <div class="stat"><b>−80%</b><span>de tiempo en recepción</span></div>
+        <div class="stat"><b>3 min</b><span>de check-in medio</span></div>
+        <div class="stat"><b>+55 €</b><span>de upselling por reserva</span></div>
+        <div class="stat"><b>100%</b><span>de España cubierto: SES.Hospedajes, Mossos y Ertzaintza</span></div>
+      </div>
+    </section>
+
+    <!-- BENEFICIOS: rejilla uniforme 3×2 -->
+    <section class="features">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Todo lo que tu recepción hace a mano, <b>en automático</b></h2>
+          <p>Menos colas y papeleo para tu equipo. Una llegada más rápida para tus huéspedes.</p>
+        </div>
+        <div class="grid-3">
+          <article class="feat">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/><path d="m9 10 2 2 4-4"/></svg></div>
+            <h3>Check-in online antes de llegar</h3>
+            <p>El huésped rellena sus datos desde el móvil antes de la llegada. En el mostrador solo recoge la llave.</p>
+          </article>
+          <article class="feat">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M6 16c.6-1.4 1.7-2 3-2s2.4.6 3 2"/><path d="M14 10h4M14 14h3"/></svg></div>
+            <h3>Identidad verificada en segundos</h3>
+            <p>Lectura del documento y comparación facial. Sin fotocopias de DNI ni pasaportes en recepción.</p>
+          </article>
+          <article class="feat">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg></div>
+            <h3>Parte de viajeros automático</h3>
+            <p>Envío a SES.Hospedajes, Mossos d'Esquadra y Ertzaintza, y datos guardados los 3 años que exige la ley.</p>
+          </article>
+          <article class="feat">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="14" rx="2"/><path d="M9 20h6M12 16v4"/><path d="M9 7h6M9 10h4"/></svg></div>
+            <h3>Quiosco en el lobby</h3>
+            <p>Para quien no hizo el check-in online: autoservicio en el hotel, sin esperar a que el mostrador quede libre.</p>
+          </article>
+          <article class="feat">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="m10.8 12.2 8.2-8.2M17 6l2 2M15 8l2 2"/></svg></div>
+            <h3>Llegadas tarde con llave digital</h3>
+            <p>El huésped que llega de madrugada entra con su llave digital, aunque no haya nadie en recepción.</p>
+          </article>
+          <article class="feat">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17 9 11l4 4 8-8"/><path d="M15 7h6v6"/></svg></div>
+            <h3>Más ingresos en cada reserva</h3>
+            <p>Ofrece early check-in, transfers y experiencias durante el registro: +55 € de media por reserva.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CÓMO FUNCIONA -->
+    <section class="how">
+      <div class="wrap how-grid">
+        <div>
+          <h2>Así funciona <b>en tu hotel</b></h2>
+          <ol class="steps">
+            <li><span class="n">1</span><div><h3>Conectamos Chekin con tu PMS</h3><p>Las reservas entran solas. No cambias tu forma de trabajar.</p></div></li>
+            <li><span class="n">2</span><div><h3>El huésped hace el check-in online</h3><p>Recibe un enlace antes de llegar, registra sus datos y verifica su identidad en 3 minutos.</p></div></li>
+            <li><span class="n">3</span><div><h3>El parte se envía solo</h3><p>Chekin comunica los datos a SES.Hospedajes, Mossos o Ertzaintza y los guarda de forma segura.</p></div></li>
+          </ol>
+        </div>
+        <figure class="mock" aria-label="Vista de llegadas del día en Chekin">
+          <div class="mock-bar"><i></i><i></i><i></i><span>Chekin · Llegadas de hoy</span></div>
+          <div class="mock-body">
+            <div class="mock-head"><strong>Llegadas de hoy</strong><small>18 de 24 con check-in hecho</small></div>
+            <div class="mock-row h"><span>Huésped</span><span class="room">Habitación</span><span>Estado</span></div>
+            <div class="mock-row"><span>Laura Martín</span><span class="room">204 · Doble</span><span class="tag tag-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Enviado a SES</span></div>
+            <div class="mock-row"><span>James Walker</span><span class="room">118 · Suite</span><span class="tag tag-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Enviado a SES</span></div>
+            <div class="mock-row"><span>Sophie Dubois</span><span class="room">305 · Doble</span><span class="tag tag-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>ID verificada</span></div>
+            <div class="mock-row"><span>Marco Rossi</span><span class="room">112 · Individual</span><span class="tag tag-wait">Pendiente</span></div>
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <!-- TESTIMONIO: PENDIENTE de un cliente hotelero real. No publicar con este texto. -->
+    <section class="testimonial">
+      <div class="wrap">
+        <figure class="quote">
+          <span class="pending">PENDIENTE · TESTIMONIO REAL</span>
+          <svg class="q" viewBox="0 0 24 24" fill="currentColor"><path d="M4 11h4v8H2v-6c0-4 2-6.6 6-7.5V8c-2 .6-3.3 1.6-4 3Zm12 0h4v8h-6v-6c0-4 2-6.6 6-7.5V8c-2 .6-3.3 1.6-4 3Z"/></svg>
+          <blockquote>[Frase real de un director/a de hotel sobre el tiempo ahorrado en recepción, idealmente con una cifra.]</blockquote>
+          <cite>[Nombre y apellido]<span>[Cargo] · [Hotel, ciudad]</span></cite>
+        </figure>
+      </div>
+    </section>
+
+    <!-- FAQ: responde objeciones -->
+    <section class="faq">
+      <div class="wrap">
+        <div class="section-head"><h2>Preguntas <b>frecuentes</b></h2></div>
+        <div class="faq-list">
+          <details>
+            <summary>¿Funciona con mi PMS?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+            <p>Chekin se integra con más de 200 PMS, entre ellos Mews, Cloudbeds, Little Hotelier, eviivo y Amenitiz. En la demo comprobamos la integración con el tuyo.</p>
+          </details>
+          <details>
+            <summary>¿Cumple con SES.Hospedajes?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+            <p>Sí. Chekin envía el parte de viajeros a SES.Hospedajes del Ministerio del Interior, y también a Mossos d'Esquadra en Cataluña y a la Ertzaintza en el País Vasco. Cubre el 100% de España.</p>
+          </details>
+          <details>
+            <summary>¿Y si un huésped no hace el check-in online?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+            <p>Puede hacerlo al llegar en el quiosco del lobby o con ayuda de recepción. El parte se envía igual de forma automática.</p>
+          </details>
+          <details>
+            <summary>¿Qué pasa con los datos de mis huéspedes?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+            <p>Se guardan de forma segura durante los 3 años que exige la normativa española y después se eliminan.</p>
+          </details>
+          <details>
+            <summary>¿Cuánto se tarda en ponerlo en marcha?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+            <p>[PENDIENTE: confirmar con ventas/onboarding el plazo real de implantación en hoteles.]</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CIERRE: CTA repetido, mismo destino -->
+    <section class="final">
+      <div class="wrap">
+        <div class="final-box">
+          <h2>Recupera las horas que tu equipo pierde en recepción</h2>
+          <p>Te enseñamos cómo funciona Chekin con tu PMS y tu tipo de hotel.</p>
+          <a class="btn btn-on-dark btn-lg" href="#demo">Pide tu demo
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-5-5 5 5-5 5"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer legal mínimo (sin navegación de producto: attention ratio 1:1) -->
+  <footer class="foot">
+    <div class="wrap">
+      <img src="assets/logo-white.svg" alt="Chekin" width="110" height="33">
+      <nav aria-label="Legal">
+        <a href="https://chekin.com/privacidad/" target="_blank" rel="noopener">Privacidad</a>
+        <a href="https://chekin.com/politica-de-cookies/" target="_blank" rel="noopener">Cookies</a>
+        <small>© 2026 Chekin</small>
+      </nav>
+    </div>
+  </footer>
+
+  <div class="sticky-cta" id="sticky"><a class="btn btn-primary" href="#demo">Pide tu demo</a></div>
+</div>
+
+<script>
+(function(){
+  // UTM y click IDs → campos ocultos
+  var q=new URLSearchParams(location.search);
+  ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid','fbclid'].forEach(function(k){
+    var el=document.querySelector('.ck input[name="'+k+'"]'); if(el&&q.get(k)) el.value=q.get(k);
+  });
+  // Select con estado "relleno"
+  var sel=document.getElementById('f-rooms');
+  sel.addEventListener('change',function(){sel.classList.toggle('filled',!!sel.value)});
+  // Validación de la maqueta (en producción la hace el formulario de HubSpot)
+  var card=document.getElementById('demo'), form=card.querySelector('form');
+  form.addEventListener('submit',function(e){
+    e.preventDefault(); var ok=true;
+    form.querySelectorAll('.field').forEach(function(f){
+      var i=f.querySelector('input,select'); var v=i.checkValidity()&&i.value.trim()!=='';
+      f.classList.toggle('invalid',!v); if(!v) ok=false;
+    });
+    if(ok){card.classList.add('sent');}
+    else{var first=form.querySelector('.invalid input,.invalid select'); if(first) first.focus();}
+  });
+  // Barra fija móvil: se oculta cuando el formulario está a la vista
+  var sticky=document.getElementById('sticky');
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(en){sticky.classList.toggle('hide',en[0].isIntersecting)},{threshold:.2}).observe(card);
+  }
+})();
+</script>
+</body>
+</html>

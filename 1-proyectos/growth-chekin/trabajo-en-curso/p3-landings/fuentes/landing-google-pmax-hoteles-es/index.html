@@ -1,0 +1,939 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Automatiza la recepción de tu hotel | Prueba Chekin gratis 14 días</title>
+<meta name="description" content="Check-in online, parte automático a SES.Hospedajes y +55 € por reserva. Prueba Chekin gratis 14 días: déjanos tus datos y un experto en Chekin te contactará.">
+<meta name="robots" content="noindex">
+<!-- Proxima Nova pendiente: Montserrat es el sustituto oficial del design system -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   Landing piloto · Check-in online para hoteles · ES
+   Chekin Design System · CSS autocontenido y con ámbito .ck
+   ============================================================ */
+.ck{
+  --blue:#385BF8; --anim-blue:#294DF1; --hover-blue:#5975F5;
+  --dark:#19194B; --navy:#161643; --dark-blue:#23235D;
+  --g1:#6B6B95; --g2:#9696B9; --g3:#DEDEEB;
+  --input-empty:#F4F6F8; --tint:#EFEFFF; --tint-2:#EFF6FF; --lavender:#F4F4FD; --pressed:#F0F3FF;
+  --red:#FF2467;
+  --gradient:linear-gradient(180deg,#002CFA,#274BF0);
+  --ring:0 0 0 3px rgba(56,91,248,.2);
+  --ring-subtle:0 0 0 1px rgba(56,91,248,.2);
+  --card:0 0 5px rgba(26,148,255,.173);
+  --card-hover:0 20px 25px rgba(26,148,255,.173);
+  --elev:0 31px 50px rgba(26,140,255,.25);
+  --font:'Proxima Nova','Montserrat',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
+  font-family:var(--font); color:var(--navy); background:#fff;
+  -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+}
+.ck *,.ck *::before,.ck *::after{box-sizing:border-box}
+.ck h1,.ck h2,.ck h3,.ck h4,.ck p,.ck ul,.ck ol,.ck figure,.ck blockquote{margin:0;padding:0}
+.ck ul,.ck ol{list-style:none}
+.ck img,.ck svg{display:block;max-width:100%}
+.ck a{color:inherit;text-decoration:none}
+.ck .wrap{width:100%;max-width:1200px;margin:0 auto;padding-left:24px;padding-right:24px}
+.ck section{padding:80px 0}
+
+/* ---------- Type ---------- */
+.ck h1{font-weight:700;font-size:clamp(44px,4.6vw,62px);line-height:1.08;letter-spacing:-.015em;color:var(--dark)}
+.ck h1 .accent{color:var(--blue)}
+.ck h2{font-weight:400;font-size:44px;line-height:1.1;color:var(--dark)}
+.ck h2 b{font-weight:700}
+.ck h3{font-weight:700;font-size:22px;line-height:1.4;color:var(--navy)}
+.ck p{font-weight:500;font-size:16px;line-height:1.5;color:var(--g1)}
+.ck .lead{font-size:19px;line-height:1.55;max-width:520px}
+.ck .eyebrow{display:inline-block;font-weight:600;font-size:14px;line-height:24px;color:var(--blue);background:var(--lavender);border-radius:51px;padding:4px 14px;margin-bottom:24px}
+.ck .section-head{max-width:720px;margin:0 auto 48px;text-align:center}
+.ck .section-head p{margin-top:16px;font-size:18px}
+
+/* ---------- Buttons ---------- */
+.ck .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 20px;border:0;border-radius:12px;font-family:var(--font);font-weight:600;font-size:16px;line-height:1.25;cursor:pointer;transition:background 150ms ease-out,color 150ms ease-out,box-shadow 150ms ease-out;white-space:nowrap}
+.ck .btn-lg{height:52px;padding:0 24px}
+.ck .btn-primary{background:var(--blue);color:#fff;box-shadow:var(--ring)}
+.ck .btn-primary:hover{background:linear-gradient(0deg,rgba(255,255,255,.1),rgba(255,255,255,.1)),var(--blue)}
+.ck .btn-primary:active{background:linear-gradient(0deg,rgba(0,0,0,.1),rgba(0,0,0,.1)),var(--blue)}
+.ck .btn-primary:focus-visible{outline:1px solid var(--navy);outline-offset:0}
+.ck .btn-on-dark{background:rgba(255,255,255,.9);color:var(--navy);box-shadow:none}
+.ck .btn-on-dark:hover{background:#fff}
+.ck .btn-on-dark:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.ck .btn svg{width:20px;height:20px}
+
+/* ---------- Header ---------- */
+.ck .top{position:sticky;top:0;z-index:20;background:#fff;box-shadow:0 1px 0 var(--g3)}
+.ck .top .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+.ck .top .logo{width:132px;height:auto}
+.ck .top .btn{height:40px}
+
+/* ---------- Hero ---------- */
+.ck .hero{padding:64px 0 80px}
+.ck .hero-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:64px;align-items:start}
+.ck .hero h1{margin-bottom:24px}
+.ck .ticks{margin-top:32px;display:grid;gap:16px}
+.ck .ticks li{display:flex;gap:16px;align-items:flex-start;font-weight:500;font-size:18px;line-height:1.5;color:var(--navy)}
+.ck .ticks .ico{flex:0 0 28px;width:28px;height:28px;border-radius:50%;background:var(--pressed);color:var(--blue);display:flex;align-items:center;justify-content:center}
+.ck .ticks .ico svg{width:16px;height:16px}
+.ck .trust{margin-top:40px;display:flex;flex-wrap:wrap;gap:8px 32px}
+.ck .trust div{font-size:14px;line-height:24px;font-weight:500;color:var(--g1)}
+.ck .trust b{display:block;font-size:28px;line-height:1.2;font-weight:700;color:var(--dark)}
+
+/* ---------- Form card ---------- */
+.ck .form-card{background:#fff;border-radius:14px;box-shadow:var(--elev);padding:40px 32px 32px;scroll-margin-top:96px}
+.ck .form-card h2{font-size:28px;line-height:1.25;font-weight:700;margin-bottom:8px}
+.ck .form-card .form-intro{font-size:15px;margin-bottom:24px}
+.ck .field{margin-bottom:16px}
+.ck .field label{display:block;font-weight:500;font-size:15px;line-height:20px;color:var(--navy);margin-bottom:8px}
+.ck .field input,.ck .field select{width:100%;height:44px;padding:10px 14px;border-radius:8px;border:1px solid rgba(22,22,67,.2);background:var(--input-empty);font-family:var(--font);font-weight:500;font-size:16px;line-height:20px;color:var(--navy);transition:box-shadow 150ms ease-out,border-color 150ms ease-out;-webkit-appearance:none;appearance:none}
+.ck .field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236B6B95' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;background-size:20px;padding-right:40px}
+.ck .field input::placeholder{color:var(--g1)}
+.ck .field input:not(:placeholder-shown),.ck .field select.filled{background-color:#fff;border-color:var(--navy)}
+.ck .field input:focus,.ck .field select:focus{outline:none;box-shadow:var(--ring);border-color:var(--blue)}
+.ck .field .err{display:none;margin-top:4px;text-align:right;font-size:12px;line-height:16px;font-weight:500;color:var(--red)}
+.ck .field.invalid input,.ck .field.invalid select{border-color:var(--red);background:#fff}
+.ck .field.invalid .err{display:block}
+.ck .form-card .btn{width:100%;margin-top:8px}
+.ck .form-note{margin-top:16px;font-size:12px;line-height:16px;color:var(--g2);font-weight:500;text-align:center}
+.ck .form-note a{text-decoration:underline}
+.ck .form-ok{display:none;text-align:center;padding:24px 0}
+.ck .form-ok .ico{width:56px;height:56px;margin:0 auto 16px;border-radius:50%;background:var(--pressed);color:var(--blue);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 6px rgba(56,91,248,.2)}
+.ck .form-ok h2{margin-bottom:8px}
+.ck .form-card.sent form{display:none}
+.ck .form-card.sent .form-ok{display:block}
+
+/* ---------- PMS strip ---------- */
+.ck .pms{padding:48px 0;background:#fff;border-top:1px solid var(--g3);border-bottom:1px solid var(--g3)}
+.ck .pms p.label{text-align:center;font-size:14px;font-weight:600;color:var(--g1);margin-bottom:24px}
+.ck .pms ul{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:16px 48px}
+.ck .pms li{font-weight:700;font-size:22px;letter-spacing:-.01em;color:var(--g2)}
+.ck .pms li.more{font-weight:600;font-size:16px;color:var(--blue)}
+
+/* ---------- Stats ---------- */
+.ck .stats-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
+.ck .stat{text-align:center;padding:32px 16px;background:var(--tint);border-radius:14px}
+.ck .stat b{display:block;font-weight:700;font-size:44px;line-height:1.1;color:var(--dark);white-space:nowrap}
+.ck .stat span{display:block;margin-top:8px;font-weight:500;font-size:16px;line-height:1.5;color:var(--g1)}
+
+/* ---------- Features ---------- */
+.ck .features{background:#fff}
+.ck .grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.ck .feat{background:#fff;border-radius:14px;box-shadow:var(--card);padding:32px;transition:box-shadow 200ms ease-out}
+.ck .feat:hover{box-shadow:var(--card-hover)}
+.ck .feat .ico{width:48px;height:48px;border-radius:12px;background:var(--pressed);color:var(--blue);display:flex;align-items:center;justify-content:center;margin-bottom:24px}
+.ck .feat .ico svg{width:24px;height:24px}
+.ck .feat h3{margin-bottom:8px}
+
+/* ---------- How it works ---------- */
+.ck .how{background:var(--tint-2)}
+.ck .how-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:center}
+.ck .how h2{margin-bottom:40px}
+.ck .steps{display:grid;gap:32px;counter-reset:s}
+.ck .steps li{display:flex;gap:24px;align-items:flex-start}
+.ck .steps .n{flex:0 0 40px;width:40px;height:40px;border-radius:50%;background:var(--blue);color:#fff;font-weight:700;font-size:18px;display:flex;align-items:center;justify-content:center;box-shadow:var(--ring)}
+.ck .steps h3{font-size:20px;margin-bottom:4px}
+
+/* Product mock — una sola imagen, una sola sombra */
+.ck .mock{background:#fff;border-radius:14px;box-shadow:var(--elev);overflow:hidden}
+.ck .mock-bar{display:flex;gap:6px;align-items:center;height:36px;padding:0 16px;background:#fff;border-bottom:1px solid var(--g3)}
+.ck .mock-bar i{width:10px;height:10px;border-radius:50%;background:var(--g3)}
+.ck .mock-bar span{margin-left:12px;font-size:12px;font-weight:600;color:var(--g2)}
+.ck .mock-body{padding:24px}
+.ck .mock-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px}
+.ck .mock-head strong{font-size:18px;color:var(--dark)}
+.ck .mock-head small{font-size:12px;font-weight:600;color:var(--g1)}
+.ck .mock-row{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,1.2fr);gap:12px;align-items:center;padding:12px 0;border-top:1px solid var(--g3);font-size:14px;font-weight:500;color:var(--navy)}
+.ck .mock-row.h{border-top:0;font-size:12px;font-weight:600;color:var(--g2);padding-top:0}
+.ck .mock-row .room{color:var(--g1)}
+.ck .tag{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;line-height:20px;padding:2px 10px;border-radius:6px;white-space:nowrap}
+.ck .tag-ok{background:var(--pressed);color:var(--blue)}
+.ck .tag-wait{background:var(--input-empty);color:var(--g1)}
+.ck .tag svg{width:14px;height:14px}
+
+/* ---------- Testimonial (pendiente) ---------- */
+.ck .quote{max-width:880px;margin:0 auto;background:var(--tint-2);border-radius:14px;padding:40px 48px;position:relative}
+.ck .quote .q{width:40px;height:40px;color:var(--blue);opacity:.2;margin-bottom:16px}
+.ck .quote blockquote{font-weight:500;font-size:22px;line-height:1.5;color:var(--dark)}
+.ck .quote cite{display:block;margin-top:24px;font-style:normal;font-weight:600;font-size:16px;color:var(--navy)}
+.ck .quote cite span{display:block;font-weight:500;font-size:14px;color:var(--g1)}
+.ck .pending{position:absolute;top:16px;right:16px;font-size:12px;font-weight:700;letter-spacing:.04em;color:var(--red);background:#fff;border-radius:6px;padding:2px 8px}
+
+/* ---------- FAQ ---------- */
+.ck .faq-list{max-width:800px;margin:0 auto}
+.ck .faq-list details{border-bottom:1px solid var(--g3)}
+.ck .faq-list summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:24px 0;font-weight:600;font-size:18px;line-height:1.4;color:var(--dark)}
+.ck .faq-list summary::-webkit-details-marker{display:none}
+.ck .faq-list summary svg{flex:0 0 24px;width:24px;height:24px;color:var(--blue);transition:transform 150ms ease-out}
+.ck .faq-list details[open] summary svg{transform:rotate(45deg)}
+.ck .faq-list summary:focus-visible{outline:none;box-shadow:var(--ring);border-radius:8px}
+.ck .faq-list details p{padding:0 48px 24px 0}
+
+/* ---------- Final CTA (único gradiente de la página) ---------- */
+.ck .final{padding:0 0 80px}
+.ck .final-box{background:var(--gradient);border-radius:14px;padding:64px 48px;text-align:center}
+.ck .final-box h2{color:#fff;margin-bottom:16px}
+.ck .final-box p{color:rgba(255,255,255,.85);font-size:18px;max-width:560px;margin:0 auto 32px}
+
+/* ---------- Footer legal mínimo ---------- */
+.ck .foot{background:var(--dark);padding:32px 0}
+.ck .foot .wrap{display:flex;flex-wrap:wrap;gap:16px 32px;align-items:center;justify-content:space-between}
+.ck .foot img{width:110px;height:auto}
+.ck .foot nav{display:flex;flex-wrap:wrap;gap:8px 24px}
+.ck .foot nav a,.ck .foot small{font-size:14px;font-weight:400;color:var(--g2)}
+.ck .foot nav a:hover{color:#fff}
+
+/* ---------- Mobile sticky CTA ---------- */
+.ck .sticky-cta{display:none}
+
+/* ---------- Responsive ---------- */
+@media (max-width:980px){
+  .ck section{padding:64px 0}
+  .ck .hero{padding:40px 0 64px}
+  .ck h1{font-size:44px}
+  .ck h2{font-size:36px}
+  .ck .hero-grid,.ck .how-grid{grid-template-columns:minmax(0,1fr);gap:40px}
+  .ck .grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ck .stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:640px){
+  .ck .wrap{padding-left:16px;padding-right:16px}
+  .ck section{padding:48px 0}
+  .ck .hero{padding:32px 0 48px}
+  .ck h1{font-size:36px}
+  .ck h2{font-size:30px}
+  .ck .lead{font-size:17px}
+  .ck .ticks li{font-size:16px}
+  .ck .trust b{font-size:24px}
+  .ck .top .wrap{height:60px}
+  .ck .top .logo{width:108px}
+  .ck .top .btn{display:none}
+  .ck .grid-3{grid-template-columns:minmax(0,1fr)}
+  .ck .stat b{font-size:34px}
+  .ck .stat{padding:24px 12px}
+  .ck .form-card{padding:32px 20px 24px}
+  .ck .feat{padding:24px}
+  .ck .quote{padding:32px 24px}
+  .ck .quote blockquote{font-size:18px}
+  .ck .final-box{padding:48px 24px}
+  .ck .faq-list summary{font-size:16px}
+  .ck .faq-list details p{padding-right:0}
+  .ck .pms li{font-size:18px}
+  .ck .mock-row{grid-template-columns:minmax(0,1fr) minmax(0,1fr);}
+  .ck .mock-row .room{display:none}
+  .ck .sticky-cta{display:block;position:fixed;left:0;right:0;bottom:0;z-index:30;background:#fff;padding:12px 16px;box-shadow:0 -1px 0 var(--g3)}
+  .ck .sticky-cta .btn{width:100%}
+  .ck .sticky-cta.hide{display:none}
+  .ck .foot{padding-bottom:96px}
+}
+@media (prefers-reduced-motion:reduce){
+  .ck *{transition:none !important}
+}
+
+/* ============================================================
+   Landing test · SB_ES_GOOGLE_PMAX_COMPETITORS_CHEKIN · v3
+   ============================================================ */
+.ck{--green:#1E9E5A;--lav:#F4F4FD}
+
+/* ---- Tonos por sección (paleta del DS: blanco, tintes azules, navy, un gradiente) ---- */
+.ck .tone-tint{background:var(--tint-2)}
+.ck .tone-lav{background:var(--lav)}
+.ck .tone-navy{background:var(--dark)}
+
+/* ---- HERO compacto: todo visible en un portátil de 14" (~1512×780 útiles) ---- */
+.ck .hero{padding:40px 0 48px;background:var(--tint-2)}
+.ck .hero-grid{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:56px;align-items:center}
+.ck .hero h1{font-size:clamp(38px,3.6vw,54px);line-height:1.08;margin-bottom:16px}
+.ck .hero .eyebrow{margin-bottom:16px;background:#fff}
+.ck .hero .lead{font-size:18px;line-height:1.5}
+.ck .hero .ticks{margin-top:20px;gap:10px}
+.ck .hero .ticks li{font-size:16px}
+.ck .hero .ticks .ico{flex-basis:24px;width:24px;height:24px}
+.ck .hero-stats{margin-top:28px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;max-width:560px}
+.ck .hero-stats div{background:#fff;border-radius:12px;box-shadow:var(--card);padding:12px 10px;text-align:center}
+.ck .hero-stats b{display:block;font-weight:700;font-size:22px;line-height:1.2;color:var(--dark);white-space:nowrap}
+.ck .hero-stats span{display:block;font-weight:500;font-size:12px;line-height:1.35;color:var(--g1);margin-top:2px}
+
+/* Formulario compacto: 2 columnas en filas cortas */
+.ck .form-card{padding:28px 28px 22px}
+.ck .form-card h2{font-size:24px;margin-bottom:4px}
+.ck .form-card .form-intro{font-size:14px;margin-bottom:16px}
+.ck .form-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 12px}
+.ck .form-grid .full{grid-column:1/-1}
+.ck .field{margin-bottom:12px}
+.ck .field label{font-size:14px;margin-bottom:6px}
+.ck .field input,.ck .field select{height:42px;font-size:15px}
+.ck .form-card .btn{margin-top:4px}
+.ck .form-note{margin-top:12px}
+
+/* ---- PMS ---- */
+.ck .pms{padding:32px 0;border-top:0}
+
+/* ---- Cifras sobre navy ---- */
+.ck .stats-dark{padding:56px 0}
+.ck .stats-dark .stats-grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}
+.ck .stats-dark .stat{background:rgba(255,255,255,.06);border-radius:14px;padding:24px 12px}
+.ck .stats-dark .stat b{color:#fff;font-size:38px}
+.ck .stats-dark .stat span{color:var(--g2);font-size:15px}
+
+/* ---- Mapa PMS → Chekin ---- */
+.ck .pms-hub{padding:72px 0;background:#fff}
+.ck .pms-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:56px;align-items:center}
+.ck .pms-copy h2{margin-bottom:16px}
+.ck .pms-copy > p{font-size:17px;max-width:460px}
+.ck .flow{margin-top:24px;display:grid;gap:12px;counter-reset:none}
+.ck .flow li{display:flex;gap:12px;align-items:center;font-weight:600;font-size:16px;color:var(--navy)}
+.ck .flow li span{flex:0 0 28px;width:28px;height:28px;border-radius:50%;background:var(--pressed);color:var(--blue);font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center}
+.ck .pms-more{margin-top:20px;font-size:15px;font-weight:600;color:var(--blue)}
+.ck .pms-visual{position:relative;width:100%;aspect-ratio:600/480;max-width:100%;background:var(--tint-2);border-radius:14px;overflow:hidden}
+.ck .pms-visual .lines{position:absolute;inset:0;width:100%;height:100%}
+.ck .pms-center{position:absolute;left:8%;top:50%;width:27%;transform:translateY(-50%);background:#fff;border-radius:999px;box-shadow:0 20px 25px rgba(26,148,255,.173);padding:4.5% 4%;display:flex;align-items:center;justify-content:center}
+.ck .pms-center img{width:100%;height:auto}
+.ck .pms-logo{position:absolute;left:63.3%;width:30%;height:12.5%;transform:translateY(-50%);background:#fff;border-radius:12px;box-shadow:0 10px 24px rgba(26,148,255,.1);display:flex;align-items:center;justify-content:center;padding:0 5%}
+.ck .pms-logo img{max-width:100%;max-height:52%;width:auto;height:auto;object-fit:contain}
+@media (max-width:980px){.ck .pms-grid{grid-template-columns:minmax(0,1fr);gap:32px}.ck .pms-hub{padding:56px 0}}
+@media (max-width:640px){.ck .pms-logo{border-radius:8px}.ck .pms-hub{padding:48px 0}}
+/* ---- Casos de éxito ---- */
+.ck .cases-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.ck .case{margin:0;background:#fff;border-radius:14px;box-shadow:var(--card);padding:32px;display:flex;flex-direction:column;gap:20px}
+.ck .case-head{display:flex;flex-direction:column;gap:4px;padding-bottom:16px;border-bottom:1px solid var(--g3)}
+.ck .case-brand{font-weight:800;font-size:22px;letter-spacing:-.01em;color:var(--dark)}
+.ck .case-meta{font-weight:500;font-size:14px;color:var(--g1)}
+.ck .case-metric{display:flex;flex-direction:column;gap:2px}
+.ck .case-metric.two{flex-direction:row;gap:32px}
+.ck .case-metric.two > div{display:flex;flex-direction:column;gap:2px}
+.ck .case-metric b{font-weight:700;font-size:40px;line-height:1.1;color:var(--blue);white-space:nowrap}
+.ck .case-metric span{font-weight:500;font-size:14px;color:var(--g1)}
+.ck .case blockquote{margin:0;font-weight:500;font-size:18px;line-height:1.55;color:var(--navy);flex:1}
+.ck .case figcaption{display:flex;gap:12px;align-items:center;font-size:14px;color:var(--g1)}
+.ck .case figcaption strong{display:block;font-weight:700;font-size:15px;color:var(--navy)}
+.ck .avatar{flex:0 0 44px;width:44px;height:44px;border-radius:50%;background:var(--pressed);color:var(--blue);font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;box-shadow:var(--ring-subtle)}
+.ck .cases-src{margin-top:16px;text-align:center;font-size:13px;color:var(--g2)}
+.ck .case-solo{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:40px;padding:40px}
+.ck .case-main{display:flex;flex-direction:column;gap:18px;min-width:0}
+.ck .case-solo blockquote{font-size:22px;line-height:1.45;font-weight:600;color:var(--dark)}
+.ck .case-solo blockquote.q2{font-size:17px;font-weight:500;color:var(--navy)}
+.ck .case-text{font-size:15px}
+.ck .case-side{display:flex;flex-direction:column;justify-content:center;gap:20px;padding-left:40px;border-left:1px solid var(--g3)}
+@media (max-width:980px){.ck .case-solo{grid-template-columns:minmax(0,1fr);gap:28px}.ck .case-side{padding-left:0;border-left:0;border-top:1px solid var(--g3);padding-top:24px;flex-direction:row;flex-wrap:wrap;gap:20px 32px}}
+@media (max-width:640px){.ck .case-solo{padding:24px}.ck .case-solo blockquote{font-size:19px}}
+@media (max-width:980px){.ck .cases-grid{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:640px){.ck .case{padding:24px}.ck .case-metric b{font-size:32px}.ck .case-metric.two{gap:20px}}
+/* ---- Funciones en pestañas (bloque de la landing original) ---- */
+.ck .tabs-bar{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:0 auto 40px;max-width:1000px}
+.ck .tab-btn{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 16px;border:0;border-radius:12px;background:#fff;box-shadow:var(--ring-subtle);font-family:var(--font);font-weight:600;font-size:14px;color:var(--navy);cursor:pointer;transition:background 150ms ease-out,color 150ms ease-out,box-shadow 150ms ease-out;white-space:nowrap}
+.ck .tab-btn svg{width:18px;height:18px;color:var(--blue)}
+.ck .tab-btn:hover{background:linear-gradient(0deg,rgba(0,0,0,.03),rgba(0,0,0,.03)),#fff}
+.ck .tab-btn[aria-selected="true"]{background:var(--blue);color:#fff;box-shadow:var(--ring)}
+.ck .tab-btn[aria-selected="true"] svg{color:#fff}
+.ck .tab-btn:focus-visible{outline:1px solid var(--navy)}
+.ck .tab-panel{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:center}
+.ck .tab-panel[hidden]{display:none}
+.ck .tab-panel h3{font-weight:700;font-size:30px;line-height:1.2;color:var(--dark);margin-bottom:16px}
+.ck .tab-panel .txt > p{font-size:17px}
+.ck .tab-panel ul{margin-top:20px;display:grid;gap:10px}
+.ck .tab-panel li{display:flex;gap:10px;font-weight:500;font-size:16px;line-height:1.5;color:var(--navy)}
+.ck .tab-panel li svg{flex:0 0 20px;width:20px;height:20px;color:var(--blue);margin-top:2px}
+.ck .tab-panel .btn{margin-top:28px}
+.ck .visual{background:var(--tint-2);border-radius:14px;padding:40px;display:flex;justify-content:center;align-items:center;min-height:340px}
+
+/* Tarjetas de los visuales */
+.ck .vcard{width:100%;max-width:400px;background:#fff;border-radius:14px;box-shadow:var(--elev);overflow:hidden}
+.ck .vcard-h{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--g3);font-weight:700;font-size:14px;color:var(--dark)}
+.ck .vcard-h small{font-size:12px;font-weight:600;color:var(--g2)}
+.ck .vrow{display:flex;gap:12px;align-items:center;padding:12px 18px;border-top:1px solid var(--g3)}
+.ck .vrow:first-of-type{border-top:0}
+.ck .vrow .vi{flex:0 0 36px;width:36px;height:36px;border-radius:10px;background:var(--pressed);color:var(--blue);display:flex;align-items:center;justify-content:center}
+.ck .vrow .vi svg{width:18px;height:18px}
+.ck .vrow .vt{flex:1;min-width:0}
+.ck .vrow strong{display:block;font-size:14px;font-weight:700;color:var(--navy)}
+.ck .vrow small{display:block;font-size:12px;font-weight:500;color:var(--g1)}
+.ck .pill-ok{font-size:11px;font-weight:700;letter-spacing:.03em;color:var(--green);background:#E8F6EE;border-radius:6px;padding:2px 8px;white-space:nowrap}
+.ck .pill-blue{font-size:11px;font-weight:700;letter-spacing:.03em;color:var(--blue);background:var(--pressed);border-radius:6px;padding:2px 8px;white-space:nowrap}
+.ck .kiosk{width:100%;max-width:300px;background:var(--dark);border-radius:22px;padding:14px;box-shadow:var(--elev)}
+.ck .kiosk-screen{background:#fff;border-radius:12px;padding:40px 20px;text-align:center}
+.ck .kiosk-screen img{width:96px;margin:0 auto 24px}
+.ck .kiosk-screen p{font-size:14px;margin-bottom:20px}
+.ck .kiosk-screen .btn{width:100%;height:44px}
+.ck .key{width:100%;max-width:320px;background:var(--gradient);border-radius:18px;padding:28px;color:#fff;box-shadow:var(--elev)}
+.ck .key small{display:block;font-size:12px;font-weight:600;opacity:.8}
+.ck .key strong{display:block;font-size:24px;font-weight:700;margin:6px 0 24px}
+.ck .key .open{display:flex;align-items:center;justify-content:center;gap:10px;height:48px;border-radius:12px;background:rgba(255,255,255,.9);color:var(--navy);font-weight:600;font-size:16px}
+.ck .key .open svg{width:20px;height:20px}
+.ck .ses-card{background:#fff;border-radius:14px;box-shadow:var(--elev);padding:20px 24px;width:100%;max-width:380px}
+.ck .ses-card .row1{display:flex;gap:16px;align-items:flex-start}
+.ck .ses-card .gov{flex:0 0 48px;width:48px;height:48px;border-radius:12px;background:var(--pressed);color:var(--blue);display:flex;align-items:center;justify-content:center}
+.ck .ses-card .gov svg{width:26px;height:26px}
+.ck .ses-card strong{display:block;font-weight:700;font-size:17px;color:var(--dark)}
+.ck .ses-card small{display:block;font-weight:500;font-size:14px;line-height:1.4;color:var(--g1)}
+.ck .ses-card .row2{display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding-top:14px;border-top:1px solid var(--g3);font-size:14px;font-weight:500;color:var(--g1)}
+.ck .ses-card .ok{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:15px;color:var(--green)}
+.ck .ses-card .ok i{width:22px;height:22px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center}
+.ck .ses-card .ok i svg{width:13px;height:13px}
+.ck .rev{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;width:100%;max-width:420px}
+.ck .rev > div{background:#fff;border-radius:14px;box-shadow:var(--card);padding:22px 18px;text-align:center}
+.ck .rev small{display:block;font-size:13px;font-weight:600;color:var(--g1);margin-bottom:8px}
+.ck .rev b{display:block;font-size:38px;line-height:1.1;font-weight:700;color:var(--dark);white-space:nowrap}
+.ck .rev .up{display:inline-block;margin-top:10px;font-size:14px;font-weight:700;color:#fff;background:var(--green);border-radius:6px;padding:2px 10px}
+.ck .rev .lines{grid-column:1/-1;text-align:left;padding:14px 20px}
+.ck .rev .line{display:flex;justify-content:space-between;font-size:14px;font-weight:500;color:var(--navy);padding:5px 0}
+.ck .rev .line span:last-child{font-weight:700;color:var(--green)}
+.ck .bub{font-size:13px;font-weight:500;line-height:1.45;border-radius:10px;padding:8px 12px;max-width:85%}
+.ck .bub.in{background:var(--input-empty);color:var(--navy)}
+.ck .bub.out{background:var(--pressed);color:var(--navy);margin:6px 0 0 auto}
+.ck .bub.out em{display:block;font-style:normal;font-size:11px;font-weight:600;color:var(--blue);margin-top:4px}
+.ck .msg{padding:14px 18px;border-top:1px solid var(--g3)}
+.ck .msg:first-of-type{border-top:0}
+.ck .msg .who{display:flex;justify-content:space-between;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.ck .msg .who small{font-weight:600;color:var(--g2)}
+.ck .bill{padding:16px 18px}
+.ck .bill .line{display:flex;justify-content:space-between;font-size:14px;font-weight:500;color:var(--navy);padding:6px 0}
+.ck .bill .tot{border-top:1px solid var(--g3);margin-top:6px;padding-top:12px;font-weight:700}
+.ck .bill .btn{width:100%;height:44px;margin-top:16px}
+
+/* ---- Slider de hoteles (logo cloud del DS: desplazamiento lineal, pausa al pasar el ratón) ---- */
+.ck .clients{padding:56px 0}
+.ck .clients p.label{text-align:center;font-size:14px;font-weight:600;color:var(--g1);margin-bottom:24px}
+.ck .marquee{position:relative;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.ck .marquee-track{display:flex;gap:56px;width:max-content;animation:ck-marquee 40s linear infinite}
+.ck .marquee:hover .marquee-track{animation-play-state:paused}
+.ck .logo-mark{flex:0 0 auto;display:flex;align-items:center;height:56px;font-weight:800;font-size:26px;letter-spacing:.12em;color:var(--g2);white-space:nowrap;transition:color 150ms ease-out}
+.ck .marquee:hover .logo-mark{color:var(--g1)}
+.ck .logo-img{flex:0 0 auto;height:34px;width:auto;max-width:170px;object-fit:contain;filter:grayscale(1);opacity:.6;transition:opacity 150ms ease-out}
+.ck .marquee:hover .logo-img{opacity:.9}
+.ck .logo-img.lg-small{height:24px}
+@keyframes ck-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ---- Pasos de la prueba ---- */
+.ck .trial-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.ck .trial-steps li{background:#fff;border-radius:14px;box-shadow:var(--card);padding:32px}
+.ck .trial-steps .n{width:40px;height:40px;border-radius:50%;background:var(--blue);color:#fff;font-weight:700;font-size:18px;display:flex;align-items:center;justify-content:center;box-shadow:var(--ring);margin-bottom:20px}
+.ck .trial-steps h3{font-size:20px;margin-bottom:6px}
+
+/* Testimonio sobre lavanda: tarjeta blanca */
+.ck .tone-lav .quote{background:#fff;box-shadow:var(--card)}
+
+@media (max-width:1180px){
+  .ck .stats-dark .stats-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (max-width:980px){
+  .ck .hero{padding:32px 0 48px}
+  .ck .hero-grid{grid-template-columns:minmax(0,1fr);gap:0}
+  .ck .hero-grid > div:first-child{display:contents}
+  .ck .hero .eyebrow{order:1;justify-self:start}
+  .ck .hero h1{order:2}
+  .ck .hero .lead{order:3}
+  .ck .hero .form-card{order:4;margin-top:24px}
+  .ck .hero .ticks{order:5;margin-top:28px}
+  .ck .hero .hero-stats{order:6}
+  .ck .hero .lead{max-width:none}
+  .ck .tab-panel{grid-template-columns:minmax(0,1fr);gap:32px}
+  .ck .trial-steps{grid-template-columns:minmax(0,1fr)}
+  .ck .tabs-bar{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;padding:4px 4px 8px;margin-bottom:32px;scrollbar-width:none}
+  .ck .tabs-bar::-webkit-scrollbar{display:none}
+}
+@media (max-width:640px){
+  .ck .hero-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ck .hero h1{font-size:34px}
+  .ck .field input,.ck .field select{font-size:16px;height:46px}
+  .ck .form-card .btn{height:52px}
+  .ck .stats-dark .stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ck .stats-dark .stat b{font-size:30px}
+  .ck .form-grid{grid-template-columns:minmax(0,1fr)}
+  .ck .tab-panel h3{font-size:24px}
+  .ck .visual{padding:24px 16px;min-height:0}
+  .ck .rev b{font-size:30px}
+  .ck .trial-steps li{padding:24px}
+}
+@media (prefers-reduced-motion:reduce){
+  .ck .marquee-track{animation:none;flex-wrap:wrap;justify-content:center;width:auto}
+  .ck .marquee-track [aria-hidden="true"]{display:none}
+  .ck .marquee{-webkit-mask-image:none;mask-image:none}
+}
+</style>
+</head>
+<body style="margin:0;background:#fff">
+<div class="ck">
+
+  <header class="top">
+    <div class="wrap">
+      <img class="logo" src="assets/logo.svg" alt="Chekin" width="132" height="39">
+      <a class="btn btn-primary" href="#prueba">Prueba gratis 14 días</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO · message match: "Automatiza tu Recepción" · "Check-in Digital Hoteles" · "Prueba Chekin Gratis" · "Evita Multas y Sanciones" -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow">Para hoteles y cadenas hoteleras</span>
+          <h1>Automatiza la recepción <span class="accent">de tu hotel</span></h1>
+          <p class="lead">Check-in online antes de llegar, parte automático a SES.Hospedajes y más ingresos por reserva. Prueba Chekin gratis 14 días: déjanos tus datos y un experto en Chekin te contactará para ayudarte con cualquier duda.</p>
+          <ul class="ticks">
+            <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Olvídate del portal del Ministerio: evita multas y sanciones</li>
+            <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Sin colas en recepción: check-in en 3 minutos</li>
+            <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>+55 € de media por reserva con upselling</li>
+          </ul>
+          <div class="hero-stats">
+            <div><b>+10.000</b><span>hoteles</span></div>
+            <div><b>+25M</b><span>check-ins</span></div>
+            <div><b>+20</b><span>países</span></div>
+            <div><b>+200</b><span>PMS</span></div>
+          </div>
+        </div>
+
+        <!-- FORMULARIO: aquí va el embed de HubSpot. Propiedades existentes: property_type, number_of_rooms -->
+        <div class="form-card" id="prueba">
+          <form novalidate>
+            <h2>Prueba Chekin gratis 14 días</h2>
+            <p class="form-intro">Déjanos tus datos y un experto en Chekin te contactará para que lo uses gratis 14 días. Te ayudará con cualquier duda o problema.</p>
+            <div class="form-grid">
+              <div class="field">
+                <label for="f-name">Nombre</label>
+                <input id="f-name" name="firstname" type="text" placeholder="Tu nombre" autocomplete="given-name" required>
+                <span class="err">Escribe tu nombre</span>
+              </div>
+              <div class="field">
+                <label for="f-phone">Teléfono</label>
+                <input id="f-phone" name="phone" type="tel" placeholder="+34 600 000 000" autocomplete="tel" required>
+                <span class="err">Escribe tu teléfono</span>
+              </div>
+              <div class="field full">
+                <label for="f-email">Email de trabajo</label>
+                <input id="f-email" name="email" type="email" placeholder="nombre@tuhotel.com" autocomplete="email" required>
+                <span class="err">Escribe un email válido</span>
+              </div>
+              <div class="field">
+                <label for="f-type">Tipo de alojamiento</label>
+                <select id="f-type" name="property_type" required>
+                  <option value="" selected disabled>Selecciona</option>
+                  <option>Hotel independiente</option>
+                  <option>Cadena o grupo hotelero</option>
+                  <option>Aparthotel</option>
+                  <option>Hostal o pensión</option>
+                  <option>Otro tipo de alojamiento</option>
+                </select>
+                <span class="err">Selecciona una opción</span>
+              </div>
+              <div class="field">
+                <label for="f-rooms">Nº de habitaciones</label>
+                <input id="f-rooms" name="number_of_rooms" type="number" inputmode="numeric" min="1" max="10000" step="1" placeholder="Ej.: 45" required>
+                <span class="err">Escribe un número de habitaciones</span>
+              </div>
+            </div>
+            <input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign">
+            <input type="hidden" name="utm_term"><input type="hidden" name="utm_content"><input type="hidden" name="gclid">
+            <input type="hidden" name="landing" value="pmax-competitors-es-v6-prueba14-contacto">
+            <button class="btn btn-primary btn-lg" type="submit">Empieza tu prueba gratis
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-5-5 5 5-5 5"/></svg>
+            </button>
+            <p class="form-note">Sin compromiso. Al enviar, un experto en Chekin te contactará por teléfono o email sobre tu prueba. Más información en la <a href="https://chekin.com/privacidad/" target="_blank" rel="noopener">política de privacidad</a>.</p>
+          </form>
+          <div class="form-ok" role="status" aria-live="polite">
+            <div class="ico"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+            <h2>Solicitud recibida</h2>
+            <p>Un experto en Chekin se pondrá en contacto contigo para que empieces a usar Chekin gratis 14 días.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAPA PMS → CHEKIN · logos oficiales de landing.chekin.com/chekin-hoteles -->
+    <section class="pms-hub">
+      <div class="wrap pms-grid">
+        <div class="pms-copy">
+          <h2><b>Conectado</b> con el PMS que ya usas</h2>
+          <p>Las reservas se sincronizan de forma automática, así que el enlace de check-in se envía en cuanto entra una reserva.</p>
+          <ol class="flow">
+            <li><span>1</span>Entra una reserva en tu PMS</li>
+            <li><span>2</span>Chekin envía el enlace de check-in al huésped</li>
+            <li><span>3</span>El parte llega solo a SES.Hospedajes</li>
+          </ol>
+          <p class="pms-more">Mews, Opera Cloud, Cloudbeds y +200 integraciones más.</p>
+        </div>
+        <div class="pms-visual" role="img" aria-label="Mews, eviivo, Little Hotelier, Amenitiz, Cloudbeds y Opera Cloud conectados con Chekin">
+          <svg class="lines" viewBox="0 0 600 480" preserveAspectRatio="none" aria-hidden="true">
+            <defs><pattern id="pmsgrid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(24,86,255,0.10)" stroke-width="1"/></pattern></defs>
+            <rect width="600" height="480" fill="url(#pmsgrid)"/>
+            <g stroke="rgba(24,86,255,0.45)" stroke-width="1.5" fill="none" vector-effect="non-scaling-stroke">
+              <path d="M 200 240 C 300 240, 330 50, 380 50"/>
+              <path d="M 200 240 C 300 240, 330 125, 380 125"/>
+              <path d="M 200 240 C 300 240, 330 200, 380 200"/>
+              <path d="M 200 240 C 300 240, 330 280, 380 280"/>
+              <path d="M 200 240 C 300 240, 330 355, 380 355"/>
+              <path d="M 200 240 C 300 240, 330 430, 380 430"/>
+            </g>
+          </svg>
+          <div class="pms-center"><img src="assets/logo.svg" alt="Chekin"></div>
+          <div class="pms-logo" style="top:10.4%"><img src="assets/pms/mews.png" alt="Mews"></div>
+          <div class="pms-logo" style="top:26%"><img src="assets/pms/opera-cloud.png" alt="Opera Cloud"></div>
+          <div class="pms-logo" style="top:41.7%"><img src="assets/pms/cloudbeds.png" alt="Cloudbeds"></div>
+          <div class="pms-logo" style="top:58.3%"><img src="assets/pms/little-hotelier.png" alt="Little Hotelier"></div>
+          <div class="pms-logo" style="top:74%"><img src="assets/pms/eviivo.png" alt="eviivo"></div>
+          <div class="pms-logo" style="top:89.6%"><img src="assets/pms/amenitiz.png" alt="Amenitiz"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FUNCIONES · bloque de la landing original (8 pestañas, textos oficiales) con los visuales del anuncio -->
+    <section class="features-tabs">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Menos operativa para tu equipo, <b>más libertad para tus huéspedes</b></h2>
+          <p>Automatiza las tareas repetitivas para que tu hotel dedique su tiempo a lo que marca la diferencia: el servicio.</p>
+        </div>
+
+        <div class="tabs-bar" role="tablist" aria-label="Funciones de Chekin">
+          <button class="tab-btn" role="tab" id="t-checkin" aria-controls="p-checkin" aria-selected="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="m9 11 2.5 2.5L15 9.5"/></svg>Check-in online</button>
+          <button class="tab-btn" role="tab" id="t-kiosk" aria-controls="p-kiosk" aria-selected="false" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="14" rx="2"/><path d="M9 20h6M12 16v4"/></svg>Recepción y quioscos</button>
+          <button class="tab-btn" role="tab" id="t-id" aria-controls="p-id" aria-selected="false" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M6 16c.6-1.4 1.7-2 3-2s2.4.6 3 2M14 10h4M14 14h3"/></svg>Verificación de identidad</button>
+          <button class="tab-btn" role="tab" id="t-key" aria-controls="p-key" aria-selected="false" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="m10.8 12.2 8.2-8.2M17 6l2 2M15 8l2 2"/></svg>Self check-in y llaves digitales</button>
+          <button class="tab-btn" role="tab" id="t-legal" aria-controls="p-legal" aria-selected="false" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg>Cumplimiento legal</button>
+          <button class="tab-btn" role="tab" id="t-upsell" aria-controls="p-upsell" aria-selected="false" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17 9 11l4 4 8-8"/><path d="M15 7h6v6"/></svg>Upselling</button>
+          <button class="tab-btn" role="tab" id="t-inbox" aria-controls="p-inbox" aria-selected="false" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Inbox unificada</button>
+          <button class="tab-btn" role="tab" id="t-out" aria-controls="p-out" aria-selected="false" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>Check-out</button>
+        </div>
+
+        <!-- 1 Check-in online -->
+        <div class="tab-panel" role="tabpanel" id="p-checkin" aria-labelledby="t-checkin">
+          <div class="txt">
+            <h3>Tus huéspedes se registran y verifican la identidad en segundos.</h3>
+            <p>Tus huéspedes completan el registro, verifican su identidad y reservan extras desde el móvil, antes de pisar el hotel. Tu recepción empieza cada turno sabiendo quién llega, qué está hecho y qué queda pendiente.</p>
+            <ul>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Check-in completado antes de la llegada</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Escaneo del documento y comparación biométrica online</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Tasa turística y saldo pendiente cobrados por adelantado</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Estado de llegada en tiempo real visible para recepción</li>
+            </ul>
+            <a class="btn btn-primary" href="#prueba">Empieza tu prueba gratis</a>
+          </div>
+          <div class="visual">
+            <div class="vcard">
+              <div class="vcard-h">Pre-llegada de Marta <small>Hab. 204</small></div>
+              <div class="vrow"><span class="vi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg></span><span class="vt"><strong>Formulario de registro</strong><small>Completado hace 3 días</small></span><span class="pill-ok">LISTO</span></div>
+              <div class="vrow"><span class="vi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M14 10h4M14 14h3"/></svg></span><span class="vt"><strong>Documento escaneado</strong><small>DNI · OCR + biometría</small></span><span class="pill-ok">VERIFICADO</span></div>
+              <div class="vrow"><span class="vi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span><span class="vt"><strong>Saldo de la estancia</strong><small>€642 cobrados</small></span><span class="pill-ok">PAGADO</span></div>
+              <div class="vrow"><span class="vi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15 9.5a3 3 0 1 0 0 5M8 11h5M8 13h5"/></svg></span><span class="vt"><strong>Tasa turística</strong><small>€36 cobrados</small></span><span class="pill-ok">PAGADO</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2 Recepción y quioscos -->
+        <div class="tab-panel" role="tabpanel" id="p-kiosk" aria-labelledby="t-kiosk" hidden>
+          <div class="txt">
+            <h3>Autoservicio en el lobby, para cada llegada.</h3>
+            <p>Nuestro OCR escanea el documento de identidad y rellena el formulario de registro en segundos. Funciona en una tablet en recepción o en un quiosco en el lobby. Tus huéspedes hacen el check-in solos y tu equipo atiende a quien de verdad lo necesita.</p>
+            <ul>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>OCR compatible con +200 tipos de documento</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Modo tablet para recepción, modo quiosco para el lobby</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Totalmente personalizable con tu marca</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Compatible con DNI digital a través de MiDNI para España</li>
+            </ul>
+            <a class="btn btn-primary" href="#prueba">Empieza tu prueba gratis</a>
+          </div>
+          <div class="visual">
+            <div class="kiosk"><div class="kiosk-screen"><img src="assets/logo.svg" alt="Chekin"><p>Pulsa para empezar el check-in</p><span class="btn btn-primary">Empezar</span></div></div>
+          </div>
+        </div>
+
+        <!-- 3 Verificación de identidad -->
+        <div class="tab-panel" role="tabpanel" id="p-id" aria-labelledby="t-id" hidden>
+          <div class="txt">
+            <h3>Identidad verificada en segundos</h3>
+            <p>Cada huésped verifica su identidad durante el check-in, en segundos. Escaneo del documento, selfie o vídeo en tiempo real y comparación biométrica al instante. Menos fraude, menos falsificaciones y un negocio que cumple las normativas de identidad más estrictas.</p>
+            <ul>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Comparación biométrica en tiempo real</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Detección de vida con vídeo que evita suplantaciones</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>200+ tipos de documento aceptados a nivel global</li>
+            </ul>
+            <a class="btn btn-primary" href="#prueba">Empieza tu prueba gratis</a>
+          </div>
+          <div class="visual">
+            <div class="vcard">
+              <div class="vcard-h">Verificación de identidad <small>Hab. 118</small></div>
+              <div class="vrow"><span class="vi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M14 10h4M14 14h3"/></svg></span><span class="vt"><strong>Documento</strong><small>Pasaporte · leído por OCR</small></span><span class="pill-ok">OK</span></div>
+              <div class="vrow"><span class="vi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></span><span class="vt"><strong>Selfie en vídeo</strong><small>Detección de vida</small></span><span class="pill-ok">OK</span></div>
+              <div class="vrow"><span class="vi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg></span><span class="vt"><strong>Match biométrico</strong><small>Documento y selfie coinciden</small></span><span class="pill-ok">VERIFICADO</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 Self check-in y llaves digitales -->
+        <div class="tab-panel" role="tabpanel" id="p-key" aria-labelledby="t-key" hidden>
+          <div class="txt">
+            <h3>Huéspedes que llegan tarde y acceden con llaves digitales.</h3>
+            <p>Tus huéspedes reciben una llave digital tras completar el check-in y la verificación de identidad. Compatible con más de 20 marcas de cerraduras inteligentes. Tu recepción cierra; tu alojamiento, no.</p>
+            <ul>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Llave digital entregada automáticamente</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Compatible con 20+ marcas de cerraduras inteligentes</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Flexibilidad para los huéspedes, comodidad para tu negocio</li>
+            </ul>
+            <a class="btn btn-primary" href="#prueba">Empieza tu prueba gratis</a>
+          </div>
+          <div class="visual">
+            <div class="key"><small>Tu llave digital</small><strong>Habitación 304 · Planta 3</strong><span class="open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.5-2"/></svg>Abrir puerta</span></div>
+          </div>
+        </div>
+
+        <!-- 5 Cumplimiento legal · réplica de la imagen del anuncio "Olvídate del portal del Ministerio" -->
+        <div class="tab-panel" role="tabpanel" id="p-legal" aria-labelledby="t-legal" hidden>
+          <div class="txt">
+            <h3>Olvídate del portal del Ministerio</h3>
+            <p>Chekin envía los datos de tus huéspedes a la autoridad correspondiente en más de 20 países, calcula la tasa turística en más de 45 jurisdicciones y emite la facturación electrónica obligatoria. En España: SES.Hospedajes, Mossos d'Esquadra y Ertzaintza.</p>
+            <ul>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Envío automático a autoridades en +20 países</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Tasa turística en 45+ jurisdicciones</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Siempre al día con las actualizaciones normativas</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Almacenamiento de datos por el tiempo exigido por ley</li>
+            </ul>
+            <a class="btn btn-primary" href="#prueba">Empieza tu prueba gratis</a>
+          </div>
+          <div class="visual">
+            <div class="ses-card">
+              <div class="row1">
+                <span class="gov"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10 12 4l9 6"/><path d="M5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 20h18"/></svg></span>
+                <div><strong>SES.Hospedajes</strong><small>Envío automático de partes de entrada de viajeros</small></div>
+              </div>
+              <div class="row2"><span>Estado</span><span class="ok"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></i>Reportado</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6 Upselling · réplica "Misma ocupación, +55€ por reserva" -->
+        <div class="tab-panel" role="tabpanel" id="p-upsell" aria-labelledby="t-upsell" hidden>
+          <div class="txt">
+            <h3>Misma ocupación, +55 € por reserva</h3>
+            <p>Early check-in, late check-out, parking, spa y experiencias locales aparecen durante el registro, justo cuando el huésped está pensando en su estancia y más receptivo a comprar. El check-in se convierte en un canal de venta nuevo, sin sumar trabajo a tu equipo.</p>
+            <ul>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Ofertas en los momentos de mayor intención de compra</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Segmentación por habitación, duración de la estancia y perfil del huésped</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Pagos integrados y sincronización con tu PMS</li>
+            </ul>
+            <a class="btn btn-primary" href="#prueba">Empieza tu prueba gratis</a>
+          </div>
+          <div class="visual">
+            <div class="rev">
+              <div><small>Ingresos por reserva</small><b>100 €</b></div>
+              <div><small>Con Chekin</small><b>155 €</b><span class="up">+55 €</span></div>
+              <div class="lines">
+                <div class="line"><span>Late check-out</span><span>+18 €</span></div>
+                <div class="line"><span>Desayuno</span><span>+12 €</span></div>
+                <div class="line"><span>Parking</span><span>+15 €</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7 Inbox unificada · réplica "Tu recepción también responde a las 3 de la mañana" -->
+        <div class="tab-panel" role="tabpanel" id="p-inbox" aria-labelledby="t-inbox" hidden>
+          <div class="txt">
+            <h3>Tu recepción también responde a las 3 de la mañana</h3>
+            <p>Una bandeja de entrada con IA responde a las preguntas rutinarias por email, SMS, OTAs y WhatsApp con respuestas específicas de tu hotel. Las guías digitales dan a tus huéspedes toda la información que necesitan, traducida automáticamente a su idioma.</p>
+            <ul>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Respuestas con IA por email, SMS, OTAs y WhatsApp</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Respuestas basadas en la base de conocimiento de tu hotel</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Derivación al equipo para los temas delicados</li>
+            </ul>
+            <a class="btn btn-primary" href="#prueba">Empieza tu prueba gratis</a>
+          </div>
+          <div class="visual">
+            <div class="vcard" aria-label="Ejemplo de bandeja de entrada con respuestas de la IA">
+              <div class="vcard-h">Bandeja de entrada <span class="pill-blue">03:00</span></div>
+              <div class="msg">
+                <div class="who">Ana Rodríguez <small>WhatsApp</small></div>
+                <div class="bub in">¿A qué hora es el check-in?</div>
+                <div class="bub out">El check-in es a partir de las 15:00.<em>Respondido por IA</em></div>
+              </div>
+              <div class="msg">
+                <div class="who">John Smith <small>Booking</small></div>
+                <div class="bub in">Is late check-out available?</div>
+                <div class="bub out">Yes, late check-out is available until 14:00.<em>Respondido por IA</em></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8 Check-out -->
+        <div class="tab-panel" role="tabpanel" id="p-out" aria-labelledby="t-out" hidden>
+          <div class="txt">
+            <h3>Un check-out más rápido y cómodo.</h3>
+            <p>Tus huéspedes resuelven la salida la noche anterior, desde su móvil: cuenta, late check-out, traslado, pago, factura electrónica y opiniones. Cuando llega la hora del check-out, no hay cola en recepción.</p>
+            <ul>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Resumen de la factura y pago en un clic</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Late check-out y traslado al aeropuerto como extras</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Feedback rápido antes de que se vayan</li>
+            </ul>
+            <a class="btn btn-primary" href="#prueba">Empieza tu prueba gratis</a>
+          </div>
+          <div class="visual">
+            <div class="vcard">
+              <div class="vcard-h">Tu estancia · Hab. 204 <small>Salida mañana</small></div>
+              <div class="bill">
+                <div class="line"><span>Alojamiento · 3 noches</span><span>€540</span></div>
+                <div class="line"><span>Late check-out</span><span>€18</span></div>
+                <div class="line"><span>Tasa turística</span><span>€36</span></div>
+                <div class="line tot"><span>Total</span><span>€594</span></div>
+                <span class="btn btn-primary">Pagar y hacer check-out</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CIFRAS sobre navy -->
+    <section class="stats-dark tone-navy">
+      <div class="wrap stats-grid">
+        <div class="stat"><b>−80%</b><span>de tiempo en recepción</span></div>
+        <div class="stat"><b>3 min</b><span>de check-in medio</span></div>
+        <div class="stat"><b>+55 €</b><span>de upselling por reserva</span></div>
+        <div class="stat"><b>+47%</b><span>más reseñas de 5★</span></div>
+        <div class="stat"><b>+20</b><span>países con cumplimiento legal</span></div>
+      </div>
+    </section>
+
+    <!-- SLIDER DE CLIENTES · logos publicados en chekin.com (home: «Más de +200.000 propiedades confían en nosotros») -->
+    <section class="clients" aria-label="Empresas que trabajan con Chekin">
+      <div class="wrap">
+        <p class="label">Más de 200.000 propiedades confían en Chekin</p>
+        <div class="marquee">
+          <div class="marquee-track">
+            <img class="logo-img" src="assets/clients/greystar.png" alt="Greystar"><img class="logo-img" src="assets/clients/holidu_Color.svg" alt="Holidu"><img class="logo-img lg-small" src="assets/clients/numa.svg" alt="Numa"><img class="logo-img" src="assets/clients/limehome.webp" alt="limehome"><img class="logo-img" src="assets/clients/interhome-1.svg" alt="Interhome"><img class="logo-img" src="assets/clients/node.svg" alt="Node"><img class="logo-img" src="assets/clients/novasol-768x211.png" alt="Novasol"><img class="logo-img" src="assets/clients/greystar.png" alt="" aria-hidden="true"><img class="logo-img" src="assets/clients/holidu_Color.svg" alt="" aria-hidden="true"><img class="logo-img lg-small" src="assets/clients/numa.svg" alt="" aria-hidden="true"><img class="logo-img" src="assets/clients/limehome.webp" alt="" aria-hidden="true"><img class="logo-img" src="assets/clients/interhome-1.svg" alt="" aria-hidden="true"><img class="logo-img" src="assets/clients/node.svg" alt="" aria-hidden="true"><img class="logo-img" src="assets/clients/novasol-768x211.png" alt="" aria-hidden="true"><img class="logo-img" src="assets/clients/greystar.png" alt="" aria-hidden="true"><img class="logo-img" src="assets/clients/holidu_Color.svg" alt="" aria-hidden="true"><img class="logo-img lg-small" src="assets/clients/numa.svg" alt="" aria-hidden="true"><img class="logo-img" src="assets/clients/limehome.webp" alt="" aria-hidden="true"><img class="logo-img" src="assets/clients/interhome-1.svg" alt="" aria-hidden="true"><img class="logo-img" src="assets/clients/node.svg" alt="" aria-hidden="true"><img class="logo-img" src="assets/clients/novasol-768x211.png" alt="" aria-hidden="true"><img class="logo-img" src="assets/clients/greystar.png" alt="" aria-hidden="true"><img class="logo-img" src="assets/clients/holidu_Color.svg" alt="" aria-hidden="true"><img class="logo-img lg-small" src="assets/clients/numa.svg" alt="" aria-hidden="true"><img class="logo-img" src="assets/clients/limehome.webp" alt="" aria-hidden="true"><img class="logo-img" src="assets/clients/interhome-1.svg" alt="" aria-hidden="true"><img class="logo-img" src="assets/clients/node.svg" alt="" aria-hidden="true"><img class="logo-img" src="assets/clients/novasol-768x211.png" alt="" aria-hidden="true">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CÓMO EMPIEZA LA PRUEBA -->
+    <section class="how tone-tint">
+      <div class="wrap">
+        <div class="section-head"><h2>Así empiezas <b>en 3 pasos</b></h2></div>
+        <ol class="trial-steps">
+          <li><span class="n">1</span><h3>Déjanos tus datos</h3><p>Solo lo necesario sobre ti y tu hotel.</p></li>
+          <li><span class="n">2</span><h3>Un experto en Chekin te contacta</h3><p>Te da acceso y te ayuda con cualquier duda, también al conectar tu PMS.</p></li>
+          <li><span class="n">3</span><h3>Usas Chekin 14 días gratis</h3><p>Sin tarjeta y sin compromiso.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- CASO DE ÉXITO real, publicado en chekin.com: Sweet Accommodations (Barcelona y Sevilla, Cloudbeds) -->
+    <section class="cases tone-lav" aria-labelledby="cases-h">
+      <div class="wrap">
+        <div class="section-head"><h2 id="cases-h">Así lo vive un grupo de alojamientos <b>en Barcelona y Sevilla</b></h2></div>
+        <figure class="case case-solo">
+          <div class="case-main">
+            <div class="case-head"><span class="case-brand">Sweet Accommodations</span><span class="case-meta">Hoteles, hostales y suites · Barcelona y Sevilla · PMS: Cloudbeds</span></div>
+            <blockquote>«Manualmente era imposible de gestionar.»</blockquote>
+            <blockquote class="q2">«Para nosotros es genial poder contar con una sola herramienta para la gestión de nuestras propiedades.»</blockquote>
+            <p class="case-text">Con Cloudbeds y Chekin, sus huéspedes se registran online y los datos llegan solos a las autoridades de cada ciudad.</p>
+            <figcaption><span class="avatar" aria-hidden="true">SA</span><span><strong>Sweet Accommodations</strong>Grupo de alojamientos turísticos · +7 alojamientos</span></figcaption>
+          </div>
+          <div class="case-side">
+            <div class="case-metric"><b>−80%</b><span>de tiempo en procesos manuales</span></div>
+            <div class="case-metric"><b>+12.000</b><span>registros online de huéspedes en un año</span></div>
+            <div class="case-metric"><b>4,5/5</b><span>de puntuación en portales de reserva</span></div>
+          </div>
+        </figure>
+        <p class="cases-src">Caso de éxito publicado en chekin.com.</p>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+      <div class="wrap">
+        <div class="section-head"><h2>Preguntas <b>frecuentes</b></h2></div>
+        <div class="faq-list">
+          <details>
+            <summary>¿Puedo probarlo antes de contratar?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+            <p>Sí. Déjanos tus datos y un experto en Chekin se pondrá en contacto contigo para que lo uses gratis 14 días. Te ayudará con cualquier duda o problema, también al conectar tu PMS.</p>
+          </details>
+          <details>
+            <summary>¿Funciona con mi PMS?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+            <p>Chekin se integra con más de 200 PMS, entre ellos Mews, Opera Cloud, Cloudbeds, Little Hotelier, eviivo y Amenitiz.</p>
+          </details>
+          <details>
+            <summary>¿Cumple con SES.Hospedajes?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+            <p>Sí. Chekin envía el parte de viajeros a SES.Hospedajes del Ministerio del Interior, a Mossos d'Esquadra en Cataluña y a la Ertzaintza en el País Vasco. Cubre el 100% de España.</p>
+          </details>
+          <details>
+            <summary>¿Y si un huésped no hace el check-in online?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+            <p>Puede hacerlo al llegar en el quiosco del lobby o con ayuda de recepción. El parte se envía igual de forma automática.</p>
+          </details>
+          <details>
+            <summary>¿Sirve para cadenas hoteleras?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+            <p>Sí. Chekin trabaja con hoteles independientes y con cadenas hoteleras.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CIERRE: único gradiente -->
+    <section class="final">
+      <div class="wrap">
+        <div class="final-box">
+          <h2>Automatiza la recepción de tu hotel</h2>
+          <p>Prueba Chekin gratis 14 días. Déjanos tus datos y un experto en Chekin te contactará. Sin compromiso.</p>
+          <a class="btn btn-on-dark btn-lg" href="#prueba">Empieza tu prueba gratis
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-5-5 5 5-5 5"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">
+      <img src="assets/logo-white.svg" alt="Chekin" width="110" height="33">
+      <nav aria-label="Legal">
+        <a href="https://chekin.com/privacidad/" target="_blank" rel="noopener">Privacidad</a>
+        <a href="https://chekin.com/politica-de-cookies/" target="_blank" rel="noopener">Cookies</a>
+        <small>© 2026 Chekin</small>
+      </nav>
+    </div>
+  </footer>
+
+  <div class="sticky-cta" id="sticky"><a class="btn btn-primary" href="#prueba">Empieza tu prueba gratis</a></div>
+</div>
+
+<script>
+(function(){
+  var q=new URLSearchParams(location.search);
+  ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid'].forEach(function(k){
+    var el=document.querySelector('.ck input[name="'+k+'"]'); if(el&&q.get(k)) el.value=q.get(k);
+  });
+  document.querySelectorAll('.ck .field select').forEach(function(s){
+    s.addEventListener('change',function(){s.classList.toggle('filled',!!s.value)});
+  });
+  // Pestañas accesibles (clic y flechas)
+  var tabs=[].slice.call(document.querySelectorAll('.ck [role=tab]'));
+  function select(t,focus){
+    tabs.forEach(function(x){var on=x===t;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;document.getElementById(x.getAttribute('aria-controls')).hidden=!on;});
+    if(focus) t.focus();
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){select(t)});
+    t.addEventListener('keydown',function(e){
+      if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();select(tabs[(i+(e.key==='ArrowRight'?1:tabs.length-1))%tabs.length],true);}
+    });
+  });
+  // Validación de la maqueta (en producción la hace el formulario de HubSpot)
+  var card=document.getElementById('prueba'), form=card.querySelector('form');
+  form.addEventListener('submit',function(e){
+    e.preventDefault(); var ok=true;
+    form.querySelectorAll('.field').forEach(function(f){
+      var i=f.querySelector('input,select'); var v=i.checkValidity()&&i.value.trim()!=='';
+      f.classList.toggle('invalid',!v); if(!v) ok=false;
+    });
+    if(ok){card.classList.add('sent');}
+    else{var first=form.querySelector('.invalid input,.invalid select'); if(first) first.focus();}
+  });
+  var sticky=document.getElementById('sticky');
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(en){sticky.classList.toggle('hide',en[0].isIntersecting)},{threshold:.2}).observe(card);
+  }
+})();
+</script>
+</body>
+</html>
