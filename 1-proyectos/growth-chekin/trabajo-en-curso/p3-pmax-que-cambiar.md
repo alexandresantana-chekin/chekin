@@ -56,3 +56,26 @@ Las landings ya cargan Microsoft Clarity por GTM (proyectos `rrl7tp5b6k` y `rqlc
 2. ¿Cambiamos el objetivo de conversión (cambio 4) ya, o después de medir el reparto?
 3. ¿Quién ejecuta en Google Ads: Snowball o él?
 4. Italia: ¿excluimos la plantilla de contrato o hacemos landing para ese tráfico?
+
+## Borrador 26/10 · Snowball: formulario como conversión principal en las PMax IT (sin enviar)
+
+Hola equipo,
+
+Una petición sobre las **PMax de Italia** (SB_IT_GOOGLE_PMAX_COMPETITORS_CHEKIN y SB_IT_GOOGLE_PMAX_VACATIONAL_CHEKIN).
+
+**El problema:** los formularios de nuestras landings cuentan como **conversión secundaria**, así que la PMax no los usa para optimizar. En los últimos 90 días (21 jul – 18 oct):
+- `/it/ads/registrazione-ospiti-questura` (Competitors): 0 conversiones principales, pero 101 en «todas las conversiones».
+- `/it/check-in-online-alloggiati-web` (Vacational): 0 conversiones principales, y en HubSpot tiene 17 formularios (3,4% de conversión).
+- Mientras tanto, la plantilla de contrato sí cuenta como principal, y la PMax le manda la mayor parte del tráfico.
+
+**Lo que os pedimos:**
+1. Que el envío del formulario de HubSpot de esas landings cuente como **conversión principal** en las dos PMax de Italia.
+2. Que nos digáis **la fecha y la hora del cambio**, para medir el antes y el después.
+3. Si podéis, revisad si en las PMax de España pasa lo mismo y nos contáis.
+
+**Por qué ahora:** la semana que viene (4 y 5/11) tenemos listas las landings nuevas de Italia y queremos que Google ya vea sus formularios desde el primer día.
+
+No hace falta tocar anuncios, presupuestos ni audiencias.
+
+Gracias,
+Alex

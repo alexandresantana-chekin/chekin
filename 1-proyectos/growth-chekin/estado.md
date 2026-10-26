@@ -65,6 +65,16 @@ Fuente de fechas: Asana (consultado el 26/10 por la tarde). Lo de abajo de este 
   - **P5:** OK de Carlos al GIF de la firma. Entregado.
   - **Portugal:** tarea en Growth Daily › Alexandre: 50 al día con Showme_PT_recovery = Yes. 26/10: 50 acumulados.
   - **P2:** los AEs están bien. The TOPO Connect: 2 leads reales y 2 pruebas (Asana corregida).
+- **Final del 26/10:**
+  - **P3 · Fechas en Asana (con un comentario en cada tarea):**
+    - SES v2: montaje el 30/10 y lanzamiento el **3/11** (el 2/11 es festivo);
+    - tracker y línea base de octubre: 3/11;
+    - España hoteles: 6/11 y lanzamiento el 10/11;
+    - **Italia hoteles: 4/11; Italia resto: 5/11** (adelantadas por Alex);
+    - UTM: 27/10.
+  - **P3 · Borrador para Snowball** (formulario como conversión principal en las PMax IT, con fecha del cambio) al final de `trabajo-en-curso/p3-pmax-que-cambiar.md`. **Sin enviar:** lo revisa y lo envía Alex. Conviene que salga esta semana, antes del 4/11.
+  - **P7 · ShowMe:** proyecto nuevo de Alex. Contexto y pendientes en `trabajo-en-curso/p7-showme.md` (handoff a persona, la secuencia escribe a clientes que ya pagan, email de soporte, IVA en Italia, recovery de Portugal).
+  - **Seguridad:** la contraseña de ShowMe está en texto plano en un DM de Slack (cuenta de Gabriel) y hay una clave live de Stripe en la página «STRIPE» de Notion. Hay que avisar para cambiarlas.
 - **Pendiente de P2:**
   - **Seguridad:** revocar el token de Supabase `chekin-connect-despliegue` y rotar el token de HubSpot (los dos quedaron a la vista en el terminal). Tras rotar el de HubSpot, volver a guardarlo con `desplegar-hubspot-sync.sh`. Borrar `sbp_` y `pat-na1` del historial del terminal.
   - Preguntar a Marta cuáles de sus 4 leads de The TOPO Connect eran pruebas (aparecen su email y el de Carlos) y corregir la tarea de Asana. En la ficha de Carlos en HubSpot, Last MQL type ha pasado a «Event».
