@@ -133,6 +133,9 @@ footer img{height:22px;width:auto;display:block;filter:brightness(0) invert(1)}
   .tablist{grid-auto-flow:column;grid-auto-columns:max-content;overflow-x:auto;padding:4px 2px 8px;scrollbar-width:none}
   .tablist::-webkit-scrollbar{display:none}
   .tab{white-space:nowrap;padding:10px 14px;font-size:14.5px}
+  .tablist{-webkit-mask-image:linear-gradient(90deg,#000 85%,transparent);mask-image:linear-gradient(90deg,#000 85%,transparent);padding-right:28px}
+  .eb-more,.lead-more,.card .sub{display:none}
+  .faq summary{padding:6px 0}
   .panel{padding:20px;min-height:0}
   .band h2{font-size:26px}
   .wrap{padding:0 16px}
@@ -150,9 +153,9 @@ footer img{height:22px;width:auto;display:block;filter:brightness(0) invert(1)}
 <section class="hero">
   <div class="wrap">
     <div class="hero-copy">
-      <span class="eyebrow">Per hotel e catene · Alloggiati Web · ISTAT</span>
+      <span class="eyebrow">Per hotel e catene<span class="eb-more"> · Alloggiati Web · ISTAT</span></span>
       <h1>Registra gli ospiti in Questura <span>in automatico</span></h1>
-      <p class="lead">Check-in online prima dell'arrivo e schedine inviate ad Alloggiati Web senza passare dal portale. Prova Chekin gratis per 14 giorni: lasciaci i tuoi dati e un esperto Chekin ti contatterà.</p>
+      <p class="lead">Check-in online prima dell'arrivo e schedine inviate ad Alloggiati Web senza passare dal portale.<span class="lead-more"> Prova Chekin gratis per 14 giorni: lasciaci i tuoi dati e un esperto Chekin ti contatterà.</span></p>
       <ul class="mini">
         <li>Invio automatico ad Alloggiati Web e ai portali ISTAT</li>
         <li>Check-in online in 3 minuti, prima dell'arrivo</li>
