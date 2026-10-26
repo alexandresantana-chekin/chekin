@@ -70,6 +70,6 @@
   - SES v2: montaje en HubSpot el 30/10 y lanzamiento del test el **3/11**;
   - registro en el tracker y línea base de octubre: 3/11;
   - España hoteles: lista el 6/11 y lanzamiento el 10/11;
-  - Italia hoteles: 13/11; Italia resto: 20/11 (los bocetos ya están aprobados);
+  - Italia hoteles: 4/11; Italia resto: 5/11 (Alex las adelanta porque ya están construidas; antes 13/11 y 20/11);
   - UTM: se mantiene el 27/10.
   Comentario con el motivo en cada tarea.
