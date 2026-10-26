@@ -451,6 +451,9 @@
   .ck .marquee-track [aria-hidden="true"]{display:none}
   .ck .marquee{-webkit-mask-image:none;mask-image:none}
 }
+/* v7 (26/10): en móvil, el botón del formulario más arriba */
+@media (max-width:640px){.ck .lead-more,.ck .form-intro{display:none}.ck .form-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 10px;align-items:end}.ck .field select{padding-left:12px;padding-right:28px}.ck .field.full{grid-column:1/-1}.ck .hero .form-card{margin-top:16px}.ck .hero h1{margin-bottom:12px}}
+@media (max-width:340px){.ck .form-grid{grid-template-columns:minmax(0,1fr)}}
 </style>
 </head>
 <body style="margin:0;background:#fff">
@@ -459,7 +462,7 @@
   <header class="top">
     <div class="wrap">
       <img class="logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjgyIDY2IDg1MiAyNTIiPgogIDxnIGlkPSJsb2dvLW5ldy1jaGVraW4tbGFuZHNjYXBlIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMjg0NyAxNTU4OSkiPgogICAgPHJlY3QgaWQ9IlJlY3RhbmdsZV8zMjA0IiBkYXRhLW5hbWU9IlJlY3RhbmdsZSAzMjA0IiB3aWR0aD0iMTAwMCIgaGVpZ2h0PSIzOTkiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI4NDcgLTE1NTg5KSIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iMCIvPgogICAgPGcgaWQ9ImxvZ28iIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI5MjMuMjk0IC0xNTUyOS4wNTUpIj4KICAgICAgPGcgaWQ9Ikdyb3VwXzEyOTc0IiBkYXRhLW5hbWU9Ikdyb3VwIDEyOTc0IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIDApIj4KICAgICAgICA8ZyBpZD0iR3JvdXBfMTMxNDIiIGRhdGEtbmFtZT0iR3JvdXAgMTMxNDIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgMCkiPgogICAgICAgICAgPHBhdGggaWQ9IlBhdGhfMjYyMTgiIGRhdGEtbmFtZT0iUGF0aCAyNjIxOCIgZD0iTS0yMzQuOS05LjE4N2MwLDU2LjQ5NCwzOC45LDEwMC4wMTMsOTkuMTM5LDEwMC4wMTNhMTA3LjQ4LDEwNy40OCwwLDAsMCw2Ny44LTIzLjc4N2M1LjQtNC42LDUuNjczLTEwLjI3MiwxLjYyMS0xNS42NzhsLTUuNC03LjNjLTQuMzIyLTYuMjE3LTkuNzI1LTYuMjE3LTE1LjY2OC0xLjg5Mi04LjkxNSw2LjQ4Ny0yNS4zOTMsMTYuNzU5LTQ3LDE2Ljc1OS00MS4zMzEsMC02NC41NjItMzIuNzA3LTY0LjU2Mi02OC42NTgsMC0zNS40MSwyMi40MjEtNjUuOTU1LDY0LjI5Mi02NS45NTUsMTkuNzIsMCwzNC44NDcsOC4xMDksNDMuMjIyLDEzLjUxNSw2LjQ4Myw0LjA1NSwxMS42MTYsMy41MTQsMTUuNC0yLjdsNC44NjMtNy44MzljMy43ODItNS45NDcsMy41MTItMTEuMzUzLTIuMTYxLTE1LjY3OC0xMC4yNjUtNy4zLTMxLjMzNS0xOS4xOTItNjIuNjcxLTE5LjE5MkMtMTk0LjEwOC0xMDcuNTc4LTIzNC45LTY0Ljg3LTIzNC45LTkuMTg3Wk0tMzguNTExLDc2LjIzYzAsNy41NjksNC4wNTIsMTEuMzUzLDExLjM0NiwxMS4zNTNoMTEuNjE2US00LjIsODcuNTgzLTQuMiw3Ni4yM1YyMy41MmMwLTI2LjIyLDE1LjY2OC00NS42ODIsMzkuNzEtNDUuNjgyLDE3LjI4OCwwLDIxLjYxMSwxMS4zNTMsMjEuNjExLDI4LjExMlY3Ni4yM3EwLDExLjM1MywxMS4zNDYsMTEuMzUzSDgwLjA3OGM3LjI5NCwwLDExLjM0Ni0zLjc4NCwxMS4zNDYtMTEuMzUzVi0xLjA3N2MwLTM2LjQ5MS0xNy41NTktNTIuNDM5LTQ4LjA4NC01Mi40MzktMjMuNzcyLDAtNDEuMDYxLDE0LjYtNDcuODE0LDI3Ljg0MmgtLjU0QTc4LjMsNzguMywwLDAsMC00LjItMzcuM1YtOTIuOTgxYzAtNy4zLTMuNzgyLTExLjM1My0xMS4zNDYtMTEuMzUzSC0yNy4xNjVjLTcuMjk0LDAtMTEuMzQ2LDQuMDU1LTExLjM0NiwxMS4zNTNaTTExNC45MjYsMTguNjU1YzAsMzkuMTk0LDI4LjM2NCw3Mi4xNzIsNzQuMDE3LDcyLjE3MmE4Ny4wMzgsODcuMDM4LDAsMCwwLDQ2LjczMy0xMy43ODZjNS45NDMtMy41MTQsNy4wMjMtOC45MiwzLjc4Mi0xNS4xMzdMMjM2LjIxNiw1Ni41Yy0zLjUxMi02LjIxNy04LjM3NC03LjAyOC0xNS4xMjgtMy43ODQtNi40ODMsNC4wNTUtMTcuMDE4LDguOTItMjkuNzE1LDguOTItMjAuOCwwLTM5LjE3LTEyLjk3NS00MS4zMzEtMzcuODQzaDg0LjAxMmExMS45NDIsMTEuOTQyLDAsMCwwLDExLjg4Ni0xMS42MjNjMC0zNy44NDMtMjEuODgxLTY1LjY4NC02MS4wNTEtNjUuNjg0QzE0My41Ni01My41MTcsMTE0LjkyNi0yMy43ODMsMTE0LjkyNiwxOC42NTVaTTE1MC44NTQsMi45NzdDMTU0LjEtMTUuNCwxNjYuNTIxLTI3LjU2NywxODQuMDgtMjcuNTY3YzE1LjY2OCwwLDI3LjI4NCwxMS4zNTMsMjcuODI0LDMwLjU0NVpNMjcwLjc5Myw3Ni4yM2MwLDcuNTY5LDQuMDUyLDExLjM1MywxMS4zNDYsMTEuMzUzaDExLjYxNnExMS4zNDUsMCwxMS4zNDYtMTEuMzUzVjI3LjNoMTcuODI5bDMyLjE0Niw1Mi40MzljMi45NzIsNS40MDYsNy4wMjQsNy44MzksMTMuMjM3LDcuODM5SDM4Mi45YzkuMTg1LDAsMTIuMTU2LTUuNjc2LDcuNTY0LTEzLjUxNUwzNDkuOTQzLDExLjl2LS41NDFMMzg0LjI1LTM2Ljc1OGM1LjEzMi03LjMsMi4xNjEtMTMuNTE1LTcuMDIzLTEzLjUxNUgzNjQuMjZjLTYuMjEzLDAtMTAuMjY1LDIuMTYzLTEzLjUwNyw3LjU2OUwzMjIuMTE5LTEuNjE4SDMwNS4xVi05Mi45ODFjMC03LjMtMy43ODItMTEuMzUzLTExLjM0Ni0xMS4zNTNIMjgyLjEzOWMtNy4yOTQsMC0xMS4zNDYsNC4wNTUtMTEuMzQ2LDExLjM1M1ptMTQzLjk4MiwwYzAsNy41NjksMy43ODIsMTEuMzUzLDExLjA3NiwxMS4zNTNoMTEuODg2YzcuMjk0LDAsMTEuMDc2LTMuNzg0LDExLjA3Ni0xMS4zNTNWLTM4LjkyYzAtNy4zLTMuNzgyLTExLjM1My0xMS4wNzYtMTEuMzUzSDQyNS44NTFjLTcuMjkzLDAtMTEuMDc2LDQuMDU1LTExLjA3NiwxMS4zNTNabTY4LjA3NCwwYzAsNy41NjksMy43ODIsMTEuMzUzLDExLjA3NiwxMS4zNTNoMTEuODg2YzcuMjk0LDAsMTEuMDc1LTMuNzg0LDExLjA3NS0xMS4zNTNWMjIuOThjMC0yNC44NjgsMTUuNC00NS4xNDEsMzkuNzEtNDUuMTQxLDE3LjI4OSwwLDIxLjYxMSwxMS4zNTMsMjEuNjExLDI4LjExMlY3Ni4yM2MwLDcuNTY5LDQuMDUyLDExLjM1MywxMS4zNDYsMTEuMzUzaDExLjYxNnExMS4zNDYsMCwxMS4zNDYtMTEuMzUzVi0xLjA3N2MwLTM2LjQ5MS0xNy41NTktNTIuNDM5LTQ4LjA4NC01Mi40MzktMjcuODI0LDAtNDIuOTUxLDE3LjU3LTQ4Ljg5NCwyOS4xOTNINTE1YTQ0LjEsNDQuMSwwLDAsMCwuNTQtNi4yMTdWLTM4LjkyYzAtNy4zLTMuNzgyLTExLjM1My0xMS4wNzYtMTEuMzUzSDQ5My45MjVjLTcuMjk0LDAtMTEuMDc2LDQuMDU1LTExLjA3NiwxMS4zNTNaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyMzQuODk4IDE1Ny43ODMpIiBmaWxsPSIjMTkxOTRiIi8+CiAgICAgICAgICA8ZyBpZD0idGljayIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNjIwLjUxNikiPgogICAgICAgICAgICA8ZyBpZD0iR3JvdXBfMTI5NjYiIGRhdGEtbmFtZT0iR3JvdXAgMTI5NjYiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDApIj4KICAgICAgICAgICAgICA8cGF0aCBpZD0iUGF0aF8yNjIwNyIgZGF0YS1uYW1lPSJQYXRoIDI2MjA3IiBkPSJNMTQ0LjkyMywyMzcuNDU2YTEwLjIzMywxMC4yMzMsMCwwLDEsMCwxNC4yMTNMMTM3LDI1OS42YTEwLjIzMywxMC4yMzMsMCwwLDEtMTQuMjEzLDBMODguMDcsMjI0LjYwOWExMC4yMzMsMTAuMjMzLDAsMCwxLDAtMTQuMjEzTDk2LDIwMi40N2ExMC4yMzQsMTAuMjM0LDAsMCwxLDE0LjIxMywwWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTg1LjIgLTE3NC4xOCkiIGZpbGw9IiMzODViZjgiLz4KICAgICAgICAgICAgICA8cGF0aCBpZD0iUGF0aF8yNjIwOCIgZGF0YS1uYW1lPSJQYXRoIDI2MjA4IiBkPSJNMjI3LjQsMTI4LjA3YTEwLjIzNCwxMC4yMzQsMCwwLDEsMTQuMjEzLDBMMjQ5LjU0MiwxMzZhMTAuMjM0LDEwLjIzNCwwLDAsMSwwLDE0LjIxM0wxODkuNDEsMjEwLjA2OGExMC4yMzMsMTAuMjMzLDAsMCwxLTE0LjIxMywwbC03LjkyNi03LjkyNmExMC4yMzMsMTAuMjMzLDAsMCwxLDAtMTQuMjEzWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTEzNy4zNCAtMTI1LjIpIiBmaWxsPSIjMzg1YmY4Ii8+CiAgICAgICAgICAgIDwvZz4KICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICAgIDwvZz4KICAgIDwvZz4KICA8L2c+Cjwvc3ZnPgo=" alt="Chekin" width="132" height="39">
-      <a class="btn btn-primary" href="#prueba">Prueba gratis 14 días</a>
+      <a class="btn btn-primary" href="#prueba">Empieza tu prueba gratis</a>
     </div>
   </header>
 
@@ -470,7 +473,7 @@
         <div>
           <span class="eyebrow">Para hoteles y cadenas hoteleras</span>
           <h1>Automatiza la recepción <span class="accent">de tu hotel</span></h1>
-          <p class="lead">Check-in online antes de llegar, parte automático a SES.Hospedajes y más ingresos por reserva. Prueba Chekin gratis 14 días: déjanos tus datos y un experto en Chekin te contactará para ayudarte con cualquier duda.</p>
+          <p class="lead">Check-in online antes de llegar, parte automático a SES.Hospedajes y más ingresos por reserva.<span class="lead-more"> Prueba Chekin gratis 14 días: déjanos tus datos y un experto en Chekin te contactará para ayudarte con cualquier duda.</span></p>
           <ul class="ticks">
             <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Olvídate del portal del Ministerio: evita multas y sanciones</li>
             <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Sin colas en recepción: check-in en 3 minutos</li>
@@ -497,7 +500,7 @@
               </div>
               <div class="field">
                 <label for="f-phone">Teléfono</label>
-                <input id="f-phone" name="phone" type="tel" placeholder="+34 600 000 000" autocomplete="tel" required>
+                <input id="f-phone" name="phone" type="tel" placeholder="Tu teléfono" autocomplete="tel" required>
                 <span class="err">Escribe tu teléfono</span>
               </div>
               <div class="field full">
@@ -525,7 +528,7 @@
             </div>
             <input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign">
             <input type="hidden" name="utm_term"><input type="hidden" name="utm_content"><input type="hidden" name="gclid">
-            <input type="hidden" name="landing" value="pmax-competitors-es-v6-prueba14-contacto">
+            <input type="hidden" name="landing" value="pmax-competitors-es-v7-prueba14-contacto">
             <button class="btn btn-primary btn-lg" type="submit">Empieza tu prueba gratis
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-5-5 5 5-5 5"/></svg>
             </button>
@@ -626,7 +629,7 @@
             <h3>Autoservicio en el lobby, para cada llegada.</h3>
             <p>Nuestro OCR escanea el documento de identidad y rellena el formulario de registro en segundos. Funciona en una tablet en recepción o en un quiosco en el lobby. Tus huéspedes hacen el check-in solos y tu equipo atiende a quien de verdad lo necesita.</p>
             <ul>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>OCR compatible con +200 tipos de documento</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Lectura automática del documento (OCR)</li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Modo tablet para recepción, modo quiosco para el lobby</li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Totalmente personalizable con tu marca</li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Compatible con DNI digital a través de MiDNI para España</li>
@@ -681,10 +684,10 @@
         <div class="tab-panel" role="tabpanel" id="p-legal" aria-labelledby="t-legal" hidden>
           <div class="txt">
             <h3>Olvídate del portal del Ministerio</h3>
-            <p>Chekin envía los datos de tus huéspedes a la autoridad correspondiente en más de 20 países, calcula la tasa turística en más de 45 jurisdicciones y emite la facturación electrónica obligatoria. En España: SES.Hospedajes, Mossos d'Esquadra y Ertzaintza.</p>
+            <p>Chekin envía los datos de tus huéspedes a la autoridad correspondiente en más de 20 países, calcula la tasa turística y emite la facturación electrónica obligatoria. En España: SES.Hospedajes, Mossos d'Esquadra y Ertzaintza.</p>
             <ul>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Envío automático a autoridades en +20 países</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Tasa turística en 45+ jurisdicciones</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Cálculo de la tasa turística</li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Siempre al día con las actualizaciones normativas</li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Almacenamiento de datos por el tiempo exigido por ley</li>
             </ul>
@@ -715,12 +718,13 @@
           </div>
           <div class="visual">
             <div class="rev">
-              <div><small>Ingresos por reserva</small><b>100 €</b></div>
+              <div><small>Ingresos por reserva (ejemplo)</small><b>100 €</b></div>
               <div><small>Con Chekin</small><b>155 €</b><span class="up">+55 €</span></div>
               <div class="lines">
                 <div class="line"><span>Late check-out</span><span>+18 €</span></div>
                 <div class="line"><span>Desayuno</span><span>+12 €</span></div>
                 <div class="line"><span>Parking</span><span>+15 €</span></div>
+                <div class="line"><span>Early check-in</span><span>+10 €</span></div>
               </div>
             </div>
           </div>
@@ -813,7 +817,7 @@
         <ol class="trial-steps">
           <li><span class="n">1</span><h3>Déjanos tus datos</h3><p>Solo lo necesario sobre ti y tu hotel.</p></li>
           <li><span class="n">2</span><h3>Un experto en Chekin te contacta</h3><p>Te da acceso y te ayuda con cualquier duda, también al conectar tu PMS.</p></li>
-          <li><span class="n">3</span><h3>Usas Chekin 14 días gratis</h3><p>Sin tarjeta y sin compromiso.</p></li>
+          <li><span class="n">3</span><h3>Usas Chekin 14 días gratis</h3><p>Sin compromiso.</p></li>
         </ol>
       </div>
     </section>
