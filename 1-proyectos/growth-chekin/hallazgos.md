@@ -5,6 +5,31 @@ Regla: toda cifra lleva su periodo (Carlos trabaja con 90 días). Si un dato no 
 
 ---
 
+## 26-10-2026
+
+### H-20 · Chekin Connect: 3 de los 5 eventos terminados no tienen ningún lead, y parte de los leads son pruebas internas
+- **Qué:** de los 5 eventos terminados entre el 21 y el 25/10, **3 tienen 0 leads** (Tu Alquiler Asturias, Cloudbeds PT, Avvapro Sevilla). Los otros 2 suman 5 leads: The TOPO Connect, 4 (Marta); Scale Fest, 1 (Pablo). Entre los contactos de The TOPO Connect están el email de la propia Marta y el de Carlos, así que es probable que algunos sean pruebas. Ninguno de los 5 estaba en HubSpot hasta el reenvío del 26/10 (ahora 5 de 5, sin errores).
+- **Fuente / periodo:** Supabase de Chekin Connect (tablas `events` y `leads`), eventos terminados del 21 al 25/10/2026. HubSpot, comprobado el 26/10.
+- **Implica:** con estos datos no se puede medir lo que aportan los eventos. O los AEs no usan el QR, o no están asignados al evento en el panel [POR COMPROBAR con los AEs]. Hay que separar las pruebas de los leads reales antes de sacar conclusiones.
+- **Estado:** tareas por evento creadas en Asana (Growth Daily › Alexandre). Preguntar a Marta y a los AEs.
+
+### H-19 · Plan de noviembre de Snowball frente a las landings de Italia: Google es ~30% del presupuesto IT, no hay campaña de hoteles en Google y Search Intención IT no está en el plan
+- **Qué:** el plan de noviembre de Snowball, preparado por Carlos, fija para Italia (paid) un mínimo de **105 Qualified MQL y 50 SQL**. Hoy llega a Qualified el **10,9%** de los MQL de Italia (jul–sep), así que harían falta **960 formularios** con la calidad actual. Google IT recibe **4.350 €** en noviembre: PMax Vacational 3.000 € (100 €/día), PMax Competitors 1.200 € (40 €/día) y Brand 150 €. El presupuesto de Italia es de ~14.250 € (Rental IT 9.750 € + Hoteles IT 4.500 €); el resto es Meta, fuera de P3. Snowball espera **0,7 Qualified** de PMax Vacational, con un coste histórico de 2.645 €/Qualified y 529 €/SQL, y **1,5** de PMax Competitors (756 €/Qualified, 302 €/SQL). **Las dos PMax IT se clasifican como *Rental IT*. No hay campaña de hoteles de Google en Italia:** los hoteles IT solo van por Meta (`SB_ITA_META_HOTELES_FORM_CK`). **`SB_IT_GOOGLE_SEARCH_INTENCION_CHEKIN` no aparece en el plan**, aunque fue la que mandó el 97,9% de su tráfico a questura y la única donde esa landing contó conversiones (H-17). El plan pide subir los Qualified MQL y SQL de HubSpot a Google y Meta como conversiones offline. Los €/día de partida no cuadran con el gasto real: el plan dice 94 €/día para Vacational, pero en 90 días gastó ~25 €/día (2.280 €).
+- **Fuente / periodo:** «Snowball · Plan noviembre 2026.xlsx» (hojas 1–3; % Qualified jul–sep, costes históricos jun–oct según el propio plan). Comparado con Google Ads vía Windsor.ai, 21 jul – 18 oct (90 días), de H-18.
+- **Implica:**
+  1. El boceto «IT hoteles» va a recibir tráfico de alquiler vacacional. O se reorienta, o se pide a Snowball una campaña de hoteles en Google. Choca con la regla de P3 (público: hoteles y cadenas).
+  2. La landing tiene que filtrar por tipo y tamaño de alojamiento (Micro no cuenta como Qualified), no solo captar más formularios.
+  3. Para las conversiones offline, el formulario debe guardar el `gclid` en HubSpot [POR COMPROBAR]. Además, el formulario tiene que pasar a conversión principal (H-18).
+  4. Preguntar a Snowball por Search Intención IT.
+  5. Comprobar los €/día de partida con los últimos 30 días [POR COMPROBAR].
+- **Estado:** para decidir con Carlos (26/10). Copiado en la ficha P3 de Notion (26/10, con OK de Alex).
+
+### H-18 · Italia: el tráfico de las 4 campañas cae en 3 páginas, y la landing de hoteles sí convierte pero como conversión secundaria
+- **Qué:** las 4 campañas IT apuntan a 17 URL distintas, pero 3 páginas se llevan el **94% de los 8.946 clics**: `/it/ads/registrazione-ospiti-questura` (5.383 clics), `/modello/contrattoaffittoturistico` (2.514) y `/it/check-in-online-alloggiati-web` (548). En cada campaña, una URL concentra entre el 65% y el 98% del tráfico (Search Intención 97,9%, Brand 98,1%). El resto son colas de 1–57 clics. **Nuevo frente a H-17:** en la PMax Competitors, la landing de questura tiene 0 conversiones pero **101,3 en «todas las conversiones»**. Lo mismo pasa con alloggiati en Vacational: 0 frente a 10. El formulario sí se registra, pero como acción secundaria, y la PMax no puja por ella. **Cruce con otros países:** Vacational IT manda 12 clics a páginas en inglés o de España (`/en/online-check-in`, `/ads/online-check-in-uk`, `/template/tenancycontractformat`, `/template/seshospedajesword`). Es el 0,7%, poco volumen. 6 de las 7 landings en italiano revisadas declaran `lang="en"` (solo alloggiati dice `it`). La de questura tiene el `<title>` de otra página: «Self Check-in de visu legale».
+- **Fuente / periodo:** Google Ads vía Windsor.ai, 21 jul – 18 oct (90 días), por URL expandida, sin parámetros. Revisión con curl el 26/10.
+- **Implica:** hay que rediseñar 3 páginas, no 21. Arreglar la acción de conversión (pasar el formulario a principal) es el cambio con más palanca y no toca el diseño. Cada +1 pp de conversión en los 3.288 clics de la PMax Competitors en questura serían ~33 formularios más en 90 días. El valor en MRR es [POR COMPROBAR: tasa lead→cliente y ticket en IT].
+- **Estado:** resumen para Alex (26/10). Bocetos IT hoteles y resto ya cubren 2 de las 3 páginas. Decidir con Carlos la acción de conversión.
+
 ## 23-10-2026
 
 ### H-17 · Italia: Google Ads cuenta 0 conversiones en la landing de la PMax IT Competitors, pero en HubSpot entran contactos

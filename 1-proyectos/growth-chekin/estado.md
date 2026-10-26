@@ -1,4 +1,4 @@
-# Estado · actualizado 2026-10-23
+# Estado · actualizado 2026-10-26
 
 ## Hecho
 - P3: diagnóstico de la landing de PMax España Hoteles, deck de 14 diapositivas y tracker de tests creados.
@@ -23,6 +23,19 @@
   - Permiso para mostrar Iberostar, Meliá y Barceló; logos de PMS; fuente Proxima Nova.
 
 ## Pendiente
+## Lunes 26/10 (Tenerife con Carlos), hecho
+- **P3 · Italia:** las 4 campañas de Google analizadas (H-18): 17 URL, pero 3 páginas se llevan el 94% de los clics, y el formulario de questura cuenta como conversión secundaria (101 en «todas las conversiones»). Cruce con el plan de noviembre de Snowball (H-19): Google es ~30% del presupuesto de Italia, no hay campaña de hoteles en Google IT y Search Intención IT no está en el plan. Los dos hallazgos están copiados en la ficha P3 de Notion. **Decidir con Carlos:** pasar el formulario a conversión principal, si el boceto «IT hoteles» se reorienta a alquiler vacacional y qué pasa con Search Intención IT.
+- **P2 · Chekin Connect:**
+  - Enlace para los AEs: https://chekin-connect.vercel.app/mi-perfil (versión nueva). No se pudo dar a la web nueva el nombre `qrsaleschekin.vercel.app`, porque no hay acceso a la cuenta personal de Vercel. La web antigua sigue funcionando con la versión anterior y la misma base de datos.
+  - Contraseñas provisionales (con cambio obligatorio) para Giulia y Joan, generadas en el terminal de Alex. Rocco ya había entrado con su contraseña; el último script incluía también la suya [POR COMPROBAR si se ejecutó ese SQL]. Faltan en sus tarjetas: Giulia, Calendly y foto; Joan, teléfono, Calendly y foto; Pablo, foto.
+  - **Envío a HubSpot activo:** app privada «Chekin Connect» (3 permisos de contactos y propietarios), token en Supabase y función desplegada. Sin propiedades nuevas: MQL Type solo si estaba vacío y Last MQL type siempre, con Event, Webinar o **Digital QR** (opción creada el 26/10). El evento concreto va en la nota. Probado con un contacto PRUEBA (borrado de la app; en HubSpot, a la papelera). Reenviados los 5 leads antiguos: 5 en HubSpot, 0 errores.
+  - **Rutina «Chekin Connect · eventos terminados → Asana»** (L–V 9:00, modo Auto): crea en Growth Daily › Alexandre una tarea por evento terminado, con cifras y una subtarea por AE. Clave en el Llavero. Primeras 5 tareas creadas hoy. Documentación en `agentes-rutinarios/chekin-connect-eventos-terminados.md`.
+- **Pendiente de P2:**
+  - **Seguridad:** revocar el token de Supabase `chekin-connect-despliegue` y rotar el token de HubSpot (los dos quedaron a la vista en el terminal). Tras rotar el de HubSpot, volver a guardarlo con `desplegar-hubspot-sync.sh`. Borrar `sbp_` y `pat-na1` del historial del terminal.
+  - Preguntar a Marta cuáles de sus 4 leads de The TOPO Connect eran pruebas (aparecen su email y el de Carlos) y corregir la tarea de Asana. En la ficha de Carlos en HubSpot, Last MQL type ha pasado a «Event».
+  - Asignar las subtareas de seguimiento a Marta y Pablo. Preguntar a los AEs por qué 3 de los 5 eventos tienen 0 leads (H-20).
+  - Enviar a Giulia y Joan su enlace y contraseña. Avisar a todos los AEs del enlace nuevo.
+
 ## Asana al día (23/10, tarde)
 - Growth Daily › Alexandre: tarea índice «Mapa de tareas de Alexandre: owner, fecha y «hecho»» (gid 1219818181506129), con todas las tareas abiertas enlazadas y un comentario a Carlos. Asana no permite añadir desde aquí una tarea existente a otro proyecto: por eso es un índice con enlaces, no tareas duplicadas.
 - Cerradas con comentario: animación del logo, revisión de la configuración de PMax, app del QR en GitHub, «MRR: recibir el traspaso» (repetida) y «Arrancar web y CRO» (sustituida).

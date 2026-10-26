@@ -2,7 +2,7 @@
 // Lo dispara el disparador leads_to_hubspot (INSERT en public.leads, migración 20261027) con la cabecera x-webhook-secret.
 // Se despliega sin verificación de JWT (--no-verify-jwt): la protección es esa clave (secreto WEBHOOK_SECRET).
 // Secreto necesario en Supabase (Edge Functions → Secrets): HUBSPOT_TOKEN (token de la app privada de HubSpot).
-// Reglas: si el contacto ya existe en HubSpot no se cambian propietario ni etapa; solo se rellenan campos vacíos y se añade el evento y una nota.
+// Reglas: si el contacto ya existe en HubSpot no se cambian propietario ni etapa; solo se rellenan campos vacíos, «Last MQL type» pasa a Event, Webinar o Digital QR («MQL Type» solo si estaba vacío) y se añade una nota con el evento.
 
 const HS = "https://api.hubapi.com";
 const SB_URL = Deno.env.get("SUPABASE_URL")!;
@@ -34,6 +34,14 @@ async function originOf(l: Lead) {
   return ev?.[0]?.kind === "webinar" ? "Chekin Connect · Webinar" : "Chekin Connect · Evento";
 }
 
+// Valor de «MQL Type» (form_type) y «Last MQL type» (last_form_type) en HubSpot. «Digital QR» es la opción
+// de esas dos propiedades para quien deja sus datos sin evento ni webinar (creada en HubSpot el 26/10).
+function mqlTypeOf(origin: string) {
+  if (origin.endsWith("Webinar")) return "Webinar";
+  if (origin.endsWith("Evento")) return "Event";
+  return "Digital QR";
+}
+
 async function ownerFor(aeId: string) {
   const p = await sb(`/rest/v1/profiles?id=eq.${aeId}&select=email,name`);
   const email = p?.[0]?.email;
@@ -44,6 +52,7 @@ async function ownerFor(aeId: string) {
 
 async function sync(l: Lead) {
   const origin = await originOf(l);
+  const mqlType = mqlTypeOf(origin);
   const evento = l.event_name ? l.event_name + (l.event_city ? ` · ${l.event_city}` : "") : "";
   const { ownerId, aeName } = await ownerFor(l.ae_id);
   const data: Record<string, string> = {
@@ -55,16 +64,17 @@ async function sync(l: Lead) {
   let id: string | null = null, existing: Record<string, string> = {};
   if (l.email) {
     const s = await hs("/crm/v3/objects/contacts/search", { method: "POST", body: JSON.stringify({
-      filterGroups: [{ filters: [{ propertyName: "email", operator: "EQ", value: l.email }] }], properties: fill, limit: 1 }) });
+      filterGroups: [{ filters: [{ propertyName: "email", operator: "EQ", value: l.email }] }], properties: [...fill, "form_type"], limit: 1 }) });
     if (s?.results?.[0]) { id = s.results[0].id; existing = s.results[0].properties ?? {}; }
   }
 
-  if (id) {   // ya existía: solo campos vacíos + evento y origen
-    const props: Record<string, string> = { chekin_connect_evento: evento, chekin_connect_origen: origin };
+  if (id) {   // ya existía: solo campos vacíos + «Last MQL type»; «MQL Type» solo si estaba vacío
+    const props: Record<string, string> = { last_form_type: mqlType };
+    if (!existing.form_type) props.form_type = mqlType;
     for (const k of fill) if (data[k] && !existing[k]) props[k] = data[k];
     await hs(`/crm/v3/objects/contacts/${id}`, { method: "PATCH", body: JSON.stringify({ properties: props }) });
   } else {
-    const props: Record<string, string> = { email: l.email ?? "", chekin_connect_evento: evento, chekin_connect_origen: origin, lifecyclestage: "lead", hs_lead_status: "NEW" };
+    const props: Record<string, string> = { email: l.email ?? "", form_type: mqlType, last_form_type: mqlType, lifecyclestage: "lead", hs_lead_status: "NEW" };
     for (const k of fill) if (data[k]) props[k] = data[k];
     if (ownerId) props.hubspot_owner_id = String(ownerId);
     if (!props.email) delete props.email;

@@ -45,3 +45,10 @@
 - P3: Alex mantiene el 27/10 para las 4 landings (ES hoteles, ES resto, IT hoteles, IT resto). "Lista" = diseño terminado y revisado, listo para montar en HubSpot. Montaje, publicación y tests van aparte y dependen del OK de Carlos. **Por qué:** Alex se compromete a terminarlas; lo que no depende de él (lanzar y medir) se separa para que la fecha no dependa de terceros.
 - Asana (Alex, 23/10): todo lo hecho pasa a Asana. En Growth Daily › Alexandre va una tarea índice con enlaces (no duplicados), porque el conector no deja añadir una tarea a otro proyecto. Se cierran 2 tareas sobrantes (repetida y sustituida).
 - Nuevo proyecto P6 · Cello (referidos) con Valery, plan para el 6/11 (Alex, 23/10).
+
+## 2026-10-26
+- **P2 · HubSpot sin propiedades nuevas (Alex):** los contactos de Chekin Connect se marcan con las propiedades que ya existen, «MQL Type» y «Last MQL type» (Event, Webinar o la opción nueva **Digital QR** para lo que entra sin evento). Si el contacto ya existía, MQL Type no se toca, para no perder la atribución de paid, y Last MQL type pasa al valor de Chekin Connect. El evento concreto va en la nota del contacto. «SQL type» no existe en HubSpot y no se usa. **Por qué:** no duplicar propiedades y que Chekin Connect cuente en los informes de MQL que ya usa Growth.
+- **P2 · Reenvío por la función, no por importación:** los contactos antiguos se envían uno a uno por `hubspot-sync`, sin el permiso `crm.import`. **Por qué:** no duplica (busca por email), no pisa propietario ni etapa y deja rastro de cada envío en la app.
+- **P2 · Web de los AEs:** se queda https://chekin-connect.vercel.app/mi-perfil. Alex quería el nombre `qrsaleschekin.vercel.app`, pero sin acceso a la cuenta personal de Vercel no se puede mover. Si se recupera la cuenta, se pasa el nombre al proyecto de empresa.
+- **P2 · Rutina de eventos terminados (Alex):** L–V 9:00, una tarea por evento en Growth Daily › Alexandre, con una subtarea por AE y solo cifras (sin datos personales en Asana). La clave va en el Llavero de macOS.
+- **Contraseñas:** nunca en el chat. Se generan en el terminal de Alex con un script y la app obliga a cambiarlas al primer acceso.

@@ -5,7 +5,7 @@
 #   3) la misma clave en Vault ('hubspot_webhook_secret') + migración 20261027 (disparador leads_to_hubspot)
 #   4) comprobación
 # Requisito: SUPABASE_ACCESS_TOKEN en el entorno (pegado con read -s; nunca en archivos ni en el chat).
-# El token de HubSpot va aparte: npx supabase secrets set HUBSPOT_TOKEN=... (cuando exista la app privada).
+# El token de HubSpot lo pide también sin mostrarlo (Enter para dejar el que ya hay).
 set -euo pipefail
 REF=lxjefebmndcbnoxlyykw
 cd "$(dirname "$0")/../.."
@@ -40,8 +40,21 @@ printf "select vault.create_secret('%s', 'hubspot_webhook_secret', 'Clave del di
 unset WS
 q < supabase/migrations/20261027_hubspot_webhook.sql >/dev/null
 
+echo "Token de HubSpot (app privada «Chekin Connect» → Auth). Pulsa solo Enter para dejar el que ya hay."
+printf 'Pega el token de HubSpot (Cmd+V) y pulsa Enter: '; read -rs HS; echo
+HS=$(printf '%s' "$HS" | tr -d '[:space:]')
+if [ -n "$HS" ]; then
+  case "$HS" in pat-*) ;; *) echo "Eso no parece un token de HubSpot (empieza por pat-). No se ha guardado."; HS="" ;; esac
+fi
+if [ -n "$HS" ]; then   # por archivo temporal privado, para que el token no salga en la lista de procesos
+  TMP=$(mktemp); chmod 600 "$TMP"; printf 'HUBSPOT_TOKEN=%s\n' "$HS" > "$TMP"
+  npx --yes supabase@latest secrets set --env-file "$TMP" --project-ref "$REF" >/dev/null
+  rm -f "$TMP"; echo "HUBSPOT_TOKEN guardado."
+fi
+unset HS
+
 echo "4/4 Comprobación:"
 echo "select (select count(*) from pg_trigger where tgname = 'leads_to_hubspot') as disparador, (select count(*) from vault.secrets where name = 'hubspot_webhook_secret') as clave_en_vault;" | q
 echo
 npx --yes supabase@latest secrets list --project-ref "$REF" 2>/dev/null | grep -E "NAME|WEBHOOK_SECRET|HUBSPOT_TOKEN" || true
-echo "Listo. Falta HUBSPOT_TOKEN (app privada de HubSpot)."
+echo "Listo. Si arriba sale HUBSPOT_TOKEN, ya se puede probar con un contacto PRUEBA."
