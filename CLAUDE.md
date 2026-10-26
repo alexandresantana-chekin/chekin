@@ -48,7 +48,8 @@ Tono: directo y breve, en español. Claude propone y Alex decide.
 - **P4 · Web y CRO en WordPress.** El último, después de P3.
 - **P5 · Animación del logo para la firma de Gmail.** GIF para Ventas y Partnerships; entrega a Carlos el 27/10. Archivos en `2-herramientas/firma-gmail/`.
 - **P6 · Cello (programa de referidos).** Con Valery Saavedra; plan para el 6/11. Tarea en Asana Growth Daily › Alexandre y ficha P6 en Notion.
-- **MRR automático.** Pasa a Alex (Growth Check 22/10). Primero, sesión de traspaso con Carlos.
+- **MRR automático.** Pasa a Alex (Growth Check 22/10). Primero, sesión de traspaso con Carlos. Fuente del MRR: **Leopard** (26/10).
+- **P7 · ShowMe (agente IA de ventas para Micro).** Lo lleva Alex con ShowMe (Pedro Bernar, Slack #showme_chekin) desde el 22/10. Contexto y pendientes en `1-proyectos/growth-chekin/trabajo-en-curso/p7-showme.md`. Incluye el recovery de Portugal (50 al día).
 
 ## Flujo semanal (4 h/día)
 - Lunes: planificación, repaso de Asana y Notion y prioridades de la semana.
