@@ -54,3 +54,9 @@
 - **Contraseñas:** nunca en el chat. Se generan en el terminal de Alex con un script y la app obliga a cambiarlas al primer acceso.
 - **P3 · Landings (Carlos, vía Alex, 26/10):** a Carlos le gustan los bocetos de las 4 landings (ES hoteles, ES resto, IT hoteles, IT resto). Siguiente paso: analizar las landings de la competencia para copiar lo que hagan mejor.
 - **P3 · Competencia (Alex, 26/10):** se copia «sin tarjeta y sin compromiso» (la prueba es así, confirmado por Alex) y la opción «habla con un experto» en IT hoteles (boceto v1, versión 3 del artifact). El precio («desde X €/mes») no se pone: Alex cree que son ~17 € con IVA [POR COMPROBAR], así que no hay cifra oficial.
+- **P3 · Ideas de la competencia (Alex, 26/10):**
+  1. Sí a nombrar los portales: en IT, «Alloggiati Web, ISTAT e tassa di soggiorno» (aplicado en IT hoteles); en ES, SES v2 ya nombra Mossos y Ertzaintza.
+  2. **No** se quita el teléfono ni ningún campo: los 5 son obligatorios para que cuente como lead.
+  3. Lo decide Claude: se promete el plazo («nei tempi di legge», «en plazo»), no «sin multas» como garantía. La cifra de multas solo donde ya estaba (SES v2, Ley Orgánica 4/2015). **Por qué:** Chekin no puede garantizar que un cliente no reciba multas, y la cifra no está en la lista oficial del traspaso.
+  4. Sí a una línea de prueba social bajo el botón, con cifras oficiales (IT hoteles: +10.000 hotel y +25M check-in; IT resto y SES v2: +200.000 propiedades y +25M check-in). En SES v2 sustituye la línea junto al titular, para no repetirla.
+  5. Vídeos: de momento no.

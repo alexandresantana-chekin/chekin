@@ -55,7 +55,8 @@ a{color:var(--blue)}
 .btn:hover{background-image:linear-gradient(rgba(255,255,255,.1),rgba(255,255,255,.1))}
 .btn:focus-visible{outline:0;box-shadow:var(--ring)}
 .under{margin-top:8px;text-align:center;font-size:13px;color:var(--g1)}
-.alt{display:block;margin-top:10px;text-align:center;font-size:14px;font-weight:600;color:var(--blue);text-decoration:underline;background:none;border:0;cursor:pointer;font-family:var(--f);width:100%}
+.proof{margin-top:8px;font-size:12.5px;font-weight:600;color:var(--g1);text-align:center}
+button.alt{display:block;margin-top:10px;text-align:center;font-size:14px;font-weight:600;color:var(--blue);text-decoration:underline;background:none;border:0;cursor:pointer;font-family:var(--f);width:100%}
 .legal{margin-top:10px;font-size:11.5px;line-height:1.45;color:var(--g1)}
 .legal a{color:var(--g1)}
 .err{color:#FF2467;font-size:13px;font-weight:600;margin-top:6px;min-height:0}
@@ -134,7 +135,6 @@ footer a{color:#C9CBE6}
         <li>Escáner del documento, sin apps que descargar</li>
         <li>Conectado con más de 200 PMS</li>
       </ul>
-      <p class="trustline"><b>+200.000</b> alojamientos y <b>+25M</b> de check-ins con Chekin</p>
     </div>
 
     <div class="card" id="form">
@@ -166,6 +166,7 @@ footer a{color:#C9CBE6}
         <input type="hidden" name="landing" value="ses-hospedajes-es-v2-boceto">
         <input type="hidden" name="request_type" id="f-req" value="trial">
         <button class="btn" type="submit">Empieza tu prueba gratis</button>
+        <p class="proof">+200.000 propiedades y +25M de check-ins con Chekin</p>
         <p class="err" id="f-err" role="alert"></p>
         <!-- secundario: más pequeño y distinto del principal; marca la petición como "hablar con un experto" -->
         <button class="alt" type="button" id="f-expert">¿Prefieres que te llame un experto?</button>

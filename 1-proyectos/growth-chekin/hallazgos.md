@@ -7,6 +7,12 @@ Regla: toda cifra lleva su periodo (Carlos trabaja con 90 días). Si un dato no 
 
 ## 26-10-2026
 
+### H-23 · El pico de marzo son tres cargas masivas de cuentas de Holidu con prueba de 14 días, no clientes nuevos
+- **Qué:** 3 días concentran 64.909 altas: 9/03 (15.034), 17/03 (42.592) y 10/04 (7.283), casi todas de Holidu (99,6%). Ese mismo día Stripe crea el mismo número de suscripciones (15.052, 42.618 y 7.294), y el 99,8% termina en menos de un mes (mediana: 14 días, la duración de una prueba). Siguen activas 44.
+- **Fuente / periodo:** base de la app (person_users) y Stripe (suscripciones) en PostHog, 01/03 – 30/04/2026.
+- **Implica:** es una importación de anfitriones de Holidu con prueba gratuita automática que caducó, no captación. Hay que excluirla de cualquier métrica de altas, conversión o churn de 2026 (también infla las bajas de marzo y abril en Stripe).
+- **Estado:** el dashboard ya quita marzo por defecto; abril (10/04) se quita con el origen "Todos sin la importación de Holidu". [POR COMPROBAR con Carlos o Daniel: acuerdo con Holidu detrás de la carga].
+
 ### H-22 · PostHog mide sobre todo a los huéspedes; el dashboard de anfitriones, solo desde octubre
 - **Qué:** en 2026, la app de huéspedes envía eventos a PostHog desde marzo (entre 1,7 y 8,6 millones de eventos al mes) y también lo hacen los portales de huéspedes, las webs de clientes y PMS y el servidor. El **dashboard de anfitriones** (dashboard.chekin.com, donde está el registro y el onboarding) **solo envía eventos desde octubre** (58.624 eventos de 9.253 personas, del 1 al 26/10). La web chekin.com no está en PostHog.
 - **Fuente / periodo:** PostHog, eventos por web y mes, 01/01 – 26/10/2026.
