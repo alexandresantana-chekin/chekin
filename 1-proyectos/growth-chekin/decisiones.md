@@ -73,3 +73,4 @@
   - Italia hoteles: 4/11; Italia resto: 5/11 (Alex las adelanta porque ya están construidas; antes 13/11 y 20/11);
   - UTM: se mantiene el 27/10.
   Comentario con el motivo en cada tarea.
+- **27/10 · P1, dashboard del funnel: la base de la app solo de enero a agosto de 2026.** Se decidió el 26/10: en septiembre la sincronización se cortó el día 4 y el mes sale incompleto. Aplicado el 27/10 en activación, altas al mes, funnel mes a mes y cobertura. Stripe sigue hasta hoy (otra fuente). El hueco sin datos pasa a ir del 01/09 al 12/10.

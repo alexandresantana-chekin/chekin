@@ -122,3 +122,8 @@ Tres secciones nuevas en el dashboard, bajo "Medición del funnel":
 - ¿Qué es `onboarding_variant_assigned` (1.744 personas)? ¿Hay un test de variantes en marcha?
 - ¿Se pueden activar las grabaciones de sesión solo en `/register` y el onboarding, con los datos enmascarados?
 - ¿Quién puede arreglar la sincronización de Postgres en PostHog (parada desde el 04/09)?
+
+## Dashboard: arreglos y calculadora (27-10-2026)
+- Cada fuente de PostHog fija primero el proyecto "Default project" (125487); el conector de claude.ai abría el proyecto vacío 143407 (H-25).
+- La base de la app solo de enero a agosto de 2026 (decisión del 26/10). Stripe, hasta hoy.
+- Nueva sección **"Calculadora de oportunidad por paso"**, adaptada de la calculadora de GMC: Alta » Vivienda » Reserva » Huésped » Pagan, con Todos / Alquiler vacacional / Hoteles por bloques. Ingresos a 12 meses = clientes de pago al final del camino × ingreso medio al mes (Stripe) × 12; oportunidad = valor medio × personas del paso × % que no pasa. Sigue los filtros de origen y meses. Sin corregir los errores de fórmula de la plantilla original.

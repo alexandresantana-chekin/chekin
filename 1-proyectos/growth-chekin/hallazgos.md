@@ -5,6 +5,14 @@ Regla: toda cifra lleva su periodo (Carlos trabaja con 90 días). Si un dato no 
 
 ---
 
+## 27-10-2026
+
+### H-25 · El dashboard del funnel salía vacío: la conexión de PostHog apuntaba a otro proyecto
+- **Qué:** 9 de las 10 fuentes del dashboard "Funnel de activación Chekin" fallaban. La conexión de PostHog tenía como proyecto activo "Chekin - Dashboard" (id 143407, sin ningún evento) en lugar de "Default project" (125487). Las consultas no fijan proyecto, así que usan el que esté activo. Al volver a 125487 (OK de Alex), cargan las tres de prueba: eventos, base de la app y Stripe. Además, la sincronización de Stripe en PostHog está **pausada**: la última buena es de hace 15 días (≈12/10).
+- **Fuente / periodo:** registro de ejecuciones del dashboard (27/10, 09:36 UTC) y PostHog (proyecto activo modificado el 26/10 a las 17:26 UTC).
+- **Implica:** el dashboard se vacía para cualquiera que tenga otro proyecto activo. Las cifras de Stripe (suscripciones de octubre, MRR, LTV) llevan unos 15 días de retraso [POR COMPROBAR quién la pausó y si es a propósito].
+- **Estado:** resuelto en el dashboard (27/10, 10:18 UTC). Reconectar el conector de claude.ai no bastó: seguía abriendo el 143407. Ahora cada fuente de PostHog fija el proyecto 125487 antes de consultar, y cargan las 10. Pendiente: lo de Stripe.
+
 ## 26-10-2026
 
 ### H-24 · GA4 no sirve para unir visitas a la web con registros: ve menos gente entrando al registro de la que se da de alta
