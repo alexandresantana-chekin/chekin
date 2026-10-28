@@ -7,6 +7,12 @@ Regla: toda cifra lleva su periodo (Carlos trabaja con 90 días). Si un dato no 
 
 ## 28-10-2026
 
+### H-40 · Auditoría de /pt/check-in-online-siba: el mensaje funciona, pero en móvil el titular sale cortado y el formulario está a 961 px
+- **Qué:** medido en navegador el 28/10 (1512×780 y 375×812). Portátil: botón de enviar a 852 px (fuera de la primera pantalla de 780), página de 8.941 px. Móvil: **titular y entradilla cortados por la derecha** (el H1 llega a 411 px en una pantalla de 375), formulario a 961 px y botón a 1.586 px, página de 16.081 px. Prefijo del teléfono por defecto **España +34** en una página de Portugal; etiquetas mezcladas («Tipo de propiedade», «propiedades/quartos»); banner de cookies en español e inglés que tapa media pantalla. 11 pares de botones «Teste grátis» / «Falar com um especialista» y 5 textos de CTA distintos (más «Contacte-nos», «Comece grátis», «Calcule a sua receita»). Oferta del formulario «Sem cartão de crédito. Ativação imediata.» distinta de la del resto («un experto contacta»). Dos tipografías (Figtree y Proxima Nova). Cifras fuera de la lista oficial: «+45 países» (oficial +20), «Mais de 50 integrações» (oficial +200 PMS), «+35 €» de extra (oficial +55 €), «99% de precisão», «−90%», «+1.260 €/mês». 439 KB, carga en 1,2–1,4 s.
+- **Fuente / periodo:** revisión en navegador (Playwright + Chrome), 28/10/2026. Tráfico y conversión en H-39.
+- **Implica:** la página ya recibe el 96–100% del tráfico de la PMax PT Vacational y el mensaje (SIBA, AIMA, coimas) encaja. Los fallos son de forma y de fricción, sobre todo en móvil: es el caso típico de A/B con una variante B que mantenga el texto y arregle la estructura.
+- **Estado:** auditoría entregada a Alex. Portugal fuera del orden de P3 por ahora.
+
 ### H-39 · Portugal: las dos PMax mandan casi el 100% de los clics a su landing principal, desde antes de parar la expansión
 - **Qué:** PT PMax Competitors → `/pt/check-in-online`: 26.521 de 26.536 clics (100%) en 90 días; 98% del 22 al 26/10 y 99% el 27–28/10. PT PMax Vacational → `/pt/check-in-online-siba`: 3.592 de 3.609 (100%); 93% del 22 al 26/10 y 96% el 27–28/10. Lo poco que se escapa va a chekin.com (verificação de identidade, legalidade). Conversión que cuenta Google en la landing principal: Competitors 5,5% (1.460,6) en 90 días y 6,7–7,2% en la última semana; Vacational 9,0% (324,3) en 90 días, pero 2,3–2,5% en la última semana.
 - **Fuente / periodo:** Windsor.ai (Google Ads 103-962-2294), clics y conversiones por URL expandida, 30/07–28/10/2026 (hoy incompleto).
