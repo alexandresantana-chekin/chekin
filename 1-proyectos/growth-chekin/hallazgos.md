@@ -7,6 +7,12 @@ Regla: toda cifra lleva su periodo (Carlos trabaja con 90 días). Si un dato no 
 
 ## 28-10-2026
 
+### H-38 · La expansión de URL se paró el 27/10 en España y en Italia; y qué busca la gente en cada PMax
+- **Qué:** % de clics a la landing principal por día: 26/10 → ES Vacational 82%, IT Vacational 71%, IT Competitors 57%, ES Competitors 50%. **27/10 → 91%, 100%, 100%, 100%**. 28/10 → 92%, 92%, 100%, 100% (hoy incompleto). Términos de búsqueda (solo la parte con término visible, 30 días): IT Competitors, «alloggiati web» (7,9%) y mucha búsqueda de contratos de alquiler y «vikey»; IT Vacational, «vikey» (3,7%), «alloggiati web polizia di stato» y contratos de affitto breve; ES Vacational, «partee», «ses hospedajes registro viajeros», «avaibook», «hoomvip» y plantillas; ES Competitors, «ses hospedajes registro viajeros», «cheking», «partee».
+- **Fuente / periodo:** Windsor.ai (Google Ads 103-962-2294), clics por URL expandida 26–28/10/2026 (forzado el refresco); términos de búsqueda 29/09–28/10.
+- **Implica:** la orden de Carlos se aplicó en las 4 PMax desde el 27/10. Las búsquedas son sobre todo de alquiler vacacional, de competidores (Partee, Vikey, Avaibook) y de cumplimiento (SES, Alloggiati); casi nada específico de hoteles, también en las campañas «Competitors».
+- **Estado:** para Alex.
+
 ### H-37 · Qué % de cada PMax llega a su landing principal: en la última semana baja (la expansión seguía activa hasta el 27/10)
 - **Qué:** clics que van a la URL final de cada PMax:
   | Campaña | Landing principal | 90 d | Últimos 6 d | Conversión de la landing |
