@@ -74,6 +74,16 @@ Fuente de fechas: Asana (consultado el 26/10 por la tarde). Lo de abajo de este 
 - **P3 · Foco en las 4 PMax (28/10):** variantes B listas para ES Vacational (SES v2), IT Competitors (Questura v4) y ES Competitors (hoteles v6). Nueva: **Alloggiati Web IT v1** (variante B de /it/check-in-online-alloggiati-web, PMax IT Vacational) https://claude.ai/artifact/7Tii5vGzn9mBiTjrwDm3ES (privado). H-36 y H-37 con URL finales, % de clics y conversión.
 - **P3 · Portugal (28/10):** variante B de /pt/check-in-online-siba (PMax PT Vacational), mismo texto y estructura corregida según H-40: https://claude.ai/artifact/3evqPyLdFvBwt2Yx5DXtgM (privado). Fuera del orden de P3 (ES e IT primero).
 - **P3 · Portugal (28/10):** variante B de /pt/check-in-online (PMax PT Competitors): https://claude.ai/artifact/1GvvvRc3sGZakekSwP2qKK (privado). Auditoría en H-41.
+- **P3 · Mapa A/B de las PMax de Google (28/10)** — A = URL final actual en landing.chekin.com (las 6 responden 200); B = boceto nuestro:
+  | Campaña | A (actual) | B (boceto) |
+  |---|---|---|
+  | ES PMax Vacational | /es/check-in-online-ses-hospedajes | SES v2 https://claude.ai/artifact/WSjWXPdZfVKVF781QqLdNK |
+  | ES PMax Competitors | /chekin-hoteles | Hoteles v6 https://claude.ai/artifact/MNjzT6AykyJskR75SzasEc |
+  | IT PMax Vacational | /it/check-in-online-alloggiati-web | Alloggiati v1 https://claude.ai/artifact/7Tii5vGzn9mBiTjrwDm3ES |
+  | IT PMax Competitors | /it/ads/registrazione-ospiti-questura | Questura v5 https://claude.ai/artifact/7Jd3wwkK5AXQJ1fdHf1yZh |
+  | PT PMax Vacational | /pt/check-in-online-siba | SIBA PT v1 https://claude.ai/artifact/3evqPyLdFvBwt2Yx5DXtgM |
+  | PT PMax Competitors | /pt/check-in-online | Check-in online PT v1 https://claude.ai/artifact/1GvvvRc3sGZakekSwP2qKK |
+  Sin tráfico de paid desde el 27/10 (eran URL de expansión): guía SES v2, guest app v2, pack legal, affitti IT y las 4 de «una landing por anuncio». Se guardan, no se usan en el A/B.
 - Carlos se ha creado hoy «Informe ShowMe v5 con los datos nuevos» (vence 27/10) en el proyecto MRR + ShowMe.
 
 ## Lunes 26/10 (Tenerife con Carlos), hecho
