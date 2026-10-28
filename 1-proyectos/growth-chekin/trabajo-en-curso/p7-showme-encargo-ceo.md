@@ -93,7 +93,15 @@ Lectura para el CEO:
 - Italia: baja un poco antes/después (22,6% → 20,2%), pero dentro del mismo periodo con ShowMe convierte más (24,8% vs 16,7%).
 - Ojo: estacionalidad, mix de campañas y menos tiempo para convertir en jul–oct.
 
-### Cifra base para el CEO (H-29): solo cohortes cerradas, altas 1/07–30/09
+### Cifra para el CEO con referencia 1/08 (H-30): agosto y septiembre completos
+| País | Con ShowMe | Sin ShowMe | Pasan por ShowMe | Mar–may (sin ShowMe) |
+|---|---|---|---|---|
+| España | 99 / 418 · **23,7%** | 15 / 55 · **27,3%** | 88% | 301 / 862 · 34,9% |
+| Italia | 37 / 136 · **27,2%** | 19 / 119 · **16,0%** | 53% | 80 / 354 · 22,6% |
+
+- No cambia el sentido: España sin mejora (grupo «sin» de solo 55 trials); Italia +11 puntos.
+
+### Corte anterior (H-29): altas 1/07–30/09
 | País | Con ShowMe | Sin ShowMe | Mar–may (sin ShowMe) |
 |---|---|---|---|
 | España | 754 · **27,5%** | 122 · **26,2%** | 862 · 34,9% |

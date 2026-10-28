@@ -70,6 +70,7 @@ Fuente de fechas: Asana (consultado el 26/10 por la tarde). Lo de abajo de este 
   - **Formularios actuales (leído 28/10, sin tocar HubSpot):** guía 26d9814f, contrato 13e8319d, parte Word 58865ed4, factura 7aebfc15 y contratto IT 76da1bed piden lo mismo que los bocetos: nombre, email, teléfono, tipo de alojamiento y nº de alojamientos (+ `last_form_type` oculto). La guía además tiene empresa (opcional) y casilla de privacidad. Propuesta: reutilizar los formularios actuales; el pack legal (une 4) necesita elegir uno o crear uno nuevo. HubSpot, al final.
   - **28/10 · Snowball:** el A/B se hace en HubSpot (no en Google). Cada landing nueva = variante B de la actual, misma URL. Pendiente: reconectar el conector de HubSpot con permisos de landing pages (falló al leer formularios) y comprobar que el plan permite A/B.
   - P6: para partners, el enlace de Cello va asociado a una cuenta de Chekin; Valery lo aclarará (viernes).
+- **P7 · Portugal (28/10):** 250 enrolados (26/10 50 · 27/10 100 · 28/10 100), comentario en Asana. Jueves 29/10: 100. Se termina el viernes 30/10 en dos tandas, una a primera hora y otra al final del día (incluidos los sueltos), y se ve cómo queda; la tarea mantiene su fecha, 30/10.
 - Carlos se ha creado hoy «Informe ShowMe v5 con los datos nuevos» (vence 27/10) en el proyecto MRR + ShowMe.
 
 ## Lunes 26/10 (Tenerife con Carlos), hecho

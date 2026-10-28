@@ -7,6 +7,16 @@ Regla: toda cifra lleva su periodo (Carlos trabaja con 90 días). Si un dato no 
 
 ## 28-10-2026
 
+### H-30 · Con referencia 1/08 (agosto y septiembre completos), España sale peor con ShowMe; Italia, +11 puntos
+- **Qué:** referencia pedida el 28/10: ShowMe desde el 1/08. Micro con trial, altas 1/08–30/09 (cohortes cerradas). % = clientes (lifecycle) / trials.
+  | País | Con ShowMe | Sin ShowMe | Pasan por ShowMe | Mar–may (sin ShowMe) |
+  |---|---|---|---|---|
+  | España | 99 / 418 · **23,7%** | 15 / 55 · **27,3%** | 88% | 301 / 862 · 34,9% |
+  | Italia | 37 / 136 · **27,2%** | 19 / 119 · **16,0%** | 53% | 80 / 354 · 22,6% |
+- **Fuente / periodo:** HubSpot, suma de los cortes mensuales de H-27 (agosto + septiembre 2026). Cliente = lifecycle Customer (no Leopard). Portugal fuera (la marca incluye el recovery).
+- **Implica:** el resultado no cambia de sentido: en España no hay mejora (−3,6 puntos, con solo 55 trials sin ShowMe: ruido); en Italia, +11 puntos en el mismo periodo. España con ShowMe queda 11 puntos por debajo de su primavera.
+- **Estado:** cifra para el CEO (30/10) con la referencia del 1/08. Falta Leopard y el coste de ShowMe.
+
 ### H-29 · Con cohortes ya cerradas (altas 1/07–30/09), ShowMe no mejora en España; en Italia sí; Portugal no se puede leer
 - **Qué:** solo altas hasta el 30/09, para que todos hayan terminado el trial de 14 días y tenido margen de negociación (idea de Alex). Micro con trial; % = clientes (lifecycle) / trials.
   | País | Con ShowMe | Sin ShowMe | Total jul–sep | Mar–may (sin ShowMe) |

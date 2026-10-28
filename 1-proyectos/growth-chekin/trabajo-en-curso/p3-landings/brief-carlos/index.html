@@ -1,3 +1,4 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>Landings de paid: antes y después</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500&display=swap">
@@ -91,23 +92,58 @@ ul.list b{font-weight:700}
 <main class="page">
   <header>
     <h1>Landings de paid: antes y después</h1>
-    <p class="lead">Qué fallaba en cada landing que hoy reciben las campañas de Google, qué cambia en la versión nueva y en qué estado está. Para revisarlo con Carlos el lunes 26.</p>
+    <p class="lead">Qué fallaba en cada landing que hoy reciben las campañas de Google, qué cambia en la versión nueva y en qué estado está. Actualizado el 28/10 con las prioridades de Carlos (27/10) y la respuesta de Snowball sobre el A/B.</p>
     <div class="meta">
-      <span>Preparado por <b>Alexandre</b> · 23/10/2026</span>
+      <span>Preparado por <b>Alexandre</b> · 23/10/2026 · <b>actualizado 28/10</b></span>
       <span>Datos de Google Ads y HubSpot: <b>90 días (21 jul – 18 oct)</b> salvo que se diga otra cosa</span>
       <span>Las versiones nuevas son <b>bocetos</b>: nada está en HubSpot</span>
     </div>
   </header>
 
+  <section class="landing" id="novedades" style="border-color:var(--accent)">
+    <header>
+      <span class="kicker">Novedades · 27 y 28/10</span>
+      <h2>Qué ha cambiado desde el lunes</h2>
+    </header>
+    <div class="cols">
+      <div>
+        <h3>Decisiones</h3>
+        <ul class="list fixes">
+          <li><b>Expansión de URL parada</b> en todas las PMax (Carlos, 27/10; lo ejecuta Snowball). El tráfico va a las URL finales de cada campaña.</li>
+          <li><b>Primero alquiler vacacional</b> en España e Italia: el presupuesto se rebalancea 14 días hacia rental. Nuevo orden: ES resto → IT resto → IT hoteles → ES hoteles.</li>
+          <li><b>El A/B se hace en HubSpot</b>, no en Google (Snowball, 28/10). Cada landing nueva se monta como <b>variante B de la página actual</b>, con la misma URL y reparto 50/50: no hay que tocar Google Ads para el test.</li>
+          <li><b>Formulario de 5 campos</b>, como el traspaso: nombre, teléfono, email, tipo de alojamiento y nº de habitaciones. Los formularios actuales de HubSpot ya los piden, así que <b>se reutilizan</b>. En la guía se quita «empresa».</li>
+          <li><b>Optimizar con SQL</b> de todos los canales, no con formularios.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Hecho en los bocetos</h3>
+        <ul class="list fixes">
+          <li><b>Logos de los PMS</b> en las 5 landings de rental (Guesty, Hostaway, Lodgify, Avantio, Smoobu y Hostify), por sugerencia de Valery: se reconocen antes que el nombre.</li>
+          <li><b>Guest app con capturas reales</b> de la app (Valery): enlace con tareas, escaneo del documento, selfie, firma y acceso.</li>
+          <li><b>Páginas de gracias con descarga</b>: guía SES, pack legal (5 documentos) y contratto IT. Los 6 archivos ya están en HubSpot y responden; el botón de prueba lleva al registro de chekin.com, como hoy.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pair">
+      <div class="side"><div class="label"><span style="color:var(--muted)">Franja de logos de PMS</span></div><div class="shot"><img src="img/logos-pms.jpg" alt="Franja con los logos de Guesty, Hostaway, Lodgify, Avantio, Smoobu y Hostify"></div></div>
+      <div class="side"><div class="label"><span style="color:var(--muted)">Página de gracias del pack</span><a class="go" href="https://claude.ai/artifact/FeF6rviuvLwbc1EkeeqGju" target="_blank" rel="noopener">Abrir ↗</a></div><div class="shot"><img src="img/gracias-pack.jpg" alt="Página de gracias del pack legal con los cinco documentos y su botón de descarga"></div></div>
+    </div>
+    <div class="status"><span class="pill warn">Ojo</span><p><b>Con la expansión parada, la guía, la guest app y el pack dejan de recibir tráfico de la PMax Competitors</b>, porque llegaban ahí por la expansión. Solo seguirán recibiéndolo si se ponen como URL final de un grupo de recursos. [POR COMPROBAR con Snowball qué URL finales quedan en cada campaña.] SES Hospedajes no cambia: ya es la URL final de la PMax Vacational (99% de sus clics).</p></div>
+    <div class="status"><span class="pill new">Falta antes de lanzar</span><p>Comprobar que el plan de HubSpot permite A/B de landing pages · reconectar el conector de HubSpot con permisos de landing pages · texto legal (DPO) · revisión nativa del italiano · email con los enlaces de descarga · montaje como variante B en borrador y prueba con un contacto «PRUEBA». <b>HubSpot, al final.</b></p></div>
+  </section>
+
   <section class="summary" aria-label="Resumen">
     <table>
       <thead><tr><th>Landing</th><th>Campaña</th><th>Antes</th><th>Después</th><th>Estado</th></tr></thead>
       <tbody>
-        <tr><td><a href="#hoteles">Hoteles España</a></td><td>PMax Competitors ES</td><td><a href="https://landing.chekin.com/chekin-hoteles" target="_blank" rel="noopener">/chekin-hoteles</a></td><td><a href="https://claude.ai/artifact/MNjzT6AykyJskR75SzasEc" target="_blank" rel="noopener">Boceto v6</a></td><td><span class="pill warn">Test pausado</span></td></tr>
-        <tr><td><a href="#ses">SES Hospedajes</a></td><td>PMax Vacational ES</td><td><a href="https://landing.chekin.com/es/check-in-online-ses-hospedajes" target="_blank" rel="noopener">/check-in-online-ses-hospedajes</a></td><td><a href="https://claude.ai/artifact/WSjWXPdZfVKVF781QqLdNK" target="_blank" rel="noopener">Boceto v2</a></td><td><span class="pill ok">Listo para decidir</span></td></tr>
-        <tr><td><a href="#guia">Guía SES</a></td><td>PMax Competitors ES</td><td><a href="https://landing.chekin.com/es/guia/seshospedajes" target="_blank" rel="noopener">/es/guia/seshospedajes</a></td><td><a href="https://claude.ai/artifact/HWpa7NEiAcJAPwmYzvK1Uz" target="_blank" rel="noopener">Boceto v2</a></td><td><span class="pill ok">Listo para decidir</span></td></tr>
-        <tr><td><a href="#guestapp">Guest app</a></td><td>PMax Competitors ES</td><td><a href="https://landing.chekin.com/check-in-guestapp" target="_blank" rel="noopener">/check-in-guestapp</a></td><td><a href="https://claude.ai/artifact/6H23uPLZEJyBSbnVNWhTPP" target="_blank" rel="noopener">Boceto v2</a></td><td><span class="pill ok">Listo para decidir</span></td></tr>
-        <tr><td><a href="#pack">Pack legal (une 5 páginas)</a></td><td>PMax Competitors ES</td><td>Guía + 4 plantillas</td><td><a href="https://claude.ai/artifact/P8tf8sdAtaTqAXr8f7iZAj" target="_blank" rel="noopener">Boceto v1</a></td><td><span class="pill new">Propuesta</span></td></tr>
+        <tr><td><a href="#ses">SES Hospedajes</a></td><td>PMax Vacational ES</td><td><a href="https://landing.chekin.com/es/check-in-online-ses-hospedajes" target="_blank" rel="noopener">/check-in-online-ses-hospedajes</a></td><td><a href="https://claude.ai/artifact/WSjWXPdZfVKVF781QqLdNK" target="_blank" rel="noopener">Boceto v2</a></td><td><span class="pill ok">1.º · A/B en HubSpot</span></td></tr>
+        <tr><td><a href="#guia">Guía SES</a></td><td>PMax Competitors ES</td><td><a href="https://landing.chekin.com/es/guia/seshospedajes" target="_blank" rel="noopener">/es/guia/seshospedajes</a></td><td><a href="https://claude.ai/artifact/HWpa7NEiAcJAPwmYzvK1Uz" target="_blank" rel="noopener">Boceto v2</a> · <a href="https://claude.ai/artifact/12J4bUSkMP47jiUWTSwQZX" target="_blank" rel="noopener">Gracias</a></td><td><span class="pill warn">Según tráfico sin expansión</span></td></tr>
+        <tr><td><a href="#guestapp">Guest app</a></td><td>PMax Competitors ES</td><td><a href="https://landing.chekin.com/check-in-guestapp" target="_blank" rel="noopener">/check-in-guestapp</a></td><td><a href="https://claude.ai/artifact/6H23uPLZEJyBSbnVNWhTPP" target="_blank" rel="noopener">Boceto v2</a></td><td><span class="pill warn">Según tráfico sin expansión</span></td></tr>
+        <tr><td><a href="#pack">Pack legal (une 5 páginas)</a></td><td>PMax Competitors ES</td><td>Guía + 4 plantillas</td><td><a href="https://claude.ai/artifact/P8tf8sdAtaTqAXr8f7iZAj" target="_blank" rel="noopener">Boceto v1</a> · <a href="https://claude.ai/artifact/FeF6rviuvLwbc1EkeeqGju" target="_blank" rel="noopener">Gracias</a></td><td><span class="pill warn">Según tráfico sin expansión</span></td></tr>
+        <tr><td><a href="#italia">Italia resto (affitti brevi)</a></td><td>PMax Vacational IT</td><td><a href="https://landing.chekin.com/modello/contrattoaffittoturistico" target="_blank" rel="noopener">/modello/contrattoaffittoturistico</a></td><td><a href="https://claude.ai/artifact/9JQowwwGyKbF2dZXhzF94x" target="_blank" rel="noopener">Boceto</a> · <a href="https://claude.ai/artifact/JG3RSuqqz9JjLkTUrEWzDY" target="_blank" rel="noopener">Grazie</a></td><td><span class="pill ok">Lista el 4/11</span></td></tr>
+        <tr><td><a href="#italia">Italia hoteles (questura)</a></td><td>PMax Competitors IT</td><td><a href="https://landing.chekin.com/it/ads/registrazione-ospiti-questura" target="_blank" rel="noopener">/it/ads/registrazione-ospiti-questura</a></td><td><a href="https://claude.ai/artifact/7Jd3wwkK5AXQJ1fdHf1yZh" target="_blank" rel="noopener">Boceto v4</a></td><td><span class="pill ok">Lista el 5/11</span></td></tr>
+        <tr><td><a href="#hoteles">Hoteles España</a></td><td>PMax Competitors ES</td><td><a href="https://landing.chekin.com/chekin-hoteles" target="_blank" rel="noopener">/chekin-hoteles</a></td><td><a href="https://claude.ai/artifact/MNjzT6AykyJskR75SzasEc" target="_blank" rel="noopener">Boceto v6</a></td><td><span class="pill warn">Último (orden nuevo)</span></td></tr>
         <tr><td><a href="#angulos">Una landing por anuncio</a></td><td>PMax hoteles (fase 2)</td><td>No existían</td><td>4 bocetos</td><td><span class="pill new">Propuesta</span></td></tr>
       </tbody>
     </table>
@@ -160,7 +196,7 @@ ul.list b{font-weight:700}
         </div>
       </div>
     </div>
-    <div class="status"><span class="pill warn">Test pausado</span><p>Google solo manda a esta página el <b>41%</b> de los clics de la campaña (90 días), y el <b>21%</b> en los últimos 30. El resto va a plantillas y guías por la expansión de URL. Con ~190 clics al mes el test no termina en plazo. <b>Decidir el lunes</b>: acotar la expansión, testear donde va el tráfico o pasar a una landing por anuncio.</p></div>
+    <div class="status"><span class="pill warn">Test pausado</span><p>Google solo manda a esta página el <b>41%</b> de los clics de la campaña (90 días), y el <b>21%</b> en los últimos 30. El resto va a plantillas y guías por la expansión de URL. Con ~190 clics al mes el test no termina en plazo. <b>27/10: Carlos para la expansión de URL</b>, así que el tráfico de la campaña irá a esta página. Queda la última en el orden nuevo (rental primero).</p></div>
   </section>
 
   <!-- 2 · SES -->
@@ -297,9 +333,9 @@ ul.list b{font-weight:700}
         <div class="shot"><img src="img/guestapp-v2-portatil.jpg" alt="Guestapp v2 en portátil: titular de la guest app y formulario de prueba con el botón visible"></div>
         <div class="shots-mobile">
           <div class="shot"><img src="img/guestapp-v2-movil.jpg" alt="Guestapp v2 en móvil: titular y formulario visibles al cargar, botón sin bajar"></div>
-          <div class="shot"><img src="img/guestapp-v2-app.jpg" alt="Bloque interactivo de la guestapp v2: cinco pasos y un móvil que enseña cada pantalla"></div>
+          <div class="shot"><img src="img/guestapp-v2-app-real.jpg" alt="Bloque de la guestapp v2 con capturas reales de la app: inicio con tareas pendientes y guía"></div>
         </div>
-        <p class="cap">Todo visible al cargar. Botón a 487 px en portátil y 721 px en móvil. A la derecha, la app por dentro: cada paso cambia la pantalla del móvil.</p>
+        <p class="cap">Todo visible al cargar. Botón a 487 px en portátil y 721 px en móvil. A la derecha, la app por dentro con <b>capturas reales</b> (28/10): cada paso cambia la captura.</p>
       </div>
     </div>
     <div class="cols">
@@ -332,7 +368,7 @@ ul.list b{font-weight:700}
         </div>
       </div>
     </div>
-    <div class="status"><span class="pill ok">Listo para decidir</span><p>El anuncio que trae este tráfico lo generó Google con el título de la página ("Guestapp Chekin": 408 clics en 90 días). Por eso el titular nuevo habla de la guest app, y debajo un bloque interactivo enseña lo que ve el huésped en cinco pasos. Faltan capturas reales del producto (la app es una maqueta) y el caso de éxito oficial.</p></div>
+    <div class="status"><span class="pill ok">Listo para decidir</span><p>El anuncio que trae este tráfico lo generó Google con el título de la página ("Guestapp Chekin": 408 clics en 90 días). Por eso el titular nuevo habla de la guest app, y debajo un bloque interactivo enseña lo que ve el huésped en cinco pasos. Capturas reales puestas el 28/10 (enlace, documento, selfie, firma y acceso). Falta el caso de éxito oficial y saber si sigue recibiendo tráfico sin la expansión de URL.</p></div>
   </section>
 
   <!-- 3b · PACK -->
@@ -390,7 +426,22 @@ ul.list b{font-weight:700}
         </ul>
       </div>
     </div>
-    <div class="status"><span class="pill new">Propuesta</span><p><b>Ojo con la calidad:</b> este tráfico es sobre todo alquiler vacacional (plantillas: 2 SQL y 0 oportunidades desde el 21/07). El pack sube los formularios, no las ventas de hoteles. Solo tiene sentido si el lunes se decide <b>mantener la expansión de URL</b>; si se acota, estas páginas dejan de recibir tráfico de paid. Falta: los archivos reales del pack, el envío por email en HubSpot y las redirecciones de las URL antiguas con su <code>?recurso=</code>.</p></div>
+    <div class="status"><span class="pill new">Propuesta</span><p><b>Ojo con la calidad:</b> este tráfico es sobre todo alquiler vacacional (plantillas: 2 SQL y 0 oportunidades desde el 21/07). El pack sube los formularios, no las ventas de hoteles. <b>27/10: Carlos para la expansión de URL</b>, así que estas páginas dejan de recibir tráfico de paid salvo que alguna quede como URL final. Hecho el 28/10: página de gracias con los 5 archivos (ya en HubSpot). Falta: el envío por email y, si se usa, las redirecciones de las URL antiguas con su <code>?recurso=</code>.</p></div>
+  </section>
+
+  <!-- 5 · ITALIA Y PÁGINAS DE GRACIAS (añadido el 28/10) -->
+  <section class="landing" id="italia">
+    <header>
+      <span class="kicker">Terminadas el 27/10</span>
+      <h2>Italia y páginas de gracias</h2>
+      <p class="cap">Las 3 páginas de Italia se llevan el 94% de los 8.946 clics de las 4 campañas IT en 90 días (21 jul – 18 oct): questura (5.383), contrato de alquiler (2.514) y alloggiati (548). Detalle en el brief <a href="https://claude.ai/artifact/DrJ1sVouzZ6bQkZ4GcsRGz" target="_blank" rel="noopener">Landings de paid Italia</a>.</p>
+    </header>
+    <div class="angles">
+      <div class="angle"><span class="pill ok">Italia resto · lista 4/11</span><p class="h1">Contratto affitti brevi</p><p class="ad">Sustituye a /modello/contrattoaffittoturistico (2.514 clics). Los 3 portales, «senza carta e senza impegno» y prueba social bajo el botón.</p><a class="go" href="https://claude.ai/artifact/9JQowwwGyKbF2dZXhzF94x" target="_blank" rel="noopener">Abrir ↗</a></div>
+      <div class="angle"><span class="pill ok">Italia hoteles · lista 5/11</span><p class="h1">Hotel Italia · Questura</p><p class="ad">Sustituye a /it/ads/registrazione-ospiti-questura (5.383 clics). Con «parla con un esperto».</p><a class="go" href="https://claude.ai/artifact/7Jd3wwkK5AXQJ1fdHf1yZh" target="_blank" rel="noopener">Abrir ↗</a></div>
+      <div class="angle"><span class="pill new">Páginas de gracias</span><p class="h1">Descarga tras el formulario</p><p class="ad">Feedback de Valery: quien pide un documento lo recibe al momento. En el visor de Claude los botones no descargan; en HubSpot sí.</p><a class="go" href="https://claude.ai/artifact/12J4bUSkMP47jiUWTSwQZX" target="_blank" rel="noopener">Guía SES ↗</a><a class="go" href="https://claude.ai/artifact/FeF6rviuvLwbc1EkeeqGju" target="_blank" rel="noopener">Pack legal ↗</a><a class="go" href="https://claude.ai/artifact/JG3RSuqqz9JjLkTUrEWzDY" target="_blank" rel="noopener">Contratto IT ↗</a></div>
+    </div>
+    <div class="status"><span class="pill warn">Pendiente</span><p>Pasar el formulario a <b>conversión principal</b> en las PMax IT antes del test (borrador para Snowball listo, sin enviar). Hoy Google Ads cuenta 0 conversiones en la landing de la PMax IT Competitors aunque en HubSpot entran contactos.</p></div>
   </section>
 
   <!-- 4 · ÁNGULOS -->
@@ -411,6 +462,8 @@ ul.list b{font-weight:700}
   <section class="rules" aria-label="Notas">
     <p><b>Igual en todas las versiones nuevas:</b> oferta "Prueba Chekin gratis 14 días" (un experto en Chekin contacta), formulario de 5 campos, un solo botón "Empieza tu prueba gratis", solo cifras oficiales y casos publicados en chekin.com.</p>
     <p><b>Sobre los datos:</b> los clics y formularios por URL salen del informe de URLs de Google Ads cruzado con HubSpot (biblioteca de anuncios). Las medidas de página son de una revisión en navegador a 1512×780 y 375×812 (21–23/10).</p>
-    <p><b>Enlaces:</b> los bocetos son privados; para que Carlos los abra hay que compartirlos desde el menú Compartir de cada uno.</p>
+    <p><b>Enlaces:</b> algunos bocetos y las páginas de gracias son privados; para que otros los abran hay que compartirlos desde el menú Compartir de cada uno. Nada está en HubSpot: las landings actuales siguen funcionando igual.</p>
   </section>
 </main>
+
+</body></html>
