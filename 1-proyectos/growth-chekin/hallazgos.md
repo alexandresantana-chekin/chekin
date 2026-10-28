@@ -7,6 +7,12 @@ Regla: toda cifra lleva su periodo (Carlos trabaja con 90 días). Si un dato no 
 
 ## 28-10-2026
 
+### H-39 · Portugal: las dos PMax mandan casi el 100% de los clics a su landing principal, desde antes de parar la expansión
+- **Qué:** PT PMax Competitors → `/pt/check-in-online`: 26.521 de 26.536 clics (100%) en 90 días; 98% del 22 al 26/10 y 99% el 27–28/10. PT PMax Vacational → `/pt/check-in-online-siba`: 3.592 de 3.609 (100%); 93% del 22 al 26/10 y 96% el 27–28/10. Lo poco que se escapa va a chekin.com (verificação de identidade, legalidade). Conversión que cuenta Google en la landing principal: Competitors 5,5% (1.460,6) en 90 días y 6,7–7,2% en la última semana; Vacational 9,0% (324,3) en 90 días, pero 2,3–2,5% en la última semana.
+- **Fuente / periodo:** Windsor.ai (Google Ads 103-962-2294), clics y conversiones por URL expandida, 30/07–28/10/2026 (hoy incompleto).
+- **Implica:** en Portugal la expansión no repartía tráfico, así que cada PMax ya testea una sola página: es el modelo al que van ES e IT desde el 27/10. Cualquier A/B en Portugal tendría volumen (sobre todo Competitors). Ojo: la conversión de Vacational PT cae de 9,0% a ~2,4% en la última semana [POR COMPROBAR si es la acción de conversión o la landing].
+- **Estado:** para Alex. Portugal no está en el orden de P3 (ES e IT primero).
+
 ### H-38 · La expansión de URL se paró el 27/10 en España y en Italia; y qué busca la gente en cada PMax
 - **Qué:** % de clics a la landing principal por día: 26/10 → ES Vacational 82%, IT Vacational 71%, IT Competitors 57%, ES Competitors 50%. **27/10 → 91%, 100%, 100%, 100%**. 28/10 → 92%, 92%, 100%, 100% (hoy incompleto). Términos de búsqueda (solo la parte con término visible, 30 días): IT Competitors, «alloggiati web» (7,9%) y mucha búsqueda de contratos de alquiler y «vikey»; IT Vacational, «vikey» (3,7%), «alloggiati web polizia di stato» y contratos de affitto breve; ES Vacational, «partee», «ses hospedajes registro viajeros», «avaibook», «hoomvip» y plantillas; ES Competitors, «ses hospedajes registro viajeros», «cheking», «partee».
 - **Fuente / periodo:** Windsor.ai (Google Ads 103-962-2294), clics por URL expandida 26–28/10/2026 (forzado el refresco); términos de búsqueda 29/09–28/10.
