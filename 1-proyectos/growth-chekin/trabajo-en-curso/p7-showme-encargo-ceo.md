@@ -145,3 +145,30 @@ Lectura para el CEO:
 > 3. Vamos a hacer altas de prueba en ES, IT y PT (Micro y SMB) para ver el flujo completo. ¿Deduplicáis por teléfono? ¿Cómo hacemos para que no os cuenten en los resultados?
 >
 > Gracias!
+
+---
+
+## Borrador de respuesta al CEO (28/10, sin enviar · lo revisa y envía Alexandre)
+
+> Te adelanto lo que ya tenemos con datos; los vídeos los grabamos esta semana.
+>
+> **1. Cómo funciona el onboarding de ShowMe**
+> - Solo entran los leads **de 1 a 3 viviendas** (micro) de España, Italia y Portugal. Los SMB no pasan por ShowMe.
+> - Dos fases: **Pretrial** (registrado sin trial; éxito = empieza el trial) y **Trial** (éxito = paga).
+> - Pretrial: primero **una llamada** y luego WhatsApp cada ~48 h durante unos 5 días. Trial: **WhatsApp** o chat web, ~6 mensajes en 12 días, y llamada solo a 1 de cada 4, hacia el día 7.
+> - Lo que convierte: el **teléfono en Pretrial** (31,7% en España frente al 3,8% de WhatsApp) y resolver la duda legal concreta (SES, Mossos, Alloggiati).
+> - Lo que falla: cuando el lead pide una persona (189 en España, que convierten un 35%), Alex no la pasa a nadie. Falta un workflow nuestro en HubSpot.
+> - Vídeos: 3 altas micro (ES, IT, PT) para ver el flujo y 1 SMB como comparación. [POR HACER]
+>
+> **2. Quién pasa por ShowMe y quién no, y cómo convierte cada uno**
+> - División clara: en España, ShowMe trabaja el 86–88% de los trials micro desde julio; en Italia, la mitad.
+> - Con **pago real** (Leopard), trials micro de agosto y septiembre: España **14,8% con ShowMe frente a 20,0% sin**; Italia, mes a mes, igual (septiembre 7,5% frente a 8,7%). **No vemos que ShowMe suba la conversión a pago.**
+> - Antes de ShowMe (marzo–mayo) España convertía más que ahora, aunque ahí influyen la temporada y las campañas.
+> - Para medirlo de verdad: un **grupo de control aleatorio** (por ejemplo, el 20% de los micro de España sin ShowMe durante 4 semanas).
+>
+> **3. Qué hace ShowMe sobre un lead y qué necesita para apuntárselo**
+> - ShowMe se apunta como «convertido» **cualquier lead que entra en su secuencia y convierte, haya hablado con Alex o no**: en España, el 52% de sus leads nunca tuvo conversación y cuentan igual.
+> - De 3.040 leads, ShowMe declara **630 convertidos**; **pagan 360** (2.898 €/mes de MRR) y de esos **156 cerraron sin AE**. Lo atribuible a ShowMe con criterio estricto está más cerca de los 156 que de los 630, y ni siquiera eso es seguro sin grupo de control.
+> - Se lo estamos confirmando a ShowMe por escrito.
+>
+> Fuentes: informe ShowMe Micro v5 (Carlos, 27/10; export de ShowMe + HubSpot + Leopard) y HubSpot (altas 1/08–30/09/2026, pago = MRR de Leopard de septiembre).

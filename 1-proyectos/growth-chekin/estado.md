@@ -83,7 +83,7 @@ Fuente de fechas: Asana (consultado el 26/10 por la tarde). Lo de abajo de este 
   | IT PMax Competitors | /it/ads/registrazione-ospiti-questura | Questura v5 https://claude.ai/artifact/7Jd3wwkK5AXQJ1fdHf1yZh |
   | PT PMax Vacational | /pt/check-in-online-siba | SIBA PT v1 https://claude.ai/artifact/3evqPyLdFvBwt2Yx5DXtgM |
   | PT PMax Competitors | /pt/check-in-online | Check-in online PT v1 https://claude.ai/artifact/1GvvvRc3sGZakekSwP2qKK |
-  ✅ 28/10: Alex confirma en HubSpot que las 6 A están publicadas (ES Vacational = «Paid-Chekin-Compliance-GA-2026 (Spanish)»). Pendiente: ver si aparece «Run A/B test».
+  ✅ 28/10: Alex confirma en HubSpot que las 6 A están publicadas (ES Vacational = «Paid-Chekin-Compliance-GA-2026 (Spanish)»). ✅ El plan permite A/B: en el editor de la A española (page id 221464769047) sale «Test → A/B test» (variante manual, tráfico 50/50, eliges ganador). Sin crear todavía.
   Sin tráfico de paid desde el 27/10 (eran URL de expansión): guía SES v2, guest app v2, pack legal, affitti IT y las 4 de «una landing por anuncio». Se guardan, no se usan en el A/B.
 - Carlos se ha creado hoy «Informe ShowMe v5 con los datos nuevos» (vence 27/10) en el proyecto MRR + ShowMe.
 
