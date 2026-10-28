@@ -84,6 +84,7 @@ Fuente de fechas: Asana (consultado el 26/10 por la tarde). Lo de abajo de este 
   | PT PMax Vacational | /pt/check-in-online-siba | SIBA PT v1 https://claude.ai/artifact/3evqPyLdFvBwt2Yx5DXtgM |
   | PT PMax Competitors | /pt/check-in-online | Check-in online PT v1 https://claude.ai/artifact/1GvvvRc3sGZakekSwP2qKK |
   ✅ 28/10: Alex confirma en HubSpot que las 6 A están publicadas (ES Vacational = «Paid-Chekin-Compliance-GA-2026 (Spanish)»). ✅ El plan permite A/B: en el editor de la A española (page id 221464769047) sale «Test → A/B test» (variante manual, tráfico 50/50, eliges ganador). Sin crear todavía.
+  ✅ 28/10 (tarde): el conector de HubSpot ya lee landing pages. La A española (221464769047) usa el tema @hubspot/session (Figtree); cabecera y pie salen del tema, y la zona de contenido (dnd_area) **no tiene módulos visibles por la API**: el cuerpo (hero, formulario, pestañas) está fuera de los módulos [POR COMPROBAR dónde: plantilla o HTML de la página]. Eso decide cómo se monta la variante B.
   Sin tráfico de paid desde el 27/10 (eran URL de expansión): guía SES v2, guest app v2, pack legal, affitti IT y las 4 de «una landing por anuncio». Se guardan, no se usan en el A/B.
 - Carlos se ha creado hoy «Informe ShowMe v5 con los datos nuevos» (vence 27/10) en el proyecto MRR + ShowMe.
 
