@@ -7,6 +7,90 @@ Regla: toda cifra lleva su periodo (Carlos trabaja con 90 días). Si un dato no 
 
 ## 28-10-2026
 
+### H-37 · Qué % de cada PMax llega a su landing principal: en la última semana baja (la expansión seguía activa hasta el 27/10)
+- **Qué:** clics que van a la URL final de cada PMax:
+  | Campaña | Landing principal | 90 d | Últimos 6 d | Conversión de la landing |
+  |---|---|---|---|---|
+  | ES PMax Vacational | /es/check-in-online-ses-hospedajes | 98% (12.946 de 13.214) | 69% (291 de 421) | Google 4,1% (534 conv.); HubSpot 3,7% (535 form. / 14.622 clics, todas las campañas, 21 jul–18 oct) |
+  | IT PMax Vacational | /it/check-in-online-alloggiati-web | 35% (800 de 2.294) | 60% (248 de 414) | Google 0 (form. como secundaria); HubSpot 3,4% (17 / 501, 21 jul–18 oct) |
+  | IT PMax Competitors | /it/ads/registrazione-ospiti-questura | 66% (3.370 de 5.082) | 66% (76 de 116) | Google 0; «todas las conv.» 101,3 / 3.288 ≈ 3,1% (21 jul–18 oct) |
+  | ES PMax Competitors | /chekin-hoteles | 34% (1.119 de 3.338) | 46% (30 de 65) | Google 0,3% (3,6 conv.); HubSpot 0,38% (6 / 1.559, 21 jul–18 oct) |
+  El resto va sobre todo a la plantilla de contrato (ES e IT), plantillas SES y guest app.
+- **Fuente / periodo:** Windsor.ai (Google Ads 103-962-2294), clics por URL expandida: 90 d = 30/07–27/10/2026; últimos 6 d = 22/10–27/10. Conversión HubSpot: Biblioteca de anuncios (H-15, H-17, H-18, H-21), 21 jul–18 oct.
+- **Implica:** hasta el 27/10 la expansión seguía repartiendo tráfico (ES Vacational bajó del 98% al 69%). Cuando Snowball la pare, estas 4 landings recibirán casi todo el clic y el A/B en HubSpot tendrá más volumen. En IT y en questura, Google no ve el formulario como conversión principal: hay que cambiarlo antes del test.
+- **Estado:** para Alex. Volver a medir la semana del 2/11, con la expansión parada.
+
+### H-36 · La landing principal de cada campaña de Google (ES e IT): la PMax Vacational IT no va al contrato, va a /it/check-in-online-alloggiati-web
+- **Qué:** URL final (grupo de recursos en PMax, anuncio en Search) de las campañas activas de ES e IT:
+  | Campaña | URL final (landing principal) | Clics 7 d | Gasto 7 d | Boceto nuestro |
+  |---|---|---|---|---|
+  | ES PMax Vacational | /es/check-in-online-ses-hospedajes | 482 | 1.527 € | SES v2 |
+  | ES Search Intención | /ses-hospedajes | 302 | 616 € | — (página distinta de la anterior) |
+  | ES PMax Competitors | /chekin-hoteles | 71 | 202 € | Hoteles v6 |
+  | ES Brand | /es/ads/chekin | 16 | 26 € | — |
+  | IT PMax Vacational | /it/check-in-online-alloggiati-web | 453 | 600 € | — |
+  | IT PMax Competitors | /it/ads/registrazione-ospiti-questura | 130 | 133 € | Hotel Italia Questura v4 |
+  | IT Brand | /it/ads/chekin | 32 | 61 € | — |
+- **Fuente / periodo:** Windsor.ai (Google Ads 103-962-2294), campañas ENABLED, 22/10–28/10/2026 (hoy incompleto).
+- **Implica:** con la expansión de URL parada, guía SES, guest app, pack legal y contratto IT (/modello/contrattoaffittoturistico) eran URL de expansión y dejan de recibir tráfico de paid. Para el A/B en HubSpot (variante B de la URL principal) valen SES v2 y las dos de hoteles; faltan bocetos para /ses-hospedajes (ES Search) y /it/check-in-online-alloggiati-web (IT rental, 2.º en prioridad).
+- **Estado:** para Alex. Confirmar con Snowball que la expansión ya está parada.
+
+### H-35 · Google Ads, últimos 7 días: 4.535 € en las campañas activas de ES, IT y PT y 73 contactos nuevos en HubSpot
+- **Qué:** campañas activas (ENABLED) de ES, IT y PT, Google Ads (Windsor) frente a contactos nuevos en HubSpot con fuente Paid Search, agrupados por `utm_campaign` de la URL de entrada:
+  | Campaña | Gasto | Clics | Conv. Google (todas) | Contactos HubSpot |
+  |---|---|---|---|---|
+  | ES PMax Vacational | 1.611 € | 519 | 23 (41) | 13 |
+  | ES Search Intención | 715 € | 348 | 5 (18) | 7 |
+  | ES PMax Competitors | 233 € | 88 | 4 (12) | 5 [utm sin país: «PMAXCOMPETITORS»] |
+  | ES Brand | 30 € | 18 | 0 (2) | 0 |
+  | IT PMax Vacational | 692 € | 529 | 10 (16) | 8 |
+  | IT PMax Competitors | 155 € | 150 | 4 (8,5) | 5 |
+  | IT Brand | 68 € | 36 | 0 (0) | 2 |
+  | PT PMax Competitors | 504 € | 531 | 36 (41) | 26 |
+  | PT PMax Vacational | 420 € | 221 | 5 (8) | 5 |
+  | PT Search Intención | 38 € | 24 | 2 (2) | 1 |
+  | PT Brand | 68 € | 35 | 1 (2) | 1 |
+  | **Total** | **4.535 €** | **2.499** | **90** | **73** |
+  Pausadas durante la semana (DE, CZ, GB): 202 € y 8 contactos más.
+- **Fuente / periodo:** Windsor.ai (Google Ads 103-962-2294) y HubSpot, 21/10–28/10/2026 (hoy incompleto). HubSpot = solo contactos **nuevos** con fuente original Paid Search; las UTM mezclan campañas (H-02), así que el reparto por campaña es aproximado.
+- **Implica:** ES PMax Vacational es lo que más gasta (1.611 €) y trae 13 contactos (~124 € por contacto nuevo); ES Search Intención, 715 € por 7 (~102 €). PT PMax Competitors es lo más barato: 504 € por 26 (~19 €). Google cuenta más conversiones que contactos nuevos en HubSpot (90 frente a 73): parte serán contactos que ya existían.
+- **Estado:** para Alex. Medir por página para el detalle de landings.
+
+### H-34 · Leads de formularios de Meta, últimos 7 días: cuadran con Meta; en alquiler vacacional ES casi la mitad ya estaban en HubSpot
+- **Qué:** leads de formulario de Meta del 21/10 al 28/10, Meta (Windsor, «On-Facebook Leads») frente a HubSpot (contactos nuevos con primera conversión «Facebook Lead Ads: …» + contactos que ya existían y convirtieron en ese formulario):
+  | Campaña activa | Gasto | Meta | HubSpot nuevos | HubSpot ya existían |
+  |---|---|---|---|---|
+  | SB_ESP_META_HOTELES_FORM_CK | 1.311 € | 20 | 21 | [no mirado] |
+  | SB_ESP_META_VACATION_FORM_CK | 852 € | 19 | 9 | 8 |
+  | SB_ITA_META_HOTELES_FORM_CK | 1.040 € | 22 | 21 | [no mirado] |
+  | SB_PT_META_HOTELES_FORM_CK | 666 € | 9 | 9 | [no mirado] |
+  | SB_PT_META_VACATION_FORM_CK | 204 € | 10 | 10 | [no mirado] |
+  Italia alquiler vacacional: la campaña vieja y la V2, pausadas; «V2 - Copia», activa pero con 0,28 € y 0 leads.
+- **Fuente / periodo:** Windsor.ai (Meta Ads, cuenta Chekin) y HubSpot, 21/10–28/10/2026 (hoy incompleto).
+- **Implica:** los formularios de Meta entran en HubSpot casi 1 a 1 (diferencias de 1–2, por zona horaria o duplicados). En alquiler vacacional de España, 8 de 17 leads eran contactos que ya estaban en HubSpot (algunos desde 2022): Meta los cuenta como leads nuevos, pero no lo son. Italia no tiene ahora campaña de Meta de alquiler vacacional funcionando.
+- **Estado:** compartir con Alex. Mirar los «ya existían» del resto de campañas.
+
+### H-33 · Los formularios de Meta sí entran solos en HubSpot (corrige H-31)
+- **Qué:** **236** contactos creados del 28/09 al 27/10 con primera conversión «Facebook Lead Ads: …», y **15** el 27–28/10 (el último, el 28/10 a las 17:31 UTC). 297 contactos de Paid Social en el mismo periodo. Los de formulario de Meta llegan con primera conversión «Facebook Lead Ads: <nombre del formulario>» (p. ej. `SB_ESP_FORM_HOTELES-GUIA_LOGICA_CK`, `SB_ESP_FORM_VACATIONRENTAL`, `SB_PORTUGAL_FORMULARIO-GUIA-HOTELES_CK`, entrados el 27/10) y campaña en `hs_analytics_source_data_2` (`sb_esp_meta_hoteles_form_ck`…). Las propiedades `facebook_lead_id`, `meta_ad_id` y `lead_ad_prop0` no se usan.
+- **Fuente / periodo:** HubSpot, creados 28/09–28/10/2026.
+- **Implica:** confirma lo que dice Valery: la sincronización de lead ads está activa a nivel de página y los formularios nuevos entran sin conectarlos uno a uno. H-31 estaba mal en ese punto.
+- **Estado:** para responder en el hilo de Snowball (Mateo, Valery).
+
+### H-32 · HubSpot sí envía automáticamente las fases del ciclo de vida como conversión a Google Ads y a Meta
+- **Qué:** en HubSpot › Anuncios › Eventos hay eventos activos, disparados por fase del ciclo de vida, todos con último envío el 28/10/2026:
+  - **Google Ads (Chekin):** Lead 40 · MQL 42 · SQL 7 · Opportunity 5 · Customer 108. Subscriber, apagado (último envío 5/02/2026).
+  - **Meta (Chekin):** Lead 40 · MQL 461 · SQL 8 · Opportunity 5 · Customer 121 · Nurturing 153 (la lista sigue más abajo).
+  Las cifras son la columna numérica de la tabla [POR COMPROBAR qué mide: probablemente eventos enviados en un periodo].
+- **Fuente / periodo:** captura de HubSpot de Alex, 28/10/2026, 14:20.
+- **Implica:** la respuesta a Snowball es «sí»: cada cambio de fase se manda solo a las dos plataformas. A Google le llegan muchos menos MQL que a Meta (42 frente a 461), seguramente porque Google solo puede atribuir contactos con clic de Google (gclid). Para «optimizar con SQL» (decisión del 27/10), el evento de SQL ya existe en Google, pero con muy poco volumen (7) para que una PMax optimice con él.
+- **Estado:** para responder a Snowball. Ver qué mide la columna numérica y el resto de la lista de Meta.
+
+### H-31 · HubSpot guarda el clic de Google (gclid) pero no recibe leads de formularios de Meta por integración
+- **Qué:** contactos creados en los últimos 30 días con: `hs_google_click_id` (gclid) **1.314**; `hs_facebook_click_id` (fbclid) 85; `facebook_lead_id`, `meta_ad_id` y propiedades de lead ads (`lead_ad_prop0`) **0**.
+- **Fuente / periodo:** HubSpot, búsqueda por propiedades, creados 28/09–28/10/2026.
+- **Implica:** la conexión HubSpot ↔ Google Ads está activa al menos para guardar el clic (necesario para enviar conversiones offline). Los leads de los formularios de Meta no entran por la integración nativa de lead ads (o entran por otra vía sin esas propiedades). Por la API no se ve si HubSpot **envía** conversiones o audiencias a Meta y Google: hay que mirarlo en HubSpot › Marketing › Anuncios › Configuración (eventos de conversión y audiencias).
+- **Estado:** ⚠️ **Corregido por H-33 (28/10):** los leads de Meta sí entran por la integración nativa; esas propiedades simplemente no se rellenan.
+
 ### H-30 · Con referencia 1/08 (agosto y septiembre completos), España sale peor con ShowMe; Italia, +11 puntos
 - **Qué:** referencia pedida el 28/10: ShowMe desde el 1/08. Micro con trial, altas 1/08–30/09 (cohortes cerradas). % = clientes (lifecycle) / trials.
   | País | Con ShowMe | Sin ShowMe | Pasan por ShowMe | Mar–may (sin ShowMe) |

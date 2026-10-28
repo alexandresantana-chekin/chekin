@@ -71,6 +71,7 @@ Fuente de fechas: Asana (consultado el 26/10 por la tarde). Lo de abajo de este 
   - **28/10 · Snowball:** el A/B se hace en HubSpot (no en Google). Cada landing nueva = variante B de la actual, misma URL. Pendiente: reconectar el conector de HubSpot con permisos de landing pages (falló al leer formularios) y comprobar que el plan permite A/B.
   - P6: para partners, el enlace de Cello va asociado a una cuenta de Chekin; Valery lo aclarará (viernes).
 - **P7 · Portugal (28/10):** 250 enrolados (26/10 50 · 27/10 100 · 28/10 100), comentario en Asana. Jueves 29/10: 100. Se termina el viernes 30/10 en dos tandas, una a primera hora y otra al final del día (incluidos los sueltos), y se ve cómo queda; la tarea mantiene su fecha, 30/10.
+- **P3 · Foco en las 4 PMax (28/10):** variantes B listas para ES Vacational (SES v2), IT Competitors (Questura v4) y ES Competitors (hoteles v6). Nueva: **Alloggiati Web IT v1** (variante B de /it/check-in-online-alloggiati-web, PMax IT Vacational) https://claude.ai/artifact/7Tii5vGzn9mBiTjrwDm3ES (privado). H-36 y H-37 con URL finales, % de clics y conversión.
 - Carlos se ha creado hoy «Informe ShowMe v5 con los datos nuevos» (vence 27/10) en el proyecto MRR + ShowMe.
 
 ## Lunes 26/10 (Tenerife con Carlos), hecho
