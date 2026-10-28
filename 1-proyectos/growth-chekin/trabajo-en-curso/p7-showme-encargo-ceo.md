@@ -6,7 +6,9 @@ Tarea en Asana: «ShowMe: ¿ayuda de verdad? Vídeos del onboarding, con/sin Sho
 
 ## Punto 1 · Vídeos del onboarding de ShowMe
 
-Canales de ShowMe: **llamada, WhatsApp y email** (confirmado por Alex, 28/10). Cadencia medida en el informe v5 de Carlos (H-36): Pretrial empieza con llamada y sigue con WhatsApp cada ~48 h hasta ~5 días; Trial empieza por WhatsApp o chat web, ~6 WhatsApp en 12 días y llamada al 25% hacia el día 7. Frecuencia según Alex: [POR COMPROBAR].
+**Quién entra (Alexandre, 28/10):** Alex, el agente IA de ShowMe, solo trabaja leads de **1 a 3 viviendas** (Micro). Los SMB no pasan por ShowMe: sus vídeos sirven de comparación (qué recibe un lead que no entra).
+
+Canales de ShowMe: **llamada, WhatsApp y email** (confirmado por Alexandre, 28/10). Cadencia medida en el informe v5 de Carlos (H-36): Pretrial empieza con llamada y sigue con WhatsApp cada ~48 h hasta ~5 días; Trial empieza por WhatsApp o chat web, ~6 WhatsApp en 12 días y llamada al 25% hacia el día 7. Frecuencia según Alexandre: [POR COMPROBAR].
 
 ### Casos (6 grabaciones)
 | # | País | Perfil | Qué declarar en el alta | Qué esperamos ver |
@@ -138,7 +140,7 @@ Lectura para el CEO:
 ## Mensaje para Pedro (Slack #showme_chekin) · borrador, lo envía Alex
 
 > Hola Pedro! Estamos revisando a fondo cómo funciona ShowMe y necesito que me confirmes unas cosas:
-> 1. **Quién entra en la secuencia:** ¿entran todos los registros Micro de cada país o hay algún filtro más (fuente, tamaño declarado, etc.)? ¿Los SMB no entran nunca?
+> 1. **Quién entra en la secuencia:** entendemos que entran los leads de 1 a 3 viviendas. ¿Entran todos los de ese tamaño en cada país o hay algún filtro más (fuente, fase, tamaño sin declarar)?
 > 2. **Atribución:** en vuestro export, «converted» incluye leads con los que Alex nunca llegó a hablar. ¿Es así como lo contáis en los resultados que nos presentáis? ¿Contáis trials que empezaron antes de vuestro primer contacto?
 > 3. Vamos a hacer altas de prueba en ES, IT y PT (Micro y SMB) para ver el flujo completo. ¿Deduplicáis por teléfono? ¿Cómo hacemos para que no os cuenten en los resultados?
 >

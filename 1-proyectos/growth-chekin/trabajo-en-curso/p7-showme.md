@@ -3,7 +3,7 @@
 Proyecto de Alex (26/10): lo lleva él y lo trabaja con ShowMe. Recopilado el 26/10 de Slack (#showme_chekin, DM con Carlos) y de Notion.
 
 ## Qué es
-- ShowMe (getshowme.ai) pone un **AE de IA llamado «Alex»** que habla con los leads **Micro** por teléfono, WhatsApp, email y chat web, en dos fases: **Pretrial** (convertido = empieza el trial) y **Trial** (convertido = paga).
+- ShowMe (getshowme.ai) pone un **AE de IA llamado «Alex»** que habla con los leads **Micro (de 1 a 3 viviendas, confirmado por Alexandre el 28/10)** por teléfono, WhatsApp, email y chat web, en dos fases: **Pretrial** (convertido = empieza el trial) y **Trial** (convertido = paga).
 - Mercados: España e Italia en marcha; **Portugal** arrancando (pretrial, trial y ahora *recovery*).
 - Contacto en ShowMe: **Pedro Bernar** (pedro@getshowme.ai). Canal: Slack **#showme_chekin**.
 - En Chekin: lo montó Gabriel Coachman (ver Notion «Handoff — Gabriel Coachman»); luego lo llevó Carlos; desde el 22/10 «Alexandre irá asumiendo la operativa de ShowMe».
