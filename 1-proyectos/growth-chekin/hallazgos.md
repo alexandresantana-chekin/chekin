@@ -7,6 +7,21 @@ Regla: toda cifra lleva su periodo (Carlos trabaja con 90 días). Si un dato no 
 
 ## 28-10-2026
 
+### H-36 · Informe ShowMe Micro v5 (Carlos, 27/10): pagos reales, cadencia y atribución; corrige la lectura de Italia de H-27 a H-30
+- **Qué:**
+  - **Pagos reales (Leopard):** 3.040 leads Micro en ShowMe (ES, IT, PT) → ShowMe declara 630 «converted»; **360 pagan de verdad**; MRR actual 2.898 €/mes (ARPA 8,68 €). De los 360 cierres, **156 sin AE (43%)**, 118 con AE antes del cierre, 21 el mismo día y 65 después.
+  - **Italia, HubSpot inflado:** de 78 «Customer» en HubSpot, 28 nunca han pagado y 36 pagan (Leopard). Trial IT: 60 customers en HubSpot, 34 cierres reales. En España, 37 de 384 nunca han pagado.
+  - **Con y sin conversación con Alex** (todos enrolados en ShowMe): ES Trial 34,2% vs 19,7%; ES Pretrial **18,2% vs 25,5%** (peor con conversación); IT Trial 35,1% vs 16,7%; IT Pretrial 11,6% vs 9,2%; PT 3,3% vs 2,3%. En España, 1.234 de 2.388 leads (52%) nunca hablaron con Alex.
+  - **Atribución:** el «converted» del export de ShowMe incluye a los leads sin ninguna conversación (en ES, 279 de 593). Es decir, ShowMe cuenta como suyo cualquier lead enrolado que convierte.
+  - **Cadencia (transcripts, 1.540 hilos con conversación):** Pretrial: primer contacto por **llamada** (66%), 1 llamada por lead (70%) y WhatsApp de seguimiento cada **~48 h** durante hasta ~5 días. Trial: empieza por **WhatsApp** (72%) o chat web (20%); mediana de 6 WhatsApp en 12 días y contacto 4 días distintos; llamada solo al 25%, ~7 días después del inicio. Llamadas de 9:00 a 20:00.
+  - **Canal:** Pretrial ES convierte por teléfono (31,7%) y casi nada por WhatsApp (3,8%); en Italia Pretrial solo convierte el teléfono (30,6%).
+  - **Peticiones de persona:** 189 en ES (convierten 34,9%), 49 en IT, 4 en PT; no hay handoff real (falta el workflow de Chekin).
+  - **Errores del agente (clasificador):** bucles, información incorrecta y no escalar son los tres primeros en ES e IT. Muchos corregidos y verificados desde el 06–07/10.
+  - **Oportunidades para AEs:** 519 leads con señales de compra (74 tier A).
+- **Fuente / periodo:** informe «ShowMe Micro v5» (artifact de Carlos, carga del 27/10; conversaciones hasta el 26/10; ES desde 18/06, IT desde 28/08, PT desde 06/10), con export de ShowMe, HubSpot y Leopard. Cadencia calculada por Claude sobre `transcripts.json` del mismo informe.
+- **Implica:** responde a gran parte del encargo del CEO. Mi comparación de Italia (H-27 a H-30) usaba lifecycle Customer de HubSpot, que en Italia está muy inflado: la «señal positiva» de Italia hay que rehacerla con pagos de Leopard antes de darla por buena. La diferencia con/sin conversación no es causal (quien habla más está más interesado), pero en Pretrial España hablar con Alex no mejora.
+- **Estado:** para el informe del 30/10. Preguntas a Pedro reducidas a las que el informe no responde.
+
 ### H-41 · Auditoría de /pt/check-in-online (PMax PT Competitors): página corta y clara, pero el formulario es de otra marca
 - **Qué:** medido el 28/10 (1512×780 y 375×812). Alto 3.658 px en portátil y 4.518 en móvil (mucho mejor que SIBA, H-40). Fallos: botón de enviar **naranja** («Contacte-nos», rgb 255,122,89) distinto del resto de botones azules («Experimentar grátis →»); en portátil queda justo en el borde de la pantalla y en móvil por debajo; prefijo por defecto **Spain +34**; etiquetas en español («Tipo de propiedade», «propiedades/quartos»); dos tipografías (Plus Jakarta Sans y Figtree); título de la pestaña «Guestapp Chekin»; «50+ integrações PMS» (oficial +200); «SEF/AIMA» (el SEF ya no existe, pero se mantiene porque la gente lo sigue buscando así; decisión de Alex, 28/10). Carga en 1,1 s, 370 KB.
 - **Fuente / periodo:** revisión en navegador (Playwright + Chrome), 28/10/2026. Tráfico en H-39 (26.521 clics en 90 días, 5,5% de conversión en Google).

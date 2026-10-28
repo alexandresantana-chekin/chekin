@@ -6,6 +6,8 @@ Tarea en Asana: «ShowMe: ¿ayuda de verdad? Vídeos del onboarding, con/sin Sho
 
 ## Punto 1 · Vídeos del onboarding de ShowMe
 
+Canales de ShowMe: **llamada, WhatsApp y email** (confirmado por Alex, 28/10). Cadencia medida en el informe v5 de Carlos (H-36): Pretrial empieza con llamada y sigue con WhatsApp cada ~48 h hasta ~5 días; Trial empieza por WhatsApp o chat web, ~6 WhatsApp en 12 días y llamada al 25% hacia el día 7. Frecuencia según Alex: [POR COMPROBAR].
+
 ### Casos (6 grabaciones)
 | # | País | Perfil | Qué declarar en el alta | Qué esperamos ver |
 |---|---|---|---|---|
@@ -101,6 +103,8 @@ Lectura para el CEO:
 
 - No cambia el sentido: España sin mejora (grupo «sin» de solo 55 trials); Italia +11 puntos.
 
+> ⚠️ **28/10, H-36:** en Italia el lifecycle Customer de HubSpot está inflado (28 de 78 nunca han pagado según Leopard). La señal de Italia de estas tablas hay que rehacerla con pagos de Leopard.
+
 ### Corte anterior (H-29): altas 1/07–30/09
 | País | Con ShowMe | Sin ShowMe | Mar–may (sin ShowMe) |
 |---|---|---|---|
@@ -134,10 +138,8 @@ Lectura para el CEO:
 ## Mensaje para Pedro (Slack #showme_chekin) · borrador, lo envía Alex
 
 > Hola Pedro! Estamos revisando a fondo cómo funciona ShowMe y necesito que me confirmes unas cosas:
-> 1. **A quién contactáis:** ¿escribís a todos los registros o filtráis por tamaño (Micro / SMB), país o fase (pre-trial, trial)? ¿Cuál es el criterio exacto?
-> 2. **Qué hacéis con cada lead:** llamada, WhatsApp, email, widget… ¿en qué orden y con qué tiempos?
-> 3. **Atribución:** ¿cuál es la acción mínima para que un lead cuente como «vuestro»? ¿Basta con un mensaje enviado o hace falta respuesta, conversación o llamada? ¿Contáis trials que empezaron antes de vuestro primer contacto?
-> 4. ¿Nos podéis pasar el export de los convertidos con fecha de primer contacto, canal, nº de respuestas del lead y fecha de conversión?
-> 5. Vamos a hacer altas de prueba en ES, IT y PT (Micro y SMB) para ver el flujo completo. ¿Deduplicáis por teléfono? ¿Cómo hacemos para que no os cuenten en los resultados?
+> 1. **Quién entra en la secuencia:** ¿entran todos los registros Micro de cada país o hay algún filtro más (fuente, tamaño declarado, etc.)? ¿Los SMB no entran nunca?
+> 2. **Atribución:** en vuestro export, «converted» incluye leads con los que Alex nunca llegó a hablar. ¿Es así como lo contáis en los resultados que nos presentáis? ¿Contáis trials que empezaron antes de vuestro primer contacto?
+> 3. Vamos a hacer altas de prueba en ES, IT y PT (Micro y SMB) para ver el flujo completo. ¿Deduplicáis por teléfono? ¿Cómo hacemos para que no os cuenten en los resultados?
 >
 > Gracias!
