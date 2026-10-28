@@ -1,30 +1,27 @@
-# Estado · actualizado 2026-10-26
+# Estado · actualizado 2026-10-28
 
-## ▶ EMPIEZA AQUÍ (martes 27/10 · último día de Carlos antes de vacaciones 28/10–3/11)
-Fuente de fechas: Asana (consultado el 26/10 por la tarde). Lo de abajo de este bloque es el histórico.
+## ▶ EMPIEZA AQUÍ (jueves 29/10 · Carlos de vacaciones hasta el 3/11)
+Lo de abajo de este bloque es el histórico. Horas: semana 26–30/10 ≈ 18 h → quedan ~2 h para jue–vie: priorizar.
 
-**0. Primero, seguridad (quedó a medias el 26/10 por la tarde):** revocar el token de Supabase `chekin-connect-despliegue`, rotar el de HubSpot y volver a guardarlo con `desplegar-hubspot-sync.sh`, borrar `sbp_` y `pat-na1` del historial del terminal. [POR COMPROBAR si se terminó]
+**1. Primero (5 min):** enviar a Pedro (ShowMe) las 3 preguntas: quién entra exactamente (1–3 viviendas, ¿algún filtro más?), si cuentan como convertidos los leads sin conversación, y cómo hacer altas de prueba sin contar. Borrador en `trabajo-en-curso/p7-showme-encargo-ceo.md`.
 
-**1. Vence el 27/10 (con Carlos, antes de que se vaya):**
-- Mapa de tareas de Alexandre en Growth Daily: owner, fecha y «hecho» en todo (tarea índice gid 1219818181506129).
-- Kickoff del MRR automático con Carlos (alcance, fuentes, para quién) + handover de la verificación ShowMe. Fuente buena del MRR: LEOPARD (`mrr_leopard_eur`).
-- P2 · Revisión final del QR con Carlos y entrega a los AEs (enlace nuevo: chekin-connect.vercel.app/mi-perfil).
-- P3 · Corregir las UTM de las PMax (con Snowball).
+**2. Vence el 30/10:**
+- **Encargo del CEO sobre ShowMe** (Asana gid 1219967710164778). Borrador de respuesta listo al final de `p7-showme-encargo-ceo.md`, sin enviar. Conclusión con pagos reales (H-43): ShowMe no sube la conversión a pago (ES 14,8% con vs 20,0% sin; IT igual mes a mes). Falta: vídeos (3 micro + 1 SMB; resolver teléfono y URL de registro) y respuesta de Pedro. Pendiente que Alex pase la frecuencia de contacto que conoce.
+- P3: montaje de SES v2 en HubSpot como variante B (ver lo hecho hoy en el chat de landings); propuesta CRO y plan de experimentación.
+- KPI de activación con Daniel · qué cifra de MRR usamos · Óscar (Cálido) a Valery · Reverrr. Con ~2 h no cabe todo: mover en Asana con comentario lo que no se haga.
 
-**2. Atrasado (venció el 26/10):**
-- Mensaje a Snowball sobre el reparto de URLs de las PMax (borrador en `trabajo-en-curso/p3-pmax-que-cambiar.md`). Alex ya habla directo con Snowball (OK de Carlos).
-- Alternativas de landing y CTA por bloques para test rápido.
-- P1 · Funnel con datos limpios de PostHog para Daniel [POR COMPROBAR si se le enseñó].
-- Seguimiento de los 5 eventos terminados (tareas creadas por la rutina): preguntar a Marta por las pruebas de The TOPO Connect y a los AEs por los 3 eventos con 0 leads.
-- Portugal: 50 al día con Showme_PT_recovery = Yes (diaria).
+**3. Pendiente de enviar / responder:**
+- **Sebastián (Snowball):** respuesta corta sobre automatizaciones HubSpot ↔ Meta/Google (eventos de conversión por lifecycle y auto tracking activos, H-32). Antes, mirar la pestaña *Audiences* de Anuncios en HubSpot.
+- **Snowball:** Italia no tiene campaña de Meta de alquiler vacacional funcionando (H-34).
+- **Isaac (Snowball):** ve el dashboard «Organic Lead Gen (SEO)» pero vacío (solo ve sus contactos). Decidir: «ver todos» en Contactos o envío programado por email. Comentario propuesto para Carlos en la tarea «Recordatorio: revisar con Isaac el dashboard de AEO / GEO» (sin publicar).
 
-**3. Resto de la semana:** 29/10 Cello con Valery (qué hay y qué falla) · 30/10 KPI de activación con Daniel y Carlos, auditoría de landings y creatividades, qué cifra de MRR usamos · 30/10 presentar a Óscar (Cálido) a Valery.
+**4. Asana atrasado:** UTM de las PMax · mapa de tareas para Carlos (gid 1219818181506129) · 5 tareas de eventos (Marta y AEs).
 
-**4. Próximas fechas:** 3/11 lanzamiento SES v2, baseline de CR de octubre, España resto, tracker, experimento Hasp con GIF · 4/11 Italia hoteles, lista priorizada de mejoras, medir Cello · 5/11 Italia resto · 6/11 plan de Cello, feedback del onboarding, informe de MRR, revisión con Carlos y Alessandro.
+**5. Seguridad, sin confirmar:** token de Supabase `chekin-connect-despliegue`, token de HubSpot, historial del terminal; contraseña de ShowMe en Slack; clave live de Stripe en Notion.
 
-**Horas:** semana 19–23/10 ≈ 30,4 h (+10,4 sobre 20). Semana 26–30/10: lunes ≈ 8 h → quedan ~12 h para el resto de la semana.
+**6. Próximas fechas:** 29/10 Cello con Valery · 30/10 lo de arriba · 3/11 test SES v2, baseline de CR, tracker, Hasp · 4/11 Italia resto · 5/11 Italia hoteles · 6/11 España hoteles lista, plan de Cello, revisión con Carlos · 10/11 test España hoteles.
 
-**Dónde está cada cosa:** reglas y mapa en `/CLAUDE.md` · hallazgos en `hallazgos.md` (H-01…H-21) · decisiones en `decisiones.md` · fichas en `trabajo-en-curso/` · landings y sus fuentes en `trabajo-en-curso/p3-landings/` (fuentes editables en `p3-landings/fuentes/`, copiadas del chat "Landing Page" el 26/10).
+**Dónde está cada cosa:** reglas en `/CLAUDE.md` · hallazgos en `hallazgos.md` (hasta H-43; ojo, dos sesiones escriben a la vez: comprobar el último número antes de añadir) · decisiones en `decisiones.md` · fichas en `trabajo-en-curso/` · ShowMe en `p7-showme.md` y `p7-showme-encargo-ceo.md` · landings en `trabajo-en-curso/p3-landings/`.
 
 ---
 
@@ -51,6 +48,17 @@ Fuente de fechas: Asana (consultado el 26/10 por la tarde). Lo de abajo de este 
   - Permiso para mostrar Iberostar, Meliá y Barceló; logos de PMS; fuente Proxima Nova.
 
 ## Pendiente
+## Miércoles 28/10, hecho (sesión general)
+- **Isaac (Snowball):** permiso de informes activado en HubSpot (asiento View-Only, sin coste); el dashboard es de Gabriel y está en «Everyone can view». Ve el dashboard pero vacío (solo «sus» contactos).
+- **Portugal recovery:** lote de 100 → **250 acumulados** (HubSpot), comentado en Asana.
+- **Mateo (Snowball):** preguntado por el A/B en Google; Snowball confirma que va en HubSpot.
+- **Encargo del CEO sobre ShowMe:** tarea en Asana (30/10); análisis con/sin ShowMe (H-26 a H-30, con lifecycle Customer) corregido con el informe v5 de Carlos (H-42) y con pagos de Leopard (H-43); guion de vídeos, mensaje a Pedro y borrador de respuesta en `p7-showme-encargo-ceo.md`. ShowMe solo trabaja leads de 1 a 3 viviendas (Alexandre).
+- **Brief «Landings de paid: antes y después»** republicado con estado al 28/10, Italia y páginas de gracias (https://claude.ai/artifact/BPBSyMM1PbQAmiKMijFNAq).
+- **HubSpot ↔ Meta/Google:** cuentas de Google Ads y Meta conectadas con auto tracking; eventos de conversión por lifecycle activos hacia las dos (H-32); formularios de Meta entran solos (H-33; H-31 corregido); LinkedIn desconectado.
+- **Leads de 7 días:** Meta 80 leads, cuadran con HubSpot (H-34); Google 4.535 € y 73 contactos nuevos (H-35).
+- **P2:** tarea «Revisión final con Carlos y entrega a los AEs» cerrada con comentario a Carlos.
+- El informe de Carlos «Landings…» de la biblioteca de anuncios (artifact 1qcX…) es una foto fija del 19/10, no se actualiza solo.
+
 ## Martes 27/10, hecho (resumen en curso)
 - **P2 · Giulia sin acceso a chekin-connect:** cuenta y perfil bien (`giulia@chekin.com`, confirmada, activa), pero nunca había entrado: la contraseña provisional del 26/10 no valía. Contraseña nueva generada en Supabase (SQL) y probada por Alex. [POR COMPROBAR] Joan: mirar si tiene el mismo problema (`last_sign_in_at` vacío).
 - **P7 · Portugal recovery (ShowMe):** 100 enrolados hoy → **150 acumulados** (comprobado en HubSpot: `showme_pt_recovery` = true; 50 el 26/10 + 100 el 27/10). Ritmo: 100 al día durante 5 días. Alex ha escrito a Pedro para pedir el desglose de resultados.

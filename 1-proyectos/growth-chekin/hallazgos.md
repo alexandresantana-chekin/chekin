@@ -7,7 +7,7 @@ Regla: toda cifra lleva su periodo (Carlos trabaja con 90 días). Si un dato no 
 
 ## 28-10-2026
 
-### H-37 · Con pagos reales (Leopard), los trials que pasan por ShowMe no pagan más que los que no pasan; la señal de Italia desaparece
+### H-43 · Con pagos reales (Leopard), los trials que pasan por ShowMe no pagan más que los que no pasan; la señal de Italia desaparece
 - **Qué:** Micro con trial, altas 1/08–30/09, que pagan según Leopard (`mrr_leopard_eur` > 0; mes cerrado = septiembre 2026):
   | | Con ShowMe | Sin ShowMe |
   |---|---|---|
@@ -19,7 +19,7 @@ Regla: toda cifra lleva su periodo (Carlos trabaja con 90 días). Si un dato no 
 - **Implica:** con pago real no hay ventaja de ShowMe en España (sale 5 puntos por debajo, con un grupo «sin» de 55) ni en Italia mes a mes (agosto con 16 casos, septiembre igual). El +11 de Italia de H-30 venía del lifecycle Customer inflado. Ojo: solo cuenta quien pagó en septiembre; los trials de finales de septiembre que pagan en octubre aún no salen (afecta a los dos grupos).
 - **Estado:** cifra para la respuesta al CEO (30/10).
 
-### H-36 · Informe ShowMe Micro v5 (Carlos, 27/10): pagos reales, cadencia y atribución; corrige la lectura de Italia de H-27 a H-30
+### H-42 · Informe ShowMe Micro v5 (Carlos, 27/10): pagos reales, cadencia y atribución; corrige la lectura de Italia de H-27 a H-30
 - **Qué:**
   - **Pagos reales (Leopard):** 3.040 leads Micro en ShowMe (ES, IT, PT) → ShowMe declara 630 «converted»; **360 pagan de verdad**; MRR actual 2.898 €/mes (ARPA 8,68 €). De los 360 cierres, **156 sin AE (43%)**, 118 con AE antes del cierre, 21 el mismo día y 65 después.
   - **Italia, HubSpot inflado:** de 78 «Customer» en HubSpot, 28 nunca han pagado y 36 pagan (Leopard). Trial IT: 60 customers en HubSpot, 34 cierres reales. En España, 37 de 384 nunca han pagado.

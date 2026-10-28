@@ -8,7 +8,7 @@ Tarea en Asana: «ShowMe: ¿ayuda de verdad? Vídeos del onboarding, con/sin Sho
 
 **Quién entra (Alexandre, 28/10):** Alex, el agente IA de ShowMe, solo trabaja leads de **1 a 3 viviendas** (Micro). Los SMB no pasan por ShowMe: sus vídeos sirven de comparación (qué recibe un lead que no entra).
 
-Canales de ShowMe: **llamada, WhatsApp y email** (confirmado por Alexandre, 28/10). Cadencia medida en el informe v5 de Carlos (H-36): Pretrial empieza con llamada y sigue con WhatsApp cada ~48 h hasta ~5 días; Trial empieza por WhatsApp o chat web, ~6 WhatsApp en 12 días y llamada al 25% hacia el día 7. Frecuencia según Alexandre: [POR COMPROBAR].
+Canales de ShowMe: **llamada, WhatsApp y email** (confirmado por Alexandre, 28/10). Cadencia medida en el informe v5 de Carlos (H-42): Pretrial empieza con llamada y sigue con WhatsApp cada ~48 h hasta ~5 días; Trial empieza por WhatsApp o chat web, ~6 WhatsApp en 12 días y llamada al 25% hacia el día 7. Frecuencia según Alexandre: [POR COMPROBAR].
 
 ### Casos (6 grabaciones)
 | # | País | Perfil | Qué declarar en el alta | Qué esperamos ver |
@@ -105,7 +105,7 @@ Lectura para el CEO:
 
 - No cambia el sentido: España sin mejora (grupo «sin» de solo 55 trials); Italia +11 puntos.
 
-> ⚠️ **28/10, H-36:** en Italia el lifecycle Customer de HubSpot está inflado (28 de 78 nunca han pagado según Leopard). La señal de Italia de estas tablas hay que rehacerla con pagos de Leopard.
+> ⚠️ **28/10, H-42 y H-43:** en Italia el lifecycle Customer de HubSpot está inflado (28 de 78 nunca han pagado según Leopard). La señal de Italia de estas tablas hay que rehacerla con pagos de Leopard.
 
 ### Corte anterior (H-29): altas 1/07–30/09
 | País | Con ShowMe | Sin ShowMe | Mar–may (sin ShowMe) |
