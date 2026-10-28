@@ -123,6 +123,40 @@ footer a{color:#C9CBE6}
 .pmsl img{height:28px;width:auto;max-width:130px;object-fit:contain}
 .pmsl .more{font-size:14px;font-weight:700;color:#385BF8}
 @media(max-width:600px){.pmsl{padding:22px 0}.pmsl .row{gap:16px 24px}.pmsl img{height:22px;max-width:100px}}
+
+/* Bloque interactivo «plataforma»: mismo contenido que la landing A, con el diseño de la B */
+.ck-sec.ck-lav{background:var(--alt);padding:64px 0}
+.ck-wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.ck-sechead h2{font-size:40px;font-weight:400;line-height:1.15;letter-spacing:-.01em;margin:0 0 10px;max-width:820px;color:var(--navy)}
+.ck-sechead h2 b{font-weight:700}
+.ck-sechead p{font-size:17px;color:var(--g1);max-width:680px}
+.ck-tabsbar{display:flex;flex-wrap:wrap;gap:8px;margin:28px 0 20px}
+.ck-tab{border:1px solid var(--g3);background:#fff;border-radius:999px;padding:9px 16px;font:600 14.5px var(--f);color:var(--navy);cursor:pointer;white-space:nowrap}
+.ck-tab:hover{border-color:var(--blue)}
+.ck-tab.is-on{background:var(--blue);border-color:var(--blue);color:#fff}
+.ck-tab:focus-visible{outline:0;box-shadow:var(--ring)}
+.ck-panel{display:none;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:40px;align-items:center;background:#fff;border-radius:16px;box-shadow:var(--shadow);padding:32px}
+.ck-panel.is-on{display:grid}
+.ck-panel h3{font-size:22px;line-height:1.25;margin-bottom:10px;color:var(--navy)}
+.ck-panel p{color:var(--g1);font-size:16px;margin-bottom:14px}
+.ck-panel ul{list-style:none;display:grid;gap:8px;margin:0 0 20px;padding:0}
+.ck-panel li{position:relative;padding-left:26px;font-weight:600;font-size:15px}
+.ck-panel li::before{content:"";position:absolute;left:0;top:4px;width:16px;height:16px;border-radius:5px;background:var(--soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 10.5l3.2 3L15 6.5' fill='none' stroke='%23385BF8' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/12px no-repeat}
+.ck-panel .ck-btn{display:inline-flex;align-items:center;justify-content:center;height:48px;padding:0 22px;border-radius:12px;background:var(--blue);color:#fff;font:700 15px var(--f);text-decoration:none}
+.ck-mock{background:var(--alt);border-radius:14px;padding:18px;display:grid;gap:10px}
+.ck-mock-t{font-size:12.5px;font-weight:700;color:var(--g1);text-transform:uppercase;letter-spacing:.04em}
+.ck-mrow{display:flex;align-items:center;gap:12px;background:#fff;border-radius:10px;padding:10px 12px;box-shadow:var(--shadow)}
+.ck-mrow .mi{flex:none;width:28px;height:28px;border-radius:8px;background:var(--soft)}
+.ck-mrow .ml{flex:1;min-width:0}
+.ck-mrow .ml b{display:block;font-size:14px}
+.ck-mrow .ml span{display:block;font-size:12.5px;color:var(--g1)}
+.ck-mtag{flex:none;font-size:11.5px;font-weight:700;color:#13865A;background:#E3F5EC;border-radius:999px;padding:3px 9px}
+@media (max-width:900px){
+  .ck-sec.ck-lav{padding:44px 0}.ck-wrap{padding:0 16px}.ck-sechead h2{font-size:28px}
+  .ck-tabsbar{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:20px -16px 14px;padding:2px 16px 6px;-webkit-mask-image:linear-gradient(90deg,#000 85%,transparent);mask-image:linear-gradient(90deg,#000 85%,transparent)}
+  .ck-tabsbar::-webkit-scrollbar{display:none}
+  .ck-panel.is-on{display:block;padding:20px}.ck-mock{margin-top:18px}.ck-panel .ck-btn{width:100%}
+}
 </style>
 </head>
 <body>
@@ -231,6 +265,174 @@ footer a{color:#C9CBE6}
   </div>
 </section>
 
+<!-- Bloque «plataforma» copiado de la landing A el 28/10 (mismo texto). Cifras como 15 países, 45 jurisdicciones o 99,8% están en la A pero no en la lista oficial del traspaso: [POR COMPROBAR]. -->
+<section class="ck-sec ck-lav" id="plataforma">
+    <div class="ck-wrap">
+      <div class="ck-sechead">
+        <h2 class="ck-h2"><b>Menos trabajo operativo</b> para ti, más libertad para tus huéspedes</h2>
+        <p>Automatiza llegadas, papeleo y comunicación para dejar de estar pendiente de cada entrada.</p>
+      </div>
+
+      <div class="ck-tabsbar" role="tablist">
+        <button type="button" class="ck-tab is-on" data-tab="t1">Check-in online</button>
+        <button type="button" class="ck-tab" data-tab="t2">Self check-in y acceso</button>
+        <button type="button" class="ck-tab" data-tab="t3">Verificación de identidad</button>
+        <button type="button" class="ck-tab" data-tab="t4">Cumplimiento y tasas</button>
+        <button type="button" class="ck-tab" data-tab="t5">Upselling</button>
+        <button type="button" class="ck-tab" data-tab="t6">Guía digital</button>
+        <button type="button" class="ck-tab" data-tab="t7">Inbox con IA</button>
+      </div>
+
+      <div class="ck-panel is-on" data-panel="t1">
+        <div>
+          <h3>Tus huéspedes se registran en segundos, sin descargar ninguna app.</h3>
+          <p>Completan el registro y comparten solo los datos que exige la ley, ni uno más, desde su móvil. El escáner OCR lee el documento y rellena los campos solo, así ellos tardan segundos y tú lo tienes todo validado antes de que lleguen.</p>
+          <ul>
+            <li>Sin descargas, todo en el navegador del móvil</li>
+            <li>Escáner OCR que rellena el formulario solo</li>
+            <li>Solo los datos que exige la normativa</li>
+            <li>Tasa turística y fianza cobradas por adelantado</li>
+          </ul>
+          <a href="#form" class="ck-btn">Empieza tu prueba gratis</a>
+        </div>
+        <div class="ck-mock">
+          <div class="ck-mock-t">Antes de la llegada · Marta · Apartamento 3B</div>
+          <div class="ck-mrow"><span class="mi"></span><span class="ml"><b>Formulario de registro</b><span>Completado hace 2 días</span></span><span class="ck-mtag">Hecho</span></div>
+          <div class="ck-mrow"><span class="mi"></span><span class="ml"><b>Documento escaneado</b><span>DNI · OCR y biometría</span></span><span class="ck-mtag">Verificado</span></div>
+          <div class="ck-mrow"><span class="mi"></span><span class="ml"><b>Tasa turística</b><span>18 € cobrados</span></span><span class="ck-mtag">Pagado</span></div>
+          <div class="ck-mrow"><span class="mi"></span><span class="ml"><b>Fianza</b><span>150 € retenidos</span></span><span class="ck-mtag">Retenido</span></div>
+        </div>
+      </div>
+
+      <div class="ck-panel" data-panel="t2">
+        <div>
+          <h3>Acceso remoto, más fácil que nunca.</h3>
+          <p>Cuando el huésped termina el check-in online y verifica su identidad, recibe el código de acceso o la llave digital del portal y del alojamiento. Funciona con más de 20 marcas de cerraduras, teclados y cajas de llaves. Sin descargar nada y con las instrucciones enviadas solas.</p>
+          <ul>
+            <li>Código de acceso o llave digital enviados en automático</li>
+            <li>Sin apps que descargar para abrir la puerta</li>
+            <li>Compatible con más de 20 cerraduras, teclados y cajas de llaves</li>
+            <li>Acceso al portal y al alojamiento, activo solo durante la estancia</li>
+          </ul>
+          <a href="#form" class="ck-btn">Empieza tu prueba gratis</a>
+        </div>
+        <div class="ck-mock">
+          <div class="ck-mock-t">Acceso · Apartamento 3B</div>
+          <div class="ck-mrow"><span class="mi"></span><span class="ml"><b>Código generado</b><span>Válido del 12 al 15 de marzo</span></span><span class="ck-mtag">Activo</span></div>
+          <div class="ck-mrow"><span class="mi"></span><span class="ml"><b>Portal del edificio</b><span>Teclado · planta baja</span></span><span class="ck-mtag">Abierto</span></div>
+          <div class="ck-mrow"><span class="mi"></span><span class="ml"><b>Puerta del apartamento</b><span>Cerradura inteligente</span></span><span class="ck-mtag">Abierto</span></div>
+          <div class="ck-mrow"><span class="mi"></span><span class="ml"><b>Registro de accesos</b><span>Quién entró y cuándo</span></span><span class="ck-mtag">Guardado</span></div>
+        </div>
+      </div>
+
+      <div class="ck-panel" data-panel="t3">
+        <div>
+          <h3>Identidad verificada en segundos, la seguridad que hoy hace falta.</h3>
+          <p>Antes de dar acceso al alojamiento, cada huésped verifica su identidad: escaneo del documento, selfie o vídeo con detección de vida y comparación biométrica instantánea. Menos fraude de identidad y más seguridad para tu negocio.</p>
+          <ul>
+            <li>Comparación biométrica en tiempo real</li>
+            <li>Detección de vida en vídeo que frena la suplantación</li>
+            <li>Más de 200 tipos de documento aceptados en todo el mundo</li>
+            <li>Acceso al alojamiento solo después de verificar la identidad</li>
+          </ul>
+          <a href="#form" class="ck-btn">Empieza tu prueba gratis</a>
+        </div>
+        <div class="ck-mock">
+          <div class="ck-mock-t">Verificación de identidad</div>
+          <div class="ck-mrow"><span class="mi"></span><span class="ml"><b>Documento leído</b><span>OCR y MRZ cruzados</span></span><span class="ck-mtag">Auténtico</span></div>
+          <div class="ck-mrow"><span class="mi"></span><span class="ml"><b>Match biométrico</b><span>Selfie contra foto del documento</span></span><span class="ck-mtag">99,8%</span></div>
+          <div class="ck-mrow"><span class="mi"></span><span class="ml"><b>Detección de vida</b><span>Protección anti-deepfake</span></span><span class="ck-mtag">Superada</span></div>
+          <div class="ck-mrow"><span class="mi"></span><span class="ml"><b>Resultado</b><span>En menos de 10 segundos</span></span><span class="ck-mtag">Verificado</span></div>
+        </div>
+      </div>
+
+      <div class="ck-panel" data-panel="t4">
+        <div>
+          <h3>Registro de viajeros y tasa turística, resueltos solos.</h3>
+          <p>Chekin envía los datos de tus huéspedes a la autoridad que corresponde en 15 países, y calcula y cobra la tasa turística en más de 45 jurisdicciones fiscales. Las reglas cambian de comunidad a comunidad y de municipio a municipio, y Chekin las mantiene al día por ti.</p>
+          <ul>
+            <li>Envío automático a las autoridades en 15 países</li>
+            <li>Tasa turística calculada y cobrada en más de 45 jurisdicciones fiscales</li>
+            <li>Parte de viajeros presentado solo, sin entrar en ningún portal</li>
+            <li>Siempre al día con los cambios normativos</li>
+            <li>Datos conservados el tiempo que exige la ley</li>
+          </ul>
+          <a href="#form" class="ck-btn">Empieza tu prueba gratis</a>
+        </div>
+        <div class="ck-mock">
+          <div class="ck-mock-t">Envíos a las autoridades · hoy</div>
+          <div class="ck-mrow"><span class="mi"></span><span class="ml"><b>SES.Hospedajes</b><span>14 partes de viajeros</span></span><span class="ck-mtag">Enviado</span></div>
+          <div class="ck-mrow"><span class="mi"></span><span class="ml"><b>Mossos d'Esquadra</b><span>6 partes · Cataluña</span></span><span class="ck-mtag">Enviado</span></div>
+          <div class="ck-mrow"><span class="mi"></span><span class="ml"><b>Tasa turística</b><span>72 € cobrados</span></span><span class="ck-mtag">Automático</span></div>
+          <div class="ck-mrow"><span class="mi"></span><span class="ml"><b>Estadística al INE</b><span>Envío mensual</span></span><span class="ck-mtag">Programado</span></div>
+        </div>
+      </div>
+
+      <div class="ck-panel" data-panel="t5">
+        <div>
+          <h3>Cada reserva, una oportunidad de ingreso extra.</h3>
+          <p>Early check-in, late check-out, parking, traslados, consigna o limpieza a mitad de estancia aparecen durante el check-in online, justo cuando el huésped está organizando su llegada. El alojamiento gana más sin que tú tengas que vender nada.</p>
+          <ul>
+            <li>Ofertas en el momento de mayor intención de compra</li>
+            <li>Segmentación por alojamiento, duración de la estancia y perfil</li>
+            <li>Pagos integrados y sincronizados con tu PMS</li>
+            <li>Tu propio catálogo más un marketplace de experiencias de terceros</li>
+          </ul>
+          <a href="#form" class="ck-btn">Empieza tu prueba gratis</a>
+        </div>
+        <div class="ck-mock">
+          <div class="ck-mock-t">Ofertas mostradas a Marta</div>
+          <div class="ck-mrow"><span class="mi"></span><span class="ml"><b>Early check-in 11:00</b><span>20 €</span></span><span class="ck-mtag">Reservado</span></div>
+          <div class="ck-mrow"><span class="mi"></span><span class="ml"><b>Parking en el edificio</b><span>12 €/día</span></span><span class="ck-mtag">Añadido</span></div>
+          <div class="ck-mrow"><span class="mi"></span><span class="ml"><b>Consigna de equipaje</b><span>8 €</span></span><span class="ck-mtag">+1</span></div>
+          <div class="ck-mrow"><span class="mi"></span><span class="ml"><b>Late check-out 13:00</b><span>15 €</span></span><span class="ck-mtag">Recomendado</span></div>
+        </div>
+      </div>
+
+      <div class="ck-panel" data-panel="t6">
+        <div>
+          <h3>Todo lo que tu huésped necesita, dentro de tu guía digital.</h3>
+          <p>Una guía digital con lo que hace falta: cómo entrar al edificio, cómo funcionan la cocina o la calefacción, el wifi, las normas de la casa y tus recomendaciones del barrio. Se comparte durante el check-in online, con un enlace o un QR en el alojamiento.</p>
+          <ul>
+            <li>Manual del alojamiento: electrodomésticos y climatización</li>
+            <li>Cómo entrar al edificio, wifi y normas de convivencia</li>
+            <li>Recomendaciones del barrio: restaurantes, transporte y compras</li>
+            <li>Traducción automática al idioma del huésped</li>
+          </ul>
+          <a href="#form" class="ck-btn">Empieza tu prueba gratis</a>
+        </div>
+        <div class="ck-mock">
+          <div class="ck-mock-t">Guía del apartamento 3B</div>
+          <div class="ck-mrow"><span class="mi"></span><span class="ml"><b>Wifi y contraseña</b><span>Casa_3B · fibra 600</span></span><span class="ck-mtag">Visto</span></div>
+          <div class="ck-mrow"><span class="mi"></span><span class="ml"><b>Cómo entrar al edificio</b><span>Portal y ascensor</span></span><span class="ck-mtag">Visto</span></div>
+          <div class="ck-mrow"><span class="mi"></span><span class="ml"><b>Cocina y calefacción</b><span>Cómo funcionan</span></span><span class="ck-mtag">Visto</span></div>
+          <div class="ck-mrow"><span class="mi"></span><span class="ml"><b>Recomendaciones del barrio</b><span>8 sitios cerca</span></span><span class="ck-mtag">Top zona</span></div>
+        </div>
+      </div>
+
+      <div class="ck-panel" data-panel="t7">
+        <div>
+          <h3>Respuestas en segundos, a cualquier hora y en cualquier idioma.</h3>
+          <p>Un inbox con IA responde las preguntas de siempre por email, SMS, OTAs y WhatsApp usando la información real de cada alojamiento. Tú solo entras cuando hace falta de verdad.</p>
+          <ul>
+            <li>Respuestas por email, SMS, OTAs y WhatsApp</li>
+            <li>Basadas en la información real de cada alojamiento</li>
+            <li>Detecta oportunidades de upselling y actúa sola</li>
+            <li>Te avisa siempre que algo necesita a una persona</li>
+          </ul>
+          <a href="#form" class="ck-btn">Empieza tu prueba gratis</a>
+        </div>
+        <div class="ck-mock">
+          <div class="ck-mock-t">Inbox · 4 conversaciones activas</div>
+          <div class="ck-mrow"><span class="mi"></span><span class="ml"><b>«¿Cómo entro al edificio?»</b><span>Marta · WhatsApp</span></span><span class="ck-mtag">Respondido</span></div>
+          <div class="ck-mrow"><span class="mi"></span><span class="ml"><b>«¿A qué hora puedo llegar?»</b><span>James · Email</span></span><span class="ck-mtag">Respondido</span></div>
+          <div class="ck-mrow"><span class="mi"></span><span class="ml"><b>«¿Cuál es la clave del wifi?»</b><span>Sophie · SMS</span></span><span class="ck-mtag">Respondido</span></div>
+          <div class="ck-mrow"><span class="mi"></span><span class="ml"><b>«¿Hay parking cerca?»</b><span>Carlos · WhatsApp</span></span><span class="ck-mtag">Respondido</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
 <section class="band">
   <div class="wrap">
     <h2>Deja de preocuparte por el parte</h2>
@@ -264,6 +466,12 @@ footer a{color:#C9CBE6}
     f.style.display='none';document.getElementById('f-ok').style.display='block';
   });
 })();
+</script>
+<script>
+(function(){var bar=document.querySelector('.ck-tabsbar');if(!bar)return;var sec=bar.closest('section');
+bar.addEventListener('click',function(e){var b=e.target.closest('.ck-tab');if(!b)return;
+sec.querySelectorAll('.ck-tab').forEach(function(t){var on=t===b;t.classList.toggle('is-on',on);t.setAttribute('aria-selected',on)});
+sec.querySelectorAll('.ck-panel').forEach(function(p){p.classList.toggle('is-on',p.getAttribute('data-panel')===b.getAttribute('data-tab'))});});})();
 </script>
 </body>
 </html>
