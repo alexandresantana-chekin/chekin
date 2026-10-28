@@ -24,11 +24,18 @@ Proyecto de Alex (26/10): lo lleva él y lo trabaja con ShowMe. Recopilado el 26
 - Ya funciona: no repite mensajes en bucle (0 de 88) y en Italia ya no mezcla español (0 de 54).
 
 ## Portugal (reunión del 22/10: Carlos, Alexandre y Pedro)
-- **Recovery:** reactivar los leads de Portugal del 23/08 al 2/10 (llamada, WhatsApp, email). Caso de uso `Showme_PT_recovery` y disparador `showme_trial_started_portugal`. Se enrola por lotes, no todo de golpe (en la reunión se dijeron 100; Alex hace 50 al día desde el 26/10: tarea en Growth Daily › Alexandre; 50 acumulados el 26/10).
+- **Recovery:** reactivar los leads de Portugal del 23/08 al 2/10 (llamada, WhatsApp, email). Caso de uso `Showme_PT_recovery` y disparador `showme_trial_started_portugal`. Se enrola por lotes, no todo de golpe (en la reunión se dijeron 100; Alex hace 50 al día desde el 26/10: tarea en Growth Daily › Alexandre; 50 acumulados el 26/10). Acumulado comprobado en HubSpot: 150 el 27/10 y **250 el 28/10**.
 - **43% de los leads de Portugal son ruido** por textos confusos de los anuncios («préstamos», «empleo»): revisión de copies con Marta.
 - Pendiente de ShowMe: plantillas de WhatsApp (aprobación de Meta), propiedad trial/stop de Portugal, cadencia de reintentos y avisos en Slack.
 - Pendientes de Chekin (en Asana, de Carlos): número de soporte con Marta, **precio mínimo 495 € × 3 + IVA** con Alessandro [POR COMPROBAR qué es exactamente], copies de PT con Marta.
 - Widget web: en España bastantes conversaciones, en Italia pocas, en Portugal no instalado. El chat no recuerda al usuario si sale y vuelve.
+
+## Encargo del CEO: ¿ShowMe ayuda de verdad? (28/10)
+Pedido por Slack a Alessandro y Carlos; lo lleva Alex. Fecha de entrega: [POR COMPROBAR].
+1. **Vídeos del onboarding de ShowMe** por país (ES, IT, PT) y caso de uso: alta de prueba como Micro y como SMB (6 grabaciones). Ver si se enseña a todos o depende del tamaño. Contactos de prueba marcados como PRUEBA en HubSpot.
+2. **Quién pasa por ShowMe y quién no**, y cómo convierte cada grupo (trial y pago, cruce con Leopard). Propiedades en HubSpot: `showme_pretrial`, `showme_pretrial_italia`, `showme_pretrial_portugal`, `showme_trial_started`, `showme_human_ae`, `showme_pt_recovery`. Falta saber si hay grupo de control comparable.
+3. **Acción mínima para que ShowMe se apunte un lead**: regla de atribución de Pedro, contrastada con datos (informe v4: 2.900 leads, 1.366 conversaciones).
+- Preparación de los 3 puntos (casos, plantilla, primer corte con datos, mensaje a Pedro) en `p7-showme-encargo-ceo.md`. Tarea en Asana gid 1219967710164778.
 
 ## Relación con otros proyectos
 - **MRR automático:** el informe de MRR de ShowMe ya cruza con Leopard; es la base del MRR por canal.

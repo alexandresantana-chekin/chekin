@@ -51,6 +51,27 @@ Fuente de fechas: Asana (consultado el 26/10 por la tarde). Lo de abajo de este 
   - Permiso para mostrar Iberostar, Meliá y Barceló; logos de PMS; fuente Proxima Nova.
 
 ## Pendiente
+## Martes 27/10, hecho (resumen en curso)
+- **P2 · Giulia sin acceso a chekin-connect:** cuenta y perfil bien (`giulia@chekin.com`, confirmada, activa), pero nunca había entrado: la contraseña provisional del 26/10 no valía. Contraseña nueva generada en Supabase (SQL) y probada por Alex. [POR COMPROBAR] Joan: mirar si tiene el mismo problema (`last_sign_in_at` vacío).
+- **P7 · Portugal recovery (ShowMe):** 100 enrolados hoy → **150 acumulados** (comprobado en HubSpot: `showme_pt_recovery` = true; 50 el 26/10 + 100 el 27/10). Ritmo: 100 al día durante 5 días. Alex ha escrito a Pedro para pedir el desglose de resultados.
+  - Medición: enrolados en HubSpot · contactados y respuestas, ShowMe · trial y MRR, HubSpot (`showme_trial_started_portugal`) + Leopard.
+- **Asana (con OK de Alex):**
+  - «Enrolar 100 leads de prueba de Portugal en ShowMe» (gid 1219770867648212): tarea única del recovery de PT; fecha 30/10; comentario con plan, acumulado, cómo se enrola y cómo se mide.
+  - «Portugal: enrolar 50 clientes al día»: **eliminada** por decisión de Alex (sustituida por la anterior).
+  - Cerradas con comentario a Carlos: alternativas de landing y CTAs; funnel de PostHog para Daniel (revisado hoy con Daniel, OK); mensaje a Snowball (hablado en la meet del 26/10, Snowball lo trabaja; **seguimiento el 28/10**).
+- **Abiertas:** 5 tareas de eventos (TOPO Connect, Cloudbeds PT, Scale Fest, Avvapro Sevilla, Tu Alquiler Asturias); revisión final del QR con Carlos; UTM de las PMax; mapa de tareas para Carlos (vencen hoy).
+- **P3 · Feedback de Valery sobre las landings (27/10):** le gustan (mensaje alineado con el anuncio, móvil arreglado, un solo CTA). Pendientes que salen de ahí:
+  1. Guía SES y pack legal: tras el formulario el usuario **tiene que recibir el PDF** (la actual lleva a una thank you page con el enlace). Al montar en HubSpot, mantener thank you page con descarga y/o email. [POR COMPROBAR qué hace hoy el formulario]
+  2. Responder a Valery si los formularios son los mismos de HubSpot. [POR COMPROBAR]
+  3. Guest app: el boceto no es igual a la app real; Valery ofrece capturas reales: pedírselas.
+  4. Poner **logos de los PMS** (se identifican más rápido). Logos recibidos y guardados en `trabajo-en-curso/p3-landings/logos/` (13 partners + 6 clientes). Las landings de rental (SES v2, guía, pack legal, guest app, affitti IT) no llevan logos todavía.
+  - **Archivos descargables (comprobado en landing.chekin.com, 27/10):** ya en HubSpot: guía SES (`hubfs/Chekin_Guía_SES.Hospedajes.pdf`), parte de viajeros Word (`hubfs/Chekin-Modelo de parte de viajeros (Word).docx`), contrato alquiler vacacional (`hubfs/CONTRATO DE ALQUILER VACACIONAL.pdf`), factura (`hubfs/PLANTILLA FACTURA.pdf`) y contratto IT (`hubfs/Contratto Affitto Turistico.pdf`). Cada landing actual redirige a su thank you page con el enlace. Excel de registro de viajeros: también está en HubSpot (`hubfs/Chekin-Modelo de parte de viajeros.xlsx`, mismo archivo que pasó Alex el 28/10); ya enlazado en la página de gracias del pack.
+  - **Enlaces de revisión actualizados (27/10):** guest app con capturas reales y logos https://claude.ai/artifact/6H23uPLZEJyBSbnVNWhTPP · SES v2 https://claude.ai/artifact/WSjWXPdZfVKVF781QqLdNK · guía v2 https://claude.ai/artifact/HWpa7NEiAcJAPwmYzvK1Uz · pack legal https://claude.ai/artifact/P8tf8sdAtaTqAXr8f7iZAj · affitti IT https://claude.ai/artifact/9JQowwwGyKbF2dZXhzF94x. Páginas de gracias (nuevas, privadas; en el visor de Claude los botones no descargan, en HubSpot sí): guía https://claude.ai/artifact/12J4bUSkMP47jiUWTSwQZX · pack https://claude.ai/artifact/FeF6rviuvLwbc1EkeeqGju · contratto IT https://claude.ai/artifact/JG3RSuqqz9JjLkTUrEWzDY. Fuentes en `trabajo-en-curso/p3-landings/` y `p3-landings/gracias/`.
+  - **Formularios actuales (leído 28/10, sin tocar HubSpot):** guía 26d9814f, contrato 13e8319d, parte Word 58865ed4, factura 7aebfc15 y contratto IT 76da1bed piden lo mismo que los bocetos: nombre, email, teléfono, tipo de alojamiento y nº de alojamientos (+ `last_form_type` oculto). La guía además tiene empresa (opcional) y casilla de privacidad. Propuesta: reutilizar los formularios actuales; el pack legal (une 4) necesita elegir uno o crear uno nuevo. HubSpot, al final.
+  - **28/10 · Snowball:** el A/B se hace en HubSpot (no en Google). Cada landing nueva = variante B de la actual, misma URL. Pendiente: reconectar el conector de HubSpot con permisos de landing pages (falló al leer formularios) y comprobar que el plan permite A/B.
+  - P6: para partners, el enlace de Cello va asociado a una cuenta de Chekin; Valery lo aclarará (viernes).
+- Carlos se ha creado hoy «Informe ShowMe v5 con los datos nuevos» (vence 27/10) en el proyecto MRR + ShowMe.
+
 ## Lunes 26/10 (Tenerife con Carlos), hecho
 - **P3 · Italia:** las 4 campañas de Google analizadas (H-18): 17 URL, pero 3 páginas se llevan el 94% de los clics, y el formulario de questura cuenta como conversión secundaria (101 en «todas las conversiones»). Cruce con el plan de noviembre de Snowball (H-19): Google es ~30% del presupuesto de Italia, no hay campaña de hoteles en Google IT y Search Intención IT no está en el plan. Los dos hallazgos están copiados en la ficha P3 de Notion. **Decidir con Carlos:** pasar el formulario a conversión principal, si el boceto «IT hoteles» se reorienta a alquiler vacacional y qué pasa con Search Intención IT.
 - **P2 · Chekin Connect:**
@@ -80,6 +101,7 @@ Fuente de fechas: Asana (consultado el 26/10 por la tarde). Lo de abajo de este 
   - Preguntar a Marta cuáles de sus 4 leads de The TOPO Connect eran pruebas (aparecen su email y el de Carlos) y corregir la tarea de Asana. En la ficha de Carlos en HubSpot, Last MQL type ha pasado a «Event».
   - Asignar las subtareas de seguimiento a Marta y Pablo. Preguntar a los AEs por qué 3 de los 5 eventos tienen 0 leads (H-20).
   - ✅ (26/10, Alex) Enviados a Giulia y Joan su enlace y contraseña; Rocco ya tiene acceso. AEs avisados del enlace nuevo.
+  - ✅ (27/10) Giulia no podía entrar: cuenta y perfil bien, pero la contraseña provisional del 26/10 no valía (nunca había iniciado sesión). Contraseña nueva generada en Supabase (SQL) y probada por Alex. [POR COMPROBAR] Joan: mirar si tiene el mismo problema (`last_sign_in_at` vacío).
 
 ## Asana al día (23/10, tarde)
 - Growth Daily › Alexandre: tarea índice «Mapa de tareas de Alexandre: owner, fecha y «hecho»» (gid 1219818181506129), con todas las tareas abiertas enlazadas y un comentario a Carlos. Asana no permite añadir desde aquí una tarea existente a otro proyecto: por eso es un índice con enlaces, no tareas duplicadas.

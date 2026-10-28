@@ -37,7 +37,7 @@ Tono: directo y breve, en español. Claude propone y Alex decide.
 
 ## Proyectos
 - **P2 · Ficha QR para AEs en eventos.** Entrega el 22/10. Falta el último retoque.
-- **P3 · Landings de paid (Google).** España e Italia listas como mínimo para el 27/10. Orden: ES hoteles → ES resto → IT hoteles → IT resto. Se trabaja en el chat "Landing Page". **Antes de tocar P3, leer `1-proyectos/growth-chekin/sobre-el-proyecto/traspaso-landings-paid.md`.** Reglas propias:
+- **P3 · Landings de paid (Google).** España e Italia listas como mínimo para el 27/10. Orden (desde el 27/10, prioridad de Carlos): ES resto (vacation rental) → IT resto (vacation rental) → IT hoteles → ES hoteles. Se trabaja en el chat "Landing Page". **Antes de tocar P3, leer `1-proyectos/growth-chekin/sobre-el-proyecto/traspaso-landings-paid.md`.** Reglas propias:
   - Google y Meta por separado; la landing se adapta al anuncio; una sola variable por test.
   - Oferta "Prueba Chekin gratis 14 días" (un experto en Chekin contacta). Formulario de 5 campos. CTA único "Empieza tu prueba gratis".
   - Solo cifras oficiales de la lista del traspaso y casos publicados en chekin.com. Nada de logos de Iberostar/Meliá/Barceló ni la nota de Capterra.

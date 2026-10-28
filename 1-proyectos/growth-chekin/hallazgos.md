@@ -5,6 +5,63 @@ Regla: toda cifra lleva su periodo (Carlos trabaja con 90 días). Si un dato no 
 
 ---
 
+## 28-10-2026
+
+### H-29 · Con cohortes ya cerradas (altas 1/07–30/09), ShowMe no mejora en España; en Italia sí; Portugal no se puede leer
+- **Qué:** solo altas hasta el 30/09, para que todos hayan terminado el trial de 14 días y tenido margen de negociación (idea de Alex). Micro con trial; % = clientes (lifecycle) / trials.
+  | País | Con ShowMe | Sin ShowMe | Total jul–sep | Mar–may (sin ShowMe) |
+  |---|---|---|---|---|
+  | España | 754 · **27,5%** | 122 · **26,2%** | 876 · 27,3% | 862 · 34,9% |
+  | Italia | 138 · **26,8%** | 254 · **16,5%** | 392 · 20,2% | 354 · 22,6% |
+  | Portugal | 52 · 1,9% | 61 · 21,3% | 113 · 12,4% | 37 · 24,3% |
+- **Fuente / periodo:** HubSpot, búsqueda por propiedades; altas 1/07–30/09/2026 (ES e IT sumadas de los cortes mensuales de H-27) y 1/03–31/05/2026. Cliente = lifecycle Customer.
+- **Implica:** España: +1,3 puntos con ShowMe, dentro del ruido, y por debajo de la primavera. Italia: +10 puntos dentro del mismo periodo (señal clara, n = 138), aunque el total de Italia no sube frente a la primavera. **Portugal no vale:** la marca `showme_trial_started_portugal` la llevan también los leads del recovery (enrolados a mano desde el 26/10, solo leads de 23/08–2/10 que no convirtieron), así que el grupo «con» está sesgado a no convertidos.
+- **Estado:** cifra base para el CEO (30/10). Falta Leopard y la regla de entrada de ShowMe.
+
+### H-28 · Antes y después de ShowMe: la conversión trial → cliente de Micro no sube; en España baja
+- **Qué:** Micro con trial, por fecha de alta. % = clientes (lifecycle) / trials.
+  | País | Mar–may (sin ShowMe) | Jul–sep (con ShowMe) | Jul–28/10 · con ShowMe | Jul–28/10 · sin ShowMe |
+  |---|---|---|---|---|
+  | España | 862 · **34,9%** | 876 · **27,3%** | 936 · 24,1% | 135 · 23,7% |
+  | Italia | 354 · **22,6%** | 392 · **20,2%** | 214 · 24,8% | 258 · 16,7% |
+  | Portugal | 37 · 24,3% | — | 84 · 2,4% | 80 · 16,3% |
+  En mar–may solo 18 trials de España tienen la marca de ShowMe (piloto o pruebas). En España, ShowMe coge el 87% de los trials del 1/07 al 28/10.
+- **Fuente / periodo:** HubSpot, búsqueda por propiedades; altas 1/03–31/05 y 1/07–28/10/2026. Cliente = lifecycle Customer (no Leopard). La importación de Holidu de marzo (H-23) no aparece en estos números (862 trials en ES, no decenas de miles).
+- **Implica:** con ShowMe cubriendo casi todo, la conversión no mejora frente a la primavera sin ShowMe: en España baja 7,6 puntos (34,9% → 27,3%) y en Italia 2,4. Del 1/07 a hoy, en España los dos grupos convierten igual (24,1% vs 23,7%). Factores que pueden tapar un efecto de ShowMe: estacionalidad (primavera = antes de temporada), cambios en el mix de campañas, y que jul–oct tiene menos tiempo para convertir (octubre, casi nada). Aun así, **no hay señal de que ShowMe suba la conversión en España**; en Italia, la única señal positiva es la comparación dentro del mismo periodo (24,8% vs 16,7%).
+- **Estado:** para el CEO (30/10). Pendiente: cruce con Leopard, regla de entrada de ShowMe (Pedro) y propuesta de grupo de control aleatorio.
+
+### H-27 · Por país, la ventaja de ShowMe desaparece en España; en Italia hay señal positiva con muestras pequeñas
+- **Qué:** mismo grupo que H-26 (Micro con trial, creados 1/06–19/10), separado por país (`country_dropdown`; España incluye Canarias) y con la marca de trial de cada mercado (`showme_trial_started`, `_italia`, `_portugal`). % = clientes (lifecycle) / trials.
+  | País | Con ShowMe | Sin ShowMe |
+  |---|---|---|
+  | España | 1.070 trials · 281 clientes · **26,3%** | 312 · 93 · **29,8%** |
+  | Italia | 202 · 51 · **25,2%** | 385 · 72 · **18,7%** |
+  | Portugal | 80 · 2 · 2,5% | 91 · 19 · 20,9% |
+  | Otros países | — | ~1.190 trials sin ShowMe |
+  Por mes de alta:
+  | Mes | ES con | ES sin | IT con | IT sin |
+  |---|---|---|---|---|
+  | Jun | 158 · 35,4% | 178 · 34,3% | — | 265 (jun–jul) · 19,6% |
+  | Jul | 336 · 32,1% | 67 · 25,4% | 2 · 0% | (en jun–jul) |
+  | Ago | 213 · 29,1% | 32 · 28,1% | 16 · 31,3% | 96 · 15,6% |
+  | Sep | 205 · 18,0% | 23 · 26,1% | 120 · 26,7% | 23 · 17,4% |
+  | Oct (1–19) | 158 · 11,4% | 12 · 0% | 64 · 21,9% | 3 · 33% |
+- **Fuente / periodo:** HubSpot, búsqueda por propiedades, creados 1/06–19/10/2026. Cliente = lifecycle Customer (no Leopard). Sep y oct están verdes (trial de 14 días + pago).
+- **Implica:** el 27,7% vs 15,9% de H-26 es sobre todo **mezcla de países**: ShowMe está en España, donde se convierte más, y el grupo «sin» está lleno de otros países. **En España no hay mejora**: en junio, el único mes con dos grupos parecidos (158 vs 178), 35,4% frente a 34,3%; desde julio ShowMe coge al 85–93% y apenas queda grupo de control. **En Italia sí hay señal** (ago–sep: 27–31% con ShowMe frente a 16–20% sin o antes), pero con grupos pequeños. Portugal: arranque reciente, sin conclusión.
+- **Estado:** para el CEO (encargo del 30/10). Falta: regla de entrada de ShowMe (Pedro), cruce con Leopard y, si se quiere medir de verdad, un grupo de control aleatorio (p. ej. 20% de Micro ES sin ShowMe durante 4 semanas).
+
+### H-26 · 2 de cada 3 trials Micro no pasan por la fase trial de ShowMe; los que pasan convierten a cliente casi el doble (sin control de sesgo)
+- **Qué:** contactos Micro (`property_size` = SMB Micro) creados del 1/06 al 19/10, con fecha de inicio de trial:
+  | Grupo | Trials | Clientes (lifecycle) | % a cliente |
+  |---|---|---|---|
+  | Con `showme_trial_started` | 1.103 | 306 | 27,7% |
+  | Sin ShowMe en trial | 2.230 | 355 | 15,9% |
+  | Total Micro con trial | 3.333 | 661 | 19,8% |
+  Pretrial: 1.492 Micro con alguna marca `showme_pretrial*` (ES, IT o PT) de 8.250 creados (18%); 89 son clientes (6,0%).
+- **Fuente / periodo:** HubSpot, búsqueda por propiedades, creados 1/06–19/10/2026. Cliente = lifecycle Customer (no Leopard).
+- **Implica:** sí hay una división clara medible (punto 2 del encargo del CEO), y 2.230 trials Micro no pasan por ShowMe. Pero **no prueba que ShowMe cause la mejora**: hay que saber por qué unos entran y otros no (país, fecha de arranque por mercado, criterio de ShowMe, si marcan a quien ya está avanzado). Hasta entonces, no comparable como test.
+- **Estado:** pendiente de cruzar por país y mes, de la regla de entrada de ShowMe (Pedro) y del cruce con Leopard para el pago real.
+
 ## 27-10-2026
 
 ### H-25 · El dashboard del funnel salía vacío: la conexión de PostHog apuntaba a otro proyecto
@@ -88,6 +145,7 @@ Regla: toda cifra lleva su periodo (Carlos trabaja con 90 días). Si un dato no 
 - **Fuente / periodo:** revisión en navegador, 23/10/2026.
 - **Implica:** para P3 no hace falta instalar nada: hay que pedir acceso a esos proyectos de Clarity (¿de Snowball o de Chekin?). Para grabar en el producto, primero hace falta un banner de consentimiento en el dashboard.
 - **Estado:** preguntar a Carlos y a Snowball de quién son y pedir acceso. Consentimiento: DPO.
+- **Actualización 27/10 (Slack):** en jun-2024 ya había una etiqueta de Clarity en GTM (Sergio Aguado lo pregunta en #mktg-team y Julia Pedrol responde que hay cuenta). El 05/06/2025 Gabriel Coachman avisa en #mktg-team de que ha invitado al equipo a Clarity y que lo sigue con Karina. Probablemente son los dos proyectos [POR COMPROBAR en el historial de versiones de GTM-PK7Q9R9].
 
 ### H-13 · En el alta y la configuración no se ve nada de lo que hace el cliente
 - **Qué:** en `dashboard.chekin.com` (`/register*` y `/setup*`) no hay clics (`$autocapture`), clics de rabia, clics muertos, salidas de página ni errores desde el 13/10, y las grabaciones están desactivadas (`session_recording_opt_in: false`). Solo hay páginas vistas y los eventos a medida del onboarding.
