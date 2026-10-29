@@ -1,5 +1,12 @@
 # Estado · actualizado 2026-10-28
 
+## ▶ HECHO EL JUEVES 29/10 (resumen; detalle en hallazgos H-44 a H-52 y en p1-onboarding.md)
+- **P7 Portugal:** workflow «ShowMe PreTrial -> Trial (Portugal)» creado y activado; los 9 leads corregidos (H-44). Recovery: 350 enrolados, comentado en Asana. Pedro respondió a las 3 preguntas (H-49): hay que corregir el borrador al CEO (quién entra, «converted»); los vídeos van después del 30/10.
+- **P1 Onboarding:** funnel de 30 días (H-48), Clarity conectado y 500 grabaciones analizadas (H-46, H-47, H-50, H-51), tramos de tamaño (H-52). Dashboard renombrado a «Onboarding Chekin: del alta a la activación», con la sección nueva «Alta y onboarding». **Documento para Daniel:** https://claude.ai/artifact/2WEQKEeA2NfBKpybzB45gX · **Prototipos navegables:** portátil https://claude.ai/artifact/DfLw9HeJKddbpxHYRC6mLP · móvil https://claude.ai/artifact/CjcH5gMdon5qBKatXSLopN (lienzo de diseño: https://claude.ai/artifact/U8YpmnbK8qQrjdd3vssSUc). Los dos son privados: hay que compartirlos con Daniel.
+- **P6 Cello:** resumen en `p6-cello.md` (H-45).
+- **P3:** el A/B de España sigue en el paso 1 de 5 en «Martes 27».
+- **Viernes 30:** Portugal (las dos últimas tandas), respuesta al CEO, mensaje a Daniel y revisar el workflow de `property_size`.
+
 ## ▶ EMPIEZA AQUÍ (jueves 29/10 · Carlos de vacaciones hasta el 3/11)
 Lo de abajo de este bloque es el histórico. Horas: semana 26–30/10 ≈ 18 h → quedan ~2 h para jue–vie: priorizar.
 
@@ -115,6 +122,7 @@ Lo de abajo de este bloque es el histórico. Horas: semana 26–30/10 ≈ 18 h �
   ✅ 29/10: las dos B de Portugal compactadas a petición de Alex (la tarjeta se cortaba en el editor): título del formulario en una línea, sin «Introduzir um número», texto legal más pequeño. Botón a 584 px en pantalla de 700 px de alto.
   🟢 **29/10 ~12:25: los 6 A/B de las PMax de Google EN MARCHA** (Alex publica los de Portugal). Comprobado por Claude en navegador real, 8 visitas nuevas por página: ES SES 3A/5B · ES hoteles 5A/3B · IT Alloggiati 3A/5B · IT Questura 5A/3B · PT SIBA 1A/7B · PT check-in 5A/3B → las 6 sirven A y B. Siguiente: medir por página (envíos y leads que pasan a prueba/SQL), no solo envíos; primera revisión de reparto el 30/10.
   ⚠️ 29/10: H-53. La PMax ES Vacational pasó de ~900 a ~65 clics/día desde el 20/10 con el mismo gasto (CPC ~0,2 € → ~3 €). El A/B de ES Vacational recibirá ~30 visitas por variante al día. Preguntar a Carlos/Snowball qué se cambió el 20/10.
+  📅 **Seguimiento de los 6 A/B (acordado con Alex, 29/10):** revisión **cada viernes** con los datos de la semana (clics de Windsor + visitas y envíos por variante en HubSpot + leads que pasan a prueba/SQL). 30/10: comprobar que funciona (reparto y envíos de la B). 6/11: primera tendencia (ES Vacational ~500 clics/semana → ~250 por variante). Cálculo orientativo para ES Vacational con la conversión histórica de la landing (3,7 %, HubSpot, 21/07–18/10, tráfico anterior al 20/10): para ver que la B dobla la conversión hacen falta ~600 visitas por variante (≈ 3 semanas al ritmo actual); para ver una mejora del 50 %, ~2.000 por variante (≈ 2 meses). La conversión con el tráfico posterior al 20/10 está [POR COMPROBAR].
   Sin tráfico de paid desde el 27/10 (eran URL de expansión): guía SES v2, guest app v2, pack legal, affitti IT y las 4 de «una landing por anuncio». Se guardan, no se usan en el A/B.
 - Carlos se ha creado hoy «Informe ShowMe v5 con los datos nuevos» (vence 27/10) en el proyecto MRR + ShowMe.
 
