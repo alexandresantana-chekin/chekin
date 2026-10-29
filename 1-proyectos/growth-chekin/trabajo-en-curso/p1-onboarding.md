@@ -172,7 +172,7 @@ Pendiente: ver con Daniel el flujo nuevo «en proceso».
 1. **Entrar** (una pantalla, sin scroll): «Empieza tu prueba gratis de 14 días» → **Continuar con Google** o **email** (+ nombre y apellidos). Sin contraseña: el código de 6 dígitos que ya existe sirve como acceso (en el idioma de la página).
 2. **Dentro del panel**, se ve el producto (demo o vacío con ejemplos) y una barra «Empieza tu prueba gratuita».
 3. **Paso guiado 1, tu negocio**: tipo de propiedad y número (dos toques). De aquí sale micro/SMB/hotel para ventas y ShowMe.
-4. **Paso guiado 2, teléfono**, con motivo: «Te llamamos para dejarlo configurado contigo». Si ya existe, no bloquea: avisa y sigue.
+4. **Paso guiado 2, teléfono**, con motivo: «Un experto en Chekin puede ayudarte con la configuración». Si ya existe, no bloquea: avisa y sigue.
 5. **Paso guiado 3, conectar el PMS**: en ordenador, como ahora; **en móvil, ofrecer «Te mandamos el enlace para hacerlo en el ordenador» o «Que lo haga un experto»**, porque en móvil casi nadie lo consigue (H-51).
 6. **Paso guiado 4, primera vivienda y primer check-in de prueba**: el momento de activación.
 - Se quitan del alta: contraseña, ciudad/región (se deduce o se pide al crear la vivienda) y la pregunta del PMS.
@@ -213,7 +213,26 @@ La guía se hizo sin datos de la empresa (recorrido como anfitrión de prueba, I
 ## Alta con Google: lo que falta pedir (Alex, 29-10-2026)
 Con Google ya llegan nombre, apellidos y email. Una sola pantalla después, «Cuéntanos tu negocio» (~15 s):
 - **Tipo de propiedad**, con botones (alquiler vacacional, hotel o aparthotel, camping, otro).
-- **Número de propiedades**, con botones que coinciden con los tramos de HubSpot (Alex, 29/10): **1-2 (SMB Micro) · 3-10 (SMB) · 11-60 (Mid-Market) · más de 60 (Enterprise)**. Así el tramo queda puesto en el alta [POR COMPROBAR la regla exacta, H-52].
-- **Teléfono**, con el prefijo **puesto según el país desde el que entra** (España +34, Italia +39, Portugal +351…: por el idioma o la página de entrada y, si no, por la ubicación de la conexión), que se puede cambiar; y el motivo («Te llamamos para dejarlo configurado contigo»). Si ya existe, no bloquea.
+- **Número de propiedades**, con botones que coinciden con los tramos de HubSpot (Alex, 29/10): **1-3 (SMB Micro) · 4-10 (SMB) · 11-60 (Mid-Market) · más de 60 (Enterprise)**. Así el tramo queda puesto en el alta [POR COMPROBAR la regla exacta, H-52].
+- **Teléfono**, con el prefijo **puesto según el país desde el que entra** (España +34, Italia +39, Portugal +351…: por el idioma o la página de entrada y, si no, por la ubicación de la conexión), que se puede cambiar; y el motivo («Un experto en Chekin puede ayudarte con la configuración»). Si ya existe, no bloquea.
 - Botón «Entrar en Chekin». Después, el panel y los pasos guiados (reservas, primera vivienda, check-in).
 Con email: email + nombre y apellidos → código de 6 dígitos → la misma pantalla.
+
+## Onboarding propuesto: mezcla de la guía de Alex (PDF), el prototipo de Daniel y los datos (29-10-2026, borrador para Daniel)
+| # | Paso | Qué pasa | De dónde sale |
+|---|---|---|---|
+| 0 | Llegada | Desde la página de gracias de una landing: email ya puesto. Prefijo e idioma según el país de entrada | Datos H-51 · Alex |
+| 1 | Entrar | **Continuar con Google** arriba; o email + nombre y apellidos + código de 6 dígitos (sin contraseña). Login y alta en la misma pantalla | Alex · Daniel · datos H-48/H-50 |
+| 2 | Cuéntanos tu negocio (~15 s) | Tipo de propiedad; cuántas (1-3 SMB Micro · 4-10 SMB · 11-60 Mid-Market · +60 Enterprise; en hoteles, habitaciones); teléfono con motivo, que nunca bloquea | Alex · H-52 · H-47 |
+| 3 | Panel + «Primeros pasos» | Se entra y se ve el producto. Tarjeta fija: «Indicaste 3 viviendas: vamos a activarlas una a una», progreso y vídeo de 1 min. Sin «Ver planes» durante el onboarding | PDF #1-#3 · Daniel (inicio «aún no adaptado») |
+| 4a | ¿Cómo recibes tus reservas? | Tres vías con una recomendada. **En móvil no se recomienda el PMS**: «te mando el enlace al ordenador» o «que lo haga un experto» | PDF #6 · Daniel paso 2 · datos H-51 |
+| 4b | Datos de la vivienda | País y obligación legal (de Daniel), NIF/CIF/DNI con validación, dirección con sugerencias | Daniel paso 1 · PDF #4 |
+| 4c | Check-in online | Envío automático **encendido** desde el alta, con aviso de qué se envía y cuándo | PDF #7 (ICE 8,0) |
+| 4d | Primera reserva y check-in de prueba | Si no llegó por PMS o calendario, una a mano; enviarse el enlace de prueba | PDF · Daniel plan |
+| 5 | ¡Vivienda activada! | Lo que ya funciona y «Siguiente: vivienda 2» con los datos del propietario ya puestos | PDF #5 |
+| 6 | Después, opcional | Cumplimiento legal (credenciales SES), marca, upselling («3 ofertas en 1 minuto»), bandeja; «qué te importa más» aquí, no antes | PDF #11 · Daniel pasos 4-5 |
+Asistente: sabe en qué paso estás y lleva al siguiente (PDF #3). Al plan de Daniel se le cambia el orden: la reserva antes que la marca.
+**North Star:** viviendas activadas (datos + check-in online + reserva) ÷ declaradas, a 7 días (PDF). **KPI del alta:** cuenta creada / entra en el alta (H-48).
+**Primer A/B:** pasos 1-2 (alta corta) frente al alta actual. Es donde se pierde más gente; después, la tarjeta «Primeros pasos» y el envío automático.
+- **Documento para Daniel (29/10):** https://claude.ai/artifact/2WEQKEeA2NfBKpybzB45gX · **Pantallas en móvil, clicables:** https://claude.ai/artifact/U8YpmnbK8qQrjdd3vssSUc (6 pantallas: entrar, negocio, panel, reservas, vivienda y activada). Los dos privados hasta que Alex los comparta.
+- **Prototipos navegables (29/10), uno por dispositivo:** portátil https://claude.ai/artifact/DfLw9HeJKddbpxHYRC6mLP · móvil https://claude.ai/artifact/CjcH5gMdon5qBKatXSLopN. Frases de las landings («Prueba Chekin gratis 14 días», «Sin tarjeta de crédito. Activación inmediata.», «sin permanencia», «+200.000 propiedades y +25M de check-ins», «El parte de viajeros, enviado solo y en plazo»). Alta con el patrón del prototipo de Daniel (email → Continuar → nombre y apellidos si la cuenta es nueva → código).

@@ -98,3 +98,4 @@
 
 - **29/10 · Los 6 A/B de las PMax (ES, IT, PT × Vacational/Competitors) se publican hoy.** La B va en el Head HTML de la variante, con formulario de 5 campos y prefijo del país; la A queda intacta. Se mide por página: envíos y, sobre todo, leads que llegan a prueba o SQL. Decide y publica Alex.
 - **29/10 · P1: alta preferida con Google.** Lo decide Alex. Con Google ya tenemos nombre, apellidos y email. Solo faltan **tipo de propiedad, número de propiedades y teléfono**, en una pantalla corta justo después de entrar. El teléfono no bloquea nunca. Con email: email + nombre y apellidos + código, y después la misma pantalla.
+- **29/10 · Tramos de tamaño (Alex):** SMB Micro **1-3**, SMB **4-10**, Mid-Market 11-60, Enterprise más de 60. Sustituye a los 1-2 / 3-10 que se apuntaron antes hoy. En hoteles se cuentan habitaciones y el corte está por comprobar (H-52). Aplicado a los botones del onboarding nuevo.
