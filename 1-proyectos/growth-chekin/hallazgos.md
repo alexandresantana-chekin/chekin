@@ -19,7 +19,13 @@ Regla: toda cifra lleva su periodo (Carlos trabaja con 90 días). Si un dato no 
 - **Implica:** el lead de paid rellena **dos formularios**: el de la landing y el de alta. Con «dejar entrar al usuario», el de la página de gracias debería llevar directo al alta con Google o email, con los datos ya rellenos. Para unir web y producto en un funnel: instalar PostHog en chekin.com o pasar un identificador del formulario al dashboard [pendiente, decisión 29/10: los eventos por paso quedan para más adelante].
 - **Estado:** abierto. Está en el dashboard del funnel (sección «Alta y onboarding»).
 
-### H-50 · Los formularios de las A de Italia y de ES hoteles piden solo el email; el de Portugal sale con prefijo de España
+### H-53 · La PMax ES Vacational cayó de ~900 a ~65 clics al día desde el 20/10, con el mismo gasto
+- **Qué:** campaña SB_ES_GOOGLE_PMAX_VACATIONAL_CHEKIN. Del 13 al 19/10: 610–969 clics/día, ~190–207 €/día, CPC ~0,2 €, 12–20 conversiones/día. Desde el 20/10 (21–28/10): 37–91 clics/día (media ~67), ~160–355 €/día, CPC ~3 €, 0–7 conversiones/día. Los clics a /es/check-in-online-ses-hospedajes siguen siendo casi todos de esta campaña (11.029 de 11.287 en 30 días).
+- **Fuente / periodo:** Windsor.ai (Google Ads 103-962-2294), 29/09–28/10/2026.
+- **Implica:** algo cambió en la campaña el 20/10 (puja, objetivo, inventario o exclusiones) [POR COMPROBAR con Carlos/Snowball]. Los clics baratos de antes podían ser de baja calidad, así que menos clics no es necesariamente peor; hay que mirarlo por leads y SQL. Para el A/B: ~65 clics/día → ~30 visitas por variante al día, así que el test tardará bastante más de lo que daban los números de antes del 20/10.
+- **Estado:** abierto. Preguntar qué se cambió el 20/10.
+
+### H-54 · Los formularios de las A de Italia y de ES hoteles piden solo el email; el de Portugal sale con prefijo de España
 - **Qué:** en las A en vivo, /it/check-in-online-alloggiati-web y /it/ads/registrazione-ospiti-questura usan el formulario 5ef250b9 («Contattaci», 1 campo: e-mail) y /chekin-hoteles usa c7e8d490 («Contacta con nosotros», 1 campo: correo). No son los 5 campos del traspaso. Las dos A de Portugal (formulario 23a6aa7a) piden 5 campos, pero el teléfono sale por defecto con «Spain +34».
 - **Fuente / periodo:** carga de las páginas en vivo en landing.chekin.com y de los formularios embebidos, 29/10/2026.
 - **Implica:** las A se dejan como están y las B llevan las mejoras: formulario de 5 campos (ES e42c7acf, IT ca54cc24, PT 23a6aa7a) y prefijo del país por defecto. El A/B mide el paquete completo (diseño + formulario), no cada cambio por separado.
