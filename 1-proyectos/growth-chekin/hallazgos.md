@@ -5,7 +5,93 @@ Regla: toda cifra lleva su periodo (Carlos trabaja con 90 días). Si un dato no 
 
 ---
 
+## 29-10-2026
+
+### H-52 · Tramos por tamaño en HubSpot: SMB Micro, SMB, Mid-Market y Enterprise; con 3 viviendas, la mayoría está marcada como SMB, no como Micro
+- **Qué:** `property_size` (contactos) tiene 4 valores: **SMB Micro** (`Micro SMB`), **SMB** (`Small Business`), **Mid-Market** y **Enterprise**. Alex los recuerda como **1-2, 3-10, 11-60 y más de 60**. Contactos creados desde el 1/08 con `number_of_units` = 3: **298 SMB frente a 104 SMB Micro**. Mid-Market con 11-60 unidades: 279. **Enterprise:** 312 con más de 60 unidades y 11 con 60 o menos; pero también hay **189 Mid-Market con más de 60**.
+- **Fuente / periodo:** HubSpot, definición de la propiedad y búsquedas del 29/10/2026 (altas desde el 1/08/2026).
+- **Implica:** el límite de Micro parece estar en **1-2**, no en 1-3 como se apuntó el 28/10 (p7-showme.md y borrador al CEO). Pero hay 104 de 3 viviendas marcados como Micro: o la regla ha cambiado o depende de otra cosa (país, habitaciones). Enterprise ≈ más de 60, aunque el límite Mid-Market/Enterprise tampoco es limpio (¿habitaciones de hotel frente a viviendas?). [POR COMPROBAR la regla exacta en el workflow que pone `property_size`.] Importa para ShowMe (quién entra) y para el onboarding nuevo (los botones de «¿cuántas propiedades?»).
+- **Estado:** abierto.
+
+### H-51 · PostHog no está en chekin.com; sin los clientes que buscan el login, en móvil conecta el PMS menos de 1 de cada 100; y casi todo lo que llega desde paid viene de las páginas de gracias
+- **Qué:** 1) PostHog solo recibe páginas vistas de `dashboard.chekin.com` (y del entorno de pruebas): **ninguna de chekin.com**. El formulario web y el alta del dashboard no se pueden unir persona a persona. 2) Quitando las sesiones que pulsan «Iniciar sesión» (14 en móvil, 64 en ordenador): móvil 236 llegan → 103 escriben → 16 eligen PMS → **2 pulsan conectar (0,8%)**; ordenador 186 → 45 → 17 → **14 (7,5%)**. 3) De las ~46 sesiones de la muestra que pasan por landing.chekin.com, casi todas son de móvil y la mayoría llega desde **thank-you-page** (ES 18, PT 2, IT 1, DE 1): son leads que ya dejaron sus datos en el formulario de la landing y después rellenan otro formulario largo. Desde páginas de producto, pocas (PT check-in-online 9; SES 2+2).
+- **Fuente / periodo:** PostHog (páginas vistas, últimos 30 días a 29/10/2026); Clarity, 500 grabaciones (móvil del 16 al 29/10, ordenador del 20 al 29/10).
+- **Implica:** el lead de paid rellena **dos formularios**: el de la landing y el de alta. Con «dejar entrar al usuario», el de la página de gracias debería llevar directo al alta con Google o email, con los datos ya rellenos. Para unir web y producto en un funnel: instalar PostHog en chekin.com o pasar un identificador del formulario al dashboard [pendiente, decisión 29/10: los eventos por paso quedan para más adelante].
+- **Estado:** abierto. Está en el dashboard del funnel (sección «Alta y onboarding»).
+
+### H-50 · Los formularios de las A de Italia y de ES hoteles piden solo el email; el de Portugal sale con prefijo de España
+- **Qué:** en las A en vivo, /it/check-in-online-alloggiati-web y /it/ads/registrazione-ospiti-questura usan el formulario 5ef250b9 («Contattaci», 1 campo: e-mail) y /chekin-hoteles usa c7e8d490 («Contacta con nosotros», 1 campo: correo). No son los 5 campos del traspaso. Las dos A de Portugal (formulario 23a6aa7a) piden 5 campos, pero el teléfono sale por defecto con «Spain +34».
+- **Fuente / periodo:** carga de las páginas en vivo en landing.chekin.com y de los formularios embebidos, 29/10/2026.
+- **Implica:** las A se dejan como están y las B llevan las mejoras: formulario de 5 campos (ES e42c7acf, IT ca54cc24, PT 23a6aa7a) y prefijo del país por defecto. El A/B mide el paquete completo (diseño + formulario), no cada cambio por separado.
+- **Estado:** aplicado en las 6 B (29/10). Decisión de Alex.
+
 ## 28-10-2026
+
+### H-50 · Formulario web de registro, paso a paso (Clarity, 500 grabaciones): en móvil solo 1 de cada 100 llega a conectar el PMS; desde las landings de paid la intención es mucho mayor
+- **Qué:** 250 grabaciones de móvil (16–29/10) y 250 de ordenador (20–29/10) de `chekin.com/…/onboarding/register-form/`, con el paso más lejano que alcanza cada sesión según lo que pulsa:
+  | Paso | Móvil | Ordenador |
+  |---|---|---|
+  | Llegan | 250 | 250 |
+  | Escriben algo | 44% | 24% |
+  | Escriben y pulsan Continuar | 25% | 13% |
+  | Responden sí/no | 26% | 12% |
+  | Llegan al tipo de propiedad | 16% | 8% |
+  | Eligen PMS | 7% | 7% |
+  | **Pulsan conectar el PMS** | **1%** (3) | **6%** (15) |
+  - No hacen nada: 39% en móvil, 35% en ordenador. Banner de cookies que hay que cerrar: 22% en móvil. Pulsan «Continuar» 3 veces o más: 6% en móvil (casi 0 en ordenador).
+  - **26% de las sesiones de ordenador pulsan «Iniciar sesión»**: clientes que ya tienen cuenta y caen en el formulario de alta (52 de los 64 llegan en directo). Ensucian la cifra de abandono.
+  - **Por origen** (500 sesiones): desde **landing.chekin.com** (paid) escriben el 75% y llegan al PMS el 25%; en directo, el 23% y el 2%; newsletter llega al PMS el 27% (n = 15); utm `test-a` el 11% (n = 37).
+- **Fuente / periodo:** Microsoft Clarity (conector MCP), proyecto `rqlc6g9qhu`, 500 grabaciones del 16 al 29/10/2026. El paso se deduce de los textos pulsados: es una aproximación, no un evento.
+- **Implica:** en **móvil**, el paso de elegir PMS → conectar casi no funciona (18 → 3), y encaja con lo visto en las grabaciones. Muchos «abandonos» son clientes que buscan el login. Hay que separarlos (enlace claro a «Ya tengo cuenta») antes de medir conversión. Para P3, la gente que llega desde las landings es la más decidida: no hay que perderla en el formulario.
+- **Estado:** abierto. Para medirlo bien: eventos de Clarity (o PostHog) en cada paso del formulario web, a pedir a quien lleve la web.
+
+### H-49 · ShowMe (Pedro, 29/10): «converted» cuenta a todo lead que pasa por la secuencia, haya hablado o no con el agente; quién entra lo deciden nuestros workflows
+- **Qué:** respuestas de Pedro a las 3 preguntas: 1) **quién entra lo deciden los workflows de HubSpot de Chekin**: al principio solo micro no asignados a ventas, y después se han ido sumando otros tamaños (pide confirmarlo con Carlos, sobre todo por país); 2) **«converted» no depende de haber hablado con el agente**: en Pre-Trial es quien empieza la prueba; en Trial, quien pasa a `lifecyclestage = customer` (cuando entra el MRR). Las conversaciones van en columnas aparte; 3) no tienen vídeos por país. Si hacemos altas de prueba, avisar antes con los emails.
+- **Fuente / periodo:** Slack #showme_chekin, respuesta de Pedro Bernar, 29/10/2026.
+- **Implica:** las cifras de conversión de ShowMe **no miden el efecto del agente**, solo el resultado de los leads que pasan por la secuencia. Refuerza leer el impacto con grupo comparable y pagos reales (H-43). En el borrador al CEO hay que corregir «solo entran los leads de 1 a 3 viviendas»: el criterio ha cambiado con el tiempo y se decide en nuestros workflows (revisar en HubSpot el workflow que pone `showme_pretrial`, «UPDATED Lead As…»).
+- **Estado:** abierto. Confirmar con Carlos (vuelve el 3/11) o revisando los workflows. Avisar a Pedro antes de las altas de prueba.
+
+### H-48 · Último mes de onboarding: de cada 10 que entran en el alta, menos de 2 crean la cuenta; la siguiente caída es elegir el PMS
+- **Qué:** 771 personas entran en `dashboard.chekin.com/register` → **126 crean cuenta (16%)** → 112 bienvenida → **64 eligen PMS** → 29 paso de conectar → 21 PMS conectado → 29 configuración completada. En la variante rebuilt: 331 → 97 (29%), y solo 84 escriben email y 56 pulsan Google. legacy (205) no envía eventos. Captcha: 42 personas fallan (1.364 veces); de las 13 que lo fallan en el alta, 12 no crean cuenta.
+- **Fuente / periodo:** PostHog, 29/09–29/10/2026 (eventos desde el 13/10). Consultas puntuales; detalle en `trabajo-en-curso/p1-onboarding.md`.
+- **Implica:** la mayor pérdida está en la propia página de alta, antes del producto. Apoya la propuesta de Alex (alta mínima con Google o email), con los riesgos anotados: el teléfono para ShowMe y la clasificación para ventas.
+- **Estado:** abierto. Llevar a Daniel con la propuesta.
+
+### H-47 · Formulario de registro (Clarity): la mitad se va en menos de 10 s y el selector de «tipo» da clics muertos en 3 idiomas
+- **Qué:** `chekin.com/…/onboarding/register-form/`: **167 sesiones** del 27 al 29/10 (PC 114, móvil 52, tablet 1). En una muestra de las **100 grabaciones** más recientes (26/10 18:00 – 29/10 09:35 UTC): 51 ES, 25 IT, 16 EN, 6 PT, 2 DE; solo **38 de 100 escriben algo** en el formulario; **47 de 115** visitas a la página duran menos de 10 s (mediana 21 s). Hay **clics muertos en el desplegable «Selecciona el tipo / Seleziona il tipo / Select type»** en 5 sesiones distintas (ES, IT, EN). El banner de cookies aparece («Aceptar todo» pulsado 12 veces).
+- **Fuente / periodo:** Microsoft Clarity (conector MCP), proyecto `rqlc6g9qhu`, 26–29/10/2026. Muestra de 100 sesiones, no el total.
+- **Implica:** P1: hay pérdida **antes** del dashboard, en el propio formulario. El selector de tipo puede estar fallando (sobre todo en IT). Clarity no ve el paso al dashboard (otro dominio), así que el éxito del envío hay que cruzarlo con PostHog o HubSpot.
+- **Ampliación 13–29/10 (Clarity, mismo proyecto):** **1.590 sesiones** en el formulario (PC 941, móvil 604, tablet 43, otro 2). Sesiones con clic muerto: ~19% en PC y en móvil (35% en tablet). Vuelta atrás rápida: 33% en PC, 23% en móvil. Scroll medio: 76–78%. Clics muertos más repetidos: **«Continuar» 356**, «Pasos para crear tu cuenta» 253, «No/no/yes» ~536, **«Selecciona el tipo» 132**, campos enmascarados ~600 y 2.732 sobre zonas sin texto. Smart events: solo 36 «SubmitForm» y 1 «SignUp» [POR COMPROBAR si Clarity detecta bien el envío en este formulario de varios pasos].
+- **Implica (ampliación):** el botón **«Continuar» no responde** muchas veces. Lo más probable es una validación que no enseña el error, o el botón desactivado sin aviso [POR COMPROBAR viendo grabaciones]. Junto con el selector de tipo, es un arreglo rápido que no depende del onboarding nuevo.
+- **Grabación vista por Alex (29/10, my2m9b/vw1cko, móvil):** el formulario sale **cortado** y para rellenarlo hay que **desplazarse mucho**. En palabras de Alex: «una locura, muy difícil de hacer». Una grabación, no una medida: hay que confirmarlo con más sesiones de móvil.
+- **Segunda grabación vista por Alex (29/10, 5tmo9d/g2usdj, 13 min):** intenta **conectar el PMS** y **se queda trabado, no avanza**. El clic muerto cae en «Atrás · Conecta con tu…», o sea que el paso de conectar el PMS también aparece en este flujo [POR COMPROBAR si es el formulario web o el dashboard]. Encaja con la caída del PMS en PostHog (H-48: de 64 que eligen PMS, 21 lo conectan).
+- **Tercera grabación vista por Alex (29/10, 3qs4c5/kxzwbv):** lo completa bien, pero **tarda unos 2 minutos solo en entrar**. Aunque todo funcione, el alta es larga.
+- **Lectura de las 3 grabaciones:** en móvil se corta y cuesta rellenarlo; la conexión del PMS se traba; y cuando todo va bien, entrar lleva ~2 min. Respalda el alta mínima (Google o email → panel) y los arreglos rápidos del formulario actual.
+- **Cuarta grabación vista por Alex (29/10, 1tmlugv/1nj6qv8, PT):** al pulsar «Seguir» sale un **error de «el teléfono (móvil) ya existe»** y no puede continuar. El formulario bloquea el alta si el número ya está registrado. Puede ser alguien que ya tenía cuenta o un número compartido (gestor con varias cuentas, mismo teléfono en dos altas) [POR COMPROBAR cuántas veces sale este error]. El aviso no le ofrece entrar ni recuperar la cuenta.
+- **Segunda grabación (PMS):** el PMS era **Smoobu** («Conectar con Smoobu» → «Inicia sesión»). En otra sesión, una persona alemana lo intenta dos veces con Smoobu (1adyp6k). La conexión del PMS está en el propio formulario web (Select PMS → Connect with…).
+- **Estado:** listo para llevar a Daniel. Falta saber qué PMS se trababa en la segunda grabación.
+
+### H-46 · Clarity sí graba el formulario de registro: está en chekin.com/onboarding/, no en el dashboard
+- **Qué:** Alex tiene acceso al proyecto de Clarity «Chekin», que cubre **chekin.com**. Export «Páginas principales» filtrado por *sitio de referencia* = `dashboard.chekin.com`: **375 sesiones** en `/onboarding/login/` (ES 215, EN 70, IT 62, DE 15, PT 13), **29** en `/onboarding/register-form/` (IT 13, ES 11, EN 5), **16** en las páginas del programa de referidos (EN, IT y ES, 5–6 cada una) y 12 en una landing italiana de check-in de visu.
+- **Fuente / periodo:** Microsoft Clarity, proyecto «Chekin», 27/10–29/10/2026 (el 29 incompleto: export a las 10:18). Solo sesiones que vienen del dashboard, no el tráfico total de esas páginas.
+- **Implica:** corrige lo dicho el 29/10 en el chat: **el formulario de registro (`chekin.com/…/onboarding/register-form/`) ya se graba en Clarity**, así que para P1 se pueden ver grabaciones del alta sin tocar el producto. Los pasos de `dashboard.chekin.com/setup` siguen sin grabarse. Que haya tanto login con el dashboard como origen apunta a clientes que vuelven al login desde el producto (cierre o caducidad de sesión) [POR COMPROBAR]. Para P6: unas 16 visitas en 3 días del dashboard a las páginas de referidos.
+- **Estado:** siguiente paso: en Clarity, filtrar por URL que contenga `/onboarding/register-form/`, **sin** el filtro de referencia, para ver sesiones totales, abandono, clics de rabia y grabaciones. [POR COMPROBAR si chekin.com pide consentimiento antes de cargar Clarity]
+
+### H-45 · Cello: 10 clientes referidos desde junio, y solo ~12k usuarios tienen Cello activado (se esperaban ~150k)
+- **Qué:** según Cello, desde el lanzamiento en junio de 2026 han pagado 10 clientes referidos, y octubre ha sido el mejor mes. Solo hay **~12.000** usuarios con Cello activado frente a los **~150.000** esperados. Hay recompensas atascadas en «pending» porque Cello no se arranca al iniciar sesión y las comprobaciones de fraude no se resuelven solas.
+- **Fuente / periodo:** resumen de Cello a Valery por Slack tras la reunión del 29/10/2026. Periodo: junio–octubre 2026. Cifras de Cello, no comprobadas en HubSpot ni en Leopard.
+- **Implica:** el programa llega a menos del 10% de la base que se esperaba. Antes de optimizar mensajes, hay que arreglar la activación y el arranque de Cello al iniciar sesión (Tecnología). Detalle en `trabajo-en-curso/p6-cello.md`.
+- **Estado:** abierto. [POR COMPROBAR el MRR de los 10 referidos en Leopard]
+
+### H-44 · En Portugal, ningún lead del Pre-Trial recibe la marca de trial de ShowMe al empezar la prueba
+- **Qué:** aviso de Pedro (ShowMe, 29/10) con 4 casos. Comprobado en HubSpot: de los **246** contactos con `showme_pretrial_portugal = true`, **0** tienen `showme_trial_started_portugal`. Los **9** que empezaron trial desde el 1/09 (del 7 al 27/10) tienen `trial_starts_we = Yes` y siguen sin la marca, así que reciben mensajes de Pre-Trial. La marca sí aparece en **90** contactos de Portugal fuera del recovery, todos sin Pre-Trial: entran directos al trial. En España, **15 de 15** leads del Pre-Trial con trial desde el 15/10 tienen `showme_trial_started`. Los 4 casos **no son del recovery**: altas del 22 al 27/10, sin `showme_pt_recovery`.
+- **Fuente / periodo:** HubSpot, búsqueda del 29/10/2026 (Pre-Trial PT de cualquier fecha; trials desde el 1/09).
+- **Implica:** el paso Pre-Trial → Trial no está montado o excluye a los de Pre-Trial en Portugal: leads en trial reciben mensajes que no tocan (uno ya pregunta por la URL de Booking). Además, «con ShowMe» en Portugal (H-27, H-43) no incluye a ningún lead que pasara por el Pre-Trial. No se puede ver el workflow con el conector: hay que abrirlo en HubSpot. [POR COMPROBAR quién es el dueño del workflow]
+- **Causa (29/10, revisado en HubSpot con Alex):** la marca la ponen los workflows «ShowMe PreTrial -> Trial» (España, id 1841002847) y «ShowMe PreTrial -> Trial (Italy)», los dos publicados. **No existe uno para Portugal.** Disparador del de España: Pre-Trial = True y (`trial_starts_we` = Yes **o** `trial_start_date` conocida); acción: `showme_trial_started` = true; re-enroll off.
+- **Arreglado el 29/10 (09:35, Alex en HubSpot):** workflow nuevo «ShowMe PreTrial -> Trial (Portugal)» (id 1912225094), clonado del de Italia. Disparador: (`trial_starts_we` = Yes **o** `trial_start_date` conocida) **y** `showme_pretrial_portugal` = Yes; acción: `showme_trial_started_portugal` = true; re-enroll off. Activado **solo para los nuevos**. En Portugal las propiedades son desplegables (Yes/No), no casillas como en España e Italia.
+- **Error al inscribir a los 9 (29/10, 09:48):** la acción del clon seguía escribiendo en `showme_trial_started_italia` aunque el editor mostraba `showme_trial_started_portugal`. Los 9 quedaron con la marca de **Italia** y sin la de Portugal. [POR COMPROBAR con Pedro si llegó a dispararse la secuencia de trial de Italia]
+- **Corregido (29/10, ~10:00):** acción borrada y creada de nuevo con «ShowMe Trial Started Portugal» = Yes (workflow apagado durante el cambio). A los 9 se les quitó `showme_trial_started_italia` y se les puso `showme_trial_started_portugal` = true con el conector de HubSpot (con OK de Alex). Comprobado contacto a contacto.
+- **Estado:** cerrado en HubSpot. Falta confirmar con Pedro que ninguno entró en la secuencia de trial de Italia (estuvieron marcados ~14 min).
 
 ### H-43 · Con pagos reales (Leopard), los trials que pasan por ShowMe no pagan más que los que no pasan; la señal de Italia desaparece
 - **Qué:** Micro con trial, altas 1/08–30/09, que pagan según Leopard (`mrr_leopard_eur` > 0; mes cerrado = septiembre 2026):

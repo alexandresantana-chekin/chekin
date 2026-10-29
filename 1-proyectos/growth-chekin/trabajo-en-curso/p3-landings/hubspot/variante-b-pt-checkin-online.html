@@ -1,0 +1,307 @@
+<!-- Variante B · PMax Competitors PT · /pt/check-in-online · preparada el 29/10/2026.
+     Va en Settings → Advanced → Head HTML de la variante B (sustituye todo su contenido).
+     Formulario de HubSpot de 5 campos (23a6aa7a-0033-4f3a-8f5d-ac4593dfe0ec, embed v2), prefijo del país por defecto. Todo el CSS va dentro de .chkb. -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* Ocultar cabecera, pie y zona de módulos del tema de HubSpot (igual que la A; sin tocar el header/footer propios de .chkb) */
+.footer,.footer_dnd,#hs_cos_wrapper_footer_dnd,div[class*="footer_dnd"],.header,#header,.header-container,div[class*="header_dnd"],#hs_cos_wrapper_header_logo,#hs_cos_wrapper_header_navigation_primary,#hs_cos_wrapper_dnd_area,div[class*="dnd_area"]{display:none !important}
+body{margin:0}
+.chkb{--blue:#385BF8;--navy:#19194B;--ink:#161643;--g1:#6B6B95;--g2:#9696B9;--g3:#DEDEEB;--bg:#FFFFFF;--alt:#F4F6F9;--soft:#EEF2FF;--shadow:0 0 5px rgba(26,148,255,.173);--ring:0 0 0 3px rgba(56,91,248,.2);--f:'Montserrat',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif}
+.chkb *{box-sizing:border-box;margin:0;padding:0}
+.chkb{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+.chkb{font-family:var(--f);color:var(--navy);background:var(--bg);line-height:1.5;overflow-x:hidden}
+.chkb img{max-width:100%;display:block}
+.chkb .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.chkb h1,.chkb h2,.chkb h3{color:var(--navy);overflow-wrap:break-word}
+.chkb a{color:var(--blue)}
+.chkb .top{height:64px;display:flex;align-items:center;border-bottom:1px solid var(--g3)}
+.chkb .top .wrap{width:100%}
+.chkb .top img{height:26px;width:auto}
+.chkb .hero{padding:28px 0 40px;background:var(--bg)}
+.chkb .hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:48px;align-items:start}
+.chkb .eyebrow{display:inline-block;font:700 12px var(--f);letter-spacing:.06em;text-transform:uppercase;color:var(--blue);margin-bottom:14px}
+.chkb .hero h1{font-size:46px;line-height:1.1;font-weight:800;letter-spacing:-.02em}
+.chkb .hero h1 span{color:var(--blue)}
+.chkb .lead{margin-top:16px;font-size:18px;color:var(--g1);max-width:560px}
+.chkb .checks{list-style:none;margin-top:22px;display:grid;gap:10px}
+.chkb .checks li{position:relative;padding-left:30px;font-weight:600;font-size:16px}
+.chkb .checks li::before{content:"";position:absolute;left:0;top:3px;width:20px;height:20px;border-radius:6px;background:var(--soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 10.5l3.2 3L15 6.5' fill='none' stroke='%23385BF8' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat}
+.chkb .trustline{margin-top:24px;font-size:14px;color:var(--g1)}
+.chkb .trustline b{color:var(--navy)}
+.chkb .card{background:#fff;border-radius:16px;box-shadow:0 8px 28px rgba(26,148,255,.16),var(--shadow);padding:22px 22px 18px}
+.chkb .card h2{font-size:22px;font-weight:700}
+.chkb .card .sub{font-size:14px;color:var(--g1);margin:2px 0 14px}
+.chkb .row{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:end}
+.chkb .fld{margin-bottom:10px;min-width:0}
+.chkb .fld label{display:block;font:600 13px var(--f);margin-bottom:4px}
+.chkb .fld input,.chkb .fld select{width:100%;height:44px;border-radius:8px;border:1px solid rgba(22,22,67,.2);background:#F4F6F8;padding:0 12px;font:500 16px var(--f);color:var(--ink);appearance:none;-webkit-appearance:none}
+.chkb .fld select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' fill='none' stroke='%2319194B' stroke-width='1.6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;background-size:12px;padding-right:32px}
+.chkb .fld input:focus,.chkb .fld select:focus{outline:0;border-color:var(--ink);background:#fff;box-shadow:var(--ring)}
+.chkb .fld input.filled,.chkb .fld select.filled{background-color:#fff;border-color:var(--ink)}
+.chkb .tel{display:grid;grid-template-columns:112px minmax(0,1fr);gap:8px}
+.chkb .btn{display:flex;align-items:center;justify-content:center;width:100%;height:52px;border:0;border-radius:12px;background:var(--blue);color:#fff;font:700 16px var(--f);cursor:pointer;text-decoration:none}
+.chkb .btn:hover{background-image:linear-gradient(rgba(255,255,255,.1),rgba(255,255,255,.1))}
+.chkb .btn:focus-visible{outline:0;box-shadow:var(--ring)}
+.chkb .under{margin-top:8px;text-align:center;font-size:13px;color:var(--g1)}
+.chkb .proof{margin-top:8px;font-size:12.5px;font-weight:600;color:var(--g1);text-align:center}
+.chkb button.alt{display:block;margin-top:10px;text-align:center;font-size:14px;font-weight:600;color:var(--blue);text-decoration:underline;background:none;border:0;cursor:pointer;font-family:var(--f);width:100%}
+.chkb .legal{margin-top:10px;font-size:11.5px;line-height:1.45;color:var(--g1)}
+.chkb .legal a{color:var(--g1)}
+.chkb .err{color:#FF2467;font-size:13px;font-weight:600;margin-top:6px;min-height:0}
+.chkb .ok{display:none;text-align:center;padding:30px 6px}
+.chkb .ok h3{font-size:20px;margin-bottom:6px}
+.chkb .stats{background:var(--alt);padding:36px 0}
+.chkb .stats .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;text-align:center}
+.chkb .stat b{display:block;font-size:34px;font-weight:800;color:var(--blue);letter-spacing:-.02em}
+.chkb .stat span{font-size:15px;color:var(--g1)}
+.chkb .sec{padding:64px 0}
+.chkb .sec.alt{background:var(--alt)}
+.chkb .kicker{font:700 12px var(--f);letter-spacing:.06em;text-transform:uppercase;color:var(--blue)}
+.chkb .sec h2{font-size:44px;font-weight:400;line-height:1.15;letter-spacing:-.01em;margin:8px 0 12px;max-width:760px}
+.chkb .sec .intro{font-size:17px;color:var(--g1);max-width:720px}
+.chkb .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:32px}
+.chkb .tile{background:#fff;border-radius:16px;box-shadow:var(--shadow);padding:22px}
+.chkb .tile h3{font-size:18px;font-weight:700;margin-bottom:6px}
+.chkb .tile p{font-size:15px;color:var(--g1)}
+.chkb .warn{margin-top:22px;background:#fff;border-radius:16px;box-shadow:var(--shadow);padding:18px 22px;font-size:15px;border-left:4px solid var(--blue)}
+.chkb .steps{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-top:32px;counter-reset:s}
+.chkb .steps li{background:#fff;border-radius:16px;box-shadow:var(--shadow);padding:22px;counter-increment:s}
+.chkb .steps li::before{content:counter(s);display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:var(--soft);color:var(--blue);font-weight:800;margin-bottom:12px}
+.chkb .steps h3{font-size:17px;font-weight:700;margin-bottom:6px}
+.chkb .steps p{font-size:14.5px;color:var(--g1)}
+.chkb .inline-cta{margin-top:28px;max-width:320px}
+.chkb .band{background:linear-gradient(180deg,#002CFA 0%,#274BF0 100%);color:#fff;padding:56px 0;text-align:center}
+.chkb .band h2{color:#fff;font-size:40px;font-weight:700;letter-spacing:-.01em}
+.chkb .band p{margin:10px auto 24px;font-size:17px;opacity:.92;max-width:560px}
+.chkb .band .btn{max-width:320px;margin:0 auto;background:#fff;color:var(--blue)}
+.chkb footer{background:var(--navy);color:#C9CBE6;padding:28px 0;font-size:13px}
+.chkb footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.chkb footer img{height:22px;width:auto}
+.chkb footer a{color:#C9CBE6}
+@media (max-width:900px){.chkb .hero{padding:18px 0 28px}
+.chkb .hero .wrap{grid-template-columns:minmax(0,1fr);gap:18px}
+.chkb .hero h1{font-size:30px}
+.chkb .lead{font-size:16px;margin-top:10px}
+.chkb .hero-copy .checks,.chkb .hero-copy .trustline{display:none}
+.chkb .after-form{display:block}
+.chkb .stats .wrap{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.chkb .stat b{font-size:22px}
+.chkb .stat span{font-size:12.5px}
+.chkb .sec{padding:44px 0}
+.chkb .sec h2{font-size:30px}
+.chkb .grid{grid-template-columns:minmax(0,1fr)}
+.chkb .steps{grid-template-columns:minmax(0,1fr)}
+.chkb .band h2{font-size:28px}
+.chkb .wrap{padding:0 16px}
+
+}
+@media (min-width:901px){.chkb .after-form{display:none}
+}
+.chkb .after-form .checks{margin-top:18px}
+.chkb .pmsl{padding:28px 0;background:#fff;border-top:1px solid #DEDEEB;border-bottom:1px solid #DEDEEB}
+.chkb .pmsl .wrap{text-align:center}
+.chkb .pmsl p{margin:0 0 16px;font-size:14px;font-weight:600;color:#6B6B95}
+.chkb .pmsl .row{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:20px 36px}
+.chkb .pmsl img{height:28px;width:auto;max-width:130px;object-fit:contain}
+.chkb .pmsl .more{font-size:14px;font-weight:700;color:#385BF8}
+@media(max-width:600px){.chkb .pmsl{padding:22px 0}
+.chkb .pmsl .row{gap:16px 24px}
+.chkb .pmsl img{height:22px;max-width:100px}
+}
+.chkb .steps.s3{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:900px){.chkb .steps.s3{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:900px){.chkb .lead-more{display:none}
+}
+
+
+/* Tipografía propia por encima de la del tema de HubSpot */
+.chkb h1,.chkb h2,.chkb h3,.chkb h4,.chkb p,.chkb li,.chkb a,.chkb button,.chkb span,.chkb b,.chkb label,.chkb input,.chkb select{font-family:var(--f,'Montserrat',sans-serif) !important}
+.chkb{overflow-x:hidden}
+.chkb{--dark:#19194B;--gray2:#9696B9;--gray3:#DEDEEB;--input-empty:#F4F6F8;--white:#FFFFFF;--card-tint:#EEF2FF}
+/* ─────────── FORMULARIO HUBSPOT ─────────── */
+  .chkb #ck-form-slot { min-height: 100px; }
+  .chkb #ck-form-slot form.hs-form { border: none !important; border-radius: 0 !important; padding: 0 !important; background: transparent !important; box-shadow: none !important; font-family: inherit !important; }
+  .chkb #ck-form-slot .hs-form-field { margin-bottom: 14px !important; }
+  .chkb #ck-form-slot .input { width: 100% !important; margin-right: 0 !important; }
+  .chkb #ck-form-slot label, .chkb #ck-form-slot .hs-form-field > label {
+    display: block !important; visibility: visible !important; opacity: 1 !important;
+    font-family: inherit !important; font-size: 13px !important; font-weight: 700 !important;
+    color: var(--dark) !important; margin-bottom: 6px !important; height: auto !important; width: auto !important;
+    position: static !important; clip: auto !important; overflow: visible !important; text-indent: 0 !important; line-height: 1.4 !important;
+  }
+  .chkb #ck-form-slot label > span { display: inline !important; visibility: visible !important; opacity: 1 !important; font-size: 13px !important; font-weight: 700 !important; color: var(--dark) !important; position: static !important; clip: auto !important; width: auto !important; height: auto !important; background: transparent !important; }
+  .chkb #ck-form-slot .hs-form-required { color: #FF2467 !important; margin-left: 2px !important; display: inline !important; }
+  .chkb #ck-form-slot .hs-field-desc { font-size: 12.5px !important; color: var(--gray2) !important; margin: -2px 0 6px !important; line-height: 1.4 !important; }
+  .chkb #ck-form-slot input[type="text"], .chkb #ck-form-slot input[type="email"], .chkb #ck-form-slot input[type="tel"],
+  .chkb #ck-form-slot input[type="number"], .chkb #ck-form-slot select, .chkb #ck-form-slot textarea {
+    width: 100% !important; height: auto !important; padding: 12px 14px !important;
+    border: 1px solid var(--gray3) !important; border-radius: 8px !important;
+    font-family: inherit !important; font-size: 15px !important; font-weight: 500 !important;
+    color: var(--navy) !important; background-color: var(--input-empty) !important; box-shadow: none !important; line-height: 1.4 !important;
+  }
+  .chkb #ck-form-slot input:focus, .chkb #ck-form-slot select:focus, .chkb #ck-form-slot textarea:focus { outline: none !important; border-color: var(--navy) !important; background-color: var(--white) !important; box-shadow: var(--ring) !important; }
+  .chkb #ck-form-slot input::placeholder, .chkb #ck-form-slot textarea::placeholder { color: var(--gray2) !important; opacity: 1 !important; }
+  .chkb #ck-form-slot select {
+    -webkit-appearance: none !important; -moz-appearance: none !important; appearance: none !important;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236B6B95' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>") !important;
+    background-repeat: no-repeat !important; background-position: right 12px center !important;
+    padding-right: 38px !important; text-overflow: ellipsis !important;
+  }
+  .chkb #ck-form-slot .hs-fieldtype-intl-phone.hs-input { display: flex !important; gap: 8px !important; width: 100% !important; align-items: stretch !important; border: none !important; padding: 0 !important; background: transparent !important; }
+  .chkb #ck-form-slot .hs-fieldtype-intl-phone.hs-input > select.hs-input { flex: 0 0 128px !important; width: 128px !important; min-width: 0 !important; font-size: 14px !important; padding-left: 11px !important; padding-right: 28px !important; background-position: right 8px center !important; }
+  .chkb #ck-form-slot .hs-fieldtype-intl-phone.hs-input > input.hs-input { flex: 1 1 auto !important; width: auto !important; min-width: 0 !important; }
+  .chkb #ck-form-slot .form-columns-2, .chkb #ck-form-slot .form-columns-3 { display: grid !important; grid-template-columns: 1fr !important; gap: 0 14px !important; }
+  @media (min-width: 520px) { .chkb #ck-form-slot .form-columns-2 { grid-template-columns: 1fr 1fr !important; } }
+  .chkb #ck-form-slot .form-columns-2 > .hs-form-field, .chkb #ck-form-slot .form-columns-3 > .hs-form-field { width: 100% !important; float: none !important; padding: 0 !important; }
+  .chkb #ck-form-slot fieldset { max-width: 100% !important; border: none !important; }
+  .chkb #ck-form-slot .inputs-list { list-style: none !important; margin: 6px 0 0 !important; padding: 0 !important; display: grid !important; gap: 8px !important; }
+  .chkb #ck-form-slot .inputs-list label { display: flex !important; align-items: flex-start !important; gap: 8px !important; font-weight: 500 !important; font-size: 14px !important; margin-bottom: 0 !important; }
+  .chkb #ck-form-slot input[type="checkbox"], .chkb #ck-form-slot input[type="radio"] { width: auto !important; margin: 3px 8px 0 0 !important; accent-color: var(--blue) !important; }
+  .chkb #ck-form-slot .hs-button, .chkb #ck-form-slot input[type="submit"] {
+    display: block !important; width: 100% !important; height: 52px !important; padding: 0 26px !important;
+    background-color: var(--blue) !important; background-image: none !important; color: var(--white) !important;
+    border: none !important; border-radius: 12px !important; font-family: inherit !important;
+    font-size: 16px !important; font-weight: 600 !important; cursor: pointer !important;
+    box-shadow: var(--ring) !important; margin-top: 4px !important; text-transform: none !important;
+  }
+  .chkb #ck-form-slot .hs-error-msgs { list-style: none !important; padding: 0 !important; margin: 4px 0 0 0 !important; }
+  .chkb #ck-form-slot .hs-error-msgs label, .chkb #ck-form-slot .hs-error-msgs label span { display: inline-block !important; font-size: 12px !important; font-weight: 500 !important; color: #FF2467 !important; margin-bottom: 0 !important; }
+  .chkb #ck-form-slot .legal-consent-container, .chkb #ck-form-slot .hs-richtext { font-size: 12px !important; color: var(--gray2) !important; margin-bottom: 12px !important; line-height: 1.5 !important; }
+  .chkb #ck-form-slot .hs-form-title, .chkb #ck-form-slot .form-title { display: none !important; }
+  .chkb #ck-form-slot .submitted-message { padding: 24px 20px !important; text-align: center !important; background: var(--card-tint) !important; border-radius: 8px !important; color: var(--navy) !important; font-size: 15px !important; }
+
+  
+.chkb #ck-form-slot .hs-button{font-family:var(--f) !important}
+.chkb{font-family:var(--f)}
+
+/* Tipografía propia por encima de la del tema de HubSpot */
+.chkb h1,.chkb h2,.chkb h3,.chkb h4,.chkb p,.chkb li,.chkb a,.chkb button,.chkb span,.chkb b,.chkb label,.chkb input,.chkb select{font-family:var(--f) !important}
+/* Formulario de HubSpot más compacto: nombre y email en una fila; tipo y nº en otra (portátil) */
+.chkb #ck-form-slot form.hs-form{display:grid !important;grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important;gap:0 12px !important}
+.chkb #ck-form-slot form.hs-form > *{grid-column:1/-1}
+.chkb #ck-form-slot form.hs-form > .hs_firstname,.chkb #ck-form-slot form.hs-form > .hs_email{grid-column:auto}
+@media (min-width:901px){.chkb #ck-form-slot form.hs-form > .hs_property_type,.chkb #ck-form-slot form.hs-form > .hs_number_of_units{grid-column:auto}}
+.chkb #ck-form-slot .hs-form-field{margin-bottom:10px !important}
+.chkb #ck-form-slot input[type="text"],.chkb #ck-form-slot input[type="email"],.chkb #ck-form-slot input[type="tel"],.chkb #ck-form-slot input[type="number"],.chkb #ck-form-slot select{padding:10px 12px !important}
+@media (max-width:900px){.chkb #ck-form-slot label,.chkb #ck-form-slot label>span{font-size:12.5px !important}}
+/* Ajustes tras la vista previa en HubSpot (29/10) */
+@media (min-width:901px){.chkb .hero .wrap{align-items:center !important}}
+.chkb #ck-form-slot form.hs-form > .hs_property_type,.chkb #ck-form-slot form.hs-form > .hs_number_of_units{grid-column:1/-1 !important}
+.chkb #ck-form-slot .input::before,.chkb #ck-form-slot .input::after,.chkb #ck-form-slot .hs-form-field::after,.chkb #ck-form-slot .hs-fieldtype-select .input::after{content:none !important;display:none !important}
+.chkb #ck-form-slot select.hs-input{background-color:var(--input-empty,#F4F6F8) !important}
+/* Cifras en el hero (portátil): se ven al aterrizar sin hacer scroll */
+.chkb .hstats{display:grid;grid-template-columns:repeat(3,minmax(0,150px));gap:12px;margin-top:28px}
+.chkb .hstats div{background:#fff;border-radius:12px;box-shadow:0 0 5px rgba(26,148,255,.173);padding:12px 10px;text-align:center}
+.chkb .hstats b{display:block;font-size:24px;font-weight:800;color:var(--blue);letter-spacing:-.02em;line-height:1.2}
+.chkb .hstats span{display:block;font-size:13px;color:var(--g1)}
+@media (max-width:900px){.chkb .hstats{display:none}}
+@media (min-width:901px){.chkb section.stats{display:none}}
+/* Móvil compacto: formulario y botón en la primera pantalla */
+@media (max-width:900px){.chkb .hero{padding:12px 0 24px !important}.chkb .hero .eyebrow{display:none !important}.chkb .hero h1{font-size:27px !important;line-height:1.12 !important}.chkb .hero .lead{font-size:15px !important;margin-top:8px !important}.chkb .hero .doc{display:none !important}.chkb .card{padding:16px 16px 12px !important}.chkb .card h2{font-size:20px !important}.chkb .card .sub{margin:0 0 8px !important}.chkb #ck-form-slot .hs-form-field{margin-bottom:8px !important}.chkb #ck-form-slot label{margin-bottom:4px !important}.chkb .hero .wrap{gap:14px !important}}
+/* PT: tarjeta más compacta (29/10) */
+@media (min-width:901px){.chkb .hero{padding:20px 0 28px !important}.chkb .hero h1{font-size:40px !important}}
+.chkb .card h2{font-size:20px !important}
+.chkb .card .sub{margin:2px 0 10px !important}
+.chkb #ck-form-slot .hs-field-desc{display:none !important}
+.chkb #ck-form-slot .legal-consent-container,.chkb #ck-form-slot .hs-richtext{font-size:11px !important;margin-bottom:8px !important;line-height:1.4 !important}
+.chkb #ck-form-slot .hs-form-field{margin-bottom:8px !important}
+</style>
+<div class="chkb">
+<header class="top"><div class="wrap"><img src="https://landing.chekin.com/hubfs/imagotype-new-chekin-landscape.svg" alt="Chekin"></div></header>
+
+<main>
+<!-- Variante B de /pt/check-in-online (PMax PT Competitors, 98–100% de sus clics, H-39). Mantiene el texto de la página actual
+     y arregla la estructura: formulario arriba con PT +351, botón azul único, etiquetas en portugués y cifras oficiales. -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="eyebrow">Mais de 200.000 propriedades em todo o mundo</span>
+      <h1>Comunique os hóspedes ao SEF/AIMA <span>automaticamente</span></h1>
+      <p class="lead">A Chekin envia os dados dos seus hóspedes ao SEF/AIMA através do SIBA, no formato e no prazo exigidos.<span class="lead-more"> Evite penalizações e diga adeus aos processos morosos.</span></p>
+      <ul class="checks">
+        <li>Recolha os dados dos seus hóspedes através do check-in online</li>
+        <li>Envio automático dos boletins de alojamento ao SEF/AIMA via SIBA</li>
+        <li>Verificação da identidade dos hóspedes antes da chegada</li>
+      </ul>
+    <div class="hstats"><div><b>+200.000</b><span>propriedades</span></div><div><b>+25M</b><span>check-ins</span></div><div><b>+200</b><span>PMS ligados</span></div></div>
+    </div>
+
+    <div class="card" id="form">
+      <h2>Experimente a Chekin grátis 14 dias</h2>
+<p class="sub">Sem cartão de crédito. Ativação imediata.</p>
+<div id="ck-form-slot"></div>
+<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+<script>
+  if (window.hbspt) {
+    hbspt.forms.create({ portalId: "8776616", formId: "23a6aa7a-0033-4f3a-8f5d-ac4593dfe0ec", region: "na1", target: "#ck-form-slot", css: "",
+      onFormReady: function($f){ /* prefijo del país por defecto */
+        var f=($f&&$f.jquery)?$f[0]:$f; var s=f&&f.querySelector(".hs-fieldtype-intl-phone select"); if(!s) return;
+        Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype,"value").set.call(s,"PT");
+        s.dispatchEvent(new Event("change",{bubbles:true})); }
+    });
+  }
+</script>
+<p class="proof">+200.000 propriedades e +25M de check-ins com a Chekin</p>
+<p class="legal">Os seus dados estão protegidos. Cumprimos o RGPD.</p>
+    </div>
+
+    <div class="after-form">
+      <ul class="checks">
+        <li>Recolha os dados dos seus hóspedes através do check-in online</li>
+        <li>Envio automático dos boletins de alojamento ao SEF/AIMA via SIBA</li>
+        <li>Verificação da identidade dos hóspedes antes da chegada</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="stats" aria-label="A Chekin em números">
+  <div class="wrap">
+    <div class="stat"><b>+200.000</b><span>propriedades</span></div>
+    <div class="stat"><b>+25M</b><span>check-ins</span></div>
+    <div class="stat"><b>+200</b><span>PMS ligados</span></div>
+  </div>
+</section>
+
+<section class="pmsl" aria-label="Ligado ao seu PMS"><div class="wrap"><p>Ligado ao seu PMS</p><div class="row"><img src="https://chekin.com/wp-content/uploads/2023/10/Guesty_2.0_Logo_Dark@2x.svg" alt="Guesty" loading="lazy"><img src="https://landing.chekin.com/hubfs/Hostaway.png" alt="Hostaway" loading="lazy"><img src="https://chekin.com/wp-content/uploads/2026/09/lodgify-logo.svg" alt="Lodgify" loading="lazy"><img src="https://chekin.com/wp-content/uploads/2023/04/avantio-orange-300x116.png" alt="Avantio" loading="lazy"><img src="https://chekin.com/wp-content/uploads/2025/07/Smoobu_logo_blue_h-300x74.webp" alt="Smoobu" loading="lazy"><img src="https://chekin.com/wp-content/uploads/2021/01/Hostify-Logo@2x-300x128.png" alt="Hostify" loading="lazy"><span class="more">e mais de 200</span></div></div></section>
+<section class="sec">
+  <div class="wrap">
+    <span class="kicker">Como funciona</span>
+    <h2>Da chegada do hóspede à comunicação às autoridades em três passos</h2>
+    <p class="intro">A Chekin liga o seu check-in online ao SIBA e comunica os dados ao SEF/AIMA, sem introdução manual.</p>
+    <ol class="steps s3">
+      <li><h3>O hóspede faz o check-in online</h3><p>O hóspede preenche os seus dados e o documento de identidade antes da chegada, a partir de qualquer dispositivo.</p></li>
+      <li><h3>A Chekin trata os dados</h3><p>O sistema verifica a identidade, formata o boletim de alojamento e guarda tudo na cloud com segurança.</p></li>
+      <li><h3>Comunicação ao SEF/AIMA via SIBA</h3><p>Os boletins são enviados automaticamente às autoridades portuguesas, no prazo legal e sem introdução manual.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec alt">
+  <div class="wrap">
+    <span class="kicker">Conformidade legal em Portugal</span>
+    <h2>Comunicação automática de dados ao SEF/AIMA através do SIBA</h2>
+    <p class="intro">A Chekin envia automaticamente os dados de cada hóspede às autoridades portuguesas, no formato e no prazo exigidos. Evite penalizações e processos morosos.</p>
+    <div class="grid">
+      <div class="tile"><h3>SIBA · SEF/AIMA</h3><p>Envio automático de boletins de alojamento via SIBA.</p></div>
+      <div class="tile"><h3>Dentro do prazo</h3><p>Comunicação no prazo legal exigido.</p></div>
+      <div class="tile"><h3>Recolha antes da chegada</h3><p>Recolha de dados e documentos antes da chegada, pelo telemóvel do hóspede.</p></div>
+      <div class="tile"><h3>RGPD</h3><p>Armazenamento seguro de documentos na cloud, em conformidade com o RGPD.</p></div>
+    </div>
+    <p class="warn">A falta ou o atraso na comunicação dá origem a <b>coimas de 100 € a 40 000 €</b>, e em casos reincidentes à suspensão da licença. Com a Chekin o boletim segue sozinho, dentro do prazo e no formato exigido.</p>
+    <a class="btn inline-cta" href="#form">Comece o seu teste grátis</a>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <h2>Pronto para automatizar o registo de hóspedes?</h2>
+    <p>Mais de 200.000 propriedades em todo o mundo já confiam na Chekin. Teste grátis 14 dias.</p>
+    <a class="btn" href="#form">Comece o seu teste grátis</a>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><img style="filter:brightness(0) invert(1)" src="https://landing.chekin.com/hubfs/imagotype-new-chekin-landscape.svg" alt="Chekin"><span>© Chekin · <a href="https://chekin.com/pt/termos-de-uso/" target="_blank" rel="noopener">Termos</a> · <a href="https://chekin.com/privacidad/" target="_blank" rel="noopener">Privacidade</a></span></div></footer>
+</div>

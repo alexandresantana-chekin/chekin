@@ -172,3 +172,9 @@ Lectura para el CEO:
 > - Se lo estamos confirmando a ShowMe por escrito.
 >
 > Fuentes: informe ShowMe Micro v5 (Carlos, 27/10; export de ShowMe + HubSpot + Leopard) y HubSpot (altas 1/08–30/09/2026, pago = MRR de Leopard de septiembre).
+
+
+## Respuesta de Pedro (29/10) · cambios para el borrador al CEO (H-49)
+- Corregir «Solo entran los leads de 1 a 3 viviendas»: el criterio lo ponen nuestros workflows de HubSpot (al principio, micro no asignados a ventas; después, más tamaños). Confirmar el criterio actual y por país (Carlos o el workflow «UPDATED Lead As…»).
+- Añadir: el «converted» de ShowMe cuenta a todo lead de la secuencia, haya hablado o no con el agente. Por eso nuestra lectura usa grupo comparable y pagos reales (H-43).
+- Vídeos: ShowMe no los tiene. Hay que grabarlos nosotros con altas de prueba, avisando antes a Pedro con los emails.

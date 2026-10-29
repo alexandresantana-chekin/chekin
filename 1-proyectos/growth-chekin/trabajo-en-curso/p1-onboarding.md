@@ -2,7 +2,7 @@
 
 Ciclos: analizar el funnel hasta la activación → proponer → ejecutar → medir. Responsable de producto: Daniel Clemares.
 
-- Dashboard (privado, en vivo): [Funnel de activación Chekin](https://claude.ai/artifact/Mmx3qnEnaFtUbAmUihNsaP). Recorrido del cliente con filtros, onboarding por variante, control frente a variante y cruce con GA4.
+- Dashboard (privado, en vivo): [Onboarding Chekin: del alta a la activación](https://claude.ai/artifact/Mmx3qnEnaFtUbAmUihNsaP). Recorrido del cliente con filtros, onboarding por variante, control frente a variante y cruce con GA4.
 - Herramienta: PostHog (proyecto "Default project", id 125487). El onboarding de anfitriones se registra en `dashboard.chekin.com`; `dashboard-ng.chekintest.xyz` es pruebas.
 - Activación (Alex, 22/10): **primera vivienda registrada** y **primera reserva creada**. En PostHog no hay eventos de esos dos pasos. En la base sincronizada de Postgres sí (`postgres.housings.created_at`, `postgres.person_users.has_first_reservation_created`), pero la sincronización falla desde hace un mes: no sirve para octubre.
 
@@ -130,3 +130,90 @@ Tres secciones nuevas en el dashboard, bajo "Medición del funnel":
 - Nueva sección **"Calculadora de oportunidad por paso"**, adaptada de la calculadora de GMC: Alta » Vivienda » Reserva » Huésped » Pagan, con Todos / Alquiler vacacional / Hoteles por bloques. Ingresos = clientes de pago al final del camino × valor por cliente del dashboard (ARR a 12 meses, LTV o a mano; antes ARPA × 12, cambiado el 27/10 para descontar bajas); oportunidad = valor medio × personas del paso × % que no pasa. Sigue los filtros de origen y meses. Sin corregir los errores de fórmula de la plantilla original.
 - Cambios visuales (27/10): dinero en €; "El camino del cliente" sin las caídas de pérdida (ahora en la calculadora), con un color y una línea discontinua por paso; la calculadora usa esos mismos colores y líneas y lleva debajo "Cómo leer la calculadora", con un ejemplo calculado con los datos; quitada la sección "Cómo medir bien a partir de ahora".
 - Quitado también todo el bloque "Onboarding dentro del producto" (27/10, decisión de Alex: "no sirve"): onboarding por variante, control frente a variante, cómo mediremos un cambio y la fiabilidad del dato de entrada (PostHog frente a GA4). Borradas sus fuentes (onboarding, posthog_register, ga4_register). Las consultas siguen documentadas en este archivo y en H-12/H-13/H-24.
+
+## Dónde se cae la gente · último mes (29-10-2026, H-47 y H-48)
+PostHog, `dashboard.chekin.com`, del 29/09 al 29/10/2026. Los eventos del onboarding existen desde el 13/10, así que en la práctica son ~16 días. Consultas puntuales, no métricas guardadas.
+
+| Paso | Personas | % de las que entran | % del paso anterior |
+|---|---|---|---|
+| Entran en `/register` | 771 | 100% | — |
+| Crean la cuenta (email o Google) | 126 | 16% | 16% |
+| Bienvenida | 112 | 15% | 89% |
+| Eligen PMS | 64 | 8% | 57% |
+| Paso de conectar | 29 | 4% | 45% |
+| PMS conectado | 21 | 3% | 72% |
+| Configuración completada | 29 | 4% | — (incluye «otro PMS» o saltar) |
+
+Por variante (entran → cuenta creada): rebuilt 331 → 97 (29%; de ellos 27 ya eran clientes); legacy 205 → 0 (no envía eventos, H-12); sin variante 212 → 11 (109 pasan por el alta antigua); beta 23 → 18. En rebuilt, solo 84 escriben el email y 56 pulsan Google.
+Fricción: 42 personas con `auth_captcha_failed` (1.364 veces); 13 entran en /register, y 12 de ellas no llegan a crear la cuenta. 6 con `auth_registration_failed`. 15 con fallo de PMS; 17 eligen «otro PMS»; 9 se saltan la configuración.
+Antes del dashboard está el formulario web `chekin.com/…/onboarding/register-form/` (Clarity, 27–29/10): 167 sesiones; en 100, solo 38 escriben algo y casi la mitad se va en menos de 10 s; clics muertos en el selector de tipo (H-47).
+
+**Las tres caídas grandes:** 1) la página de alta (de cada 10 que entran, menos de 2 crean cuenta; en rebuilt, 3); 2) tras la bienvenida, al elegir PMS (se va el 43%); 3) conectar el PMS (de 64 que eligen, 21 conectan).
+
+## Propuesta de Alex: alta mínima (29-10-2026)
+Registro solo con Google o email. Con Google ya tenemos nombre, apellidos y email; con email se piden nombre y apellidos. Se entra directamente al panel, que se puede ver. Teléfono, tipo de propiedad y número de propiedades se piden al pulsar «Empezar la prueba gratis», y desde ahí se guía.
+**Principio (Alex, 29/10): hay que dejar entrar al usuario.** Nada bloquea la entrada: si el teléfono ya existe, se avisa dentro o se ofrece iniciar sesión, nunca se corta el alta.
+Encaja con la caída 1. Riesgos a resolver antes:
+- **ShowMe necesita el teléfono y el tamaño en el Pre-Trial** (micro = 1–3 viviendas; la llamada convierte mucho más que WhatsApp, H-27 a H-30). Sin teléfono en el alta, el Pre-Trial se queda sin llamada.
+- **HubSpot y ventas** clasifican el lead por tipo y número de propiedades (Micro/SMB/hotel, AE asignado).
+- **Dos formularios hoy** (web en chekin.com y alta en el dashboard): el nuevo flujo debería ser uno solo.
+- **Medir** con un A/B en PostHog (flag): KPI principal = cuenta creada / entra en el alta; después, vivienda creada, trial y MRR. Arreglar antes la medición de legacy.
+Pendiente: ver con Daniel el flujo nuevo «en proceso».
+
+## Recorrido del alta actual en móvil (29-10-2026, navegador a 375×812, sin enviar nada)
+`chekin.com/onboarding/register-form/` (ES):
+0. **Banner de cookies** que tapa media pantalla, con **Analítica y Marketing marcadas de serie** [POR COMPROBAR con el DPO: las casillas premarcadas no valen como consentimiento].
+1. **Una sola pantalla con 8 datos**: nombre, email, contraseña, tipo de propiedad, número de propiedades, ciudad/región, teléfono (con prefijo) y «¿Quieres conectar tu PMS?» sí/no (si sí, nombre del PMS). En móvil son unas dos pantallas de scroll y el botón «Continuar» queda abajo. **No hay opción de Google.**
+2. **Código de 6 dígitos por email**, con la pantalla **en inglés** («Two-step authentication») aunque la página está en español.
+3. Según el PMS, **pantallas de Holidu o Amenitiz** que piden permiso para ceder los datos al partner.
+4. «¡Bienvenido! Lo primero que tienes que hacer **is** crear tu cuenta» (errata en inglés) → «¡Empecemos!» → dashboard: bienvenida → elegir PMS → conectar.
+
+## Propuesta de pasos del onboarding nuevo (29-10-2026, sobre la idea de Alex: «dejar entrar al usuario»)
+1. **Entrar** (una pantalla, sin scroll): «Empieza tu prueba gratis de 14 días» → **Continuar con Google** o **email** (+ nombre y apellidos). Sin contraseña: el código de 6 dígitos que ya existe sirve como acceso (en el idioma de la página).
+2. **Dentro del panel**, se ve el producto (demo o vacío con ejemplos) y una barra «Empieza tu prueba gratuita».
+3. **Paso guiado 1, tu negocio**: tipo de propiedad y número (dos toques). De aquí sale micro/SMB/hotel para ventas y ShowMe.
+4. **Paso guiado 2, teléfono**, con motivo: «Te llamamos para dejarlo configurado contigo». Si ya existe, no bloquea: avisa y sigue.
+5. **Paso guiado 3, conectar el PMS**: en ordenador, como ahora; **en móvil, ofrecer «Te mandamos el enlace para hacerlo en el ordenador» o «Que lo haga un experto»**, porque en móvil casi nadie lo consigue (H-51).
+6. **Paso guiado 4, primera vivienda y primer check-in de prueba**: el momento de activación.
+- Se quitan del alta: contraseña, ciudad/región (se deduce o se pide al crear la vivienda) y la pregunta del PMS.
+- Las pantallas de Holidu y Amenitiz, solo dentro y solo si el PMS lo pide.
+- Desde la página de gracias de las landings, el botón lleva al paso 1 con el email ya puesto (H-51).
+- Medir cada paso con un evento de PostHog: así el funnel nuevo sale solo en el dashboard.
+
+## Prototipo de Daniel (29-10-2026) · revisión con los datos
+https://dclemares.github.io/chekin-prototypes/dashboard/auth.html#login (en inglés; 15 pantallas: entrar, crear cuenta, cuenta creada, 5 pasos guiados y la portada del dashboard).
+**Recorrido:** entrar con Google o con email (una sola pantalla para login y alta) → crear cuenta (Google o email + contraseña + nombre completo + teléfono + tipo de propiedad) → «Cuenta lista, tres preguntas» (se puede saltar) → 1 dónde operas (países y su obligación legal) → 2/3 cómo gestionas las reservas (PMS, Airbnb/Booking o a mano; «saltar») → 4 qué te importa más → 5 tu plan (primera propiedad, marca, check-in de prueba: «en marcha en ~8 min») → dashboard con «este panel aún no está adaptado · terminar configuración».
+**Lo que ya encaja con los datos y con «dejar entrar al usuario»:** Google arriba; login y alta en la misma pantalla (resuelve a los que caen en el alta buscando el login, H-50/H-51); todo se puede saltar y se entra al panel; el PMS es una opción entre tres, no una obligación; plan corto con la activación (primera propiedad y check-in de prueba).
+**Propuestas para Daniel:**
+1. **Crear cuenta sigue teniendo 5 datos con email**, y la contraseña con 4 reglas. Propuesta: email + nombre y nada más (código de 6 dígitos o enlace en vez de contraseña). Teléfono y tipo de propiedad, dentro, en los pasos guiados.
+2. **Teléfono:** dentro y con motivo («te llamamos para dejarlo configurado»), porque ShowMe y ventas lo necesitan. Si ya existe, avisar y seguir: nunca bloquear (grabación PT, H-47).
+3. **PMS en móvil:** en móvil casi nadie lo conecta (0,8% frente a 7,5% en ordenador, H-51). Si entra desde el móvil, ofrecer «te mando el enlace para hacerlo en el ordenador» o «que lo configure un experto».
+4. **Número de propiedades:** no aparece. Hace falta para micro/SMB (ShowMe entra por tamaño): leerlo del PMS y, si no hay PMS, preguntarlo en «Your portfolio».
+5. **Pasos 2 y 3 enseñan la misma pantalla** en el prototipo, y la bienvenida anuncia el orden «reservas → dónde operas» mientras los pasos van «dónde operas → reservas». Por revisar.
+6. **Idiomas:** ES, IT y PT primero (ahí está el tráfico), y que el código de verificación salga en el idioma del usuario (hoy sale en inglés).
+7. **Desde las páginas de gracias de las landings:** entrar con el email ya puesto (H-51).
+8. **Medición desde el primer día:** un evento de PostHog por pantalla (vista, completada, saltada) y A/B contra el alta actual con una flag. KPI: cuenta creada / entra; después, primera propiedad, check-in de prueba, trial y MRR.
+
+## Guía de Alex («Onboarding de anfitriones con 2-3 viviendas», PDF) frente al prototipo de Daniel (29-10-2026)
+La guía se hizo sin datos de la empresa (recorrido como anfitrión de prueba, ICE estimado). North Star de la guía: **viviendas activadas** = datos de la vivienda + check-in online activado + una reserva.
+**Ya recogido en el prototipo de Daniel:** preguntas que salen del registro y pasan dentro; «¿Cómo recibes tus reservas?» con tres vías (guía #6); pasos con tiempos y un plan («en marcha en ~8 min», guía #4); Inicio con dos estados, cuenta nueva y en marcha (guía #2); login y alta en una sola pantalla.
+**De la guía que todavía no está:**
+- Usar lo declarado: número de viviendas y «vamos a activarlas, una a una» (guía #1). El prototipo no pregunta cuántas viviendas.
+- Los 3 pasos de activación de la guía (datos, check-in online, reserva). El plan del prototipo es: propiedad, marca, check-in de prueba. Propuesta: la reserva antes que la marca.
+- Envío automático del check-in encendido desde el alta (ICE 8,0, el primero de la guía).
+- NIF/CIF/DNI con validación (ICE 7,7) y ubicación con sugerencias.
+- Asistente que sabe en qué paso estás; segunda vivienda con los datos del propietario ya puestos.
+**Lo que cambian los datos que la guía no tenía (H-47 a H-51):**
+- La mayor pérdida está **antes del producto**: 16% de los que entran crean cuenta. El registro corto de la guía (C3) pasa a ser lo primero que hay que probar, y con menos campos todavía (Google o email + nombre).
+- **Móvil:** 38% de las sesiones del formulario. El PMS en móvil casi nunca se conecta. En móvil, la vía recomendada no debería ser el PMS («FASTEST» en el prototipo), sino calendario, a mano o «hazlo en el ordenador».
+- Clientes que buscan el login dentro del alta: lo resuelve la pantalla única de Daniel.
+- Teléfono duplicado que bloquea, y leads de paid que rellenan dos formularios.
+- El ICE de la guía se puede recalcular con datos: sube la confianza del registro corto y del PMS en móvil.
+
+## Alta con Google: lo que falta pedir (Alex, 29-10-2026)
+Con Google ya llegan nombre, apellidos y email. Una sola pantalla después, «Cuéntanos tu negocio» (~15 s):
+- **Tipo de propiedad**, con botones (alquiler vacacional, hotel o aparthotel, camping, otro).
+- **Número de propiedades**, con botones que coinciden con los tramos de HubSpot (Alex, 29/10): **1-2 (SMB Micro) · 3-10 (SMB) · 11-60 (Mid-Market) · más de 60 (Enterprise)**. Así el tramo queda puesto en el alta [POR COMPROBAR la regla exacta, H-52].
+- **Teléfono**, con el prefijo **puesto según el país desde el que entra** (España +34, Italia +39, Portugal +351…: por el idioma o la página de entrada y, si no, por la ubicación de la conexión), que se puede cambiar; y el motivo («Te llamamos para dejarlo configurado contigo»). Si ya existe, no bloquea.
+- Botón «Entrar en Chekin». Después, el panel y los pasos guiados (reservas, primera vivienda, check-in).
+Con email: email + nombre y apellidos → código de 6 dígitos → la misma pantalla.

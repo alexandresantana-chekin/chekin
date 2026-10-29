@@ -1,0 +1,430 @@
+<!-- Variante B · PMax Vacational IT · /it/check-in-online-alloggiati-web · 29/10/2026. Head HTML de la variante B. Modulo HubSpot 5 campi (ca54cc24), +39. -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+.footer,.footer_dnd,#hs_cos_wrapper_footer_dnd,div[class*="footer_dnd"],.header,#header,.header-container,div[class*="header_dnd"],#hs_cos_wrapper_header_logo,#hs_cos_wrapper_header_navigation_primary,#hs_cos_wrapper_dnd_area,div[class*="dnd_area"]{display:none !important}
+body{margin:0}
+.chkb{--blue:#385BF8;--navy:#19194B;--ink:#161643;--g1:#6B6B95;--g2:#9696B9;--g3:#DEDEEB;--bg:#FFFFFF;--alt:#F4F6F9;--soft:#EEF2FF;--shadow:0 0 5px rgba(26,148,255,.173);--ring:0 0 0 3px rgba(56,91,248,.2);--f:'Montserrat',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif}
+.chkb *{box-sizing:border-box;margin:0;padding:0}
+.chkb{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+.chkb{font-family:var(--f);color:var(--navy);background:var(--bg);line-height:1.5;overflow-x:hidden}
+.chkb .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.chkb h1,.chkb h2,.chkb h3{color:var(--navy);overflow-wrap:break-word}
+.chkb a{color:var(--blue)}
+.chkb .top{height:64px;display:flex;align-items:center;border-bottom:1px solid var(--g3)}
+.chkb .top .wrap{width:100%;display:flex;justify-content:space-between;align-items:center}
+.chkb .top img{height:26px;width:auto;display:block}
+.chkb .pill{font:700 12px var(--f);color:var(--blue);background:var(--soft);border-radius:999px;padding:5px 12px}
+.chkb .hero{padding:36px 0 44px;background:linear-gradient(180deg,var(--soft) 0%,var(--bg) 100%)}
+.chkb .hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) 430px;gap:56px;align-items:center}
+.chkb .eyebrow{display:inline-block;font:700 12px var(--f);letter-spacing:.06em;text-transform:uppercase;color:var(--blue);background:#fff;border-radius:999px;padding:5px 12px;margin-bottom:16px}
+.chkb .hero h1{font-size:44px;line-height:1.1;font-weight:800;letter-spacing:-.02em}
+.chkb .hero h1 span{color:var(--blue)}
+.chkb .lead{margin-top:16px;font-size:18px;color:var(--g1);max-width:560px}
+.chkb .doc{margin-top:24px;max-width:430px;background:#fff;border-radius:12px;box-shadow:0 12px 30px rgba(26,140,255,.16),var(--shadow);padding:18px 20px;display:grid;grid-template-columns:44px minmax(0,1fr);gap:14px;align-items:center}
+.chkb .doc .ic{width:44px;height:44px;border-radius:50%;background:#E3F5EC;display:flex;align-items:center;justify-content:center;color:#13865A}.chkb .doc .ic svg{width:22px;height:22px}
+.chkb .doc b{display:block;font-size:15px}
+.chkb .doc span{font-size:13px;color:var(--g1)}
+.chkb .card{background:#fff;border-radius:16px;box-shadow:0 8px 28px rgba(26,148,255,.16),var(--shadow);padding:22px 24px 16px}
+.chkb .card h2{font-size:22px;font-weight:700}
+.chkb .card .sub{font-size:14px;color:var(--g1);margin:2px 0 12px}
+.chkb .btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;height:52px;border:0;border-radius:12px;background:var(--blue);color:#fff;font:700 16px var(--f);cursor:pointer;text-decoration:none}
+.chkb .btn:hover{background-image:linear-gradient(rgba(255,255,255,.1),rgba(255,255,255,.1))}
+.chkb .btn:focus-visible{outline:0;box-shadow:var(--ring)}
+.chkb .proof{margin-top:8px;font-size:12.5px;font-weight:600;color:var(--g1);text-align:center}
+.chkb .legal{margin-top:10px;font-size:11.5px;line-height:1.45;color:var(--g1)}
+.chkb .stats{padding:26px 0;border-bottom:1px solid var(--g3)}
+.chkb .stats ul{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;text-align:center}
+.chkb .stats b{display:block;font-size:28px;font-weight:800;color:var(--blue)}
+.chkb .stats span{font-size:13.5px;color:var(--g1);font-weight:600}
+.chkb .sec{padding:64px 0}
+.chkb .sec.alt{background:var(--alt)}
+.chkb .kicker{font:700 12px var(--f);letter-spacing:.06em;text-transform:uppercase;color:var(--blue)}
+.chkb .sec h2{font-size:38px;font-weight:400;line-height:1.15;letter-spacing:-.01em;margin:8px 0 12px;max-width:760px}
+.chkb .sec h2 b{font-weight:700}
+.chkb .sec .intro{color:var(--g1);font-size:17px;max-width:640px;margin-bottom:32px}
+.chkb .clauses{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.chkb .clauses li{background:#fff;border-radius:14px;box-shadow:var(--shadow);padding:18px 20px;font-weight:600;font-size:15.5px;display:flex;gap:12px;align-items:center}
+.chkb .clauses li::before{content:"";flex:0 0 22px;height:22px;border-radius:6px;background:var(--soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 10.5l3.2 3L15 6.5' fill='none' stroke='%23385BF8' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/15px no-repeat}
+.chkb .inline-cta{margin-top:28px;max-width:300px}
+.chkb .switch{display:inline-flex;background:#fff;border-radius:12px;box-shadow:var(--shadow);padding:4px;margin-bottom:22px}
+.chkb .switch button{border:0;background:transparent;border-radius:9px;padding:10px 18px;font:700 14.5px var(--f);color:var(--g1);cursor:pointer}
+.chkb .switch button[aria-pressed=true]{background:var(--blue);color:#fff}
+.chkb .switch button:focus-visible{outline:0;box-shadow:var(--ring)}
+.chkb .flow{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;counter-reset:f}
+.chkb .flow li{counter-increment:f;background:#fff;border-radius:14px;box-shadow:var(--shadow);padding:20px}
+.chkb .flow li::before{content:counter(f);display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:9px;background:var(--soft);color:var(--blue);font-weight:800;margin-bottom:12px}
+.chkb .flow h3{font-size:16.5px;margin-bottom:4px}
+.chkb .flow p{color:var(--g1);font-size:14.5px}
+.chkb .flow.paper li::before{background:var(--alt);color:var(--g1)}
+.chkb .sum{margin-top:18px;font-weight:700;font-size:16px}
+.chkb .sum span{color:var(--blue)}
+.chkb .band{background:linear-gradient(180deg,#002CFA 0%,#274BF0 100%);color:#fff;padding:48px 0;text-align:center}
+.chkb .band h2{color:#fff;font-size:32px;font-weight:700}
+.chkb .band p{margin:10px auto 22px;font-size:16px;opacity:.92;max-width:560px}
+.chkb .band .btn{max-width:300px;margin:0 auto;background:#fff;color:var(--blue)}
+.chkb footer{background:var(--navy);color:#C9CBE6;padding:24px 0;font-size:13px}
+.chkb footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.chkb footer img{height:22px;width:auto;display:block;filter:brightness(0) invert(1)}
+@media (max-width:900px){.chkb .hero{padding:20px 0 32px}
+.chkb .hero .wrap{grid-template-columns:minmax(0,1fr);gap:18px}
+.chkb .hero h1{font-size:30px}
+.chkb .lead{font-size:16px;margin-top:10px}
+.chkb .doc{display:none}
+.chkb .pill{display:none}
+.chkb .sec{padding:44px 0}
+.chkb .sec h2{font-size:28px}
+.chkb .clauses{grid-template-columns:minmax(0,1fr)}
+.chkb .stats ul{gap:8px}
+.chkb .stats b{font-size:21px}
+.chkb .stats span{font-size:12.5px}
+.chkb .flow{grid-template-columns:minmax(0,1fr)}
+.chkb .switch{display:flex}
+.chkb .switch button{flex:1;padding:10px 8px}
+.chkb .band h2{font-size:26px}
+.chkb .wrap{padding:0 16px}
+}
+@media (max-width:360px){.chkb .stats b{font-size:18px}
+.chkb .stats span{font-size:12px}
+}
+.chkb .pmsl{padding:28px 0;background:#fff;border-top:1px solid #DEDEEB;border-bottom:1px solid #DEDEEB}
+.chkb .pmsl .wrap{text-align:center}
+.chkb .pmsl p{margin:0 0 16px;font-size:14px;font-weight:600;color:#6B6B95}
+.chkb .pmsl .row{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:20px 36px}
+.chkb .pmsl img{height:28px;width:auto;max-width:130px;object-fit:contain}
+.chkb .pmsl .more{font-size:14px;font-weight:700;color:#385BF8}
+@media(max-width:600px){.chkb .pmsl{padding:22px 0}
+.chkb .pmsl .row{gap:16px 24px}
+.chkb .pmsl img{height:22px;max-width:100px}
+}
+.chkb .ck-sec.ck-lav{background:var(--alt);padding:64px 0}
+.chkb .ck-wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.chkb .ck-sechead h2{font-size:40px;font-weight:400;line-height:1.15;letter-spacing:-.01em;margin:0 0 10px;max-width:820px;color:var(--navy)}
+.chkb .ck-sechead h2 b{font-weight:700}
+.chkb .ck-sechead p{font-size:17px;color:var(--g1);max-width:680px}
+.chkb .ck-tabsbar{display:flex;flex-wrap:wrap;gap:8px;margin:28px 0 20px}
+.chkb .ck-tab{border:1px solid var(--g3);background:#fff;border-radius:999px;padding:9px 16px;font:600 14.5px var(--f);color:var(--navy);cursor:pointer;white-space:nowrap}
+.chkb .ck-tab:hover{border-color:var(--blue)}
+.chkb .ck-tab.is-on{background:var(--blue);border-color:var(--blue);color:#fff}
+.chkb .ck-tab:focus-visible{outline:0;box-shadow:var(--ring)}
+.chkb .ck-panel{display:none;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:40px;align-items:center;background:#fff;border-radius:16px;box-shadow:var(--shadow);padding:32px}
+.chkb .ck-panel.is-on{display:grid}
+.chkb .ck-panel h3{font-size:22px;line-height:1.25;margin-bottom:10px;color:var(--navy)}
+.chkb .ck-panel p{color:var(--g1);font-size:16px;margin-bottom:14px}
+.chkb .ck-panel ul{list-style:none;display:grid;gap:8px;margin:0 0 20px;padding:0}
+.chkb .ck-panel li{position:relative;padding-left:26px;font-weight:600;font-size:15px}
+.chkb .ck-panel li::before{content:"";position:absolute;left:0;top:4px;width:16px;height:16px;border-radius:5px;background:var(--soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 10.5l3.2 3L15 6.5' fill='none' stroke='%23385BF8' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/12px no-repeat}
+.chkb .ck-panel .ck-btn{display:inline-flex;align-items:center;justify-content:center;height:48px;padding:0 22px;border-radius:12px;background:var(--blue);color:#fff;font:700 15px var(--f);text-decoration:none}
+.chkb .ck-mock{background:var(--alt);border-radius:14px;padding:18px;display:grid;gap:10px}
+.chkb .ck-mock-t{font-size:12.5px;font-weight:700;color:var(--g1);text-transform:uppercase;letter-spacing:.04em}
+.chkb .ck-mrow{display:flex;align-items:center;gap:12px;background:#fff;border-radius:10px;padding:10px 12px;box-shadow:var(--shadow)}
+.chkb .ck-mrow .mi{flex:none;width:28px;height:28px;border-radius:8px;background:var(--soft)}
+.chkb .ck-mrow .ml{flex:1;min-width:0}
+.chkb .ck-mrow .ml b{display:block;font-size:14px}
+.chkb .ck-mrow .ml span{display:block;font-size:12.5px;color:var(--g1)}
+.chkb .ck-mtag{flex:none;font-size:11.5px;font-weight:700;color:#13865A;background:#E3F5EC;border-radius:999px;padding:3px 9px}
+@media (max-width:900px){.chkb .ck-sec.ck-lav{padding:44px 0}
+.chkb .ck-wrap{padding:0 16px}
+.chkb .ck-sechead h2{font-size:28px}
+.chkb .ck-tabsbar{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:20px -16px 14px;padding:2px 16px 6px;-webkit-mask-image:linear-gradient(90deg,#000 85%,transparent);mask-image:linear-gradient(90deg,#000 85%,transparent)}
+.chkb .ck-tabsbar::-webkit-scrollbar{display:none}
+.chkb .ck-panel.is-on{display:block;padding:20px}
+.chkb .ck-mock{margin-top:18px}
+.chkb .ck-panel .ck-btn{width:100%}
+}
+.chkb{--dark:#19194B;--gray2:#9696B9;--gray3:#DEDEEB;--input-empty:#F4F6F8;--white:#FFFFFF;--card-tint:#EEF2FF}
+.chkb #ck-form-slot { min-height: 100px; }
+.chkb #ck-form-slot form.hs-form { border: none !important; border-radius: 0 !important; padding: 0 !important; background: transparent !important; box-shadow: none !important; font-family: inherit !important; }
+.chkb #ck-form-slot .input { width: 100% !important; margin-right: 0 !important; }
+.chkb #ck-form-slot label, .chkb #ck-form-slot .hs-form-field > label { display: block !important; visibility: visible !important; opacity: 1 !important; font-family: inherit !important; font-size: 13px !important; font-weight: 700 !important; color: var(--dark) !important; margin-bottom: 6px !important; height: auto !important; width: auto !important; position: static !important; clip: auto !important; overflow: visible !important; text-indent: 0 !important; line-height: 1.4 !important; }
+.chkb #ck-form-slot label > span { display: inline !important; visibility: visible !important; opacity: 1 !important; font-size: 13px !important; font-weight: 700 !important; color: var(--dark) !important; position: static !important; clip: auto !important; width: auto !important; height: auto !important; background: transparent !important; }
+.chkb #ck-form-slot .hs-form-required { color: #FF2467 !important; margin-left: 2px !important; display: inline !important; }
+.chkb #ck-form-slot .hs-field-desc { font-size: 12.5px !important; color: var(--gray2) !important; margin: -2px 0 6px !important; line-height: 1.4 !important; }
+.chkb #ck-form-slot input[type="text"], .chkb #ck-form-slot input[type="email"], .chkb #ck-form-slot input[type="tel"], .chkb #ck-form-slot input[type="number"], .chkb #ck-form-slot select, .chkb #ck-form-slot textarea { width: 100% !important; height: auto !important; padding: 10px 12px !important; border: 1px solid var(--gray3) !important; border-radius: 8px !important; font-family: inherit !important; font-size: 15px !important; font-weight: 500 !important; color: var(--navy) !important; background-color: var(--input-empty) !important; box-shadow: none !important; line-height: 1.4 !important; }
+.chkb #ck-form-slot input:focus, .chkb #ck-form-slot select:focus, .chkb #ck-form-slot textarea:focus { outline: none !important; border-color: var(--navy) !important; background-color: var(--white) !important; box-shadow: var(--ring) !important; }
+.chkb #ck-form-slot input::placeholder, .chkb #ck-form-slot textarea::placeholder { color: var(--gray2) !important; opacity: 1 !important; }
+.chkb #ck-form-slot select { -webkit-appearance: none !important; -moz-appearance: none !important; appearance: none !important; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236B6B95' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>") !important; background-repeat: no-repeat !important; background-position: right 12px center !important; padding-right: 38px !important; text-overflow: ellipsis !important; }
+.chkb #ck-form-slot .hs-fieldtype-intl-phone.hs-input { display: flex !important; gap: 8px !important; width: 100% !important; align-items: stretch !important; border: none !important; padding: 0 !important; background: transparent !important; }
+.chkb #ck-form-slot .hs-fieldtype-intl-phone.hs-input > select.hs-input { flex: 0 0 128px !important; width: 128px !important; min-width: 0 !important; font-size: 14px !important; padding-left: 11px !important; padding-right: 28px !important; background-position: right 8px center !important; }
+.chkb #ck-form-slot .hs-fieldtype-intl-phone.hs-input > input.hs-input { flex: 1 1 auto !important; width: auto !important; min-width: 0 !important; }
+.chkb #ck-form-slot fieldset { max-width: 100% !important; border: none !important; }
+.chkb #ck-form-slot .hs-button, .chkb #ck-form-slot input[type="submit"] { display: block !important; width: 100% !important; height: 52px !important; padding: 0 26px !important; background-color: var(--blue) !important; background-image: none !important; color: var(--white) !important; border: none !important; border-radius: 12px !important; font-family: var(--f) !important; font-size: 16px !important; font-weight: 600 !important; cursor: pointer !important; box-shadow: var(--ring) !important; margin-top: 4px !important; text-transform: none !important; }
+.chkb #ck-form-slot .hs-error-msgs { list-style: none !important; padding: 0 !important; margin: 4px 0 0 0 !important; }
+.chkb #ck-form-slot .hs-error-msgs label, .chkb #ck-form-slot .hs-error-msgs label span { display: inline-block !important; font-size: 12px !important; font-weight: 500 !important; color: #FF2467 !important; margin-bottom: 0 !important; }
+.chkb #ck-form-slot .legal-consent-container, .chkb #ck-form-slot .hs-richtext { font-size: 12px !important; color: var(--gray2) !important; margin-bottom: 12px !important; line-height: 1.5 !important; }
+.chkb #ck-form-slot .hs-form-title, .chkb #ck-form-slot .form-title { display: none !important; }
+.chkb #ck-form-slot .submitted-message { padding: 24px 20px !important; text-align: center !important; background: var(--card-tint) !important; border-radius: 8px !important; color: var(--navy) !important; font-size: 15px !important; }
+.chkb h1,.chkb h2,.chkb h3,.chkb h4,.chkb p,.chkb li,.chkb a,.chkb button,.chkb span,.chkb b,.chkb label,.chkb input,.chkb select{font-family:var(--f) !important}
+.chkb #ck-form-slot form.hs-form{display:grid !important;grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important;gap:0 12px !important}
+.chkb #ck-form-slot form.hs-form > *{grid-column:1/-1}
+.chkb #ck-form-slot form.hs-form > .hs_firstname,.chkb #ck-form-slot form.hs-form > .hs_email{grid-column:auto}
+.chkb #ck-form-slot .hs-form-field{margin-bottom:10px !important}
+@media (max-width:900px){.chkb #ck-form-slot label,.chkb #ck-form-slot label>span{font-size:12.5px !important}}
+.chkb #ck-form-slot .input::before,.chkb #ck-form-slot .input::after,.chkb #ck-form-slot .hs-form-field::after,.chkb #ck-form-slot .hs-fieldtype-select .input::after{content:none !important;display:none !important}
+.chkb .hstats{display:grid;grid-template-columns:repeat(3,minmax(0,150px));gap:12px;margin-top:28px}
+.chkb .hstats div{background:#fff;border-radius:12px;box-shadow:0 0 5px rgba(26,148,255,.173);padding:12px 10px;text-align:center}
+.chkb .hstats b{display:block;font-size:24px;font-weight:800;color:var(--blue);letter-spacing:-.02em;line-height:1.2}
+.chkb .hstats span{display:block;font-size:13px;color:var(--g1)}
+@media (max-width:900px){.chkb .hstats{display:none}}
+@media (min-width:901px){.chkb section.stats{display:none}}
+@media (max-width:900px){.chkb .hero{padding:12px 0 24px !important}.chkb .hero .eyebrow{display:none !important}.chkb .hero h1{font-size:27px !important;line-height:1.12 !important}.chkb .hero .lead{font-size:15px !important;margin-top:8px !important}.chkb .hero .doc{display:none !important}.chkb .card{padding:16px 16px 12px !important}.chkb .card h2{font-size:20px !important}.chkb .card .sub{margin:0 0 8px !important}.chkb #ck-form-slot .hs-form-field{margin-bottom:8px !important}.chkb #ck-form-slot label{margin-bottom:4px !important}.chkb .hero .wrap{gap:14px !important}}
+</style>
+<div class="chkb">
+<header class="top"><div class="wrap"><img src="https://landing.chekin.com/hubfs/imagotype-new-chekin-landscape.svg" alt="Chekin"><span class="pill">Prova gratuita 14 giorni</span></div></header>
+<main>
+<section class="hero">
+<div class="wrap">
+<div class="hero-copy">
+<span class="eyebrow">Alloggiati Web · ISTAT · Imposta di soggiorno</span>
+<h1>Le schedine ad Alloggiati Web <span>partono da sole</span></h1>
+<p class="lead">I tuoi ospiti fanno il check-in dal telefono prima di arrivare. Chekin invia le schedine ad Alloggiati Web e i dati all'ISTAT in automatico, nei tempi previsti.</p>
+<div class="doc" aria-hidden="true"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div><b>Schedina inviata ad Alloggiati Web</b><span>Appartamento 3B · 2 ospiti · ricevuta archiviata</span></div></div>
+<div class="hstats"><div><b>+200.000</b><span>proprietà</span></div><div><b>+25M</b><span>check-in</span></div><div><b>+200</b><span>PMS integrati</span></div></div>
+</div>
+<div class="card" id="form">
+<h2>Prova Chekin gratis 14 giorni</h2>
+<p class="sub">Senza carta di credito. Attivazione immediata.</p>
+<div id="ck-form-slot"></div>
+<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+<script>
+if (window.hbspt) {
+hbspt.forms.create({ portalId: "8776616", formId: "ca54cc24-6675-4294-8a20-8e65e7165650", region: "na1", target: "#ck-form-slot", css: "",
+onFormReady: function($f){
+var f=($f&&$f.jquery)?$f[0]:$f; var s=f&&f.querySelector(".hs-fieldtype-intl-phone select"); if(!s) return;
+Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype,"value").set.call(s,"IT");
+s.dispatchEvent(new Event("change",{bubbles:true})); }
+});
+}
+</script>
+<p class="proof">+200.000 proprietà e +25M di check-in con Chekin</p>
+<p class="legal">I tuoi dati sono protetti. Rispettiamo il GDPR.</p>
+</div>
+</div>
+</section>
+<section class="stats" aria-label="Chekin in cifre">
+<div class="wrap"><ul>
+<li><b>+200.000</b><span>proprietà</span></li>
+<li><b>+25M</b><span>check-in</span></li>
+<li><b>+200</b><span>PMS integrati</span></li>
+</ul></div>
+</section>
+<section class="pmsl" aria-label="Collegato con il tuo PMS"><div class="wrap"><p>Collegato con il tuo PMS</p><div class="row"><img src="https://chekin.com/wp-content/uploads/2023/10/Guesty_2.0_Logo_Dark@2x.svg" alt="Guesty" loading="lazy"><img src="https://landing.chekin.com/hubfs/Hostaway.png" alt="Hostaway" loading="lazy"><img src="https://chekin.com/wp-content/uploads/2026/09/lodgify-logo.svg" alt="Lodgify" loading="lazy"><img src="https://chekin.com/wp-content/uploads/2023/04/avantio-orange-300x116.png" alt="Avantio" loading="lazy"><img src="https://chekin.com/wp-content/uploads/2025/07/Smoobu_logo_blue_h-300x74.webp" alt="Smoobu" loading="lazy"><img src="https://chekin.com/wp-content/uploads/2021/01/Hostify-Logo@2x-300x128.png" alt="Hostify" loading="lazy"><span class="more">e oltre 200</span></div></div></section>
+<section class="sec alt" aria-labelledby="dentro-t">
+<div class="wrap">
+<span class="kicker">Conformità legale in Italia</span>
+<h2 id="dentro-t">Tutto quello che serve per <b>essere in regola</b></h2>
+<p class="intro">La legge obbliga a trasmettere i dati degli ospiti ad Alloggiati Web, il portale della Polizia di Stato. Chekin lo fa per te, insieme a ISTAT e imposta di soggiorno.</p>
+<ul class="clauses">
+<li>Alloggiati Web entro 24 ore (6 ore per soggiorni brevi)</li>
+<li>ISTAT entro il 5 del mese successivo</li>
+<li>Imposta di soggiorno calcolata e incassata</li>
+<li>Ricevute archiviate per 5 anni</li>
+<li>Scanner del documento, senza app</li>
+<li>Contratto e regolamento firmati online</li>
+</ul>
+<a class="btn inline-cta" href="#form">Inizia la prova gratuita</a>
+</div>
+</section>
+<section class="sec" aria-labelledby="auto-t">
+<div class="wrap">
+<span class="kicker">Prima e dopo</span>
+<h2 id="auto-t">Mai più <b>schedine a mano</b></h2>
+<p class="intro">Con Chekin l'ospite si registra dal telefono prima di arrivare e tu non entri più nel portale.</p>
+<div class="switch" role="group" aria-label="Confronta">
+<button type="button" data-m="paper" aria-pressed="false">Con la carta</button>
+<button type="button" data-m="auto" aria-pressed="true">Con Chekin</button>
+</div>
+<ol class="flow" id="flow"></ol>
+<p class="sum" id="sum"></p>
+</div>
+</section>
+<section class="ck-sec ck-lav" id="piattaforma">
+<div class="ck-wrap">
+<div class="ck-sechead">
+<h2 class="ck-h2"><b>Meno lavoro operativo</b> per te, più libertà per i tuoi ospiti</h2>
+<p>Automatizza arrivi, burocrazia e comunicazione per smettere di seguire ogni singolo ingresso.</p>
+</div>
+<div class="ck-tabsbar" role="tablist">
+<button type="button" class="ck-tab is-on" data-tab="t1">Check-in online</button>
+<button type="button" class="ck-tab" data-tab="t2">Self check-in e accesso</button>
+<button type="button" class="ck-tab" data-tab="t3">Verifica dell'identità</button>
+<button type="button" class="ck-tab" data-tab="t4">Conformità e imposte</button>
+<button type="button" class="ck-tab" data-tab="t5">Upselling</button>
+<button type="button" class="ck-tab" data-tab="t6">Guida digitale</button>
+<button type="button" class="ck-tab" data-tab="t7">Inbox con IA</button>
+</div>
+<div class="ck-panel is-on" data-panel="t1">
+<div>
+<h3>I tuoi ospiti si registrano in pochi secondi, senza scaricare nessuna app.</h3>
+<p>Completano la registrazione e condividono solo i dati che la legge richiede, dal loro telefono. Lo scanner OCR legge il documento e compila i campi da solo, così loro ci mettono pochi secondi e tu hai tutto validato prima che arrivino.</p>
+<ul>
+<li>Nessun download, tutto dal browser del telefono</li>
+<li>Scanner OCR che compila il modulo da solo</li>
+<li>Solo i dati richiesti dalla normativa</li>
+<li>Imposta di soggiorno e cauzione incassate in anticipo</li>
+</ul>
+<a href="#form" class="ck-btn">Inizia la prova gratuita</a>
+</div>
+<div class="ck-mock">
+<div class="ck-mock-t">Prima dell'arrivo · Giulia · Appartamento 3B</div>
+<div class="ck-mrow"><span class="mi"></span><span class="ml"><b>Modulo di registrazione</b><span>Completato 2 giorni fa</span></span><span class="ck-mtag">Fatto</span></div>
+<div class="ck-mrow"><span class="mi"></span><span class="ml"><b>Documento scansionato</b><span>Carta d'identità · OCR e biometria</span></span><span class="ck-mtag">Verificato</span></div>
+<div class="ck-mrow"><span class="mi"></span><span class="ml"><b>Imposta di soggiorno</b><span>18 € incassati</span></span><span class="ck-mtag">Pagata</span></div>
+<div class="ck-mrow"><span class="mi"></span><span class="ml"><b>Cauzione</b><span>150 € trattenuti</span></span><span class="ck-mtag">Trattenuta</span></div>
+</div>
+</div>
+<div class="ck-panel" data-panel="t2">
+<div>
+<h3>Accesso da remoto, più semplice che mai.</h3>
+<p>Quando l'ospite completa il check-in online e verifica la sua identità, riceve il codice di accesso o la chiave digitale del portone e dell'alloggio. Funziona con le principali marche di serrature, tastierini e cassette portachiavi. Senza scaricare nulla e con le istruzioni inviate da sole.</p>
+<ul>
+<li>Codice di accesso o chiave digitale inviati in automatico</li>
+<li>Nessuna app da scaricare per aprire la porta</li>
+<li>Compatibile con le principali serrature, tastierini e cassette portachiavi</li>
+<li>Accesso al portone e all'alloggio, attivo solo durante il soggiorno</li>
+</ul>
+<a href="#form" class="ck-btn">Inizia la prova gratuita</a>
+</div>
+<div class="ck-mock">
+<div class="ck-mock-t">Accesso · Appartamento 3B</div>
+<div class="ck-mrow"><span class="mi"></span><span class="ml"><b>Codice generato</b><span>Valido dal 12 al 15 marzo</span></span><span class="ck-mtag">Attivo</span></div>
+<div class="ck-mrow"><span class="mi"></span><span class="ml"><b>Portone del palazzo</b><span>Tastierino · piano terra</span></span><span class="ck-mtag">Aperto</span></div>
+<div class="ck-mrow"><span class="mi"></span><span class="ml"><b>Porta dell'appartamento</b><span>Serratura intelligente</span></span><span class="ck-mtag">Aperta</span></div>
+<div class="ck-mrow"><span class="mi"></span><span class="ml"><b>Registro degli accessi</b><span>Chi è entrato e quando</span></span><span class="ck-mtag">Salvato</span></div>
+</div>
+</div>
+<div class="ck-panel" data-panel="t3">
+<div>
+<h3>Identità verificata in pochi secondi, la sicurezza che oggi serve.</h3>
+<p>Prima di dare accesso all'alloggio, ogni ospite verifica la sua identità: scansione del documento, selfie o video con rilevamento del vivo e confronto biometrico istantaneo. Meno frodi di identità e più sicurezza per la tua attività.</p>
+<ul>
+<li>Confronto biometrico in tempo reale</li>
+<li>Rilevamento del vivo in video che ferma le sostituzioni di persona</li>
+<li>Oltre 2.500 modelli di documento riconosciuti in più di 150 paesi</li>
+<li>Accesso all'alloggio solo dopo la verifica dell'identità</li>
+</ul>
+<a href="#form" class="ck-btn">Inizia la prova gratuita</a>
+</div>
+<div class="ck-mock">
+<div class="ck-mock-t">Verifica dell'identità</div>
+<div class="ck-mrow"><span class="mi"></span><span class="ml"><b>Documento letto</b><span>OCR e MRZ incrociati</span></span><span class="ck-mtag">Autentico</span></div>
+<div class="ck-mrow"><span class="mi"></span><span class="ml"><b>Match biometrico</b><span>Selfie contro foto del documento</span></span><span class="ck-mtag">99,8%</span></div>
+<div class="ck-mrow"><span class="mi"></span><span class="ml"><b>Rilevamento del vivo</b><span>Protezione anti-deepfake</span></span><span class="ck-mtag">Superato</span></div>
+<div class="ck-mrow"><span class="mi"></span><span class="ml"><b>Esito</b><span>In meno di 10 secondi</span></span><span class="ck-mtag">Verificato</span></div>
+</div>
+</div>
+<div class="ck-panel" data-panel="t4">
+<div>
+<h3>Registrazione degli ospiti e imposta di soggiorno, risolte da sole.</h3>
+<p>Chekin invia i dati dei tuoi ospiti all'autorità competente in ogni paese, e calcola e incassa l'imposta di soggiorno secondo le regole di ogni Comune. In Italia le regole cambiano da Regione a Regione e da Comune a Comune, e Chekin le tiene aggiornate per te.</p>
+<ul>
+<li>Invio automatico alle autorità di ogni paese</li>
+<li>Imposta di soggiorno calcolata e incassata secondo ogni Comune</li>
+<li>Schedine trasmesse da sole, senza entrare in nessun portale</li>
+<li>Sempre aggiornato sui cambiamenti normativi</li>
+<li>Dati conservati per il tempo richiesto dalla legge</li>
+</ul>
+<a href="#form" class="ck-btn">Inizia la prova gratuita</a>
+</div>
+<div class="ck-mock">
+<div class="ck-mock-t">Invii alle autorità · oggi</div>
+<div class="ck-mrow"><span class="mi"></span><span class="ml"><b>Alloggiati Web</b><span>14 schedine</span></span><span class="ck-mtag">Inviate</span></div>
+<div class="ck-mrow"><span class="mi"></span><span class="ml"><b>Rilevazione ISTAT</b><span>Entro il 5 del mese</span></span><span class="ck-mtag">Programmata</span></div>
+<div class="ck-mrow"><span class="mi"></span><span class="ml"><b>Imposta di soggiorno</b><span>72 € incassati</span></span><span class="ck-mtag">Automatica</span></div>
+<div class="ck-mrow"><span class="mi"></span><span class="ml"><b>Fatture al SDI</b><span>Trasmesse all'AdE</span></span><span class="ck-mtag">Inviate</span></div>
+</div>
+</div>
+<div class="ck-panel" data-panel="t5">
+<div>
+<h3>Ogni prenotazione, un'occasione di ricavo in più.</h3>
+<p>Early check-in, late check-out, parcheggio, transfer, deposito bagagli o pulizia a metà soggiorno compaiono durante il check-in online, proprio mentre l'ospite sta organizzando il suo arrivo. La struttura guadagna di più senza che tu debba vendere nulla.</p>
+<ul>
+<li>Offerte nel momento di massima intenzione di acquisto</li>
+<li>Segmentazione per struttura, durata del soggiorno e profilo</li>
+<li>Pagamenti integrati e sincronizzati con il tuo PMS</li>
+<li>Il tuo catalogo più un marketplace di esperienze di terzi</li>
+</ul>
+<a href="#form" class="ck-btn">Inizia la prova gratuita</a>
+</div>
+<div class="ck-mock">
+<div class="ck-mock-t">Offerte mostrate a Giulia</div>
+<div class="ck-mrow"><span class="mi"></span><span class="ml"><b>Early check-in 11:00</b><span>20 €</span></span><span class="ck-mtag">Prenotato</span></div>
+<div class="ck-mrow"><span class="mi"></span><span class="ml"><b>Parcheggio nel palazzo</b><span>12 €/giorno</span></span><span class="ck-mtag">Aggiunto</span></div>
+<div class="ck-mrow"><span class="mi"></span><span class="ml"><b>Deposito bagagli</b><span>8 €</span></span><span class="ck-mtag">+1</span></div>
+<div class="ck-mrow"><span class="mi"></span><span class="ml"><b>Late check-out 13:00</b><span>15 €</span></span><span class="ck-mtag">Consigliato</span></div>
+</div>
+</div>
+<div class="ck-panel" data-panel="t6">
+<div>
+<h3>Tutto quello che serve al tuo ospite, dentro la tua guida digitale.</h3>
+<p>Una guida digitale con quello che serve: come entrare nel palazzo, come funzionano la cucina o il riscaldamento, il wifi, il regolamento della struttura e i tuoi consigli sul quartiere. Si condivide durante il check-in online, con un link o un QR in struttura.</p>
+<ul>
+<li>Manuale della struttura: elettrodomestici e climatizzazione</li>
+<li>Come entrare nel palazzo, wifi e regole di convivenza</li>
+<li>Consigli sul quartiere: ristoranti, trasporti e negozi</li>
+<li>Traduzione automatica nella lingua dell'ospite</li>
+</ul>
+<a href="#form" class="ck-btn">Inizia la prova gratuita</a>
+</div>
+<div class="ck-mock">
+<div class="ck-mock-t">Guida dell'appartamento 3B</div>
+<div class="ck-mrow"><span class="mi"></span><span class="ml"><b>Wifi e password</b><span>Casa_3B · fibra 600</span></span><span class="ck-mtag">Visto</span></div>
+<div class="ck-mrow"><span class="mi"></span><span class="ml"><b>Come entrare nel palazzo</b><span>Portone e ascensore</span></span><span class="ck-mtag">Visto</span></div>
+<div class="ck-mrow"><span class="mi"></span><span class="ml"><b>Cucina e riscaldamento</b><span>Come funzionano</span></span><span class="ck-mtag">Visto</span></div>
+<div class="ck-mrow"><span class="mi"></span><span class="ml"><b>Consigli sul quartiere</b><span>8 posti vicini</span></span><span class="ck-mtag">Top zona</span></div>
+</div>
+</div>
+<div class="ck-panel" data-panel="t7">
+<div>
+<h3>Risposte in pochi secondi, a qualsiasi ora e in qualsiasi lingua.</h3>
+<p>Un inbox con IA risponde alle domande di sempre via email, SMS, OTA e WhatsApp usando le informazioni reali di ogni struttura. Tu intervieni solo quando serve davvero.</p>
+<ul>
+<li>Risposte via email, SMS, OTA e WhatsApp</li>
+<li>Basate sulle informazioni reali di ogni struttura</li>
+<li>Individua occasioni di upselling e agisce da solo</li>
+<li>Ti avvisa ogni volta che serve una persona</li>
+</ul>
+<a href="#form" class="ck-btn">Inizia la prova gratuita</a>
+</div>
+<div class="ck-mock">
+<div class="ck-mock-t">Inbox · 4 conversazioni attive</div>
+<div class="ck-mrow"><span class="mi"></span><span class="ml"><b>«Come entro nel palazzo?»</b><span>Giulia · WhatsApp</span></span><span class="ck-mtag">Risposto</span></div>
+<div class="ck-mrow"><span class="mi"></span><span class="ml"><b>«A che ora posso arrivare?»</b><span>James · Email</span></span><span class="ck-mtag">Risposto</span></div>
+<div class="ck-mrow"><span class="mi"></span><span class="ml"><b>«Qual è la password del wifi?»</b><span>Sophie · SMS</span></span><span class="ck-mtag">Risposto</span></div>
+<div class="ck-mrow"><span class="mi"></span><span class="ml"><b>«C'è un parcheggio vicino?»</b><span>Marco · WhatsApp</span></span><span class="ck-mtag">Risposto</span></div>
+</div>
+</div>
+</div>
+</section>
+<section class="band">
+<div class="wrap">
+<h2>Le schedine partono da sole</h2>
+<p>Prova Chekin gratis 14 giorni. Un esperto Chekin ti aiuta ad attivarlo.</p>
+<a class="btn" href="#form">Inizia la prova gratuita</a>
+</div>
+</section>
+</main>
+<footer><div class="wrap"><img style="filter:brightness(0) invert(1)" src="https://landing.chekin.com/hubfs/imagotype-new-chekin-landscape.svg" alt="Chekin"><span>© 2026 Chekin</span></div></footer>
+<script>
+(function(){
+  var M={
+    paper:{s:[['Stampi il contratto','Lo compili per ogni prenotazione e lo fai firmare all’arrivo.'],['Copi i documenti','Fotografi o fotocopi il documento di ogni ospite.'],['Compili la schedina','Entri in Alloggiati Web e inserisci i dati a mano, entro 24 ore.'],['Rifai tutto per l’ISTAT','Altro portale, altri dati, entro il 5 del mese successivo.']],sum:'Quattro passaggi a mano per ogni prenotazione.'},
+    auto:{s:[['Riceve il link','Via email, WhatsApp o SMS. Un solo link per tutti gli occupanti.'],['Scansiona il documento','Lo scanner legge carta d’identità o passaporto e compila il modulo.'],['Firma ed è fatta','Firma il contratto di locazione e il regolamento della struttura.'],['Invio automatico','Chekin invia la schedina ad Alloggiati Web e i dati all’ISTAT.']],sum:'<span>Tu non tocchi nulla.</span> E l’ospite arriva già registrato.'}
+  };
+  var flow=document.getElementById('flow'),sum=document.getElementById('sum'),bs=[].slice.call(document.querySelectorAll('.switch button'));
+  function show(m){
+    flow.className='flow'+(m==='paper'?' paper':'');
+    flow.innerHTML=M[m].s.map(function(x){return '<li><h3>'+x[0]+'</h3><p>'+x[1]+'</p></li>'}).join('');
+    sum.innerHTML=M[m].sum;
+    bs.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.m===m)});
+  }
+  bs.forEach(function(b){b.addEventListener('click',function(){show(b.dataset.m)})});
+  show('auto');
+})();
+</script>
+<script>
+(function(){var bar=document.querySelector('.ck-tabsbar');if(!bar)return;var sec=bar.closest('section');
+bar.addEventListener('click',function(e){var b=e.target.closest('.ck-tab');if(!b)return;
+sec.querySelectorAll('.ck-tab').forEach(function(t){var on=t===b;t.classList.toggle('is-on',on);t.setAttribute('aria-selected',on)});
+sec.querySelectorAll('.ck-panel').forEach(function(p){p.classList.toggle('is-on',p.getAttribute('data-panel')===b.getAttribute('data-tab'))});});})();
+</script>
+</div>

@@ -1,0 +1,549 @@
+<!-- Variante B · PMax Competitors ES · /chekin-hoteles · 29/10/2026. Va en Settings → Advanced → Head HTML de la variante B. Formulario de HubSpot de 5 campos (e42c7acf-f56c-4549-a287-2537e32fd92c), prefijo +34. Todo el CSS va dentro de .chkb. -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+.footer,.footer_dnd,#hs_cos_wrapper_footer_dnd,div[class*="footer_dnd"],.header,#header,.header-container,div[class*="header_dnd"],#hs_cos_wrapper_header_logo,#hs_cos_wrapper_header_navigation_primary,#hs_cos_wrapper_dnd_area,div[class*="dnd_area"]{display:none !important}
+body{margin:0}
+.chkb .ck{
+  --blue:#385BF8; --anim-blue:#294DF1; --hover-blue:#5975F5;
+  --dark:#19194B; --navy:#161643; --dark-blue:#23235D;
+  --g1:#6B6B95; --g2:#9696B9; --g3:#DEDEEB;
+  --input-empty:#F4F6F8; --tint:#EFEFFF; --tint-2:#EFF6FF; --lavender:#F4F4FD; --pressed:#F0F3FF;
+  --red:#FF2467;
+  --gradient:linear-gradient(180deg,#002CFA,#274BF0);
+  --ring:0 0 0 3px rgba(56,91,248,.2);
+  --ring-subtle:0 0 0 1px rgba(56,91,248,.2);
+  --card:0 0 5px rgba(26,148,255,.173);
+  --card-hover:0 20px 25px rgba(26,148,255,.173);
+  --elev:0 31px 50px rgba(26,140,255,.25);
+  --font:'Proxima Nova','Montserrat',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
+  font-family:var(--font); color:var(--navy); background:#fff;
+  -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+}
+.chkb .ck *,.chkb .ck *::before,.chkb .ck *::after{box-sizing:border-box}
+.chkb .ck h1,.chkb .ck h2,.chkb .ck h3,.chkb .ck h4,.chkb .ck p,.chkb .ck ul,.chkb .ck ol,.chkb .ck figure,.chkb .ck blockquote{margin:0;padding:0}
+.chkb .ck ul,.chkb .ck ol{list-style:none}
+.chkb .ck img,.chkb .ck svg{display:block;max-width:100%}
+.chkb .ck a{color:inherit;text-decoration:none}
+.chkb .ck .wrap{width:100%;max-width:1200px;margin:0 auto;padding-left:24px;padding-right:24px}
+.chkb .ck section{padding:80px 0}
+.chkb .ck h1{font-weight:700;font-size:clamp(44px,4.6vw,62px);line-height:1.08;letter-spacing:-.015em;color:var(--dark)}
+.chkb .ck h1 .accent{color:var(--blue)}
+.chkb .ck h2{font-weight:400;font-size:44px;line-height:1.1;color:var(--dark)}
+.chkb .ck h2 b{font-weight:700}
+.chkb .ck h3{font-weight:700;font-size:22px;line-height:1.4;color:var(--navy)}
+.chkb .ck p{font-weight:500;font-size:16px;line-height:1.5;color:var(--g1)}
+.chkb .ck .lead{font-size:19px;line-height:1.55;max-width:520px}
+.chkb .ck .eyebrow{display:inline-block;font-weight:600;font-size:14px;line-height:24px;color:var(--blue);background:var(--lavender);border-radius:51px;padding:4px 14px;margin-bottom:24px}
+.chkb .ck .section-head{max-width:720px;margin:0 auto 48px;text-align:center}
+.chkb .ck .section-head p{margin-top:16px;font-size:18px}
+.chkb .ck .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 20px;border:0;border-radius:12px;font-family:var(--font);font-weight:600;font-size:16px;line-height:1.25;cursor:pointer;transition:background 150ms ease-out,color 150ms ease-out,box-shadow 150ms ease-out;white-space:nowrap}
+.chkb .ck .btn-lg{height:52px;padding:0 24px}
+.chkb .ck .btn-primary{background:var(--blue);color:#fff;box-shadow:var(--ring)}
+.chkb .ck .btn-primary:hover{background:linear-gradient(0deg,rgba(255,255,255,.1),rgba(255,255,255,.1)),var(--blue)}
+.chkb .ck .btn-primary:active{background:linear-gradient(0deg,rgba(0,0,0,.1),rgba(0,0,0,.1)),var(--blue)}
+.chkb .ck .btn-primary:focus-visible{outline:1px solid var(--navy);outline-offset:0}
+.chkb .ck .btn-on-dark{background:rgba(255,255,255,.9);color:var(--navy);box-shadow:none}
+.chkb .ck .btn-on-dark:hover{background:#fff}
+.chkb .ck .btn-on-dark:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.chkb .ck .btn svg{width:20px;height:20px}
+.chkb .ck .top{position:sticky;top:0;z-index:20;background:#fff;box-shadow:0 1px 0 var(--g3)}
+.chkb .ck .top .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+.chkb .ck .top .logo{width:132px;height:auto}
+.chkb .ck .top .btn{height:40px}
+.chkb .ck .hero{padding:64px 0 80px}
+.chkb .ck .hero-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:64px;align-items:start}
+.chkb .ck .hero h1{margin-bottom:24px}
+.chkb .ck .ticks{margin-top:32px;display:grid;gap:16px}
+.chkb .ck .ticks li{display:flex;gap:16px;align-items:flex-start;font-weight:500;font-size:18px;line-height:1.5;color:var(--navy)}
+.chkb .ck .ticks .ico{flex:0 0 28px;width:28px;height:28px;border-radius:50%;background:var(--pressed);color:var(--blue);display:flex;align-items:center;justify-content:center}
+.chkb .ck .ticks .ico svg{width:16px;height:16px}
+.chkb .ck .form-card{background:#fff;border-radius:14px;box-shadow:var(--elev);padding:40px 32px 32px;scroll-margin-top:96px}
+.chkb .ck .form-card h2{font-size:28px;line-height:1.25;font-weight:700;margin-bottom:8px}
+.chkb .ck .form-card .form-intro{font-size:15px;margin-bottom:24px}
+.chkb .ck .pms{padding:48px 0;background:#fff;border-top:1px solid var(--g3);border-bottom:1px solid var(--g3)}
+.chkb .ck .stats-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
+.chkb .ck .stat{text-align:center;padding:32px 16px;background:var(--tint);border-radius:14px}
+.chkb .ck .stat b{display:block;font-weight:700;font-size:44px;line-height:1.1;color:var(--dark);white-space:nowrap}
+.chkb .ck .stat span{display:block;margin-top:8px;font-weight:500;font-size:16px;line-height:1.5;color:var(--g1)}
+.chkb .ck .how{background:var(--tint-2)}
+.chkb .ck .faq-list{max-width:800px;margin:0 auto}
+.chkb .ck .faq-list details{border-bottom:1px solid var(--g3)}
+.chkb .ck .faq-list summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:24px 0;font-weight:600;font-size:18px;line-height:1.4;color:var(--dark)}
+.chkb .ck .faq-list summary::-webkit-details-marker{display:none}
+.chkb .ck .faq-list summary svg{flex:0 0 24px;width:24px;height:24px;color:var(--blue);transition:transform 150ms ease-out}
+.chkb .ck .faq-list details[open] summary svg{transform:rotate(45deg)}
+.chkb .ck .faq-list summary:focus-visible{outline:none;box-shadow:var(--ring);border-radius:8px}
+.chkb .ck .faq-list details p{padding:0 48px 24px 0}
+.chkb .ck .final{padding:0 0 80px}
+.chkb .ck .final-box{background:var(--gradient);border-radius:14px;padding:64px 48px;text-align:center}
+.chkb .ck .final-box h2{color:#fff;margin-bottom:16px}
+.chkb .ck .final-box p{color:rgba(255,255,255,.85);font-size:18px;max-width:560px;margin:0 auto 32px}
+.chkb .ck .foot{background:var(--dark);padding:32px 0}
+.chkb .ck .foot .wrap{display:flex;flex-wrap:wrap;gap:16px 32px;align-items:center;justify-content:space-between}
+.chkb .ck .foot img{width:110px;height:auto}
+.chkb .ck .foot nav{display:flex;flex-wrap:wrap;gap:8px 24px}
+.chkb .ck .foot nav a,.chkb .ck .foot small{font-size:14px;font-weight:400;color:var(--g2)}
+.chkb .ck .foot nav a:hover{color:#fff}
+.chkb .ck .sticky-cta{display:none}
+@media (max-width:980px){.chkb .ck section{padding:64px 0}
+.chkb .ck .hero{padding:40px 0 64px}
+.chkb .ck h1{font-size:44px}
+.chkb .ck h2{font-size:36px}
+.chkb .ck .hero-grid{grid-template-columns:minmax(0,1fr);gap:40px}
+.chkb .ck .stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:640px){.chkb .ck .wrap{padding-left:16px;padding-right:16px}
+.chkb .ck section{padding:48px 0}
+.chkb .ck .hero{padding:32px 0 48px}
+.chkb .ck h1{font-size:36px}
+.chkb .ck h2{font-size:30px}
+.chkb .ck .lead{font-size:17px}
+.chkb .ck .ticks li{font-size:16px}
+.chkb .ck .top .wrap{height:60px}
+.chkb .ck .top .logo{width:108px}
+.chkb .ck .top .btn{display:none}
+.chkb .ck .stat b{font-size:34px}
+.chkb .ck .stat{padding:24px 12px}
+.chkb .ck .form-card{padding:32px 20px 24px}
+.chkb .ck .final-box{padding:48px 24px}
+.chkb .ck .faq-list summary{font-size:16px}
+.chkb .ck .faq-list details p{padding-right:0}
+.chkb .ck .sticky-cta{display:block;position:fixed;left:0;right:0;bottom:0;z-index:30;background:#fff;padding:12px 16px;box-shadow:0 -1px 0 var(--g3)}
+.chkb .ck .sticky-cta .btn{width:100%}
+.chkb .ck .sticky-cta.hide{display:none}
+.chkb .ck .foot{padding-bottom:96px}
+}
+@media (prefers-reduced-motion:reduce){.chkb .ck *{transition:none !important}}
+.chkb .ck{--green:#1E9E5A;--lav:#F4F4FD}
+.chkb .ck .tone-tint{background:var(--tint-2)}
+.chkb .ck .tone-lav{background:var(--lav)}
+.chkb .ck .tone-navy{background:var(--dark)}
+.chkb .ck .hero{padding:40px 0 48px;background:var(--tint-2)}
+.chkb .ck .hero-grid{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:56px;align-items:center}
+.chkb .ck .hero h1{font-size:clamp(38px,3.6vw,54px);line-height:1.08;margin-bottom:16px}
+.chkb .ck .hero .eyebrow{margin-bottom:16px;background:#fff}
+.chkb .ck .hero .lead{font-size:18px;line-height:1.5}
+.chkb .ck .hero .ticks{margin-top:20px;gap:10px}
+.chkb .ck .hero .ticks li{font-size:16px}
+.chkb .ck .hero .ticks .ico{flex-basis:24px;width:24px;height:24px}
+.chkb .ck .hero-stats{margin-top:28px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;max-width:560px}
+.chkb .ck .hero-stats div{background:#fff;border-radius:12px;box-shadow:var(--card);padding:12px 10px;text-align:center}
+.chkb .ck .hero-stats b{display:block;font-weight:700;font-size:22px;line-height:1.2;color:var(--dark);white-space:nowrap}
+.chkb .ck .hero-stats span{display:block;font-weight:500;font-size:12px;line-height:1.35;color:var(--g1);margin-top:2px}
+.chkb .ck .form-card{padding:28px 28px 22px}
+.chkb .ck .form-card h2{font-size:24px;margin-bottom:4px}
+.chkb .ck .form-card .form-intro{font-size:14px;margin-bottom:16px}
+.chkb .ck .stats-dark{padding:56px 0}
+.chkb .ck .stats-dark .stats-grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}
+.chkb .ck .stats-dark .stat{background:rgba(255,255,255,.06);border-radius:14px;padding:24px 12px}
+.chkb .ck .stats-dark .stat b{color:#fff;font-size:38px}
+.chkb .ck .stats-dark .stat span{color:var(--g2);font-size:15px}
+.chkb .ck .pms-hub{padding:72px 0;background:#fff}
+.chkb .ck .pms-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:56px;align-items:center}
+.chkb .ck .pms-copy h2{margin-bottom:16px}
+.chkb .ck .pms-copy > p{font-size:17px;max-width:460px}
+.chkb .ck .flow{margin-top:24px;display:grid;gap:12px;counter-reset:none}
+.chkb .ck .flow li{display:flex;gap:12px;align-items:center;font-weight:600;font-size:16px;color:var(--navy)}
+.chkb .ck .flow li span{flex:0 0 28px;width:28px;height:28px;border-radius:50%;background:var(--pressed);color:var(--blue);font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center}
+.chkb .ck .pms-more{margin-top:20px;font-size:15px;font-weight:600;color:var(--blue)}
+.chkb .ck .pms-visual{position:relative;width:100%;aspect-ratio:600/480;max-width:100%;background:var(--tint-2);border-radius:14px;overflow:hidden}
+.chkb .ck .pms-visual .lines{position:absolute;inset:0;width:100%;height:100%}
+.chkb .ck .pms-center{position:absolute;left:8%;top:50%;width:27%;transform:translateY(-50%);background:#fff;border-radius:999px;box-shadow:0 20px 25px rgba(26,148,255,.173);padding:4.5% 4%;display:flex;align-items:center;justify-content:center}
+.chkb .ck .pms-center img{width:100%;height:auto}
+.chkb .ck .pms-logo{position:absolute;left:63.3%;width:30%;height:12.5%;transform:translateY(-50%);background:#fff;border-radius:12px;box-shadow:0 10px 24px rgba(26,148,255,.1);display:flex;align-items:center;justify-content:center;padding:0 5%}
+.chkb .ck .pms-logo img{max-width:100%;max-height:52%;width:auto;height:auto;object-fit:contain}
+@media (max-width:980px){.chkb .ck .pms-grid{grid-template-columns:minmax(0,1fr);gap:32px}
+.chkb .ck .pms-hub{padding:56px 0}
+}
+@media (max-width:640px){.chkb .ck .pms-logo{border-radius:8px}
+.chkb .ck .pms-hub{padding:48px 0}
+}
+.chkb .ck .case{margin:0;background:#fff;border-radius:14px;box-shadow:var(--card);padding:32px;display:flex;flex-direction:column;gap:20px}
+.chkb .ck .case-head{display:flex;flex-direction:column;gap:4px;padding-bottom:16px;border-bottom:1px solid var(--g3)}
+.chkb .ck .case-brand{font-weight:800;font-size:22px;letter-spacing:-.01em;color:var(--dark)}
+.chkb .ck .case-meta{font-weight:500;font-size:14px;color:var(--g1)}
+.chkb .ck .case-metric{display:flex;flex-direction:column;gap:2px}
+.chkb .ck .case-metric b{font-weight:700;font-size:40px;line-height:1.1;color:var(--blue);white-space:nowrap}
+.chkb .ck .case-metric span{font-weight:500;font-size:14px;color:var(--g1)}
+.chkb .ck .case blockquote{margin:0;font-weight:500;font-size:18px;line-height:1.55;color:var(--navy);flex:1}
+.chkb .ck .case figcaption{display:flex;gap:12px;align-items:center;font-size:14px;color:var(--g1)}
+.chkb .ck .case figcaption strong{display:block;font-weight:700;font-size:15px;color:var(--navy)}
+.chkb .ck .avatar{flex:0 0 44px;width:44px;height:44px;border-radius:50%;background:var(--pressed);color:var(--blue);font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;box-shadow:var(--ring-subtle)}
+.chkb .ck .cases-src{margin-top:16px;text-align:center;font-size:13px;color:var(--g2)}
+.chkb .ck .case-solo{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:40px;padding:40px}
+.chkb .ck .case-main{display:flex;flex-direction:column;gap:18px;min-width:0}
+.chkb .ck .case-solo blockquote{font-size:22px;line-height:1.45;font-weight:600;color:var(--dark)}
+.chkb .ck .case-solo blockquote.q2{font-size:17px;font-weight:500;color:var(--navy)}
+.chkb .ck .case-text{font-size:15px}
+.chkb .ck .case-side{display:flex;flex-direction:column;justify-content:center;gap:20px;padding-left:40px;border-left:1px solid var(--g3)}
+@media (max-width:980px){.chkb .ck .case-solo{grid-template-columns:minmax(0,1fr);gap:28px}
+.chkb .ck .case-side{padding-left:0;border-left:0;border-top:1px solid var(--g3);padding-top:24px;flex-direction:row;flex-wrap:wrap;gap:20px 32px}
+}
+@media (max-width:640px){.chkb .ck .case-solo{padding:24px}
+.chkb .ck .case-solo blockquote{font-size:19px}
+.chkb .ck .case{padding:24px}
+.chkb .ck .case-metric b{font-size:32px}
+}
+.chkb .ck .tabs-bar{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:0 auto 40px;max-width:1000px}
+.chkb .ck .tab-btn{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 16px;border:0;border-radius:12px;background:#fff;box-shadow:var(--ring-subtle);font-family:var(--font);font-weight:600;font-size:14px;color:var(--navy);cursor:pointer;transition:background 150ms ease-out,color 150ms ease-out,box-shadow 150ms ease-out;white-space:nowrap}
+.chkb .ck .tab-btn svg{width:18px;height:18px;color:var(--blue)}
+.chkb .ck .tab-btn:hover{background:linear-gradient(0deg,rgba(0,0,0,.03),rgba(0,0,0,.03)),#fff}
+.chkb .ck .tab-btn[aria-selected="true"]{background:var(--blue);color:#fff;box-shadow:var(--ring)}
+.chkb .ck .tab-btn[aria-selected="true"] svg{color:#fff}
+.chkb .ck .tab-btn:focus-visible{outline:1px solid var(--navy)}
+.chkb .ck .tab-panel{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:center}
+.chkb .ck .tab-panel[hidden]{display:none}
+.chkb .ck .tab-panel h3{font-weight:700;font-size:30px;line-height:1.2;color:var(--dark);margin-bottom:16px}
+.chkb .ck .tab-panel .txt > p{font-size:17px}
+.chkb .ck .tab-panel ul{margin-top:20px;display:grid;gap:10px}
+.chkb .ck .tab-panel li{display:flex;gap:10px;font-weight:500;font-size:16px;line-height:1.5;color:var(--navy)}
+.chkb .ck .tab-panel li svg{flex:0 0 20px;width:20px;height:20px;color:var(--blue);margin-top:2px}
+.chkb .ck .tab-panel .btn{margin-top:28px}
+.chkb .ck .visual{background:var(--tint-2);border-radius:14px;padding:40px;display:flex;justify-content:center;align-items:center;min-height:340px}
+.chkb .ck .vcard{width:100%;max-width:400px;background:#fff;border-radius:14px;box-shadow:var(--elev);overflow:hidden}
+.chkb .ck .vcard-h{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--g3);font-weight:700;font-size:14px;color:var(--dark)}
+.chkb .ck .vcard-h small{font-size:12px;font-weight:600;color:var(--g2)}
+.chkb .ck .vrow{display:flex;gap:12px;align-items:center;padding:12px 18px;border-top:1px solid var(--g3)}
+.chkb .ck .vrow:first-of-type{border-top:0}
+.chkb .ck .vrow .vi{flex:0 0 36px;width:36px;height:36px;border-radius:10px;background:var(--pressed);color:var(--blue);display:flex;align-items:center;justify-content:center}
+.chkb .ck .vrow .vi svg{width:18px;height:18px}
+.chkb .ck .vrow .vt{flex:1;min-width:0}
+.chkb .ck .vrow strong{display:block;font-size:14px;font-weight:700;color:var(--navy)}
+.chkb .ck .vrow small{display:block;font-size:12px;font-weight:500;color:var(--g1)}
+.chkb .ck .pill-ok{font-size:11px;font-weight:700;letter-spacing:.03em;color:var(--green);background:#E8F6EE;border-radius:6px;padding:2px 8px;white-space:nowrap}
+.chkb .ck .pill-blue{font-size:11px;font-weight:700;letter-spacing:.03em;color:var(--blue);background:var(--pressed);border-radius:6px;padding:2px 8px;white-space:nowrap}
+.chkb .ck .kiosk{width:100%;max-width:300px;background:var(--dark);border-radius:22px;padding:14px;box-shadow:var(--elev)}
+.chkb .ck .kiosk-screen{background:#fff;border-radius:12px;padding:40px 20px;text-align:center}
+.chkb .ck .kiosk-screen img{width:96px;margin:0 auto 24px}
+.chkb .ck .kiosk-screen p{font-size:14px;margin-bottom:20px}
+.chkb .ck .kiosk-screen .btn{width:100%;height:44px}
+.chkb .ck .key{width:100%;max-width:320px;background:var(--gradient);border-radius:18px;padding:28px;color:#fff;box-shadow:var(--elev)}
+.chkb .ck .key small{display:block;font-size:12px;font-weight:600;opacity:.8}
+.chkb .ck .key strong{display:block;font-size:24px;font-weight:700;margin:6px 0 24px}
+.chkb .ck .key .open{display:flex;align-items:center;justify-content:center;gap:10px;height:48px;border-radius:12px;background:rgba(255,255,255,.9);color:var(--navy);font-weight:600;font-size:16px}
+.chkb .ck .key .open svg{width:20px;height:20px}
+.chkb .ck .ses-card{background:#fff;border-radius:14px;box-shadow:var(--elev);padding:20px 24px;width:100%;max-width:380px}
+.chkb .ck .ses-card .row1{display:flex;gap:16px;align-items:flex-start}
+.chkb .ck .ses-card .gov{flex:0 0 48px;width:48px;height:48px;border-radius:12px;background:var(--pressed);color:var(--blue);display:flex;align-items:center;justify-content:center}
+.chkb .ck .ses-card .gov svg{width:26px;height:26px}
+.chkb .ck .ses-card strong{display:block;font-weight:700;font-size:17px;color:var(--dark)}
+.chkb .ck .ses-card small{display:block;font-weight:500;font-size:14px;line-height:1.4;color:var(--g1)}
+.chkb .ck .ses-card .row2{display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding-top:14px;border-top:1px solid var(--g3);font-size:14px;font-weight:500;color:var(--g1)}
+.chkb .ck .ses-card .ok{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:15px;color:var(--green)}
+.chkb .ck .ses-card .ok i{width:22px;height:22px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center}
+.chkb .ck .ses-card .ok i svg{width:13px;height:13px}
+.chkb .ck .rev{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;width:100%;max-width:420px}
+.chkb .ck .rev > div{background:#fff;border-radius:14px;box-shadow:var(--card);padding:22px 18px;text-align:center}
+.chkb .ck .rev small{display:block;font-size:13px;font-weight:600;color:var(--g1);margin-bottom:8px}
+.chkb .ck .rev b{display:block;font-size:38px;line-height:1.1;font-weight:700;color:var(--dark);white-space:nowrap}
+.chkb .ck .rev .up{display:inline-block;margin-top:10px;font-size:14px;font-weight:700;color:#fff;background:var(--green);border-radius:6px;padding:2px 10px}
+.chkb .ck .rev .lines{grid-column:1/-1;text-align:left;padding:14px 20px}
+.chkb .ck .rev .line{display:flex;justify-content:space-between;font-size:14px;font-weight:500;color:var(--navy);padding:5px 0}
+.chkb .ck .rev .line span:last-child{font-weight:700;color:var(--green)}
+.chkb .ck .bub{font-size:13px;font-weight:500;line-height:1.45;border-radius:10px;padding:8px 12px;max-width:85%}
+.chkb .ck .bub.in{background:var(--input-empty);color:var(--navy)}
+.chkb .ck .bub.out{background:var(--pressed);color:var(--navy);margin:6px 0 0 auto}
+.chkb .ck .bub.out em{display:block;font-style:normal;font-size:11px;font-weight:600;color:var(--blue);margin-top:4px}
+.chkb .ck .msg{padding:14px 18px;border-top:1px solid var(--g3)}
+.chkb .ck .msg:first-of-type{border-top:0}
+.chkb .ck .msg .who{display:flex;justify-content:space-between;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.chkb .ck .msg .who small{font-weight:600;color:var(--g2)}
+.chkb .ck .bill{padding:16px 18px}
+.chkb .ck .bill .line{display:flex;justify-content:space-between;font-size:14px;font-weight:500;color:var(--navy);padding:6px 0}
+.chkb .ck .bill .tot{border-top:1px solid var(--g3);margin-top:6px;padding-top:12px;font-weight:700}
+.chkb .ck .bill .btn{width:100%;height:44px;margin-top:16px}
+.chkb .ck .clients{padding:56px 0}
+.chkb .ck .clients p.label{text-align:center;font-size:14px;font-weight:600;color:var(--g1);margin-bottom:24px}
+.chkb .ck .marquee{position:relative;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.chkb .ck .marquee-track{display:flex;gap:56px;width:max-content;animation:ck-marquee 40s linear infinite}
+.chkb .ck .marquee:hover .marquee-track{animation-play-state:paused}
+.chkb .ck .logo-img{flex:0 0 auto;height:34px;width:auto;max-width:170px;object-fit:contain;filter:grayscale(1);opacity:.6;transition:opacity 150ms ease-out}
+.chkb .ck .marquee:hover .logo-img{opacity:.9}
+.chkb .ck .logo-img.lg-small{height:24px}
+@keyframes ck-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.chkb .ck .trial-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.chkb .ck .trial-steps li{background:#fff;border-radius:14px;box-shadow:var(--card);padding:32px}
+.chkb .ck .trial-steps .n{width:40px;height:40px;border-radius:50%;background:var(--blue);color:#fff;font-weight:700;font-size:18px;display:flex;align-items:center;justify-content:center;box-shadow:var(--ring);margin-bottom:20px}
+.chkb .ck .trial-steps h3{font-size:20px;margin-bottom:6px}
+@media (max-width:1180px){.chkb .ck .stats-dark .stats-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:980px){.chkb .ck .hero{padding:32px 0 48px}
+.chkb .ck .hero-grid{grid-template-columns:minmax(0,1fr);gap:0}
+.chkb .ck .hero-grid > div:first-child{display:contents}
+.chkb .ck .hero .eyebrow{order:1;justify-self:start}
+.chkb .ck .hero h1{order:2}
+.chkb .ck .hero .lead{order:3}
+.chkb .ck .hero .form-card{order:4;margin-top:24px}
+.chkb .ck .hero .ticks{order:5;margin-top:28px}
+.chkb .ck .hero .hero-stats{order:6}
+.chkb .ck .hero .lead{max-width:none}
+.chkb .ck .tab-panel{grid-template-columns:minmax(0,1fr);gap:32px}
+.chkb .ck .trial-steps{grid-template-columns:minmax(0,1fr)}
+.chkb .ck .tabs-bar{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;padding:4px 4px 8px;margin-bottom:32px;scrollbar-width:none}
+.chkb .ck .tabs-bar::-webkit-scrollbar{display:none}
+}
+@media (max-width:640px){.chkb .ck .hero-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+.chkb .ck .hero h1{font-size:34px}
+.chkb .ck .stats-dark .stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.chkb .ck .stats-dark .stat b{font-size:30px}
+.chkb .ck .tab-panel h3{font-size:24px}
+.chkb .ck .visual{padding:24px 16px;min-height:0}
+.chkb .ck .rev b{font-size:30px}
+.chkb .ck .trial-steps li{padding:24px}
+}
+@media (prefers-reduced-motion:reduce){.chkb .ck .marquee-track{animation:none;flex-wrap:wrap;justify-content:center;width:auto}
+.chkb .ck .marquee-track [aria-hidden="true"]{display:none}
+.chkb .ck .marquee{-webkit-mask-image:none;mask-image:none}
+}
+@media (max-width:640px){.chkb .ck .lead-more,.chkb .ck .form-intro{display:none}
+.chkb .ck .hero .form-card{margin-top:16px}
+.chkb .ck .hero h1{margin-bottom:12px}
+}
+.chkb{overflow-x:hidden}
+.chkb{--dark:#19194B;--gray2:#9696B9;--gray3:#DEDEEB;--input-empty:#F4F6F8;--white:#FFFFFF;--card-tint:#EEF2FF}
+.chkb #ck-form-slot { min-height: 100px; }
+.chkb #ck-form-slot form.hs-form { border: none !important; border-radius: 0 !important; padding: 0 !important; background: transparent !important; box-shadow: none !important; font-family: inherit !important; }
+.chkb #ck-form-slot .hs-form-field { margin-bottom: 14px !important; }
+.chkb #ck-form-slot .input { width: 100% !important; margin-right: 0 !important; }
+.chkb #ck-form-slot label, .chkb #ck-form-slot .hs-form-field > label { display: block !important; visibility: visible !important; opacity: 1 !important; font-family: inherit !important; font-size: 13px !important; font-weight: 700 !important; color: var(--dark) !important; margin-bottom: 6px !important; height: auto !important; width: auto !important; position: static !important; clip: auto !important; overflow: visible !important; text-indent: 0 !important; line-height: 1.4 !important; }
+.chkb #ck-form-slot label > span { display: inline !important; visibility: visible !important; opacity: 1 !important; font-size: 13px !important; font-weight: 700 !important; color: var(--dark) !important; position: static !important; clip: auto !important; width: auto !important; height: auto !important; background: transparent !important; }
+.chkb #ck-form-slot .hs-form-required { color: #FF2467 !important; margin-left: 2px !important; display: inline !important; }
+.chkb #ck-form-slot .hs-field-desc { font-size: 12.5px !important; color: var(--gray2) !important; margin: -2px 0 6px !important; line-height: 1.4 !important; }
+.chkb #ck-form-slot input[type="text"], .chkb #ck-form-slot input[type="email"], .chkb #ck-form-slot input[type="tel"], .chkb #ck-form-slot input[type="number"], .chkb #ck-form-slot select, .chkb #ck-form-slot textarea { width: 100% !important; height: auto !important; padding: 12px 14px !important; border: 1px solid var(--gray3) !important; border-radius: 8px !important; font-family: inherit !important; font-size: 15px !important; font-weight: 500 !important; color: var(--navy) !important; background-color: var(--input-empty) !important; box-shadow: none !important; line-height: 1.4 !important; }
+.chkb #ck-form-slot input:focus, .chkb #ck-form-slot select:focus, .chkb #ck-form-slot textarea:focus { outline: none !important; border-color: var(--navy) !important; background-color: var(--white) !important; box-shadow: var(--ring) !important; }
+.chkb #ck-form-slot input::placeholder, .chkb #ck-form-slot textarea::placeholder { color: var(--gray2) !important; opacity: 1 !important; }
+.chkb #ck-form-slot select { -webkit-appearance: none !important; -moz-appearance: none !important; appearance: none !important; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236B6B95' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>") !important; background-repeat: no-repeat !important; background-position: right 12px center !important; padding-right: 38px !important; text-overflow: ellipsis !important; }
+.chkb #ck-form-slot .hs-fieldtype-intl-phone.hs-input { display: flex !important; gap: 8px !important; width: 100% !important; align-items: stretch !important; border: none !important; padding: 0 !important; background: transparent !important; }
+.chkb #ck-form-slot .hs-fieldtype-intl-phone.hs-input > select.hs-input { flex: 0 0 128px !important; width: 128px !important; min-width: 0 !important; font-size: 14px !important; padding-left: 11px !important; padding-right: 28px !important; background-position: right 8px center !important; }
+.chkb #ck-form-slot .hs-fieldtype-intl-phone.hs-input > input.hs-input { flex: 1 1 auto !important; width: auto !important; min-width: 0 !important; }
+.chkb #ck-form-slot fieldset { max-width: 100% !important; border: none !important; }
+.chkb #ck-form-slot .hs-button, .chkb #ck-form-slot input[type="submit"] { display: block !important; width: 100% !important; height: 52px !important; padding: 0 26px !important; background-color: var(--blue) !important; background-image: none !important; color: var(--white) !important; border: none !important; border-radius: 12px !important; font-family: inherit !important; font-size: 16px !important; font-weight: 600 !important; cursor: pointer !important; box-shadow: var(--ring) !important; margin-top: 4px !important; text-transform: none !important; }
+.chkb #ck-form-slot .hs-error-msgs { list-style: none !important; padding: 0 !important; margin: 4px 0 0 0 !important; }
+.chkb #ck-form-slot .hs-error-msgs label, .chkb #ck-form-slot .hs-error-msgs label span { display: inline-block !important; font-size: 12px !important; font-weight: 500 !important; color: #FF2467 !important; margin-bottom: 0 !important; }
+.chkb #ck-form-slot .legal-consent-container, .chkb #ck-form-slot .hs-richtext { font-size: 12px !important; color: var(--gray2) !important; margin-bottom: 12px !important; line-height: 1.5 !important; }
+.chkb #ck-form-slot .hs-form-title, .chkb #ck-form-slot .form-title { display: none !important; }
+.chkb #ck-form-slot .submitted-message { padding: 24px 20px !important; text-align: center !important; background: var(--card-tint) !important; border-radius: 8px !important; color: var(--navy) !important; font-size: 15px !important; }
+.chkb h1,.chkb h2,.chkb h3,.chkb h4,.chkb p,.chkb li,.chkb a,.chkb button,.chkb span,.chkb b,.chkb label,.chkb input,.chkb select{font-family:'Proxima Nova','Montserrat',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif !important}
+.chkb #ck-form-slot form.hs-form{display:grid !important;grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important;gap:0 12px !important}
+.chkb #ck-form-slot form.hs-form > *{grid-column:1/-1}
+.chkb #ck-form-slot form.hs-form > .hs_firstname,.chkb #ck-form-slot form.hs-form > .hs_email{grid-column:auto}
+.chkb #ck-form-slot .hs-form-field{margin-bottom:10px !important}
+.chkb #ck-form-slot input[type="text"],.chkb #ck-form-slot input[type="email"],.chkb #ck-form-slot input[type="tel"],.chkb #ck-form-slot input[type="number"],.chkb #ck-form-slot select{padding:10px 12px !important}
+@media (max-width:900px){.chkb #ck-form-slot label,.chkb #ck-form-slot label>span{font-size:12.5px !important}}
+@media (min-width:901px){.chkb .hero .wrap{align-items:center !important}}
+.chkb #ck-form-slot .input::before,.chkb #ck-form-slot .input::after,.chkb #ck-form-slot .hs-form-field::after,.chkb #ck-form-slot .hs-fieldtype-select .input::after{content:none !important;display:none !important}
+.chkb #ck-form-slot select.hs-input{background-color:var(--input-empty,#F4F6F8) !important}
+.chkb .form-card .legal{font-size:12px !important;line-height:1.45;color:#6B6B95;margin-top:10px}
+@media (max-width:900px){.chkb .hero{padding-top:14px !important;padding-bottom:24px !important}.chkb .hero .eyebrow{display:none !important}.chkb .hero h1{font-size:28px !important;line-height:1.12 !important}.chkb .hero .lead,.chkb .hero p.lead{font-size:15px !important;margin-top:8px !important}.chkb .form-card{padding:16px 16px 12px !important}.chkb .form-card h2{font-size:20px !important}.chkb .form-card .form-intro{margin-bottom:8px !important}.chkb #ck-form-slot .hs-form-field{margin-bottom:8px !important}}
+</style>
+<div class="chkb">
+<div class="ck">
+<header class="top"><div class="wrap"><img class="logo" src="https://landing.chekin.com/hubfs/imagotype-new-chekin-landscape.svg" alt="Chekin" width="132" height="39"><a class="btn btn-primary" href="#prueba">Empieza tu prueba gratis</a></div></header>
+<main>
+<section class="hero">
+<div class="wrap hero-grid">
+<div>
+<span class="eyebrow">Para hoteles y cadenas hoteleras</span>
+<h1>Automatiza la recepción <span class="accent">de tu hotel</span></h1>
+<p class="lead">Check-in online antes de llegar, parte automático a SES.Hospedajes y más ingresos por reserva.<span class="lead-more"> Prueba Chekin gratis 14 días: déjanos tus datos y un experto en Chekin te contactará para ayudarte con cualquier duda.</span></p>
+<ul class="ticks">
+<li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Olvídate del portal del Ministerio: evita multas y sanciones</li>
+<li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Sin colas en recepción: check-in en 3 minutos</li>
+<li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>+55 € de media por reserva con upselling</li>
+</ul>
+<div class="hero-stats"><div><b>+10.000</b><span>hoteles</span></div><div><b>+25M</b><span>check-ins</span></div><div><b>+20</b><span>países</span></div><div><b>+200</b><span>PMS</span></div></div>
+</div>
+<div class="form-card" id="prueba">
+<h2>Prueba Chekin gratis 14 días</h2>
+<p class="form-intro">Sin tarjeta de crédito. Activación inmediata.</p>
+<div id="ck-form-slot"></div>
+<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+<script>
+if (window.hbspt) {
+  hbspt.forms.create({ portalId: "8776616", formId: "e42c7acf-f56c-4549-a287-2537e32fd92c", region: "na1", target: "#ck-form-slot", css: "",
+    onFormReady: function($f){
+      var f=($f&&$f.jquery)?$f[0]:$f; var s=f&&f.querySelector(".hs-fieldtype-intl-phone select"); if(!s) return;
+      Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype,"value").set.call(s,"ES");
+      s.dispatchEvent(new Event("change",{bubbles:true})); }
+  });
+}
+</script>
+<p class="legal">Tus datos están protegidos. Cumplimos el RGPD.</p>
+</div>
+</div>
+</section>
+<section class="pms-hub">
+<div class="wrap pms-grid">
+<div class="pms-copy">
+<h2><b>Conectado</b> con el PMS que ya usas</h2>
+<p>Las reservas se sincronizan de forma automática, así que el enlace de check-in se envía en cuanto entra una reserva.</p>
+<ol class="flow"><li><span>1</span>Entra una reserva en tu PMS</li><li><span>2</span>Chekin envía el enlace de check-in al huésped</li><li><span>3</span>El parte llega solo a SES.Hospedajes</li></ol>
+<p class="pms-more">Mews, Opera Cloud, Cloudbeds y +200 integraciones más.</p>
+</div>
+<div class="pms-visual" role="img" aria-label="Mews, eviivo, Little Hotelier, Amenitiz, Cloudbeds y Opera Cloud conectados con Chekin">
+<svg class="lines" viewBox="0 0 600 480" preserveAspectRatio="none" aria-hidden="true"><defs><pattern id="pmsgrid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(24,86,255,0.10)" stroke-width="1"/></pattern></defs><rect width="600" height="480" fill="url(#pmsgrid)"/><g stroke="rgba(24,86,255,0.45)" stroke-width="1.5" fill="none" vector-effect="non-scaling-stroke"><path d="M 200 240 C 300 240, 330 50, 380 50"/><path d="M 200 240 C 300 240, 330 125, 380 125"/><path d="M 200 240 C 300 240, 330 200, 380 200"/><path d="M 200 240 C 300 240, 330 280, 380 280"/><path d="M 200 240 C 300 240, 330 355, 380 355"/><path d="M 200 240 C 300 240, 330 430, 380 430"/></g></svg>
+<div class="pms-center"><img src="https://landing.chekin.com/hubfs/imagotype-new-chekin-landscape.svg" alt="Chekin"></div>
+<div class="pms-logo" style="top:10.4%"><img src="https://chekin.com/wp-content/uploads/2021/06/mews_logo_black-2-1.svg" alt="Mews"></div>
+<div class="pms-logo" style="top:26%"><img src="https://chekin.com/wp-content/uploads/2026/06/opera-cloud.png" alt="Opera Cloud"></div>
+<div class="pms-logo" style="top:41.7%"><img src="https://landing.chekin.com/hubfs/cloudbeds-logo-stacked-500.png" alt="Cloudbeds"></div>
+<div class="pms-logo" style="top:58.3%"><img src="https://chekin.com/wp-content/uploads/2026/06/little-hotelier.png" alt="Little Hotelier"></div>
+<div class="pms-logo" style="top:74%"><img src="https://chekin.com/wp-content/uploads/2025/10/eviivo-logo-colour-300x86.png" alt="eviivo"></div>
+<div class="pms-logo" style="top:89.6%"><img src="https://chekin.com/wp-content/uploads/2023/01/WORDMARK-AMENITIZ-BLUE-1.svg" alt="Amenitiz"></div>
+</div>
+</div>
+</section>
+<section class="features-tabs">
+<div class="wrap">
+<div class="section-head"><h2>Menos operativa para tu equipo, <b>más libertad para tus huéspedes</b></h2><p>Automatiza las tareas repetitivas para que tu hotel dedique su tiempo a lo que marca la diferencia: el servicio.</p></div>
+<div class="tabs-bar" role="tablist" aria-label="Funciones de Chekin">
+<button class="tab-btn" role="tab" id="t-checkin" aria-controls="p-checkin" aria-selected="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="m9 11 2.5 2.5L15 9.5"/></svg>Check-in online</button>
+<button class="tab-btn" role="tab" id="t-kiosk" aria-controls="p-kiosk" aria-selected="false" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="14" rx="2"/><path d="M9 20h6M12 16v4"/></svg>Recepción y quioscos</button>
+<button class="tab-btn" role="tab" id="t-id" aria-controls="p-id" aria-selected="false" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M6 16c.6-1.4 1.7-2 3-2s2.4.6 3 2M14 10h4M14 14h3"/></svg>Verificación de identidad</button>
+<button class="tab-btn" role="tab" id="t-key" aria-controls="p-key" aria-selected="false" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="m10.8 12.2 8.2-8.2M17 6l2 2M15 8l2 2"/></svg>Self check-in y llaves digitales</button>
+<button class="tab-btn" role="tab" id="t-legal" aria-controls="p-legal" aria-selected="false" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg>Cumplimiento legal</button>
+<button class="tab-btn" role="tab" id="t-upsell" aria-controls="p-upsell" aria-selected="false" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17 9 11l4 4 8-8"/><path d="M15 7h6v6"/></svg>Upselling</button>
+<button class="tab-btn" role="tab" id="t-inbox" aria-controls="p-inbox" aria-selected="false" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Inbox unificada</button>
+<button class="tab-btn" role="tab" id="t-out" aria-controls="p-out" aria-selected="false" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>Check-out</button>
+</div>
+<div class="tab-panel" role="tabpanel" id="p-checkin" aria-labelledby="t-checkin">
+<div class="txt"><h3>Tus huéspedes se registran y verifican la identidad en segundos.</h3><p>Tus huéspedes completan el registro, verifican su identidad y reservan extras desde el móvil, antes de pisar el hotel. Tu recepción empieza cada turno sabiendo quién llega, qué está hecho y qué queda pendiente.</p>
+<ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Check-in completado antes de la llegada</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Escaneo del documento y comparación biométrica online</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Tasa turística y saldo pendiente cobrados por adelantado</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Estado de llegada en tiempo real visible para recepción</li></ul>
+<a class="btn btn-primary" href="#prueba">Empieza tu prueba gratis</a></div>
+<div class="visual"><div class="vcard"><div class="vcard-h">Pre-llegada de Marta <small>Hab. 204</small></div>
+<div class="vrow"><span class="vi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg></span><span class="vt"><strong>Formulario de registro</strong><small>Completado hace 3 días</small></span><span class="pill-ok">LISTO</span></div>
+<div class="vrow"><span class="vi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M14 10h4M14 14h3"/></svg></span><span class="vt"><strong>Documento escaneado</strong><small>DNI · OCR + biometría</small></span><span class="pill-ok">VERIFICADO</span></div>
+<div class="vrow"><span class="vi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span><span class="vt"><strong>Saldo de la estancia</strong><small>€642 cobrados</small></span><span class="pill-ok">PAGADO</span></div>
+<div class="vrow"><span class="vi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15 9.5a3 3 0 1 0 0 5M8 11h5M8 13h5"/></svg></span><span class="vt"><strong>Tasa turística</strong><small>€36 cobrados</small></span><span class="pill-ok">PAGADO</span></div>
+</div></div>
+</div>
+<div class="tab-panel" role="tabpanel" id="p-kiosk" aria-labelledby="t-kiosk" hidden>
+<div class="txt"><h3>Autoservicio en el lobby, para cada llegada.</h3><p>Nuestro OCR escanea el documento de identidad y rellena el formulario de registro en segundos. Funciona en una tablet en recepción o en un quiosco en el lobby. Tus huéspedes hacen el check-in solos y tu equipo atiende a quien de verdad lo necesita.</p>
+<ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Lectura automática del documento (OCR)</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Modo tablet para recepción, modo quiosco para el lobby</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Totalmente personalizable con tu marca</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Compatible con DNI digital a través de MiDNI para España</li></ul>
+<a class="btn btn-primary" href="#prueba">Empieza tu prueba gratis</a></div>
+<div class="visual"><div class="kiosk"><div class="kiosk-screen"><img src="https://landing.chekin.com/hubfs/imagotype-new-chekin-landscape.svg" alt="Chekin"><p>Pulsa para empezar el check-in</p><span class="btn btn-primary">Empezar</span></div></div></div>
+</div>
+<div class="tab-panel" role="tabpanel" id="p-id" aria-labelledby="t-id" hidden>
+<div class="txt"><h3>Identidad verificada en segundos</h3><p>Cada huésped verifica su identidad durante el check-in, en segundos. Escaneo del documento, selfie o vídeo en tiempo real y comparación biométrica al instante. Menos fraude, menos falsificaciones y un negocio que cumple las normativas de identidad más estrictas.</p>
+<ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Comparación biométrica en tiempo real</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Detección de vida con vídeo que evita suplantaciones</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>200+ tipos de documento aceptados a nivel global</li></ul>
+<a class="btn btn-primary" href="#prueba">Empieza tu prueba gratis</a></div>
+<div class="visual"><div class="vcard"><div class="vcard-h">Verificación de identidad <small>Hab. 118</small></div>
+<div class="vrow"><span class="vi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M14 10h4M14 14h3"/></svg></span><span class="vt"><strong>Documento</strong><small>Pasaporte · leído por OCR</small></span><span class="pill-ok">OK</span></div>
+<div class="vrow"><span class="vi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></span><span class="vt"><strong>Selfie en vídeo</strong><small>Detección de vida</small></span><span class="pill-ok">OK</span></div>
+<div class="vrow"><span class="vi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg></span><span class="vt"><strong>Match biométrico</strong><small>Documento y selfie coinciden</small></span><span class="pill-ok">VERIFICADO</span></div>
+</div></div>
+</div>
+<div class="tab-panel" role="tabpanel" id="p-key" aria-labelledby="t-key" hidden>
+<div class="txt"><h3>Huéspedes que llegan tarde y acceden con llaves digitales.</h3><p>Tus huéspedes reciben una llave digital tras completar el check-in y la verificación de identidad. Compatible con más de 20 marcas de cerraduras inteligentes. Tu recepción cierra; tu alojamiento, no.</p>
+<ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Llave digital entregada automáticamente</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Compatible con 20+ marcas de cerraduras inteligentes</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Flexibilidad para los huéspedes, comodidad para tu negocio</li></ul>
+<a class="btn btn-primary" href="#prueba">Empieza tu prueba gratis</a></div>
+<div class="visual"><div class="key"><small>Tu llave digital</small><strong>Habitación 304 · Planta 3</strong><span class="open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.5-2"/></svg>Abrir puerta</span></div></div>
+</div>
+<div class="tab-panel" role="tabpanel" id="p-legal" aria-labelledby="t-legal" hidden>
+<div class="txt"><h3>Olvídate del portal del Ministerio</h3><p>Chekin envía los datos de tus huéspedes a la autoridad correspondiente en más de 20 países, calcula la tasa turística y emite la facturación electrónica obligatoria. En España: SES.Hospedajes, Mossos d'Esquadra y Ertzaintza.</p>
+<ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Envío automático a autoridades en +20 países</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Cálculo de la tasa turística</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Siempre al día con las actualizaciones normativas</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Almacenamiento de datos por el tiempo exigido por ley</li></ul>
+<a class="btn btn-primary" href="#prueba">Empieza tu prueba gratis</a></div>
+<div class="visual"><div class="ses-card"><div class="row1"><span class="gov"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10 12 4l9 6"/><path d="M5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 20h18"/></svg></span><div><strong>SES.Hospedajes</strong><small>Envío automático de partes de entrada de viajeros</small></div></div><div class="row2"><span>Estado</span><span class="ok"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></i>Reportado</span></div></div></div>
+</div>
+<div class="tab-panel" role="tabpanel" id="p-upsell" aria-labelledby="t-upsell" hidden>
+<div class="txt"><h3>Misma ocupación, +55 € por reserva</h3><p>Early check-in, late check-out, parking, spa y experiencias locales aparecen durante el registro, justo cuando el huésped está pensando en su estancia y más receptivo a comprar. El check-in se convierte en un canal de venta nuevo, sin sumar trabajo a tu equipo.</p>
+<ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Ofertas en los momentos de mayor intención de compra</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Segmentación por habitación, duración de la estancia y perfil del huésped</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Pagos integrados y sincronización con tu PMS</li></ul>
+<a class="btn btn-primary" href="#prueba">Empieza tu prueba gratis</a></div>
+<div class="visual"><div class="rev"><div><small>Ingresos por reserva (ejemplo)</small><b>100 €</b></div><div><small>Con Chekin</small><b>155 €</b><span class="up">+55 €</span></div><div class="lines"><div class="line"><span>Late check-out</span><span>+18 €</span></div><div class="line"><span>Desayuno</span><span>+12 €</span></div><div class="line"><span>Parking</span><span>+15 €</span></div><div class="line"><span>Early check-in</span><span>+10 €</span></div></div></div></div>
+</div>
+<div class="tab-panel" role="tabpanel" id="p-inbox" aria-labelledby="t-inbox" hidden>
+<div class="txt"><h3>Tu recepción también responde a las 3 de la mañana</h3><p>Una bandeja de entrada con IA responde a las preguntas rutinarias por email, SMS, OTAs y WhatsApp con respuestas específicas de tu hotel. Las guías digitales dan a tus huéspedes toda la información que necesitan, traducida automáticamente a su idioma.</p>
+<ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Respuestas con IA por email, SMS, OTAs y WhatsApp</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Respuestas basadas en la base de conocimiento de tu hotel</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Derivación al equipo para los temas delicados</li></ul>
+<a class="btn btn-primary" href="#prueba">Empieza tu prueba gratis</a></div>
+<div class="visual"><div class="vcard" aria-label="Ejemplo de bandeja de entrada con respuestas de la IA"><div class="vcard-h">Bandeja de entrada <span class="pill-blue">03:00</span></div>
+<div class="msg"><div class="who">Ana Rodríguez <small>WhatsApp</small></div><div class="bub in">¿A qué hora es el check-in?</div><div class="bub out">El check-in es a partir de las 15:00.<em>Respondido por IA</em></div></div>
+<div class="msg"><div class="who">John Smith <small>Booking</small></div><div class="bub in">Is late check-out available?</div><div class="bub out">Yes, late check-out is available until 14:00.<em>Respondido por IA</em></div></div>
+</div></div>
+</div>
+<div class="tab-panel" role="tabpanel" id="p-out" aria-labelledby="t-out" hidden>
+<div class="txt"><h3>Un check-out más rápido y cómodo.</h3><p>Tus huéspedes resuelven la salida la noche anterior, desde su móvil: cuenta, late check-out, traslado, pago, factura electrónica y opiniones. Cuando llega la hora del check-out, no hay cola en recepción.</p>
+<ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Resumen de la factura y pago en un clic</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Late check-out y traslado al aeropuerto como extras</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Feedback rápido antes de que se vayan</li></ul>
+<a class="btn btn-primary" href="#prueba">Empieza tu prueba gratis</a></div>
+<div class="visual"><div class="vcard"><div class="vcard-h">Tu estancia · Hab. 204 <small>Salida mañana</small></div><div class="bill"><div class="line"><span>Alojamiento · 3 noches</span><span>€540</span></div><div class="line"><span>Late check-out</span><span>€18</span></div><div class="line"><span>Tasa turística</span><span>€36</span></div><div class="line tot"><span>Total</span><span>€594</span></div><span class="btn btn-primary">Pagar y hacer check-out</span></div></div></div>
+</div>
+</div>
+</section>
+<section class="stats-dark tone-navy">
+<div class="wrap stats-grid">
+<div class="stat"><b>−80%</b><span>de tiempo en recepción</span></div>
+<div class="stat"><b>3 min</b><span>de check-in medio</span></div>
+<div class="stat"><b>+55 €</b><span>de upselling por reserva</span></div>
+<div class="stat"><b>+47%</b><span>más reseñas de 5★</span></div>
+<div class="stat"><b>+20</b><span>países con cumplimiento legal</span></div>
+</div>
+</section>
+<section class="clients" aria-label="Empresas que trabajan con Chekin">
+<div class="wrap">
+<p class="label">Más de 200.000 propiedades confían en Chekin</p>
+<div class="marquee"><div class="marquee-track"><img class="logo-img" src="https://landing.chekin.com/hubfs/Greystar_Real_Estate_Partners_logo.png" alt="Greystar"><img class="logo-img" src="https://landing.chekin.com/hubfs/holidu_Color-2.svg" alt="Holidu"><img class="logo-img lg-small" src="https://landing.chekin.com/hubfs/numa-2.svg" alt="Numa"><img class="logo-img" src="https://landing.chekin.com/hubfs/limehome.webp" alt="limehome"><img class="logo-img" src="https://landing.chekin.com/hubfs/interhome-1-2.svg" alt="Interhome"><img class="logo-img" src="https://landing.chekin.com/hubfs/node-2.svg" alt="Node"><img class="logo-img" src="https://chekin.com/wp-content/uploads/2025/01/novasol-300x82.png" alt="Novasol"><img class="logo-img" src="https://landing.chekin.com/hubfs/Greystar_Real_Estate_Partners_logo.png" alt="" aria-hidden="true"><img class="logo-img" src="https://landing.chekin.com/hubfs/holidu_Color-2.svg" alt="" aria-hidden="true"><img class="logo-img lg-small" src="https://landing.chekin.com/hubfs/numa-2.svg" alt="" aria-hidden="true"><img class="logo-img" src="https://landing.chekin.com/hubfs/limehome.webp" alt="" aria-hidden="true"><img class="logo-img" src="https://landing.chekin.com/hubfs/interhome-1-2.svg" alt="" aria-hidden="true"><img class="logo-img" src="https://landing.chekin.com/hubfs/node-2.svg" alt="" aria-hidden="true"><img class="logo-img" src="https://chekin.com/wp-content/uploads/2025/01/novasol-300x82.png" alt="" aria-hidden="true"></div></div>
+</div>
+</section>
+<section class="how tone-tint">
+<div class="wrap">
+<div class="section-head"><h2>Así empiezas <b>en 3 pasos</b></h2></div>
+<ol class="trial-steps"><li><span class="n">1</span><h3>Déjanos tus datos</h3><p>Solo lo necesario sobre ti y tu hotel.</p></li><li><span class="n">2</span><h3>Un experto en Chekin te contacta</h3><p>Te da acceso y te ayuda con cualquier duda, también al conectar tu PMS.</p></li><li><span class="n">3</span><h3>Usas Chekin 14 días gratis</h3><p>Sin compromiso.</p></li></ol>
+</div>
+</section>
+<section class="cases tone-lav" aria-labelledby="cases-h">
+<div class="wrap">
+<div class="section-head"><h2 id="cases-h">Así lo vive un grupo de alojamientos <b>en Barcelona y Sevilla</b></h2></div>
+<figure class="case case-solo">
+<div class="case-main">
+<div class="case-head"><span class="case-brand">Sweet Accommodations</span><span class="case-meta">Hoteles, hostales y suites · Barcelona y Sevilla · PMS: Cloudbeds</span></div>
+<blockquote>«Manualmente era imposible de gestionar.»</blockquote>
+<blockquote class="q2">«Para nosotros es genial poder contar con una sola herramienta para la gestión de nuestras propiedades.»</blockquote>
+<p class="case-text">Con Cloudbeds y Chekin, sus huéspedes se registran online y los datos llegan solos a las autoridades de cada ciudad.</p>
+<figcaption><span class="avatar" aria-hidden="true">SA</span><span><strong>Sweet Accommodations</strong>Grupo de alojamientos turísticos · +7 alojamientos</span></figcaption>
+</div>
+<div class="case-side">
+<div class="case-metric"><b>−80%</b><span>de tiempo en procesos manuales</span></div>
+<div class="case-metric"><b>+12.000</b><span>registros online de huéspedes en un año</span></div>
+<div class="case-metric"><b>4,5/5</b><span>de puntuación en portales de reserva</span></div>
+</div>
+</figure>
+<p class="cases-src">Caso de éxito publicado en chekin.com.</p>
+</div>
+</section>
+<section class="faq">
+<div class="wrap">
+<div class="section-head"><h2>Preguntas <b>frecuentes</b></h2></div>
+<div class="faq-list">
+<details><summary>¿Puedo probarlo antes de contratar?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary><p>Sí. Déjanos tus datos y un experto en Chekin se pondrá en contacto contigo para que lo uses gratis 14 días. Te ayudará con cualquier duda o problema, también al conectar tu PMS.</p></details>
+<details><summary>¿Funciona con mi PMS?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary><p>Chekin se integra con más de 200 PMS, entre ellos Mews, Opera Cloud, Cloudbeds, Little Hotelier, eviivo y Amenitiz.</p></details>
+<details><summary>¿Cumple con SES.Hospedajes?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary><p>Sí. Chekin envía el parte de viajeros a SES.Hospedajes del Ministerio del Interior, a Mossos d'Esquadra en Cataluña y a la Ertzaintza en el País Vasco. Cubre el 100% de España.</p></details>
+<details><summary>¿Y si un huésped no hace el check-in online?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary><p>Puede hacerlo al llegar en el quiosco del lobby o con ayuda de recepción. El parte se envía igual de forma automática.</p></details>
+<details><summary>¿Sirve para cadenas hoteleras?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary><p>Sí. Chekin trabaja con hoteles independientes y con cadenas hoteleras.</p></details>
+</div>
+</div>
+</section>
+<section class="final">
+<div class="wrap"><div class="final-box"><h2>Automatiza la recepción de tu hotel</h2><p>Prueba Chekin gratis 14 días. Déjanos tus datos y un experto en Chekin te contactará. Sin compromiso.</p><a class="btn btn-on-dark btn-lg" href="#prueba">Empieza tu prueba gratis <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></a></div></div>
+</section>
+</main>
+<footer class="foot"><div class="wrap"><img style="filter:brightness(0) invert(1)" src="https://landing.chekin.com/hubfs/imagotype-new-chekin-landscape.svg" alt="Chekin" width="110" height="33"><nav aria-label="Legal"><a href="https://chekin.com/privacidad/" target="_blank" rel="noopener">Privacidad</a><a href="https://chekin.com/politica-de-cookies/" target="_blank" rel="noopener">Cookies</a><small>© 2026 Chekin</small></nav></div></footer>
+<div class="sticky-cta" id="sticky"><a class="btn btn-primary" href="#prueba">Empieza tu prueba gratis</a></div>
+</div>
+<script>
+(function(){
+  var tabs=[].slice.call(document.querySelectorAll('.ck [role=tab]'));
+  function select(t,focus){
+    tabs.forEach(function(x){var on=x===t;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;document.getElementById(x.getAttribute('aria-controls')).hidden=!on;});
+    if(focus) t.focus();
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){select(t)});
+    t.addEventListener('keydown',function(e){
+      if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();select(tabs[(i+(e.key==='ArrowRight'?1:tabs.length-1))%tabs.length],true);}
+    });
+  });
+  var card=document.getElementById('prueba');
+  var sticky=document.getElementById('sticky');
+  if(sticky&&card&&'IntersectionObserver' in window){
+    new IntersectionObserver(function(en){sticky.classList.toggle('hide',en[0].isIntersecting)},{threshold:.2}).observe(card);
+  }
+})();
+</script>
+</div>
