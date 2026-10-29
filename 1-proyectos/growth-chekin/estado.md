@@ -3,11 +3,19 @@
 ## ▶ EMPIEZA AQUÍ (jueves 29/10 · Carlos de vacaciones hasta el 3/11)
 Lo de abajo de este bloque es el histórico. Horas: semana 26–30/10 ≈ 18 h → quedan ~2 h para jue–vie: priorizar.
 
+**0. Portugal recovery:** hoy 29/10, lote de 100 (van 250). El viernes 30/10 se termina en dos tandas (primera hora y final del día, sueltos incluidos) y se comenta en Asana.
+
 **1. Primero (5 min):** enviar a Pedro (ShowMe) las 3 preguntas: quién entra exactamente (1–3 viviendas, ¿algún filtro más?), si cuentan como convertidos los leads sin conversación, y cómo hacer altas de prueba sin contar. Borrador en `trabajo-en-curso/p7-showme-encargo-ceo.md`.
 
 **2. Vence el 30/10:**
 - **Encargo del CEO sobre ShowMe** (Asana gid 1219967710164778). Borrador de respuesta listo al final de `p7-showme-encargo-ceo.md`, sin enviar. Conclusión con pagos reales (H-43): ShowMe no sube la conversión a pago (ES 14,8% con vs 20,0% sin; IT igual mes a mes). Falta: vídeos (3 micro + 1 SMB; resolver teléfono y URL de registro) y respuesta de Pedro. Pendiente que Alex pase la frecuencia de contacto que conoce.
-- P3: montaje de SES v2 en HubSpot como variante B (ver lo hecho hoy en el chat de landings); propuesta CRO y plan de experimentación.
+- **P3 · A/B en HubSpot (avanzado el 28/10 en el chat «Martes 27»):**
+  - Foco en las PMax de Google con su landing principal como A y nuestro boceto como B: ES Vacational (SES v2), ES Competitors (hoteles v6), IT Vacational (Alloggiati v1, nueva), IT Competitors (Questura v5), PT Vacational (SIBA v1, nueva) y PT Competitors (check-in online PT v1, nueva). Mapa con enlaces en el histórico del 27/10, más abajo.
+  - Las 6 A están publicadas y el plan de HubSpot **sí permite A/B** (Test → A/B test, 50/50, ganador manual). El conector de HubSpot ya lee landing pages.
+  - La A española (page id 221464769047) es **un único bloque HTML** con el formulario real de HubSpot insertado (`e42c7acf…`). Plan: crear el A/B y en la variante B sustituir ese bloque por el HTML de la B, con el mismo formulario.
+  - **Siguiente paso:** terminar el HTML de la variante B de España (SES) para HubSpot. Se estaba preparando cuando el ordenador se suspendió: retomar en el chat «Martes 27». Sin crear todavía el A/B en HubSpot (con OK de Alex).
+  - Decisiones del 28/10 en `decisiones.md`: foco en 4 PMax, «Sin tarjeta de crédito. Activación inmediata.» en las 6 B, bloque interactivo de la A en las B, SEF/AIMA en Portugal.
+- Propuesta CRO y plan de experimentación (Carlos, 30/10).
 - KPI de activación con Daniel · qué cifra de MRR usamos · Óscar (Cálido) a Valery · Reverrr. Con ~2 h no cabe todo: mover en Asana con comentario lo que no se haga.
 
 **3. Pendiente de enviar / responder:**
