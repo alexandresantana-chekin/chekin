@@ -315,3 +315,27 @@ Asistente: sabe en qué paso estás y lleva al siguiente (PDF #3). Al plan de Da
     - qué datos pide cada autoridad;
     - si van por titular o por vivienda;
     - si Cataluña y País Vasco envían también a SES.
+
+## Versión 30/10 tarde-noche: onboarding completo de una vez (nuestro + Daniel)
+Mismos enlaces (móvil y portátil). Principio de Alex: entrar y terminarlo todo de una vez, sin salir ni volver a meter viviendas. Después solo quedan las reservas, con el envío del check-in elegido.
+- **Entrada:** Entrar (puerta única: cuenta nueva o ya tiene cuenta → su Inicio) → Tu negocio (número exacto; aviso de experto con más de 10) → **Creando tu cuenta** (el logo late; al terminar, el check crece y se ilumina, y pasa solo) → **Bienvenida** con los 7 pasos y su tiempo (≈ 10 min).
+- **7 pasos** (en portátil, columna izquierda con el progreso y «Lo que nos has contado»; en móvil, barra de progreso):
+  1. **Reservas:** PMS, calendario de Airbnb o Booking, o a mano (el nuestro).
+     - Con PMS: elegir el PMS por su logo y buscador → **conectar sin copiar** (se autoriza en la web del PMS; alternativa: guía de la API key con vídeo).
+  2. **Dónde están:**
+     - Con PMS, «Esto nos ha dicho tu PMS»: viviendas agrupadas por zona.
+     - Sin PMS, países con **selección múltiple** (Daniel). España abre la comunidad (Mossos, Ertzaintza o SES).
+  3. **Cumplimiento legal, grupo a grupo** (Daniel): en cada zona, el parte a la policía (se conecta una vez; «te lo recordamos»), la verificación de identidad y la tasa turística. Sin importes inventados.
+  4. **Tus viviendas:** todas de una vez (filas y «+ Añadir otra»). Con PMS este paso se salta.
+  5. **Protege tus viviendas:** protección de daños o fianza (Daniel). Cifras [POR COMPROBAR].
+  6. **Ventas extra:** 4 ofertas con precio editable.
+  7. **Check-in y envío:** envío automático sí o no, y con cuánta antelación (al confirmar, 72 h, 48 h o 24 h), vista del huésped y enlace de prueba.
+- **Final:** «¡Todo listo!» con lo que ya funciona → **Inicio** al 100 %, con las próximas reservas (cada una con su interruptor de envío), las ventas extra y el cumplimiento.
+- **Fuera:** «¿Qué te importa más?» y «Tu marca» de Daniel.
+- **Por comprobar con Producto:**
+  - qué PMS permiten autorizar sin copiar;
+  - 81 integraciones o +200 PMS;
+  - las cifras de protección;
+  - los importes de las tasas;
+  - las autoridades sin nombre;
+  - el envío por defecto (48 h).
