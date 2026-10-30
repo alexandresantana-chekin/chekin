@@ -272,6 +272,12 @@ Asistente: sabe en qué paso estás y lleva al siguiente (PDF #3). Al plan de Da
     - Mientras carga: el logo de Chekin encuadrado y centrado, latiendo despacio como un corazón. Debajo, textos que van cambiando con lo que se está haciendo («Creando tu cuenta…»).
     - Al terminar: la animación del GIF de la firma (P5): el check crece y se ilumina. Después entra en «Cuéntanos tu negocio».
     - Referencia: `2-herramientas/firma-gmail/chekin-firma-cuadrada-DEFINITIVA.gif` y `cuadrado/chekin-cuadrado-check-400.gif` (scripts `make_gif_cuadrado.py`).
+    - **Y justo después, una bienvenida con lo que viene y sus tiempos (le gusta a Alex, de Daniel: `auth.html#r-welcome`).**
+      - «¡Hola, Katia! Bienvenida a Chekin»: tu cuenta está lista.
+      - Tarjeta «Lo que viene · ≈ 8 min» con nuestros pasos y su tiempo: 1 Reservas (PMS, calendario o a mano) · 2 Parte de viajeros · 3 Vivienda · 4 Check-in y enlace de prueba.
+      - Botones: «Empezar» y «Saltar por ahora».
+      - En portátil, la columna izquierda marca el progreso de los pasos, como en Daniel.
+      - Al pulsar «Empezar», salta al paso siguiente.
   - **Fuera, de Daniel:** «¿Qué te importa más?» y «Tu plan» (branding y lo demás). El upselling sigue en el Inicio.
   - **Por comprobar con Producto:**
     - qué datos pide cada autoridad;
