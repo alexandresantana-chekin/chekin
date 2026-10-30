@@ -1,10 +1,11 @@
-# Estado · actualizado 2026-10-28
+# Estado · actualizado 2026-10-30
 
 ## ▶ VIERNES 30/10
+- **Asana (15:08):** cerradas «Enrolar leads de Portugal en ShowMe» (599) y «ShowMe: ¿ayuda de verdad?» (encargo del CEO), con comentario a @Carlos. Quedan fuera los vídeos y rehacer septiembre a primeros de noviembre.
 - **P7 · Respuesta al CEO sobre ShowMe:** documento «ShowMe: ¿ayuda de verdad?» (https://claude.ai/artifact/QBpRPWCufZe3HsZasYigyk), privado y sin enviar. Responde a las 3 preguntas con el informe v5 completo (H-58) y el corte mes a mes con Leopard (H-57). Faltan los vídeos y rehacer septiembre cuando Leopard cierre octubre.
 - **P3 · Asana:** cerradas las 4 tareas de landings (ES resto, ES hoteles, IT hoteles, IT resto), cada una con un comentario a @Carlos con los IDs de las A y las B. Los A/B corren desde el 29/10. Portugal va dentro del comentario de ES resto. Sigue abierta «Registrar cada test en el tracker» (3/11).
 - **Asana (11:28):** cerradas con comentario a @Carlos las 6 tareas de eventos (solo enseñaron su QR Marta, Rocco y Manuel), la subtarea de Cello «Reunir con Valery…» (Valery ya tuvo su reunión y espera a tener toda la documentación lista para enseñársela a posibles clientes de referidos) y «Corregir las UTM de las PMax» (Snowball las corrigió el 27/10).
-- **P7 Portugal:** hoy el lote es de 150 (objetivo: 500 acumulados). A las 08:05, HubSpot marcaba 468 con `showme_pt_recovery` = true. Falta el comentario en Asana con la cifra final.
+- **P7 Portugal:** recovery terminado: **599** enrolados (hoy 249), comprobado en HubSpot; comentario en Asana con mención a Carlos. Medir el porcentaje de reactivación en las próximas semanas (H-56).
 - **P3 · Seguimiento A/B (revisión automática del viernes):** informe en [seguimiento-ab/2026-10-30.md](trabajo-en-curso/p3-landings/seguimiento-ab/2026-10-30.md). Sin significación todavía; reparto A/B desigual el 29/10 y caída fuerte de clics en ES Vacational y PT.
 
 ## ▶ HECHO EL JUEVES 29/10 (resumen; detalle en hallazgos H-44 a H-52 y en p1-onboarding.md)

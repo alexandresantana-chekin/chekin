@@ -13,10 +13,11 @@ Objetivo: 4 h/día, 20 h/semana. Avisar si se supera.
 | 2026-10-27 (mar) | — | — | 4 (indicado por Alex) | P2, P7, P3, Asana | Giulia sin acceso a chekin-connect, Portugal recovery (150 acumulados), cierre de tareas en Asana, feedback de Valery sobre las landings |
 | 2026-10-28 (mié) | 10:15 (indicado por Alex) | 19:35 (pausa 14:30–17:45, indicado por Alex) | ~6 h 05: 10:15–14:30 (4 h 15) + 17:45–19:35 (1 h 50). ⚠️ +2 h 05 sobre 4 h | P7, P3, HubSpot/Snowball, P2 | Acceso de Isaac al dashboard SEO; Portugal 250; encargo del CEO sobre ShowMe (tarea, H-26 a H-30, H-42, H-43, guion, mensaje a Pedro y borrador de respuesta); brief antes/después actualizado; integraciones HubSpot ↔ Meta/Google (H-31 a H-33); leads de Meta y Google de 7 días (H-34, H-35); tarea del QR cerrada |
 | 2026-10-29 (jue) | 08:45 (indicado por Alex) | 14:30, y vuelta a última hora hasta las 19:23 (indicado por Alex) | ~5 h 45 de 08:45 a 14:30, más un rato al volver. Alex da la semana por cerrada en 20 h | P7, P1, P6, P3 | P7: preguntas a Pedro y respuestas (H-49), workflow de Portugal creado y activado y 9 leads corregidos (H-44), recovery 350. P1: funnel de 30 días (H-48), Clarity conectado y 500 grabaciones (H-46, H-47, H-50, H-51), tramos (H-52), dashboard renombrado y ampliado, documento para Daniel, lienzo de pantallas y prototipos navegables de móvil y portátil. P6: resumen de Cello (H-45). P3: revisión de la B de SES |
+| 2026-10-30 (vie) | — | — | 4 (indicado por Alex) | P3, P7, P2, Asana | P3: cerradas en Asana las 4 tareas de landings (los 6 A/B en marcha desde el 29/10). P7: recovery de Portugal terminado (599 enrolados); respuesta al CEO sobre ShowMe con el informe v5 completo y el corte mes a mes con Leopard (H-57, H-58), documento y PDF; tareas cerradas. P2: 6 tareas de eventos cerradas. Asana: Cello y UTM cerradas |
 | 2026-10-21/22 | — | — | 2 (mínimo, indicado por Alex) | P3 landings | Chat "Landing Page": 5 landings, deck, tracker, análisis de expansión de URL y calidad de leads, traspaso |
 
 ## Totales por semana
 | Semana | Horas | Nota |
 |---|---|---|
-| 2026-10-26 → 10-30 | 20 (indicado por Alex el jueves 29) | Semana cerrada en 20 h según Alex; por días suma más (lun ≈ 8 + mar 4 + mié ≈ 6,1 + jue ≈ 5,8) |
+| 2026-10-26 → 10-30 | 24 (20 hasta el jueves, indicado por Alex, + 4 el viernes) | ⚠️ +4 h sobre las 20 h. Por días suma más (lun ≈ 8 + mar 4 + mié ≈ 6,1 + jue ≈ 5,8 + vie 4) |
 | 2026-10-19 → 10-23 | ~30,4 (lun 4 + mar 4 + mié ≈ 7,8 + jue ≈ 6,7 + 2 de landings + vie ≈ 5,9) | ⚠️ +10,4 h sobre las 20 h |
