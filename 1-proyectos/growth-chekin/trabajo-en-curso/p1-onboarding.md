@@ -430,3 +430,14 @@ Mismos enlaces (móvil y portátil). Principio de Alex: entrar y terminarlo todo
   - Falta confirmar con Producto que Chekin pide exactamente esto. Chekin tiene su propia guía en PDF en landing.chekin.com, «ES_Guide_SES».
   - **Mossos y SIBA:** los campos «usuario y contraseña» del prototipo son una suposición [POR COMPROBAR].
 
+### 30/10, 17:30 (mismos enlaces)
+- **Protección como la de Daniel, con nuestro diseño:**
+  - ventajas (respaldo económico, cobro inmediato) y vídeo;
+  - «Todas tus viviendas», con «Separar por grupos»;
+  - protección de daños (hasta 2.500 €, 27,20 € por estancia que paga el huésped) y fianza (200 €, se devuelve a los 7 días), cada una con «?» y Ajustes;
+  - y lo que elige el huésped.
+  - Sin «obligatorio/opcional»: vienen activadas y se pueden apagar. Cifras de Daniel [POR COMPROBAR].
+- **Viviendas:** al guardar cada una sale «¡Bien hecho, Katia! Ya tenemos tu primera vivienda registrada. ¿Seguimos con el resto? Te quedan 3». Botones «Sí, seguir con la vivienda 2» o «Termino aquí y sigo con el resto del alta»; las demás se añaden luego desde Viviendas.
+- **Botones:** «← Atrás» con borde, al lado de «Continuar», los dos juntos a la derecha. La barra inferior, blanca y con sombra para que se vea más.
+- **Final:** «Entrar en mi panel →» grande y centrado, debajo de la lista; sin barra vacía.
+
