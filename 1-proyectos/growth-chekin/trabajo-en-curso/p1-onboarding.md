@@ -288,6 +288,23 @@ Asistente: sabe en qué paso estás y lleva al siguiente (PDF #3). Al plan de Da
         - Cabecera «Tu panel está listo» con un plan de 7 pasos, unos 18 min y un anillo de % de configuración («0 de 7 hechos»). Los pasos: primera vivienda, protección de daños, fianza, parte de viajeros, tasa turística, branding y enlace de prueba.
         - Debajo, «De un vistazo» (viviendas, reservas importadas, check-ins listos, partes enviados), «La agenda de hoy» y «Salud del cumplimiento» por autoridad (SES, Mossos, tasa turística).
         - Al final, recursos: guía, tour de 2 min y centro de ayuda.
+      - **Lo que hace Daniel al elegir PMS (capturas de Alex, 30/10), para comparar con lo nuestro:**
+        1. **Elegir PMS:** rejilla de logos (Guesty, Hostaway, Lodgify, Smoobu, Avantio, Cloudbeds, Octorate, Otro) y buscador «81 integraciones». La web oficial dice «+200 PMS» [POR COMPROBAR cuál vale].
+        2. **«Conecta Cloudbeds»:** sin copiar nada. Autorizas en la web del PMS (OAuth, «nunca vemos tu contraseña»), con vídeo y «Qué hace esta integración» (qué trae del PMS y qué le devuelve). Botón «Lo conecto luego».
+           - **Mejor que nuestra API key** cuando el PMS lo permite. Donde no, se queda nuestra guía de API key con vídeo [POR COMPROBAR qué PMS permiten OAuth].
+        3. **Ventana «Autorizar Chekin»** con los permisos → «Cloudbeds conectado».
+        4. **«Esto nos ha dicho Cloudbeds»:**
+           - 14 viviendas, 3 grupos y precio medio por noche;
+           - cada grupo con su % de la cartera y su precio;
+           - «Fue una lectura, no una importación»;
+           - «¿No es correcto? Ajústalo a mano».
+           - Nuestro «Tus viviendas» es la versión corta de esto.
+        5. **«Cumplimiento legal, grupo a grupo»:** cada grupo en tres columnas, ya activado como lo dejaríamos:
+           - parte a la policía (obligatorio, con su autoridad y «Configurar luego»);
+           - verificación de identidad (documento + selfie, recomendada);
+           - tasa turística (importe por huésped y noche, exentos y máximo de noches).
+           - Las cifras de las tasas son de Daniel [POR COMPROBAR].
+        - **Propuesta:** coger 1, 2, 4 y 5 dentro de nuestro paso de reservas y de parte de viajeros. Nuestras reservas siguen siendo las de 3 formas.
     - **Más cosas del prototipo de Daniel vistas el 30/10 (capturas de Alex), por decidir:**
       - **Columna izquierda en portátil:** los pasos con su estado (✓, actual y pendientes). Debajo, «Tu configuración hasta ahora» con chips de lo que ha contestado (p. ej. «Hotel / aparthotel», «11-30 habitaciones», «España · cumplimiento») y «¿Dudas? Habla con nosotros: respondemos en unos 3 min».
       - **Países con selección múltiple:** buscador y tarjetas con bandera, etiqueta («Policía + tasa turística» o «Tasa turística») y autoridad. Sirve a quien tiene viviendas en varios países.
