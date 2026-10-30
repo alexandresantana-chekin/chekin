@@ -261,6 +261,12 @@ Asistente: sabe en qué paso estás y lleva al siguiente (PDF #3). Al plan de Da
     - Solo formulario de entrada, sin parte a la policía: Francia, Reino Unido, Grecia, Países Bajos, Bélgica y Rumanía. Estos van directos a la vivienda.
     - Quien conecta el PMS no pasa por «¿Dónde está tu vivienda?»: va directo al parte de viajeros.
     - [POR COMPROBAR el nombre de la autoridad en Suiza, Chequia, EAU, Brasil y Colombia.]
+  - **Con PMS, «Tus viviendas» (paso de Daniel «Reading your portfolio», 30/10):**
+    - Al conectar el PMS, una lectura rápida con animación: contamos las viviendas, las situamos y vemos a quién va el parte de cada una.
+    - Después, las viviendas agrupadas por zona, cada grupo con su autoridad: Madrid → SES, Barcelona → Mossos, Lisboa → SIBA. Cada autoridad se conecta una sola vez.
+    - Debajo, «¿No es correcto? Ajústalo a mano», que lleva a elegir el país.
+    - Daniel además lee el precio medio y la tasa turística por zona; lo dejamos fuera [POR COMPROBAR qué devuelve cada PMS].
+  - **Banderas:** las comunidades llevan su bandera (senyera, ikurriña) en vez de emojis.
   - **Fuera, de Daniel:** «¿Qué te importa más?» y «Tu plan» (branding y lo demás). El upselling sigue en el Inicio.
   - **Por comprobar con Producto:**
     - qué datos pide cada autoridad;
