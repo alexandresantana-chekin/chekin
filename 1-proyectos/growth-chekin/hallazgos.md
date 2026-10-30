@@ -7,6 +7,27 @@ Regla: toda cifra lleva su periodo (Carlos trabaja con 90 días). Si un dato no 
 
 ## 30-10-2026
 
+### H-57 · El formulario de Italia (ca54cc24) trae «10» puesto por defecto en el número de propiedades
+- **Qué:** en la B de /it/check-in-online-alloggiati-web, el campo `number_of_units` aparece relleno con **10** (valor por defecto del formulario, no un texto de ayuda). En el de Portugal (23a6aa7a) viene con 1.
+- **Fuente / periodo:** navegador, 30/10/2026, durante el envío de prueba.
+- **Implica:** quien no lo cambie entra como **10 viviendas → SMB (4-10)**, aunque tenga 1–3: tramo y ShowMe mal asignados en Italia. [POR COMPROBAR en HubSpot si pasa también en las altas reales: cuántos leads de IT desde el 29/10 tienen exactamente 10.] Arreglo: quitar el valor por defecto del formulario (cambio en HubSpot, solo con OK de Alex).
+- **Estado:** abierto.
+
+### H-58 · Informe v5 completo (19 pestañas, ES/IT/PT): en Trial, hablar con Alex no cambia el pago, y cada vez cierra más el AE
+- **Qué:**
+  - **Trial España (18/06–29/09, HubSpot):** pasan a Customer el 32% de los que hablaron con Alex (173/537) y el 32% de los que no (134/423). En septiembre, 14,1% si hablaron frente a 22,2% si no.
+  - **Papel del AE (ES+IT+PT, 358 cierres con pago en Leopard):** sin AE 154 (43%), AE antes 118, el mismo día 21, después 65. Los cierres sin AE bajan del 59% en julio al 24% en septiembre y al 31% en octubre.
+  - **HubSpot frente a Leopard (465 Customer de ShowMe):** 3.876 € frente a 2.980 € (−23%). La diferencia viene de 65 Customer que nunca han pagado (−461,50 €) y de 30 bajas o impagos (−372,80 €). Italia, −39%.
+  - **Deals:** en 131 de 139 clientes que cerraron solos, el deal automático TRIAL 2025 sigue en Lost aunque pagan. Cualquier informe de Won pierde ese MRR.
+  - **Oportunidades para AEs:** 502 (176 de los últimos 45 días; 74 de tier A; 465 sin AE; 106 pidieron una persona).
+  - **El export de ShowMe no cuadra:** 11 Customer nuevos y 13 que pagan en Leopard no salen como «converted». En Pretrial, el clasificador marca «convertido» a quien solo acepta el enlace.
+  - **Cadencia y tamaño:** el informe no describe la cadencia (la de H-42 la calculamos sobre `transcripts.json`) ni adapta el flujo al tamaño.
+  - **Portugal:** la KB y las recomendaciones están vacías. Las funcionalidades salen con la etiqueta «SES Hospedajes», heredada de España.
+  - **Incoherencias del propio informe:** algunos textos vienen de versiones anteriores (por ejemplo, «1.014 leads», «159 piden persona») y no cuadran con sus tablas (2.388 y 189). Citamos siempre las tablas.
+- **Fuente / periodo:** informe «ShowMe Micro v5» de Carlos (https://claude.ai/artifact/LjLPsNF39MaUofCFYbL2Ju), carga del 27/10/2026; conversaciones hasta el 26/10 (ES desde el 18/06, IT desde el 28/08, PT desde el 6/10); Leopard a 14, 20 y 27/10. Leídas todas las pestañas por mercado y fase el 30/10.
+- **Implica:** lo atribuible a ShowMe es como mucho los 156 pagos sin AE, y en Trial ni la conversación marca diferencia. Refuerza el grupo de control y el handoff a persona. Respuesta al CEO: documento «ShowMe: ¿ayuda de verdad?» (https://claude.ai/artifact/QBpRPWCufZe3HsZasYigyk).
+- **Estado:** en la respuesta al CEO (30/10), pendiente de enviar.
+
 ### H-57 · ShowMe mes a mes con pago real: septiembre aún no se puede leer; con julio y agosto, España sale +4,5 puntos con ShowMe
 - **Qué:** Micro (`property_size` = Micro SMB) con `trial_start_date`, por mes de alta. Pago = `mrr_leopard_eur` > 0 (último mes cerrado en Leopard: septiembre).
   | Mes | ES con | ES sin | IT con | IT sin |
