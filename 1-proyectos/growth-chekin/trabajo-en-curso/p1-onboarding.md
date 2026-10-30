@@ -283,6 +283,11 @@ Asistente: sabe en qué paso estás y lleva al siguiente (PDF #3). Al plan de Da
       - **Reservas** (PMS, calendario o a mano): se queda el nuestro.
       - **«Protege tus viviendas»** (protección de daños o fianza): entra como paso.
       - Pendiente de decidir: la columna de progreso con chips y la barra fina.
+      - **Upselling y protección, prioridad (Alex, 30/10):** «el upselling es primordial: ellos ganan dinero y nosotros también; con asegurar su casa, igual». Deben ser **pasos del onboarding**, no solo una tarjeta en el Inicio.
+      - **Referencia, el Inicio de Daniel** (`dashboard/index.html`):
+        - Cabecera «Tu panel está listo» con un plan de 7 pasos, unos 18 min y un anillo de % de configuración («0 de 7 hechos»). Los pasos: primera vivienda, protección de daños, fianza, parte de viajeros, tasa turística, branding y enlace de prueba.
+        - Debajo, «De un vistazo» (viviendas, reservas importadas, check-ins listos, partes enviados), «La agenda de hoy» y «Salud del cumplimiento» por autoridad (SES, Mossos, tasa turística).
+        - Al final, recursos: guía, tour de 2 min y centro de ayuda.
     - **Más cosas del prototipo de Daniel vistas el 30/10 (capturas de Alex), por decidir:**
       - **Columna izquierda en portátil:** los pasos con su estado (✓, actual y pendientes). Debajo, «Tu configuración hasta ahora» con chips de lo que ha contestado (p. ej. «Hotel / aparthotel», «11-30 habitaciones», «España · cumplimiento») y «¿Dudas? Habla con nosotros: respondemos en unos 3 min».
       - **Países con selección múltiple:** buscador y tarjetas con bandera, etiqueta («Policía + tasa turística» o «Tasa turística») y autoridad. Sirve a quien tiene viviendas en varios países.
