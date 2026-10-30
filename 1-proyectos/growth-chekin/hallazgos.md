@@ -7,11 +7,11 @@ Regla: toda cifra lleva su periodo (Carlos trabaja con 90 días). Si un dato no 
 
 ## 30-10-2026
 
-### H-57 · El formulario de Italia (ca54cc24) trae «10» puesto por defecto en el número de propiedades
+### H-59 · El formulario de Italia (ca54cc24) trae «10» puesto por defecto en el número de propiedades
 - **Qué:** en la B de /it/check-in-online-alloggiati-web, el campo `number_of_units` aparece relleno con **10** (valor por defecto del formulario, no un texto de ayuda). En el de Portugal (23a6aa7a) viene con 1.
 - **Fuente / periodo:** navegador, 30/10/2026, durante el envío de prueba.
 - **Implica:** quien no lo cambie entra como **10 viviendas → SMB (4-10)**, aunque tenga 1–3: tramo y ShowMe mal asignados en Italia. **Afecta solo a las B de Italia** (Alloggiati y Questura): las A usan 5ef250b9, que solo pide el email (H-54). El 10 viene de la configuración del formulario ca54cc24 en HubSpot, no del HTML de la B. El dato «1 de 47 leads de Italia con 10 desde el 29/10» **no sirve para medir el efecto**: casi ninguno de esos leads pasó por las B. [POR COMPROBAR si ca54cc24 se usa en otras páginas.] Arreglo: quitar el valor por defecto del formulario (cambio en HubSpot, solo con OK de Alex).
-- **Estado:** abierto.
+- **Estado:** **arreglado el 30/10** (Alex quitó el valor por defecto en ca54cc24 y le dio a Update). Comprobado en la B de Alloggiati: el campo sale vacío. Los leads que entraron por las B de Italia antes del arreglo (29–30/10) pueden tener 10 sin haberlo elegido: revisarlos el 3/11. (Renumerado de H-57 a H-59 porque otra sesión usó H-57 para ShowMe.)
 
 ### H-58 · Informe v5 completo (19 pestañas, ES/IT/PT): en Trial, hablar con Alex no cambia el pago, y cada vez cierra más el AE
 - **Qué:**
