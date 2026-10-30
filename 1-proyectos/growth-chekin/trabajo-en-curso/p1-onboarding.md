@@ -256,6 +256,11 @@ Asistente: sabe en qué paso estás y lleva al siguiente (PDF #3). Al plan de Da
     - Contador de viviendas estrecho, con − y + a los lados y sin las flechas del navegador.
     - El aviso de experto sale al pulsar «Ir a mi panel», no mientras escribe el número.
     - El paso 1 ofrece **tres formas al mismo nivel**: PMS, calendario de Airbnb o Booking, o a mano. En portátil se destaca el PMS; en móvil, el calendario.
+  - **Países (30/10, de chekin.com/legalidad):**
+    - Con parte a las autoridades: España (comunidad: SES, Mossos o Ertzaintza), Italia, Portugal, Alemania, Austria, Croacia, Suiza, República Checa, Bulgaria, EAU, Brasil y Colombia.
+    - Solo formulario de entrada, sin parte a la policía: Francia, Reino Unido, Grecia, Países Bajos, Bélgica y Rumanía. Estos van directos a la vivienda.
+    - Quien conecta el PMS no pasa por «¿Dónde está tu vivienda?»: va directo al parte de viajeros.
+    - [POR COMPROBAR el nombre de la autoridad en Suiza, Chequia, EAU, Brasil y Colombia.]
   - **Fuera, de Daniel:** «¿Qué te importa más?» y «Tu plan» (branding y lo demás). El upselling sigue en el Inicio.
   - **Por comprobar con Producto:**
     - qué datos pide cada autoridad;
