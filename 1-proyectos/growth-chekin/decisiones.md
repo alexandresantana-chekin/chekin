@@ -107,3 +107,9 @@
   - Micro y SMB no se tratan igual que Mid-Market y Enterprise: con más de 10 viviendas sale un aviso que ofrece un experto en Chekin para configurarlas.
 - **30/10 · P1: el autocompletado de dirección entra en el documento para Daniel como arreglo rápido** (cambio n.º 2, también para el producto actual), con proveedor, coste y efecto [POR COMPROBAR]. Lo decide Alex: hoy no existe y la vivienda es el paso con más caída.
 - **30/10 · P1: si el cliente pide un experto, no se le vuelve a pedir el teléfono** (Alex). La petición (aviso de 11-60 / +60, «Que me ayude un experto» en reservas y en el PMS) llega a su AE en HubSpot con el teléfono del registro. Cómo llega (tarea, propiedad o workflow): [POR COMPROBAR].
+- **30/10 · P1, onboarding en un solo flujo (Alex):**
+  - Login y alta en la misma puerta: Chekin reconoce el email. Dos visuales para Producto: cuenta nueva y ya tiene cuenta.
+  - Número exacto de viviendas en vez de tramos (1-3, 4-10…), vacío por defecto y con + y −.
+  - Después de entrar: primero ¿PMS? y luego el país de la vivienda (en España, la comunidad: Cataluña → Mossos, País Vasco → Ertzaintza, resto → SES). Después, el parte de viajeros, antes de la vivienda, porque sin él no se puede enviar el check-in. Luego la vivienda y el check-in.
+  - Se quitan los pasos finales de Daniel («¿Qué te importa más?» y «Tu plan» con el branding).
+  - Cada paso con su tiempo y con mensajes en positivo.

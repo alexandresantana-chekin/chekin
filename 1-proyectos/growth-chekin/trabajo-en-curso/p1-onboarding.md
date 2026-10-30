@@ -243,3 +243,17 @@ Asistente: sabe en qué paso estás y lleva al siguiente (PDF #3). Al plan de Da
   - **Pantalla de logro igual en los dos dispositivos:** qué ya funciona y qué falta (SES ≈ 3 min). Después, «Continuar con la vivienda 2» o «Hacerlo después».
   - **Guía por PMS:** 3 pasos, la API key explicada en una frase, un vídeo de 2 min por PMS y un experto como salida. Los vídeos están [POR GRABAR]; la lista de PMS, [POR COMPROBAR] con la página de integraciones.
   - **Mid-Market y Enterprise (11-60, +60):** sale un aviso «¿Quieres que un experto en Chekin te ayude a configurar tus viviendas?» (o habitaciones, en hoteles). No bloquea. Micro y SMB siguen la guía solos.
+- **Versión 30/10 noche, flujo único** (mismos enlaces; el de portátil ya está compartido con la organización). Revisado antes el prototipo de Daniel y el alta real de chekin.com (registro y login en páginas separadas, con contraseña y sin Google).
+  - **Entrar:** una sola puerta que reconoce el email. Cuenta nueva → nombre y apellidos → código → tu negocio. Ya tiene cuenta → «¡Hola de nuevo!» → código → su Inicio, donde lo dejó. En la demo, dos botones: «Cliente nuevo» y «Ya tiene cuenta».
+  - **Tu negocio:** el número exacto de viviendas (vacío, con + y −, o escrito a mano) en vez de los tramos. Con más de 10, sale el aviso de experto.
+  - **Pasos:**
+    - 1: ¿usas PMS? Sí → guía del PMS; no → calendario o a mano.
+    - 2: ¿dónde está la vivienda? España → comunidad: Cataluña (Mossos), País Vasco (Ertzaintza), resto (SES.Hospedajes). Italia: Alloggiati. Portugal: SIBA. Después, conectar el parte de viajeros («paso clave»; no bloquea).
+    - 3: vivienda (nombre y dirección).
+    - 4: check-in y enlace de prueba.
+    - El nombre de la autoridad elegida se arrastra al resto de pantallas.
+  - **Fuera, de Daniel:** «¿Qué te importa más?» y «Tu plan» (branding y lo demás). El upselling sigue en el Inicio.
+  - **Por comprobar con Producto:**
+    - qué datos pide cada autoridad;
+    - si van por titular o por vivienda;
+    - si Cataluña y País Vasco envían también a SES.
