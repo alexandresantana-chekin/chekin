@@ -178,3 +178,44 @@ Lectura para el CEO:
 - Corregir «Solo entran los leads de 1 a 3 viviendas»: el criterio lo ponen nuestros workflows de HubSpot (al principio, micro no asignados a ventas; después, más tamaños). Confirmar el criterio actual y por país (Carlos o el workflow «UPDATED Lead As…»).
 - Añadir: el «converted» de ShowMe cuenta a todo lead de la secuencia, haya hablado o no con el agente. Por eso nuestra lectura usa grupo comparable y pagos reales (H-43).
 - Vídeos: ShowMe no los tiene. Hay que grabarlos nosotros con altas de prueba, avisando antes a Pedro con los emails.
+
+---
+
+## Respuesta al CEO · versión 30/10 (sin enviar · la revisa y la envía Alexandre)
+Corrige el borrador del 28/10 con H-49 (Pedro), H-43 (pagos de Leopard) y H-56 (recovery de Portugal).
+
+> **ShowMe: ¿ayuda de verdad? Resumen con datos**
+>
+> **1. Cómo trabaja ShowMe**
+> - **Quién entra no lo decide ShowMe, lo deciden nuestros workflows de HubSpot.** Al principio solo entraban los Micro (1–3 viviendas) no asignados a ventas y después se han ido sumando otros tamaños (confirmado por Pedro el 29/10). El criterio actual por país lo confirmo con Carlos a su vuelta (3/11).
+> - Dos fases: **Pretrial** (registrado sin prueba; éxito = empieza la prueba) y **Trial** (éxito = paga).
+> - **Pretrial:** primer contacto por llamada (66%) y luego WhatsApp cada ~48 h durante unos 5 días. **Trial:** empieza por WhatsApp (72%) o chat web (20%), unos 6 WhatsApp en 12 días, y solo llama al 25%, hacia el día 7.
+> - **Lo que funciona:** la llamada en Pretrial (España: 31,7% de conversión por teléfono frente al 3,8% por WhatsApp; Italia: 30,6% por teléfono).
+> - **Lo que falla:** cuando el lead pide hablar con una persona (189 veces en España, y esos leads convierten un 34,9%), no se le pasa a nadie. Falta un handoff nuestro en HubSpot.
+> - **Vídeos:** ShowMe no tiene grabaciones por país. Los grabamos nosotros con altas de prueba en ES, IT y PT (Micro y SMB), avisando antes a Pedro. [POR HACER: fecha]
+>
+> **2. Con y sin ShowMe, con pago real (Leopard)**
+> Trials de altas 1/08–30/09/2026 que pagan según Leopard (mes cerrado: septiembre):
+> | | Con ShowMe | Sin ShowMe |
+> |---|---|---|
+> | España | 62 / 418 · **14,8%** | 11 / 55 · **20,0%** |
+> | Italia, agosto | 5 / 16 · 31% | 16 / 96 · 16,7% |
+> | Italia, septiembre | 9 / 120 · **7,5%** | 2 / 23 · **8,7%** |
+> - **No vemos que ShowMe suba la conversión a pago.** En España, ShowMe trabaja el 88% de los trials y el grupo sin ShowMe es pequeño (55). En Italia, la ventaja que salía en HubSpot desaparece con los pagos reales: 28 de 78 «Customer» de HubSpot nunca han pagado.
+> - Hablar con el agente tampoco marca la diferencia en Pretrial España (18,2% con conversación frente a 25,5% sin). En Trial sí convierten más los que hablan (34,2% frente a 19,7%), pero eso no es causal: quien contesta ya está más interesado.
+> - **Para saberlo de verdad hace falta un grupo de control aleatorio:** por ejemplo, el 20% de los Micro de España sin ShowMe durante 4 semanas, midiendo el pago en Leopard.
+>
+> **3. Qué necesita ShowMe para apuntarse un lead**
+> - **Nada: basta con que entre en la secuencia.** Pedro lo confirma (29/10): en Pretrial cuenta como convertido a quien empieza la prueba y en Trial a quien pasa a Customer, haya hablado con el agente o no. En España, el 52% de sus leads nunca tuvo conversación.
+> - Cifras del informe v5 (export de ShowMe + HubSpot + Leopard; ES desde el 18/06, IT desde el 28/08, PT desde el 6/10, hasta el 26/10): de **3.040 leads**, ShowMe declara **630 convertidos**, pagan **360** (2.898 €/mes de MRR) y **156 de esos 360 cerraron sin AE**. Lo atribuible a ShowMe está más cerca de 156 que de 630, y ni eso es seguro sin grupo de control.
+>
+> **4. Portugal: recovery (26–30/10)**
+> - **468 leads** antiguos (altas 23/08–2/10 que no convirtieron) enrolados en ShowMe.
+> - ShowMe da **6 reactivados (1,3%)**. En HubSpot solo **2** han vuelto a hacer algo: rellenan el alta y empiezan la prueba (27/10 y 29/10). Una de esas dos pruebas no está en la lista de ShowMe.
+> - Ninguno de los que empiezan la prueba recibe la marca de trial de ShowMe en Portugal, así que pueden seguir recibiendo mensajes de recovery. Se arregla con un cambio en el workflow de Portugal (pendiente de OK).
+>
+> **Próximos pasos que propongo**
+> 1. Grupo de control aleatorio en España (4 semanas).
+> 2. Handoff a persona cuando el lead lo pide (tarea al AE con SLA de 2 h).
+> 3. Grabar los vídeos con altas de prueba.
+> 4. Confirmar con Carlos el criterio de entrada actual por país.
