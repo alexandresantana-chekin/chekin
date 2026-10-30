@@ -5,6 +5,19 @@ Regla: toda cifra lleva su periodo (Carlos trabaja con 90 días). Si un dato no 
 
 ---
 
+## 30-10-2026
+
+### H-55 · Leads de Portugal: 1.670 en 90 días, casi todos de Google; caen desde la semana del 5/10, antes que los clics, y el «Not ICP» sube al 21% en octubre
+- **Qué:** contactos con `country_dropdown` = Portugal creados del 1/08 al 30/10: **1.670** (agosto 122, septiembre 944, octubre 604 hasta el 30). **86% Paid Search** (1.436) y 7% Paid Social (123).
+  - Por semana: pico de **390** en la del 28/09; después 176 (5/10), 98 (12/10), 62 (19/10) y 32 (26–30/10). **La caída de leads empieza 2 semanas antes** que la de clics del 20/10 (H-53).
+  - Prueba empezada (`trial_starts_we` = Yes): **199 (11,9%)**. Agosto 18%, septiembre 10,7%, octubre 12,6%.
+  - **Not ICP:** 231 (13,8%). Agosto 5,7%, septiembre 10,5%, **octubre 20,7%**. Cuadra con el ruido de los anuncios («préstamos», «empleo»).
+  - Etapa: MQL 855 (51%), Nurturing 508 (30%), Not ICP 231, Customer 18, Lost 17, Opportunity 5, SQL 3. «Customer» no es lo mismo que pagar (ver P7: pagos en Leopard).
+  - Tamaño: Micro 1.133 (68%), SMB 315 (19%), Mid-Market 108 (6,5%), Enterprise 88 (5,3%). Prueba por tramo: Micro 11,7%, SMB 11,1%, Mid-Market 13%, Enterprise 19,3%.
+- **Fuente / periodo:** HubSpot (conector), contactos creados del 1/08 al 30/10/2026; solo en agregado. Octubre sin cerrar.
+- **Implica:** el volumen de Portugal cae desde primeros de octubre, no solo por el cambio de las PMax del 20/10 [POR COMPROBAR qué pasó la semana del 5/10: presupuesto, copies o fin de la expansión de URL]. Con más ruido, la tasa de prueba aguanta (12,6%), pero sobre menos leads. Enterprise convierte a prueba casi el doble que Micro: refuerza el aviso de experto para +10 en el onboarding (decisión 30/10). El corte de tramos en hoteles sigue abierto (H-52).
+- **Estado:** abierto. Contrastar con Ads (Windsor) por semana y con Carlos.
+
 ## 29-10-2026
 
 ### H-52 · Tramos por tamaño en HubSpot: SMB Micro, SMB, Mid-Market y Enterprise; con 3 viviendas, la mayoría está marcada como SMB, no como Micro
