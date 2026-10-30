@@ -420,4 +420,13 @@ Mismos enlaces (móvil y portátil). Principio de Alex: entrar y terminarlo todo
 - **Protección:** sin «Obligatorio / Opcional / Apagado»; dos interruptores activados que se pueden apagar.
 - **Países:** buscador y los 3 principales a la vista; el resto, en «+ Ver más países (15)».
 - **Arreglos:** espacios en «✓ Smoobu conectado» (sin cajas flexibles en textos con nombre dinámico), campos de dos en dos apilados en móvil, foco visible y botones de 44 px o más.
+- **Confirmado (30/10, 17:20) con más fuentes:** Check-in Easy (08/08/2026), Kinapi (05/09/2026), Amplistay (04/10/2026), Apartop (11/10/2026) y el vídeo de MisterPlan coinciden. Para enviar el parte de SES automáticamente hacen falta **cuatro datos**:
+  - **usuario del servicio web** (suele terminar en «WS»);
+  - **contraseña del servicio web**, distinta de Cl@ve y del certificado;
+  - **código de arrendador**, el «código de entidad», que **no es el NIF**;
+  - **código de establecimiento**, uno por vivienda.
+  - Cl@ve y el certificado solo sirven para entrar al portal y darse de alta.
+  - El prototipo pide los tres primeros en el parte y el código de establecimiento en cada vivienda: cuadra.
+  - Falta confirmar con Producto que Chekin pide exactamente esto. Chekin tiene su propia guía en PDF en landing.chekin.com, «ES_Guide_SES».
+  - **Mossos y SIBA:** los campos «usuario y contraseña» del prototipo son una suposición [POR COMPROBAR].
 
