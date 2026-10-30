@@ -105,3 +105,4 @@
   - El paso de la vivienda, que es donde más se cae la gente, pide solo nombre y dirección; el NIF pasa a opcional.
   - Quien conecta un PMS tiene instrucciones y un vídeo explicativo de cada PMS, porque la API key no es fácil para todo el mundo.
   - Micro y SMB no se tratan igual que Mid-Market y Enterprise: con más de 10 viviendas sale un aviso que ofrece un experto en Chekin para configurarlas.
+- **30/10 · P1: el autocompletado de dirección entra en el documento para Daniel como arreglo rápido** (cambio n.º 2, también para el producto actual), con proveedor, coste y efecto [POR COMPROBAR]. Lo decide Alex: hoy no existe y la vivienda es el paso con más caída.
