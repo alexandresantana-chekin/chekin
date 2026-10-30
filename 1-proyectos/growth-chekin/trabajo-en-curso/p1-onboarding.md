@@ -351,3 +351,30 @@ Mismos enlaces (móvil y portátil). Principio de Alex: entrar y terminarlo todo
     - Hay que cambiar los campos y explicar dónde se encuentra cada dato, con vídeo.
     - [POR COMPROBAR con Producto o con la guía de Chekin (landing.chekin.com, «ES_Guide_SES»): qué pide exactamente Chekin, y qué piden Mossos y Ertzaintza.]
 
+### Investigación: qué pide cada autoridad (30/10, fuentes externas; falta confirmarlo con Producto)
+- **SES.Hospedajes (España, menos Cataluña):** son dos altas distintas que la gente confunde (Kinapi, «Alta en SES Hospedajes paso a paso», 05/09/2026; Apartop, 11/10/2026; Amplistay, 04/10/2026):
+  1. **Alta del titular («sujeto obligado») y sus establecimientos**, en la Sede Electrónica con **certificado digital o Cl@ve**. Piden el NIF/CIF, el nombre o razón social y el domicilio del titular, y por cada vivienda la **dirección completa** y, cuando corresponde, el **número de registro turístico autonómico**. A cambio dan el **código de arrendador** (uno por titular) y un **código de establecimiento por vivienda**.
+  2. **Alta del usuario del servicio web**, aparte. Da el **usuario WS y su contraseña**, que **no son los de la Sede**. Esto es lo que necesita un software como Chekin, junto con los dos códigos.
+  - El titular es el dueño de la actividad, no quien la gestiona. **Un gestor con pisos de varios propietarios tiene varios titulares**, así que «el mismo titular para todas» no siempre vale.
+- **Mossos d'Esquadra (Cataluña):** el parte va a su portal, no a SES (Checkin Vacacional, 03/05/2026). Qué credenciales pide para un software: [POR COMPROBAR].
+- **Ertzaintza (País Vasco):** [POR COMPROBAR].
+- **Alloggiati Web (Italia):** acceso con un usuario que identifica la estructura y una contraseña (Questura di Rovigo). Para conectar un software suele hacer falta además una clave del servicio web [POR COMPROBAR].
+- **SIBA/AIMA (Portugal):** [POR COMPROBAR].
+- **Implica:** los campos «Usuario y contraseña de SES» del prototipo están mal. Además, mucha gente aún no tiene el usuario WS, porque requiere certificado o Cl@ve. Hace falta:
+  - una salida buena: «No lo tengo: te guiamos para pedirlo» con vídeo, «Lo hacemos contigo» con un experto, y un recordatorio;
+  - que el paso nunca bloquee el resto del onboarding.
+
+### Revisión UX a fondo del prototipo (Alex: «la experiencia debe ser brutal»), pendiente de aplicar
+1. **Los botones de abajo se pierden** al final de las pantallas largas. Hace falta una barra inferior fija con Atrás y Continuar, siempre visible en portátil y en móvil.
+2. **Errores de texto:** «✓Smoobuconectado» sin espacios (el diseño en caja flexible se come los espacios entre trozos). Revisarlo en todos los botones con nombre dinámico.
+3. **Orden de los pasos, propuesta:** Reservas → Dónde están → **Titular y viviendas, una a una** → **Conectar el parte** con los datos correctos, una vez por titular, más verificación de identidad y tasa turística → Protección → Ventas extra → Envío del check-in.
+   - Los datos de cada vivienda (dirección con autocompletado de Google, piso o puerta, número de registro turístico, código de establecimiento de SES) van con la vivienda.
+   - Las credenciales van una vez por titular.
+4. **Viviendas una a una** («Vivienda 2 de 4»), con las hechas a la vista. **NIF/CIF del titular** con validación y «El mismo titular para todas», que se puede cambiar por vivienda (para gestores).
+5. **Protección:** quitar «Obligatorio / Opcional / Apagado». Los dos interruptores salen activados y se pueden apagar.
+6. **Etiquetas de cumplimiento** («OBLIGATORIO POR LEY», «TE LO RECOMENDAMOS»): decidir con Alex si se quitan igual que en Protección. El parte sí es obligatorio por ley.
+7. **Países en móvil:** la lista es muy larga. Primero el buscador y los 3 principales; el resto, tras «Ver más países».
+8. **Guardado automático visible** («Guardado · puedes seguir luego») y retomar donde se quedó.
+9. **Validación al momento** (NIF, códigos) con mensajes en positivo, nunca solo en rojo.
+10. **Accesibilidad:** foco visible, etiquetas en todos los campos y botones de al menos 44 px.
+
