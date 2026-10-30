@@ -252,6 +252,10 @@ Asistente: sabe en qué paso estás y lleva al siguiente (PDF #3). Al plan de Da
     - 3: vivienda (nombre y dirección).
     - 4: check-in y enlace de prueba.
     - El nombre de la autoridad elegida se arrastra al resto de pantallas.
+  - **Ajustes de Alex (30/10, 15:30):**
+    - Contador de viviendas estrecho, con − y + a los lados y sin las flechas del navegador.
+    - El aviso de experto sale al pulsar «Ir a mi panel», no mientras escribe el número.
+    - El paso 1 ofrece **tres formas al mismo nivel**: PMS, calendario de Airbnb o Booking, o a mano. En portátil se destaca el PMS; en móvil, el calendario.
   - **Fuera, de Daniel:** «¿Qué te importa más?» y «Tu plan» (branding y lo demás). El upselling sigue en el Inicio.
   - **Por comprobar con Producto:**
     - qué datos pide cada autoridad;
