@@ -278,6 +278,11 @@ Asistente: sabe en qué paso estás y lleva al siguiente (PDF #3). Al plan de Da
       - Botones: «Empezar» y «Saltar por ahora».
       - En portátil, la columna izquierda marca el progreso de los pasos, como en Daniel.
       - Al pulsar «Empezar», salta al paso siguiente.
+    - **Decidido por Alex (30/10):**
+      - **Países:** se coge el de Daniel: selección múltiple, buscador y tarjetas con bandera, etiqueta y autoridad. España sigue preguntando la comunidad.
+      - **Reservas** (PMS, calendario o a mano): se queda el nuestro.
+      - **«Protege tus viviendas»** (protección de daños o fianza): entra como paso.
+      - Pendiente de decidir: la columna de progreso con chips y la barra fina.
     - **Más cosas del prototipo de Daniel vistas el 30/10 (capturas de Alex), por decidir:**
       - **Columna izquierda en portátil:** los pasos con su estado (✓, actual y pendientes). Debajo, «Tu configuración hasta ahora» con chips de lo que ha contestado (p. ej. «Hotel / aparthotel», «11-30 habitaciones», «España · cumplimiento») y «¿Dudas? Habla con nosotros: respondemos en unos 3 min».
       - **Países con selección múltiple:** buscador y tarjetas con bandera, etiqueta («Policía + tasa turística» o «Tasa turística») y autoridad. Sirve a quien tiene viviendas en varios países.
