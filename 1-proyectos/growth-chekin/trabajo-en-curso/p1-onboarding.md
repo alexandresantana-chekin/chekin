@@ -377,4 +377,15 @@ Mismos enlaces (móvil y portátil). Principio de Alex: entrar y terminarlo todo
 8. **Guardado automático visible** («Guardado · puedes seguir luego») y retomar donde se quedó.
 9. **Validación al momento** (NIF, códigos) con mensajes en positivo, nunca solo en rojo.
 10. **Accesibilidad:** foco visible, etiquetas en todos los campos y botones de al menos 44 px.
+11. **Diseño general (Alex, 30/10):** las pantallas se ven «muy amplias, con poca UI y UX», por ejemplo la bienvenida en portátil: una lista larga y estirada, con mucho vacío y los botones lejos. Hay que trabajar todo el prototipo:
+    - contenido más estrecho y centrado (una columna de unos 640 px);
+    - jerarquía clara y algo visual en cada paso (ilustración, vista previa o ejemplo);
+    - tarjetas compactas;
+    - el botón principal cerca del contenido.
+12. **«Creando tu cuenta»:**
+    - Un solo color: el cuadrado del check **azul marino oscuro** (#19194B) de principio a fin. Ahora pasa de marino a azul (#385BF8) al terminar.
+    - Que haga la animación del GIF (el check crece y se ilumina), en marino.
+    - Al terminar, mensaje en positivo bien visible: «¡Cuenta creada!» y algo como «Ya puedes empezar a recibir huéspedes».
+    - **Que se quede 2-3 segundos** para que se lea. Ahora pasa a la bienvenida demasiado rápido: el mensaje final dura 1,4 s.
+    - Referencia: el GIF que mandó Alex (cuadrado redondeado con el check blanco).
 
