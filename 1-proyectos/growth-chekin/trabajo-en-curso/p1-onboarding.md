@@ -344,4 +344,10 @@ Mismos enlaces (móvil y portátil). Principio de Alex: entrar y terminarlo todo
   - **Se ha perdido la dirección con autocompletado de Google.** Hay que recuperarla: al escribir salen sugerencias y, al elegir una, se rellenan ciudad, código postal y provincia, más «Piso, puerta o bloque».
   - **Falta el NIF/CIF del titular** (con validación). Se pide una vez, con «El mismo titular para todas mis viviendas», y se reutiliza en el parte.
   - **Revisar qué otros pasos se han caído** frente a versiones anteriores y al producto real [POR COMPROBAR con Producto: número de registro o licencia de la vivienda, código de establecimiento de SES].
+  - **Credenciales de SES.Hospedajes mal planteadas.** El prototipo pide «Usuario de SES.Hospedajes» y contraseña, como si fuera el login del portal. Según fuentes externas (Amplistay, 04/10/2026; grupo de ayuda de SES en Facebook), para conectar un software hacen falta:
+    - el **código de arrendador**;
+    - el **código de establecimiento** (uno por vivienda);
+    - el **usuario y la contraseña del servicio web (WS)**, distintos del email de acceso al portal. Se generan en SES.Hospedajes y llegan en el correo de confirmación.
+    - Hay que cambiar los campos y explicar dónde se encuentra cada dato, con vídeo.
+    - [POR COMPROBAR con Producto o con la guía de Chekin (landing.chekin.com, «ES_Guide_SES»): qué pide exactamente Chekin, y qué piden Mossos y Ertzaintza.]
 
