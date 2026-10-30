@@ -7,6 +7,16 @@ Regla: toda cifra lleva su periodo (Carlos trabaja con 90 días). Si un dato no 
 
 ## 30-10-2026
 
+### H-60 · Google Ads, 28/09–29/10: el gasto baja a la mitad y las conversiones caen un 89%; en Portugal la caída de leads coincide con un recorte de presupuesto desde el 5/10
+- **Qué (media por día, por semana; la del 26/10 solo tiene 4 días):**
+  - **Total:** 1.093 €/día → 549 (−50%); conversiones de Ads 106/día → 12 (−89%); coste por conversión 10 € → 46 €.
+  - **Portugal:** 358 €/día → 238 (5/10) → ~130 (desde el 12/10). PT Competitors pasa de 248 a 62 €/día. Conversiones 70/día → 7.
+  - **España:** gasto estable (455 → ~315 €/día), pero conversiones 33/día → 3,5. ES PMax Vacational gasta lo mismo (~190 €/día) con 26 → 2,4 conversiones/día; CPA 9 € → 78 €.
+  - **Italia:** gasto estable (~110–190 €/día), 1,5–3,7 conversiones/día, sin cambio claro.
+- **Fuente / periodo:** Windsor.ai (Google Ads 103-962-2294), semanas del 28/09 al 26/10/2026 (la última, del 26 al 29/10).
+- **Implica:** la caída de leads de Portugal desde la semana del 5/10 (H-55) coincide con **menos presupuesto**, antes del cambio del 20/10 (H-53). En España el problema no es el gasto: con el mismo dinero salen muchas menos conversiones. Las conversiones de los últimos días pueden subir aún por el retraso en atribuirlas. [POR COMPROBAR con Carlos/Snowball: quién recortó el presupuesto de Portugal y qué cambió el 20/10 en las PMax de ES y PT.] Para medir de verdad: leads y pruebas por página en HubSpot, no conversiones de Ads.
+- **Estado:** abierto.
+
 ### H-59 · El formulario de Italia (ca54cc24) trae «10» puesto por defecto en el número de propiedades
 - **Qué:** en la B de /it/check-in-online-alloggiati-web, el campo `number_of_units` aparece relleno con **10** (valor por defecto del formulario, no un texto de ayuda). En el de Portugal (23a6aa7a) viene con 1.
 - **Fuente / periodo:** navegador, 30/10/2026, durante el envío de prueba.
