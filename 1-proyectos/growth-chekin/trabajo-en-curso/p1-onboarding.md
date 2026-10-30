@@ -440,4 +440,10 @@ Mismos enlaces (móvil y portátil). Principio de Alex: entrar y terminarlo todo
 - **Viviendas:** al guardar cada una sale «¡Bien hecho, Katia! Ya tenemos tu primera vivienda registrada. ¿Seguimos con el resto? Te quedan 3». Botones «Sí, seguir con la vivienda 2» o «Termino aquí y sigo con el resto del alta»; las demás se añaden luego desde Viviendas.
 - **Botones:** «← Atrás» con borde, al lado de «Continuar», los dos juntos a la derecha. La barra inferior, blanca y con sombra para que se vea más.
 - **Final:** «Entrar en mi panel →» grande y centrado, debajo de la lista; sin barra vacía.
+- **¿Es obligatorio? (30/10).**
+  - **Por ley**, comunicar los huéspedes a la policía sí lo es (RD 933/2021: SES, o Mossos en Cataluña y Ertzaintza en el País Vasco).
+  - **Darle los datos a Chekin no lo es:** sirve para que el parte salga solo; sin ellos, el cliente lo envía a mano. Por eso el paso nunca bloquea.
+  - **Verificación de identidad:** función de Chekin, recomendada, no exigida por ley.
+  - **Tasa turística:** solo donde la cobra el municipio o la comunidad.
+  - **Mossos:** se pide usuario y contraseña **por establecimiento**, más su número (ReceptionGo, 22/10/2026). El portal oficial es registreviatgers.mossos.gencat.cat. Ertzaintza, Alloggiati y SIBA: [POR COMPROBAR].
 
