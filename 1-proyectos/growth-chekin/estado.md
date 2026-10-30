@@ -40,7 +40,7 @@ Lo de abajo de este bloque es el histórico. Horas: semana 26–30/10 ≈ 18 h �
 
 **5. Seguridad, sin confirmar:** token de Supabase `chekin-connect-despliegue`, token de HubSpot, historial del terminal; contraseña de ShowMe en Slack; clave live de Stripe en Notion.
 
-**6. Próximas fechas:** 29/10 Cello con Valery · 30/10 lo de arriba · 3/11 test SES v2, baseline de CR, tracker, Hasp · 4/11 Italia resto · 5/11 Italia hoteles · 6/11 España hoteles lista, plan de Cello, revisión con Carlos · 10/11 test España hoteles.
+**6. Próximas fechas:** 29/10 Cello con Valery · 30/10 lo de arriba · 3/11 test SES v2, baseline de CR, tracker, Hasp, **medir de nuevo el recovery de Portugal** (H-56: enrolados frente a no enrolados, % que empieza la prueba; luego pago en Leopard) · 4/11 Italia resto · 5/11 Italia hoteles · 6/11 España hoteles lista, plan de Cello, revisión con Carlos · 10/11 test España hoteles.
 
 **Dónde está cada cosa:** reglas en `/CLAUDE.md` · hallazgos en `hallazgos.md` (hasta H-43; ojo, dos sesiones escriben a la vez: comprobar el último número antes de añadir) · decisiones en `decisiones.md` · fichas en `trabajo-en-curso/` · ShowMe en `p7-showme.md` y `p7-showme-encargo-ceo.md` · landings en `trabajo-en-curso/p3-landings/`.
 
