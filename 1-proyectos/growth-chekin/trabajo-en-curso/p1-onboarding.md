@@ -339,3 +339,9 @@ Mismos enlaces (móvil y portátil). Principio de Alex: entrar y terminarlo todo
   - los importes de las tasas;
   - las autoridades sin nombre;
   - el envío por defecto (48 h).
+- **Fallos vistos por Alex en esta versión (30/10, sin arreglar todavía):**
+  - **Viviendas:** todas a la vez en una rejilla abruma, justo en el paso con más caída. Propuesta: una a una dentro del mismo paso («Vivienda 2 de 4»), con las hechas a la vista y «Guardar y siguiente».
+  - **Se ha perdido la dirección con autocompletado de Google.** Hay que recuperarla: al escribir salen sugerencias y, al elegir una, se rellenan ciudad, código postal y provincia, más «Piso, puerta o bloque».
+  - **Falta el NIF/CIF del titular** (con validación). Se pide una vez, con «El mismo titular para todas mis viviendas», y se reutiliza en el parte.
+  - **Revisar qué otros pasos se han caído** frente a versiones anteriores y al producto real [POR COMPROBAR con Producto: número de registro o licencia de la vivienda, código de establecimiento de SES].
+
