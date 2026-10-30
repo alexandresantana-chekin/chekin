@@ -267,6 +267,11 @@ Asistente: sabe en qué paso estás y lleva al siguiente (PDF #3). Al plan de Da
     - Debajo, «¿No es correcto? Ajústalo a mano», que lleva a elegir el país.
     - Daniel además lee el precio medio y la tasa turística por zona; lo dejamos fuera [POR COMPROBAR qué devuelve cada PMS].
   - **Banderas:** las comunidades llevan su bandera (senyera, ikurriña) en vez de emojis.
+  - **PENDIENTE (idea de Alex, 30/10, sin ejecutar): pantalla de «creando tu cuenta».**
+    - Cuándo: después del código, solo para cuenta nueva. Crear la cuenta tarda unos segundos y la página no debe quedarse en blanco (Daniel tiene esta pantalla en su prototipo: `auth.html#r-creating`).
+    - Mientras carga: el logo de Chekin encuadrado y centrado, latiendo despacio como un corazón. Debajo, textos que van cambiando con lo que se está haciendo («Creando tu cuenta…»).
+    - Al terminar: la animación del GIF de la firma (P5): el check crece y se ilumina. Después entra en «Cuéntanos tu negocio».
+    - Referencia: `2-herramientas/firma-gmail/chekin-firma-cuadrada-DEFINITIVA.gif` y `cuadrado/chekin-cuadrado-check-400.gif` (scripts `make_gif_cuadrado.py`).
   - **Fuera, de Daniel:** «¿Qué te importa más?» y «Tu plan» (branding y lo demás). El upselling sigue en el Inicio.
   - **Por comprobar con Producto:**
     - qué datos pide cada autoridad;
