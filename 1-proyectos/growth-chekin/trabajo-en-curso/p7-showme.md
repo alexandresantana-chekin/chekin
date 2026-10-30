@@ -24,7 +24,7 @@ Proyecto de Alex (26/10): lo lleva él y lo trabaja con ShowMe. Recopilado el 26
 - Ya funciona: no repite mensajes en bucle (0 de 88) y en Italia ya no mezcla español (0 de 54).
 
 ## Portugal (reunión del 22/10: Carlos, Alexandre y Pedro)
-- **Recovery:** reactivar los leads de Portugal del 23/08 al 2/10 (llamada, WhatsApp, email). Caso de uso `Showme_PT_recovery` y disparador `showme_trial_started_portugal`. Se enrola por lotes, no todo de golpe (en la reunión se dijeron 100; Alex hace 50 al día desde el 26/10: tarea en Growth Daily › Alexandre; 50 acumulados el 26/10). Acumulado comprobado en HubSpot: 150 el 27/10 y **250 el 28/10**.
+- **Recovery:** reactivar los leads de Portugal del 23/08 al 2/10 (llamada, WhatsApp, email). Caso de uso `Showme_PT_recovery` y disparador `showme_trial_started_portugal`. Se enrola por lotes, no todo de golpe (en la reunión se dijeron 100; Alex hace 50 al día desde el 26/10: tarea en Growth Daily › Alexandre; 50 acumulados el 26/10). Acumulado comprobado en HubSpot: 150 el 27/10 y **250 el 28/10**. **468 el 30/10.** Resultado (30/10): 6 reactivados según Pedro y 2 pruebas nuevas en HubSpot (27 y 29/10), sin marca de trial de ShowMe (H-56).
 - **43% de los leads de Portugal son ruido** por textos confusos de los anuncios («préstamos», «empleo»): revisión de copies con Marta.
 - Pendiente de ShowMe: plantillas de WhatsApp (aprobación de Meta), propiedad trial/stop de Portugal, cadencia de reintentos y avisos en Slack.
 - Pendientes de Chekin (en Asana, de Carlos): número de soporte con Marta, **precio mínimo 495 € × 3 + IVA** con Alessandro [POR COMPROBAR qué es exactamente], copies de PT con Marta.

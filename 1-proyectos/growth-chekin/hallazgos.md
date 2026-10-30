@@ -7,6 +7,14 @@ Regla: toda cifra lleva su periodo (Carlos trabaja con 90 días). Si un dato no 
 
 ## 30-10-2026
 
+### H-56 · Recovery de Portugal: 6 reactivados según ShowMe y 2 pruebas nuevas, ninguna con la marca de trial de ShowMe
+- **Qué:** **468** contactos con `showme_pt_recovery` = true a 30/10. Pedro (ShowMe) pasa **6 reactivados** (1,3%). Son altas del 30/08 al 2/10, todos de Google, Micro y MQL; ninguno entra en las altas de esta semana (H-55).
+  - Con prueba (`trial_starts_we` = Yes) hay **3**. Uno ya la tenía antes del recovery (empezó el 1/10, el día del alta). **Dos son nuevas:** una empezó el 27/10 y **no está en la lista de Pedro**; la otra, el 29/10, sí lo está.
+  - **Ninguno de los 3 tiene `showme_trial_started_portugal`.** El workflow «ShowMe PreTrial -> Trial (Portugal)» solo marca a quien tiene `showme_pretrial_portugal` (H-44), y los del recovery no lo tienen.
+- **Fuente / periodo:** HubSpot (conector), 30/10/2026; lista de reactivados de Pedro del 30/10.
+- **Implica:** quien empieza la prueba desde el recovery no recibe la marca de trial, así que ShowMe puede seguir mandándole mensajes de recovery o no pasarle a la secuencia de trial [POR COMPROBAR con Pedro qué marca usa el caso Showme_PT_recovery para parar]. Además, ShowMe y HubSpot no cuentan igual: falta en la lista la prueba del 27/10.
+- **Estado:** abierto. Preguntar a Pedro. Posible arreglo: añadir `showme_pt_recovery` = Yes al disparador del workflow de Portugal (cambio en HubSpot: solo con OK de Alex).
+
 ### H-55 · Leads de Portugal: 1.670 en 90 días, casi todos de Google; caen desde la semana del 5/10, antes que los clics, y el «Not ICP» sube al 21% en octubre
 - **Qué:** contactos con `country_dropdown` = Portugal creados del 1/08 al 30/10: **1.670** (agosto 122, septiembre 944, octubre 604 hasta el 30). **86% Paid Search** (1.436) y 7% Paid Social (123).
   - Por semana: pico de **390** en la del 28/09; después 176 (5/10), 98 (12/10), 62 (19/10) y 32 (26–30/10). **La caída de leads empieza 2 semanas antes** que la de clics del 20/10 (H-53).
