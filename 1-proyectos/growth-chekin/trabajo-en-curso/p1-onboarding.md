@@ -446,4 +446,15 @@ Mismos enlaces (móvil y portátil). Principio de Alex: entrar y terminarlo todo
   - **Verificación de identidad:** función de Chekin, recomendada, no exigida por ley.
   - **Tasa turística:** solo donde la cobra el municipio o la comunidad.
   - **Mossos:** se pide usuario y contraseña **por establecimiento**, más su número (ReceptionGo, 22/10/2026). El portal oficial es registreviatgers.mossos.gencat.cat. Ertzaintza, Alloggiati y SIBA: [POR COMPROBAR].
+- **Ertzaintza y Navarra (30/10):**
+  - **Ertzaintza:** primero se da de alta el establecimiento y luego el usuario, con certificado digital o con un formulario sin certificado. Al aprobar el alta, la Ertzaintza da **usuario y contraseña**, que son los que se usan para enviar (Lodgify, 17/03/2026). Admite el envío automático desde un software.
+  - **Navarra / Policía Foral:** no encontramos un sistema propio. Las fuentes (softwareparahoteles.app, oct. 2026, y otras) dicen que solo **Cataluña (Mossos) y el País Vasco (Ertzaintza)** van aparte; el resto, Navarra incluida, va a SES [POR COMPROBAR con Producto].
+  - **Dato de mercado** (softwareparahoteles.app, oct. 2026): Chekin es el socio que envía los partes para Cloudbeds (a Mossos y Ertzaintza), Amenitiz, Smoobu y Avantio. Vía Amenitiz, Chekin envía a SES, Mossos o Ertzaintza **cada noche a las 23:00**, con reenvío manual.
+- **Aplicado al prototipo (mismos enlaces):**
+  - Cada autoridad pide sus propios datos, con una ayuda debajo.
+  - Nueva tarjeta **«¿Qué te pedimos según dónde esté tu vivienda?»**:
+    - SES (Navarra incluida): código de arrendador, usuario y contraseña del servicio web, y el código de establecimiento en cada vivienda;
+    - Mossos y Ertzaintza: usuario y contraseña del establecimiento;
+    - Alloggiati y SIBA: usuario y contraseña.
+  - Cl@ve y el certificado solo hacen falta para el alta; a Chekin no se le dan.
 
