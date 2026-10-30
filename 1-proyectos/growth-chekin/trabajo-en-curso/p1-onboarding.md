@@ -388,4 +388,11 @@ Mismos enlaces (móvil y portátil). Principio de Alex: entrar y terminarlo todo
     - Al terminar, mensaje en positivo bien visible: «¡Cuenta creada!» y algo como «Ya puedes empezar a recibir huéspedes».
     - **Que se quede 2-3 segundos** para que se lea. Ahora pasa a la bienvenida demasiado rápido: el mensaje final dura 1,4 s.
     - Referencia: el GIF que mandó Alex (cuadrado redondeado con el check blanco).
+13. **Principio de diseño: «como abrir un producto de Apple» (Alex, 30/10).** El ritmo engancha: pausas buscadas, que algo se descubra poco a poco y momentos de recompensa. No se trata de ir lo más rápido posible. Dónde aplicarlo:
+    - **Creando tu cuenta:** latido mientras carga, un instante de pausa, el check crece y se ilumina y «¡Cuenta creada!» se queda 2-3 s antes de pasar.
+    - **Entre pasos:** transición suave, con la columna de progreso marcando el ✓ del paso que acaba.
+    - **Leyendo tu PMS:** las líneas aparecen una a una y los números (viviendas, grupos) suben contando.
+    - **¡Todo listo!:** la lista de lo que ya funciona se marca ✓ por ✓, cada uno con un pequeño retraso, y al final el botón «Ir a mi panel».
+    - **Inicio:** el anillo se llena hasta el 100 %.
+    - **Límites:** nada de esperas sin sentido (cada pausa enseña algo) y respetar «movimiento reducido» en accesibilidad.
 
