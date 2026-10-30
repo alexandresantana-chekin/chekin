@@ -106,3 +106,4 @@
   - Quien conecta un PMS tiene instrucciones y un vídeo explicativo de cada PMS, porque la API key no es fácil para todo el mundo.
   - Micro y SMB no se tratan igual que Mid-Market y Enterprise: con más de 10 viviendas sale un aviso que ofrece un experto en Chekin para configurarlas.
 - **30/10 · P1: el autocompletado de dirección entra en el documento para Daniel como arreglo rápido** (cambio n.º 2, también para el producto actual), con proveedor, coste y efecto [POR COMPROBAR]. Lo decide Alex: hoy no existe y la vivienda es el paso con más caída.
+- **30/10 · P1: si el cliente pide un experto, no se le vuelve a pedir el teléfono** (Alex). La petición (aviso de 11-60 / +60, «Que me ayude un experto» en reservas y en el PMS) llega a su AE en HubSpot con el teléfono del registro. Cómo llega (tarea, propiedad o workflow): [POR COMPROBAR].
