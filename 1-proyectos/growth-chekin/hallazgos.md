@@ -7,6 +7,19 @@ Regla: toda cifra lleva su periodo (Carlos trabaja con 90 días). Si un dato no 
 
 ## 30-10-2026
 
+### H-57 · ShowMe mes a mes con pago real: septiembre aún no se puede leer; con julio y agosto, España sale +4,5 puntos con ShowMe
+- **Qué:** Micro (`property_size` = Micro SMB) con `trial_start_date`, por mes de alta. Pago = `mrr_leopard_eur` > 0 (último mes cerrado en Leopard: septiembre).
+  | Mes | ES con | ES sin | IT con | IT sin |
+  |---|---|---|---|---|
+  | Jul | 90/331 · 27,2% | 14/66 · 21,2% | 0/2 | 19/135 · 14,1% |
+  | Ago | 51/213 · 23,9% | 7/32 · 21,9% | 5/16 · 31,3% | 16/97 · 16,5% |
+  | Sep | 11/204 · **5,4%** | 4/22 · 18,2% | 9/120 · 7,5% | 2/23 · 8,7% |
+  | Jul+Ago | **141/544 · 25,9%** | **21/98 · 21,4%** | — | — |
+  España incluye Canarias. En Italia, ShowMe arrancó el 28/08: julio es la referencia sin ShowMe.
+- **Fuente / periodo:** HubSpot (SQL del conector), altas 1/07–30/09/2026, consulta del 30/10.
+- **Implica:** el 14,8% frente al 20,0% de H-43 (ago+sep) lo arrastra septiembre: con prueba de 14 días, muchos de septiembre pagan en octubre, que Leopard aún no ha cerrado. Además, quien paga rápido puede no llegar a recibir la marca de trial de ShowMe y caer en el grupo «sin» [POR COMPROBAR]. Con meses maduros, España sale **+4,5 puntos con ShowMe** (grupo «sin» pequeño: 98). Italia agosto, +15 puntos con 16 casos: sin conclusión. Corrige la lectura «ShowMe no sube la conversión» de la respuesta al CEO: hay una ventaja pequeña en España, sin control aleatorio.
+- **Estado:** rehacer septiembre cuando Leopard cierre octubre (primeros de noviembre). Ajustar la respuesta al CEO.
+
 ### H-56 · Recovery de Portugal: 6 reactivados según ShowMe y 2 pruebas nuevas, ninguna con la marca de trial de ShowMe
 - **Qué:** **468** contactos con `showme_pt_recovery` = true a 30/10. Pedro (ShowMe) pasa **6 reactivados** (1,3%). Son altas del 30/08 al 2/10, todos de Google, Micro y MQL; ninguno entra en las altas de esta semana (H-55).
   - Con prueba (`trial_starts_we` = Yes) hay **3**. Uno ya la tenía antes del recovery (empezó el 1/10, el día del alta). **Dos son nuevas:** una empezó el 27/10 y **no está en la lista de Pedro**; la otra, el 29/10, sí lo está.

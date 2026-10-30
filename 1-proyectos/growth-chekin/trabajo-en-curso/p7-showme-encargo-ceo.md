@@ -195,13 +195,16 @@ Corrige el borrador del 28/10 con H-49 (Pedro), H-43 (pagos de Leopard) y H-56 (
 > - **Vídeos:** ShowMe no tiene grabaciones por país. Los grabamos nosotros con altas de prueba en ES, IT y PT (Micro y SMB), avisando antes a Pedro. [POR HACER: fecha]
 >
 > **2. Con y sin ShowMe, con pago real (Leopard)**
-> Trials de altas 1/08–30/09/2026 que pagan según Leopard (mes cerrado: septiembre):
-> | | Con ShowMe | Sin ShowMe |
-> |---|---|---|
-> | España | 62 / 418 · **14,8%** | 11 / 55 · **20,0%** |
-> | Italia, agosto | 5 / 16 · 31% | 16 / 96 · 16,7% |
-> | Italia, septiembre | 9 / 120 · **7,5%** | 2 / 23 · **8,7%** |
-> - **No vemos que ShowMe suba la conversión a pago.** En España, ShowMe trabaja el 88% de los trials y el grupo sin ShowMe es pequeño (55). En Italia, la ventaja que salía en HubSpot desaparece con los pagos reales: 28 de 78 «Customer» de HubSpot nunca han pagado.
+> Trials Micro por mes de alta que pagan según Leopard (último mes cerrado: septiembre). Fuente: HubSpot, consulta del 30/10.
+> | Mes de alta | España con | España sin | Italia con | Italia sin |
+> |---|---|---|---|---|
+> | Julio | 90/331 · **27,2%** | 14/66 · **21,2%** | — (ShowMe arranca en IT el 28/08) | 19/135 · 14,1% |
+> | Agosto | 51/213 · **23,9%** | 7/32 · **21,9%** | 5/16 · 31% | 16/97 · 16,5% |
+> | Septiembre (sin cerrar) | 11/204 · 5,4% | 4/22 · 18,2% | 9/120 · 7,5% | 2/23 · 8,7% |
+> | **Julio + agosto** | **141/544 · 25,9%** | **21/98 · 21,4%** | | |
+> - **En España, con los meses ya cerrados, ShowMe sale +4,5 puntos** (25,9% frente a 21,4%). Es una ventaja pequeña y el grupo sin ShowMe es corto (98 trials, porque ShowMe trabaja ~85% de los trials), así que no es concluyente.
+> - **Septiembre todavía no se puede leer:** la prueba dura 14 días y muchos de septiembre pagan en octubre, que Leopard aún no ha cerrado. Lo rehacemos a primeros de noviembre.
+> - **Italia:** sin conclusión. Agosto da +15 puntos, pero con 16 casos. La ventaja que salía en HubSpot estaba inflada: 28 de 78 «Customer» de Italia nunca han pagado.
 > - Hablar con el agente tampoco marca la diferencia en Pretrial España (18,2% con conversación frente a 25,5% sin). En Trial sí convierten más los que hablan (34,2% frente a 19,7%), pero eso no es causal: quien contesta ya está más interesado.
 > - **Para saberlo de verdad hace falta un grupo de control aleatorio:** por ejemplo, el 20% de los Micro de España sin ShowMe durante 4 semanas, midiendo el pago en Leopard.
 >
@@ -211,6 +214,7 @@ Corrige el borrador del 28/10 con H-49 (Pedro), H-43 (pagos de Leopard) y H-56 (
 >
 > **4. Portugal: recovery (26–30/10)**
 > - **468 leads** antiguos (altas 23/08–2/10 que no convirtieron) enrolados en ShowMe.
+> - En Portugal se están probando ahora los tres canales: **llamada, WhatsApp y email**.
 > - ShowMe da **6 reactivados (1,3%)**. En HubSpot solo **2** han vuelto a hacer algo: rellenan el alta y empiezan la prueba (27/10 y 29/10). Una de esas dos pruebas no está en la lista de ShowMe.
 > - Ninguno de los que empiezan la prueba recibe la marca de trial de ShowMe en Portugal, así que pueden seguir recibiendo mensajes de recovery. Se arregla con un cambio en el workflow de Portugal (pendiente de OK).
 >
