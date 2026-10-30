@@ -15,6 +15,10 @@ Regla: toda cifra lleva su periodo (Carlos trabaja con 90 días). Si un dato no 
   - **Italia:** gasto estable (~110–190 €/día), 1,5–3,7 conversiones/día, sin cambio claro.
 - **Fuente / periodo:** Windsor.ai (Google Ads 103-962-2294), semanas del 28/09 al 26/10/2026 (la última, del 26 al 29/10).
 - **Implica:** la caída de leads de Portugal desde la semana del 5/10 (H-55) coincide con **menos presupuesto**, antes del cambio del 20/10 (H-53). En España el problema no es el gasto: con el mismo dinero salen muchas menos conversiones. Las conversiones de los últimos días pueden subir aún por el retraso en atribuirlas. [POR COMPROBAR con Carlos/Snowball: quién recortó el presupuesto de Portugal y qué cambió el 20/10 en las PMax de ES y PT.] Para medir de verdad: leads y pruebas por página en HubSpot, no conversiones de Ads.
+- **¿Buscan calidad en vez de volumen? (hipótesis de Alex, 30/10).** Leads de Paid Search en HubSpot, todos los países, por semana de alta:
+  - **28/09–18/10:** 1.164 leads; prueba 16,6%; Not ICP 23,7%; SQL + Opportunity + Customer 1,9% (22, ~7 por semana).
+  - **19/10–30/10:** 130 leads; prueba 20%; Not ICP 19%; SQL + Opportunity + Customer 5,4% (7, ~4 por semana).
+  - **Lectura:** cada lead es algo mejor (más prueba, menos ruido, más SQL), así que la hipótesis encaja. Pero en total hay **menos pruebas (95 → 13 por semana) y menos SQL**: la calidad no compensa la caída de volumen. Los leads más recientes aún pueden avanzar.
 - **Estado:** abierto.
 
 ### H-59 · El formulario de Italia (ca54cc24) trae «10» puesto por defecto en el número de propiedades
