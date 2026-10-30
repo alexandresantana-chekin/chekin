@@ -278,6 +278,11 @@ Asistente: sabe en qué paso estás y lleva al siguiente (PDF #3). Al plan de Da
       - Botones: «Empezar» y «Saltar por ahora».
       - En portátil, la columna izquierda marca el progreso de los pasos, como en Daniel.
       - Al pulsar «Empezar», salta al paso siguiente.
+    - **Más cosas del prototipo de Daniel vistas el 30/10 (capturas de Alex), por decidir:**
+      - **Columna izquierda en portátil:** los pasos con su estado (✓, actual y pendientes). Debajo, «Tu configuración hasta ahora» con chips de lo que ha contestado (p. ej. «Hotel / aparthotel», «11-30 habitaciones», «España · cumplimiento») y «¿Dudas? Habla con nosotros: respondemos en unos 3 min».
+      - **Países con selección múltiple:** buscador y tarjetas con bandera, etiqueta («Policía + tasa turística» o «Tasa turística») y autoridad. Sirve a quien tiene viviendas en varios países.
+      - **Paso «Protege tus viviendas»:** protección de daños (hasta 2.500 €, la paga el huésped) o fianza (se cobra y se devuelve a los 7 días), con vídeo y «Obligatorio / Opcional / Apagado». Es valor por adelantado y venta extra. Las cifras son las del prototipo de Daniel [POR COMPROBAR con Producto].
+      - Una barra de progreso fina arriba.
   - **Fuera, de Daniel:** «¿Qué te importa más?» y «Tu plan» (branding y lo demás). El upselling sigue en el Inicio.
   - **Por comprobar con Producto:**
     - qué datos pide cada autoridad;
