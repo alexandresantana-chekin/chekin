@@ -396,3 +396,28 @@ Mismos enlaces (móvil y portátil). Principio de Alex: entrar y terminarlo todo
     - **Inicio:** el anillo se llena hasta el 100 %.
     - **Límites:** nada de esperas sin sentido (cada pausa enseña algo) y respetar «movimiento reducido» en accesibilidad.
 
+### Aplicado el 30/10 por la tarde (mismos enlaces): las 13 mejoras
+- **Diseño:**
+  - Columna centrada de 640 px (860 en las pantallas anchas).
+  - Tarjetas compactas, un icono por paso y textos en positivo.
+  - **Barra de botones fija abajo.** En portátil, cada pantalla mide 900 px y el contenido se desplaza por dentro; en móvil, la barra va pegada abajo.
+  - «✓ Guardado» en la cabecera.
+- **Ritmo, «como un producto de Apple»:**
+  - Creando tu cuenta: todo en marino. El logo late; a los 1,5 s, «Preparando tu panel…»; a los 3 s, el check crece y se ilumina con «¡Cuenta creada!», que se queda 3 s.
+  - Cada paso entra con un leve desplazamiento y el ✓ del paso anterior aparece con un pequeño rebote.
+  - «Leído del PMS»: líneas una a una y números que suben contando.
+  - ¡Todo listo!: lista ✓ a ✓ y, al final, el botón.
+  - Inicio: anillo grande que se llena hasta el 100 %, con degradado de oscuro a claro y «100 % · CONFIGURADO» dentro.
+  - Todo se desactiva si el usuario tiene «reducir movimiento».
+- **Orden nuevo:** 1 Reservas → 2 Dónde están → 3 Titular y viviendas → 4 Parte de viajeros → 5 Protección → 6 Ventas extra → 7 Check-in y envío.
+- **Titular:** NIF, NIE o CIF comprobado al escribirlo, y «El mismo titular para todas», que se puede desmarcar para gestores.
+- **Viviendas una a una** («Vivienda 2 de 4»): dirección con autocompletado («✓ Dirección encontrada»), piso, registro turístico y código de establecimiento de SES (opcional). A la derecha se van marcando las hechas. Con PMS este paso se salta.
+- **Parte de viajeros:**
+  - SES con código de arrendador, usuario y contraseña del servicio web, más el aviso «no son los del portal».
+  - Mossos y SIBA con usuario y contraseña [POR COMPROBAR].
+  - Salidas si no tiene los datos: vídeo, un experto o un recordatorio.
+  - Sin etiquetas de «obligatorio»; la verificación de identidad y la tasa turística salen activadas.
+- **Protección:** sin «Obligatorio / Opcional / Apagado»; dos interruptores activados que se pueden apagar.
+- **Países:** buscador y los 3 principales a la vista; el resto, en «+ Ver más países (15)».
+- **Arreglos:** espacios en «✓ Smoobu conectado» (sin cajas flexibles en textos con nombre dinámico), campos de dos en dos apilados en móvil, foco visible y botones de 44 px o más.
+
