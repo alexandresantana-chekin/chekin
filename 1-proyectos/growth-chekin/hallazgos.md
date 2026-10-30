@@ -7,6 +7,16 @@ Regla: toda cifra lleva su periodo (Carlos trabaja con 90 días). Si un dato no 
 
 ## 30-10-2026
 
+### H-61 · Fianza: solo el 3,5% de los clientes que pagan la tiene activada; upselling y protección de daños no se pueden medir en HubSpot
+- **Qué:** contactos creados en el último año (30/10/2025–30/10/2026) que pagan en Leopard (`mrr_leopard_eur` > 0, mes de septiembre, cerrado): **2.057**.
+  - **Fianza** (`deposits_activated_we`): **72 con «Yes» (3,5%)**, 1.968 con «No» y 17 vacíos.
+  - **Upselling** (`upselling_activated`, `upselling_activated_we`, `properties_with_upselling`): **vacío en todos**. HubSpot no recibe ese dato, así que no se puede medir.
+  - **Protección de daños (Waivo):** solo hay campos de interés y de «por qué no»; ninguno de activación.
+  - En todo el histórico de clientes que pagan (8.538), `deposit_activated` = true o yes en 120 (1,4%).
+- **Fuente / periodo:** HubSpot (conector), 30/10/2026. Leopard llega a HubSpot solo como `mrr_leopard_eur` (MRR del último mes cerrado), no como productos ni extras.
+- **Implica:** la adopción de los extras que generan ingreso para el cliente y para Chekin es muy baja (la fianza, 3,5%) o no se mide (upselling, protección). Es una palanca de crecimiento clara, pero antes hace falta el dato: pedir a Producto o Datos el % con upselling y protección activos, sacado de la base de datos (la sincronización con Postgres está parada desde el 04/09) [POR COMPROBAR].
+- **Estado:** abierto.
+
 ### H-60 · Google Ads, 28/09–29/10: el gasto baja a la mitad y las conversiones caen un 89%; en Portugal la caída de leads coincide con un recorte de presupuesto desde el 5/10
 - **Qué (media por día, por semana; la del 26/10 solo tiene 4 días):**
   - **Total:** 1.093 €/día → 549 (−50%); conversiones de Ads 106/día → 12 (−89%); coste por conversión 10 € → 46 €.
