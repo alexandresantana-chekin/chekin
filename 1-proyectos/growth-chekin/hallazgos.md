@@ -5,6 +5,45 @@ Regla: toda cifra lleva su periodo (Carlos trabaja con 90 días). Si un dato no 
 
 ---
 
+## 02-11-2026
+
+### H-64 · A/B de ES Vacational (SES): la A gana en envíos (5 contactos frente a 3), pero en pruebas empatan 2 a 2; y al test le llega tráfico de Meta y de Search
+- **Qué:** del 30/10 al 2/11, los 8 contactos que enviaron el formulario de la landing (primera conversión «Paid-Form-Ses.Hospedajes»):
+  | | A (136 vistas) | B (121 vistas) |
+  |---|---|---|
+  | Contactos | 5 (3,7%) | 3 (2,5%) |
+  | Envíos (con repetidos) | 7 | 4 |
+  | Han empezado la prueba | **2** | **2** |
+  | Not ICP | 1 | 0 |
+  | Origen | 4 PMax Vacational · 1 Meta (Instagram) | 1 PMax Vacational · 1 Meta (Instagram) · 1 Search Intención |
+  | Tamaño | 4 Micro · 1 Mid-Market | 2 Micro · 1 SMB |
+  Por día, la A tuvo envíos el 30 y el 31/10 (5 de 7) y la B el 1/11 (2 de 4). La diferencia en contactos es de 2 personas.
+- **Fuente / periodo:** HubSpot (analítica de contenido diaria y contactos que vieron cada variante), 30/10–2/11/2026. Consulta del 2/11.
+- **Implica:** la ventaja de la A es ruido: con 3 y 5 contactos no se puede separar, y en lo que importa (empezar la prueba) empatan 2 a 2, con la B sin Not ICP. Además, el test no recibe solo la PMax: la campaña de Meta SB_ESP_META_VACATION_FORM_CK y la Search Intención (vía /ses-hospedajes) también llegan a esta URL. Para leer el test de la PMax hay que separar por origen o asumir que la mezcla se reparte igual en A y B. [POR COMPROBAR con Snowball: por qué Meta manda tráfico a la landing de Google.]
+- **Estado:** seguir midiendo; lectura el 6/11 con prueba o SQL por variante y por origen.
+
+### H-63 · Primeros 4 días de los 6 A/B: reparto 50/50 correcto; B 4,0% de envíos frente a A 2,8%, sin significación
+- **Qué:** vistas y envíos de formulario por variante, del 30/10 al 2/11 (se excluye el 29/10, cuando la A recibió sola las visitas de la mañana):
+  | Test | A vistas · envíos | B vistas · envíos |
+  |---|---|---|
+  | ES Vacational (SES) | 136 · 7 (5,1%) | 121 · 4 (3,3%) |
+  | ES hoteles | 27 · 1 (3,7%) | 26 · 3 (11,5%) |
+  | IT Alloggiati | 123 · 0 (0%) | 118 · 4 (3,4%) |
+  | IT Questura | 35 · 1 (2,9%) | 26 · 2 (7,7%) |
+  | PT SIBA | 40 · 1 (2,5%) | 46 · 1 (2,2%) |
+  | PT check-in online | 101 · 3 (3,0%) | 116 · 4 (3,4%) |
+  | **Total** | **462 · 13 (2,8%)** | **453 · 18 (4,0%)** |
+  Contactos únicos: A 11, B 13 (en IT Alloggiati B, 4 envíos son 2 contactos).
+- **Fuente / periodo:** HubSpot, informe de analítica de contenido (vistas brutas y envíos por página), 30/10–2/11/2026 (4 días, con fin de semana y festivo). Consulta del 2/11.
+- **Implica:** el reparto funciona (462 frente a 453). La B va por delante en 4 de 6 y en el total, pero con 1–7 envíos por variante ninguna diferencia es significativa: la de ES Vacational (A mejor) tampoco. Falta medir la calidad (leads que pasan a prueba o SQL), que es lo que decide.
+- **Estado:** abierto. Siguiente lectura el viernes 6/11 con clics de Windsor y paso a prueba o SQL por variante.
+
+### H-62 · Recovery de Portugal a la semana: 2 pruebas de 605 (0,3%), ninguna desde el 30/10; 97 pasan a Not ICP y 32 a Nurturing
+- **Qué:** contactos con `showme_pt_recovery` = true: **605** (599 el 30/10). Por lifecycle hoy: MQL 475 (79%), **Not ICP 97 (16%)**, **Nurturing 33 (5%)**. Desde el 26/10 han pasado a Not ICP los 97 y a Nurturing 32. **Pruebas nuevas: 2** (27/10 y 29/10), ninguna desde el 30/10; 0 Customer. `trial_starts_we` = Yes: 3 (uno ya la tenía antes del recovery).
+- **Fuente / periodo:** HubSpot (SQL del conector), enrolados del 26/10 al 30/10/2026, consulta del 2/11/2026. Los reactivados que cuenta ShowMe no están en HubSpot (en #showme_chekin no hay mensajes recientes de Pedro).
+- **Implica:** a la semana, la reactivación a prueba es del 0,3%. El 16% de la lista eran leads que no son target (préstamos, empleo: ruido de los anuncios de PT, H-55), y Nurturing es probablemente el cierre de la secuencia de ShowMe sin éxito [POR COMPROBAR con Pedro]. Quedan 475 en curso: hay que dejar madurar 2–3 semanas antes de concluir. Para defender la reactivación ante el CEO hace falta otra lectura a mediados de noviembre.
+- **Estado:** abierto. Pedir a Pedro el desglose (contactados, respuestas, reactivados) y volver a medir el 16/11.
+
 ## 30-10-2026
 
 ### H-61 · Fianza: solo el 3,5% de los clientes que pagan la tiene activada; upselling y protección de daños no se pueden medir en HubSpot

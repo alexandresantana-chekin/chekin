@@ -1,4 +1,9 @@
-# Estado · actualizado 2026-10-30
+# Estado · actualizado 2026-11-02
+
+## ▶ LUNES 2/11 (festivo)
+- **Recovery de Portugal a la semana (H-62):** 605 enrolados; 2 pruebas (0,3%), ninguna desde el 30/10; 97 pasan a Not ICP y 32 a Nurturing; 475 siguen en la secuencia. Nueva lectura hacia el 16/11 y pedir el desglose a Pedro.
+- **A/B, primeros 4 días (H-63, H-64):** reparto 50/50; B 4,0% de envíos frente a A 2,8% en los 6 tests juntos, sin significación. En ES Vacational, la A 5 contactos y la B 3, pero 2 pruebas cada una. A la landing de SES le llega también tráfico de Meta y de Search Intención (preguntar a Snowball más adelante).
+- **Viernes 6/11 · revisión de los A/B:** envíos, contactos y **cuántos empiezan la prueba** por variante y por origen (PMax frente a Meta y Search), más los clics de Windsor. Acordado con Alex.
 
 ## ▶ VIERNES 30/10
 - **Plan de growth (propuesta propia para Carlos, 30/10):** https://claude.ai/artifact/RvaoJuGrBWwZm9Tw6WL175 (doc privado hasta que Alex lo comparta). Dos líneas: A, conversión de los anuncios al pago (5 iniciativas); B, upselling, fianza y protección de daños (4 iniciativas, empezando por medirlas, porque Producto no las mide; H-61). Incluye la medición, un plan a 90 días hasta el 15/01 y lo que hace falta de Carlos, Snowball, Producto y Daniel.
