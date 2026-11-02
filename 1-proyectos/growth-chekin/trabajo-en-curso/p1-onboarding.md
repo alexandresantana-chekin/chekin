@@ -465,4 +465,11 @@ Mismos enlaces (móvil y portátil). Principio de Alex: entrar y terminarlo todo
   - **Móvil:** la misma cabecera fija, el mismo fondo y títulos de 24 px.
   - En todas: los mismos botones (azul y con borde), las mismas tarjetas y la misma animación de entrada.
 - «Entrar» y «Tu negocio» rehechos con ese diseño y con todo lo que hacían: Google o email, cuenta nueva o ya tiene cuenta, el código que entra solo, el contador, el teléfono y el aviso del experto con más de 10.
+- **Inicio con «Ventas extra» detallado (02/11, mismos enlaces):** sección propia justo bajo las cifras, con:
+  - ingresos del mes, ventas, % de huéspedes que compran y ticket medio;
+  - ingresos por semana, en barras que crecen al entrar;
+  - cada oferta con su precio, ventas, ingresos e interruptor;
+  - protección y fianza activas, con estancias protegidas y fianzas cobradas;
+  - «Vende más · 1 clic», con ofertas recomendadas.
+  - Datos de ejemplo coherentes (165 € = 80 + 40 + 30 + 15; 10 ventas de 64 huéspedes) y marcados como tales. Además, sirve de lista de lo que Producto debería medir (H-61).
 
