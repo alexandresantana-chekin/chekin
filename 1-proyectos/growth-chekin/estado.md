@@ -1,6 +1,7 @@
 # Estado · actualizado 2026-10-30
 
 ## ▶ VIERNES 30/10
+- **Plan de growth (propuesta propia para Carlos, 30/10):** https://claude.ai/artifact/RvaoJuGrBWwZm9Tw6WL175 (doc privado hasta que Alex lo comparta). Dos líneas: A, conversión de los anuncios al pago (5 iniciativas); B, upselling, fianza y protección de daños (4 iniciativas, empezando por medirlas, porque Producto no las mide; H-61). Incluye la medición, un plan a 90 días hasta el 15/01 y lo que hace falta de Carlos, Snowball, Producto y Daniel.
 - **Asana (15:08):** cerradas «Enrolar leads de Portugal en ShowMe» (599) y «ShowMe: ¿ayuda de verdad?» (encargo del CEO), con comentario a @Carlos. Quedan fuera los vídeos y rehacer septiembre a primeros de noviembre.
 - **P7 · Respuesta al CEO sobre ShowMe:** documento «ShowMe: ¿ayuda de verdad?» (https://claude.ai/artifact/QBpRPWCufZe3HsZasYigyk), **enviado al CEO por Alex el 30/10**. Responde a las 3 preguntas con el informe v5 completo (H-58) y el corte mes a mes con Leopard (H-57). Faltan los vídeos y rehacer septiembre cuando Leopard cierre octubre.
 - **P3 · Asana:** cerradas las 4 tareas de landings (ES resto, ES hoteles, IT hoteles, IT resto), cada una con un comentario a @Carlos con los IDs de las A y las B. Los A/B corren desde el 29/10. Portugal va dentro del comentario de ES resto. Sigue abierta «Registrar cada test en el tracker» (3/11).
