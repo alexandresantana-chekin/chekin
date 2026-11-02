@@ -472,4 +472,10 @@ Mismos enlaces (móvil y portátil). Principio de Alex: entrar y terminarlo todo
   - protección y fianza activas, con estancias protegidas y fianzas cobradas;
   - «Vende más · 1 clic», con ofertas recomendadas.
   - Datos de ejemplo coherentes (165 € = 80 + 40 + 30 + 15; 10 ventas de 64 huéspedes) y marcados como tales. Además, sirve de lista de lo que Producto debería medir (H-61).
+- **Inicio reordenado (02/11, Alex: «primero lo importante, por lo que contratan Chekin»):**
+  1. **Estado de la operación:** «Todo en orden, Katia» (4 viviendas listas, partes al día, 1 cosa que revisar) y «Crear reserva». Llegadas de hoy, próximos 7 días (6 llegadas, 14 huéspedes), check-in online hecho (5 de 6) y partes enviados (31, ninguno pendiente).
+  2. **Próximas reservas,** con su estado y el interruptor de envío. Al lado, **lo que falta** (un huésped sin documento: sin él no sale su parte; «Reenviar enlace») y el **parte de viajeros** por autoridad, todas conectadas, con el recordatorio de que es obligatorio y necesario para enviar el check-in.
+  3. **Tus viviendas,** cada una con su ciudad, autoridad y «✓ Lista».
+  4. **Ventas extra, abajo:** «**Este mes, Chekin te sale gratis**: tus extras han generado 165 €, cubren 4,2 meses de tu suscripción y te sobran 126 €». Debajo, las cifras, los ingresos por semana, la protección y la fianza, y «Vende más». La lista de ofertas queda detrás de «Ver tus 4 ofertas».
+  - El precio de suscripción (39 €/mes) es de ejemplo [POR COMPROBAR con los precios reales]. Datos de ejemplo.
 
