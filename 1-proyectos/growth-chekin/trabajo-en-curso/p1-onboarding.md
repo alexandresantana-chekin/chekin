@@ -458,3 +458,11 @@ Mismos enlaces (móvil y portátil). Principio de Alex: entrar y terminarlo todo
     - Alloggiati y SIBA: usuario y contraseña.
   - Cl@ve y el certificado solo hacen falta para el alta; a Chekin no se le dan.
 
+### 02/11: un solo marco y un solo diseño en todos los pasos (mismos enlaces)
+- Alex vio pantallas con marcos, tonos y animaciones distintos («Entrar» y «Tu negocio» seguían con el diseño antiguo; «Creando tu cuenta» y el Inicio iban por libre).
+- **Ahora las 18 pantallas comparten marco**, comprobado una a una en el navegador:
+  - **Portátil:** columna izquierda de 300 px con el mismo degradado marino, fondo #F7F7FC, títulos de 28 px en negrita y contenido en columna centrada. En el Inicio, la misma columna con el menú de la app.
+  - **Móvil:** la misma cabecera fija, el mismo fondo y títulos de 24 px.
+  - En todas: los mismos botones (azul y con borde), las mismas tarjetas y la misma animación de entrada.
+- «Entrar» y «Tu negocio» rehechos con ese diseño y con todo lo que hacían: Google o email, cuenta nueva o ya tiene cuenta, el código que entra solo, el contador, el teléfono y el aviso del experto con más de 10.
+
