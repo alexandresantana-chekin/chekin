@@ -597,3 +597,16 @@ Mismos enlaces (móvil y portátil). Principio de Alex: entrar y terminarlo todo
   - Un botón, «Guardar mis N viviendas ✓», y un único «¡Bien hecho, Katia!» con todas listadas (nombre y dirección).
   - Ya no hay pantalla de éxito por vivienda ni opción «Termino aquí».
   - «¡Todo listo!» y el Inicio cuentan las viviendas guardadas.
+- **Parte de viajeros al final (03/11, versión 28), por decisión de Alex.** Nuevo orden de los 7 pasos:
+  1. Reservas
+  2. Dónde están
+  3. Titular y viviendas
+  4. Protección
+  5. Ventas extra
+  6. Check-in y envío
+  7. Parte de viajeros
+
+  - El parte se abre con «¡Último paso! El que hace que todo funcione.» y su botón «Terminar ✓» lleva a «¡Todo listo!».
+  - Envío ahora dice «¡Ya casi está!» y «Continuar →».
+  - Con PMS, el titular salta las viviendas y va a Protección.
+  - Lo que no se conecte sigue saliendo como pendiente en «¡Todo listo!» y como tarea en el Inicio.

@@ -18,7 +18,7 @@ LOGO_M='<img src="/_blob/3ef2a56a40d5efb3f55d9f310adc6465" alt="Chekin" style="w
 LOGO_W='<img src="/_blob/c25beceb5f9f805a652ba855add94f27" alt="Chekin" style="width: 104px; height: 31px">'
 CAT='<svg width="24" height="16" viewBox="0 0 9 6" role="img" aria-label="Bandera de Cataluña" style="display: block; border-radius: 2px"><rect width="9" height="6" fill="#FCDD09"></rect><rect y="0.667" width="9" height="0.667" fill="#DA121A"></rect><rect y="2" width="9" height="0.667" fill="#DA121A"></rect><rect y="3.333" width="9" height="0.667" fill="#DA121A"></rect><rect y="4.667" width="9" height="0.667" fill="#DA121A"></rect></svg>'
 EUS='<svg width="24" height="16" viewBox="0 0 26 18" role="img" aria-label="Bandera del País Vasco" style="display: block; border-radius: 2px"><rect width="26" height="18" fill="#D52B1E"></rect><path d="M0 0L26 18M26 0L0 18" stroke="#009B48" stroke-width="3"></path><path d="M13 0V18M0 9H26" stroke="#FFFFFF" stroke-width="3"></path></svg>'
-STEPS=[('Reservas','2 min'),('Dónde están','30 s'),('Titular y viviendas','2 min'),('Parte de viajeros','3 min'),('Protección','1 min'),('Ventas extra','2 min'),('Check-in y envío','30 s')]
+STEPS=[('Reservas','2 min'),('Dónde están','30 s'),('Titular y viviendas','2 min'),('Protección','1 min'),('Ventas extra','2 min'),('Check-in y envío','30 s'),('Parte de viajeros','3 min')]
 SH='0 1px 2px rgba(25, 25, 75, 0.06), 0 0 0 1px #ECECF5'
 SHM='0 0 0 2px #385BF8, 0 12px 24px rgba(56, 91, 248, 0.14)'
 def ok(t): return '<div class="stepin" style="display: flex; gap: 10px; align-items: center; padding: 10px 14px; border-radius: 12px; background: #E8F6EF; color: #0F5C3B; font-size: 14px; line-height: 1.4; font-weight: 600"><span aria-hidden="true">✓</span><span>%s</span></div>'%t
@@ -196,7 +196,7 @@ def titular(Pp,mob_):
         +'<div data-tprefill style="padding: 10px 12px; border-radius: 12px; background: #E8F6EF; color: #0F5C3B; font-size: 13px; line-height: 1.45; font-weight: 600">✓ Lo traemos de tu alta. Cámbialo si el titular es otro.</div>'
         +field(k+'tn','Nombre o razón social','Katia Ruiz o Apartamentos Sol S.L.',val='Katia Ruiz')
         +'<div data-nifbox>'+field(k+'tnif','NIF, NIE o CIF','12345678Z',extra=' data-nif inputmode="text" autocomplete="off"',hint='Lo comprobamos al escribirlo.',val='12345678Z')+'<div data-nif-ok style="margin-top: 6px; font-size: 13px; color: #0F7B4F; font-weight: 700">✓ Formato correcto</div><div data-nif-ko hidden style="margin-top: 6px; font-size: 13px; color: #6B3E00">Casi: son 8 números y una letra (DNI), o una letra, 7 números y una letra o número (CIF).</div></div>',18,' class="stepin"'))
-both('Titular','Titular',3,CH,titular,lambda Pp:back(Pp('Paises'),'← Atrás'),lambda Pp:btn(Pp('Vivienda'),'Continuar →',NX%(Pp('Legal').replace('.dc.html',''),Pp('Vivienda').replace('.dc.html',''))),lambda Pp:btn(Pp('Vivienda'),'Continuar →',NX%(Pp('Legal').replace('.dc.html',''),Pp('Vivienda').replace('.dc.html','')),full=True))
+both('Titular','Titular',3,CH,titular,lambda Pp:back(Pp('Paises'),'← Atrás'),lambda Pp:btn(Pp('Vivienda'),'Continuar →',NX%(Pp('Proteccion').replace('.dc.html',''),Pp('Vivienda').replace('.dc.html',''))),lambda Pp:btn(Pp('Vivienda'),'Continuar →',NX%(Pp('Proteccion').replace('.dc.html',''),Pp('Vivienda').replace('.dc.html','')),full=True))
 # ---------- 3b · Vivienda una a una ----------
 VIVS=[('Casa San Juan','Calle de San Juan, 12, 28012 Madrid'),('Madrid Sol','Calle del Sol, 3, 28013 Madrid'),('Ático Gràcia','Carrer de Verdi, 20, 08012 Barcelona'),('Alfama','Rua dos Remédios, 5, 1100-445 Lisboa')]
 def vivienda(Pp,mob_):
@@ -222,7 +222,7 @@ def vivienda(Pp,mob_):
       '<div data-vdone-l aria-live="polite" style="width: 100%%; max-width: 520px; display: flex; flex-direction: column; gap: 6px; text-align: left"></div></div>')%SH
     head=ok('¡Titular listo! Ahora, tus viviendas.')+H('🏠','Añade tus viviendas','Todas a la vez: solo nombre y dirección. Escribe la calle y elígela de la lista.',mob_)
     return head+'<div data-vform>'+form+'</div>'+done
-both('Vivienda','Tus viviendas',3,CH,vivienda,lambda Pp:back(Pp('Titular'),'← Atrás'),lambda Pp:btn(Pp('Legal'),'Guardar mis viviendas ✓',' data-vsave'),lambda Pp:btn(Pp('Legal'),'Guardar mis viviendas ✓',' data-vsave',full=True),wide=True)
+both('Vivienda','Tus viviendas',3,CH,vivienda,lambda Pp:back(Pp('Titular'),'← Atrás'),lambda Pp:btn(Pp('Proteccion'),'Guardar mis viviendas ✓',' data-vsave'),lambda Pp:btn(Pp('Proteccion'),'Guardar mis viviendas ✓',' data-vsave',full=True),wide=True)
 # ---------- 4 · Parte de viajeros ----------
 def ses_fields(k):
     return (field(k+'sa','Código de arrendador','Ej.: 0000012345',hint='Te lo dio SES al darte de alta como arrendador.')
@@ -248,8 +248,8 @@ def legal(Pp,mob_):
     extras=card('<div style="font-size: 15px; font-weight: 700">Para todas tus viviendas</div>'
       +'<div style="display: flex; justify-content: space-between; align-items: center; gap: 10px"><div><div style="font-size: 14px; font-weight: 700">Verificación de identidad</div><div style="font-size: 12px; color: #6B6B95">Documento + selfie de cada huésped. Antes de la selfie, el huésped da su consentimiento.</div></div>'+sw(True,'Verificación de identidad')+'</div>'
       +'<div style="display: flex; justify-content: space-between; align-items: center; gap: 10px"><div><div style="font-size: 14px; font-weight: 700">Tasa turística</div><div style="font-size: 12px; color: #6B6B95">Solo donde tu municipio la cobra</div></div>'+sw(False,'Tasa turística')+'</div>',16,' class="stepin"')
-    return (ok('¡Vamos con el paso legal!')
-      +H('🛡️','Conecta tu parte de viajeros','Es lo que permite enviar el check-in a tus huéspedes. Ve de una autoridad en una: si no tienes los datos ahora, sigue y te ayudamos después.',mob_)
+    return (ok('¡Último paso! El que hace que todo funcione.')
+      +H('🛡️','Conecta tu parte de viajeros','Es lo que permite enviar el check-in a tus huéspedes. Ve de una autoridad en una: si no tienes los datos ahora, termina y te ayudamos después.',mob_)
       +grp(1,'🇪🇸','Madrid','2 viviendas','SES.Hospedajes',ses_fields(k),'SES no acepta estos datos. Revisa el usuario del servicio web (termina en WS) y su contraseña: no son los del portal.','ses')
       +grp(4,'🚓','España','tus viviendas','Policía Nacional',gen_fields(k+'n','la Policía Nacional','Los de acceso de tu establecimiento.'),'La Policía Nacional no acepta estos datos. Revisa el usuario y la contraseña.','pn')
       +grp(2,CAT,'Barcelona','1 vivienda',"Mossos d'Esquadra",gen_fields(k+'m',"Mossos",'Los del establecimiento: te los dan los Mossos al dar de alta la vivienda.'),'Los Mossos no aceptan estos datos. Revisa el usuario y la contraseña del establecimiento.','mossos')
@@ -258,7 +258,7 @@ def legal(Pp,mob_):
       +grp(6,'🇮🇹','Roma','1 vivienda','Alloggiati Web',gen_fields(k+'i','Alloggiati','Los de acceso a Alloggiati Web de tu alojamiento.'),'Alloggiati Web no acepta estos datos. Revisa el usuario y la contraseña.','allog')
       +extras
       +'<div style="font-size: 13px; color: #55557F">Lo que dejes pendiente aparece como tarea en tu Inicio. Cl@ve o el certificado digital solo sirven para darte de alta: a nosotros no nos los das.</div>')
-both('Legal','Parte de viajeros',4,CH+['Titular ✓'],legal,lambda Pp:link(Pp('Vivienda'),'← Atrás',NX%(Pp('Titular').replace('.dc.html',''),Pp('Vivienda').replace('.dc.html',''))),lambda Pp:btn(Pp('Proteccion'),'Continuar →'),lambda Pp:btn(Pp('Proteccion'),'Continuar →',full=True),wide=True)
+both('Legal','Parte de viajeros',7,CH+['Envío ✓'],legal,lambda Pp:back(Pp('Envio'),'← Atrás'),lambda Pp:btn(Pp('Listo'),'Terminar ✓'),lambda Pp:btn(Pp('Listo'),'Terminar ✓',full=True),wide=True)
 # ---------- 5 · Protección ----------
 ALL1='<button type="button" data-allon class="stepin" style="height: 48px; border: 0; border-radius: 12px; background: #EFEFFF; color: #385BF8; font-size: 15px; font-weight: 700; font-family: inherit; cursor: pointer">Activar las dos en un clic</button>'
 ALL2='<button type="button" data-allon class="stepin" style="height: 48px; border: 0; border-radius: 12px; background: #EFEFFF; color: #385BF8; font-size: 15px; font-weight: 700; font-family: inherit; cursor: pointer">Activar las 4 en un clic</button>'
@@ -284,7 +284,7 @@ def prot(Pp,mob_):
     head=ok('Vas genial. Ahora, que nada te salga caro.')+H('','Protege tus viviendas de daños','Las cosas se rompen, y la factura llega lo hayas previsto o no. Con Chekin, la cubre el huésped.',mob_)
     if mob_: return head+ben+video+grp+ALL1+'<div class="stepin" style="font-size: 13px; line-height: 1.5; color: #55557F">Vienen apagadas: tú eliges. <b style="color: #19194B">Quién cobra:</b> Chekin, al huésped, en el check-in. <a href="#" style="font-weight: 700">Comisiones</a> · <a href="#" style="font-weight: 700">Cómo se reclama un daño</a></div>'
     return head+'<div style="display: grid; grid-template-columns: 1fr 280px; gap: 18px; align-items: center">'+ben+video+'</div>'+grp+ALL1+'<div class="stepin" style="font-size: 13px; line-height: 1.5; color: #55557F">Vienen apagadas: tú eliges. <b style="color: #19194B">Quién cobra:</b> Chekin, al huésped, en el check-in. <a href="#" style="font-weight: 700">Comisiones</a> · <a href="#" style="font-weight: 700">Cómo se reclama un daño</a></div>'
-both('Proteccion','Protección',5,CH+['Parte ✓'],prot,lambda Pp:back(Pp('Legal'),'← Atrás'),lambda Pp:link(Pp('Ventas'),'Ahora no')+btn(Pp('Ventas'),'Seguir →'),lambda Pp:btn(Pp('Ventas'),'Seguir →',full=True),lambda Pp:link(Pp('Ventas'),'Ahora no'),wide=True)
+both('Proteccion','Protección',4,CH+['Viviendas ✓'],prot,lambda Pp:back(Pp('Vivienda'),'← Atrás',NX%(Pp('Titular').replace('.dc.html',''),Pp('Vivienda').replace('.dc.html',''))),lambda Pp:link(Pp('Ventas'),'Ahora no')+btn(Pp('Ventas'),'Seguir →'),lambda Pp:btn(Pp('Ventas'),'Seguir →',full=True),lambda Pp:link(Pp('Ventas'),'Ahora no'),wide=True)
 # ---------- 6 · Ventas extra ----------
 INPS='height: 44px; border-radius: 10px; border: 1.5px solid #DEDEEB; background: #FFFFFF; font-size: 15px; font-weight: 700; font-family: inherit; color: #19194B'
 def vprice(units,val=''):
@@ -327,7 +327,7 @@ def ventas(Pp,mob_):
       +H('💶','¿Qué más le ofreces a tu huésped?','Empecemos por lo básico: contesta sí o no. Lo que actives sale en su check-in y lo paga antes de llegar.',mob_))
     if mob_: return head+basics+more+note+'<div class="stepin" style="font-size: 15px; font-weight: 700; margin-top: 4px">Así lo verá tu huésped</div>'+phone.replace('<div style="font-size: 11px; font-weight: 800; letter-spacing: 0.08em; color: #55557F">ASÍ LO VE TU HUÉSPED</div>','')
     return head+'<div style="display: grid; grid-template-columns: 1fr 260px; gap: 22px; align-items: start"><div style="display: flex; flex-direction: column; gap: 10px">'+basics+more+note+'</div><div style="position: sticky; top: 0; display: flex">'+phone+'</div></div>'
-both('Ventas','Ventas extra',6,CH+['Protección ✓'],ventas,lambda Pp:back(Pp('Proteccion'),'← Atrás'),lambda Pp:link(Pp('Envio'),'Ahora no')+btn(Pp('Envio'),'Seguir →'),lambda Pp:btn(Pp('Envio'),'Seguir →',full=True),lambda Pp:link(Pp('Envio'),'Ahora no'),wide=True)
+both('Ventas','Ventas extra',5,CH+['Protección ✓'],ventas,lambda Pp:back(Pp('Proteccion'),'← Atrás'),lambda Pp:link(Pp('Envio'),'Ahora no')+btn(Pp('Envio'),'Seguir →'),lambda Pp:btn(Pp('Envio'),'Seguir →',full=True),lambda Pp:link(Pp('Envio'),'Ahora no'),wide=True)
 # ---------- 7 · Envío ----------
 def envio(Pp,mob_):
     when='<div style="display: flex; flex-wrap: wrap; gap: 8px">'+''.join('<button type="button" class="chip%s" data-group="cuando" data-val="%s" style="height: 44px; padding: 0 14px; font-size: 14px">%s</button>'%(' on' if v=='48 h antes' else '',v,v) for v in ['Al confirmar','72 h antes','48 h antes','24 h antes'])+'</div>'
@@ -337,10 +337,10 @@ def envio(Pp,mob_):
       '<div style="padding: 9px 11px; border-radius: 12px; background: #F4F4FD; font-size: 12px"><b>Documento + selfie</b></div><div style="padding: 9px 11px; border-radius: 12px; background: #F4F4FD; font-size: 12px"><b>Protección o fianza</b></div>'
       '<div style="padding: 9px 11px; border-radius: 12px; background: #EFEFFF; font-size: 12px"><b style="color: #385BF8">Añade a tu estancia</b><br>Salida tardía · 20 €</div></div>')
     test='<button type="button" data-connect style="height: 46px; border: 1.5px solid #385BF8; border-radius: 12px; background: #FFFFFF; color: #385BF8; font-size: 15px; font-weight: 700; font-family: inherit; cursor: pointer">📲 Enviarme un enlace de prueba</button>'
-    top=ok('¡Último paso!')+H('','¿Cuándo le llega el check-in a tu huésped?','Elige si sale solo y con cuánta antelación. Y pruébalo tú antes que nadie.',mob_)
+    top=ok('¡Ya casi está!')+H('','¿Cuándo le llega el check-in a tu huésped?','Elige si sale solo y con cuánta antelación. Y pruébalo tú antes que nadie.',mob_)
     if mob_: return top+send+test+phone
     return top+'<div style="display: grid; grid-template-columns: 1fr 250px; gap: 22px; align-items: start"><div style="display: flex; flex-direction: column; gap: 12px">'+send+test+'</div>'+phone+'</div>'
-both('Envio','Check-in y envío',7,CH+['4 ofertas ✓'],envio,lambda Pp:back(Pp('Ventas'),'← Atrás'),lambda Pp:btn(Pp('Listo'),'Terminar ✓'),lambda Pp:btn(Pp('Listo'),'Terminar ✓',full=True),wide=True)
+both('Envio','Check-in y envío',6,CH+['Ventas extra ✓'],envio,lambda Pp:back(Pp('Ventas'),'← Atrás'),lambda Pp:btn(Pp('Legal'),'Continuar →'),lambda Pp:btn(Pp('Legal'),'Continuar →',full=True),wide=True)
 # ---------- ¡Todo listo! (revelado ✓ a ✓) ----------
 DONE=[('Reservas','<span data-done-res>entran solas desde tu PMS</span>'),('Titular y viviendas','<span data-done-viv>4 viviendas listas</span>'),('Parte de viajeros','<span data-done-legal>sale solo y en plazo</span>'),('Verificación de identidad','<span data-done-opt="id">documento + selfie</span>'),('Tasa turística','<span data-done-opt="tax">calculada y cobrada</span>'),('Protección y fianza','<span data-done-opt="prot">las paga el huésped</span>'),('Ventas extra','<span data-done-opt="ven">activas en el check-in</span>'),('Check-in automático','48 h antes de cada llegada')]
 def listo(Pp,mob_):
