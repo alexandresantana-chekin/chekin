@@ -121,3 +121,16 @@
 - **30/10 · P1, onboarding completo de una vez (Alex):** se entra y se termina todo de una vez: reservas, dónde están, cumplimiento, viviendas, protección, ventas extra, y el check-in con su envío (sí o no; al confirmar, 72, 48 o 24 h antes). Después solo quedan las reservas. El PMS se conecta como en el prototipo de Daniel (autorizar en el PMS, sin copiar), con la API key como alternativa.
 - **30/10 · P1, rediseño del onboarding (Alex):** diseño compacto con la barra de botones fija; ritmo «como un producto de Apple»; titular y viviendas una a una antes del parte de viajeros; credenciales de SES correctas (código de arrendador y usuario del servicio web); protección sin «obligatorio/opcional».
 - **30/10 · Growth (Alex):** se adelanta a Carlos con un plan propio en dos líneas: conversión de todo el embudo (anuncios, landings, alta, onboarding y pago) y un empuje fuerte en upselling, fianza y protección de daños. Lo primero es medir los extras, que hoy nadie mide.
+
+## 2026-11-03 · Método común, roles y P1 en su propia carpeta
+- **Qué:**
+  - Lo reutilizable va a la casa:
+    - 8 roles como agentes en `.claude/agents/`;
+    - método de 7 pasos y personas fijas (Lucía 18, Javier 40, Carmen 65) en `mi-metodo/`;
+    - marca y glosario en `2-herramientas/marca/`.
+  - Lo del onboarding va a `trabajo-en-curso/p1-onboarding/`: bitácora, KPIs, fichas de cambio, revisiones y dirección visual.
+  - Trabajo diario con `/onboarding`.
+  - El prototipo pasa a un solo enlace con pestañas (Móvil y portátil, Móvil, Portátil) y se compila desde el repositorio.
+- **Por qué:** el onboarding depende ahora de Alex. Cada cambio debe pasar siempre por el mismo ciclo, revisado por roles distintos, y lo común debe servir también para P3 y P4.
+- **Decidido por:** Alex.
+

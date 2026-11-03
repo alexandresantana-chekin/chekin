@@ -1,0 +1,68 @@
+<title>Onboarding Chekin</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap">
+<style>
+/* Una sola página: pestañas arriba y el prototipo debajo (móvil, portátil o los dos a la vez). Un solo aspecto, el de Chekin. */
+:root{--navy:#161643;--ink:#19194B;--blue:#385BF8;--muted:#55557F;--line:#DEDEEB;--ground:#E9EAF6;--card:#FFFFFF;--display:'Proxima Nova',Montserrat,-apple-system,'Segoe UI',Arial,sans-serif;color-scheme:light}
+html,body{height:100%}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--display);display:flex;flex-direction:column}
+.top{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;justify-content:space-between;padding-block:12px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));background:var(--card);box-shadow:0 1px 0 var(--line)}
+.top h1{margin:0;font-size:15px;font-weight:800;letter-spacing:-.01em}
+.top p{margin:2px 0 0;font-size:12px;color:var(--muted)}
+.tabs{display:flex;gap:4px;padding:4px;border-radius:999px;background:var(--ground)}
+.tab{padding:8px 14px;border:0;border-radius:999px;background:transparent;color:var(--ink);font:700 13px/1 var(--display);cursor:pointer;white-space:nowrap}
+.tab[aria-selected="true"]{background:var(--navy);color:#FFFFFF}
+.tab:focus-visible{outline:3px solid rgba(56,91,248,.45);outline-offset:2px}
+.stage{flex:1;min-height:0;display:flex;gap:12px;padding-block:12px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.pane{flex:1;min-width:0;display:flex;flex-direction:column;gap:6px}
+.pane[hidden]{display:none}
+.pane .lbl{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.pane iframe{flex:1;width:100%;min-height:0;border:0;border-radius:14px;background:var(--ground)}
+body[data-view="ambos"] .pane-m{flex:0 0 440px}
+body:not([data-view="ambos"]) .lbl{display:none}
+@media (max-width:900px){
+  body[data-view="ambos"] .stage{flex-direction:column;overflow-y:auto}
+  body[data-view="ambos"] .pane{flex:0 0 auto}
+  body[data-view="ambos"] .pane iframe{height:80vh}
+  body[data-view="ambos"] .pane-m{flex:0 0 auto}
+}
+</style>
+<header class="top">
+  <div><h1>Onboarding Chekin</h1><p>Prototipo navegable · datos de ejemplo</p></div>
+  <div class="tabs" role="tablist" aria-label="Cómo verlo">
+    <button type="button" class="tab" role="tab" id="t-ambos" data-view="ambos" aria-selected="true">Móvil y portátil</button>
+    <button type="button" class="tab" role="tab" id="t-movil" data-view="movil" aria-selected="false">Móvil</button>
+    <button type="button" class="tab" role="tab" id="t-portatil" data-view="portatil" aria-selected="false">Portátil</button>
+  </div>
+</header>
+<main class="stage">
+  <section class="pane pane-p" aria-label="Portátil"><div class="lbl">Portátil</div><iframe id="f-portatil" title="Prototipo en portátil" src="portatil.html"></iframe></section>
+  <section class="pane pane-m" aria-label="Móvil"><div class="lbl">Móvil · avanza a la vez</div><iframe id="f-movil" title="Prototipo en móvil" src="movil.html"></iframe></section>
+</main>
+<script>
+(function(){
+  var fp=document.getElementById('f-portatil'), fm=document.getElementById('f-movil');
+  var pp=document.querySelector('.pane-p'), pm=document.querySelector('.pane-m');
+  var tabs=[].slice.call(document.querySelectorAll('.tab'));
+  var view='ambos';
+  function post(f,msg){ try{ f.contentWindow.postMessage(msg,'*'); }catch(e){} }
+  function apply(){
+    document.body.setAttribute('data-view',view);
+    tabs.forEach(function(t){ t.setAttribute('aria-selected',t.getAttribute('data-view')===view?'true':'false'); });
+    pp.hidden= view==='movil'; pm.hidden= view==='portatil';
+    post(fm,{chekin:'bare',on:view==='ambos'});
+    try{ localStorage.setItem('chekin-view',view); }catch(e){}
+  }
+  tabs.forEach(function(t){ t.addEventListener('click',function(){ view=t.getAttribute('data-view'); apply(); }); });
+  window.addEventListener('message',function(e){
+    var d=e.data||{}; if(!d.chekin){ return; }
+    if(d.chekin==='ready'&&e.source===fm.contentWindow){ post(fm,{chekin:'bare',on:view==='ambos'}); }
+    if(d.chekin==='screen'&&view==='ambos'&&d.id){ var other= e.source===fp.contentWindow?fm:(e.source===fm.contentWindow?fp:null); if(other){ post(other,{chekin:'go',id:d.id}); } }
+  });
+  var h=(location.hash||'').slice(1), saved=null;
+  try{ saved=localStorage.getItem('chekin-view'); }catch(e){}
+  if(h==='ambos'||h==='movil'||h==='portatil'){ view=h; } else if(saved==='ambos'||saved==='movil'||saved==='portatil'){ view=saved; }
+  apply();
+})();
+</script>

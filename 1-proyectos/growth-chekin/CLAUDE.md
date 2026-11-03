@@ -12,6 +12,6 @@ Todos los proyectos de Growth de Alexandre en un solo sitio. Cada P es un trabaj
 - `estado.md` → hecho / a medias / pendiente.
 - `decisiones.md` → qué se decidió y por qué, con fecha. Solo crece.
 - `sobre-el-proyecto/` → contexto y enlaces.
-- `mi-metodo/` → reglas de trabajo propias (vacío).
+- `mi-metodo/` → método común (ciclo de 7 pasos y roles) y las 3 personas fijas. Los roles son agentes en `.claude/agents/`.
 - `agentes-rutinarios/` → tareas programadas (ninguna todavía).
 - `trabajo-en-curso/` y `trabajo-terminado/`.

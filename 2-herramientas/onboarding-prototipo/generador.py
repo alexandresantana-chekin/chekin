@@ -1,5 +1,5 @@
 import re,os
-os.chdir('onb/project')
+os.chdir(os.path.join(os.path.dirname(os.path.abspath(__file__)),'fuentes'))
 R=lambda f:open(f).read()
 def _aa(s):
     import re as _re
@@ -12,7 +12,7 @@ def W(f,s): open(f,'w').write(_aa(s))
 HEAD=R('Vivienda2.dc.html').split('<div style="width: 390px',1)[0]
 FOOT_m='</x-dc>'+R('Vivienda2.dc.html').split('</div>\n</x-dc>',1)[1]
 FOOT_p=FOOT_m.replace('"width":390,"height":844','"width":1440,"height":900')
-APPNAV=re.search(r'<nav aria-label="Menú".*?</nav>',open('../project-bak-1600/Portatil-Vivienda.dc.html').read(),re.S).group(0)
+APPNAV=re.search(r'<nav aria-label="Menú".*?</nav>',open('_base/Portatil-Vivienda.dc.html').read(),re.S).group(0)
 FONT="font-family: 'Proxima Nova', Montserrat, Arial, sans-serif; color: #19194B"
 LOGO_M='<img src="/_blob/3ef2a56a40d5efb3f55d9f310adc6465" alt="Chekin" style="width: 86px; height: 25px">'
 LOGO_W='<img src="/_blob/c25beceb5f9f805a652ba855add94f27" alt="Chekin" style="width: 104px; height: 31px">'

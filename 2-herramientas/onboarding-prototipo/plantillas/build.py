@@ -50,4 +50,7 @@ for dev in ('movil','portatil'):
     nav='\n'.join('<a class="jump" href="#%s" data-jump="%s">%s</a>'%(t,t,l) for t,l in LABELS)
     out=tpl.replace('<!--NAV-->',nav).replace('<!--SCREENS-->','\n'.join(secs))
     open(os.path.join(OUT,'onboarding-%s.html'%dev),'w').write(out)
+    # copia para el artifact único (onboarding.html la carga dentro): documento completo
+    head='<!doctype html>\n<html lang="es">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n'
+    open(os.path.join(OUT,'%s.html'%{'movil':'movil','portatil':'portatil'}[dev]),'w').write(head+out.replace('<style>','</head>\n<body>\n<style>',0)+'\n</body>\n</html>\n')
     print(dev,len(out))

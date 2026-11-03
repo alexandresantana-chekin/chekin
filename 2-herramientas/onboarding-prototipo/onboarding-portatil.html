@@ -669,7 +669,7 @@ window.addEventListener('resize',function(){window.__fit();});
     window.scrollTo(0,0);
   }
   var TIPS={
-    entrar:{t:"Una sola puerta: Google, o email y contraseña",p:"En la primera pantalla: «Continuar con Google» o email y contraseña. Si el email ya es cliente, entra directo a su panel; si es nuevo, esa contraseña es la de su cuenta nueva y pasa a la segunda pantalla: nombre, apellidos, móvil y NIF/NIE/CIF, todo lo que pide Ventas. Con Google no hay contraseña y solo pide móvil y NIF (nombre y apellidos vienen de Google). Al continuar acepta Condiciones y Privacidad; el boletín es opcional y va sin marcar.",l:["Dato: en Clarity, 1 de cada 4 sesiones de ordenador en el alta buscaban el login: por eso entrar y darse de alta es la misma pantalla.", "Dato: hoy solo el 16 % de quien llega al alta crea la cuenta (126 de 772, 30 días): pedir NIF y móvil antes puede bajarlo; medirlo en el A/B.", "El NIF pasa solo al paso del titular y el móvil ya no se pide en «Tu negocio»: nada se pide dos veces.", "Por comprobar: textos legales, base legal del móvil, la regla de contraseña y si la puerta única puede revelar que un email ya es cliente (DPO).", "Pruébalo: «Cliente nuevo», «Ya tiene cuenta», «Mostrar» y «Demo: contraseña incorrecta»."]},
+    entrar:{t:"Una sola puerta: Google, o email y contraseña",p:"En la primera pantalla: «Continuar con Google» o email y contraseña. Si el email ya es cliente, entra directo a su panel; si es nuevo, esa contraseña es la de su cuenta nueva y pasa a la segunda pantalla: nombre, apellidos, móvil y NIF/NIE/CIF, todo lo que pide Ventas. Con Google no hay contraseña y solo pide móvil y NIF (nombre y apellidos vienen de Google). Al continuar acepta Condiciones y Privacidad; el boletín es opcional y va sin marcar.",l:["Dato: en Clarity, 1 de cada 4 sesiones de ordenador en el alta buscaban el login: por eso entrar y darse de alta es la misma pantalla.", "Dato: hoy solo el 16 % de quien llega al alta crea la cuenta (126 de 771, PostHog 29/09–29/10/2026): pedir NIF y móvil antes puede bajarlo; medirlo en el A/B.", "El NIF pasa solo al paso del titular y el móvil ya no se pide en «Tu negocio»: nada se pide dos veces.", "Por comprobar: textos legales, base legal del móvil, la regla de contraseña y si la puerta única puede revelar que un email ya es cliente (DPO).", "Pruébalo: «Cliente nuevo», «Ya tiene cuenta», «Mostrar» y «Demo: contraseña incorrecta»."]},
     negocio:{t:"Dos preguntas rápidas",p:"Si elige hotel o camping, el resto del alta habla de «propiedades» en vez de «viviendas». Qué gestiona y cuántas unidades (número exacto con − y +); el móvil ya se pidió al crear la cuenta. Si la cartera es grande, ofrece un experto: con más de 10 viviendas, o más de 60 habitaciones o parcelas en hoteles y campings, en las dos salidas.",l:["Por comprobar: la regla exacta de 60 habitaciones (corte de Mid-Market/Enterprise en HubSpot, H-52).", "Pruébalo: pon 12 viviendas, o Hotel y 70."]},
     creando:{t:"Una sola confirmación de cuenta creada",p:"El logo late mientras se crea la cuenta y el check crece con «¡Cuenta creada!». A los 1,6 s aparece «Continuar»; si no lo pulsa, avanza solo a los 4,6 s.",l:["Dato: antes había tres confirmaciones seguidas de lo mismo y 6 s de espera (auditoría).", "Con «reducir movimiento» activado, sin animaciones."]},
     bienvenida:{t:"Qué viene y cuánto tarda",p:"Los 7 pasos con su tiempo, unos 11 minutos en total. Se guarda solo y se puede seguir luego. «Ahora no» lleva al Inicio de cuenta nueva, con lo que falta como tareas.",l:["Pruébalo: pulsa «Ahora no» y mira el Inicio de cuenta nueva."]},
@@ -915,6 +915,20 @@ body.lab-open .tip{right:340px !important}
   var tg=document.querySelector('[data-lab-toggle]'); if(tg){ tg.addEventListener('click',function(){ setOpen(lab.hidden); }); }
   lab.querySelector('[data-lab-close]').addEventListener('click',function(){ setOpen(false); });
   var op=null; try{ op=localStorage.getItem('chekin-lab-open'); }catch(e){}
+  window.addEventListener('storage',function(e){ if(e.key!=='chekin-lab'&&e.key!=='chekin-lab-img'){ return; } try{ var sv=JSON.parse(localStorage.getItem('chekin-lab')||'{}'); for(var k in sv){ if(k in D){ S[k]=sv[k]; } } IMG=localStorage.getItem('chekin-lab-img')||''; }catch(err){} build(); });
   build(); setOpen(op===null ? window.innerWidth>1100 : op==='1');
+})();
+</script>
+<style>
+body.bare .bar,body.bare .lab,body.bare .tip{display:none !important}
+body.bare,body.bare.lab-open{padding:8px !important}
+</style>
+<script>
+(function(){
+  if(window.parent===window){ return; }
+  var send=function(t){ try{ parent.postMessage({chekin:t,id:location.hash.slice(1)},'*'); }catch(e){} };
+  window.addEventListener('hashchange',function(){ send('screen'); });
+  window.addEventListener('message',function(e){ var d=e.data||{}; if(d.chekin==='go'&&d.id&&location.hash.slice(1)!==d.id&&document.getElementById('scr-'+d.id)){ location.hash=d.id; } if(d.chekin==='bare'){ document.body.classList.toggle('bare',!!d.on); setTimeout(function(){ window.__fit&&window.__fit(); },30); } });
+  send('ready');
 })();
 </script>

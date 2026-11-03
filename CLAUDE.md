@@ -28,6 +28,9 @@ Tono: directo y breve, en español. Claude propone y Alex decide.
 | Funnel del onboarding (P1) | **PostHog**: llegada a la web → registro → pasos del onboarding → activación. [POR COMPROBAR con Daniel: si cubre web, registro y webapp, y quién añade eventos] |
 | Horas dedicadas | `1-proyectos/growth-chekin/horas.md` |
 | Hallazgos con datos (registro único) | `1-proyectos/growth-chekin/hallazgos.md` |
+| Método de trabajo, roles y personas | `1-proyectos/growth-chekin/mi-metodo/` y `.claude/agents/` |
+| Marca, estilo y glosario | `2-herramientas/marca/` |
+| Onboarding (P1): bitácora, KPIs, cambios | `1-proyectos/growth-chekin/trabajo-en-curso/p1-onboarding/` · prototipo en `2-herramientas/onboarding-prototipo/` · enlace único https://claude.ai/artifact/DfLw9HeJKddbpxHYRC6mLP · trabajo diario con `/onboarding` |
 | Código de la app QR (Chekin Connect) | `chekin-connect/` (tiene su propio `CLAUDE.md`; leerlo antes de tocar código) |
 
 ## Personas

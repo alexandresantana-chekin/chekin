@@ -637,3 +637,17 @@ Mismos enlaces (móvil y portátil). Principio de Alex: entrar y terminarlo todo
   - estilo y entrada de los mensajes de éxito.
 
   Lo que elige cada persona solo se ve en su navegador. «Copiar mis ajustes para Claude» da el texto para pegarlo en el chat y pasarlo al prototipo de verdad. El código está en `plantillas/lab.part`.
+- **Un solo enlace y método de trabajo (03/11, versiones 32–33), por decisión de Alex.**
+  - El prototipo vive en un solo artifact, https://claude.ai/artifact/DfLw9HeJKddbpxHYRC6mLP, con tres pestañas:
+    - «Móvil y portátil»: los dos a la vez, avanzan juntos y el laboratorio cambia los dos;
+    - «Móvil»;
+    - «Portátil».
+  - El enlace antiguo del móvil queda en la versión 31.
+  - El código se compila desde `2-herramientas/onboarding-prototipo/`.
+  - Montado el método:
+    - roles en `.claude/agents/`;
+    - ciclo y personas en `mi-metodo/`;
+    - marca y glosario en `2-herramientas/marca/`;
+    - esta carpeta de P1 (bitácora, KPIs, cambios, revisiones, dirección visual);
+    - el comando `/onboarding` para cada día.
+  - En la explicación de «Entrar», la cifra queda como 126 de 771 (H-48).

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Datos de la vivienda · portátil</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#385BF8}a:hover{color:#294DF1}
+input:focus{outline:none;box-shadow:0 0 0 3px rgba(56,91,248,.2);border-color:#385BF8}
+</style>
+</helmet>
+<div style="width: 1440px; height: 900px; box-sizing: border-box; display: flex; font-family: 'Proxima Nova', Montserrat, Arial, sans-serif; color: #19194B; background: #F4F4FD">
+<nav aria-label="Menú" style="width: 232px; flex-shrink: 0; box-sizing: border-box; padding: 24px 14px; display: flex; flex-direction: column; gap: 4px; background: #161643; color: #C9CBEA; font-size: 14px">
+<img src="/_blob/c25beceb5f9f805a652ba855add94f27" alt="Chekin" style="width: 110px; height: 33px; margin: 0 10px 24px">
+<a href="Portatil-Panel.dc.html" style="padding: 10px 12px; border-radius: 10px; background: #23235D; color: #FFFFFF; font-weight: 600; text-decoration: none">Inicio</a>
+<a href="#" style="padding: 10px 12px; color: #C9CBEA; text-decoration: none">Reservas</a>
+<a href="#" style="padding: 10px 12px; color: #C9CBEA; text-decoration: none">Viviendas</a>
+<a href="#" style="padding: 10px 12px; color: #C9CBEA; text-decoration: none">Bandeja de entrada</a>
+<a href="#" style="padding: 10px 12px; color: #C9CBEA; text-decoration: none">Upselling</a>
+<a href="#" style="padding: 10px 12px; color: #C9CBEA; text-decoration: none">Cumplimiento legal</a>
+<a href="#" style="padding: 10px 12px; color: #C9CBEA; text-decoration: none">Documentos</a>
+<a href="#" style="margin-top: auto; padding: 10px 12px; color: #C9CBEA; text-decoration: none">Plan y facturación</a>
+</nav>
+<main style="flex-grow: 1; min-width: 0; box-sizing: border-box; padding: 28px 36px; display: flex; flex-direction: column; gap: 20px">
+<div style="display: flex; justify-content: space-between; align-items: center">
+<a href="Portatil-Panel.dc.html" style="font-size: 14px; font-weight: 600; text-decoration: none">← Volver al inicio</a>
+<a href="Portatil-Panel.dc.html" style="font-size: 14px; font-weight: 600; text-decoration: none">Saltar la guía y ver todo</a>
+</div>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px">
+<div style="padding: 12px 14px; border-radius: 12px; background: #E8F6EF; color: #0F5C3B; font-size: 13px"><b>✓ Paso 1</b> · Reservas por PMS</div>
+<div style="padding: 12px 14px; border-radius: 12px; background: #E8F6EF; color: #0F5C3B; font-size: 13px"><b>✓ Paso 2</b> · Parte de viajeros</div>
+<div style="padding: 12px 14px; border-radius: 12px; background: #FFFFFF; box-shadow: 0 0 0 2px #385BF8; font-size: 13px"><b style="color: #385BF8">Paso 3 · 1 min</b> · Datos de la vivienda</div>
+<div style="padding: 12px 14px; border-radius: 12px; background: #FFFFFF; font-size: 13px; color: #6B6B95">Paso 4 · 2 min · Check-in online y enlace de prueba</div>
+</div>
+<div style="display: flex; gap: 24px; align-items: flex-start">
+<section style="flex-grow: 1; min-width: 0; padding: 28px; border-radius: 18px; background: #FFFFFF; box-shadow: 0 0 5px rgba(26, 148, 255, 0.173); display: flex; flex-direction: column; gap: 18px">
+<div style="display: flex; flex-direction: column; gap: 4px">
+<h1 style="margin: 0; font-size: 26px; font-weight: 700">Datos de la vivienda</h1>
+<div style="padding: 10px 12px; border-radius: 12px; background: #EFEFFF; font-size: 13px; line-height: 1.45">¿Has conectado tu PMS? Tu vivienda ya viene rellena: solo revisa y confirma.</div>
+<p style="margin: 0; font-size: 14px; color: #6B6B95">¡Vas genial! Solo dos datos: nombre y dirección. ⏱ ≈ 1 min</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px">
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600">Nombre de la vivienda
+<input type="text" value="Casa San Juan" style="height: 48px; border-radius: 12px; border: 1.5px solid #DEDEEB; padding: 0 14px; font-size: 16px; font-family: inherit; color: #19194B"></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600">NIF / CIF / DNI del titular <span style="font-weight: 400; color: #6B6B95">(opcional ahora)</span>
+<input type="text" placeholder="12345678Z" style="height: 48px; border-radius: 12px; border: 1.5px solid #DEDEEB; padding: 0 14px; font-size: 16px; font-family: inherit; color: #19194B"></label>
+<div data-addr style="grid-column: span 2; position: relative; display: flex; flex-direction: column; gap: 6px"><label for="dir-p" style="font-size: 13px; font-weight: 600">Dirección de la propiedad</label><input id="dir-p" type="text" autocomplete="off" placeholder="Empieza a escribir la calle o el edificio" data-addr-input style="height: 48px; border-radius: 12px; border: 1.5px solid #DEDEEB; padding: 0 14px; font-size: 16px; font-family: inherit; color: #19194B"><div data-addr-list hidden style="position: absolute; top: 76px; left: 0; right: 0; z-index: 5; border-radius: 12px; background: #FFFFFF; box-shadow: 0 20px 25px rgba(26, 148, 255, 0.173); overflow: hidden"><button type="button" data-addr-pick="Calle Sierpes, 12, 41004 Sevilla, España" style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px; width: 100%; padding: 10px 12px; border: 0; border-bottom: 1px solid #EFEFFF; background: #FFFFFF; text-align: left; font-family: inherit; cursor: pointer"><span style="font-size: 14px; font-weight: 600; color: #19194B">Calle Sierpes, 12</span><span style="font-size: 12px; color: #6B6B95">41004 Sevilla, España</span></button><button type="button" data-addr-pick="Calle Sierpes, 12, 41004 Sevilla · Edificio Sierpes" style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px; width: 100%; padding: 10px 12px; border: 0; border-bottom: 1px solid #EFEFFF; background: #FFFFFF; text-align: left; font-family: inherit; cursor: pointer"><span style="font-size: 14px; font-weight: 600; color: #19194B">Calle Sierpes, 12</span><span style="font-size: 12px; color: #6B6B95">41004 Sevilla · Edificio Sierpes</span></button><button type="button" data-addr-pick="Calle Sierpes, 1, 41004 Sevilla, España" style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px; width: 100%; padding: 10px 12px; border: 0; border-bottom: 1px solid #EFEFFF; background: #FFFFFF; text-align: left; font-family: inherit; cursor: pointer"><span style="font-size: 14px; font-weight: 600; color: #19194B">Calle Sierpes, 1</span><span style="font-size: 12px; color: #6B6B95">41004 Sevilla, España</span></button><div style="padding: 8px 12px; font-size: 11px; color: #6B6B95">Sugerencias de Google Maps</div></div><div data-addr-ok hidden style="display: flex; flex-wrap: wrap; gap: 6px; font-size: 12px"><span style="padding: 4px 8px; border-radius: 999px; background: #E8F6EF; color: #0F5C3B; font-weight: 600">✓ Dirección encontrada</span><span style="padding: 4px 8px; border-radius: 999px; background: #EFEFFF">Sevilla</span><span style="padding: 4px 8px; border-radius: 999px; background: #EFEFFF">41004</span><span style="padding: 4px 8px; border-radius: 999px; background: #EFEFFF">Provincia de Sevilla</span><span style="padding: 4px 8px; border-radius: 999px; background: #EFEFFF">España</span></div></div><label style="grid-column: span 2; display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600">Piso, puerta o bloque <span style="font-weight: 400; color: #6B6B95">(opcional)</span><input type="text" placeholder="Ej.: Esc. A, 3.º B" style="height: 48px; border-radius: 12px; border: 1.5px solid #DEDEEB; padding: 0 14px; font-size: 16px; font-family: inherit; color: #19194B"></label><div style="grid-column: span 2; font-size: 12px; color: #6B6B95">¿No encuentras la dirección? <a href="#" style="font-weight: 600">Escribirla a mano</a></div>
+</div>
+<div style="font-size: 12px; color: #6B6B95">El NIF lo usamos en el parte de viajeros. Puedes añadirlo después.</div>
+<div style="display: flex; gap: 16px; align-items: center">
+<a href="Portatil-Checkin.dc.html" style="padding: 14px 22px; border-radius: 12px; background: #385BF8; color: #FFFFFF; font-size: 15px; font-weight: 700; text-decoration: none; box-shadow: 0 0 0 3px rgba(56, 91, 248, 0.2)">Guardar y seguir</a>
+<a href="Portatil-Panel.dc.html" style="font-size: 14px; font-weight: 600; text-decoration: none">Lo hago más tarde: volver al inicio</a>
+</div>
+</section>
+<aside style="width: 340px; flex-shrink: 0; padding: 22px; border-radius: 18px; background: #EFEFFF; display: flex; flex-direction: column; gap: 10px">
+<div style="font-size: 12px; font-weight: 700; color: #385BF8; letter-spacing: 0.06em">EN ESPAÑA</div>
+<div style="font-size: 16px; font-weight: 700">✓ Parte de viajeros conectado: <span class="autoridad">SES.Hospedajes</span></div>
+<div style="font-size: 13px; line-height: 1.5; color: #6B6B95">Con estos datos, los partes de esta vivienda salen solos y en plazo.</div>
+</aside>
+</div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

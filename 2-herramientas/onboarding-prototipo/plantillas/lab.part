@@ -124,6 +124,7 @@ body.lab-open .tip{right:340px !important}
   var tg=document.querySelector('[data-lab-toggle]'); if(tg){ tg.addEventListener('click',function(){ setOpen(lab.hidden); }); }
   lab.querySelector('[data-lab-close]').addEventListener('click',function(){ setOpen(false); });
   var op=null; try{ op=localStorage.getItem('chekin-lab-open'); }catch(e){}
+  window.addEventListener('storage',function(e){ if(e.key!=='chekin-lab'&&e.key!=='chekin-lab-img'){ return; } try{ var sv=JSON.parse(localStorage.getItem('chekin-lab')||'{}'); for(var k in sv){ if(k in D){ S[k]=sv[k]; } } IMG=localStorage.getItem('chekin-lab-img')||''; }catch(err){} build(); });
   build(); setOpen(op===null ? window.innerWidth>1100 : op==='1');
 })();
 </script>
