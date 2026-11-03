@@ -524,3 +524,25 @@ Mismos enlaces (móvil y portátil). Principio de Alex: entrar y terminarlo todo
   - **Inicio honesto para la cuenta nueva:** «Lo que te queda», según lo hecho en el alta; «Aún no tienes reservas»; ventas extra listas. Debajo, el enlace «Así se verá tu Inicio con reservas». A él llegan «¡Todo listo!» y «Ahora no» de la bienvenida; quien ya tenía cuenta va al Inicio con reservas.
   - Las rutas de menú de Airbnb y Booking para el enlace del calendario están [POR COMPROBAR].
 
+- **Oleada 3 aplicada (03/11, mismos enlaces; versión 21): confianza y cumplimiento.**
+  - **Alta:** «Al continuar, con Google o con tu email, aceptas las Condiciones y la Política de privacidad». El boletín es opcional y va sin marcar.
+  - **Teléfono:** dice para qué se usa («sin publicidad y sin cedérselo a nadie») y enlaza a Privacidad. El aviso del experto dice cómo se le contactará.
+  - **Claves:** en el parte y en la API key se dice cómo se guardan («cifradas, solo para enviar tus partes, puedes borrarlas»).
+  - **Selfie:** el huésped da su consentimiento antes de la selfie.
+  - **Protección y ventas extra:**
+    - vienen apagadas; se activan en un clic («Activar las dos» / «Activar las 4»), pero lo elige el cliente;
+    - se dice quién cobra (Chekin, al huésped, en el check-in) y que el importe llega menos la comisión;
+    - enlaces a «Comisiones» y a «Cómo se reclama un daño».
+  - **¡Todo listo!:** identidad, tasa, protección y extras salen como activados o «no activadas», según lo elegido. Añade cuándo acaba la prueba (sin tarjeta y sin permanencia, aviso antes).
+  - **Inicio de cuenta nueva:**
+    - tarjeta «Tu prueba gratis»: días que quedan y plan después (39 €/mes, marcado como ejemplo);
+    - ventas extra con su estado real y la comisión.
+  - [POR COMPROBAR] con Producto y el DPO:
+    - textos legales;
+    - si la puerta única puede revelar que un email ya es cliente;
+    - la base legal del teléfono;
+    - el cifrado real de las claves;
+    - el texto del consentimiento de la selfie;
+    - la comisión de extras y protección;
+    - el proceso de reclamación de daños;
+    - qué pasa el día 15 y el precio real.
