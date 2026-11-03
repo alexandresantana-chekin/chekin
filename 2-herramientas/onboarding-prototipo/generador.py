@@ -198,29 +198,31 @@ def titular(Pp,mob_):
         +'<div data-nifbox>'+field(k+'tnif','NIF, NIE o CIF','12345678Z',extra=' data-nif inputmode="text" autocomplete="off"',hint='Lo comprobamos al escribirlo.',val='12345678Z')+'<div data-nif-ok style="margin-top: 6px; font-size: 13px; color: #0F7B4F; font-weight: 700">✓ Formato correcto</div><div data-nif-ko hidden style="margin-top: 6px; font-size: 13px; color: #6B3E00">Casi: son 8 números y una letra (DNI), o una letra, 7 números y una letra o número (CIF).</div></div>',18,' class="stepin"'))
 both('Titular','Titular',3,CH,titular,lambda Pp:back(Pp('Paises'),'← Atrás'),lambda Pp:btn(Pp('Vivienda'),'Continuar →',NX%(Pp('Legal').replace('.dc.html',''),Pp('Vivienda').replace('.dc.html',''))),lambda Pp:btn(Pp('Vivienda'),'Continuar →',NX%(Pp('Legal').replace('.dc.html',''),Pp('Vivienda').replace('.dc.html','')),full=True))
 # ---------- 3b · Vivienda una a una ----------
+VIVS=[('Casa San Juan','Calle de San Juan, 12, 28012 Madrid'),('Madrid Sol','Calle del Sol, 3, 28013 Madrid'),('Ático Gràcia','Carrer de Verdi, 20, 08012 Barcelona'),('Alfama','Rua dos Remédios, 5, 1100-445 Lisboa')]
 def vivienda(Pp,mob_):
     k='m' if mob_ else 'p'
-    addr=('<div data-addr data-errbox style="display: flex; flex-direction: column; gap: 6px"><label for="%sva" style="font-size: 14px; font-weight: 600">Dirección</label>'
-      '<input id="%sva" data-addr-input placeholder="Empieza a escribir: calle y número" autocomplete="off" style="height: 46px; border-radius: 12px; border: 1.5px solid #DEDEEB; padding: 0 14px; font-size: 16px; font-family: inherit; background: #FFFFFF">')%(k,k)+(''
-      '<div data-addr-list hidden style="border-radius: 12px; background: #FFFFFF; box-shadow: 0 12px 28px rgba(25, 25, 75, 0.14); overflow: hidden">'
-      +''.join('<button type="button" data-addr-pick="%s" style="display: block; width: 100%%; padding: 12px 14px; border: 0; border-bottom: 1px solid #F0F0F7; background: #FFFFFF; text-align: left; font-size: 14px; font-family: inherit; cursor: pointer">📍 %s</button>'%(a,a) for a in ['Calle de San Juan, 12, 28012 Madrid','Calle de San Juan, 12, 46001 Valencia','Calle de San Juan de la Cruz, 12, Málaga'])
-      +'<div style="padding: 6px 14px; font-size: 11px; color: #9696B9; text-align: right">con Google</div></div>'
-      '<div data-addr-ok hidden style="font-size: 13px; color: #0F7B4F; font-weight: 700">✓ Dirección encontrada: ciudad, código postal y provincia, rellenos</div>'+errbox('No encontramos esa dirección. Revisa la calle y el número, o escríbela a mano y la comprobamos después.','Demo: dirección no encontrada')+'</div>')
-    form=card('<div style="display: flex; justify-content: space-between; align-items: center"><div style="font-size: 13px; font-weight: 800; letter-spacing: 0.06em; color: #385BF8" data-vlabel>VIVIENDA 1 DE 4</div><div style="font-size: 12px; color: #6B6B95">⏱ ≈ 30 s</div></div>'
-      +field(k+'vn','Nombre de la vivienda','Casa San Juan',extra=' data-vfield')+addr
-,18,' class="stepin"')
-    lst=card('<div style="font-size: 12px; font-weight: 800; letter-spacing: 0.06em; color: #6B6B95">TUS VIVIENDAS</div>'+''.join('<div data-vitem style="display: flex; gap: 10px; align-items: center; font-size: 14px"><span data-vdot style="width: 22px; height: 22px; flex-shrink: 0; border-radius: 999px; border: 1.5px solid #C9CBEA; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; color: #FFFFFF"></span><span data-vname>Vivienda %d</span></div>'%i for i in range(1,5))+'<div style="font-size: 12px; color: #6B6B95">Titular y parte de viajeros, ya puestos para todas.</div>',16)
+    IS='height: 46px; border-radius: 12px; border: 1.5px solid #DEDEEB; padding: 0 14px; font-size: 16px; font-family: inherit; background: #FFFFFF; box-sizing: border-box; width: 100%; min-width: 0'
+    def row(n,nm,ad):
+        lst=('<div data-addr-list hidden style="position: relative; z-index: 2; border-radius: 12px; background: #FFFFFF; box-shadow: 0 12px 28px rgba(25, 25, 75, 0.14); overflow: hidden">'
+          '<button type="button" data-addr-pick="%s" style="display: block; width: 100%%; padding: 12px 14px; border: 0; background: #FFFFFF; text-align: left; font-size: 14px; font-family: inherit; cursor: pointer">📍 %s</button></div>')%(ad,ad)
+        err=errbox('No encontramos esa dirección. Revisa la calle y el número, o escríbela a mano y la comprobamos después.','Demo: dirección no encontrada') if n==1 else ''
+        addr=('<div data-addr data-errbox style="display: flex; flex-direction: column; gap: 6px; min-width: 0"><label for="%sva%d" style="font-size: 13px; font-weight: 600">Dirección</label><input id="%sva%d" data-addr-input data-vaddr placeholder="%s" autocomplete="off" style="%s">'%(k,n,k,n,ad,IS)
+          +lst+'<div data-addr-ok hidden style="font-size: 13px; color: #0F7B4F; font-weight: 700">✓ Dirección encontrada</div>'+err+'</div>')
+        name=('<div style="display: flex; flex-direction: column; gap: 6px; min-width: 0"><label for="%svn%d" style="font-size: 13px; font-weight: 600">Nombre</label><input id="%svn%d" data-vname-in placeholder="%s" style="%s"></div>')%(k,n,k,n,nm,IS)
+        return ('<div data-vrow style="display: flex; gap: 12px; align-items: flex-start; padding: 14px 0; border-top: 1px solid #F0F0F7">'
+          '<span data-vnum style="width: 28px; height: 28px; margin-top: 26px; flex-shrink: 0; border-radius: 999px; background: #EFEFFF; color: #385BF8; font-size: 14px; font-weight: 800; display: flex; align-items: center; justify-content: center">%d</span>'
+          '<div style="flex-grow: 1; min-width: 0; display: grid; grid-template-columns: %s; gap: 10px">%s%s</div></div>')%(n,'1fr' if mob_ else '1fr 1.6fr',name,addr)
+    rows=''.join(row(i+1,nm,ad) for i,(nm,ad) in enumerate(VIVS))
+    form=card('<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 10px"><div style="font-size: 13px; font-weight: 800; letter-spacing: 0.06em; color: #385BF8">TUS <span data-vcount>4</span> VIVIENDAS</div><div style="font-size: 13px; color: #55557F">⏱ ≈ 30 s cada una</div></div>'
+      +'<div data-vrows>'+rows+'</div>'
+      +'<button type="button" data-vadd style="align-self: flex-start; padding: 10px 2px; border: 0; background: none; color: #385BF8; font-size: 14px; font-weight: 700; font-family: inherit; cursor: pointer">+ Añadir otra vivienda</button>',18,' class="stepin"')
     done=('<div data-vdone hidden class="stepin" style="display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; padding: 26px 22px; border-radius: 18px; background: #FFFFFF; box-shadow: %s">'
       '<div class="crea-mark done" style="width: 64px; height: 64px; border-radius: 18px; background: #19194B; display: flex; align-items: center; justify-content: center"><svg class="crea-check" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></div>'
-      '<div style="font-size: 22px; font-weight: 800">¡Bien hecho, Katia!</div><div style="font-size: 15px; line-height: 1.5; color: #6B6B95"><span data-vdone-t>Ya tenemos tu primera vivienda registrada.</span><br><span data-vdone-s>¿Seguimos con el resto? Te quedan 3, unos 30 s cada una.</span></div>'
-      '<div style="display: flex; flex-direction: column; gap: 8px; width: 100%%; max-width: 340px; margin-top: 4px"><button type="button" data-vcontinue style="height: 50px; border: 0; border-radius: 12px; background: #385BF8; color: #FFFFFF; font-size: 16px; font-weight: 700; font-family: inherit; cursor: pointer; box-shadow: 0 6px 16px rgba(56, 91, 248, 0.28)">Sí, seguir con la vivienda <span data-vnextn>2</span></button>'
-      '<a href="%s" data-vfinish style="display: block; height: 48px; line-height: 44px; box-sizing: border-box; border-radius: 12px; border: 2px solid #C9CBEA; color: #19194B; font-size: 15px; font-weight: 700; text-decoration: none">Termino aquí y sigo con el resto del alta</a>'
-      '<div style="font-size: 12px; color: #6B6B95">Podrás añadir las demás cuando quieras desde Viviendas.</div></div></div>')%(SH,Pp('Legal'))
-    form='<div data-vform>'+form+'</div>'
-    head=ok('¡Titular listo! Ahora, tus viviendas, una a una.')+H('🏠','Añade tus viviendas','Solo nombre y dirección, de una en una. Escribe la calle y elígela de la lista.',mob_)
-    if mob_: return head+form+done+lst
-    return head+'<div style="display: grid; grid-template-columns: 1fr 210px; gap: 16px; align-items: start"><div>'+form+done+'</div>'+lst+'</div>'
-both('Vivienda','Tus viviendas',3,CH,vivienda,lambda Pp:back(Pp('Titular'),'← Atrás'),lambda Pp:btn(Pp('Legal'),'Guardar vivienda ✓',' data-vnext data-vtotal="4"'),lambda Pp:btn(Pp('Legal'),'Guardar vivienda ✓',' data-vnext data-vtotal="4"',full=True),wide=True)
+      '<div style="font-size: 22px; font-weight: 800">¡Bien hecho, Katia!</div><div data-vdone-t style="font-size: 15px; line-height: 1.5; color: #55557F">Tus 4 viviendas ya están registradas:</div>'
+      '<div data-vdone-l aria-live="polite" style="width: 100%%; max-width: 520px; display: flex; flex-direction: column; gap: 6px; text-align: left"></div></div>')%SH
+    head=ok('¡Titular listo! Ahora, tus viviendas.')+H('🏠','Añade tus viviendas','Todas a la vez: solo nombre y dirección. Escribe la calle y elígela de la lista.',mob_)
+    return head+'<div data-vform>'+form+'</div>'+done
+both('Vivienda','Tus viviendas',3,CH,vivienda,lambda Pp:back(Pp('Titular'),'← Atrás'),lambda Pp:btn(Pp('Legal'),'Guardar mis viviendas ✓',' data-vsave'),lambda Pp:btn(Pp('Legal'),'Guardar mis viviendas ✓',' data-vsave',full=True),wide=True)
 # ---------- 4 · Parte de viajeros ----------
 def ses_fields(k):
     return (field(k+'sa','Código de arrendador','Ej.: 0000012345',hint='Te lo dio SES al darte de alta como arrendador.')
@@ -499,7 +501,7 @@ def panel_nuevo(mob_):
       '<div style="font-size: 12px; color: #C9CBEA">Prueba gratis · quedan 14 días · sin tarjeta</div><h1 style="margin: 0; font-size: %dpx; font-weight: 800">Tu panel, Katia</h1>'
       '<div style="font-size: 14px; color: #DCE3FF">Aquí verás tus llegadas, tus huéspedes y lo que falta. Ahora, lo primero:</div></section>')%(22 if mob_ else 26)
     T=[('legal','🛡️','Conectar el parte de viajeros','Sin él no se puede enviar el check-in a tus huéspedes','3 min',PP('Legal'),'Conectar'),
-       ('viv','🏠','Añadir tus viviendas','Solo nombre y dirección, una a una','30 s cada una',PP('Vivienda'),'Añadir'),
+       ('viv','🏠','Añadir tus viviendas','Todas a la vez: solo nombre y dirección','30 s cada una',PP('Vivienda'),'Añadir'),
        ('res','📅','Recibir tu primera reserva','Conecta tu calendario o crea una a mano','2 min',PP('Reservas'),'Empezar')]
     rows=''.join('<div data-task="%s" style="display: flex; gap: 12px; align-items: center; padding: 12px 0; border-top: 1px solid #F0F0F7"><span style="font-size: 20px">%s</span><div style="flex-grow: 1; min-width: 0"><div style="font-size: 15px; font-weight: 700">%s</div><div style="font-size: 13px; color: #55557F">%s · ⏱ %s</div></div><a href="%s" style="flex-shrink: 0; padding: 9px 14px; border-radius: 10px; background: #385BF8; color: #FFFFFF; font-size: 14px; font-weight: 700; text-decoration: none">%s</a></div>'%t for t in T)
     tasks=card('<div style="display: flex; justify-content: space-between; align-items: baseline"><h2 style="margin: 0; font-size: 18px; font-weight: 800">Lo que te queda</h2><span data-tasks-n style="font-size: 13px; color: #55557F">3 tareas</span></div>'+rows+'<div data-tasks-done hidden style="font-size: 14px; color: #0F7B4F; font-weight: 700">✓ Todo configurado. ¡A recibir huéspedes!</div>',18,' class="stepin"')

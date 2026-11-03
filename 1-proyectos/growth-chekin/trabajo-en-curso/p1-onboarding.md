@@ -592,3 +592,8 @@ Mismos enlaces (móvil y portátil). Principio de Alex: entrar y terminarlo todo
     - si falta la Guardia Civil;
     - qué datos pide cada autoridad;
     - la regla de contraseña.
+- **Viviendas en una lista (03/11, versión 27), por decisión de Alex.**
+  - Todas a la vez: una fila por vivienda, con nombre y dirección (autocompletado), y «+ Añadir otra vivienda».
+  - Un botón, «Guardar mis N viviendas ✓», y un único «¡Bien hecho, Katia!» con todas listadas (nombre y dirección).
+  - Ya no hay pantalla de éxito por vivienda ni opción «Termino aquí».
+  - «¡Todo listo!» y el Inicio cuentan las viviendas guardadas.
