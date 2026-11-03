@@ -512,4 +512,15 @@ Mismos enlaces (móvil y portátil). Principio de Alex: entrar y terminarlo todo
   - **«¡Todo listo!» fiel al camino:** reservas desde el PMS, el calendario o a mano; viviendas hechas o pendientes; parte conectado o «pendiente: te lo recordamos» (en ámbar).
   - **AA:** gris secundario #55557F, textos de 11–12 px subidos a 12–13 px, interruptores de 52×30 y foco visible.
 - **Copia de seguridad del código** en `2-herramientas/onboarding-prototipo/`: la carpeta temporal perdió los logos el fin de semana; se recuperaron de la última versión compilada.
+- **Oleada 2 aplicada (03/11, mismos enlaces; ahora 20 pantallas):**
+  - **Parte de viajeros, una autoridad cada vez y sin bloquear.** Cada autoridad va plegada con dos opciones:
+    - «No los tengo: ayúdame»: vídeo, un experto o «recuérdamelo»; en móvil, también «mándamelo al ordenador»;
+    - «Tengo los datos»: el formulario.
+    - Al conectar, «✓ Conectado». Lo pendiente pasa a ser una tarea en el Inicio.
+    - Verificación de identidad y tasa turística, una vez para todas; la tasa, apagada por defecto.
+  - **Calendario de Airbnb o Booking:** pantalla nueva para pegar el enlace de cada anuncio, con dónde encontrarlo, «✓ 3 reservas encontradas» y «+ Añadir otro anuncio».
+  - **Reservas ordenadas por dispositivo:** en móvil, el calendario primero y el PMS al final. «A mano» ya no compite en rapidez («para probar sin conectar nada»).
+  - **Estados de error, con un botón de demo:** código incorrecto, permiso del PMS rechazado, API key no válida, dirección no encontrada y datos de la autoridad incorrectos.
+  - **Inicio honesto para la cuenta nueva:** «Lo que te queda», según lo hecho en el alta; «Aún no tienes reservas»; ventas extra listas. Debajo, el enlace «Así se verá tu Inicio con reservas». A él llegan «¡Todo listo!» y «Ahora no» de la bienvenida; quien ya tenía cuenta va al Inicio con reservas.
+  - Las rutas de menú de Airbnb y Booking para el enlace del calendario están [POR COMPROBAR].
 

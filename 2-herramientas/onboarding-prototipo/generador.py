@@ -23,6 +23,9 @@ SH='0 1px 2px rgba(25, 25, 75, 0.06), 0 0 0 1px #ECECF5'
 SHM='0 0 0 2px #385BF8, 0 12px 24px rgba(56, 91, 248, 0.14)'
 def ok(t): return '<div class="stepin" style="display: flex; gap: 10px; align-items: center; padding: 10px 14px; border-radius: 12px; background: #E8F6EF; color: #0F5C3B; font-size: 14px; line-height: 1.4; font-weight: 600"><span aria-hidden="true">✓</span><span>%s</span></div>'%t
 def btn(h,t,extra='',full=False): return '<a href="%s"%s class="pbtn" style="display: inline-block; %s height: 50px; line-height: 50px; padding: 0 26px; border-radius: 12px; background: #385BF8; color: #FFFFFF; font-size: 16px; font-weight: 700; text-align: center; text-decoration: none; box-shadow: 0 6px 16px rgba(56, 91, 248, 0.28)">%s</a>'%(h,extra,'width: 100%; box-sizing: border-box;' if full else '',t)
+def errbox(msg,demo='Demo: ver el error'):
+    return ('<div data-err hidden role="alert" style="display: flex; gap: 10px; align-items: flex-start; padding: 10px 12px; border-radius: 12px; background: #FDECEC; color: #8A1F1F; font-size: 14px; line-height: 1.45; font-weight: 600"><span aria-hidden="true">!</span><span>%s</span></div>'
+      '<button type="button" data-demo-err style="align-self: flex-start; padding: 6px 2px; border: 0; background: none; color: #55557F; font-size: 12px; font-weight: 600; font-family: inherit; cursor: pointer; text-decoration: underline">%s</button>')%(msg,demo)
 def back(h,t='← Atrás',extra=''): return '<a href="%s"%s style="display: inline-block; height: 50px; line-height: 46px; padding: 0 22px; box-sizing: border-box; border-radius: 12px; border: 2px solid #C9CBEA; background: #FFFFFF; color: #19194B; font-size: 15px; font-weight: 700; text-decoration: none">%s</a>'%(h,extra,t)
 def link(h,t,extra=''): return '<a href="%s"%s style="display: inline-block; padding: 12px 4px; font-size: 14px; font-weight: 600; color: #385BF8; text-decoration: none">%s</a>'%(h,extra,t)
 def sw(on=True,label=''): return '<button type="button" role="switch" class="sw" aria-checked="%s" aria-label="%s"><span class="k"></span></button>'%('true' if on else 'false',label)
@@ -97,7 +100,7 @@ def bienv(Pp,mob_):
     return (H('👋','¡Hola, Katia! Empezamos','Lo dejamos todo configurado de una vez. En unos 10 minutos, tus huéspedes ya pueden hacer el check-in.',mob_)
       +card('<div style="display: flex; justify-content: space-between; align-items: baseline"><div style="font-size: 13px; font-weight: 700; letter-spacing: 0.06em; color: #385BF8">LO QUE VIENE</div><div style="font-size: 13px; color: #6B6B95">≈ 10 min en total</div></div>'+rows,18,' class="stepin"')
       +'<div style="display: flex; flex-wrap: wrap; gap: 8px; font-size: 13px; color: #6B6B95"><span>🔒 Tus datos están protegidos. Cumplimos el RGPD.</span><span>💾 Se guarda solo: puedes seguir luego.</span></div>')
-both('Bienvenida','Bienvenida',0,CH[:2],bienv,lambda Pp:link(Pp('Panel'),'Ahora no'),lambda Pp:btn(Pp('Reservas'),'Empezar →'),lambda Pp:btn(Pp('Reservas'),'Empezar →',full=True),lambda Pp:link(Pp('Panel'),'Ahora no'))
+both('Bienvenida','Bienvenida',0,CH[:2],bienv,lambda Pp:link(Pp('PanelNuevo'),'Ahora no'),lambda Pp:btn(Pp('Reservas'),'Empezar →'),lambda Pp:btn(Pp('Reservas'),'Empezar →',full=True),lambda Pp:link(Pp('Panel'),'Ahora no'))
 # ---------- 1 · Reservas ----------
 def opt(h,ic,t,d,tm,main=False,path='man',badge=''):
     return ('<a href="%s" data-path="%s" class="stepin" style="display: flex; gap: 14px; align-items: center; padding: 16px; border-radius: 16px; background: #FFFFFF; box-shadow: %s; color: #19194B; text-decoration: none">'
@@ -106,10 +109,11 @@ def opt(h,ic,t,d,tm,main=False,path='man',badge=''):
       '<div style="flex-shrink: 0; font-size: 12px; font-weight: 700; color: #0F7B4F; white-space: nowrap">⏱ %s</div></a>')%(h,path,SHM if main else SH,ic,t,badge,d,tm)
 def reservas(Pp,mob_):
     fast=' <span style="margin-left: 6px; padding: 3px 7px; border-radius: 999px; background: #E8F6EF; color: #0F5C3B; font-size: 11px; font-weight: 800; vertical-align: 2px">EL MÁS RÁPIDO</span>'
-    o=[opt(Pp('ElegirPms'),'🔗','Mi PMS o channel manager','Traemos tus viviendas y reservas: casi todo se rellena solo.','2 min',not mob_,'pms',fast),
-       opt(Pp('Paises'),'📅','Calendario de Airbnb o Booking','Pegas el enlace de cada anuncio y las reservas entran solas.','2 min',mob_,'cal'),
-       opt(Pp('Paises'),'✍️','Las llevo a mano','Creas tus reservas tú. Lo más rápido para probar.','1 min',False,'man')]
-    return ok('¡Empezamos, Katia! Primero, lo que más tiempo te ahorra.')+H('','¿Cómo recibes tus reservas?','Elige una. Podrás cambiarla cuando quieras.',mob_)+''.join(o)+('<div style="font-size: 13px; color: #6B6B95">¿Usas PMS? Desde el ordenador se conecta mejor: te mandamos el enlace.</div>' if mob_ else '')
+    o_pms=opt(Pp('ElegirPms'),'🔗','Mi PMS o channel manager','Traemos tus viviendas y reservas: casi todo se rellena solo.','2 min',not mob_,'pms','' if mob_ else fast)
+    o_cal=opt(Pp('Calendario'),'📅','Calendario de Airbnb o Booking','Pegas el enlace de cada anuncio y las reservas entran solas.','2 min',mob_,'cal',fast if mob_ else '')
+    o_man=opt(Pp('Paises'),'✍️','Las llevo a mano','Para probar Chekin sin conectar nada: creas tú cada reserva.','1 min',False,'man')
+    o=[o_cal,o_man,o_pms] if mob_ else [o_pms,o_cal,o_man]
+    return ok('¡Empezamos, Katia! Primero, lo que más tiempo te ahorra.')+H('','¿Cómo recibes tus reservas?','Elige una. Podrás cambiarla cuando quieras.',mob_)+''.join(o)+('<div style="font-size: 13px; color: #6B6B95">El PMS se conecta mejor desde el ordenador: si lo eliges, te mandamos el enlace.</div>' if mob_ else '')
 both('Reservas','Reservas',1,CH[:2],reservas,lambda Pp:'',lambda Pp:link(Pp('Paises'),'Ahora no'),lambda Pp:link(Pp('Paises'),'Ahora no'))
 # ---------- 1a · Elegir PMS ----------
 PMS=['Guesty','Hostaway','Lodgify','Smoobu','Avantio','Cloudbeds','Octorate','Otro']
@@ -124,7 +128,7 @@ def conectar(Pp,mob_):
     c=card('<div style="font-size: 15px; font-weight: 700">Autoriza en <span class="pmsname">Cloudbeds</span></div><div style="font-size: 14px; line-height: 1.5; color: #6B6B95">Te llevamos a su web: entras con tu usuario de siempre y pulsas «Permitir». Vuelves aquí solo.</div>'
       '<div style="font-size: 13px; color: #0F5C3B">🔒 Nunca vemos tu contraseña.</div>'
       '<button type="button" data-oauth style="height: 50px; border: 0; border-radius: 12px; background: #385BF8; color: #FFFFFF; font-size: 16px; font-weight: 700; font-family: inherit; cursor: pointer">Conectar con <span class="pmsname">Cloudbeds</span> ↗</button>'
-      '<div data-oauth-ok hidden style="height: 50px; line-height: 50px; border-radius: 12px; background: #0F7B4F; color: #FFFFFF; font-size: 16px; font-weight: 700; text-align: center">✓ <span class="pmsname">Cloudbeds</span> conectado</div>',18,' class="stepin"')
+      '<div data-oauth-ok hidden style="height: 50px; line-height: 50px; border-radius: 12px; background: #0F7B4F; color: #FFFFFF; font-size: 16px; font-weight: 700; text-align: center">✓ <span class="pmsname">Cloudbeds</span> conectado</div>'+errbox('No se ha conectado: en <span class="pmsname">Cloudbeds</span> se pulsó «Cancelar». Vuelve a intentarlo o conéctalo con su API key.','Demo: permiso rechazado'),18,' class="stepin" data-errbox')
     v=('<div role="img" aria-label="Vídeo" class="stepin" style="height: 120px; border-radius: 16px; background: linear-gradient(135deg, #19194B, #2E3B9E); color: #FFFFFF; display: flex; align-items: center; gap: 14px; padding: 0 20px">'
        '<span style="width: 44px; height: 44px; flex-shrink: 0; border-radius: 999px; background: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="#385BF8"></path></svg></span>'
        '<span><b>Cómo conectar <span class="pmsname">Cloudbeds</span></b><br><span style="font-size: 13px; color: #C9CBEA">Vídeo de 2 min</span></span></div>')
@@ -137,8 +141,23 @@ def apik(Pp,mob_):
     return (H('🔑','Conéctalo con su API key','Para los PMS sin botón de autorizar. Son 3 pasos.',mob_)
       +card('<ol style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; font-size: 15px; line-height: 1.45"><li>En tu PMS, abre <b>Ajustes</b>.</li><li>Busca <b>API</b> o <b>Integraciones</b> y copia la clave.</li><li>Pégala aquí.</li></ol>',16,' class="stepin"')
       +'<div class="stepin" style="padding: 12px 14px; border-radius: 12px; background: #EFEFFF; font-size: 14px; line-height: 1.5"><b>¿Qué es una API key?</b> Una clave que tu PMS le da a Chekin para leer tus reservas. Solo copiar y pegar.</div>'
-      +field('%sak'%('m' if mob_ else 'p'),'Tu API key','Pégala aquí'))
+      +'<div data-errbox style="display: flex; flex-direction: column; gap: 8px">'+field('%sak'%('m' if mob_ else 'p'),'Tu API key','Pégala aquí')+errbox('Esta clave no funciona. Comprueba que la copiaste entera, sin espacios, o pide ayuda a un experto.','Demo: clave no válida')+'</div>')
 both('Apikey','API key',1,CH[:2]+['Con PMS'],apik,lambda Pp:back(Pp('Conectar'),'← Atrás'),lambda Pp:btn(Pp('Cartera'),'Conectar y seguir →'),lambda Pp:btn(Pp('Cartera'),'Conectar y seguir →',full=True))
+
+# ---------- 1d · Calendario de Airbnb o Booking ----------
+def calendario(Pp,mob_):
+    k='m' if mob_ else 'p'
+    row=lambda i,ph:('<div data-icalrow style="display: flex; flex-direction: column; gap: 6px; padding: 14px; border-radius: 14px; background: #FFFFFF; box-shadow: %s"><label for="%sic%d" style="font-size: 14px; font-weight: 600">Anuncio %d · enlace del calendario</label>'
+      '<input id="%sic%d" data-ical placeholder="%s" style="height: 46px; border-radius: 12px; border: 1.5px solid #DEDEEB; padding: 0 14px; font-size: 15px; font-family: inherit; color: #19194B; background: #FFFFFF">'
+      '<div data-ical-ok hidden style="font-size: 13px; color: #0F7B4F; font-weight: 700">✓ Calendario conectado: 3 reservas encontradas</div></div>')%(SH,k,i,i,k,i,ph)
+    help_=('<div class="stepin" style="display: grid; grid-template-columns: %s; gap: 10px">'%('1fr' if mob_ else '1fr 1fr')
+      +card('<div style="font-size: 14px; font-weight: 700">Dónde está en Airbnb</div><div style="font-size: 13px; line-height: 1.5; color: #55557F">Calendario › Disponibilidad › Sincronizar calendarios › Exportar calendario. Copia el enlace.</div>',14)
+      +card('<div style="font-size: 14px; font-weight: 700">Dónde está en Booking</div><div style="font-size: 13px; line-height: 1.5; color: #55557F">Tarifas y disponibilidad › Sincronizar calendarios › Exportar. Copia el enlace.</div>',14)+'</div>')
+    return (ok('¡Buena elección! Las reservas entrarán solas.')+H('📅','Pega el enlace del calendario de cada anuncio','Uno por anuncio de Airbnb o Booking. Al pegarlo, te enseñamos las reservas que encontramos.',mob_)
+      +help_+row(1,'https://www.airbnb.es/calendar/ical/…')+row(2,'https://admin.booking.com/…/ical…')
+      +'<button type="button" data-addical style="align-self: flex-start; padding: 10px 14px; border: 1.5px dashed #385BF8; border-radius: 12px; background: transparent; color: #385BF8; font-size: 14px; font-weight: 700; font-family: inherit; cursor: pointer">+ Añadir otro anuncio</button>'
+      +'<div style="font-size: 13px; color: #55557F">Si conectas el calendario, no uses a la vez el enlace del chat de Airbnb: se duplicarían las reservas.</div>')
+both('Calendario','Calendario',1,CH[:2]+['Calendario'],calendario,lambda Pp:back(Pp('Reservas'),'← Atrás'),lambda Pp:link(Pp('Paises'),'Ahora no')+btn(Pp('Paises'),'Continuar →'),lambda Pp:btn(Pp('Paises'),'Continuar →',full=True),lambda Pp:link(Pp('Paises'),'Ahora no'))
 # ---------- 2a · Leído del PMS ----------
 GR=[('🇪🇸','Madrid','España · SES.Hospedajes',2,50),(CAT,'Barcelona','Cataluña · Mossos d\'Esquadra',1,25),('🇵🇹','Lisboa','Portugal · SIBA',1,25)]
 def cartera(Pp,mob_):
@@ -177,12 +196,12 @@ both('Titular','Titular',3,CH,titular,lambda Pp:back(Pp('Paises'),'← Atrás'),
 # ---------- 3b · Vivienda una a una ----------
 def vivienda(Pp,mob_):
     k='m' if mob_ else 'p'
-    addr=('<div data-addr style="display: flex; flex-direction: column; gap: 6px"><label for="%sva" style="font-size: 14px; font-weight: 600">Dirección</label>'
+    addr=('<div data-addr data-errbox style="display: flex; flex-direction: column; gap: 6px"><label for="%sva" style="font-size: 14px; font-weight: 600">Dirección</label>'
       '<input id="%sva" data-addr-input placeholder="Empieza a escribir: calle y número" autocomplete="off" style="height: 46px; border-radius: 12px; border: 1.5px solid #DEDEEB; padding: 0 14px; font-size: 16px; font-family: inherit; background: #FFFFFF">')%(k,k)+(''
       '<div data-addr-list hidden style="border-radius: 12px; background: #FFFFFF; box-shadow: 0 12px 28px rgba(25, 25, 75, 0.14); overflow: hidden">'
       +''.join('<button type="button" data-addr-pick="%s" style="display: block; width: 100%%; padding: 12px 14px; border: 0; border-bottom: 1px solid #F0F0F7; background: #FFFFFF; text-align: left; font-size: 14px; font-family: inherit; cursor: pointer">📍 %s</button>'%(a,a) for a in ['Calle de San Juan, 12, 28012 Madrid','Calle de San Juan, 12, 46001 Valencia','Calle de San Juan de la Cruz, 12, Málaga'])
       +'<div style="padding: 6px 14px; font-size: 11px; color: #9696B9; text-align: right">con Google</div></div>'
-      '<div data-addr-ok hidden style="font-size: 13px; color: #0F7B4F; font-weight: 700">✓ Dirección encontrada: ciudad, código postal y provincia, rellenos</div></div>')
+      '<div data-addr-ok hidden style="font-size: 13px; color: #0F7B4F; font-weight: 700">✓ Dirección encontrada: ciudad, código postal y provincia, rellenos</div>'+errbox('No encontramos esa dirección. Revisa la calle y el número, o escríbela a mano y la comprobamos después.','Demo: dirección no encontrada')+'</div>')
     form=card('<div style="display: flex; justify-content: space-between; align-items: center"><div style="font-size: 13px; font-weight: 800; letter-spacing: 0.06em; color: #385BF8" data-vlabel>VIVIENDA 1 DE 4</div><div style="font-size: 12px; color: #6B6B95">⏱ ≈ 30 s</div></div>'
       +field(k+'vn','Nombre de la vivienda','Casa San Juan',extra=' data-vfield')+addr
 ,18,' class="stepin"')
@@ -206,26 +225,30 @@ def ses_fields(k):
 def gen_fields(k,a,hint=''): return '<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px">'+field(k+'gu','Usuario de '+a,'Tu usuario')+field(k+'gp','Contraseña','••••••••','password')+'</div>'+(('<div style="font-size: 12px; line-height: 1.45; color: #6B6B95">%s</div>'%hint) if hint else '')
 def legal(Pp,mob_):
     k='m' if mob_ else 'p'
-    help_='<div style="display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 13px"><a href="#" style="font-weight: 700">▶ Cómo conseguirlos (3 min)</a><a href="#" style="font-weight: 700">Un experto lo hace contigo</a><a href="#" data-later style="font-weight: 700">No los tengo: recuérdamelo</a></div>'
-    def grp(flag,zona,n,a,fields):
-        extras=('<div style="display: grid; grid-template-columns: %s; gap: 10px; padding-top: 10px; border-top: 1px solid #F0F0F7">'%('1fr' if mob_ else '1fr 1fr')
-          +'<div style="display: flex; justify-content: space-between; align-items: center; gap: 10px"><div><div style="font-size: 14px; font-weight: 700">Verificación de identidad</div><div style="font-size: 12px; color: #6B6B95">Documento + selfie de cada huésped</div></div>'+sw(True,'Verificación de identidad')+'</div>'
-          +'<div style="display: flex; justify-content: space-between; align-items: center; gap: 10px"><div><div style="font-size: 14px; font-weight: 700">Tasa turística</div><div style="font-size: 12px; color: #6B6B95">La calculamos y la cobramos en el check-in</div></div>'+sw(True,'Tasa turística')+'</div></div>')
-        return card('<div style="display: flex; gap: 12px; align-items: center"><div style="font-size: 22px; line-height: 1">%s</div><div style="flex-grow: 1"><div style="font-size: 16px; font-weight: 700">%s</div><div style="font-size: 13px; color: #6B6B95">%s · el parte va a <b>%s</b></div></div></div>'%(flag,zona,n,a)
-          +fields+'<button type="button" data-connect style="height: 46px; border: 0; border-radius: 12px; background: #385BF8; color: #FFFFFF; font-size: 15px; font-weight: 700; font-family: inherit; cursor: pointer">Conectar %s</button>'%a+help_+extras,18,' class="stepin"')
+    def grp(n_,flag,zona,nv,a,fields,errmsg):
+        fid='%slf%d'%(k,n_); hid='%slh%d'%(k,n_)
+        btn2=('<div style="display: flex; flex-wrap: wrap; gap: 8px">'
+          '<button type="button" data-acc="%s" style="flex: 1; min-width: 150px; height: 46px; border: 0; border-radius: 12px; background: #EFEFFF; color: #19194B; font-size: 14px; font-weight: 700; font-family: inherit; cursor: pointer">No los tengo: ayúdame</button>'
+          '<button type="button" data-acc="%s" style="flex: 1; min-width: 150px; height: 46px; border: 2px solid #C9CBEA; border-radius: 12px; background: #FFFFFF; color: #19194B; font-size: 14px; font-weight: 700; font-family: inherit; cursor: pointer">Tengo los datos</button></div>')%(hid,fid)
+        helpp=('<div id="%s" data-accp hidden style="display: flex; flex-direction: column; gap: 8px; padding: 12px; border-radius: 12px; background: #F4F6FF">'
+          '<div style="font-size: 14px; font-weight: 700">Sin prisa: sigue con el alta y lo dejamos como tarea en tu Inicio.</div>'
+          '<a href="#" style="font-size: 14px; font-weight: 700; text-decoration: none">▶ Cómo conseguirlos, paso a paso (vídeo)</a>'
+          '<a href="#" style="font-size: 14px; font-weight: 700; text-decoration: none">Un experto en Chekin lo hace contigo</a>'
+          '%s<button type="button" data-later style="align-self: flex-start; padding: 8px 0; border: 0; background: none; color: #385BF8; font-size: 14px; font-weight: 700; font-family: inherit; cursor: pointer">Recuérdamelo mañana</button></div>')%(hid,'<a href="#" style="font-size: 14px; font-weight: 700; text-decoration: none">📧 Mándamelo al ordenador</a>' if mob_ else '')
+        formp=('<div id="%s" data-accp data-errbox hidden style="display: flex; flex-direction: column; gap: 10px">'%fid+fields+errbox(errmsg,'Demo: datos incorrectos')
+          +'<button type="button" data-connect style="height: 48px; border: 0; border-radius: 12px; background: #385BF8; color: #FFFFFF; font-size: 15px; font-weight: 700; font-family: inherit; cursor: pointer">Conectar %s</button></div>'%a)
+        return card('<div style="display: flex; gap: 12px; align-items: center"><div style="font-size: 22px; line-height: 1">%s</div><div style="flex-grow: 1"><div style="font-size: 16px; font-weight: 700">%s</div><div style="font-size: 13px; color: #6B6B95">%s · el parte va a <b>%s</b></div></div><span data-lstat style="padding: 3px 8px; border-radius: 999px; background: #FFF4E5; color: #6B3E00; font-size: 12px; font-weight: 700; white-space: nowrap">Pendiente</span></div>'%(flag,zona,nv,a)
+          +btn2+helpp+formp,16,' class="stepin"')
+    extras=card('<div style="font-size: 15px; font-weight: 700">Para todas tus viviendas</div>'
+      +'<div style="display: flex; justify-content: space-between; align-items: center; gap: 10px"><div><div style="font-size: 14px; font-weight: 700">Verificación de identidad</div><div style="font-size: 12px; color: #6B6B95">Documento + selfie de cada huésped</div></div>'+sw(True,'Verificación de identidad')+'</div>'
+      +'<div style="display: flex; justify-content: space-between; align-items: center; gap: 10px"><div><div style="font-size: 14px; font-weight: 700">Tasa turística</div><div style="font-size: 12px; color: #6B6B95">Solo donde tu municipio la cobra</div></div>'+sw(False,'Tasa turística')+'</div>',16,' class="stepin"')
     return (ok('¡Vamos con el paso legal!')
-      +H('🛡️','Conecta tu parte de viajeros','Con esto, el parte de cada huésped sale solo y en plazo. Sin él no puedes enviar el check-in. Se conecta una vez por autoridad.',mob_)
-      +grp('🇪🇸','Madrid','2 viviendas','SES.Hospedajes',ses_fields(k))
-      +grp(CAT,'Barcelona','1 vivienda',"Mossos d'Esquadra",gen_fields(k+'m',"Mossos",'Los del establecimiento: te los dan los Mossos al dar de alta la vivienda en su portal de registro de viajeros.'))
-      +grp('🇵🇹','Lisboa','1 vivienda','SIBA (AIMA)',gen_fields(k+'s','SIBA','Los de acceso al SIBA de tu alojamiento.'))
-      +card('<div style="font-size: 15px; font-weight: 700">¿Qué te pedimos según dónde esté tu vivienda?</div>'
-        +''.join('<div style="display: flex; gap: 10px; align-items: flex-start; padding: 8px 0; border-top: 1px solid #F0F0F7"><div style="font-size: 18px; line-height: 1.2; width: 26px">%s</div><div style="font-size: 13px; line-height: 1.5"><b>%s</b> · <span style="color: #6B6B95">%s</span></div></div>'%r for r in [
-          ('🇪🇸','SES.Hospedajes (resto de España, Navarra incluida)','código de arrendador, usuario y contraseña del servicio web (no los del portal) y, en cada vivienda, su código de establecimiento.'),
-          (CAT,"Mossos d'Esquadra (Cataluña)",'usuario y contraseña del establecimiento.'),
-          (EUS,'Ertzaintza (País Vasco)','usuario y contraseña que da la Ertzaintza al aprobar el alta del establecimiento.'),
-          ('🇮🇹','Alloggiati Web (Italia)','usuario y contraseña de la estructura.'),
-          ('🇵🇹','SIBA (Portugal)','usuario y contraseña de acceso.')])
-        +'<div style="font-size: 12px; color: #6B6B95">Cl@ve o el certificado digital solo hacen falta para darte de alta; a nosotros no nos los das.</div>',16,' class="stepin"'))
+      +H('🛡️','Conecta tu parte de viajeros','Es lo que permite enviar el check-in a tus huéspedes. Ve de una autoridad en una: si no tienes los datos ahora, sigue y te ayudamos después.',mob_)
+      +grp(1,'🇪🇸','Madrid','2 viviendas','SES.Hospedajes',ses_fields(k),'SES no acepta estos datos. Revisa el usuario del servicio web (termina en WS) y su contraseña: no son los del portal.')
+      +grp(2,CAT,'Barcelona','1 vivienda',"Mossos d'Esquadra",gen_fields(k+'m',"Mossos",'Los del establecimiento: te los dan los Mossos al dar de alta la vivienda.'),'Los Mossos no aceptan estos datos. Revisa el usuario y la contraseña del establecimiento.')
+      +grp(3,'🇵🇹','Lisboa','1 vivienda','SIBA (AIMA)',gen_fields(k+'s','SIBA','Los de acceso al SIBA de tu alojamiento.'),'El SIBA no acepta estos datos. Revisa el usuario y la contraseña.')
+      +extras
+      +'<div style="font-size: 13px; color: #55557F">Lo que dejes pendiente aparece como tarea en tu Inicio. Cl@ve o el certificado digital solo sirven para darte de alta: a nosotros no nos los das.</div>')
 both('Legal','Parte de viajeros',4,CH+['Titular ✓'],legal,lambda Pp:link(Pp('Vivienda'),'← Atrás',NX%(Pp('Titular').replace('.dc.html',''),Pp('Vivienda').replace('.dc.html',''))),lambda Pp:btn(Pp('Proteccion'),'Continuar →'),lambda Pp:btn(Pp('Proteccion'),'Continuar →',full=True),wide=True)
 # ---------- 5 · Protección ----------
 def prot(Pp,mob_):
@@ -281,8 +304,8 @@ def listo(Pp,mob_):
       '<div class="crea-mark done" style="width: 88px; height: 88px; border-radius: 24px; background: #19194B; display: flex; align-items: center; justify-content: center"><svg class="crea-check" width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></div>'
       '<h1 style="margin: 0; font-size: %dpx; font-weight: 800">¡Todo listo, Katia!</h1><p style="margin: 0; font-size: 15px; color: #6B6B95">Esto ya funciona solo:</p></div>'%(24 if mob_ else 28)
       +card(lst,20)+'<div class="ri" style="font-size: 14px; color: #6B6B95; text-align: center">Ahora solo quedan tus reservas: en cada una eliges si se envía el check-in y cuándo.</div>')
-W(M('Listo'),mob('¡Todo listo!',0,listo(M,True),'<span class="ri-btn" style="width: 100%"><a href="Panel.dc.html" style="display: block; height: 58px; line-height: 58px; border-radius: 16px; background: #385BF8; color: #FFFFFF; font-size: 18px; font-weight: 800; text-align: center; text-decoration: none; box-shadow: 0 12px 28px rgba(56, 91, 248, 0.35)">Entrar en mi panel →</a></span>'))
-W(P('Listo'),lap('¡Todo listo!',8,CH+['Todo ✓'],listo(P,False)+'<div class="ri-btn" style="display: flex; justify-content: center; padding-top: 6px"><a href="Portatil-Panel.dc.html" style="display: inline-block; height: 60px; line-height: 60px; padding: 0 44px; border-radius: 16px; background: #385BF8; color: #FFFFFF; font-size: 18px; font-weight: 800; text-decoration: none; box-shadow: 0 12px 28px rgba(56, 91, 248, 0.35)">Entrar en mi panel →</a></div>','','',center=True))
+W(M('Listo'),mob('¡Todo listo!',0,listo(M,True),'<span class="ri-btn" style="width: 100%"><a href="PanelNuevo.dc.html" style="display: block; height: 58px; line-height: 58px; border-radius: 16px; background: #385BF8; color: #FFFFFF; font-size: 18px; font-weight: 800; text-align: center; text-decoration: none; box-shadow: 0 12px 28px rgba(56, 91, 248, 0.35)">Entrar en mi panel →</a></span>'))
+W(P('Listo'),lap('¡Todo listo!',8,CH+['Todo ✓'],listo(P,False)+'<div class="ri-btn" style="display: flex; justify-content: center; padding-top: 6px"><a href="Portatil-PanelNuevo.dc.html" style="display: inline-block; height: 60px; line-height: 60px; padding: 0 44px; border-radius: 16px; background: #385BF8; color: #FFFFFF; font-size: 18px; font-weight: 800; text-decoration: none; box-shadow: 0 12px 28px rgba(56, 91, 248, 0.35)">Entrar en mi panel →</a></div>','','',center=True))
 # ---------- Inicio ----------
 PLAN_EJ=39
 def panel(mob_):
@@ -358,8 +381,8 @@ def entrar_form(P,k):
       +'<div style="display: flex; flex-direction: column; gap: 6px">'+lab(k+'ap','Apellidos')+'<input id="%sap" placeholder="Ruiz" style="%s"></div></div>'%(k,INP)
       +'<button type="button" data-set="codigo" class="stepin" style="%s">Crear mi cuenta</button>'%PB
       +'<button type="button" data-set="inicio" style="border: 0; background: none; color: #385BF8; font-size: 14px; font-weight: 700; font-family: inherit; cursor: pointer; padding: 8px">Usar otro email</button></div>')
-    codigo=('<div data-st="codigo" hidden style="display: flex; flex-direction: column; gap: 12px">'+ok('Te hemos enviado un código de 6 dígitos a katia@email.com')
-      +'<div class="stepin" style="display: flex; flex-direction: column; gap: 8px">'+lab(k+'c1','Código de 6 dígitos')+otp('negocio',k+'c1')+'<div style="font-size: 13px; color: #6B6B95">Al escribir el último dígito, entras. ¿No te ha llegado? <a href="#" style="font-weight: 700">Te lo enviamos otra vez</a></div></div></div>')
+    codigo=('<div data-st="codigo" hidden data-errbox style="display: flex; flex-direction: column; gap: 12px">'+ok('Te hemos enviado un código de 6 dígitos a katia@email.com')
+      +'<div class="stepin" style="display: flex; flex-direction: column; gap: 8px">'+lab(k+'c1','Código de 6 dígitos')+otp('negocio',k+'c1')+'<div style="font-size: 13px; color: #6B6B95">Al escribir el último dígito, entras. ¿No te ha llegado? <a href="#" style="font-weight: 700">Te lo enviamos otra vez</a></div>'+errbox('Ese código no es correcto o ha caducado. Te hemos enviado uno nuevo.','Demo: código incorrecto')+'</div></div>')
     login=('<div data-st="login" hidden style="display: flex; flex-direction: column; gap: 12px">'+ok('¡Hola de nuevo, Katia! Te hemos enviado un código a katia@email.com')
       +'<div class="stepin" style="display: flex; flex-direction: column; gap: 8px">'+lab(k+'l1','Código de acceso')+otp('panel',k+'l1')+'<div style="font-size: 13px; color: #6B6B95">Al escribir el último dígito vuelves a tu panel, donde lo dejaste. Sin contraseñas.</div></div></div>')
     return inicio+datos+codigo+login
@@ -407,3 +430,25 @@ def appnav():
       +'<nav aria-label="Menú" style="display: flex; flex-direction: column; gap: 4px">'+li+'</nav><div style="margin-top: auto; font-size: 13px; color: #C9CBEA">Plan y facturación</div></aside>')
 W(P('Panel'),HEAD.replace('Vivienda 2','Inicio · portátil')+'<div class="fx" style="position: relative; width: 1440px; height: 900px; box-sizing: border-box; display: flex; background: #F7F7FC; %s">%s<main style="flex-grow: 1; min-width: 0; height: 900px; overflow-y: auto; box-sizing: border-box; padding: 28px 56px"><div style="max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px">%s</div></main></div>\n'%(FONT,appnav(),panel(False))+FOOT_p)
 print('ok')
+
+# ---------- Inicio de una cuenta nueva (honesto) ----------
+def panel_nuevo(mob_):
+    def chip(t,c,bg): return '<span style="display: inline-block; padding: 3px 8px; border-radius: 999px; background: %s; color: %s; font-size: 12px; font-weight: 700; white-space: nowrap">%s</span>'%(bg,c,t)
+    hero=('<section class="stepin" style="display: flex; flex-direction: column; gap: 6px; padding: 20px 22px; border-radius: 20px; background: linear-gradient(135deg, #19194B, #2E3B9E); color: #FFFFFF">'
+      '<div style="font-size: 12px; color: #C9CBEA">Prueba gratis · quedan 14 días · sin tarjeta</div><h1 style="margin: 0; font-size: %dpx; font-weight: 800">Tu panel, Katia</h1>'
+      '<div style="font-size: 14px; color: #DCE3FF">Aquí verás tus llegadas, tus huéspedes y lo que falta. Ahora, lo primero:</div></section>')%(22 if mob_ else 26)
+    T=[('legal','🛡️','Conectar el parte de viajeros','Sin él no se puede enviar el check-in a tus huéspedes','3 min',PP('Legal'),'Conectar'),
+       ('viv','🏠','Añadir tus viviendas','Solo nombre y dirección, una a una','30 s cada una',PP('Vivienda'),'Añadir'),
+       ('res','📅','Recibir tu primera reserva','Conecta tu calendario o crea una a mano','2 min',PP('Reservas'),'Empezar')]
+    rows=''.join('<div data-task="%s" style="display: flex; gap: 12px; align-items: center; padding: 12px 0; border-top: 1px solid #F0F0F7"><span style="font-size: 20px">%s</span><div style="flex-grow: 1; min-width: 0"><div style="font-size: 15px; font-weight: 700">%s</div><div style="font-size: 13px; color: #55557F">%s · ⏱ %s</div></div><a href="%s" style="flex-shrink: 0; padding: 9px 14px; border-radius: 10px; background: #385BF8; color: #FFFFFF; font-size: 14px; font-weight: 700; text-decoration: none">%s</a></div>'%t for t in T)
+    tasks=card('<div style="display: flex; justify-content: space-between; align-items: baseline"><h2 style="margin: 0; font-size: 18px; font-weight: 800">Lo que te queda</h2><span data-tasks-n style="font-size: 13px; color: #55557F">3 tareas</span></div>'+rows+'<div data-tasks-done hidden style="font-size: 14px; color: #0F7B4F; font-weight: 700">✓ Todo configurado. ¡A recibir huéspedes!</div>',18,' class="stepin"')
+    empty=card('<h2 style="margin: 0; font-size: 18px; font-weight: 800">Próximas reservas</h2><div style="display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 18px 10px; text-align: center"><div style="font-size: 30px">🗓️</div><div style="font-size: 15px; font-weight: 700">Aún no tienes reservas</div><div style="font-size: 13px; color: #55557F">Cuando llegue la primera, la verás aquí con su check-in y su parte.</div><a href="%s" style="margin-top: 4px; padding: 10px 16px; border-radius: 12px; border: 2px solid #C9CBEA; color: #19194B; font-size: 14px; font-weight: 700; text-decoration: none">Crear una reserva de prueba</a></div>'%PP('Reservas'),18,' class="stepin"')
+    extras=card('<h2 style="margin: 0; font-size: 18px; font-weight: 800">Ventas extra</h2><div style="font-size: 14px; line-height: 1.5; color: #55557F">Tus ofertas saldrán en el check-in de cada huésped. Lo que vendan te ayuda a pagar Chekin: lo verás aquí cada mes.</div><div style="display: flex; flex-wrap: wrap; gap: 8px">'+chip('🛡️ Protección y fianza',*('#0F5C3B','#E8F6EF'))+chip('🌙 4 ofertas listas',*('#385BF8','#EFEFFF'))+'</div>',18,' class="stepin"')
+    preview='<a href="%s" class="stepin" style="align-self: center; padding: 10px; font-size: 14px; font-weight: 700; text-decoration: none">Así se verá tu Inicio con reservas →</a>'%PP('Panel')
+    if mob_: return hero+tasks+empty+extras+preview
+    return hero+'<div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 14px; align-items: start"><div style="display: flex; flex-direction: column; gap: 14px">'+tasks+empty+'</div>'+extras+'</div>'+preview
+PP=M
+W(M('PanelNuevo'),HEAD.replace('Vivienda 2','Inicio (cuenta nueva)')+'<div style="width: 390px; min-height: 824px; box-sizing: border-box; padding: 16px 20px 24px; display: flex; flex-direction: column; gap: 14px; background: #F7F7FC; %s"><div style="display: flex; justify-content: space-between; align-items: center">%s<span style="padding: 6px 10px; border-radius: 999px; background: #EFEFFF; font-size: 12px; font-weight: 700">Prueba · 14&nbsp;días</span></div>%s</div>\n'%(FONT,LOGO_M,panel_nuevo(True))+FOOT_m)
+PP=P
+W(P('PanelNuevo'),HEAD.replace('Vivienda 2','Inicio (cuenta nueva) · portátil')+'<div class="fx" style="position: relative; width: 1440px; height: 900px; box-sizing: border-box; display: flex; background: #F7F7FC; %s">%s<main style="flex-grow: 1; min-width: 0; height: 900px; overflow-y: auto; box-sizing: border-box; padding: 28px 56px"><div style="max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px">%s</div></main></div>\n'%(FONT,appnav(),panel_nuevo(False))+FOOT_p)
+print('panel nuevo ok')

@@ -7,8 +7,8 @@ def svg(path,cls):
     s=s.replace('<svg ','<svg class="%s" role="img" aria-label="Chekin" '%cls,1)
     return s
 logo=svg(LOGO,'logo'); logow=svg(LOGOW,'logo')
-NAMES={'Main':'entrar','Negocio':'negocio','Creando':'creando','Bienvenida':'bienvenida','Reservas':'reservas','ElegirPms':'elegirpms','Conectar':'conectar','Apikey':'apikey','Cartera':'cartera','Paises':'paises','Titular':'titular','Vivienda':'vivienda','Legal':'legal','Proteccion':'proteccion','Ventas':'ventas','Envio':'envio','Listo':'listo','Panel':'panel'}
-LABELS=[('entrar','Entrar'),('negocio','Tu negocio'),('creando','Creando cuenta'),('bienvenida','Bienvenida'),('reservas','1 · Reservas'),('elegirpms','PMS: elegir'),('conectar','PMS: conectar'),('apikey','PMS: API key'),('cartera','2 · Leído del PMS'),('paises','2 · Países'),('titular','3 · Titular'),('vivienda','3 · Viviendas'),('legal','4 · Parte de viajeros'),('proteccion','5 · Protección'),('ventas','6 · Ventas extra'),('envio','7 · Envío'),('listo','¡Todo listo!'),('panel','Inicio')]
+NAMES={'Main':'entrar','Negocio':'negocio','Creando':'creando','Bienvenida':'bienvenida','Reservas':'reservas','ElegirPms':'elegirpms','Conectar':'conectar','Apikey':'apikey','Calendario':'calendario','Cartera':'cartera','Paises':'paises','Titular':'titular','Vivienda':'vivienda','Legal':'legal','Proteccion':'proteccion','Ventas':'ventas','Envio':'envio','Listo':'listo','PanelNuevo':'panelnuevo','Panel':'panel'}
+LABELS=[('entrar','Entrar'),('negocio','Tu negocio'),('creando','Creando cuenta'),('bienvenida','Bienvenida'),('reservas','1 · Reservas'),('elegirpms','PMS: elegir'),('conectar','PMS: conectar'),('apikey','PMS: API key'),('calendario','Calendario'),('cartera','2 · Leído del PMS'),('paises','2 · Países'),('titular','3 · Titular'),('vivienda','3 · Viviendas'),('legal','4 · Parte de viajeros'),('proteccion','5 · Protección'),('ventas','6 · Ventas extra'),('envio','7 · Envío'),('listo','¡Todo listo!'),('panelnuevo','Inicio (cuenta nueva)'),('panel','Inicio (con reservas)')]
 def body(f):
     s=open(os.path.join(P,f)).read()
     s=s.split('</helmet>',1)[1].split('</x-dc>',1)[0].strip()
@@ -41,7 +41,7 @@ def conv(s, dev, key):
     assert '{{' not in s and 'sc-' not in s, (key, re.findall(r'\{\{[^}]*\}\}|sc-\w+',s)[:5])
     return s
 for dev in ('movil','portatil'):
-    files=['Main', 'Negocio', 'Creando', 'Bienvenida', 'Reservas', 'ElegirPms', 'Conectar', 'Apikey', 'Cartera', 'Paises', 'Titular', 'Vivienda', 'Legal', 'Proteccion', 'Ventas', 'Envio', 'Listo', 'Panel']
+    files=['Main', 'Negocio', 'Creando', 'Bienvenida', 'Reservas', 'ElegirPms', 'Conectar', 'Apikey', 'Calendario', 'Cartera', 'Paises', 'Titular', 'Vivienda', 'Legal', 'Proteccion', 'Ventas', 'Envio', 'Listo', 'PanelNuevo', 'Panel']
     secs=[]
     for k in files:
         f=('Portatil-'+{'Main':'Entrar'}.get(k,k)+'.dc.html') if dev=='portatil' else k+'.dc.html'
