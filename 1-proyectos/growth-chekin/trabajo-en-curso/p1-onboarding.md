@@ -610,3 +610,15 @@ Mismos enlaces (móvil y portátil). Principio de Alex: entrar y terminarlo todo
   - Envío ahora dice «¡Ya casi está!» y «Continuar →».
   - Con PMS, el titular salta las viviendas y va a Protección.
   - Lo que no se conecte sigue saliendo como pendiente en «¡Todo listo!» y como tarea en el Inicio.
+- **Sin paso de envío; «¡Todo listo!» sincronizando (03/11, versión 29), por decisión de Alex.**
+  - «¿Cuándo le llega el check-in a tu huésped?» sale del alta. Quedan 6 pasos:
+    1. Reservas
+    2. Dónde están
+    3. Titular y viviendas
+    4. Protección
+    5. Ventas extra
+    6. Parte de viajeros
+  - «¡Todo listo!» abre con «Sincronizando tu cuenta…». Cada fila de lo que ya tiene (reservas, viviendas, parte, identidad, tasa, protección, extras) gira y pasa a ✓, o a pendiente.
+  - Al terminar dice «¡Todo listo!» y añade: «Tus huéspedes recibirán el check-in 48 h antes de llegar, por email y WhatsApp. Lo cambias cuando quieras en Ajustes». Después, la prueba y el botón al panel.
+  - [POR COMPROBAR] que 48 h sea el envío por defecto.
+  - La pantalla de envío queda en `fuentes/` sin usar.
