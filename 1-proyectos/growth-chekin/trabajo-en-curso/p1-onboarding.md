@@ -498,4 +498,18 @@ Mismos enlaces (móvil y portátil). Principio de Alex: entrar y terminarlo todo
   1. arreglos rápidos del prototipo (1 semana);
   2. cambios de flujo con Daniel (2–3 semanas);
   3. confianza y cumplimiento con Producto y el DPO.
+- **Oleada 1 aplicada (03/11, mismos enlaces):**
+  - **Cifras y textos coherentes:**
+    - «Este mes, tus extras pagan Chekin: 165 € pagan 4 meses (39 €/mes, de ejemplo)»;
+    - «Madrid» en lugar de «Madrid y Valencia»;
+    - los pasos suman 10 min;
+    - mensajes de paso neutros («Vas genial…»);
+    - «Ahora no» como único nombre para saltar.
+  - **Vivienda:** solo nombre y dirección. El código de establecimiento de SES pasa al parte de viajeros, opcional y por vivienda.
+  - **Tu negocio:** teléfono opcional, con selector de prefijo y para qué se usa. El aviso del experto salta con más de 10 viviendas o más de 60 habitaciones o parcelas, y en las dos salidas.
+  - **Entrar:** antes del código no se ven los 7 pasos, sino el valor y «¿Ya eres cliente? Entrar».
+  - **Una sola confirmación:** «¡Cuenta creada!» a los 1,6 s, con botón «Continuar», y pasa sola a los 4,6 s. «Tu negocio» ya no dice «Ya estás dentro» y la bienvenida dice «Empezamos».
+  - **«¡Todo listo!» fiel al camino:** reservas desde el PMS, el calendario o a mano; viviendas hechas o pendientes; parte conectado o «pendiente: te lo recordamos» (en ámbar).
+  - **AA:** gris secundario #55557F, textos de 11–12 px subidos a 12–13 px, interruptores de 52×30 y foco visible.
+- **Copia de seguridad del código** en `2-herramientas/onboarding-prototipo/`: la carpeta temporal perdió los logos el fin de semana; se recuperaron de la última versión compilada.
 

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Conectar PMS</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#385BF8}a:hover{color:#294DF1}
+@keyframes pop{0%{opacity:0;transform:scale(.6)}70%{opacity:1;transform:scale(1.08)}100%{transform:none}}
+.pop{animation:pop .6s ease-out both}
+</style>
+</helmet>
+<div style="width: 390px; height: 1240px; box-sizing: border-box; padding: 20px; display: flex; flex-direction: column; gap: 14px; background: #F4F4FD; font-family: 'Proxima Nova', Montserrat, Arial, sans-serif; color: #19194B">
+<div style="display: flex; align-items: center; gap: 12px; height: 44px"><a href="Pmsq.dc.html" aria-label="Volver" style="display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 12px; background: #FFFFFF; box-shadow: 0 0 5px rgba(26, 148, 255, 0.173); text-decoration: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#19194B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></a><div style="font-size: 12px; color: #6B6B95">Vivienda 1 de 2 · paso 1 de 4 · ⏱ ≈ 5 min</div></div>
+<div style="padding: 10px 12px; border-radius: 12px; background: #E8F6EF; color: #0F5C3B; font-size: 13px; line-height: 1.4; font-weight: 500">¡Buena elección! Con el PMS todo va solo: viviendas, reservas y huéspedes.</div>
+<h1 style="margin: 0; font-size: 23px; line-height: 1.25; font-weight: 700">Conecta tu PMS, paso a paso</h1>
+<div style="font-size: 14px; font-weight: 600">¿Cuál usas?</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px"><button type="button" class="chip on" data-group="pms" data-val="Hostaway" style="height: 44px; font-size: 13px">Hostaway</button><button type="button" class="chip" data-group="pms" data-val="Smoobu" style="height: 44px; font-size: 13px">Smoobu</button><button type="button" class="chip" data-group="pms" data-val="Lodgify" style="height: 44px; font-size: 13px">Lodgify</button><button type="button" class="chip" data-group="pms" data-val="Avantio" style="height: 44px; font-size: 13px">Avantio</button><button type="button" class="chip" data-group="pms" data-val="Guesty" style="height: 44px; font-size: 13px">Guesty</button><button type="button" class="chip" data-group="pms" data-val="Otro" style="height: 44px; font-size: 13px">Otro</button></div>
+<div role="img" aria-label="Vídeo explicativo" style="position: relative; height: 200px; border-radius: 16px; background: linear-gradient(180deg, #161643, #2A2A63); color: #FFFFFF; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; text-align: center; padding: 16px; box-sizing: border-box"><div style="display: flex; align-items: center; justify-content: center; width: 58px; height: 58px; border-radius: 999px; background: #FFFFFF"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="#385BF8"></path></svg></div><div style="font-size: 15px; font-weight: 700">Cómo conectar <span class="pmsname">Hostaway</span> con Chekin</div><div style="font-size: 12px; color: #C9CBEA">Vídeo de 2 min, con subtítulos · [POR GRABAR]</div></div>
+<ol style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; font-size: 14px; line-height: 1.45"><li>Abre <b class="pmsname">Hostaway</b> y entra en <b>Ajustes</b>.</li><li>Busca <b>API</b> o <b>Integraciones</b> y copia tu clave.</li><li>Pégala aquí abajo y pulsa <b>Conectar</b>. Tus viviendas y reservas llegan solas.</li></ol>
+<div style="padding: 12px 14px; border-radius: 12px; background: #EFEFFF; font-size: 13px; line-height: 1.5"><b>¿Qué es una API key?</b> Una clave que tu PMS le da a Chekin para leer tus reservas. No hay que saber de tecnología: solo copiar y pegar.</div>
+<div style="display: flex; flex-direction: column; gap: 6px"><label for="mk" style="font-size: 14px; font-weight: 600">Tu API key de <span class="pmsname">Hostaway</span></label><input id="mk" placeholder="Pégala aquí" style="height: 48px; border-radius: 10px; border: 1.5px solid #DEDEEB; padding: 0 14px; font-size: 16px; font-family: inherit; color: #19194B"></div>
+<a href="Cartera.dc.html" style="display: flex; align-items: center; justify-content: center;  height: 52px; border-radius: 12px; background: #385BF8; color: #FFFFFF; font-size: 16px; font-weight: 600; text-decoration: none">Conectar y traer mis viviendas</a>
+<div style="font-size: 13px; line-height: 1.5; color: #6B6B95">¿Te atascas? <a href="#" style="font-weight: 600">Un experto en Chekin lo conecta contigo</a> en una llamada.</div>
+<a href="Panel.dc.html" style="text-align: center; font-size: 14px; font-weight: 600; text-decoration: none">Lo hago más tarde: volver al inicio</a>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1240}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>
