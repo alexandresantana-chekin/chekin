@@ -411,46 +411,45 @@ G='<svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style="ver
 def otp(go,k):
     return '<div data-otp-go="%s" style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px">'%go+''.join('<input%s aria-label="Dígito %d" maxlength="1" inputmode="numeric" style="height: 54px; border-radius: 12px; border: 1.5px solid #DEDEEB; text-align: center; font-size: 22px; font-weight: 800; font-family: inherit; color: #19194B; background: #FFFFFF; min-width: 0">'%((' id="%s"'%k) if i==1 else '',i) for i in range(1,7))+'</div>'
 def entrar_form(P,k):
-    demo=('<div class="stepin" style="display: flex; flex-wrap: wrap; gap: 6px; align-items: center; justify-content: center; padding: 8px; border-radius: 12px; border: 1px dashed #C9CBEA; font-size: 12px; color: #6B6B95">Demo · Chekin reconoce el email:'
-      '<button type="button" data-set="datos" style="padding: 6px 10px; border: 0; border-radius: 999px; background: #EFEFFF; color: #19194B; font-size: 12px; font-weight: 700; font-family: inherit; cursor: pointer">Cliente nuevo</button>'
-      '<button type="button" data-set="login" style="padding: 6px 10px; border: 0; border-radius: 999px; background: #EFEFFF; color: #19194B; font-size: 12px; font-weight: 700; font-family: inherit; cursor: pointer">Ya tiene cuenta</button></div>')
-    inicio=('<div data-st="inicio" class="stepin" style="display: flex; flex-direction: column; gap: 12px">'
-      '<div style="text-align: right; font-size: 14px">¿Ya eres cliente? <button type="button" data-set="login" style="border: 0; background: none; padding: 8px 4px; color: #385BF8; font-size: 14px; font-weight: 800; font-family: inherit; cursor: pointer">Entrar →</button></div>'
-      '<button type="button" data-set="datosg" style="%s">%sContinuar con Google</button>'%(SB,G)
-      +'<div style="display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; color: #9696B9"><span style="flex-grow: 1; height: 1px; background: #E6E6F2"></span>O CON TU EMAIL<span style="flex-grow: 1; height: 1px; background: #E6E6F2"></span></div>'
-      +lab(k+'em','Tu email')+'<input id="%sem" type="email" placeholder="tu@email.com" style="%s">'%(k,INP)
-      +'<button type="button" data-set="datos" style="%s">Continuar</button>'%PB
-      +'<div style="font-size: 13px; line-height: 1.45; color: #55557F; text-align: center">Al continuar, con Google o con tu email, aceptas las <a href="#" style="font-weight: 700">Condiciones</a> y la <a href="#" style="font-weight: 700">Política de privacidad</a> de Chekin.</div>'+'<div style="font-size: 13px; line-height: 1.45; color: #6B6B95; text-align: center">¿Ya tienes cuenta? Usa tu email de siempre: te reconocemos y te pedimos tu contraseña.</div>'+demo+'</div>')
     def pw(kk,lbl,ph,hint):
         return ('<div class="stepin" style="display: flex; flex-direction: column; gap: 6px">'+lab(kk,lbl)
           +'<div style="position: relative"><input id="%s" type="password" data-pw placeholder="%s" autocomplete="%s" style="%s; padding-right: 92px"><button type="button" data-pwshow style="position: absolute; top: 4px; right: 4px; height: 40px; padding: 0 12px; border: 0; border-radius: 10px; background: #EFEFFF; color: #385BF8; font-size: 13px; font-weight: 700; font-family: inherit; cursor: pointer">Mostrar</button></div>'%(kk,ph,'new-password' if 'Crea' in lbl else 'current-password',INP)
           +hint+'</div>')
+    demo=('<div class="stepin" style="display: flex; flex-wrap: wrap; gap: 6px; align-items: center; justify-content: center; padding: 8px; border-radius: 12px; border: 1px dashed #C9CBEA; font-size: 12px; color: #6B6B95">Demo · al pulsar Continuar, Chekin reconoce el email:'
+      '<button type="button" data-set="datos" style="padding: 6px 10px; border: 0; border-radius: 999px; background: #EFEFFF; color: #19194B; font-size: 12px; font-weight: 700; font-family: inherit; cursor: pointer">Cliente nuevo</button>'
+      '<a href="%s" style="padding: 6px 10px; border-radius: 999px; background: #EFEFFF; color: #19194B; font-size: 12px; font-weight: 700; text-decoration: none">Ya tiene cuenta</a></div>')%P('Panel')
+    inicio=('<div data-st="inicio" data-errbox class="stepin" style="display: flex; flex-direction: column; gap: 12px">'
+      '<div style="text-align: right; font-size: 14px">¿Ya eres cliente? <label for="%sem" style="display: inline-block; padding: 8px 4px; color: #385BF8; font-size: 14px; font-weight: 800; cursor: pointer">Entra con tu email ↓</label></div>'%k+''
+      '<button type="button" data-set="datosg" style="%s">%sContinuar con Google</button>'%(SB,G)
+      +'<div style="display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; color: #9696B9"><span style="flex-grow: 1; height: 1px; background: #E6E6F2"></span>O CON TU EMAIL<span style="flex-grow: 1; height: 1px; background: #E6E6F2"></span></div>'
+      +lab(k+'em','Tu email')+'<input id="%sem" type="email" placeholder="tu@email.com" autocomplete="email" style="%s">'%(k,INP)
+      +pw(k+'pw','Contraseña','Tu contraseña','<div style="display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; font-size: 13px; line-height: 1.45"><span data-pwrule style="color: #55557F">¿Cuenta nueva? Crea una: mínimo 8 caracteres, con letra y número.</span><a href="#" style="font-weight: 700; text-decoration: none">¿Has olvidado tu contraseña?</a></div>')
+      +errbox('La contraseña no es correcta. Inténtalo de nuevo o pide una nueva en «¿Has olvidado tu contraseña?».','Demo: contraseña incorrecta')
+      +'<button type="button" data-set="datos" style="%s">Continuar</button>'%PB
+      +'<div style="font-size: 13px; line-height: 1.45; color: #55557F; text-align: center">Al continuar, con Google o con tu email, aceptas las <a href="#" style="font-weight: 700">Condiciones</a> y la <a href="#" style="font-weight: 700">Política de privacidad</a> de Chekin.</div>'+'<div style="font-size: 13px; line-height: 1.45; color: #6B6B95; text-align: center">Si ya eres cliente, entras directo a tu panel. Si no, creamos tu cuenta con esta contraseña.</div>'+demo+'</div>')
     def ficha(kk,nm='',ap=''):
         col='<div style="display: flex; flex-direction: column; gap: 6px">'
-        return ('<div class="stepin" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px">'+col+lab(kk+'nm','Nombre')+'<input id="%snm" data-snm placeholder="Katia" value="%s" autocomplete="given-name" style="%s"></div>'%(kk,nm,INP)
-          +col+lab(kk+'ap','Apellidos')+'<input id="%sap" data-sap placeholder="Ruiz" value="%s" autocomplete="family-name" style="%s"></div></div>'%(kk,ap,INP)
-          +'<div class="stepin" data-nifbox style="display: flex; flex-direction: column; gap: 6px">'+lab(kk+'nif','NIF, NIE o CIF')+'<input id="%snif" data-nif data-snif placeholder="12345678Z o B12345678" inputmode="text" autocomplete="off" style="%s">'%(kk,INP)
-          +'<div style="font-size: 13px; line-height: 1.45; color: #55557F">El tuyo o el de tu empresa. Lo usamos en tu parte de viajeros: así no te lo volvemos a pedir.</div><div data-nif-ok hidden style="font-size: 13px; color: #0F7B4F; font-weight: 700">✓ Formato correcto</div><div data-nif-ko hidden style="font-size: 13px; color: #6B3E00">Casi: son 8 números y una letra (DNI), o una letra, 7 números y una letra o número (CIF).</div></div>'
+        if nm: names=('<input type="hidden" data-snm value="%s"><input type="hidden" data-sap value="%s">'%(nm,ap))
+        else: names=('<div class="stepin" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px">'+col+lab(kk+'nm','Nombre')+'<input id="%snm" data-snm placeholder="Katia" value="%s" autocomplete="given-name" style="%s"></div>'%(kk,nm,INP)
+          +col+lab(kk+'ap','Apellidos')+'<input id="%sap" data-sap placeholder="Ruiz" value="%s" autocomplete="family-name" style="%s"></div></div>'%(kk,ap,INP))
+        return (names
           +'<div class="stepin" style="display: flex; flex-direction: column; gap: 6px">'+lab(kk+'tel','Móvil')+'<div style="display: flex; gap: 8px"><select aria-label="Prefijo" style="width: 96px; height: 48px; border-radius: 12px; border: 1.5px solid #DEDEEB; background: #FFFFFF; font-size: 15px; font-weight: 700; font-family: inherit; color: #19194B; padding: 0 8px"><option>🇪🇸 +34</option><option>🇮🇹 +39</option><option>🇵🇹 +351</option><option>🇫🇷 +33</option><option>🇩🇪 +49</option><option>🇬🇧 +44</option></select><input id="%stel" type="tel" placeholder="600 000 000" autocomplete="tel-national" style="%s; flex-grow: 1; min-width: 0; width: auto"></div>'%(kk,INP)
           +'<div style="font-size: 13px; line-height: 1.45; color: #55557F">Para ayudarte si te atascas con la configuración: sin publicidad y sin cedérselo a nadie. <a href="#" style="font-weight: 700">Privacidad</a></div></div>'
+          +'<div class="stepin" data-nifbox style="display: flex; flex-direction: column; gap: 6px">'+lab(kk+'nif','NIF, NIE o CIF')+'<input id="%snif" data-nif data-snif placeholder="12345678Z o B12345678" inputmode="text" autocomplete="off" style="%s">'%(kk,INP)
+          +'<div style="font-size: 13px; line-height: 1.45; color: #55557F">El tuyo o el de tu empresa. Lo usamos en tu parte de viajeros: así no te lo volvemos a pedir.</div><div data-nif-ok hidden style="font-size: 13px; color: #0F7B4F; font-weight: 700">✓ Formato correcto</div><div data-nif-ko hidden style="font-size: 13px; color: #6B3E00">Casi: son 8 números y una letra (DNI), o una letra, 7 números y una letra o número (CIF).</div></div>'
           )
     NEWS='<label class="stepin" style="display: flex; gap: 10px; align-items: flex-start; font-size: 14px; line-height: 1.45; cursor: pointer"><input type="checkbox" style="width: 22px; height: 22px; margin: 0; flex-shrink: 0; accent-color: #385BF8">Quiero recibir consejos y novedades de Chekin por email (opcional).</label>'
     LNK='border: 0; background: none; color: #385BF8; font-size: 14px; font-weight: 700; font-family: inherit; cursor: pointer; padding: 8px'
-    datos=('<div data-st="datos" hidden style="display: flex; flex-direction: column; gap: 12px">'+ok('¡Te damos la bienvenida a Chekin! Cuéntanos quién eres.')
+    datos=('<div data-st="datos" hidden style="display: flex; flex-direction: column; gap: 12px">'+ok('¡Te damos la bienvenida a Chekin! Solo cuatro datos y entras.')
       +ficha(k)
-      +pw(k+'pw','Crea una contraseña','Mínimo 8 caracteres','<div data-pwrule style="font-size: 13px; line-height: 1.45; color: #55557F">Mínimo 8 caracteres, con al menos una letra y un número.</div>')+NEWS
+      +NEWS
       +'<a href="%s" class="stepin" style="%s">Crear mi cuenta</a>'%(P('Negocio'),PB)
       +'<button type="button" data-set="inicio" style="%s">Usar otro email</button></div>'%LNK)
-    datos+=('<div data-st="datosg" hidden style="display: flex; flex-direction: column; gap: 12px">'+ok('Conectado con Google como katia@gmail.com. Revisa tus datos y crea tu cuenta.')
+    datos+=('<div data-st="datosg" hidden style="display: flex; flex-direction: column; gap: 12px">'+ok('Conectado con Google como Katia Ruiz (katia@gmail.com). Solo faltan tu móvil y tu NIF.')
       +ficha(k+'g','Katia','Ruiz')+NEWS
       +'<a href="%s" class="stepin" style="%s">Crear mi cuenta</a>'%(P('Negocio'),PB)
       +'<button type="button" data-set="inicio" style="%s">Usar otra cuenta</button></div>'%LNK)
-    login=('<div data-st="login" hidden data-errbox style="display: flex; flex-direction: column; gap: 12px">'+ok('¡Hola de nuevo, Katia! Escribe tu contraseña para entrar.')
-      +pw(k+'lpw','Contraseña','Tu contraseña','<a href="#" style="align-self: flex-start; font-size: 14px; font-weight: 700; text-decoration: none; padding: 4px 0">¿Has olvidado tu contraseña?</a>')
-      +errbox('La contraseña no es correcta. Inténtalo de nuevo o pide una nueva en «¿Has olvidado tu contraseña?».','Demo: contraseña incorrecta')
-      +'<a href="%s" class="stepin" style="%s">Entrar</a>'%(P('Panel'),PB)
-      +'<button type="button" data-set="inicio" style="border: 0; background: none; color: #385BF8; font-size: 14px; font-weight: 700; font-family: inherit; cursor: pointer; padding: 8px">Usar otro email</button></div>')
-    return inicio+datos+login
+    return inicio+datos
 
 def negocio(P,k,mob):
     tipos=''.join('<button type="button" class="chip%s" data-group="tipo" data-val="%s" style="height: 52px; font-size: 14px">%s</button>'%(' on' if i==0 else '',v,l) for i,(v,l) in enumerate([('vr','Alquiler vacacional'),('hotel','Hotel o aparthotel'),('camping','Camping'),('otro','Otro')]))

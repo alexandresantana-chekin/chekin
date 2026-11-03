@@ -622,3 +622,7 @@ Mismos enlaces (móvil y portátil). Principio de Alex: entrar y terminarlo todo
   - Al terminar dice «¡Todo listo!» y añade: «Tus huéspedes recibirán el check-in 48 h antes de llegar, por email y WhatsApp. Lo cambias cuando quieras en Ajustes». Después, la prueba y el botón al panel.
   - [POR COMPROBAR] que 48 h sea el envío por defecto.
   - La pantalla de envío queda en `fuentes/` sin usar.
+- **Entrada en dos pantallas (03/11, versión 30), por decisión de Alex.**
+  - **Primera pantalla:** «Continuar con Google», o email y contraseña. Lleva «¿Has olvidado tu contraseña?», «Mostrar» y un error de demo. Si el email ya es cliente, entra directo al panel; si es nuevo, esa contraseña es la de su cuenta. Ya no hay paso de login aparte.
+  - **Segunda pantalla:** nombre y apellidos (solo si no entra con Google), móvil y NIF/NIE/CIF. Son todos los datos que pide Ventas.
+  - Con Google solo pide móvil y NIF; nombre y apellidos vienen de Google y pasan igual al titular.
