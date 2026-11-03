@@ -626,3 +626,14 @@ Mismos enlaces (móvil y portátil). Principio de Alex: entrar y terminarlo todo
   - **Primera pantalla:** «Continuar con Google», o email y contraseña. Lleva «¿Has olvidado tu contraseña?», «Mostrar» y un error de demo. Si el email ya es cliente, entra directo al panel; si es nuevo, esa contraseña es la de su cuenta. Ya no hay paso de login aparte.
   - **Segunda pantalla:** nombre y apellidos (solo si no entra con Google), móvil y NIF/NIE/CIF. Son todos los datos que pide Ventas.
   - Con Google solo pide móvil y NIF; nombre y apellidos vienen de Google y pasan igual al titular.
+- **Laboratorio de estilo (03/11, versión 31).** Botón «🎨 Laboratorio» con un panel a la derecha para probar en directo, sin tocar el código:
+  - letra del texto y de los títulos (también cualquier fuente de Google Fonts);
+  - tamaño del texto;
+  - color principal;
+  - fondo (colores, degradados o una imagen propia, con «oscurecer»);
+  - columna lateral;
+  - esquinas y sombras;
+  - entrada de cada pantalla y velocidad;
+  - estilo y entrada de los mensajes de éxito.
+
+  Lo que elige cada persona solo se ve en su navegador. «Copiar mis ajustes para Claude» da el texto para pegarlo en el chat y pasarlo al prototipo de verdad. El código está en `plantillas/lab.part`.

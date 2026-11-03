@@ -87,6 +87,7 @@ input[type=number]{-moz-appearance:textfield;appearance:textfield}
 <div><h1>Onboarding Chekin · portátil</h1><p>Prototipo navegable · pantalla de 14 pulgadas · datos de ejemplo</p></div>
 <nav class="jumps" aria-label="Pantallas">
 <!--NAV-->
+<button type="button" class="labbtn" data-lab-toggle aria-pressed="false">🎨 Laboratorio</button>
 <button type="button" class="tipsw" data-tips aria-pressed="true">Explicaciones: sí</button>
 <button type="button" class="reset" data-reset>Empezar de nuevo</button>
 </nav>
@@ -253,5 +254,134 @@ window.addEventListener('resize',function(){window.__fit();});
   document.addEventListener('submit',function(e){ e.preventDefault(); });
   window.__fit && window.__fit();
   show(current());
+})();
+</script>
+<!-- Laboratorio de estilo: prueba letra, color, fondo y movimiento sin tocar el código -->
+<style id="lab-ui">
+.labbtn{padding:7px 11px;border-radius:999px;border:0;background:var(--navy);color:#fff;font:700 12px/1 inherit;cursor:pointer}
+.lab{position:fixed;top:0;right:0;z-index:50;width:316px;height:100vh;box-sizing:border-box;overflow-y:auto;background:#fff;box-shadow:-12px 0 32px rgba(25,25,75,.14);padding:18px 18px 28px;font:400 13px/1.45 Montserrat,Arial,sans-serif;color:var(--ink)}
+.lab[hidden]{display:none}
+body.lab-open{padding-right:332px !important}
+body.lab-open .tip{right:340px !important}
+.lab h2{margin:0;font-size:17px;font-weight:800}
+.lab .sub{margin:4px 0 14px;color:var(--muted);font-size:12px}
+.lab section{padding:12px 0;border-top:1px solid #EEEEF6}
+.lab .lt{font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#55557F;margin-bottom:8px}
+.lab .opts{display:flex;flex-wrap:wrap;gap:6px}
+.lab .o{padding:7px 10px;border-radius:999px;border:1.5px solid #DEDEEB;background:#fff;color:var(--ink);font:600 12px/1 inherit;cursor:pointer}
+.lab .o.on{border-color:var(--blue);background:#EFEFFF;color:#2B3FBF}
+.lab .sw8{width:28px;height:28px;padding:0;border-radius:8px;border:2px solid #fff;box-shadow:0 0 0 1.5px #DEDEEB;cursor:pointer}
+.lab .sw8.on{box-shadow:0 0 0 2.5px var(--blue)}
+.lab select,.lab input[type=text]{width:100%;box-sizing:border-box;height:36px;border-radius:10px;border:1.5px solid #DEDEEB;padding:0 10px;font:500 13px inherit;color:var(--ink);background:#fff}
+.lab .row{display:flex;gap:6px;margin-top:6px}
+.lab .row input{flex:1}
+.lab .mini{height:36px;padding:0 12px;border-radius:10px;border:0;background:#EFEFFF;color:#2B3FBF;font:700 12px inherit;cursor:pointer;white-space:nowrap}
+.lab input[type=color]{flex:0 0 40px !important;width:40px;height:32px;padding:0;border:0;background:none;cursor:pointer}
+.lab input[type=range]{width:100%}
+.lab .file{display:block;margin-top:8px;font-size:12px}
+.lab .acts{display:flex;flex-direction:column;gap:8px;padding-top:14px;border-top:1px solid #EEEEF6}
+.lab .big{height:40px;border-radius:12px;border:0;background:var(--blue);color:#fff;font:700 13px inherit;cursor:pointer}
+.lab .ghost{height:38px;border-radius:12px;border:1.5px solid #DEDEEB;background:#fff;color:var(--ink);font:700 13px inherit;cursor:pointer}
+.lab .note{font-size:12px;color:#55557F;min-height:16px}
+.lab .x{float:right;border:0;background:none;font-size:20px;line-height:1;cursor:pointer;color:#55557F}
+@media (max-width:900px){body.lab-open{padding-right:16px !important}.lab{width:100%;height:60vh;top:auto;bottom:0}}
+</style>
+<style id="lab-css"></style>
+<aside class="lab" data-lab hidden aria-label="Laboratorio de estilo">
+  <button type="button" class="x" data-lab-close aria-label="Cerrar el laboratorio">×</button>
+  <h2>🎨 Laboratorio</h2>
+  <p class="sub">Prueba cambios en directo. Solo se ven en tu navegador: no cambian el prototipo para nadie.</p>
+  <section><div class="lt">Letra del texto</div>
+    <div class="opts" data-g="font"></div>
+    <div class="row"><input type="text" data-font-custom placeholder="Otra de Google Fonts (ej.: Lexend)"><button type="button" class="mini" data-font-apply>Probar</button></div>
+  </section>
+  <section><div class="lt">Letra de los títulos</div><div class="opts" data-g="head"></div></section>
+  <section><div class="lt">Tamaño del texto</div><div class="opts" data-g="size"></div></section>
+  <section><div class="lt">Color principal</div><div class="opts" data-g="primary"></div><div class="row" style="align-items:center"><input type="color" data-primary-custom value="#385BF8"><span class="note">Elige el tuyo</span></div></section>
+  <section><div class="lt">Fondo de la pantalla</div><div class="opts" data-g="bg"></div>
+    <label class="file">📷 Usar tu imagen de fondo <input type="file" accept="image/*" data-bg-file></label>
+    <div data-dim-wrap hidden style="margin-top:8px"><div class="note">Oscurecer la imagen</div><input type="range" min="0" max="80" value="35" data-dim></div>
+  </section>
+  <section><div class="lt">Columna lateral (portátil)</div><div class="opts" data-g="rail"></div></section>
+  <section><div class="lt">Esquinas</div><div class="opts" data-g="radius"></div></section>
+  <section><div class="lt">Sombras</div><div class="opts" data-g="shadow"></div></section>
+  <section><div class="lt">Entrada de cada pantalla</div><div class="opts" data-g="anim"></div><div class="lt" style="margin-top:10px">Velocidad</div><div class="opts" data-g="speed"></div></section>
+  <section><div class="lt">Mensajes de éxito</div><div class="opts" data-g="msg"></div><div class="lt" style="margin-top:10px">Cómo entran</div><div class="opts" data-g="msgin"></div></section>
+  <div class="acts">
+    <button type="button" class="big" data-lab-copy>📋 Copiar mis ajustes para Claude</button>
+    <button type="button" class="ghost" data-lab-reset>Volver al diseño actual</button>
+    <div class="note" data-lab-note aria-live="polite"></div>
+  </div>
+</aside>
+<script>
+(function(){
+  var O={
+    font:[['actual','Actual (Montserrat)',"'Proxima Nova',Montserrat"],['Inter','Inter'],['DM Sans','DM Sans'],['Manrope','Manrope'],['Plus Jakarta Sans','Plus Jakarta'],['Nunito','Nunito'],['Poppins','Poppins'],['Figtree','Figtree'],['Outfit','Outfit']],
+    head:[['igual','Igual que el texto'],['Fraunces','Fraunces'],['Playfair Display','Playfair'],['DM Serif Display','DM Serif'],['Space Grotesk','Space Grotesk'],['Sora','Sora']],
+    size:[['100','Normal'],['110','Algo más grande'],['125','Grande']],
+    primary:[['#385BF8','Azul Chekin'],['#4F46E5','Índigo'],['#0F9D74','Verde'],['#F0644B','Coral'],['#19194B','Marino']],
+    bg:[['actual','Actual','#F7F7FC'],['blanco','Blanco','#FFFFFF'],['arena','Arena','#FBF6EF'],['lavanda','Lavanda','#EEF0FF'],['suave','Degradado suave','linear-gradient(160deg,#F7F7FC 0%,#E9EDFF 100%)'],['amanecer','Amanecer','linear-gradient(160deg,#FFF4EA 0%,#FFE3E0 45%,#E8ECFF 100%)'],['malla','Malla de color','radial-gradient(at 15% 10%,#E3E8FF 0,transparent 45%),radial-gradient(at 85% 20%,#FFE7DD 0,transparent 40%),radial-gradient(at 50% 95%,#DDF5EC 0,transparent 45%),#F7F7FC'],['foto','Tu imagen','']],
+    rail:[['actual','Marino'],['azul','Azul'],['negro','Negro'],['clara','Clara'],['foto','Con tu imagen']],
+    radius:[['rectas','Rectas'],['actual','Medias'],['redondas','Redondas']],
+    shadow:[['planas','Planas'],['actual','Suaves'],['profundas','Profundas']],
+    anim:[['actual','Subir suave'],['ninguna','Ninguna'],['deslizar','Deslizar ←'],['zoom','Zoom'],['rebote','Rebote']],
+    speed:[['lenta','Lenta'],['normal','Normal'],['rapida','Rápida']],
+    msg:[['actual','Verde'],['azul','Azul'],['marino','Marino'],['destacado','Con banda de color']],
+    msgin:[['actual','Aparecer'],['arriba','Caer desde arriba'],['pop','Pop'],['lado','Desde un lado']]
+  };
+  var D={font:'actual',head:'igual',size:'100',primary:'#385BF8',bg:'actual',rail:'actual',radius:'actual',shadow:'actual',anim:'actual',speed:'normal',msg:'actual',msgin:'actual',dim:35};
+  var S={}; for(var k in D){S[k]=D[k];} var IMG='';
+  try{ var sv=JSON.parse(localStorage.getItem('chekin-lab')||'{}'); for(var k2 in sv){ if(k2 in D){S[k2]=sv[k2];} } IMG=localStorage.getItem('chekin-lab-img')||''; }catch(e){}
+  var lab=document.querySelector('[data-lab]'), css=document.getElementById('lab-css'), note=document.querySelector('[data-lab-note]');
+  var loaded={};
+  function loadFont(f){ if(!f||f==='actual'||f==='igual'||loaded[f]){return;} loaded[f]=1; var l=document.createElement('link'); l.rel='stylesheet'; l.href='https://fonts.googleapis.com/css2?family='+encodeURIComponent(f).replace(/%20/g,'+')+':wght@400;500;600;700;800&display=swap'; document.head.appendChild(l); }
+  function sel(s){ return '.screen [style*="'+s+'"]'; }
+  function build(){
+    var c='', P=S.primary;
+    loadFont(S.font); loadFont(S.head);
+    if(S.font!=='actual'){ c+=".screen, .screen *{font-family:'"+S.font+"',Montserrat,Arial,sans-serif !important}"; }
+    if(S.head!=='igual'){ c+=".screen h1, .screen h2{font-family:'"+S.head+"',Georgia,serif !important;letter-spacing:0 !important}"; }
+    if(S.size!=='100'){ var m=S.size==='110'?1:2; [11,12,13,14,15,16,18,22,24,28].forEach(function(px){ c+=sel('font-size: '+px+'px')+'{font-size:'+(px+m*(px<20?1:2))+'px !important}'; }); }
+    if(P!=='#385BF8'){ c+=sel('background: #385BF8')+'{background:'+P+' !important}'+sel('color: #385BF8')+'{color:'+P+' !important}'+sel('border: 2px solid #385BF8')+','+sel('border-color: #385BF8')+'{border-color:'+P+' !important}'+'.screen a{color:'+P+'}.screen .sw[aria-checked="true"]{background:'+P+' !important}.screen .chip.on,.screen .pick.on{border-color:'+P+' !important}.screen .pick.on .pick-box{background-color:'+P+' !important;border-color:'+P+' !important}'+sel('rgba(56, 91, 248, 0.28)')+'{box-shadow:0 6px 16px '+P+'55 !important}'; }
+    var bgv=null; O.bg.forEach(function(b){ if(b[0]===S.bg){bgv=b[2];} });
+    if(S.bg==='foto'&&IMG){ var a=(S.dim/100).toFixed(2); bgv='linear-gradient(rgba(22,22,67,'+a+'),rgba(22,22,67,'+a+')), url('+IMG+') center/cover fixed'; }
+    if(S.bg!=='actual'&&bgv){ c+=sel('background: #F7F7FC')+'{background:'+bgv+' !important}'+sel('background: rgba(247, 247, 252, 0.96)')+'{background:transparent !important;backdrop-filter:blur(8px)}'; }
+    var rs={azul:'linear-gradient(180deg,'+P+',#2B3FBF)',negro:'#0E0E1A',clara:'#FFFFFF'}[S.rail];
+    if(S.rail==='foto'&&IMG){ rs='linear-gradient(rgba(22,22,67,.72),rgba(22,22,67,.9)), url('+IMG+') center/cover'; }
+    if(S.rail!=='actual'&&rs){ c+=sel('background: linear-gradient(180deg, #161643, #1F1F57)')+'{background:'+rs+' !important}'; if(S.rail==='clara'){ c+=sel('background: linear-gradient(180deg, #161643, #1F1F57)')+'{color:#19194B !important;box-shadow:1px 0 0 #ECECF5}'+sel('background: linear-gradient(180deg, #161643, #1F1F57)')+' *{color:#19194B !important}'; } }
+    if(S.radius!=='actual'){ var r=S.radius==='rectas'?{10:3,12:4,14:5,16:6,18:6,20:8,24:8,28:10}:{10:14,12:16,14:18,16:22,18:24,20:26,24:28,28:32}; for(var px in r){ c+=sel('border-radius: '+px+'px')+'{border-radius:'+r[px]+'px !important}'; } }
+    if(S.shadow==='planas'){ c+=sel('box-shadow: 0 1px 2px')+'{box-shadow:0 0 0 1px #E4E4EF !important}'+sel('box-shadow: 0 6px 16px')+'{box-shadow:none !important}'; }
+    if(S.shadow==='profundas'){ c+=sel('box-shadow: 0 1px 2px')+'{box-shadow:0 14px 34px rgba(25,25,75,.12),0 0 0 1px #ECECF5 !important}'; }
+    var sp={lenta:'.8s',normal:'.5s',rapida:'.28s'}[S.speed];
+    var kf={deslizar:'from{opacity:0;transform:translateX(36px)}to{opacity:1;transform:none}',zoom:'from{opacity:0;transform:scale(.96)}to{opacity:1;transform:none}',rebote:'0%{opacity:0;transform:translateY(24px)}60%{opacity:1;transform:translateY(-6px)}100%{transform:none}'}[S.anim];
+    if(S.anim==='ninguna'){ c+='.screen:not([hidden]) .stepin{animation:none !important}'; }
+    else if(kf){ c+='@keyframes labin{'+kf+'}.screen:not([hidden]) .stepin{animation-name:labin !important;animation-duration:'+sp+' !important}'; }
+    else if(S.speed!=='normal'){ c+='.screen:not([hidden]) .stepin{animation-duration:'+sp+' !important}'; }
+    var M=sel('background: #E8F6EF; color: #0F5C3B');
+    if(S.msg==='azul'){ c+=M+'{background:#EFEFFF !important;color:#2B3FBF !important}'; }
+    if(S.msg==='marino'){ c+=M+'{background:#19194B !important;color:#FFFFFF !important}'; }
+    if(S.msg==='destacado'){ c+=M+'{background:#FFFFFF !important;color:#19194B !important;border-left:5px solid '+P+' !important;box-shadow:0 10px 26px rgba(25,25,75,.12) !important;padding:14px 16px !important;font-size:15px !important}'; }
+    var mk={arriba:'0%{opacity:0;transform:translateY(-28px)}70%{opacity:1;transform:translateY(3px)}100%{transform:none}',pop:'0%{opacity:0;transform:scale(.85)}70%{opacity:1;transform:scale(1.04)}100%{transform:none}',lado:'from{opacity:0;transform:translateX(-40px)}to{opacity:1;transform:none}'}[S.msgin];
+    if(mk){ c+='@keyframes labmsg{'+mk+'}.screen:not([hidden]) '+M.replace('.screen ','')+'{animation:labmsg .6s cubic-bezier(.2,.8,.2,1) both !important}'; }
+    c+='@media (prefers-reduced-motion:reduce){.screen *{animation:none !important}}';
+    css.textContent=c;
+    lab.querySelectorAll('[data-g]').forEach(function(g){ var k=g.getAttribute('data-g'); g.querySelectorAll('button').forEach(function(b){ b.classList.toggle('on',b.getAttribute('data-v')===S[k]); b.setAttribute('aria-pressed',b.getAttribute('data-v')===S[k]?'true':'false'); }); });
+    lab.querySelector('[data-dim-wrap]').hidden=!(IMG&&(S.bg==='foto'||S.rail==='foto'));
+    try{ localStorage.setItem('chekin-lab',JSON.stringify(S)); }catch(e){}
+    window.__fit&&window.__fit();
+  }
+  lab.querySelectorAll('[data-g]').forEach(function(g){ var k=g.getAttribute('data-g'); O[k].forEach(function(o){ var b=document.createElement('button'); b.type='button'; b.setAttribute('data-v',o[0]); if(k==='primary'){ b.className='sw8'; b.style.background=o[0]; b.title=o[1]; b.setAttribute('aria-label',o[1]); } else { b.className='o'; b.textContent=o[1]; if(k==='font'&&o[0]!=='actual'){ b.style.fontFamily="'"+o[0]+"'"; loadFont(o[0]); } if(k==='head'&&o[0]!=='igual'){ b.style.fontFamily="'"+o[0]+"'"; loadFont(o[0]); } } b.addEventListener('click',function(){ if((o[0]==='foto')&&!IMG){ note.textContent='Primero sube una imagen con «Usar tu imagen de fondo».'; return; } S[k]=o[0]; note.textContent=''; build(); }); g.appendChild(b); }); });
+  lab.querySelector('[data-font-apply]').addEventListener('click',function(){ var v=lab.querySelector('[data-font-custom]').value.trim(); if(!v){return;} S.font=v; build(); note.textContent='Probando «'+v+'». Si no cambia, revisa el nombre en fonts.google.com.'; });
+  lab.querySelector('[data-primary-custom]').addEventListener('input',function(e){ S.primary=e.target.value.toUpperCase(); build(); });
+  lab.querySelector('[data-dim]').value=S.dim;
+  lab.querySelector('[data-dim]').addEventListener('input',function(e){ S.dim=parseInt(e.target.value,10); build(); });
+  lab.querySelector('[data-bg-file]').addEventListener('change',function(e){ var f=e.target.files&&e.target.files[0]; if(!f){return;} var rd=new FileReader(); rd.onload=function(){ IMG=rd.result; try{ localStorage.setItem('chekin-lab-img',IMG); }catch(err){ note.textContent='Imagen aplicada (es grande: no se guardará al recargar).'; } S.bg='foto'; build(); }; rd.readAsDataURL(f); });
+  lab.querySelector('[data-lab-reset]').addEventListener('click',function(){ for(var k in D){S[k]=D[k];} IMG=''; try{ localStorage.removeItem('chekin-lab-img'); }catch(e){} lab.querySelector('[data-dim]').value=D.dim; build(); note.textContent='Vuelta al diseño actual.'; });
+  lab.querySelector('[data-lab-copy]').addEventListener('click',function(){ var lbl={}; for(var k in S){ var t=S[k]; (O[k]||[]).forEach(function(o){ if(o[0]===S[k]){t=o[1];} }); lbl[k]=t; } if(IMG){ lbl.imagen='imagen propia (pásamela aparte)'; } var txt='Ajustes del laboratorio (onboarding): '+JSON.stringify(lbl); var done=function(){ note.textContent='Copiado. Pégalo en el chat y lo aplico al prototipo.'; }; if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(done,function(){ window.prompt('Copia esto:',txt); }); } else { window.prompt('Copia esto:',txt); } });
+  function setOpen(on){ lab.hidden=!on; document.body.classList.toggle('lab-open',on); var t=document.querySelector('[data-lab-toggle]'); if(t){ t.setAttribute('aria-pressed',on?'true':'false'); } try{ localStorage.setItem('chekin-lab-open',on?'1':'0'); }catch(e){} setTimeout(function(){ window.__fit&&window.__fit(); },30); }
+  var tg=document.querySelector('[data-lab-toggle]'); if(tg){ tg.addEventListener('click',function(){ setOpen(lab.hidden); }); }
+  lab.querySelector('[data-lab-close]').addEventListener('click',function(){ setOpen(false); });
+  var op=null; try{ op=localStorage.getItem('chekin-lab-open'); }catch(e){}
+  build(); setOpen(op===null ? window.innerWidth>1100 : op==='1');
 })();
 </script>
