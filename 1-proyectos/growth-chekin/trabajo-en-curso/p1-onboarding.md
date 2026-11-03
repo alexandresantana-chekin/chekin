@@ -546,3 +546,16 @@ Mismos enlaces (móvil y portátil). Principio de Alex: entrar y terminarlo todo
     - la comisión de extras y protección;
     - el proceso de reclamación de daños;
     - qué pasa el día 15 y el precio real.
+- **Ventas extra rehecho (03/11, versión 22), a petición de Alex.** Antes había 4 ofertas fijas y no se veía nada más.
+  - **«Empecemos por lo básico»:** cuatro preguntas de sí o no:
+    - ¿Dejas entrar antes de la hora?
+    - ¿Y salir más tarde?
+    - ¿Aceptas mascotas? Con precio por noche y mascota, o por estancia y mascota.
+    - ¿Tienes aparcamiento? Con precio por noche o por reserva.
+  - Con «Sí» aparecen el precio y cómo se cobra. Nada viene activado.
+  - **«¿Quieres ganar más? Mira todos los extras»:** despliega el catálogo:
+    - desayuno, cesta de bienvenida, traslado al aeropuerto, bicis, limpieza extra, cuna o trona, cambio de sábanas, excursiones;
+    - y «Crea tu propia oferta».
+  - **Vista previa en vivo:** «Así lo ve tu huésped» se rellena con lo activado. En portátil va fija a la derecha; en móvil, al final.
+  - «¡Todo listo!» y el Inicio cuentan las ofertas activadas de verdad.
+  - [POR COMPROBAR con Producto]: qué extras tiene hoy el catálogo de Chekin y cómo cobra cada uno; precios de ejemplo.

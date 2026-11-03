@@ -278,14 +278,48 @@ def prot(Pp,mob_):
     return head+'<div style="display: grid; grid-template-columns: 1fr 280px; gap: 18px; align-items: center">'+ben+video+'</div>'+grp+ALL1+'<div class="stepin" style="font-size: 13px; line-height: 1.5; color: #55557F">Vienen apagadas: tú eliges. <b style="color: #19194B">Quién cobra:</b> Chekin, al huésped, en el check-in. <a href="#" style="font-weight: 700">Comisiones</a> · <a href="#" style="font-weight: 700">Cómo se reclama un daño</a></div>'
 both('Proteccion','Protección',5,CH+['Parte ✓'],prot,lambda Pp:back(Pp('Legal'),'← Atrás'),lambda Pp:link(Pp('Ventas'),'Ahora no')+btn(Pp('Ventas'),'Seguir →'),lambda Pp:btn(Pp('Ventas'),'Seguir →',full=True),lambda Pp:link(Pp('Ventas'),'Ahora no'),wide=True)
 # ---------- 6 · Ventas extra ----------
-OF=[('🕐','Entrada anticipada','20'),('🌙','Salida tardía','20'),('🚗','Aparcamiento / noche','10'),('🐾','Mascota','15')]
+INPS='height: 44px; border-radius: 10px; border: 1.5px solid #DEDEEB; background: #FFFFFF; font-size: 15px; font-weight: 700; font-family: inherit; color: #19194B'
+def vprice(units,val=''):
+    opts=''.join('<option>%s</option>'%u for u in units)
+    return ('<div data-price hidden style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding-top: 2px">'
+      '<input data-pv value="%s" placeholder="0" inputmode="decimal" aria-label="Precio" style="width: 72px; text-align: center; %s"><span style="font-size: 15px; font-weight: 700">€</span>'
+      '<select data-pu aria-label="Cómo se cobra" style="padding: 0 10px; %s">%s</select></div>')%(val,INPS,INPS,opts)
+# Lo básico: preguntas de sí o no
+VQ=[('q1','🕐','¿Dejas entrar antes de la hora?','Entrada anticipada',['por reserva'],'20'),
+    ('q2','🌙','¿Y salir más tarde?','Salida tardía',['por reserva'],'20'),
+    ('q3','🐾','¿Aceptas mascotas?','Mascota',['por noche y mascota','por estancia y mascota'],'10'),
+    ('q4','🚗','¿Tienes aparcamiento?','Aparcamiento',['por noche','por reserva'],'10')]
+def vq(g,ic,q,name,units,val):
+    yn=lambda v,t:'<button type="button" class="chip" data-yn="%s" data-group="%s" aria-pressed="false" style="height: 44px; width: 60px; font-size: 15px">%s</button>'%(v,g,t)
+    return card('<div data-offer data-name="%s" style="display: flex; flex-direction: column; gap: 10px">'
+      '<div style="display: flex; flex-wrap: wrap; gap: 10px 12px; align-items: center"><div aria-hidden="true" style="font-size: 22px; line-height: 1">%s</div>'
+      '<div style="flex: 1; min-width: 110px"><div style="font-size: 15px; font-weight: 700">%s</div><div style="font-size: 13px; color: #55557F">%s</div></div>'
+      '<div role="group" aria-label="%s" style="display: flex; gap: 6px; margin-left: auto">%s%s</div></div>%s</div>'%(name,ic,q,name,q,yn('1','Sí'),yn('0','No'),vprice(units,val)),14,' class="stepin"')
+# Todos los demás extras
+VC=[('🥐','Desayuno',['por persona y noche','por persona']),('🧺','Cesta de bienvenida',['por reserva']),
+    ('✈️','Traslado al aeropuerto',['por trayecto','por reserva']),('🚲','Alquiler de bicis',['por día','por reserva']),
+    ('🧹','Limpieza extra',['por servicio']),('🛏️','Cuna o trona',['por estancia','por noche']),
+    ('🛁','Cambio de sábanas y toallas',['por servicio']),('🎟️','Excursiones y entradas',['por persona','por reserva'])]
+def vc(ic,name,units):
+    return ('<div data-offer data-name="%s" style="display: flex; flex-direction: column; gap: 8px">'%name+pick(ic,name,units[0])+vprice(units)+'</div>')
 def ventas(Pp,mob_):
-    rows=''.join(card('<div style="display: flex; gap: 10px; align-items: center"><div style="font-size: 22px">%s</div><div style="flex-grow: 1; font-size: 15px; font-weight: 700">%s</div><input value="%s" aria-label="Precio de %s" inputmode="numeric" style="width: 56px; height: 40px; border-radius: 10px; border: 1.5px solid #DEDEEB; text-align: center; font-size: 15px; font-weight: 700; font-family: inherit"><span style="font-size: 14px">€</span>%s</div>'%(i,t,p,t,sw(False,t)),14,' class="stepin"') for i,t,p in OF)
-    return (ok('Vas genial. Ahora, gana más con cada reserva.')
-      +H('💶','Tu check-in también vende','El huésped compra extras antes de llegar, desde el mismo enlace. Tú ganas más sin hacer nada.',mob_)
-      +'<div style="display: grid; grid-template-columns: %s; gap: 10px">%s</div>'%('1fr' if mob_ else '1fr 1fr',rows)
-      +ALL2+'<div style="font-size: 13px; line-height: 1.5; color: #55557F">Vienen apagadas: activa las que quieras ofrecer. Precios de ejemplo: pon los tuyos. El huésped paga con tarjeta y te llega el importe menos la comisión de Chekin. <a href="#" style="font-weight: 700">Comisiones</a></div>')
-both('Ventas','Ventas extra',6,CH+['Protección ✓'],ventas,lambda Pp:back(Pp('Proteccion'),'← Atrás'),lambda Pp:link(Pp('Envio'),'Ahora no')+btn(Pp('Envio'),'Seguir →'),lambda Pp:btn(Pp('Envio'),'Seguir →',full=True),lambda Pp:link(Pp('Envio'),'Ahora no'))
+    basics=''.join(vq(*q) for q in VQ)
+    cat=''.join(vc(*c) for c in VC)
+    own=('<div data-offer data-name="Tu oferta" style="display: flex; flex-direction: column; gap: 8px">'+pick('✏️','Crea tu propia oferta','Lo que tú quieras vender')
+      +'<div data-price hidden style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center"><input data-oname placeholder="Nombre (ej.: botella de vino)" aria-label="Nombre de la oferta" style="flex: 1; min-width: 160px; padding: 0 12px; font-weight: 500; %s"><input data-pv placeholder="0" inputmode="decimal" aria-label="Precio" style="width: 72px; text-align: center; %s"><span style="font-size: 15px; font-weight: 700">€</span><select data-pu aria-label="Cómo se cobra" style="padding: 0 10px; %s"><option>por reserva</option><option>por noche</option><option>por persona</option></select></div></div>')%(INPS,INPS,INPS)
+    more=('<details class="stepin" data-vmore style="border-radius: 16px; background: #FFFFFF; box-shadow: %s">'
+      '<summary style="list-style: none; cursor: pointer; display: flex; gap: 12px; align-items: center; padding: 16px; font-family: inherit"><div aria-hidden="true" style="font-size: 22px">✨</div><div style="flex-grow: 1"><div style="font-size: 15px; font-weight: 700">¿Quieres ganar más? Mira todos los extras</div><div style="font-size: 13px; color: #55557F">Desayuno, traslados, limpieza, cuna… y los que tú crees</div></div><span data-vmore-i style="font-size: 14px; font-weight: 700; color: #385BF8; white-space: nowrap">Ver %d más ▾</span></summary>'
+      '<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 0 16px 16px">%s%s</div></details>')%(SH,len(VC),cat,own)
+    note='<div class="stepin" style="font-size: 13px; line-height: 1.5; color: #55557F">Nada viene activado: solo sale lo que elijas. Precios de ejemplo: pon los tuyos. El huésped paga con tarjeta y te llega el importe menos la comisión de Chekin. <a href="#" style="font-weight: 700">Comisiones</a></div>'
+    phone=('<div class="stepin" style="width: %s; box-sizing: border-box; border: 7px solid #161643; border-radius: 28px; background: #FFFFFF; padding: 12px; display: flex; flex-direction: column; gap: 8px; box-shadow: 0 18px 30px rgba(25, 25, 75, 0.18); align-self: center">'
+      '<div style="font-size: 11px; font-weight: 800; letter-spacing: 0.08em; color: #55557F">ASÍ LO VE TU HUÉSPED</div><div style="padding: 9px 11px; border-radius: 12px; background: #161643; color: #FFFFFF; font-size: 13px"><b>Casa San Juan</b><br><span style="color: #C9CBEA">12 – 15 mar · 3 noches</span></div>'
+      '<div style="font-size: 13px; font-weight: 800; color: #385BF8">Añade a tu estancia</div><div data-vprev aria-live="polite" style="display: flex; flex-direction: column; gap: 6px"></div>'
+      '<div data-vempty style="padding: 14px 10px; border-radius: 12px; border: 1.5px dashed #DEDEEB; font-size: 13px; line-height: 1.4; color: #55557F; text-align: center">Aquí verás lo que le ofreces</div></div>')%('100%' if mob_ else '260px')
+    head=(ok('Vas genial. Ahora, gana más con cada reserva.')
+      +H('💶','¿Qué más le ofreces a tu huésped?','Empecemos por lo básico: contesta sí o no. Lo que actives sale en su check-in y lo paga antes de llegar.',mob_))
+    if mob_: return head+basics+more+note+'<div class="stepin" style="font-size: 15px; font-weight: 700; margin-top: 4px">Así lo verá tu huésped</div>'+phone.replace('<div style="font-size: 11px; font-weight: 800; letter-spacing: 0.08em; color: #55557F">ASÍ LO VE TU HUÉSPED</div>','')
+    return head+'<div style="display: grid; grid-template-columns: 1fr 260px; gap: 22px; align-items: start"><div style="display: flex; flex-direction: column; gap: 10px">'+basics+more+note+'</div><div style="position: sticky; top: 0; display: flex">'+phone+'</div></div>'
+both('Ventas','Ventas extra',6,CH+['Protección ✓'],ventas,lambda Pp:back(Pp('Proteccion'),'← Atrás'),lambda Pp:link(Pp('Envio'),'Ahora no')+btn(Pp('Envio'),'Seguir →'),lambda Pp:btn(Pp('Envio'),'Seguir →',full=True),lambda Pp:link(Pp('Envio'),'Ahora no'),wide=True)
 # ---------- 7 · Envío ----------
 def envio(Pp,mob_):
     when='<div style="display: flex; flex-wrap: wrap; gap: 8px">'+''.join('<button type="button" class="chip%s" data-group="cuando" data-val="%s" style="height: 44px; padding: 0 14px; font-size: 14px">%s</button>'%(' on' if v=='48 h antes' else '',v,v) for v in ['Al confirmar','72 h antes','48 h antes','24 h antes'])+'</div>'
