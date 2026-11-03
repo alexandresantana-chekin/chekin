@@ -168,19 +168,19 @@ def cartera(Pp,mob_):
     return ok('¡<span class="pmsname">Cloudbeds</span> conectado! Ya tenemos tus viviendas.')+scan+H('','Esto nos ha dicho <span class="pmsname">Cloudbeds</span>','Las agrupamos por zona, porque cada una envía el parte a su policía.',mob_)+stats+rows+'<div style="font-size: 13px; color: #6B6B95">Solo lo hemos leído: en tu PMS no se ha tocado nada.</div>'
 both('Cartera','Leído del PMS',2,CH[:2]+['Con PMS'],cartera,lambda Pp:back(Pp('Conectar'),'← Atrás'),lambda Pp:link(Pp('Paises'),'¿No es correcto? Ajústalo')+btn(Pp('Titular'),'Continuar →'),lambda Pp:btn(Pp('Titular'),'Continuar →',full=True),lambda Pp:link(Pp('Paises'),'¿No es correcto? Ajústalo'))
 # ---------- 2b · Países ----------
-TOP=[('🇪🇸','España','SES · Mossos · Ertzaintza','reg-es',True),('🇮🇹','Italia','Alloggiati Web','',False),('🇵🇹','Portugal','SIBA (AIMA)','',False)]
+TOP=[('🇪🇸','España','Te preguntamos tu policía','reg-es',False),('🇮🇹','Italia','Alloggiati Web','',False),('🇵🇹','Portugal','SIBA (AIMA)','',False)]
 MORE=[('🇩🇪','Alemania','Meldeschein'),('🇦🇹','Austria','Gästeblatt'),('🇭🇷','Croacia','eVisitor'),('🇨🇭','Suiza','Parte a la policía'),('🇨🇿','Rep. Checa','Parte a la policía'),('🇧🇬','Bulgaria','ESTI'),('🇦🇪','EAU','Parte a la policía'),('🇧🇷','Brasil','Parte a la policía'),('🇨🇴','Colombia','Parte a la policía'),('🇫🇷','Francia','Formulario de entrada'),('🇬🇧','Reino Unido','Formulario de entrada'),('🇬🇷','Grecia','Formulario de entrada'),('🇳🇱','Países Bajos','Formulario de entrada'),('🇧🇪','Bélgica','Formulario de entrada'),('🇷🇴','Rumanía','Formulario de entrada')]
 def pick(flag,name,sub,rev='',on=False):
     return ('<button type="button" class="pick%s"%s style="position: relative; display: flex; gap: 12px; align-items: center; padding: 14px 44px 14px 14px; border-radius: 14px; background: #FFFFFF; font-family: inherit; color: #19194B; text-align: left; cursor: pointer; min-height: 60px">'
       '<span class="pick-box" aria-hidden="true"></span><span style="font-size: 22px; line-height: 1">%s</span><span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 15px; font-weight: 700">%s</span><span style="font-size: 12px; color: #6B6B95">%s</span></span></button>')%(' on' if on else '',(' data-reveal="%s"'%rev) if rev else '',flag,name,sub)
 def paises(Pp,mob_):
     cols=1 if mob_ else 3
-    top=''.join(pick(f,n,a,r,o) for f,n,a,r,o in TOP)
-    reg=('<div id="reg-es" class="stepin" style="display: flex; flex-direction: column; gap: 10px; padding: 14px; border-radius: 16px; background: #EFEFFF"><div style="font-size: 14px; font-weight: 700">🇪🇸 ¿En qué comunidades de España?</div>'
-      '<div style="display: grid; grid-template-columns: repeat(%d, minmax(0, 1fr)); gap: 8px">'%cols+pick(CAT,'Cataluña',"Mossos d'Esquadra")+pick(EUS,'País Vasco','Ertzaintza')+pick('🇪🇸','Resto de España','SES.Hospedajes','',True)+'</div></div>')
+    top=''.join(pick(f,n,a,r,o).replace('class="pick',('data-auth="%s" class="pick'%{'Italia':'allog','Portugal':'siba'}[n]) if n!='España' else 'class="pick') for f,n,a,r,o in TOP)
+    reg=('<div id="reg-es" hidden class="stepin" style="display: flex; flex-direction: column; gap: 10px; padding: 14px; border-radius: 16px; background: #EFEFFF"><div style="font-size: 15px; font-weight: 700">🇪🇸 ¿A qué policía envías el parte?</div><div style="font-size: 13px; line-height: 1.45; color: #55557F">Marca todas las que uses. ¿No lo sabes? Depende de tu comunidad: en Cataluña, Mossos; en el País Vasco, Ertzaintza; en el resto, SES.Hospedajes.</div>'
+      '<div style="display: grid; grid-template-columns: repeat(%d, minmax(0, 1fr)); gap: 8px">'%(1 if mob_ else 2)+pick('🇪🇸','SES.Hospedajes','Ministerio del Interior · resto de España').replace('class="pick','data-auth="ses" class="pick')+pick('🚓','Policía Nacional','Si tu parte va a la Policía Nacional').replace('class="pick','data-auth="pn" class="pick')+pick(CAT,"Mossos d'Esquadra",'Cataluña').replace('class="pick','data-auth="mossos" class="pick')+pick(EUS,'Ertzaintza','País Vasco').replace('class="pick','data-auth="ertz" class="pick')+'</div></div>')
     more='<div id="more-paises" hidden style="display: grid; grid-template-columns: repeat(%d, minmax(0, 1fr)); gap: 8px">%s</div>'%(1 if mob_ else 3,''.join(pick(f,n,a) for f,n,a in MORE))
     return (ok('¡Reservas listas! Ahora, dónde están tus viviendas.')
-      +H('🗺️','¿Dónde están tus viviendas?','Marca todos los países. Activamos solo lo que pide la ley en cada uno.',mob_)
+      +H('🗺️','¿Dónde están tus viviendas?','Primero, los países. Si es España, te preguntamos a qué policía va tu parte.',mob_)
       +'<input type="search" placeholder="🔍  Busca un país" aria-label="Busca un país" style="height: 48px; border-radius: 12px; border: 1.5px solid #DEDEEB; padding: 0 14px; font-size: 16px; font-family: inherit; background: #FFFFFF">'
       +'<div style="display: grid; grid-template-columns: repeat(%d, minmax(0, 1fr)); gap: 8px">%s</div>'%(cols,top)+reg
       +'<button type="button" data-more="more-paises" style="align-self: flex-start; padding: 10px 2px; border: 0; background: none; color: #385BF8; font-size: 14px; font-weight: 700; font-family: inherit; cursor: pointer">+ Ver más países (15)</button>'+more)
@@ -188,11 +188,14 @@ both('Paises','Dónde están',2,CH[:2]+['Sin PMS'],paises,lambda Pp:back(Pp('Res
 # ---------- 3a · Titular ----------
 def titular(Pp,mob_):
     k='m' if mob_ else 'p'
+    same=('<div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 14px; background: #F4F6FF">'
+      '<div><div style="font-size: 15px; font-weight: 700">El mismo titular para todas mis viviendas</div><div data-tsame-sub style="font-size: 13px; line-height: 1.45; color: #55557F">Lo pones una vez y sirve para todas.</div></div>'+sw(True,'El mismo titular para todas mis viviendas').replace('class="sw"','class="sw" data-tsame')+'</div>')
     return (ok('¡Ya sabemos dónde están! Ahora, quién es el titular.')
-      +H('🪪','¿Quién es el titular de las viviendas?','La ley pide sus datos en cada parte de viajeros. Lo pones una vez y sirve para todas.',mob_)
-      +card(field(k+'tn','Nombre o razón social','Katia Ruiz o Apartamentos Sol S.L.')
-        +'<div data-tprefill hidden style="padding: 10px 12px; border-radius: 12px; background: #E8F6EF; color: #0F5C3B; font-size: 13px; line-height: 1.45; font-weight: 600">✓ Lo traemos de tu alta. Cámbialo si el titular es otro.</div>'+'<div data-nifbox>'+field(k+'tnif','NIF, NIE o CIF','12345678Z',extra=' data-nif inputmode="text" autocomplete="off"',hint='Lo comprobamos al escribirlo.')+'<div data-nif-ok hidden style="margin-top: 6px; font-size: 13px; color: #0F7B4F; font-weight: 700">✓ Formato correcto</div><div data-nif-ko hidden style="margin-top: 6px; font-size: 13px; color: #6B3E00">Casi: son 8 números y una letra (DNI), o una letra, 7 números y una letra o número (CIF).</div></div>'
-        +'<label style="display: flex; gap: 10px; align-items: flex-start; font-size: 14px; line-height: 1.45; cursor: pointer"><input type="checkbox" checked style="width: 20px; height: 20px; margin: 1px 0 0; accent-color: #385BF8"><span><b>El mismo titular para todas mis viviendas</b><br><span style="color: #6B6B95">¿Gestionas pisos de varios propietarios? Desmárcalo y lo pones en cada vivienda.</span></span></label>',18,' class="stepin"'))
+      +H('🪪','¿Quién es el titular de las viviendas?','La ley pide sus datos en cada parte de viajeros. Ya los tenemos de tu alta: revísalos.',mob_)
+      +card(same
+        +'<div data-tprefill style="padding: 10px 12px; border-radius: 12px; background: #E8F6EF; color: #0F5C3B; font-size: 13px; line-height: 1.45; font-weight: 600">✓ Lo traemos de tu alta. Cámbialo si el titular es otro.</div>'
+        +field(k+'tn','Nombre o razón social','Katia Ruiz o Apartamentos Sol S.L.',val='Katia Ruiz')
+        +'<div data-nifbox>'+field(k+'tnif','NIF, NIE o CIF','12345678Z',extra=' data-nif inputmode="text" autocomplete="off"',hint='Lo comprobamos al escribirlo.',val='12345678Z')+'<div data-nif-ok style="margin-top: 6px; font-size: 13px; color: #0F7B4F; font-weight: 700">✓ Formato correcto</div><div data-nif-ko hidden style="margin-top: 6px; font-size: 13px; color: #6B3E00">Casi: son 8 números y una letra (DNI), o una letra, 7 números y una letra o número (CIF).</div></div>',18,' class="stepin"'))
 both('Titular','Titular',3,CH,titular,lambda Pp:back(Pp('Paises'),'← Atrás'),lambda Pp:btn(Pp('Vivienda'),'Continuar →',NX%(Pp('Legal').replace('.dc.html',''),Pp('Vivienda').replace('.dc.html',''))),lambda Pp:btn(Pp('Vivienda'),'Continuar →',NX%(Pp('Legal').replace('.dc.html',''),Pp('Vivienda').replace('.dc.html','')),full=True))
 # ---------- 3b · Vivienda una a una ----------
 def vivienda(Pp,mob_):
@@ -226,7 +229,7 @@ def ses_fields(k):
 def gen_fields(k,a,hint=''): return '<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px">'+field(k+'gu','Usuario de '+a,'Tu usuario')+field(k+'gp','Contraseña','••••••••','password')+'</div>'+(('<div style="font-size: 12px; line-height: 1.45; color: #6B6B95">%s</div>'%hint) if hint else '')
 def legal(Pp,mob_):
     k='m' if mob_ else 'p'
-    def grp(n_,flag,zona,nv,a,fields,errmsg):
+    def grp(n_,flag,zona,nv,a,fields,errmsg,au=''):
         fid='%slf%d'%(k,n_); hid='%slh%d'%(k,n_)
         btn2=('<div style="display: flex; flex-wrap: wrap; gap: 8px">'
           '<button type="button" data-acc="%s" style="flex: 1; min-width: 150px; height: 46px; border: 0; border-radius: 12px; background: #EFEFFF; color: #19194B; font-size: 14px; font-weight: 700; font-family: inherit; cursor: pointer">No los tengo: ayúdame</button>'
@@ -239,15 +242,18 @@ def legal(Pp,mob_):
         formp=('<div id="%s" data-accp data-errbox hidden style="display: flex; flex-direction: column; gap: 10px">'%fid+fields+errbox(errmsg,'Demo: datos incorrectos')+LOCK%('Se guardan cifradas y solo se usan para enviar tus partes a '+a+'. Puedes borrarlas cuando quieras.')
           +'<button type="button" data-connect style="height: 48px; border: 0; border-radius: 12px; background: #385BF8; color: #FFFFFF; font-size: 15px; font-weight: 700; font-family: inherit; cursor: pointer">Conectar %s</button></div>'%a)
         return card('<div style="display: flex; gap: 12px; align-items: center"><div style="font-size: 22px; line-height: 1">%s</div><div style="flex-grow: 1"><div style="font-size: 16px; font-weight: 700">%s</div><div style="font-size: 13px; color: #6B6B95">%s · el parte va a <b>%s</b></div></div><span data-lstat style="padding: 3px 8px; border-radius: 999px; background: #FFF4E5; color: #6B3E00; font-size: 12px; font-weight: 700; white-space: nowrap">Pendiente</span></div>'%(flag,zona,nv,a)
-          +btn2+helpp+formp,16,' class="stepin"')
+          +btn2+helpp+formp,16,' class="stepin" data-auth="%s"'%au)
     extras=card('<div style="font-size: 15px; font-weight: 700">Para todas tus viviendas</div>'
       +'<div style="display: flex; justify-content: space-between; align-items: center; gap: 10px"><div><div style="font-size: 14px; font-weight: 700">Verificación de identidad</div><div style="font-size: 12px; color: #6B6B95">Documento + selfie de cada huésped. Antes de la selfie, el huésped da su consentimiento.</div></div>'+sw(True,'Verificación de identidad')+'</div>'
       +'<div style="display: flex; justify-content: space-between; align-items: center; gap: 10px"><div><div style="font-size: 14px; font-weight: 700">Tasa turística</div><div style="font-size: 12px; color: #6B6B95">Solo donde tu municipio la cobra</div></div>'+sw(False,'Tasa turística')+'</div>',16,' class="stepin"')
     return (ok('¡Vamos con el paso legal!')
       +H('🛡️','Conecta tu parte de viajeros','Es lo que permite enviar el check-in a tus huéspedes. Ve de una autoridad en una: si no tienes los datos ahora, sigue y te ayudamos después.',mob_)
-      +grp(1,'🇪🇸','Madrid','2 viviendas','SES.Hospedajes',ses_fields(k),'SES no acepta estos datos. Revisa el usuario del servicio web (termina en WS) y su contraseña: no son los del portal.')
-      +grp(2,CAT,'Barcelona','1 vivienda',"Mossos d'Esquadra",gen_fields(k+'m',"Mossos",'Los del establecimiento: te los dan los Mossos al dar de alta la vivienda.'),'Los Mossos no aceptan estos datos. Revisa el usuario y la contraseña del establecimiento.')
-      +grp(3,'🇵🇹','Lisboa','1 vivienda','SIBA (AIMA)',gen_fields(k+'s','SIBA','Los de acceso al SIBA de tu alojamiento.'),'El SIBA no acepta estos datos. Revisa el usuario y la contraseña.')
+      +grp(1,'🇪🇸','Madrid','2 viviendas','SES.Hospedajes',ses_fields(k),'SES no acepta estos datos. Revisa el usuario del servicio web (termina en WS) y su contraseña: no son los del portal.','ses')
+      +grp(4,'🚓','España','tus viviendas','Policía Nacional',gen_fields(k+'n','la Policía Nacional','Los de acceso de tu establecimiento.'),'La Policía Nacional no acepta estos datos. Revisa el usuario y la contraseña.','pn')
+      +grp(2,CAT,'Barcelona','1 vivienda',"Mossos d'Esquadra",gen_fields(k+'m',"Mossos",'Los del establecimiento: te los dan los Mossos al dar de alta la vivienda.'),'Los Mossos no aceptan estos datos. Revisa el usuario y la contraseña del establecimiento.','mossos')
+      +grp(5,EUS,'Bilbao','1 vivienda','Ertzaintza',gen_fields(k+'e','la Ertzaintza','Los de acceso de tu establecimiento.'),'La Ertzaintza no acepta estos datos. Revisa el usuario y la contraseña.','ertz')
+      +grp(3,'🇵🇹','Lisboa','1 vivienda','SIBA (AIMA)',gen_fields(k+'s','SIBA','Los de acceso al SIBA de tu alojamiento.'),'El SIBA no acepta estos datos. Revisa el usuario y la contraseña.','siba')
+      +grp(6,'🇮🇹','Roma','1 vivienda','Alloggiati Web',gen_fields(k+'i','Alloggiati','Los de acceso a Alloggiati Web de tu alojamiento.'),'Alloggiati Web no acepta estos datos. Revisa el usuario y la contraseña.','allog')
       +extras
       +'<div style="font-size: 13px; color: #55557F">Lo que dejes pendiente aparece como tarea en tu Inicio. Cl@ve o el certificado digital solo sirven para darte de alta: a nosotros no nos los das.</div>')
 both('Legal','Parte de viajeros',4,CH+['Titular ✓'],legal,lambda Pp:link(Pp('Vivienda'),'← Atrás',NX%(Pp('Titular').replace('.dc.html',''),Pp('Vivienda').replace('.dc.html',''))),lambda Pp:btn(Pp('Proteccion'),'Continuar →'),lambda Pp:btn(Pp('Proteccion'),'Continuar →',full=True),wide=True)
@@ -412,7 +418,11 @@ def entrar_form(P,k):
       +'<div style="display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; color: #9696B9"><span style="flex-grow: 1; height: 1px; background: #E6E6F2"></span>O CON TU EMAIL<span style="flex-grow: 1; height: 1px; background: #E6E6F2"></span></div>'
       +lab(k+'em','Tu email')+'<input id="%sem" type="email" placeholder="tu@email.com" style="%s">'%(k,INP)
       +'<button type="button" data-set="datos" style="%s">Continuar</button>'%PB
-      +'<div style="font-size: 13px; line-height: 1.45; color: #55557F; text-align: center">Al continuar, con Google o con tu email, aceptas las <a href="#" style="font-weight: 700">Condiciones</a> y la <a href="#" style="font-weight: 700">Política de privacidad</a> de Chekin.</div>'+'<div style="font-size: 13px; line-height: 1.45; color: #6B6B95; text-align: center">¿Ya tienes cuenta? Usa tu email de siempre: te reconocemos y entras directo. Sin contraseñas.</div>'+demo+'</div>')
+      +'<div style="font-size: 13px; line-height: 1.45; color: #55557F; text-align: center">Al continuar, con Google o con tu email, aceptas las <a href="#" style="font-weight: 700">Condiciones</a> y la <a href="#" style="font-weight: 700">Política de privacidad</a> de Chekin.</div>'+'<div style="font-size: 13px; line-height: 1.45; color: #6B6B95; text-align: center">¿Ya tienes cuenta? Usa tu email de siempre: te reconocemos y te pedimos tu contraseña.</div>'+demo+'</div>')
+    def pw(kk,lbl,ph,hint):
+        return ('<div class="stepin" style="display: flex; flex-direction: column; gap: 6px">'+lab(kk,lbl)
+          +'<div style="position: relative"><input id="%s" type="password" data-pw placeholder="%s" autocomplete="%s" style="%s; padding-right: 92px"><button type="button" data-pwshow style="position: absolute; top: 4px; right: 4px; height: 40px; padding: 0 12px; border: 0; border-radius: 10px; background: #EFEFFF; color: #385BF8; font-size: 13px; font-weight: 700; font-family: inherit; cursor: pointer">Mostrar</button></div>'%(kk,ph,'new-password' if 'Crea' in lbl else 'current-password',INP)
+          +hint+'</div>')
     def ficha(kk,nm='',ap=''):
         col='<div style="display: flex; flex-direction: column; gap: 6px">'
         return ('<div class="stepin" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px">'+col+lab(kk+'nm','Nombre')+'<input id="%snm" data-snm placeholder="Katia" value="%s" autocomplete="given-name" style="%s"></div>'%(kk,nm,INP)
@@ -421,21 +431,24 @@ def entrar_form(P,k):
           +'<div style="font-size: 13px; line-height: 1.45; color: #55557F">El tuyo o el de tu empresa. Lo usamos en tu parte de viajeros: así no te lo volvemos a pedir.</div><div data-nif-ok hidden style="font-size: 13px; color: #0F7B4F; font-weight: 700">✓ Formato correcto</div><div data-nif-ko hidden style="font-size: 13px; color: #6B3E00">Casi: son 8 números y una letra (DNI), o una letra, 7 números y una letra o número (CIF).</div></div>'
           +'<div class="stepin" style="display: flex; flex-direction: column; gap: 6px">'+lab(kk+'tel','Móvil')+'<div style="display: flex; gap: 8px"><select aria-label="Prefijo" style="width: 96px; height: 48px; border-radius: 12px; border: 1.5px solid #DEDEEB; background: #FFFFFF; font-size: 15px; font-weight: 700; font-family: inherit; color: #19194B; padding: 0 8px"><option>🇪🇸 +34</option><option>🇮🇹 +39</option><option>🇵🇹 +351</option><option>🇫🇷 +33</option><option>🇩🇪 +49</option><option>🇬🇧 +44</option></select><input id="%stel" type="tel" placeholder="600 000 000" autocomplete="tel-national" style="%s; flex-grow: 1; min-width: 0; width: auto"></div>'%(kk,INP)
           +'<div style="font-size: 13px; line-height: 1.45; color: #55557F">Para ayudarte si te atascas con la configuración: sin publicidad y sin cedérselo a nadie. <a href="#" style="font-weight: 700">Privacidad</a></div></div>'
-          +'<label class="stepin" style="display: flex; gap: 10px; align-items: flex-start; font-size: 14px; line-height: 1.45; cursor: pointer"><input type="checkbox" style="width: 22px; height: 22px; margin: 0; flex-shrink: 0; accent-color: #385BF8">Quiero recibir consejos y novedades de Chekin por email (opcional).</label>')
+          )
+    NEWS='<label class="stepin" style="display: flex; gap: 10px; align-items: flex-start; font-size: 14px; line-height: 1.45; cursor: pointer"><input type="checkbox" style="width: 22px; height: 22px; margin: 0; flex-shrink: 0; accent-color: #385BF8">Quiero recibir consejos y novedades de Chekin por email (opcional).</label>'
     LNK='border: 0; background: none; color: #385BF8; font-size: 14px; font-weight: 700; font-family: inherit; cursor: pointer; padding: 8px'
     datos=('<div data-st="datos" hidden style="display: flex; flex-direction: column; gap: 12px">'+ok('¡Te damos la bienvenida a Chekin! Cuéntanos quién eres.')
       +ficha(k)
-      +'<button type="button" data-set="codigo" class="stepin" style="%s">Crear mi cuenta</button>'%PB
+      +pw(k+'pw','Crea una contraseña','Mínimo 8 caracteres','<div data-pwrule style="font-size: 13px; line-height: 1.45; color: #55557F">Mínimo 8 caracteres, con al menos una letra y un número.</div>')+NEWS
+      +'<a href="%s" class="stepin" style="%s">Crear mi cuenta</a>'%(P('Negocio'),PB)
       +'<button type="button" data-set="inicio" style="%s">Usar otro email</button></div>'%LNK)
     datos+=('<div data-st="datosg" hidden style="display: flex; flex-direction: column; gap: 12px">'+ok('Conectado con Google como katia@gmail.com. Revisa tus datos y crea tu cuenta.')
-      +ficha(k+'g','Katia','Ruiz')
+      +ficha(k+'g','Katia','Ruiz')+NEWS
       +'<a href="%s" class="stepin" style="%s">Crear mi cuenta</a>'%(P('Negocio'),PB)
       +'<button type="button" data-set="inicio" style="%s">Usar otra cuenta</button></div>'%LNK)
-    codigo=('<div data-st="codigo" hidden data-errbox style="display: flex; flex-direction: column; gap: 12px">'+ok('Te hemos enviado un código de 6 dígitos a katia@email.com')
-      +'<div class="stepin" style="display: flex; flex-direction: column; gap: 8px">'+lab(k+'c1','Código de 6 dígitos')+otp('negocio',k+'c1')+'<div style="font-size: 13px; color: #6B6B95">Al escribir el último dígito, entras. ¿No te ha llegado? <a href="#" style="font-weight: 700">Te lo enviamos otra vez</a></div>'+errbox('Ese código no es correcto o ha caducado. Te hemos enviado uno nuevo.','Demo: código incorrecto')+'</div></div>')
-    login=('<div data-st="login" hidden style="display: flex; flex-direction: column; gap: 12px">'+ok('¡Hola de nuevo, Katia! Te hemos enviado un código a katia@email.com')
-      +'<div class="stepin" style="display: flex; flex-direction: column; gap: 8px">'+lab(k+'l1','Código de acceso')+otp('panel',k+'l1')+'<div style="font-size: 13px; color: #6B6B95">Al escribir el último dígito vuelves a tu panel, donde lo dejaste. Sin contraseñas.</div></div></div>')
-    return inicio+datos+codigo+login
+    login=('<div data-st="login" hidden data-errbox style="display: flex; flex-direction: column; gap: 12px">'+ok('¡Hola de nuevo, Katia! Escribe tu contraseña para entrar.')
+      +pw(k+'lpw','Contraseña','Tu contraseña','<a href="#" style="align-self: flex-start; font-size: 14px; font-weight: 700; text-decoration: none; padding: 4px 0">¿Has olvidado tu contraseña?</a>')
+      +errbox('La contraseña no es correcta. Inténtalo de nuevo o pide una nueva en «¿Has olvidado tu contraseña?».','Demo: contraseña incorrecta')
+      +'<a href="%s" class="stepin" style="%s">Entrar</a>'%(P('Panel'),PB)
+      +'<button type="button" data-set="inicio" style="border: 0; background: none; color: #385BF8; font-size: 14px; font-weight: 700; font-family: inherit; cursor: pointer; padding: 8px">Usar otro email</button></div>')
+    return inicio+datos+login
 
 def negocio(P,k,mob):
     tipos=''.join('<button type="button" class="chip%s" data-group="tipo" data-val="%s" style="height: 52px; font-size: 14px">%s</button>'%(' on' if i==0 else '',v,l) for i,(v,l) in enumerate([('vr','Alquiler vacacional'),('hotel','Hotel o aparthotel'),('camping','Camping'),('otro','Otro')]))

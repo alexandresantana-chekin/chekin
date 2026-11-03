@@ -581,3 +581,14 @@ Mismos enlaces (móvil y portátil). Principio de Alex: entrar y terminarlo todo
     - «Tu negocio» se queda en dos preguntas, sin teléfono;
     - el titular viene relleno con el nombre y el NIF del alta («Lo traemos de tu alta»).
   - Riesgo: hoy el 16 % de quien llega al alta crea la cuenta (126 de 772, 30 días) y dos campos más antes del valor pueden bajarlo. Medirlo en el A/B.
+- **Contraseña, policías y titular (03/11, versión 26), por decisión de Alex.**
+  - **Alta con email:** contraseña en vez de código (mínimo 8 caracteres, con letra y número, «Mostrar»). Quien ya es cliente entra con su contraseña, con «¿Has olvidado tu contraseña?» y error de demo. Con Google no hay contraseña.
+  - **Dónde están:** primero solo países. Al marcar España sale «¿A qué policía envías el parte?»: SES.Hospedajes, Policía Nacional (nueva), Mossos d'Esquadra y Ertzaintza, con ayuda por comunidad. El parte de viajeros enseña solo las autoridades elegidas (también Ertzaintza y Alloggiati).
+  - **Titular:**
+    - arriba, el interruptor «El mismo titular para todas mis viviendas»;
+    - debajo, el nombre y el NIF/CIF del alta ya rellenos.
+  - [POR COMPROBAR con Producto]:
+    - si el parte va hoy a la Policía Nacional directamente o por SES.Hospedajes;
+    - si falta la Guardia Civil;
+    - qué datos pide cada autoridad;
+    - la regla de contraseña.
