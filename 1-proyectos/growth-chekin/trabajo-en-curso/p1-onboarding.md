@@ -571,6 +571,7 @@ Mismos enlaces (móvil y portátil). Principio de Alex: entrar y terminarlo todo
   - Inicio con reservas: «tus extras pagan Chekin».
   - Inicio de cuenta nueva: estado real de los extras.
 
-  Pendiente en pantalla:
-  - a los hoteles se les sigue hablando de «viviendas» en varios títulos;
-  - Ventas extra marca «1 min» y ahora lleva más.
+- **Palabra según el negocio y tiempos (03/11, versión 24).**
+  - Si elige hotel o camping en «Tu negocio», todo el alta y el Inicio dicen «propiedad/es» en vez de «vivienda/s». Es femenino, como vivienda, así que las frases no cambian de género.
+  - Si vuelve a alquiler vacacional, vuelve a decir «viviendas».
+  - Ventas extra pasa a 2 min, y el total, a unos 11 min.

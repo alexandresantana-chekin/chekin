@@ -18,7 +18,7 @@ LOGO_M='<img src="/_blob/3ef2a56a40d5efb3f55d9f310adc6465" alt="Chekin" style="w
 LOGO_W='<img src="/_blob/c25beceb5f9f805a652ba855add94f27" alt="Chekin" style="width: 104px; height: 31px">'
 CAT='<svg width="24" height="16" viewBox="0 0 9 6" role="img" aria-label="Bandera de Cataluña" style="display: block; border-radius: 2px"><rect width="9" height="6" fill="#FCDD09"></rect><rect y="0.667" width="9" height="0.667" fill="#DA121A"></rect><rect y="2" width="9" height="0.667" fill="#DA121A"></rect><rect y="3.333" width="9" height="0.667" fill="#DA121A"></rect><rect y="4.667" width="9" height="0.667" fill="#DA121A"></rect></svg>'
 EUS='<svg width="24" height="16" viewBox="0 0 26 18" role="img" aria-label="Bandera del País Vasco" style="display: block; border-radius: 2px"><rect width="26" height="18" fill="#D52B1E"></rect><path d="M0 0L26 18M26 0L0 18" stroke="#009B48" stroke-width="3"></path><path d="M13 0V18M0 9H26" stroke="#FFFFFF" stroke-width="3"></path></svg>'
-STEPS=[('Reservas','2 min'),('Dónde están','30 s'),('Titular y viviendas','2 min'),('Parte de viajeros','3 min'),('Protección','1 min'),('Ventas extra','1 min'),('Check-in y envío','30 s')]
+STEPS=[('Reservas','2 min'),('Dónde están','30 s'),('Titular y viviendas','2 min'),('Parte de viajeros','3 min'),('Protección','1 min'),('Ventas extra','2 min'),('Check-in y envío','30 s')]
 SH='0 1px 2px rgba(25, 25, 75, 0.06), 0 0 0 1px #ECECF5'
 SHM='0 0 0 2px #385BF8, 0 12px 24px rgba(56, 91, 248, 0.14)'
 def ok(t): return '<div class="stepin" style="display: flex; gap: 10px; align-items: center; padding: 10px 14px; border-radius: 12px; background: #E8F6EF; color: #0F5C3B; font-size: 14px; line-height: 1.4; font-weight: 600"><span aria-hidden="true">✓</span><span>%s</span></div>'%t
@@ -51,7 +51,7 @@ def rail(active,chips):
         items.append('<div style="display: flex; gap: 12px; align-items: center">%s<div style="flex-grow: 1; font-size: 14px; font-weight: %s; color: %s">%s</div><div style="font-size: 12px; color: #8C8CB8">%s</div></div>'%(dot,'700' if i==active else '500',col,n,t))
     ch=''.join('<span style="padding: 5px 9px; border-radius: 999px; background: rgba(255, 255, 255, 0.08); color: #DCE3FF; font-size: 12px">%s</span>'%c for c in chips)
     return ('<aside style="width: 300px; flex-shrink: 0; box-sizing: border-box; padding: 30px 26px; display: flex; flex-direction: column; gap: 26px; background: linear-gradient(180deg, #161643, #1F1F57); color: #FFFFFF">'+LOGO_W
-      +'<div style="display: flex; flex-direction: column; gap: 16px"><div style="font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: #9FB2FF">TU CONFIGURACIÓN · ≈ 10 MIN</div>'+''.join(items)+'</div>'
+      +'<div style="display: flex; flex-direction: column; gap: 16px"><div style="font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: #9FB2FF">TU CONFIGURACIÓN · ≈ 11 MIN</div>'+''.join(items)+'</div>'
       +'<div style="margin-top: auto; display: flex; flex-direction: column; gap: 10px"><div style="font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: #8C8CB8">LO QUE NOS HAS CONTADO</div><div style="display: flex; flex-wrap: wrap; gap: 6px">%s</div>'%ch
       +'<div style="font-size: 13px; color: #C9CBEA; margin-top: 6px">¿Dudas? <a href="#" style="color: #FFFFFF; font-weight: 700">Habla con un experto</a></div></div></aside>')
 def bar(active):
@@ -98,8 +98,8 @@ W(P('Creando'),HEAD.replace('Vivienda 2','Creando tu cuenta · portátil')+'<div
 # ---------- Bienvenida (compacta) ----------
 def bienv(Pp,mob_):
     rows=''.join('<div style="display: flex; gap: 12px; align-items: center; padding: 9px 0"><div style="width: 24px; height: 24px; flex-shrink: 0; border-radius: 8px; background: #EFEFFF; color: #385BF8; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800">%d</div><div style="flex-grow: 1; font-size: 15px; font-weight: 600">%s</div><div style="font-size: 13px; color: #6B6B95">%s</div></div>'%(i,n,t) for i,(n,t) in enumerate(STEPS,1))
-    return (H('👋','¡Hola, Katia! Empezamos','Lo dejamos todo configurado de una vez. En unos 10 minutos, tus huéspedes ya pueden hacer el check-in.',mob_)
-      +card('<div style="display: flex; justify-content: space-between; align-items: baseline"><div style="font-size: 13px; font-weight: 700; letter-spacing: 0.06em; color: #385BF8">LO QUE VIENE</div><div style="font-size: 13px; color: #6B6B95">≈ 10 min en total</div></div>'+rows,18,' class="stepin"')
+    return (H('👋','¡Hola, Katia! Empezamos','Lo dejamos todo configurado de una vez. En unos 11 minutos, tus huéspedes ya pueden hacer el check-in.',mob_)
+      +card('<div style="display: flex; justify-content: space-between; align-items: baseline"><div style="font-size: 13px; font-weight: 700; letter-spacing: 0.06em; color: #385BF8">LO QUE VIENE</div><div style="font-size: 13px; color: #6B6B95">≈ 11 min en total</div></div>'+rows,18,' class="stepin"')
       +'<div style="display: flex; flex-wrap: wrap; gap: 8px; font-size: 13px; color: #6B6B95"><span>🔒 Tus datos están protegidos. Cumplimos el RGPD.</span><span>💾 Se guarda solo: puedes seguir luego.</span></div>')
 both('Bienvenida','Bienvenida',0,CH[:2],bienv,lambda Pp:link(Pp('PanelNuevo'),'Ahora no'),lambda Pp:btn(Pp('Reservas'),'Empezar →'),lambda Pp:btn(Pp('Reservas'),'Empezar →',full=True),lambda Pp:link(Pp('Panel'),'Ahora no'))
 # ---------- 1 · Reservas ----------
