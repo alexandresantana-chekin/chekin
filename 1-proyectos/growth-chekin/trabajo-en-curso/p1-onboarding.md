@@ -559,3 +559,18 @@ Mismos enlaces (móvil y portátil). Principio de Alex: entrar y terminarlo todo
   - **Vista previa en vivo:** «Así lo ve tu huésped» se rellena con lo activado. En portátil va fija a la derecha; en móvil, al final.
   - «¡Todo listo!» y el Inicio cuentan las ofertas activadas de verdad.
   - [POR COMPROBAR con Producto]: qué extras tiene hoy el catálogo de Chekin y cómo cobra cada uno; precios de ejemplo.
+- **Explicaciones al día (03/11, versión 23).** Las 20 pantallas del panel «Por qué lo hacemos así» siguen ahora un mismo formato:
+  - qué hace la pantalla y por qué;
+  - «Dato:», con su fuente y periodo;
+  - «Por comprobar:»;
+  - «Pruébalo:», con el botón de demo.
+
+  Se han corregido cuatro textos que contradecían el prototipo:
+  - Protección: vienen apagadas.
+  - Creando cuenta: botón a los 1,6 s y avance solo a los 4,6 s.
+  - Inicio con reservas: «tus extras pagan Chekin».
+  - Inicio de cuenta nueva: estado real de los extras.
+
+  Pendiente en pantalla:
+  - a los hoteles se les sigue hablando de «viviendas» en varios títulos;
+  - Ventas extra marca «1 min» y ahora lleva más.
