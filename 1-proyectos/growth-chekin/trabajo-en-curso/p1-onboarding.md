@@ -575,3 +575,9 @@ Mismos enlaces (móvil y portátil). Principio de Alex: entrar y terminarlo todo
   - Si elige hotel o camping en «Tu negocio», todo el alta y el Inicio dicen «propiedad/es» en vez de «vivienda/s». Es femenino, como vivienda, así que las frases no cambian de género.
   - Si vuelve a alquiler vacacional, vuelve a decir «viviendas».
   - Ventas extra pasa a 2 min, y el total, a unos 11 min.
+- **Alta con NIF y móvil (03/11, versión 25), por decisión de Alex.** Antes de crear la cuenta se piden nombre, apellidos, NIF/NIE/CIF (con validación) y móvil (con prefijo y para qué se usa).
+  - Con Google pasa por la misma ficha, con nombre y apellidos ya rellenos, y va directo a «Tu negocio» (sin código).
+  - Nada se pide dos veces:
+    - «Tu negocio» se queda en dos preguntas, sin teléfono;
+    - el titular viene relleno con el nombre y el NIF del alta («Lo traemos de tu alta»).
+  - Riesgo: hoy el 16 % de quien llega al alta crea la cuenta (126 de 772, 30 días) y dos campos más antes del valor pueden bajarlo. Medirlo en el A/B.
