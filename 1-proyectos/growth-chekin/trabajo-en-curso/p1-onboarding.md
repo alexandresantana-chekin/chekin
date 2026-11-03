@@ -479,3 +479,23 @@ Mismos enlaces (móvil y portátil). Principio de Alex: entrar y terminarlo todo
   4. **Ventas extra, abajo:** «**Este mes, Chekin te sale gratis**: tus extras han generado 165 €, cubren 4,2 meses de tu suscripción y te sobran 126 €». Debajo, las cifras, los ingresos por semana, la protección y la fianza, y «Vende más». La lista de ofertas queda detrás de «Ver tus 4 ofertas».
   - El precio de suscripción (39 €/mes) es de ejemplo [POR COMPROBAR con los precios reales]. Datos de ejemplo.
 
+### 03/11: auditoría UX/UI del onboarding (estilo Big 4)
+- Informe: https://claude.ai/artifact/WtCPS5BDJgfZMFLec1pnFV (doc privado hasta que Alex lo comparta). Revisión independiente de un agente que no participó en el diseño, contrastada en el prototipo.
+- **Nota media: 2,5 sobre 5.** Motivación 4; claridad y feedback 3; esfuerzo, coherencia, prevención de errores, accesibilidad y confianza 2.
+- **Fricciones críticas y altas:**
+  - el parte de viajeros pide las credenciales de tres autoridades en una sola pantalla;
+  - teléfono y tres preguntas antes de entrar;
+  - el aviso del experto, mal calibrado para hoteles;
+  - el PMS «el más rápido» frente a «a mano», también en móvil;
+  - el calendario no tiene pantalla para pegar el enlace;
+  - la vivienda dice «solo nombre y dirección» y pide 5 campos.
+- **Errores de coherencia:**
+  - «165 € cubren 4,2 meses y te sobran 126 €»;
+  - «Madrid y Valencia» frente a las viviendas del Inicio;
+  - «¡Todo listo!» dice «desde tu PMS» aunque no se eligiera;
+  - mensajes como «¡Viviendas listas!» que son falsos según el camino.
+- **Plan en 3 oleadas:**
+  1. arreglos rápidos del prototipo (1 semana);
+  2. cambios de flujo con Daniel (2–3 semanas);
+  3. confianza y cumplimiento con Producto y el DPO.
+
